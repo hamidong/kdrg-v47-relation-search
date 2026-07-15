@@ -17,6 +17,15 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+# Windows 콘솔 기본 인코딩(cp1252)에서도 한글 출력이 깨지지 않도록 강제 UTF-8 설정
+for _stream_name in ("stdout", "stderr"):
+    _stream = getattr(sys, _stream_name, None)
+    if _stream is not None and hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8")
+        except Exception:
+            pass
+
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
