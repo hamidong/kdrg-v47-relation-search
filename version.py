@@ -22,5 +22,14 @@ if __name__ == "__main__":
     # 예) python version.py EXE_NAME
     import sys
 
+    # Windows 콘솔 기본 인코딩(cp1252)에서도 한글 출력이 깨지지 않도록 강제 UTF-8 설정
+    for _stream_name in ("stdout", "stderr"):
+        _stream = getattr(sys, _stream_name, None)
+        if _stream is not None and hasattr(_stream, "reconfigure"):
+            try:
+                _stream.reconfigure(encoding="utf-8")
+            except Exception:
+                pass
+
     field = sys.argv[1] if len(sys.argv) > 1 else "APP_VERSION"
     print(globals().get(field, ""))
