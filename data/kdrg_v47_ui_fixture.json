@@ -1,0 +1,1489 @@
+{
+  "meta": {
+    "app_data_version": "2026-07-15_KDRG_V47_PILOT_SPECIAL_CASES_V1",
+    "kdrg_version": "KDRG V4.7",
+    "data_scope": "V4.7 특이케이스 파일럿 · MDC 04/05 · 9개 ADRG",
+    "ui_badge": "KDRG V4.7 PILOT · SPECIAL CASE",
+    "notice": "KDRG V4.7 본문과 2026-05-01 교정자료를 반영한 특이케이스 파일럿입니다. 복수 코드 관계검색은 최종 질병군 판정이 아닙니다.",
+    "source_note": "KDRG V4.7 분류집 원문 및 KDRG 일반용(V4.7) 교정표 2026-05-01 기준",
+    "correction_basis": "2026-05-01",
+    "abc_basis": "[별표 1] 입원환자의 질병군별 질병의 종류(제3조제1항 관련, 상급종합병원의 지정 및 평가 규정) 최신 고시본 확인",
+    "pilot_cases": [
+      "E011",
+      "E501",
+      "E502",
+      "E511",
+      "E512",
+      "F022",
+      "F136",
+      "F194",
+      "F195"
+    ]
+  },
+  "mdc_master": [
+    {
+      "mdc": "04",
+      "name": "호흡기계",
+      "aliases": [
+        "MDC 04",
+        "MDC04",
+        "호흡기계",
+        "Diseases and Disorders of the Respiratory System"
+      ]
+    },
+    {
+      "mdc": "05",
+      "name": "순환기계",
+      "aliases": [
+        "MDC 05",
+        "MDC05",
+        "순환기계",
+        "Diseases and Disorders of the Circulatory System"
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "table_id": "V47_E04_E011_PROC_1",
+      "display_label": "시술명 table1",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 264쪽 · PDF 290페이지",
+      "members": [
+        {
+          "code": "O1311",
+          "name_en": "",
+          "name_ko": "기관또는기관지종양제거술(경부접근)-기관절제및재건술",
+          "original_order": 1
+        },
+        {
+          "code": "O1312",
+          "name_en": "",
+          "name_ko": "기관또는기관지종양제거술(경부접근)-기관절제및성형술",
+          "original_order": 2
+        },
+        {
+          "code": "O1313",
+          "name_en": "",
+          "name_ko": "기관또는기관지종양제거술(흉부접근)-기관(지)절제및재건술",
+          "original_order": 3
+        },
+        {
+          "code": "O1314",
+          "name_en": "",
+          "name_ko": "기관또는기관지종양제거술(흉부접근)-기관(지)절제및성형술",
+          "original_order": 4
+        },
+        {
+          "code": "O1317",
+          "name_en": "",
+          "name_ko": "기관또는기관지종양제거술(흉부접근)-기관분기부 절제 및 재건술",
+          "original_order": 5
+        },
+        {
+          "code": "O1336",
+          "name_en": "",
+          "name_ko": "개흉적기관또는기관지이물제거술",
+          "original_order": 6
+        },
+        {
+          "code": "O1341",
+          "name_en": "",
+          "name_ko": "기관또는기관지협착증수술(경부접근)-기관절제및재건술",
+          "original_order": 7
+        },
+        {
+          "code": "O1342",
+          "name_en": "",
+          "name_ko": "기관또는기관지협착증수술(경부접근)-기관절제및성형술",
+          "original_order": 8
+        },
+        {
+          "code": "O1344",
+          "name_en": "",
+          "name_ko": "기관또는기관지협착증수술(흉부접근)-기관(지)절제및재건술",
+          "original_order": 9
+        },
+        {
+          "code": "O1345",
+          "name_en": "",
+          "name_ko": "기관또는기관지협착증수술(흉부접근)-기관(지)절제및성형술",
+          "original_order": 10
+        },
+        {
+          "code": "O1352",
+          "name_en": "",
+          "name_ko": "기관지식도루폐쇄술",
+          "original_order": 11
+        },
+        {
+          "code": "O1353",
+          "name_en": "",
+          "name_ko": "기관지담도루폐쇄술",
+          "original_order": 12
+        },
+        {
+          "code": "O1354",
+          "name_en": "",
+          "name_ko": "기관지대동정맥루폐쇄술",
+          "original_order": 13
+        }
+      ]
+    },
+    {
+      "table_id": "V47_E04_E011_PROC_2",
+      "display_label": "시술명 table2",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 264쪽 · PDF 290페이지",
+      "members": [
+        {
+          "code": "O1326",
+          "name_en": "",
+          "name_ko": "기관또는기관지봉합술(흉부접근)",
+          "original_order": 1
+        },
+        {
+          "code": "O1351",
+          "name_en": "",
+          "name_ko": "기관지흉막루폐쇄술",
+          "original_order": 2
+        }
+      ]
+    },
+    {
+      "table_id": "V47_E04_E50_VENT_PROC_1",
+      "display_label": "시술명 table1 · 침습적 인공호흡",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 275-276쪽 · PDF 301-302페이지",
+      "members": [
+        {
+          "code": "M5850",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료 별도]-3시간까지",
+          "original_order": 1
+        },
+        {
+          "code": "M0850",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료 별도]-3시간까지(신생아 중환자실에서 고빈도 진동 호흡모드 이용)",
+          "original_order": 2
+        },
+        {
+          "code": "M5857",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료별도]-3시간을초과하여8시간까지",
+          "original_order": 3
+        },
+        {
+          "code": "M0857",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료 별도]-3시간을초과하여8시간까지(신생아 중환자실에서 고빈도 진동 호흡모드 이용)",
+          "original_order": 4
+        },
+        {
+          "code": "M5858",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료 별도]-8시간을초과하여12시간까지",
+          "original_order": 5
+        },
+        {
+          "code": "M0858",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료 별도]-8시간을초과하여12시간까지(신생아 중환자실에서 고빈도 진동 호흡모드 이용)",
+          "original_order": 6
+        },
+        {
+          "code": "M5860",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료 별도]-12시간초과1일당",
+          "original_order": 7
+        },
+        {
+          "code": "M0860",
+          "name_en": "",
+          "name_ko": "인공호흡[기관내삽관료 별도]-12시간초과1일당(신생아 중환자실에서 고빈도 진동 호흡모드 이용)",
+          "original_order": 8
+        }
+      ]
+    },
+    {
+      "table_id": "V47_E04_E50_RRT_PROC_2",
+      "display_label": "시술명 table2 · 신대체요법",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 275-276쪽 · PDF 301-302페이지",
+      "members": [
+        {
+          "code": "O7020",
+          "name_en": "",
+          "name_ko": "혈액투석[1회당]",
+          "original_order": 1
+        },
+        {
+          "code": "O7031",
+          "name_en": "",
+          "name_ko": "지속적정정맥혈액투석-카테터삽입당일[카테터삽입료포함]",
+          "original_order": 2
+        },
+        {
+          "code": "O7032",
+          "name_en": "",
+          "name_ko": "지속적정정맥혈액투석-카테터삽입익일부터[1일당]",
+          "original_order": 3
+        },
+        {
+          "code": "O7033",
+          "name_en": "",
+          "name_ko": "지속적동정맥혈액투석-카테터삽입당일[카테터삽입료포함]",
+          "original_order": 4
+        },
+        {
+          "code": "O7034",
+          "name_en": "",
+          "name_ko": "지속적동정맥혈액투석-카테터삽입익일부터[1일당]",
+          "original_order": 5
+        },
+        {
+          "code": "O7001",
+          "name_en": "",
+          "name_ko": "지속적정정맥혈액투석여과-카테터삽입당일[카테터삽입료포함]",
+          "original_order": 6
+        },
+        {
+          "code": "O7002",
+          "name_en": "",
+          "name_ko": "지속적정정맥혈액투석여과-익일부터[1일당]",
+          "original_order": 7
+        },
+        {
+          "code": "O7003",
+          "name_en": "",
+          "name_ko": "지속적동정맥혈액투석여과-카테터삽입당일[카테터삽입료포함]",
+          "original_order": 8
+        },
+        {
+          "code": "O7004",
+          "name_en": "",
+          "name_ko": "지속적동정맥혈액투석여과-익일부터[1일당]",
+          "original_order": 9
+        },
+        {
+          "code": "O7051",
+          "name_en": "",
+          "name_ko": "지속적정정맥혈액여과-카테터삽입당일[카테터삽입료포함]",
+          "original_order": 10
+        },
+        {
+          "code": "O7052",
+          "name_en": "",
+          "name_ko": "지속적정정맥혈액여과-카테터삽입익일부터[1일당]",
+          "original_order": 11
+        },
+        {
+          "code": "O7053",
+          "name_en": "",
+          "name_ko": "지속적동정맥혈액여과-카테터삽입당일[카테터삽입료포함]",
+          "original_order": 12
+        },
+        {
+          "code": "O7054",
+          "name_en": "",
+          "name_ko": "지속적동정맥혈액여과-카테터삽입익일부터[1일당]",
+          "original_order": 13
+        },
+        {
+          "code": "O7061",
+          "name_en": "",
+          "name_ko": "급성복막투석-도관삽입술",
+          "original_order": 14
+        },
+        {
+          "code": "O7062",
+          "name_en": "",
+          "name_ko": "급성복막투석-투석액교환[1일당]",
+          "original_order": 15
+        },
+        {
+          "code": "O7074",
+          "name_en": "",
+          "name_ko": "계속적복막관류술-만성복막투석을위한도관길들이기[투석액교환및도관청소포함][1일당]",
+          "original_order": 16
+        },
+        {
+          "code": "O7076",
+          "name_en": "",
+          "name_ko": "계속적복막관류술-투석액 교환 또는 도관청소[1일당]-자동복막투석",
+          "original_order": 17
+        },
+        {
+          "code": "O7077",
+          "name_en": "",
+          "name_ko": "계속적복막관류술-투석액 교환 또는 도관청소[1일당]-비자동복막투석",
+          "original_order": 18
+        },
+        {
+          "code": "O7080",
+          "name_en": "",
+          "name_ko": "체외복수투석[복막천자포함]",
+          "original_order": 19
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F02_PROC_2",
+      "display_label": "시술명 table2",
+      "code_type": "검사·처치코드",
+      "source_page": "본문 313쪽 · PDF 339페이지",
+      "members": [
+        {
+          "code": "E0730",
+          "name_en": "",
+          "name_ko": "관상동맥내 압력측정술-단일혈관",
+          "original_order": 1
+        },
+        {
+          "code": "E0731",
+          "name_en": "",
+          "name_ko": "관상동맥내 압력측정술-추가혈관",
+          "original_order": 2
+        },
+        {
+          "code": "E0720",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-우심도자술(선천성심장병)",
+          "original_order": 3
+        },
+        {
+          "code": "E0721",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-우심도자술(기타)",
+          "original_order": 4
+        },
+        {
+          "code": "E0722",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-좌심도자술(선천성심장병)",
+          "original_order": 5
+        },
+        {
+          "code": "E0723",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-좌심도자술(기타)",
+          "original_order": 6
+        },
+        {
+          "code": "E0724",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-심방중격천자를통한좌심도자술[우심도자술포함](선천성심장병)",
+          "original_order": 7
+        },
+        {
+          "code": "E0725",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-심방중격천자를통한좌심도자술[우심도자술포함](기타)",
+          "original_order": 8
+        },
+        {
+          "code": "E0726",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-난원공을통한좌심도자술[우심도자술포함](선천성심장병)",
+          "original_order": 9
+        },
+        {
+          "code": "E0727",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-난원공을통한좌심도자술[우심도자술포함](기타)",
+          "original_order": 10
+        },
+        {
+          "code": "E0728",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-폐혈관 반응성 검사[우심도자술, 좌심도자술 포함]",
+          "original_order": 11
+        },
+        {
+          "code": "E0729",
+          "name_en": "",
+          "name_ko": "심도자에의한순환기능검사-풍선폐쇄검사",
+          "original_order": 12
+        },
+        {
+          "code": "HA610",
+          "name_en": "",
+          "name_ko": "흉부동맥조영-우심방조영",
+          "original_order": 13
+        },
+        {
+          "code": "HA611",
+          "name_en": "",
+          "name_ko": "흉부동맥조영-우심실조영",
+          "original_order": 14
+        },
+        {
+          "code": "HA612",
+          "name_en": "",
+          "name_ko": "흉부동맥조영-좌심실조영",
+          "original_order": 15
+        },
+        {
+          "code": "HA613",
+          "name_en": "",
+          "name_ko": "흉부동맥조영-좌심방조영",
+          "original_order": 16
+        },
+        {
+          "code": "HA670",
+          "name_en": "",
+          "name_ko": "관상동맥조영",
+          "original_order": 17
+        },
+        {
+          "code": "HA680",
+          "name_en": "",
+          "name_ko": "이식된관동맥우회로조영촬영[환자본래의관상동맥조영촬영포함]",
+          "original_order": 18
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F02_PROC_3",
+      "display_label": "시술명 table3",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 313쪽 · PDF 339페이지",
+      "members": [
+        {
+          "code": "O1730",
+          "name_en": "",
+          "name_ko": "승모판협착증수술",
+          "original_order": 1
+        },
+        {
+          "code": "O1760",
+          "name_en": "",
+          "name_ko": "삼첨판협착증수술",
+          "original_order": 2
+        },
+        {
+          "code": "O1781",
+          "name_en": "",
+          "name_ko": "판막성형술(삼첨판)",
+          "original_order": 3
+        },
+        {
+          "code": "O1784",
+          "name_en": "",
+          "name_ko": "판막성형술(삼천판)-엡스타인 이상(Ebstein’s anomaly) 교정을 위해 시행(심방중격결손 폐쇄술 포함)",
+          "original_order": 4
+        },
+        {
+          "code": "O1782",
+          "name_en": "",
+          "name_ko": "판막성형술(승모판)",
+          "original_order": 5
+        },
+        {
+          "code": "O1794",
+          "name_en": "",
+          "name_ko": "인공판막재치환술(삼첨판)",
+          "original_order": 6
+        },
+        {
+          "code": "O1795",
+          "name_en": "",
+          "name_ko": "인공판막재치환술(승모판)",
+          "original_order": 7
+        },
+        {
+          "code": "O1791",
+          "name_en": "",
+          "name_ko": "인공판막치환술(삼첨판)",
+          "original_order": 8
+        },
+        {
+          "code": "O1792",
+          "name_en": "",
+          "name_ko": "인공판막치환술(승모판)",
+          "original_order": 9
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F13_PROC_1",
+      "display_label": "시술명 table1",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 328쪽 · PDF 354페이지",
+      "members": [
+        {
+          "code": "M6551",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥확장술-단일혈관",
+          "original_order": 1
+        },
+        {
+          "code": "M6561",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥스텐트삽입술-단일혈관",
+          "original_order": 2
+        },
+        {
+          "code": "M6563",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥스텐트삽입술(경피적관상동맥확장술 및 경피적관상동맥죽상반절제술과 동시)-단일혈관",
+          "original_order": 3
+        },
+        {
+          "code": "M6571",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥죽상반절제술-단일혈관",
+          "original_order": 4
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F13_PROC_2",
+      "display_label": "시술명 table2",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 329쪽 · PDF 355페이지",
+      "members": [
+        {
+          "code": "M6552",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥확장술-추가혈관",
+          "original_order": 1
+        },
+        {
+          "code": "M6562",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥스텐트삽입술-추가혈관",
+          "original_order": 2
+        },
+        {
+          "code": "M6564",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥스텐트삽입술(경피적관상동맥확장술 및 경피적관상동맥죽상반절제술과 동시)-추가혈관",
+          "original_order": 3
+        },
+        {
+          "code": "M6572",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥죽상반절제술-추가혈관",
+          "original_order": 4
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F13_PROC_3",
+      "display_label": "시술명 table3",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 329쪽 · PDF 355페이지",
+      "members": [
+        {
+          "code": "M6554",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥확장술-만성폐쇄성병변에 대한 경피적관상동맥확장술",
+          "original_order": 1
+        },
+        {
+          "code": "M6566",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥스텐트삽입술-만성폐쇄성병변에 대한 경피적관상동맥스텐트삽입술",
+          "original_order": 2
+        },
+        {
+          "code": "M6567",
+          "name_en": "",
+          "name_ko": "경피적 관상동맥스텐트삽입술-만성폐쇄성병변에 대한 경피적 관상동맥스텐트삽입술(경피적 관상동맥확장술 및 경피적 관상동맥죽상반절제술과 동시)",
+          "original_order": 3
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F19_CHRONIC_PD_1",
+      "display_label": "주진단명 table1",
+      "code_type": "상병코드",
+      "source_page": "본문 334쪽 · PDF 360페이지",
+      "members": [
+        {
+          "code": "E1050",
+          "name_en": "Type 1 diabetes mellitus, with diabetic peripheral angiopathy, without gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 1
+        },
+        {
+          "code": "E1051",
+          "name_en": "Type 1 diabetes mellitus, with diabetic peripheral angiopathy, with gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 2
+        },
+        {
+          "code": "E1058",
+          "name_en": "Type 1 diabetes mellitus, with other and unspecified peripheral circulatory complications",
+          "name_ko": "",
+          "original_order": 3
+        },
+        {
+          "code": "E1150",
+          "name_en": "Type 2 diabetes mellitus, with diabetic peripheral angiopathy, without gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 4
+        },
+        {
+          "code": "E1151",
+          "name_en": "Type 2 diabetes mellitus, with diabetic peripheral angiopathy, with gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 5
+        },
+        {
+          "code": "E1158",
+          "name_en": "Type 2 diabetes mellitus, with other and unspecified peripheral circulatory complications",
+          "name_ko": "",
+          "original_order": 6
+        },
+        {
+          "code": "E1250",
+          "name_en": "Malnutrition-related diabetes mellitus, with diabetic peripheral angiopathy, without gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 7
+        },
+        {
+          "code": "E1251",
+          "name_en": "Malnutrition-related diabetes mellitus, with diabetic peripheral angiopathy, with gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 8
+        },
+        {
+          "code": "E1258",
+          "name_en": "Malnutrition-related diabetes mellitus, with other and unspecified peripheral circulatory complications",
+          "name_ko": "",
+          "original_order": 9
+        },
+        {
+          "code": "E1350",
+          "name_en": "Other specified diabetes mellitus, with diabetic peripheral angiopathy, without gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 10
+        },
+        {
+          "code": "E1351",
+          "name_en": "Other specified diabetes mellitus, with diabetic peripheral angiopathy, with gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 11
+        },
+        {
+          "code": "E1358",
+          "name_en": "Other specified diabetes mellitus, with other and unspecified peripheral circulatory complications",
+          "name_ko": "",
+          "original_order": 12
+        },
+        {
+          "code": "E1450",
+          "name_en": "Unspecified diabetes mellitus, with diabetic peripheral angiopathy, without gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 13
+        },
+        {
+          "code": "E1451",
+          "name_en": "Unspecified diabetes mellitus, with diabetic peripheral angiopathy, with gangrene(I79.2*)",
+          "name_ko": "",
+          "original_order": 14
+        },
+        {
+          "code": "E1458",
+          "name_en": "Unspecified diabetes mellitus, with other and unspecified peripheral circulatory complications",
+          "name_ko": "",
+          "original_order": 15
+        },
+        {
+          "code": "I7022",
+          "name_en": "Atherosclerosis of arteries of extremities with intermittent claudication",
+          "name_ko": "",
+          "original_order": 16
+        },
+        {
+          "code": "I7023",
+          "name_en": "Atherosclerosis of arteries of extremities with rest pain",
+          "name_ko": "",
+          "original_order": 17
+        },
+        {
+          "code": "I7024",
+          "name_en": "Atherosclerosis of arteries of extremities with ulceration",
+          "name_ko": "",
+          "original_order": 18
+        },
+        {
+          "code": "I7025",
+          "name_en": "Atherosclerosis of arteries of extremities with gangrene",
+          "name_ko": "",
+          "original_order": 19
+        },
+        {
+          "code": "I7029",
+          "name_en": "Atherosclerosis of arteries of extremities, unspecified",
+          "name_ko": "",
+          "original_order": 20
+        },
+        {
+          "code": "I70820",
+          "name_en": "Atherosclerosis of splanchnic artery, without gangrene",
+          "name_ko": "",
+          "original_order": 21
+        },
+        {
+          "code": "I70821",
+          "name_en": "Atherosclerosis of splanchnic artery, with gangrene",
+          "name_ko": "",
+          "original_order": 22
+        },
+        {
+          "code": "I70830",
+          "name_en": "Atherosclerosis of subclavian artery, without gangrene",
+          "name_ko": "",
+          "original_order": 23
+        },
+        {
+          "code": "I70831",
+          "name_en": "Atherosclerosis of subclavian artery, with gangrene",
+          "name_ko": "",
+          "original_order": 24
+        },
+        {
+          "code": "I70840",
+          "name_en": "Atherosclerosis of axillary artery, without gangrene",
+          "name_ko": "",
+          "original_order": 25
+        },
+        {
+          "code": "I70841",
+          "name_en": "Atherosclerosis of axillary artery, with gangrene",
+          "name_ko": "",
+          "original_order": 26
+        },
+        {
+          "code": "I70880",
+          "name_en": "Atherosclerosis of other arteries, without gangrene",
+          "name_ko": "",
+          "original_order": 27
+        },
+        {
+          "code": "I70881",
+          "name_en": "Atherosclerosis of other arteries, with gangrene",
+          "name_ko": "",
+          "original_order": 28
+        },
+        {
+          "code": "I70920",
+          "name_en": "Generalized atherosclerosis, without gangrene",
+          "name_ko": "",
+          "original_order": 29
+        },
+        {
+          "code": "I70921",
+          "name_en": "Generalized atherosclerosis, with gangrene",
+          "name_ko": "",
+          "original_order": 30
+        },
+        {
+          "code": "I70990",
+          "name_en": "Unspecified atherosclerosis, without gangrene",
+          "name_ko": "",
+          "original_order": 31
+        },
+        {
+          "code": "I70991",
+          "name_en": "Unspecified atherosclerosis, with gangrene",
+          "name_ko": "",
+          "original_order": 32
+        },
+        {
+          "code": "I723",
+          "name_en": "Aneurysm and dissection of iliac artery",
+          "name_ko": "",
+          "original_order": 33
+        },
+        {
+          "code": "I773",
+          "name_en": "Arterial fibromuscular dysplasia",
+          "name_ko": "",
+          "original_order": 34
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F19_CHRONIC_PROC_2",
+      "display_label": "시술명 table2",
+      "code_type": "수술·처치코드",
+      "source_page": "본문 334쪽 · PDF 360페이지",
+      "members": [
+        {
+          "code": "M6597",
+          "name_en": "",
+          "name_ko": "경피적풍선혈관성형술-기타혈관",
+          "original_order": 1
+        },
+        {
+          "code": "M6605",
+          "name_en": "",
+          "name_ko": "경피적혈관내금속스텐트삽입술-기타혈관",
+          "original_order": 2
+        },
+        {
+          "code": "M6613",
+          "name_en": "",
+          "name_ko": "경피적혈관내스텐트-이식설치술[기타혈관]",
+          "original_order": 3
+        },
+        {
+          "code": "M6620",
+          "name_en": "",
+          "name_ko": "경피적혈관내죽종제거술",
+          "original_order": 4
+        },
+        {
+          "code": "M6632",
+          "name_en": "",
+          "name_ko": "경피적혈전제거술-혈전용해술[기타혈관]",
+          "original_order": 5
+        },
+        {
+          "code": "M6639",
+          "name_en": "",
+          "name_ko": "경피적혈전제거술-기계적혈전제거술[카테터법]-기타혈관",
+          "original_order": 6
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F19_CHRONIC_ADD_1",
+      "display_label": "부가코드",
+      "code_type": "부가코드",
+      "source_page": "본문 334쪽 · PDF 360페이지",
+      "members": [
+        {
+          "code": "ADC4J",
+          "name_en": "",
+          "name_ko": "양쪽(Bilateral)",
+          "original_order": 1
+        }
+      ]
+    },
+    {
+      "table_id": "V47_E04_E011_ADD_EXCL_1",
+      "display_label": "부가코드 · 미포함",
+      "code_type": "부가코드",
+      "source_page": "본문 264쪽 · PDF 290페이지",
+      "members": [
+        {
+          "code": "ADC2A",
+          "name_en": "",
+          "name_ko": "흉강경시술",
+          "original_order": 1
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F13_PD_EXCL_1",
+      "display_label": "주진단명 table1 · 미포함",
+      "code_type": "상병코드",
+      "source_page": "본문 328쪽 · PDF 354페이지",
+      "members": [
+        {
+          "code": "I210",
+          "name_en": "Acute transmural myocardial infarction of anterior wall",
+          "name_ko": "",
+          "original_order": 1
+        },
+        {
+          "code": "I211",
+          "name_en": "Acute transmural myocardial infarction of inferior wall",
+          "name_ko": "",
+          "original_order": 2
+        },
+        {
+          "code": "I212",
+          "name_en": "Acute transmural myocardial infarction of other sites",
+          "name_ko": "",
+          "original_order": 3
+        },
+        {
+          "code": "I213",
+          "name_en": "Acute transmural myocardial infarction of unspecified site",
+          "name_ko": "",
+          "original_order": 4
+        },
+        {
+          "code": "I214",
+          "name_en": "Acute subendocardial myocardial infarction",
+          "name_ko": "",
+          "original_order": 5
+        },
+        {
+          "code": "I219",
+          "name_en": "Acute myocardial infarction, unspecified",
+          "name_ko": "",
+          "original_order": 6
+        },
+        {
+          "code": "I220",
+          "name_en": "Subsequent myocardial infarction of anterior wall",
+          "name_ko": "",
+          "original_order": 7
+        },
+        {
+          "code": "I221",
+          "name_en": "Subsequent myocardial infarction of inferior wall",
+          "name_ko": "",
+          "original_order": 8
+        },
+        {
+          "code": "I228",
+          "name_en": "Subsequent myocardial infarction of other sites",
+          "name_ko": "",
+          "original_order": 9
+        },
+        {
+          "code": "I229",
+          "name_en": "Subsequent myocardial infarction of unspecified site",
+          "name_ko": "",
+          "original_order": 10
+        }
+      ]
+    },
+    {
+      "table_id": "V47_F02_PROC_6",
+      "display_label": "시술명 table6 · 2026-03-01 교정 추가",
+      "code_type": "수술·처치코드",
+      "source_page": "교정표 2026-03-01 · 본문 313-314쪽",
+      "members": [
+        {
+          "code": "M6586",
+          "name_en": "",
+          "name_ko": "경피적 승모판막 재치환술 [심방중격 접근]",
+          "original_order": 1
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "adrg": "E011",
+      "aadrg": "E0110",
+      "mdc": "04",
+      "group_code": "A",
+      "group_name": "전문진료질병군",
+      "title": "기관 및 기관지 수술",
+      "subtitle": "",
+      "condition_text": "시술명 table1 OR (시술명 table2 WITHOUT 부가코드 ADC2A)",
+      "source_page": "본문 264쪽 · PDF 290페이지",
+      "condition_summary": "아래 2개 조건식 중 하나로 구성됨",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1",
+          "join_to_next_group": "OR",
+          "components": [
+            {
+              "table_id": "V47_E04_E011_PROC_1",
+              "operator_before": ""
+            }
+          ]
+        },
+        {
+          "group_no": 2,
+          "group_label": "조건식 2",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_E04_E011_PROC_2",
+              "operator_before": ""
+            }
+          ],
+          "requirements": [
+            "부가코드 ADC2A 미포함"
+          ],
+          "exclude_components": [
+            {
+              "table_id": "V47_E04_E011_ADD_EXCL_1",
+              "operator_before": ""
+            }
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "E0110",
+          "group_code": "A",
+          "group_name": "전문진료질병군",
+          "aadrg_name": "기관 및 기관지 수술",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {
+        "op": "OR",
+        "children": [
+          {
+            "predicate": "TABLE_MATCH",
+            "table_id": "V47_E04_E011_PROC_1"
+          },
+          {
+            "op": "AND",
+            "children": [
+              {
+                "predicate": "TABLE_MATCH",
+                "table_id": "V47_E04_E011_PROC_2"
+              },
+              {
+                "op": "NOT",
+                "child": {
+                  "predicate": "TABLE_MATCH",
+                  "table_id": "V47_E04_E011_ADD_EXCL_1"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "E501",
+      "aadrg": "E5010",
+      "mdc": "04",
+      "group_code": "A",
+      "group_name": "전문진료질병군",
+      "title": "침습적 인공호흡기 96시간 이상",
+      "subtitle": "신대체요법 동반",
+      "condition_text": "시술명 table1 AND 시술명 table2 AND 인공호흡 ≥96시간",
+      "source_page": "본문 275-276쪽 · PDF 301-302페이지",
+      "condition_summary": "시간 기준과 신대체요법 동반 여부를 추가 확인",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_E04_E50_VENT_PROC_1",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_E04_E50_RRT_PROC_2",
+              "operator_before": "AND"
+            }
+          ],
+          "requirements": [
+            "침습적 인공호흡기 96시간 이상"
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "E5010",
+          "group_code": "A",
+          "group_name": "전문진료질병군",
+          "aadrg_name": "침습적 인공호흡기 96시간 이상(신대체요법 동반)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {},
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "E502",
+      "aadrg": "E5020",
+      "mdc": "04",
+      "group_code": "A",
+      "group_name": "전문진료질병군",
+      "title": "침습적 인공호흡기 96시간 이상",
+      "subtitle": "신대체요법 미동반",
+      "condition_text": "시술명 table1 AND 인공호흡 ≥96시간",
+      "source_page": "본문 275-276쪽 · PDF 301-302페이지",
+      "condition_summary": "시간 기준과 신대체요법 동반 여부를 추가 확인",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_E04_E50_VENT_PROC_1",
+              "operator_before": ""
+            }
+          ],
+          "requirements": [
+            "침습적 인공호흡기 96시간 이상",
+            "신대체요법 미동반"
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "E5020",
+          "group_code": "A",
+          "group_name": "전문진료질병군",
+          "aadrg_name": "침습적 인공호흡기 96시간 이상(신대체요법 미동반)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {},
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "E511",
+      "aadrg": "E5110",
+      "mdc": "04",
+      "group_code": "A",
+      "group_name": "전문진료질병군",
+      "title": "침습적 인공호흡기 96시간 미만",
+      "subtitle": "신대체요법 동반",
+      "condition_text": "시술명 table1 AND 시술명 table2 AND NOT(인공호흡 ≥96시간)",
+      "source_page": "본문 275-276쪽 · PDF 301-302페이지",
+      "condition_summary": "시간 기준과 신대체요법 동반 여부를 추가 확인",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_E04_E50_VENT_PROC_1",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_E04_E50_RRT_PROC_2",
+              "operator_before": "AND"
+            }
+          ],
+          "requirements": [
+            "침습적 인공호흡기 96시간 미만"
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "E5110",
+          "group_code": "A",
+          "group_name": "전문진료질병군",
+          "aadrg_name": "침습적 인공호흡기 96시간 미만(신대체요법 동반)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {},
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "E512",
+      "aadrg": "E5120",
+      "mdc": "04",
+      "group_code": "B",
+      "group_name": "일반진료질병군",
+      "title": "침습적 인공호흡기 96시간 미만",
+      "subtitle": "신대체요법 미동반",
+      "condition_text": "시술명 table1 AND NOT(인공호흡 ≥96시간)",
+      "source_page": "본문 275-276쪽 · PDF 301-302페이지",
+      "condition_summary": "시간 기준과 신대체요법 동반 여부를 추가 확인",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_E04_E50_VENT_PROC_1",
+              "operator_before": ""
+            }
+          ],
+          "requirements": [
+            "침습적 인공호흡기 96시간 미만",
+            "신대체요법 미동반"
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "E5120",
+          "group_code": "B",
+          "group_name": "일반진료질병군",
+          "aadrg_name": "침습적 인공호흡기 96시간 미만(신대체요법 미동반)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {},
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "F022",
+      "aadrg": "F0220",
+      "mdc": "05",
+      "group_code": "A",
+      "group_name": "전문진료질병군",
+      "title": "승모판 또는 삼첨판 수술",
+      "subtitle": "심도자술 사용",
+      "condition_text": "(시술명 table2 AND 시술명 table3) OR 시술명 table6",
+      "source_page": "본문 313-314쪽 · PDF 339-340페이지 + 교정표 2026-03-01",
+      "condition_summary": "교정표로 독립 대안 시술명 table6이 추가됨",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1 · 기존 심도자술 조합",
+          "join_to_next_group": "OR",
+          "components": [
+            {
+              "table_id": "V47_F02_PROC_2",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_F02_PROC_3",
+              "operator_before": "AND"
+            }
+          ]
+        },
+        {
+          "group_no": 2,
+          "group_label": "조건식 2 · 교정 추가 시술",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_F02_PROC_6",
+              "operator_before": ""
+            }
+          ],
+          "requirements": [
+            "2026-03-01 교정 적용"
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "F0220",
+          "group_code": "A",
+          "group_name": "전문진료질병군",
+          "aadrg_name": "승모판 또는 삼첨판 수술(심도자술 사용)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {
+        "op": "OR",
+        "children": [
+          {
+            "op": "AND",
+            "children": [
+              {
+                "predicate": "TABLE_MATCH",
+                "table_id": "V47_F02_PROC_2"
+              },
+              {
+                "predicate": "TABLE_MATCH",
+                "table_id": "V47_F02_PROC_3"
+              }
+            ]
+          },
+          {
+            "predicate": "TABLE_MATCH",
+            "table_id": "V47_F02_PROC_6"
+          }
+        ]
+      },
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "F136",
+      "aadrg": "F1360",
+      "mdc": "05",
+      "group_code": "A",
+      "group_name": "전문진료질병군",
+      "title": "급성 심근경색증이 아닌 기타 경피적 관상동맥 수술",
+      "subtitle": "다발혈관, 만성폐쇄성병변의 경우 포함",
+      "condition_text": "[시술명 table3 AND (시술명 table1 OR 시술명 table2)] WITHOUT 주진단명 table1",
+      "source_page": "본문 328-329쪽 · PDF 354-355페이지",
+      "condition_summary": "중첩 OR를 화면용 2개 조건식으로 풀어 표시",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1 · 만성폐쇄성병변 + 단일혈관",
+          "join_to_next_group": "OR",
+          "components": [
+            {
+              "table_id": "V47_F13_PROC_3",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_F13_PROC_1",
+              "operator_before": "AND"
+            }
+          ],
+          "requirements": [
+            "주진단명 table1 미포함"
+          ],
+          "exclude_components": [
+            {
+              "table_id": "V47_F13_PD_EXCL_1",
+              "operator_before": ""
+            }
+          ]
+        },
+        {
+          "group_no": 2,
+          "group_label": "조건식 2 · 만성폐쇄성병변 + 추가혈관",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_F13_PROC_3",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_F13_PROC_2",
+              "operator_before": "AND"
+            }
+          ],
+          "requirements": [
+            "주진단명 table1 미포함"
+          ],
+          "exclude_components": [
+            {
+              "table_id": "V47_F13_PD_EXCL_1",
+              "operator_before": ""
+            }
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "F1360",
+          "group_code": "A",
+          "group_name": "전문진료질병군",
+          "aadrg_name": "급성 심근경색증이 아닌 기타 경피적 관상동맥 수술(다발혈관, 만성폐쇄성병변의 경우 포함)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {
+        "op": "AND",
+        "children": [
+          {
+            "predicate": "TABLE_MATCH",
+            "table_id": "V47_F13_PROC_3"
+          },
+          {
+            "op": "OR",
+            "children": [
+              {
+                "predicate": "TABLE_MATCH",
+                "table_id": "V47_F13_PROC_1"
+              },
+              {
+                "predicate": "TABLE_MATCH",
+                "table_id": "V47_F13_PROC_2"
+              }
+            ]
+          },
+          {
+            "op": "NOT",
+            "child": {
+              "predicate": "TABLE_MATCH",
+              "table_id": "V47_F13_PD_EXCL_1"
+            }
+          }
+        ]
+      },
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "F194",
+      "aadrg": "F1940",
+      "mdc": "05",
+      "group_code": "B",
+      "group_name": "일반진료질병군",
+      "title": "말초동맥 만성 폐쇄성 질환의 경피적 수술",
+      "subtitle": "여러 개",
+      "condition_text": "주진단명 table1 AND [(시술명 table2 중 2개 이상) OR (시술명 table2 AND 부가코드 ADC4J)]",
+      "source_page": "본문 334쪽 · PDF 360페이지",
+      "condition_summary": "주진단을 공통으로 하고 아래 2개 조건식 중 하나로 구성됨",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1 · 시술 2개 이상",
+          "join_to_next_group": "OR",
+          "components": [
+            {
+              "table_id": "V47_F19_CHRONIC_PD_1",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_F19_CHRONIC_PROC_2",
+              "operator_before": "AND",
+              "requirement_label": "2개 이상"
+            }
+          ]
+        },
+        {
+          "group_no": 2,
+          "group_label": "조건식 2 · 양쪽 부가코드",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_F19_CHRONIC_PD_1",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_F19_CHRONIC_PROC_2",
+              "operator_before": "AND"
+            },
+            {
+              "table_id": "V47_F19_CHRONIC_ADD_1",
+              "operator_before": "AND"
+            }
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "F1940",
+          "group_code": "B",
+          "group_name": "일반진료질병군",
+          "aadrg_name": "말초동맥 만성 폐쇄성 질환의 경피적 수술(여러 개)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {},
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    },
+    {
+      "adrg": "F195",
+      "aadrg": "F1950",
+      "mdc": "05",
+      "group_code": "B",
+      "group_name": "일반진료질병군",
+      "title": "말초동맥 만성 폐쇄성 질환의 경피적 수술",
+      "subtitle": "한 개",
+      "condition_text": "주진단명 table1 AND 시술명 table2",
+      "source_page": "본문 334쪽 · PDF 360페이지",
+      "condition_summary": "F194의 여러 개 조건과 비교 검증용",
+      "condition_groups": [
+        {
+          "group_no": 1,
+          "group_label": "조건식 1",
+          "join_to_next_group": null,
+          "components": [
+            {
+              "table_id": "V47_F19_CHRONIC_PD_1",
+              "operator_before": ""
+            },
+            {
+              "table_id": "V47_F19_CHRONIC_PROC_2",
+              "operator_before": "AND"
+            }
+          ]
+        }
+      ],
+      "aadrg_mappings": [
+        {
+          "aadrg": "F1950",
+          "group_code": "B",
+          "group_name": "일반진료질병군",
+          "aadrg_name": "말초동맥 만성 폐쇄성 질환의 경피적 수술(한 개)",
+          "abc_status": "V46_OFFICIAL_SAME_CODE_COMPATIBLE"
+        }
+      ],
+      "condition_expression": {},
+      "abc_basis": "[별표 1] 상급종합병원 지정·평가 규정 동일 AADRG 코드 확인"
+    }
+  ]
+}
