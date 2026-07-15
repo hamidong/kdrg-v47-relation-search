@@ -10,13 +10,27 @@ Git이나 GitHub Actions를 잘 몰라도 순서대로 따라 하면 됩니다.
 
 ---
 
-## 0. 최초 1회만 하는 일
+## 0. 최초 1회만 하는 일 (Actions workflow 파일 직접 추가 필요)
 
-이미 되어 있다면 건너뛰어도 됩니다.
+이미 저장소에 `.github/workflows/build-windows-release.yml` 파일이 있다면
+이 단계는 건너뛰어도 됩니다.
 
-- 이 프로젝트는 GitHub 저장소 `kdrg-v47-relation-search`에 연결되어 있습니다.
-- `.github/workflows/build-windows-release.yml`이 이미 저장소에 포함되어
-  있어야 합니다. (Replit에서 처음 연결할 때 같이 올라갑니다.)
+Replit-GitHub 연동 토큰은 보안상 "workflow" 권한이 없어서, 에이전트가
+`.github/workflows/` 안의 파일은 API로 직접 만들 수 없습니다. 그래서
+workflow 내용은 저장소의 `ci/build-windows-release.workflow.yml`에
+임시로 올려두었습니다. **최초 1회만** 아래 순서로 실제 위치로 옮겨주세요
+(GitHub 웹 화면에서 하는 것이라 1분이면 됩니다):
+
+1. GitHub 저장소 페이지에서 `ci/build-windows-release.workflow.yml` 파일을 엽니다.
+2. 우측 상단 연필(✏) 아이콘 → **Edit this file**을 눌러 내용 전체를 복사합니다.
+3. 저장소 페이지 상단 **Add file** → **Create new file** 클릭
+4. 파일명 입력란에 `.github/workflows/build-windows-release.yml`을 입력합니다
+   (슬래시를 입력하면 GitHub가 자동으로 폴더를 만듭니다).
+5. 복사한 내용을 붙여넣고 **Commit changes**를 클릭해 `main` 브랜치에 바로 커밋합니다.
+6. (선택) 이제 필요 없어진 `ci/build-windows-release.workflow.yml`은 삭제해도 됩니다.
+
+이 작업은 저장소당 최초 1회만 하면 됩니다. 이후 버전업 때는 이 단계를
+반복할 필요가 없습니다.
 
 ---
 
