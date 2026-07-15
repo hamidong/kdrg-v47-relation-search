@@ -12,9 +12,7 @@ permissions:
 jobs:
   build-windows:
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: kdrg-v47
+
     steps:
       - name: 체크아웃
         uses: actions/checkout@v4
@@ -23,54 +21,96 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
 
       - name: 의존성 설치
+        shell: pwsh
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           python -m pip install pyinstaller
 
       - name: fixture validator 실행
+        shell: pwsh
         run: python tests/validate_fixture.py
 
       - name: GUI smoke test 실행 (offscreen)
+        shell: pwsh
         env:
           QT_QPA_PLATFORM: offscreen
         run: python tests/smoke_test_ui.py
 
       - name: 문법 검증 (py_compile)
-        run: python -m py_compile main.py version.py app/__init__.py app/models.py app/data_store.py app/main_window.py app/styles.py
+        shell: pwsh
+        run: >
+          python -m py_compile
+          main.py
+          version.py
+          app/__init__.py
+          app/models.py
+          app/data_store.py
+          app/main_window.py
+          app/styles.py
 
       - name: PyInstaller 빌드
+        shell: pwsh
         run: python -m PyInstaller --noconfirm --clean kdrg.spec
 
       - name: 배포 전 정적 검증 (exe 포함)
+        shell: pwsh
         run: python tests/verify_release_readiness.py
 
       - name: 버전 정보 추출
         id: version
-        shell: bash
+        shell: pwsh
         run: |
-          echo "app_version=$(python version.py APP_VERSION)" >> "$GITHUB_OUTPUT"
-          echo "exe_name=$(python version.py EXE_NAME)" >> "$GITHUB_OUTPUT"
-          echo "git_tag=$(python version.py GIT_TAG)" >> "$GITHUB_OUTPUT"
-          echo "release_title=$(python version.py RELEASE_TITLE)" >> "$GITHUB_OUTPUT"
+          "app_version=$(python version.py APP_VERSION)" >> $env:GITHUB_OUTPUT
+          "exe_name=$(python version.py EXE_NAME)" >> $env:GITHUB_OUTPUT
+          "git_tag=$(python version.py GIT_TAG)" >> $env:GITHUB_OUTPUT
+          "release_title=$(python version.py RELEASE_TITLE)" >> $env:GITHUB_OUTPUT
 
-      - name: exe 경로 확인
-        shell: bash
+      - name: 태그와 버전 일치 확인
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
         run: |
-          EXE_PATH="dist/${{ steps.version.outputs.exe_name }}"
-          if [ ! -f "$EXE_PATH" ]; then
-            echo "exe 파일이 존재하지 않습니다: $EXE_PATH"
+          $pushedTag = "${{ github.ref_name }}"
+          $expectedTag = "${{ steps.version.outputs.git_tag }}"
+
+          if ($pushedTag -ne $expectedTag) {
+            Write-Error "푸시된 태그($pushedTag)와 version.py의 태그($expectedTag)가 일치하지 않습니다."
             exit 1
-          fi
-          ls -la "$EXE_PATH"
+          }
+
+          Write-Host "태그 일치 확인: $pushedTag"
+
+      - name: exe 경로와 파일 크기 확인
+        shell: pwsh
+        run: |
+          $exePath = "dist/${{ steps.version.outputs.exe_name }}"
+
+          if (-not (Test-Path $exePath)) {
+            Write-Error "exe 파일이 존재하지 않습니다: $exePath"
+            exit 1
+          }
+
+          $exe = Get-Item $exePath
+          $minimumSize = 5MB
+
+          if ($exe.Length -lt $minimumSize) {
+            Write-Error "exe 파일 크기가 비정상적으로 작습니다: $($exe.Length) bytes"
+            exit 1
+          }
+
+          Write-Host "exe 확인 완료"
+          Write-Host "경로: $($exe.FullName)"
+          Write-Host "크기: $([math]::Round($exe.Length / 1MB, 2)) MB"
 
       - name: GitHub Release 생성 및 exe 업로드
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.git_tag }}
           name: ${{ steps.version.outputs.release_title }}
-          files: kdrg-v47/dist/${{ steps.version.outputs.exe_name }}
+          files: dist/${{ steps.version.outputs.exe_name }}
           fail_on_unmatched_files: true
           generate_release_notes: true
