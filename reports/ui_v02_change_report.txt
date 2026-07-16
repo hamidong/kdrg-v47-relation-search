@@ -1,0 +1,153 @@
+============================================================
+UI v0.2 변경 내역 보고서
+KDRG V4.7 코드 관계 검색기 — feature/ui-v0.2
+기준 브랜치: main (v0.1.0)
+변경 브랜치: feature/ui-v0.2
+생성일: 2026-07-16
+============================================================
+
+1. 파일별 변경 요약
+─────────────────────────────────────────────────────────────
+
+[수정] version.py
+  변경 전: APP_VERSION = "0.1.0"
+  변경 후: APP_VERSION = "0.2.0-dev"
+  이유: UI v0.2 개발 미리보기 단계 표시. main 병합 전까지 유지.
+
+[수정] main.py
+  - QApplication.setHighDpiScaleFactorRoundingPolicy 추가 (Windows DPI 보장)
+  - setApplicationName / setOrganizationName 추가 (QSettings 도메인 설정)
+  - 폰트 fallback 순서: Malgun Gothic → Noto Sans CJK KR → Apple SD Gothic Neo
+
+[신규] app/dialogs.py  (AboutDialog)
+  - QDialog 기반 프로그램 정보 창
+  - 헤더(네이비): 프로그램명 + 버전
+  - 본문(스크롤): 데이터 정보·파일럿 제한·사용 제한 섹션
+  - 핵심 제한 경고 박스 (오렌지 테두리)
+  - store 인수로 데이터 버전/범위/출처 등 자동 표시
+
+[수정] app/styles.py  (479줄 → 437줄, 내용 완전 개정)
+  신규 정의:
+    #VersionLabel          헤더 우측 프로그램 버전 레이블 (연청색)
+    #DataVersionLabel      데이터 버전 레이블 (연청색)
+    #DataScopeLabel        데이터 범위 레이블 (흐린 청색)
+    #InfoButton            정보 버튼 (navy 배경)
+    #SearchResetButton     검색 초기화 버튼 (흰색 배경)
+    #ResultCardSelected    선택 카드 강조 (왼쪽 5px 파란 강조선 + 파란 테두리)
+    #AdvancedCautionBanner 관계검색 안내 배너 (짙은 navy 박스)
+    #CautionIcon           경고 아이콘 레이블 (황색)
+    #ExcludeRoleBadge      제외조건 역할 배지 (붉은 계열, 제외조건 구분)
+    #RelationMiss          관계검색 연결 실패 표시 (붉은색)
+    #RelationCheck         관계검색 추가 확인 항목 박스 (노란 테두리)
+    #RelationDetailButton  ADRG 전체 상세 버튼
+    QStatusBar             하단 상태표시줄 (연청 배경, 1px 상단 경계선)
+  제거:
+    #VersionBadge          → 분리(VersionLabel/DataVersionLabel/DataScopeLabel)로 대체
+    #Notice / #NoticeLabel → 상태표시줄(QStatusBar)로 통합
+
+[수정] app/main_window.py  (1,394줄 → ~1,580줄)
+  ── 구조 변경 ──
+  MainWindow.__init__():
+    · resize(1500, 900) → resize(1700, 960)
+    · selected_card: Optional[ResultCard] = None  추가
+    · _result_cards: List[ResultCard] = []         추가
+    · _setup_shortcuts() 호출 추가
+    · _update_status_bar() 호출 추가
+    · _restore_settings() 호출 추가 (창 복원은 마지막)
+
+  _build_ui():
+    · splitter를 self.main_splitter로 저장 (QSettings 접근용)
+    · _build_notice() 호출 제거 (QStatusBar로 대체)
+
+  _build_header():
+    · 타이틀: "KDRG V4.7 코드 관계 검색기" (V4.7 추가)
+    · 우측 단일 VersionBadge → VersionLabel/DataVersionLabel/DataScopeLabel 3개
+    · 정보 버튼(InfoButton) 추가 → open_about_dialog() 연결
+    · 검색 초기화 버튼(SearchResetButton) 추가 → _reset_search() 연결
+    · 안내 배너: QLabel → AdvancedCautionBanner(QFrame) + CautionIcon 조합
+
+  _render_results():
+    · selected_card = None 초기화
+    · _result_cards = [] 초기화
+    · 카드 생성 시 _result_cards에 누적
+
+  select_result():
+    · 이전 카드 ObjectName "ResultCard" 복원 (QSS 강조 해제)
+    · 새 카드 ObjectName "ResultCardSelected" 설정 (QSS 강조 적용)
+    · unpolish/polish 호출로 즉시 스타일 재적용
+
+  _build_condition_table_row():
+    · code_type → 역할명 매핑 (_CODE_TYPE_ROLE 딕셔너리)
+      상병코드 → 주진단 / 기타진단코드 → 기타진단
+      수술·처치코드 → 수술·처치 / 검사·처치코드 → 검사·처치 / 부가코드 → 부가코드
+    · exclusion=True 시 역할명 → "제외조건" (ExcludeRoleBadge)
+    · CodeTableFrame 생성 후 populate_table 직접 호출 제거 (지연 채우기)
+    · toggle_expanded: checked=True일 때 ensure_populated() 호출
+
+  ── 신규 메서드 ──
+  _setup_shortcuts():
+    Ctrl+L → search_edit 포커스 + 전체선택
+    Esc    → 검색어 있으면 초기화, 없으면 search_edit 포커스
+
+  _handle_esc():
+    _setup_shortcuts의 Esc 처리 분리
+
+  _reset_search():
+    search_edit 초기화 + category_combo 전체 설정 + run_search()
+
+  _update_status_bar():
+    statusBar().showMessage() 로 데이터 범위·ADRG/TABLE 수·버전·면책 안내
+
+  open_about_dialog():
+    AboutDialog(parent, app_version, store).exec()
+
+  _restore_settings():
+    QSettings("KDRG", "KDRGRelationSearch") 에서 geometry/splitter/panelOpen 복원
+
+  closeEvent():
+    geometry/splitter/panelOpen QSettings에 저장
+
+  ── CodeTableFrame 변경 ──
+  · 3열: ["코드", "한글명", "영문명"]
+  · display_name 파싱: "en / ko" 분리 → 별도 열에 표시
+  · _populated = False (지연 채우기)
+  · ensure_populated() 추가: 처음 펼칠 때만 populate_table() 호출
+  · populate_table() 내 apply_filter 동작도 3열 검색으로 확장
+
+[신규] tests/test_ui_v02_structure.py  (26개 테스트)
+  T01–T02: 창 제목·크기
+  T03–T06: 헤더 버전 레이블
+  T07–T08: InfoButton·SearchResetButton
+  T09–T11: 카드 선택 상태 추적
+  T12: 상태표시줄
+  T13: QSettings
+  T14: main_splitter
+  T15–T19: CodeTableFrame (3열, 지연 채우기)
+  T20: AboutDialog
+  T21–T23: 고급 패널·기본 결과
+  T24–T26: 스타일 정의
+
+[신규] reports/ui_preview_v02_*.png  (6장)
+  offscreen Qt 렌더링, 1300×820 픽셀
+
+2. 미변경 파일
+─────────────────────────────────────────────────────────────
+  app/data_store.py       완전 무변경
+  app/models.py           완전 무변경
+  kdrg.spec               무변경 (아이콘 추가는 main 병합 시 선택)
+  data/*                  동결 유지
+  schemas/*               동결 유지
+  .github/workflows/*     동결 유지
+  tests/smoke_test_ui.py  무변경 (하위 호환성 확인용)
+  tests/validate_*.py     무변경
+
+3. 알려진 제한 및 향후 작업
+─────────────────────────────────────────────────────────────
+  · 아이콘 파일(assets/) 미포함. main 병합 시 선택적으로 추가 가능.
+  · offscreen 프리뷰는 실제 Windows 렌더링과 폰트·크기 차이 있음.
+  · _build_notice() 메서드 제거됨. 호출하는 코드 없음.
+  · version.py "0.2.0-dev" → main 병합 시 "0.2.0"으로 최종화 필요.
+
+============================================================
+END CHANGE REPORT
+============================================================

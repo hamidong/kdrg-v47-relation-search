@@ -4,11 +4,13 @@
 이 값을 바꾸면 exe 파일명, Git 태그, Release 제목이 모두 이 값을 기준으로
 결정됩니다. README, build_windows.bat, GitHub Actions workflow는 모두 이
 파일을 읽어 사용하므로 버전을 올릴 때는 이 파일만 수정하면 됩니다.
+
+v0.2.0-dev: UI v0.2 개발 미리보기. main 병합 전까지 유지.
 """
 
 from __future__ import annotations
 
-APP_VERSION = "0.1.0"
+APP_VERSION = "0.2.0-dev"
 APP_NAME = "KDRG_V47_Relation_Search"
 APP_DISPLAY_NAME = "KDRG V4.7 관계 검색기"
 

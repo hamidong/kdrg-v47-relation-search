@@ -1,18 +1,19 @@
-"""KDRG V4.7 코드 관계 검색기 - 화면 컴포넌트 및 메인 윈도우."""
+"""KDRG V4.7 코드 관계 검색기 - 화면 컴포넌트 및 메인 윈도우 (v0.2)."""
 
 from __future__ import annotations
 
 from typing import Dict, List, Optional, Set, Tuple
 
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QSettings, QTimer
+from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtWidgets import (
     QComboBox,
     QFrame,
     QGridLayout,
     QHBoxLayout,
-    QLayout,
     QHeaderView,
     QLabel,
+    QLayout,
     QLineEdit,
     QMainWindow,
     QMessageBox,
@@ -42,6 +43,16 @@ from app.models import (
     shorten_codes,
 )
 from app.styles import MAIN_STYLE_SHEET
+from version import APP_VERSION
+
+# 코드유형 → 역할 배지 표시명 매핑
+_CODE_TYPE_ROLE: Dict[str, str] = {
+    "상병코드": "주진단",
+    "기타진단코드": "기타진단",
+    "수술·처치코드": "수술·처치",
+    "검사·처치코드": "검사·처치",
+    "부가코드": "부가코드",
+}
 
 # =============================================================================
 # 4. 화면 컴포넌트
@@ -49,7 +60,7 @@ from app.styles import MAIN_STYLE_SHEET
 
 
 class ResultCard(QFrame):
-    clicked_result = None
+    """왼쪽 결과 목록의 카드 한 장."""
 
     def __init__(self, result: SearchResult, on_click) -> None:
         super().__init__()
@@ -132,12 +143,13 @@ class ResultCard(QFrame):
 
 
 class CodeTableFrame(QFrame):
-    """table 버튼 클릭 시 펼쳐지는 상세 코드표."""
+    """TABLE 버튼 클릭 시 펼쳐지는 상세 코드표 (코드·한글명·영문명 3열, 지연 채우기)."""
 
     def __init__(self, table_def: TableDef, highlight_code: str = "") -> None:
         super().__init__()
         self.table_def = table_def
         self.highlight_code = normalize(highlight_code)
+        self._populated = False  # 지연 채우기: 펼칠 때만 행을 추가
         self.setObjectName("ExpandedTableFrame")
         self.setVisible(False)
 
@@ -163,8 +175,8 @@ class CodeTableFrame(QFrame):
         layout.addWidget(self.filter_edit)
 
         self.table = QTableWidget()
-        self.table.setColumnCount(2)
-        self.table.setHorizontalHeaderLabels(["코드", "코드명"])
+        self.table.setColumnCount(3)
+        self.table.setHorizontalHeaderLabels(["코드", "한글명", "영문명"])
         self.table.verticalHeader().setVisible(False)
         self.table.setAlternatingRowColors(True)
         self.table.setSelectionBehavior(QTableWidget.SelectRows)
@@ -172,39 +184,58 @@ class CodeTableFrame(QFrame):
         self.table.setObjectName("CodeTable")
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
         self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
+        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
         layout.addWidget(self.table)
 
-        self.populate_table()
+    def ensure_populated(self) -> None:
+        """처음 펼쳐질 때 한 번만 행을 채웁니다."""
+        if not self._populated:
+            self.populate_table()
+            self._populated = True
 
     def populate_table(self) -> None:
         members = list(self.table_def.members)
         self.table.setRowCount(len(members))
         for row, member in enumerate(members):
-            code_item = QTableWidgetItem(member.code)
-            name_item = QTableWidgetItem(member.display_name)
-            if self.highlight_code and normalize(member.code) == self.highlight_code:
-                code_item.setData(Qt.UserRole, "highlight")
-                name_item.setData(Qt.UserRole, "highlight")
-                code_item.setBackground(Qt.GlobalColor.transparent)
-                font = code_item.font()
-                font.setBold(True)
-                code_item.setFont(font)
-                name_font = name_item.font()
-                name_font.setBold(True)
-                name_item.setFont(name_font)
-            self.table.setItem(row, 0, code_item)
-            self.table.setItem(row, 1, name_item)
+            # display_name = "en / ko" 또는 "ko" 형식을 분리
+            raw = member.display_name or ""
+            if " / " in raw:
+                parts = raw.split(" / ", 1)
+                en_name, ko_name = parts[0].strip(), parts[1].strip()
+            elif hasattr(member, "name_ko") and hasattr(member, "name_en"):
+                ko_name = getattr(member, "name_ko", raw)
+                en_name = getattr(member, "name_en", "")
+            else:
+                ko_name = raw
+                en_name = ""
 
-        height = min(300, 38 + len(members) * 32)
+            code_item = QTableWidgetItem(member.code)
+            ko_item = QTableWidgetItem(ko_name)
+            en_item = QTableWidgetItem(en_name)
+
+            is_hl = self.highlight_code and normalize(member.code) == self.highlight_code
+            for item in (code_item, ko_item, en_item):
+                if is_hl:
+                    item.setData(Qt.UserRole, "highlight")
+                    item.setBackground(Qt.GlobalColor.transparent)
+                    f = item.font()
+                    f.setBold(True)
+                    item.setFont(f)
+            self.table.setItem(row, 0, code_item)
+            self.table.setItem(row, 1, ko_item)
+            self.table.setItem(row, 2, en_item)
+
+        height = min(320, 42 + len(members) * 32)
         self.table.setMinimumHeight(height)
         self.table.setMaximumHeight(height)
 
     def apply_filter(self, text: str) -> None:
         q = normalize(text)
         for row in range(self.table.rowCount()):
-            code = self.table.item(row, 0).text()
-            name = self.table.item(row, 1).text()
-            visible = not q or q in normalize(code) or q in normalize(name)
+            code = self.table.item(row, 0).text() if self.table.item(row, 0) else ""
+            ko = self.table.item(row, 1).text() if self.table.item(row, 1) else ""
+            en = self.table.item(row, 2).text() if self.table.item(row, 2) else ""
+            visible = not q or q in normalize(code) or q in normalize(ko) or q in normalize(en)
             self.table.setRowHidden(row, not visible)
 
 
@@ -246,34 +277,50 @@ class AdvancedConditionRow(QFrame):
         return AdvancedCondition(self.type_combo.currentText(), self.code_edit.text().strip())
 
 
+# =============================================================================
+# 5. 메인 윈도우
+# =============================================================================
+
+
 class MainWindow(QMainWindow):
+    """KDRG V4.7 코드 관계 검색기 메인 창 (v0.2)."""
+
+    SETTINGS_ORG = "KDRG"
+    SETTINGS_APP = "KDRGRelationSearch"
+
     def __init__(self) -> None:
         super().__init__()
         self.store = KDRGDataStore()
         self.current_query = ""
         self.current_results: List[SearchResult] = []
         self.selected_result: Optional[SearchResult] = None
+        self.selected_card: Optional[ResultCard] = None   # 현재 선택된 결과 카드
+        self._result_cards: List[ResultCard] = []          # 렌더링된 카드 목록
         self.advanced_rows: List[AdvancedConditionRow] = []
         self.relation_candidates: Dict[str, RelationCandidate] = {}
         self.relation_operator = "AND"
-        # 검색 결과 상세 → ADRG 상세처럼 단계적으로 이동할 때 돌아갈 화면을 저장합니다.
-        # 검색어·왼쪽 결과 목록은 그대로 두고 오른쪽 상세 화면만 복원합니다.
         self.detail_history: List[Dict[str, object]] = []
         self.current_detail_kind = ""
         self.current_detail_key = ""
-        self.setWindowTitle("KDRG 코드 관계 검색기 - KDRG V4.7 특이케이스 파일럿 v1")
-        self.resize(1500, 900)
+
+        self.setWindowTitle(f"KDRG V4.7 코드 관계 검색기  v{APP_VERSION}")
+        self.resize(1700, 960)
         self.setMinimumSize(1180, 760)
 
         self._build_ui()
         self._apply_style()
-        # 초기 화면: 전체 9개 파일럿 ADRG를 노출하고 E011을 기본 선택한다.
+        self._setup_shortcuts()
+
+        # 초기 화면: 전체 9개 파일럿 ADRG를 노출하고 E011을 기본 선택
         self.category_combo.setCurrentText("전체")
         self.search_edit.setText("")
         self.run_search()
         default_result = next((r for r in self.current_results if normalize(r.key) == "E011"), None)
         if default_result is not None:
             self.select_result(default_result)
+
+        self._update_status_bar()
+        self._restore_settings()  # 창 크기·위치·splitter 복원 (마지막에)
 
     # ------------------------------------------------------------------
     # UI 골격
@@ -287,16 +334,15 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(root)
 
         root_layout.addWidget(self._build_header())
-        root_layout.addWidget(self._build_notice())
 
-        splitter = QSplitter(Qt.Horizontal)
-        splitter.setObjectName("MainSplitter")
-        splitter.addWidget(self._build_left_panel())
-        splitter.addWidget(self._build_right_panel())
-        splitter.setStretchFactor(0, 0)
-        splitter.setStretchFactor(1, 1)
-        splitter.setSizes([360, 1140])
-        root_layout.addWidget(splitter, 1)
+        self.main_splitter = QSplitter(Qt.Horizontal)
+        self.main_splitter.setObjectName("MainSplitter")
+        self.main_splitter.addWidget(self._build_left_panel())
+        self.main_splitter.addWidget(self._build_right_panel())
+        self.main_splitter.setStretchFactor(0, 0)
+        self.main_splitter.setStretchFactor(1, 1)
+        self.main_splitter.setSizes([380, 1320])
+        root_layout.addWidget(self.main_splitter, 1)
 
     def _build_header(self) -> QWidget:
         header = QFrame()
@@ -305,23 +351,49 @@ class MainWindow(QMainWindow):
         layout.setContentsMargins(16, 12, 16, 14)
         layout.setSpacing(10)
 
+        # ── 행 1: 프로그램명(좌) + 버전 정보(우) + 정보 버튼 ──
         title_row = QHBoxLayout()
+        title_row.setSpacing(16)
+
         title_box = QVBoxLayout()
-        title = QLabel("KDRG 코드 관계 검색기")
-        title.setObjectName("HeaderTitle")
-        subtitle = QLabel("코드·ADRG·TABLE·MDC를 검색하고 복수 코드의 조건구조상 관계를 확인합니다.")
-        subtitle.setObjectName("HeaderSubtitle")
-        title_box.addWidget(title)
-        title_box.addWidget(subtitle)
+        title_box.setSpacing(3)
+        title_lbl = QLabel("KDRG V4.7 코드 관계 검색기")
+        title_lbl.setObjectName("HeaderTitle")
+        subtitle_lbl = QLabel("코드·ADRG·TABLE·MDC 및 공식 조건구조 관계 조회")
+        subtitle_lbl.setObjectName("HeaderSubtitle")
+        title_box.addWidget(title_lbl)
+        title_box.addWidget(subtitle_lbl)
         title_row.addLayout(title_box)
         title_row.addStretch(1)
-        badge = QLabel(self.store.ui_badge)
-        badge.setObjectName("VersionBadge")
-        badge.setAlignment(Qt.AlignCenter)
-        title_row.addWidget(badge)
+
+        ver_box = QVBoxLayout()
+        ver_box.setSpacing(2)
+        ver_box.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        prog_ver = QLabel(f"프로그램 v{APP_VERSION}")
+        prog_ver.setObjectName("VersionLabel")
+        prog_ver.setAlignment(Qt.AlignRight)
+        data_ver = QLabel(f"데이터 {self.store.version} Pilot · {self.store.correction_basis} 교정 반영")
+        data_ver.setObjectName("DataVersionLabel")
+        data_ver.setAlignment(Qt.AlignRight)
+        scope_lbl = QLabel(self.store.data_scope)
+        scope_lbl.setObjectName("DataScopeLabel")
+        scope_lbl.setAlignment(Qt.AlignRight)
+        ver_box.addWidget(prog_ver)
+        ver_box.addWidget(data_ver)
+        ver_box.addWidget(scope_lbl)
+        title_row.addLayout(ver_box)
+
+        info_btn = QPushButton("ℹ 정보")
+        info_btn.setObjectName("InfoButton")
+        info_btn.setToolTip("프로그램 정보 및 사용 제한 안내")
+        info_btn.clicked.connect(self.open_about_dialog)
+        title_row.addWidget(info_btn)
         layout.addLayout(title_row)
 
+        # ── 행 2: 검색 ──
         search_row = QHBoxLayout()
+        search_row.setSpacing(8)
+
         self.category_combo = QComboBox()
         self.category_combo.addItems(["전체", "상병코드", "기타진단코드", "수술·처치코드", "검사·처치코드", "부가코드", "ADRG", "MDC", "TABLE"])
         self.category_combo.setObjectName("SearchCombo")
@@ -329,18 +401,27 @@ class MainWindow(QMainWindow):
         search_row.addWidget(self.category_combo)
 
         self.search_edit = QLineEdit()
-        self.search_edit.setPlaceholderText("예: MDC 04, 호흡기계, I214, M6565, F051, F0511, 심근경색")
+        self.search_edit.setPlaceholderText("예: MDC 04, 호흡기계, E011, E0110, O1311, M6586, ADC2A, table1")
         self.search_edit.setClearButtonEnabled(True)
         self.search_edit.returnPressed.connect(self.run_search)
         self.search_edit.textChanged.connect(self._search_text_changed)
         self.search_edit.setObjectName("SearchEdit")
         search_row.addWidget(self.search_edit, 1)
-        search_button = QPushButton("검색")
-        search_button.setObjectName("SearchButton")
-        search_button.clicked.connect(self.run_search)
-        search_row.addWidget(search_button)
+
+        search_btn = QPushButton("검색")
+        search_btn.setObjectName("SearchButton")
+        search_btn.clicked.connect(self.run_search)
+        search_row.addWidget(search_btn)
+
+        reset_btn = QPushButton("초기화")
+        reset_btn.setObjectName("SearchResetButton")
+        reset_btn.setToolTip("검색어를 지우고 전체 목록을 표시합니다  (Esc)")
+        reset_btn.clicked.connect(self._reset_search)
+        search_row.addWidget(reset_btn)
+
         layout.addLayout(search_row)
 
+        # ── 행 3: 복수 코드 관계검색 토글 ──
         self.advanced_toggle = QToolButton()
         self.advanced_toggle.setText("복수 코드 관계검색 펼치기")
         self.advanced_toggle.setCheckable(True)
@@ -350,23 +431,37 @@ class MainWindow(QMainWindow):
         self.advanced_toggle.toggled.connect(self._toggle_advanced_panel)
         layout.addWidget(self.advanced_toggle, 0, Qt.AlignLeft)
 
+        # ── 고급 패널 ──
         self.advanced_panel = QFrame()
         self.advanced_panel.setObjectName("AdvancedPanel")
         self.advanced_panel.setVisible(False)
-        advanced_layout = QVBoxLayout(self.advanced_panel)
-        advanced_layout.setContentsMargins(12, 10, 12, 10)
-        advanced_layout.setSpacing(8)
+        adv_layout = QVBoxLayout(self.advanced_panel)
+        adv_layout.setContentsMargins(12, 10, 12, 10)
+        adv_layout.setSpacing(8)
 
-        caution = QLabel("입력코드가 같은 ADRG·같은 조건식에 연결되는지 확인하는 관계검색입니다. 최종 조건 충족이나 DRG 판정을 의미하지 않습니다.")
-        caution.setObjectName("AdvancedCaution")
-        caution.setWordWrap(True)
-        advanced_layout.addWidget(caution)
+        # 안내 배너
+        banner = QFrame()
+        banner.setObjectName("AdvancedCautionBanner")
+        banner_layout = QHBoxLayout(banner)
+        banner_layout.setContentsMargins(12, 9, 12, 9)
+        banner_layout.setSpacing(10)
+        icon_lbl = QLabel("⚠")
+        icon_lbl.setObjectName("CautionIcon")
+        caution_lbl = QLabel(
+            "입력코드가 같은 ADRG·같은 조건식에 연결되는지 확인하는 관계검색입니다. "
+            "최종 조건 충족이나 DRG 판정을 의미하지 않으며 시간·연령 조건은 별도 확인이 필요합니다."
+        )
+        caution_lbl.setObjectName("AdvancedCaution")
+        caution_lbl.setWordWrap(True)
+        banner_layout.addWidget(icon_lbl)
+        banner_layout.addWidget(caution_lbl, 1)
+        adv_layout.addWidget(banner)
 
         self.advanced_rows_container = QWidget()
         self.advanced_rows_layout = QVBoxLayout(self.advanced_rows_container)
         self.advanced_rows_layout.setContentsMargins(0, 0, 0, 0)
         self.advanced_rows_layout.setSpacing(6)
-        advanced_layout.addWidget(self.advanced_rows_container)
+        adv_layout.addWidget(self.advanced_rows_container)
 
         controls = QHBoxLayout()
         self.relation_operator_combo = QComboBox()
@@ -374,20 +469,23 @@ class MainWindow(QMainWindow):
         self.relation_operator_combo.setObjectName("RelationOperatorCombo")
         controls.addWidget(QLabel("조건 관계"))
         controls.addWidget(self.relation_operator_combo)
-        add_button = QPushButton("+ 조건 추가")
-        add_button.setObjectName("AdvancedAddButton")
-        add_button.clicked.connect(self.add_advanced_condition_row)
-        controls.addWidget(add_button)
+
+        add_btn = QPushButton("+ 조건 추가")
+        add_btn.setObjectName("AdvancedAddButton")
+        add_btn.clicked.connect(self.add_advanced_condition_row)
+        controls.addWidget(add_btn)
         controls.addStretch(1)
-        reset_button = QPushButton("초기화")
-        reset_button.setObjectName("AdvancedResetButton")
-        reset_button.clicked.connect(self.reset_advanced_conditions)
-        controls.addWidget(reset_button)
-        relation_button = QPushButton("공통 관련 ADRG 검색")
-        relation_button.setObjectName("RelationSearchButton")
-        relation_button.clicked.connect(self.run_relation_search)
-        controls.addWidget(relation_button)
-        advanced_layout.addLayout(controls)
+
+        reset_adv_btn = QPushButton("초기화")
+        reset_adv_btn.setObjectName("AdvancedResetButton")
+        reset_adv_btn.clicked.connect(self.reset_advanced_conditions)
+        controls.addWidget(reset_adv_btn)
+
+        relation_btn = QPushButton("공통 관련 ADRG 검색")
+        relation_btn.setObjectName("RelationSearchButton")
+        relation_btn.clicked.connect(self.run_relation_search)
+        controls.addWidget(relation_btn)
+        adv_layout.addLayout(controls)
         layout.addWidget(self.advanced_panel)
 
         self.add_advanced_condition_row()
@@ -432,19 +530,6 @@ class MainWindow(QMainWindow):
             row.code_edit.clear()
         self.relation_operator_combo.setCurrentText("AND")
         self._refresh_advanced_row_state()
-
-    def _build_notice(self) -> QWidget:
-        notice = QFrame()
-        notice.setObjectName("Notice")
-        layout = QHBoxLayout(notice)
-        layout.setContentsMargins(16, 8, 16, 8)
-        label = QLabel(
-            self.store.notice + " 복수 코드 관계검색 결과는 최종 분류 판정이 아니라 동일 ADRG·조건식 안의 연결구조를 설명합니다."
-        )
-        label.setObjectName("NoticeLabel")
-        label.setWordWrap(True)
-        layout.addWidget(label)
-        return notice
 
     def _build_left_panel(self) -> QWidget:
         panel = QFrame()
@@ -515,15 +600,73 @@ class MainWindow(QMainWindow):
         return panel
 
     # ------------------------------------------------------------------
+    # 단축키·상태바·설정
+    # ------------------------------------------------------------------
+
+    def _setup_shortcuts(self) -> None:
+        """Ctrl+L(검색창 포커스), Esc(검색 초기화/포커스 이동)."""
+        sc_focus = QShortcut(QKeySequence("Ctrl+L"), self)
+        sc_focus.activated.connect(lambda: (self.search_edit.setFocus(), self.search_edit.selectAll()))
+        sc_esc = QShortcut(QKeySequence("Escape"), self)
+        sc_esc.activated.connect(self._handle_esc)
+
+    def _handle_esc(self) -> None:
+        if self.search_edit.hasFocus() and self.search_edit.text():
+            self._reset_search()
+        else:
+            self.search_edit.setFocus()
+
+    def _reset_search(self) -> None:
+        """검색어를 초기화하고 전체 목록을 표시합니다."""
+        self.search_edit.clear()
+        self.category_combo.setCurrentText("전체")
+        self.run_search()
+
+    def _update_status_bar(self) -> None:
+        n_adrg = len(self.store.rules)
+        n_table = len(self.store.tables)
+        scope = self.store.data_scope
+        msg = (
+            f"데이터 로드 완료  │  {scope}  │  "
+            f"ADRG {n_adrg}개 · TABLE {n_table}개  │  "
+            f"v{APP_VERSION}  │  "
+            "이 프로그램은 코드 관계 조회용이며 최종 DRG 판정기가 아닙니다"
+        )
+        self.statusBar().showMessage(msg)
+
+    def open_about_dialog(self) -> None:
+        from app.dialogs import AboutDialog
+
+        dlg = AboutDialog(parent=self, app_version=APP_VERSION, store=self.store)
+        dlg.exec()
+
+    def _restore_settings(self) -> None:
+        settings = QSettings(self.SETTINGS_ORG, self.SETTINGS_APP)
+        geom = settings.value("geometry")
+        if geom is not None:
+            self.restoreGeometry(geom)
+        splitter_state = settings.value("splitter")
+        if splitter_state is not None:
+            self.main_splitter.restoreState(splitter_state)
+        panel_open = settings.value("advancedPanelOpen", False, type=bool)
+        if panel_open:
+            self.advanced_toggle.setChecked(True)
+
+    def closeEvent(self, event) -> None:  # noqa: N802
+        settings = QSettings(self.SETTINGS_ORG, self.SETTINGS_APP)
+        settings.setValue("geometry", self.saveGeometry())
+        settings.setValue("splitter", self.main_splitter.saveState())
+        settings.setValue("advancedPanelOpen", self.advanced_toggle.isChecked())
+        super().closeEvent(event)
+
+    # ------------------------------------------------------------------
     # 검색 및 렌더링
     # ------------------------------------------------------------------
 
     def _search_text_changed(self) -> None:
-        # 입력할 때마다 즉시 갱신하면 부담이 커질 수 있어, 엔터/검색 버튼 중심으로 둔다.
-        pass
+        pass  # 엔터/버튼 중심 검색 유지
 
     def run_search(self) -> None:
-        # 새 검색은 새로운 탐색 시작점이므로 이전 상세화면 이력을 초기화합니다.
         self._clear_detail_history()
         self.current_query = self.search_edit.text().strip()
         category = self.category_combo.currentText()
@@ -579,6 +722,8 @@ class MainWindow(QMainWindow):
 
     def _render_results(self) -> None:
         clear_layout(self.result_layout)
+        self.selected_card = None
+        self._result_cards = []
         self.result_count.setText(f"{len(self.current_results)}건")
 
         if not self.current_results:
@@ -591,11 +736,27 @@ class MainWindow(QMainWindow):
 
         for result in self.current_results:
             card = ResultCard(result, self.select_result)
+            self._result_cards.append(card)
             self.result_layout.addWidget(card)
         self.result_layout.addStretch(1)
 
     def select_result(self, result: SearchResult) -> None:
-        # 왼쪽의 직접 검색 결과를 새로 선택한 경우에는 그 항목을 탐색 시작점으로 삼습니다.
+        # 이전 선택 카드의 강조 해제
+        if self.selected_card is not None:
+            self.selected_card.setObjectName("ResultCard")
+            self.selected_card.style().unpolish(self.selected_card)
+            self.selected_card.style().polish(self.selected_card)
+            self.selected_card = None
+
+        # 새 선택 카드 강조
+        for card in self._result_cards:
+            if card.result is result:
+                card.setObjectName("ResultCardSelected")
+                card.style().unpolish(card)
+                card.style().polish(card)
+                self.selected_card = card
+                break
+
         self._clear_detail_history()
         self.selected_result = result
         if result.kind in {"diagnosis_code", "secondary_diagnosis_code", "procedure_code", "test_code", "supplement_code"}:
@@ -667,7 +828,6 @@ class MainWindow(QMainWindow):
             self.back_button.setText("← 이전 화면")
 
     def open_rule_detail(self, adrg: str) -> None:
-        # 관련 ADRG 요약에서 상세로 들어갈 때만 현재 화면을 이력에 저장합니다.
         if self.current_detail_kind == "rule" and normalize(self.current_detail_key) == normalize(adrg):
             return
         self._push_current_detail()
@@ -700,7 +860,6 @@ class MainWindow(QMainWindow):
             self._render_empty_detail("이전 상세 화면을 복원할 수 없습니다.")
 
         self._update_back_button()
-        # 레이아웃이 다시 계산된 뒤 기존 세로 위치로 복원합니다.
         QTimer.singleShot(0, lambda value=scroll_value: self.detail_scroll.verticalScrollBar().setValue(value))
 
     def _reset_detail_layout(self) -> None:
@@ -1160,7 +1319,6 @@ class MainWindow(QMainWindow):
         layout.setContentsMargins(18, 16, 18, 16)
         layout.setSpacing(12)
 
-        # 카드 헤더
         header = QHBoxLayout()
         adrg = QLabel(rule.adrg)
         adrg.setObjectName("RuleADRG")
@@ -1197,7 +1355,6 @@ class MainWindow(QMainWindow):
         condition_label.setObjectName("SmallMutedStrong")
         layout.addWidget(condition_label)
 
-        # 조건 table 요약 영역
         condition_box = QFrame()
         condition_box.setObjectName("ConditionBox")
         condition_layout = QVBoxLayout(condition_box)
@@ -1263,14 +1420,20 @@ class MainWindow(QMainWindow):
 
         layout.addWidget(condition_box)
 
-        note = QLabel("table명 버튼을 누르면 코드명 포함 상세 코드표가 펼쳐집니다. 코드요약은 원문 순서를 유지합니다.")
+        note = QLabel("table명 버튼을 누르면 코드·한글명·영문명 상세 코드표가 펼쳐집니다. 코드요약은 원문 순서를 유지합니다.")
         note.setObjectName("SmallMuted")
         note.setWordWrap(True)
         layout.addWidget(note)
 
         return card
 
-    def _build_condition_table_row(self, table_def: TableDef, highlight_code: str, requirement_label: str = "", exclusion: bool = False) -> QFrame:
+    def _build_condition_table_row(
+        self,
+        table_def: TableDef,
+        highlight_code: str,
+        requirement_label: str = "",
+        exclusion: bool = False,
+    ) -> QFrame:
         row = QFrame()
         contains_search = bool(normalize(highlight_code)) and table_def.contains_code(highlight_code)
         if exclusion:
@@ -1297,16 +1460,20 @@ class MainWindow(QMainWindow):
             button.setObjectName("TablePillHit" if contains_search else "TablePill")
         top.addWidget(button)
 
-        code_type = QLabel(table_def.code_type)
-        code_type.setObjectName("MiniTypeBadge")
-        code_type.setAlignment(Qt.AlignCenter)
-        top.addWidget(code_type)
+        # 역할 배지: 코드유형 → 역할명 변환
+        role_text = _CODE_TYPE_ROLE.get(table_def.code_type, table_def.code_type)
+        if exclusion:
+            role_text = "제외조건"
+        code_type_lbl = QLabel(role_text)
+        code_type_lbl.setObjectName("ExcludeRoleBadge" if exclusion else "MiniTypeBadge")
+        code_type_lbl.setAlignment(Qt.AlignCenter)
+        top.addWidget(code_type_lbl)
 
         if requirement_label:
-            requirement = QLabel(requirement_label)
-            requirement.setObjectName("RequirementBadge")
-            requirement.setAlignment(Qt.AlignCenter)
-            top.addWidget(requirement)
+            req_lbl = QLabel(requirement_label)
+            req_lbl.setObjectName("RequirementBadge")
+            req_lbl.setAlignment(Qt.AlignCenter)
+            top.addWidget(req_lbl)
 
         top.addStretch(1)
         layout.addLayout(top)
@@ -1322,6 +1489,8 @@ class MainWindow(QMainWindow):
         layout.addWidget(expanded)
 
         def toggle_expanded(checked: bool) -> None:
+            if checked:
+                expanded.ensure_populated()  # 지연 채우기: 처음 펼칠 때만 행 추가
             expanded.setVisible(checked)
             button.setArrowType(Qt.DownArrow if checked else Qt.RightArrow)
 
@@ -1373,6 +1542,7 @@ class MainWindow(QMainWindow):
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(12)
         frame = CodeTableFrame(table_def, highlight_code=self.current_query)
+        frame.ensure_populated()
         frame.setVisible(True)
         layout.addWidget(frame)
         layout.addStretch(1)

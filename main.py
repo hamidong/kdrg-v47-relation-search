@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import sys
 
+from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
 from PySide6.QtWidgets import QApplication
 
@@ -21,12 +22,26 @@ from app.main_window import MainWindow
 
 
 def main() -> int:
+    # 고해상도 DPI 대응 (Qt6 기본 활성, 명시적 선언으로 Windows 스케일링 보장)
+    QApplication.setHighDpiScaleFactorRoundingPolicy(
+        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough
+    )
+
     app = QApplication(sys.argv)
     app.setApplicationName("KDRG 코드 관계 검색기")
+    app.setOrganizationName("KDRG")
 
-    font = QFont("Malgun Gothic")
-    font.setPointSize(10)
-    app.setFont(font)
+    # Windows: 맑은 고딕 우선 / Linux offscreen: Noto Sans CJK fallback
+    for font_name in ("Malgun Gothic", "Noto Sans CJK KR", "Apple SD Gothic Neo"):
+        font = QFont(font_name)
+        font.setPointSize(10)
+        if font.exactMatch() or font_name == "Apple SD Gothic Neo":
+            app.setFont(font)
+            break
+    else:
+        font = QFont("Malgun Gothic")
+        font.setPointSize(10)
+        app.setFont(font)
 
     window = MainWindow()
     window.show()
