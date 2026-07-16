@@ -1,0 +1,44 @@
+=== KDRG V4.7 Schema v2 원천자료 무결성 + 마이그레이션 보고서 ===
+검증 파일: kdrg_v47_pilot_schema_v2.json
+레지스트리: special_case_registry_v47_v2.json
+
+PASS: 27건
+WARN: 4건
+FAIL: 0건
+
+--- WARN 목록 ---
+[WARN] 선언되었으나 사용되지 않은 source_id: 'V47_APPENDIX_PDF'
+[WARN] 선언되었으나 사용되지 않은 source_id: 'V47_CORR_20260501_HWPX'
+[WARN] 선언되었으나 사용되지 않은 source_id: 'V47_GROUP_NAME_XLSX'
+[WARN] 선언되었으나 사용되지 않은 source_id: 'V47_PROC_MASTER_XLSX'
+
+--- PASS 목록 ---
+[PASS] sources 배열 필수 필드 모두 존재 (7개)
+[PASS] 선언된 source_id 7개: ['V47_ABC_PDF', 'V47_APPENDIX_PDF', 'V47_CORR_20260301_HWPX', 'V47_CORR_20260501_HWPX', 'V47_GROUP_NAME_XLSX', 'V47_MAIN_PDF', 'V47_PROC_MASTER_XLSX']
+[PASS] 모든 source_id 선언 확인 (사용=3개)
+[PASS] 모든 evidence_type 값 유효
+[PASS] CORRECTION evidence_type source_type 검증 통과
+[PASS] 모든 abc_classification.source_id = V47_ABC_PDF
+[PASS] [E011] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [E501] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [E502] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [E511] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [E512] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [F022] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [F136] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [F194] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [F195] rule.source_refs V47_MAIN_PDF 확인
+[PASS] [registry/E501] v2 rules 존재 확인
+[PASS] [registry/E502] v2 rules 존재 확인
+[PASS] [registry/E511] v2 rules 존재 확인
+[PASS] [registry/E512] v2 rules 존재 확인
+[PASS] [registry/F022] v2 rules 존재 확인
+[PASS] [registry/F136] v2 rules 존재 확인
+[PASS] [registry/F194] v2 rules 존재 확인
+[PASS] [registry/F195] v2 rules 존재 확인
+[PASS] [registry/shared_tables/V47_E04_E50_VENT_PROC_1] v2 tables 존재 확인
+[PASS] [registry/shared_tables/V47_E04_E50_RRT_PROC_2] v2 tables 존재 확인
+[PASS] [registry/shared_tables/V47_F19_CHRONIC_PD_1] v2 tables 존재 확인
+[PASS] [registry/shared_tables/V47_F19_CHRONIC_PROC_2] v2 tables 존재 확인
+
+최종 결과: PASS

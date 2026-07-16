@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "schema_version": "2",
+    "registry_version": "2026-07-16_V1",
+    "kdrg_version": "KDRG V4.7",
+    "description": "코드 입력만으로 자동 확정할 수 없는 특이케이스 ADRG 목록. machine_evaluable=false 항목 및 상호배타성 주의 ADRG를 기록한다.",
+    "generated_at": "2026-07-16T00:00:00Z"
+  },
+  "special_cases": [
+    {
+      "adrg": "E501",
+      "reason": "TIME_THRESHOLD_ONLY",
+      "summary": "침습적 인공호흡 96시간 이상 AND 신대체요법 동반. 시간 조건(≥96h)은 코드만으로 확정 불가.",
+      "ambiguous_with": ["E511"],
+      "distinguishing_factor": "invasive_ventilation_duration_hours >= 96",
+      "machine_evaluable_from_codes_alone": false,
+      "notes": "E501/E511은 TABLE 코드 구성이 완전히 동일하다. 임상 시간 데이터 없이 코드로만 분류 불가."
+    },
+    {
+      "adrg": "E502",
+      "reason": "TIME_THRESHOLD_ONLY",
+      "summary": "침습적 인공호흡 96시간 이상 AND 신대체요법 미동반. 시간 조건은 코드만으로 확정 불가.",
+      "ambiguous_with": ["E512"],
+      "distinguishing_factor": "invasive_ventilation_duration_hours >= 96",
+      "machine_evaluable_from_codes_alone": false,
+      "notes": "E502/E512는 TABLE 코드 구성이 완전히 동일하다."
+    },
+    {
+      "adrg": "E511",
+      "reason": "TIME_THRESHOLD_ONLY",
+      "summary": "침습적 인공호흡 96시간 미만 AND 신대체요법 동반. 시간 조건은 코드만으로 확정 불가.",
+      "ambiguous_with": ["E501"],
+      "distinguishing_factor": "invasive_ventilation_duration_hours < 96",
+      "machine_evaluable_from_codes_alone": false,
+      "notes": null
+    },
+    {
+      "adrg": "E512",
+      "reason": "TIME_THRESHOLD_ONLY",
+      "summary": "침습적 인공호흡 96시간 미만 AND 신대체요법 미동반. 시간 조건은 코드만으로 확정 불가.",
+      "ambiguous_with": ["E502"],
+      "distinguishing_factor": "invasive_ventilation_duration_hours < 96",
+      "machine_evaluable_from_codes_alone": false,
+      "notes": null
+    },
+    {
+      "adrg": "F022",
+      "reason": "CORRECTION_APPLIED",
+      "summary": "2026-03-01 교정으로 M6586(경피적 승모판막 재치환술[심방중격 접근]) table6 독립 경로 추가.",
+      "ambiguous_with": [],
+      "distinguishing_factor": null,
+      "machine_evaluable_from_codes_alone": true,
+      "notes": "교정 전에는 M6586이 table2+table3 조합 없이 단독으로 F022를 충족할 수 없었다. 교정 후 OR 2번 가지로 확정."
+    },
+    {
+      "adrg": "F136",
+      "reason": "EXCLUSION_PRINCIPAL_DIAGNOSIS",
+      "summary": "주진단이 급성 심근경색증(I210~I229)이면 F136 관계 성립 안 됨. 제외주진단 확인 필요.",
+      "ambiguous_with": [],
+      "distinguishing_factor": "principal_diagnosis NOT IN 급성심근경색증_table1",
+      "machine_evaluable_from_codes_alone": true,
+      "notes": "코드 자체는 평가 가능하나, 주진단 코드를 별도로 확인해야 한다."
+    },
+    {
+      "adrg": "F194",
+      "reason": "COUNT_CONSTRAINT",
+      "summary": "시술명 table2 내 서로 다른 코드 2개 이상 OR (table2 1개+부가코드 ADC4J). 동일 코드 중복 입력으로 조건 충족 처리 금지.",
+      "ambiguous_with": ["F195"],
+      "distinguishing_factor": "distinct_table2_code_count >= 2 OR (table2_code AND ADC4J_present)",
+      "machine_evaluable_from_codes_alone": true,
+      "notes": "F194와 F195는 TABLE을 공유한다. 코드 수 및 ADC4J 유무로 구분."
+    },
+    {
+      "adrg": "F195",
+      "reason": "SHARED_TABLE_WITH_F194",
+      "summary": "말초동맥 만성 폐쇄성 질환의 경피적 수술 — 한 개. F194와 TABLE 공유.",
+      "ambiguous_with": ["F194"],
+      "distinguishing_factor": "distinct_table2_code_count == 1 AND NOT ADC4J_present",
+      "machine_evaluable_from_codes_alone": true,
+      "notes": "F194 조건을 충족하지 않는 케이스가 F195에 해당한다."
+    }
+  ],
+  "shared_tables": [
+    {
+      "table_id": "V47_E04_E50_VENT_PROC_1",
+      "shared_by_adrgs": ["E501", "E502", "E511", "E512"],
+      "note": "침습적 인공호흡 4개 ADRG(E501/E502/E511/E512) 공유. 시간+신대체요법 유무로만 구분."
+    },
+    {
+      "table_id": "V47_E04_E50_RRT_PROC_2",
+      "shared_by_adrgs": ["E501", "E502", "E511", "E512"],
+      "note": "신대체요법 4개 ADRG 공유. RRT 유무로 E501/E511 vs E502/E512 구분."
+    },
+    {
+      "table_id": "V47_F19_CHRONIC_PD_1",
+      "shared_by_adrgs": ["F194", "F195"],
+      "note": "F194/F195 주진단 공유."
+    },
+    {
+      "table_id": "V47_F19_CHRONIC_PROC_2",
+      "shared_by_adrgs": ["F194", "F195"],
+      "note": "F194/F195 시술 공유. 코드 수 및 ADC4J로 구분."
+    }
+  ]
+}
