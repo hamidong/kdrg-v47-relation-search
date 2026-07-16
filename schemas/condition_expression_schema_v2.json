@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kdrg_condition_expression_schema_v2",
+  "title": "KDRG V4.7 Condition Expression Node (Schema v2)",
+  "description": "ADRG 분류 조건식의 재귀 트리 노드. node_type에 따라 필수 필드가 달라진다.",
+  "$defs": {
+    "source_ref": {
+      "type": "object",
+      "required": ["source_id", "evidence_type"],
+      "properties": {
+        "source_id":    { "type": "string" },
+        "printed_page": { "type": ["string", "null"] },
+        "pdf_page":     { "type": ["integer", "null"] },
+        "section":      { "type": ["string", "null"] },
+        "table_label":  { "type": ["string", "null"] },
+        "excerpt":      { "type": ["string", "null"] },
+        "evidence_type": {
+          "type": "string",
+          "enum": ["RULE_TEXT","TABLE_MEMBERSHIP","CODE_NAME","CORRECTION","ABC_CLASSIFICATION","CROSS_VALIDATION"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "node": {
+      "type": "object",
+      "required": ["node_type", "node_id", "label"],
+      "properties": {
+        "node_type": {
+          "type": "string",
+          "enum": [
+            "AND","OR","NOT",
+            "TABLE_MATCH","CODE_PRESENT","CODE_ABSENT",
+            "TABLE_CODE_COUNT_AT_LEAST","NUMERIC_THRESHOLD",
+            "AGE_RANGE","WEIGHT_RANGE","LENGTH_OF_STAY",
+            "PRINCIPAL_DIAGNOSIS_EXCLUSION","OTHER_TEXT_CONDITION"
+          ]
+        },
+        "node_id":    { "type": "string" },
+        "label":      { "type": "string" },
+        "source_refs":{ "type": "array", "items": { "$ref": "#/$defs/source_ref" } },
+        "notes":      { "type": ["string", "null"] },
+
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node" },
+          "description": "AND/OR/NOT 노드에서 사용"
+        },
+
+        "table_id": { "type": "string", "description": "TABLE_MATCH / TABLE_CODE_COUNT_AT_LEAST" },
+        "role": {
+          "type": "string",
+          "enum": ["PRINCIPAL_DIAGNOSIS","SECONDARY_DIAGNOSIS","PROCEDURE","TEST_OR_PROCEDURE","ADD_ON_CODE","EXCLUSION_SET","DERIVED_SET","OTHER"]
+        },
+        "match_semantics": {
+          "type": "string",
+          "enum": ["ANY_ONE_CODE","ALL_INPUT_CODES_RELATED_ONLY","TWO_OR_MORE_DISTINCT_CODES","EXACT_CODE","PRESENCE_ONLY"]
+        },
+
+        "minimum_distinct_code_count": { "type": "integer", "minimum": 2 },
+        "count_scope": { "type": "string" },
+        "duplicate_input_allowed": { "type": "boolean" },
+
+        "code": { "type": "string", "description": "CODE_PRESENT / CODE_ABSENT" },
+
+        "metric":   { "type": "string", "description": "NUMERIC_THRESHOLD" },
+        "operator": { "type": "string", "enum": [">=",">","<=","<","==","!="] },
+        "value":    { "type": "number" },
+        "unit":     { "type": "string" },
+
+        "min_age":       { "type": ["number","null"] },
+        "min_inclusive": { "type": "boolean" },
+        "max_age":       { "type": ["number","null"] },
+        "max_inclusive": { "type": "boolean" },
+
+        "raw_text":           { "type": "string" },
+        "normalized_summary": { "type": "string" },
+        "machine_evaluable":  { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$ref": "#/$defs/node"
+}

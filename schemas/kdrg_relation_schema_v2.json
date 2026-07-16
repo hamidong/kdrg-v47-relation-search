@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kdrg_relation_schema_v2",
+  "title": "KDRG V4.7 관계 데이터 스키마 v2",
+  "$defs": {
+    "source_ref": {
+      "type": "object",
+      "required": ["source_id", "evidence_type"],
+      "properties": {
+        "source_id":    { "type": "string" },
+        "printed_page": { "type": ["string","null"] },
+        "pdf_page":     { "type": ["integer","null"] },
+        "section":      { "type": ["string","null"] },
+        "table_label":  { "type": ["string","null"] },
+        "excerpt":      { "type": ["string","null"] },
+        "evidence_type": {
+          "type": "string",
+          "enum": ["RULE_TEXT","TABLE_MEMBERSHIP","CODE_NAME","CORRECTION","ABC_CLASSIFICATION","CROSS_VALIDATION"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "abc_classification": {
+      "type": "object",
+      "required": ["group_code","group_name","status","source_id","exact_code_match"],
+      "properties": {
+        "group_code":       { "type": "string", "enum": ["A","B","C"] },
+        "group_name":       { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "OFFICIAL_PDF_EXACT_CODE",
+            "NOT_LISTED_IN_OFFICIAL_PDF",
+            "V47_CLASSIFICATION_UNRESOLVED",
+            "MERGED_FROM_MULTIPLE_PREDECESSORS",
+            "PROVISIONAL_INTERNAL_ONLY"
+          ]
+        },
+        "source_id":       { "type": "string" },
+        "source_page":     { "type": ["string","null"] },
+        "exact_code_match":{ "type": "boolean" },
+        "notes":           { "type": ["string","null"] }
+      },
+      "additionalProperties": false
+    },
+    "member": {
+      "type": "object",
+      "required": ["code","name_ko_raw","name_ko_effective","name_en_raw","name_en_effective","original_order","status"],
+      "properties": {
+        "code":                { "type": "string" },
+        "name_ko_raw":         { "type": "string" },
+        "name_ko_effective":   { "type": "string" },
+        "name_en_raw":         { "type": "string" },
+        "name_en_effective":   { "type": "string" },
+        "original_order":      { "type": "integer", "minimum": 1 },
+        "source_refs":         { "type": "array", "items": { "$ref": "#/$defs/source_ref" } },
+        "correction_refs":     { "type": "array", "items": { "$ref": "#/$defs/source_ref" } },
+        "status":              { "type": "string", "enum": ["ACTIVE","CORRECTION_ADDED","DEPRECATED"] }
+      },
+      "additionalProperties": false
+    },
+    "table": {
+      "type": "object",
+      "required": ["table_id","owner_adrg","printed_label","display_label","table_role","code_type","source_refs","member_count","members","status"],
+      "properties": {
+        "table_id":     { "type": "string" },
+        "owner_adrg":   { "type": "string" },
+        "printed_label":{ "type": "string" },
+        "display_label":{ "type": "string" },
+        "table_role": {
+          "type": "string",
+          "enum": ["PRINCIPAL_DIAGNOSIS","SECONDARY_DIAGNOSIS","PROCEDURE","TEST_OR_PROCEDURE","ADD_ON_CODE","EXCLUSION_SET","DERIVED_SET","OTHER"]
+        },
+        "code_type":    { "type": "string" },
+        "source_refs":  { "type": "array", "items": { "$ref": "#/$defs/source_ref" } },
+        "member_count": { "type": "integer", "minimum": 0 },
+        "members":      { "type": "array", "items": { "$ref": "#/$defs/member" } },
+        "derivation":   { "type": ["string","null"] },
+        "status":       { "type": "string", "enum": ["ACTIVE","CORRECTION_UPDATED","DEPRECATED"] }
+      },
+      "additionalProperties": false
+    },
+    "condition_group_component": {
+      "type": "object",
+      "required": ["table_id","operator_before"],
+      "properties": {
+        "table_id":          { "type": "string" },
+        "operator_before":   { "type": "string" },
+        "requirement_label": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "condition_group_display": {
+      "type": "object",
+      "required": ["group_no","group_label","components"],
+      "properties": {
+        "group_no":            { "type": "integer" },
+        "group_label":         { "type": "string" },
+        "join_to_next_group":  { "type": ["string","null"] },
+        "components":          { "type": "array", "items": { "$ref": "#/$defs/condition_group_component" } },
+        "requirements":        { "type": "array", "items": { "type": "string" } },
+        "exclude_components":  { "type": "array", "items": { "$ref": "#/$defs/condition_group_component" } }
+      },
+      "additionalProperties": false
+    },
+    "aadrg_mapping": {
+      "type": "object",
+      "required": ["aadrg","aadrg_name_raw","aadrg_name_effective","abc_classification"],
+      "properties": {
+        "aadrg":                   { "type": "string" },
+        "aadrg_name_raw":          { "type": "string" },
+        "aadrg_name_effective":    { "type": "string" },
+        "abc_classification":      { "$ref": "#/$defs/abc_classification" },
+        "age_or_other_split_text": { "type": ["string","null"] },
+        "source_refs":             { "type": "array", "items": { "$ref": "#/$defs/source_ref" } }
+      },
+      "additionalProperties": false
+    },
+    "rule": {
+      "type": "object",
+      "required": ["adrg","mdc","title","subtitle","title_raw","title_effective","aadrg_mappings",
+                   "condition_text_raw","condition_text_effective","condition_expression",
+                   "condition_groups_display","source_refs","status"],
+      "properties": {
+        "adrg":                      { "type": "string" },
+        "mdc":                       { "type": "string" },
+        "title":                     { "type": "string" },
+        "subtitle":                  { "type": "string" },
+        "title_raw":                 { "type": "string" },
+        "title_effective":           { "type": "string" },
+        "aadrg_mappings":            { "type": "array", "items": { "$ref": "#/$defs/aadrg_mapping" }, "minItems": 1 },
+        "condition_text_raw":        { "type": "string" },
+        "condition_text_effective":  { "type": "string" },
+        "condition_expression":      { "type": "object" },
+        "condition_groups_display":  { "type": "array", "items": { "$ref": "#/$defs/condition_group_display" } },
+        "source_refs":               { "type": "array", "items": { "$ref": "#/$defs/source_ref" } },
+        "correction_refs":           { "type": "array", "items": { "$ref": "#/$defs/source_ref" } },
+        "notes":                     { "type": ["string","null"] },
+        "status":                    { "type": "string", "enum": ["ACTIVE","CORRECTION_UPDATED","DEPRECATED"] }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_id","source_type","file_name","title","effective_date","authority","usage_scope","included_in_runtime"],
+      "properties": {
+        "source_id":             { "type": "string" },
+        "source_type": {
+          "type": "string",
+          "enum": ["BASE_MANUAL_PDF","APPENDIX_PDF","CORRECTION_HWPX","PROCEDURE_MASTER_XLSX","GROUP_NAME_MASTER_XLSX","ABC_REGULATION_PDF"]
+        },
+        "file_name":             { "type": "string" },
+        "title":                 { "type": "string" },
+        "effective_date":        { "type": "string" },
+        "correction_cutoff_date":{ "type": ["string","null"] },
+        "authority":             { "type": "string" },
+        "usage_scope":           { "type": "string" },
+        "sha256":                { "type": ["string","null"] },
+        "included_in_runtime":   { "type": "boolean" },
+        "notes":                 { "type": ["string","null"] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "required": ["meta","sources","mdc_master","tables","rules","derived_indexes","validation_summary"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["schema_version","dataset_version","kdrg_version","effective_date",
+                   "correction_cutoff_date","data_scope","generated_at","generated_by",
+                   "source_manifest_version","runtime_status"],
+      "properties": {
+        "schema_version":          { "type": "string", "const": "2" },
+        "dataset_version":         { "type": "string" },
+        "kdrg_version":            { "type": "string" },
+        "effective_date":          { "type": "string" },
+        "correction_cutoff_date":  { "type": "string" },
+        "data_scope":              { "type": "string" },
+        "generated_at":            { "type": "string" },
+        "generated_by":            { "type": "string" },
+        "source_manifest_version": { "type": "string" },
+        "runtime_status": {
+          "type": "string",
+          "enum": ["PILOT_PARALLEL_VALIDATION","MDC_PARTIAL","FULL_BETA","FULL_RELEASE"]
+        },
+        "notes":                   { "type": ["string","null"] }
+      },
+      "additionalProperties": false
+    },
+    "sources":    { "type": "array", "items": { "$ref": "#/$defs/source" }, "minItems": 1 },
+    "mdc_master": { "type": "array" },
+    "tables":     { "type": "array", "items": { "$ref": "#/$defs/table" }, "minItems": 1 },
+    "rules":      { "type": "array", "items": { "$ref": "#/$defs/rule" }, "minItems": 1 },
+    "derived_indexes":     { "type": "object" },
+    "validation_summary":  { "type": "object" }
+  },
+  "additionalProperties": false
+}
