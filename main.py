@@ -14,19 +14,33 @@ from __future__ import annotations
 
 import sys
 
-from PySide6.QtGui import QFont
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication
 
-from app.main_window import MainWindow
+from app.font_utils import configure_application_font
 
 
 def main() -> int:
-    app = QApplication(sys.argv)
-    app.setApplicationName("KDRG 코드 관계 검색기")
+    # Qt6는 DPI 대응이 기본 활성화되어 있으나, Windows 배율 반올림 정책을 명시합니다.
+    QApplication.setHighDpiScaleFactorRoundingPolicy(
+        Qt.HighDpiScaleFactorRoundingPolicy.PassThrough
+    )
 
-    font = QFont("Malgun Gothic")
-    font.setPointSize(10)
-    app.setFont(font)
+    app = QApplication(sys.argv)
+    app.setApplicationName("KDRG V4.7 코드 관계 검색기")
+    app.setOrganizationName("KDRG")
+
+    # 실제로 설치된 폰트만 선택합니다.
+    selection = configure_application_font(app, point_size=10)
+    print(
+        "[KDRG FONT] "
+        f"family={selection.family!r}, "
+        f"supports_korean={selection.supports_korean}, "
+        f"registered_files={len(selection.registered_files)}"
+    )
+
+    # QApplication 전역 폰트를 적용한 뒤 UI 모듈을 불러옵니다.
+    from app.main_window import MainWindow
 
     window = MainWindow()
     window.show()

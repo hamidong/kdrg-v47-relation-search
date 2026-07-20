@@ -1,160 +1,198 @@
 # -*- coding: utf-8 -*-
-"""추가 UI 캡처 4종 생성 스크립트 (앱 코드/데이터/스타일은 변경하지 않음).
+"""UI v0.2 추가 미리보기 5종 생성기.
 
-실행 (X 서버 없는 환경 포함)
+실행
     QT_QPA_PLATFORM=offscreen python tests/generate_extra_previews.py
 
-생성 파일
-- reports/ui_preview_v47_default.png        기본 화면(E011 선택)
-- reports/ui_preview_v47_relation_panel.png  복수 코드 관계검색 패널 펼침
-- reports/ui_preview_v47_relation_result.png O1311/O1326 AND 관계검색 결과(E011 분산)
-- reports/ui_preview_v47_table_expanded.png  E011 table1/table2 전체 코드 펼침
+생성
+- reports/ui_v02_fixed_02_relation_panel.png
+- reports/ui_v02_fixed_03_relation_split_result.png
+- reports/ui_v02_fixed_04_table_expanded.png
+- reports/ui_v02_fixed_05_about_dialog.png
+- reports/ui_v02_fixed_06_small_window.png
 """
 
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
+os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+os.environ["KDRG_PREVIEW_MODE"] = "1"
+os.environ["KDRG_DISABLE_SETTINGS"] = "1"
+
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 REPORTS_DIR = ROOT / "reports"
 
-CJK_FONT_CANDIDATES = [
-    Path.home() / ".local/share/fonts/NotoSansCJK-VF.otf.ttc",
-]
+
+def _settle(app, rounds: int = 4) -> None:
+    for _ in range(rounds):
+        app.processEvents()
 
 
-def _load_cjk_font(app) -> None:
-    from PySide6.QtGui import QFont, QFontDatabase
+def _close_existing_top_levels(app) -> None:
+    for widget in list(app.topLevelWidgets()):
+        try:
+            widget.close()
+            widget.deleteLater()
+        except RuntimeError:
+            pass
+    _settle(app)
 
-    for font_path in CJK_FONT_CANDIDATES:
-        if font_path.exists():
-            font_id = QFontDatabase.addApplicationFont(str(font_path))
-            families = QFontDatabase.applicationFontFamilies(font_id)
-            if families:
-                font = QFont(families[0])
-                font.setPointSize(10)
-                app.setFont(font)
-            return
+
+def _visible_top_levels(app):
+    return [widget for widget in app.topLevelWidgets() if widget.isVisible()]
+
+
+def _assert_top_levels(app, allowed) -> None:
+    allowed_ids = {id(widget) for widget in allowed}
+    unexpected = [
+        widget
+        for widget in _visible_top_levels(app)
+        if id(widget) not in allowed_ids
+    ]
+    if unexpected:
+        names = [f"{type(widget).__name__}:{widget.windowTitle()!r}" for widget in unexpected]
+        raise SystemExit(f"[실패] 의도하지 않은 top-level window가 있습니다: {names}")
+
+
+def _save_widget(widget, path: Path) -> None:
+    pixmap = widget.grab()
+    if not pixmap.save(str(path)):
+        raise SystemExit(f"[실패] PNG 저장 실패: {path}")
+    print(f"[완료] {path} ({pixmap.width()}x{pixmap.height()})")
 
 
 def main() -> int:
     from PySide6.QtWidgets import QApplication, QToolButton
 
-    from app.main_window import MainWindow
+    from app.font_utils import configure_application_font
 
     app = QApplication.instance() or QApplication([])
-    _load_cjk_font(app)
+    _close_existing_top_levels(app)
+
+    selection = configure_application_font(app, point_size=10)
+    if not selection.supports_korean:
+        raise SystemExit(
+            "[실패] 한글 글리프 지원 폰트를 찾지 못했습니다. "
+            f"선택 family={selection.family!r}"
+        )
+
+    from app.dialogs import AboutDialog
+    from app.main_window import MainWindow
+    from version import APP_VERSION
 
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # ------------------------------------------------------------------
-    # 1. 기본 화면 (E011 선택 상태) - ui_preview_v47_initial.png와 동일 조건
-    # ------------------------------------------------------------------
     window = MainWindow()
     window.resize(1700, 960)
     window.show()
-    app.processEvents()
-    if window.result_count.text() != "9건":
-        raise SystemExit(f"[실패] 기본 화면 결과 수가 9건이 아닙니다: {window.result_count.text()}")
-    if not window.selected_result or window.selected_result.key != "E011":
-        raise SystemExit(f"[실패] 기본 화면 선택 ADRG가 E011이 아닙니다: {window.selected_result}")
-    pix1 = window.grab()
-    out1 = REPORTS_DIR / "ui_preview_v47_default.png"
-    pix1.save(str(out1))
-    print(f"[완료] {out1} ({pix1.size().width()}x{pix1.size().height()})")
+    window.raise_()
+    window.activateWindow()
+    _settle(app)
+    _assert_top_levels(app, [window])
 
-    # ------------------------------------------------------------------
-    # 2. 복수 코드 관계검색 패널 펼침 (검색1/검색2 입력행, AND 선택)
-    # ------------------------------------------------------------------
+    # 2. 복수 코드 관계검색 패널
     window.advanced_toggle.setChecked(True)
-    if len(window.advanced_rows) < 2:
-        raise SystemExit(f"[실패] 관계검색 입력행이 2개 미만입니다: {len(window.advanced_rows)}")
     window.relation_operator_combo.setCurrentText("AND")
-    app.processEvents()
+    _settle(app)
     if not window.advanced_panel.isVisible():
         raise SystemExit("[실패] 복수 코드 관계검색 패널이 펼쳐지지 않았습니다.")
-    pix2 = window.grab()
-    out2 = REPORTS_DIR / "ui_preview_v47_relation_panel.png"
-    pix2.save(str(out2))
-    print(f"[완료] {out2} ({pix2.size().width()}x{pix2.size().height()})")
+    _assert_top_levels(app, [window])
+    _save_widget(window, REPORTS_DIR / "ui_v02_fixed_02_relation_panel.png")
 
-    # ------------------------------------------------------------------
-    # 3. 관계검색 결과: 검색1=O1311(수술·처치코드), 검색2=O1326(수술·처치코드), AND
-    # ------------------------------------------------------------------
+    # 3. O1311 + O1326 AND 관계검색 분산 결과
     row1, row2 = window.advanced_rows[0], window.advanced_rows[1]
     row1.type_combo.setCurrentText("수술·처치코드")
     row1.code_edit.setText("O1311")
     row2.type_combo.setCurrentText("수술·처치코드")
     row2.code_edit.setText("O1326")
     window.relation_operator_combo.setCurrentText("AND")
-    app.processEvents()
     window.run_relation_search()
-    app.processEvents()
+    _settle(app)
 
     candidate = window.relation_candidates.get("E011")
     if candidate is None:
         raise SystemExit("[실패] 관계검색 결과에 E011이 없습니다.")
     if candidate.relation_level != "split":
-        raise SystemExit(f"[실패] E011의 relation_level이 split이 아닙니다: {candidate.relation_level}")
-    if window.selected_result is None or window.selected_result.key != "E011":
-        for result in window.current_results:
-            if result.key == "E011":
-                window.select_result(result)
-                app.processEvents()
-                break
-    if "분산" not in window.selected_result.sublabel if window.selected_result else True:
-        # sublabel에 상태 문구가 포함되는지 재확인 (RelationCandidate.status_label 참조)
-        pass
-    status_text = candidate.status_label
-    if status_text != "서로 다른 OR 조건식에 분산":
-        raise SystemExit(f"[실패] 예상한 상태 문구가 아닙니다: {status_text}")
-    pix3 = window.grab()
-    out3 = REPORTS_DIR / "ui_preview_v47_relation_result.png"
-    pix3.save(str(out3))
-    print(f"[완료] {out3} ({pix3.size().width()}x{pix3.size().height()}) - E011 상태: {status_text}")
+        raise SystemExit(f"[실패] E011 relation_level={candidate.relation_level!r}")
+    if candidate.status_label != "서로 다른 OR 조건식에 분산":
+        raise SystemExit(f"[실패] E011 상태 문구={candidate.status_label!r}")
+    _assert_top_levels(app, [window])
+    _save_widget(window, REPORTS_DIR / "ui_v02_fixed_03_relation_split_result.png")
 
-    # ------------------------------------------------------------------
-    # 4. E011 상세: table1/table2 전체 코드 펼침
-    # ------------------------------------------------------------------
+    # 4. E011 TABLE 펼침
     window.advanced_toggle.setChecked(False)
-    window.search_edit.setText("")
+    window.search_edit.clear()
     window.category_combo.setCurrentText("전체")
     window.run_search()
-    e011 = next((r for r in window.current_results if r.key == "E011"), None)
+    e011 = next((result for result in window.current_results if result.key == "E011"), None)
     if e011 is None:
-        raise SystemExit("[실패] 검색 결과에서 E011을 찾지 못했습니다.")
+        raise SystemExit("[실패] E011을 찾지 못했습니다.")
     window.select_result(e011)
-    app.processEvents()
+    _settle(app)
 
     table_pills = [
-        btn
-        for btn in window.detail_container.findChildren(QToolButton)
-        if btn.objectName() in ("TablePill", "TablePillHit") and btn.isCheckable()
+        button
+        for button in window.detail_container.findChildren(QToolButton)
+        if button.objectName() in {
+            "TablePill",
+            "TablePillHit",
+            "ExcludeTablePill",
+            "ExcludeTablePillHit",
+        }
+        and button.isCheckable()
     ]
-    if len(table_pills) < 2:
-        raise SystemExit(f"[실패] E011 상세에서 table 버튼을 2개 이상 찾지 못했습니다: {len(table_pills)}개")
-    for pill in table_pills:
-        pill.setChecked(True)
-    app.processEvents()
+    if not table_pills:
+        raise SystemExit("[실패] E011 TABLE 버튼을 찾지 못했습니다.")
 
-    for pill in table_pills:
-        if not pill.isChecked():
-            raise SystemExit("[실패] table 버튼이 펼침 상태로 전환되지 않았습니다.")
+    # 화면이 과도하게 길어지지 않도록 첫 번째 TABLE만 펼칩니다.
+    table_pills[0].setChecked(True)
+    _settle(app)
+    first_pos = table_pills[0].mapTo(
+        window.detail_container,
+        table_pills[0].rect().topLeft(),
+    )
+    window.detail_scroll.verticalScrollBar().setValue(max(0, first_pos.y() - 50))
+    _settle(app)
+    _assert_top_levels(app, [window])
+    _save_widget(window, REPORTS_DIR / "ui_v02_fixed_04_table_expanded.png")
 
-    # 펼쳐진 코드표가 스크린샷 안에 보이도록 첫 번째 table 버튼 위치로 스크롤합니다.
-    app.processEvents()
-    first_pill_pos = table_pills[0].mapTo(window.detail_container, table_pills[0].rect().topLeft())
-    window.detail_scroll.verticalScrollBar().setValue(max(0, first_pill_pos.y() - 40))
-    app.processEvents()
+    # 5. AboutDialog
+    dialog = AboutDialog(parent=window, app_version=APP_VERSION, store=window.store)
+    dialog.show()
+    dialog.raise_()
+    dialog.activateWindow()
+    _settle(app)
+    _assert_top_levels(app, [window, dialog])
+    _save_widget(dialog, REPORTS_DIR / "ui_v02_fixed_05_about_dialog.png")
+    dialog.close()
+    dialog.deleteLater()
+    _settle(app)
+    _assert_top_levels(app, [window])
 
-    pix4 = window.grab()
-    out4 = REPORTS_DIR / "ui_preview_v47_table_expanded.png"
-    pix4.save(str(out4))
-    print(f"[완료] {out4} ({pix4.size().width()}x{pix4.size().height()}) - 펼친 table 버튼 수: {len(table_pills)}")
+    # 6. 최소 창 크기
+    window.resize(1180, 760)
+    window.advanced_toggle.setChecked(False)
+    window.detail_scroll.verticalScrollBar().setValue(0)
+    _settle(app)
+    _assert_top_levels(app, [window])
+    _save_widget(window, REPORTS_DIR / "ui_v02_fixed_06_small_window.png")
 
+    print(
+        "[검증 완료] "
+        f"font={selection.family!r}, "
+        f"supports_korean={selection.supports_korean}, "
+        f"visible_top_levels={len(_visible_top_levels(app))}"
+    )
+
+    window.close()
+    window.deleteLater()
+    _settle(app)
     return 0
 
 
