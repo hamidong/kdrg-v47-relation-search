@@ -8,7 +8,7 @@
 
 from __future__ import annotations
 
-APP_VERSION = "0.1.0"
+APP_VERSION = "0.2.0"
 APP_NAME = "KDRG_V47_Relation_Search"
 APP_DISPLAY_NAME = "KDRG V4.7 관계 검색기"
 
