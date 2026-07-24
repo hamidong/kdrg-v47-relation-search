@@ -74,10 +74,13 @@ class AboutDialog(QDialog):
                 ("KDRG 기준", f"KDRG V4.7 분류집 원문"),
                 ("A/B/C 공식 원천", store.abc_basis),
             ]))
-            sections.append(("현재 파일럿 제한", [
-                ("포함 ADRG", f"9개 (E011, E501, E502, E511, E512, F022, F136, F194, F195)"),
-                ("포함 TABLE", "15개"),
-                ("포함 코드", "133개"),
+
+
+            sections.append(("전체 runtime 데이터 범위", [
+                ("ADRG", f"{len(store.rules):,}개"),
+                ("AADRG", f"{sum(len(rule.aadrg_mappings) for rule in store.rules.values()):,}개"),
+                ("TABLE", f"{len(store.tables):,}개"),
+                ("검색 코드", f"{len(store.code_to_tables):,}개"),
                 ("출처", store.source_note),
             ]))
 

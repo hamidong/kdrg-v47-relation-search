@@ -29,7 +29,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from app.data_store import KDRGDataStore
+from app.runtime_data_store import KDRGRuntimeDataStore as KDRGDataStore
 from app.models import (
     AdvancedCondition,
     RelationCandidate,
@@ -378,7 +378,7 @@ class MainWindow(QMainWindow):
         prog_ver = QLabel(f"프로그램 v{APP_VERSION}")
         prog_ver.setObjectName("VersionLabel")
         prog_ver.setAlignment(Qt.AlignRight)
-        data_ver = QLabel(f"데이터 {self.store.version} Pilot · {self.store.correction_basis} 교정 반영")
+        data_ver = QLabel(f"데이터 {self.store.version} · {self.store.correction_basis} 교정 반영")
         data_ver.setObjectName("DataVersionLabel")
         data_ver.setAlignment(Qt.AlignRight)
         scope_lbl = QLabel(self.store.data_scope)
@@ -401,13 +401,13 @@ class MainWindow(QMainWindow):
         search_row.setSpacing(8)
 
         self.category_combo = QComboBox()
-        self.category_combo.addItems(["전체", "상병코드", "기타진단코드", "수술·처치코드", "검사·처치코드", "부가코드", "ADRG", "MDC", "TABLE"])
+        self.category_combo.addItems(["전체", "상병코드", "기타진단코드", "수술·처치코드", "검사·처치코드", "부가코드", "ADRG", "RDRG", "MDC", "TABLE"])
         self.category_combo.setObjectName("SearchCombo")
         self.category_combo.currentTextChanged.connect(self.run_search)
         search_row.addWidget(self.category_combo)
 
         self.search_edit = QLineEdit()
-        self.search_edit.setPlaceholderText("예: MDC 04, 호흡기계, E011, E0110, O1311, M6586, ADC2A, table1")
+        self.search_edit.setPlaceholderText("예: MDC 04, 9600, 96000, 960000, E011, A00.0, M6586, ADC2A, LT_9610_001")
         self.search_edit.setClearButtonEnabled(True)
         self.search_edit.returnPressed.connect(self.run_search)
         self.search_edit.textChanged.connect(self._search_text_changed)
@@ -923,6 +923,7 @@ class MainWindow(QMainWindow):
         code_type = " / ".join(code_types) if code_types else "코드"
         primary_code_type = code_types[0] if code_types else ""
         exclusion_ids = {t.table_id for t in exclusion_tables}
+        relation_summary = self.store.relation_summary_for_code(code)
         table_text = ", ".join(
             f"{t.table_id} · {t.display_label}" + (" [미포함 조건]" if t.table_id in exclusion_ids else "")
             for t in tables
@@ -937,6 +938,10 @@ class MainWindow(QMainWindow):
                 rows=[
                     ("코드 유형", code_type),
                     ("포함 TABLE", table_text),
+                    ("원문 TABLE 정의 ADRG", relation_summary.get("physical_source", "-")),
+                    ("조건 AST 사용 ADRG", relation_summary.get("condition_usage", "-")),
+                    ("검색용 관련 ADRG", relation_summary.get("runtime_related", "-")),
+                    ("원문 family 근거", relation_summary.get("source_families", "-")),
                     ("KDRG 버전", self.store.version),
                     ("교정자료 기준일", self.store.correction_basis),
                 ],
@@ -1169,6 +1174,7 @@ class MainWindow(QMainWindow):
             return
 
         related_rules = self.store.rules_for_table(table_id)
+        relation_summary = self.store.relation_summary_for_table(table_id)
         codes = [m.code for m in table.members]
 
         self.detail_layout.addWidget(
@@ -1181,6 +1187,10 @@ class MainWindow(QMainWindow):
                     ("TABLE_ID", table.table_id),
                     ("코드 유형", table.code_type),
                     ("코드 수", f"{table.count}개"),
+                    ("원문 정의 ADRG", relation_summary.get("physical_source", "-")),
+                    ("조건 AST 사용 ADRG", relation_summary.get("condition_usage", "-")),
+                    ("검색용 관련 ADRG", relation_summary.get("runtime_related", "-")),
+                    ("원문 family 근거", relation_summary.get("source_families", "-")),
                     ("근거", table.source_page),
                     ("KDRG 버전", self.store.version),
                 ],
