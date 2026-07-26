@@ -50,7 +50,18 @@ jobs:
         env:
           QT_QPA_PLATFORM: offscreen
           QT_OPENGL: software
-        run: python tests/windows_runtime_source_smoke.py
+          KDRG_DISABLE_SETTINGS: "1"
+        run: |
+          python tests/windows_runtime_source_smoke.py
+          $smokeExitCode = $LASTEXITCODE
+
+          if (Test-Path "reports/windows_runtime_source_smoke_report.txt") {
+            Write-Host ""
+            Write-Host "===== windows_runtime_source_smoke_report.txt ====="
+            Get-Content "reports/windows_runtime_source_smoke_report.txt"
+          }
+
+          exit $smokeExitCode
 
       - name: PyInstaller onefile GUI 빌드
         shell: pwsh
