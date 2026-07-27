@@ -1,0 +1,24 @@
+{
+  "name": "kdrg-v47-relation-search-electron",
+  "version": "0.3.0-dev.0",
+  "private": true,
+  "description": "KDRG V4.7 관계 검색기 Electron UI 기반",
+  "main": "main.js",
+  "author": "hamidong",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search.git"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "validate": "node tests/validate-electron-skeleton.js",
+    "check": "node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && npm run validate"
+  },
+  "devDependencies": {
+    "electron": "43.2.0"
+  }
+}
