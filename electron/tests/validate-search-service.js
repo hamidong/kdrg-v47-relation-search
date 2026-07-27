@@ -158,18 +158,18 @@ check('preload search method', preloadSource.includes('search: (request)'), true
 check('preload detail method', preloadSource.includes('getDetail: (request)'), true);
 check('preload ipcRenderer object hidden', preloadSource.includes('ipcRenderer,'), false);
 check('bootstrap search connected', bootstrapSource.includes('searchServiceConnected: true'), true);
-check('bootstrap Stage 50B', bootstrapSource.includes("stage: '50B_JAVASCRIPT_SEARCH_SERVICE'"), true);
+check('bootstrap Stage 50C', bootstrapSource.includes("stage: '50C_RENDERER_SEARCH_UI'"), true);
 
-console.log('validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50B_NODE_VALIDATOR_V1');
+console.log('validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50C_SEARCH_COMPAT_VALIDATOR_V1');
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {
-  console.log(`[FAIL] Electron Stage 50B 검색 service 검증: ${passCount} PASS / ${failures.length} FAIL`);
+  console.log(`[FAIL] Electron Stage 50C 검색 service 호환성 검증: ${passCount} PASS / ${failures.length} FAIL`);
   console.log('[FAIL 상세]');
   for (const item of failures) {
     console.log(`- ${item.name} | actual=${JSON.stringify(item.actual)} | expected=${JSON.stringify(item.expected)}`);
   }
   process.exitCode = 1;
 } else {
-  console.log(`[PASS] Electron Stage 50B 검색 service 검증: ${passCount} PASS / 0 FAIL`);
+  console.log(`[PASS] Electron Stage 50C 검색 service 호환성 검증: ${passCount} PASS / 0 FAIL`);
 }

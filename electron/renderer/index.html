@@ -10,88 +10,157 @@
     <title>KDRG V4.7 관계 검색기</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body data-state="loading">
     <main class="app-shell">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">KDRG V4.7 · Electron 전환</p>
+        <div class="brand-block">
+          <p class="eyebrow">KDRG V4.7 · Electron 관계 검색</p>
           <h1>KDRG 코드 관계 검색기</h1>
           <p class="subtitle">
-            PySide 기준본과 동일한 통합 데이터·UI 표현 계약을 사용하는 Electron 기반 화면입니다.
+            코드·ADRG·AADRG·RDRG·TABLE을 양방향으로 검색하고 기본 TABLE과 추가 분기조건을 구분해 확인합니다.
           </p>
         </div>
-        <div class="stage-badge">Stage 50A</div>
+        <div class="topbar-meta">
+          <span class="stage-badge" id="stage-badge">Stage 50C</span>
+          <strong id="data-version">KDRG V4.7</strong>
+        </div>
       </header>
 
-      <section class="status-panel" aria-live="polite">
-        <div>
-          <span class="status-dot" id="status-dot"></span>
+      <section class="status-panel" aria-live="polite" aria-atomic="true">
+        <div class="status-title-row">
+          <span class="status-dot" aria-hidden="true"></span>
           <strong id="status-title">통합 데이터를 확인하는 중입니다.</strong>
         </div>
         <p id="status-detail">renderer에는 원본 전체 데이터를 직접 노출하지 않습니다.</p>
       </section>
 
-      <section class="search-preview" aria-labelledby="search-heading">
-        <div>
-          <p class="section-kicker">검색 화면 기준선</p>
-          <h2 id="search-heading">ADRG·코드·TABLE 통합 검색</h2>
-        </div>
-        <div class="search-row">
-          <input
-            type="search"
-            placeholder="50B에서 JavaScript 검색 서비스를 연결합니다."
-            disabled
-            aria-label="검색어"
-          />
-          <button type="button" disabled>검색 준비 중</button>
-        </div>
+      <section class="metric-strip" aria-label="데이터 집계">
+        <div><span>ADRG</span><strong id="metric-adrg">-</strong></div>
+        <div><span>AADRG</span><strong id="metric-aadrg">-</strong></div>
+        <div><span>RDRG</span><strong id="metric-rdrg">-</strong></div>
+        <div><span>TABLE</span><strong id="metric-table">-</strong></div>
+        <div><span>검색 코드</span><strong id="metric-code">-</strong></div>
+        <div><span>조건 TABLE 참조</span><strong id="metric-condition">-</strong></div>
       </section>
 
-      <section class="metric-grid" aria-label="데이터 집계">
-        <article class="metric-card"><span>ADRG</span><strong id="count-adrg">-</strong></article>
-        <article class="metric-card"><span>AADRG</span><strong id="count-aadrg">-</strong></article>
-        <article class="metric-card"><span>RDRG</span><strong id="count-rdrg">-</strong></article>
-        <article class="metric-card"><span>TABLE</span><strong id="count-tables">-</strong></article>
-        <article class="metric-card"><span>검색 코드</span><strong id="count-codes">-</strong></article>
-        <article class="metric-card"><span>조건 AST</span><strong id="count-ast">-</strong></article>
+      <section class="search-panel" aria-labelledby="search-heading">
+        <div class="search-heading-row">
+          <div>
+            <p class="section-kicker">통합 검색</p>
+            <h2 id="search-heading">코드·질병군·TABLE 검색</h2>
+          </div>
+          <div class="sample-queries" aria-label="예시 검색어">
+            <button type="button" data-sample-query="E011">E011</button>
+            <button type="button" data-sample-query="A01.0">A01.0</button>
+            <button type="button" data-sample-query="9610">9610</button>
+            <button type="button" data-sample-query="9620">9620</button>
+          </div>
+        </div>
+
+        <form id="search-form" class="search-form" autocomplete="off">
+          <label class="search-query-field">
+            <span>검색어</span>
+            <input
+              id="search-query"
+              name="query"
+              type="search"
+              maxlength="200"
+              placeholder="예: E011, A01.0, LT_9610_001, 기관 및 기관지 수술"
+              aria-describedby="search-help"
+            />
+          </label>
+
+          <label>
+            <span>검색 유형</span>
+            <select id="filter-type" name="entityType">
+              <option value="ALL">전체</option>
+              <option value="CODE">코드</option>
+              <option value="ADRG">ADRG</option>
+              <option value="AADRG">AADRG</option>
+              <option value="RDRG">RDRG</option>
+              <option value="TABLE">TABLE</option>
+            </select>
+          </label>
+
+          <label>
+            <span>MDC</span>
+            <select id="filter-mdc" name="mdc">
+              <option value="">전체</option>
+              <option value="01">MDC 01</option><option value="02">MDC 02</option>
+              <option value="03">MDC 03</option><option value="04">MDC 04</option>
+              <option value="05">MDC 05</option><option value="06">MDC 06</option>
+              <option value="07">MDC 07</option><option value="08">MDC 08</option>
+              <option value="09">MDC 09</option><option value="10">MDC 10</option>
+              <option value="11">MDC 11</option><option value="12">MDC 12</option>
+              <option value="13">MDC 13</option><option value="14">MDC 14</option>
+              <option value="15">MDC 15</option><option value="16">MDC 16</option>
+              <option value="17">MDC 17</option><option value="18">MDC 18</option>
+              <option value="19">MDC 19</option><option value="20">MDC 20</option>
+              <option value="21">MDC 21</option><option value="22">MDC 22</option>
+              <option value="23">MDC 23</option><option value="24">MDC 24</option>
+              <option value="25">MDC 25</option>
+            </select>
+          </label>
+
+          <label>
+            <span>질병군 분류</span>
+            <select id="filter-classification" name="classification">
+              <option value="">전체</option>
+              <option value="A">전문</option>
+              <option value="B">일반</option>
+              <option value="C">단순</option>
+            </select>
+          </label>
+
+          <div class="search-actions">
+            <button id="search-submit" class="primary-button" type="submit">검색</button>
+            <button id="search-reset" class="secondary-button" type="button">초기화</button>
+          </div>
+        </form>
+        <p id="search-help" class="search-help">
+          점 표기 코드도 검색할 수 있습니다. 예: A01.0 → A010. 필터는 검색 결과에 실제로 연결된 관계를 기준으로 적용됩니다.
+        </p>
       </section>
 
-      <section class="content-grid">
-        <article class="info-card">
-          <p class="section-kicker">안전한 데이터 연결</p>
-          <h2>메인 프로세스에서만 JSON 검증</h2>
-          <ul>
-            <li>필수 파일 존재·크기·SHA256·schema를 순서대로 검사합니다.</li>
-            <li>preload는 허용된 조회 함수 하나만 renderer에 제공합니다.</li>
-            <li>원본 corpus 배열은 renderer로 전달하지 않습니다.</li>
-          </ul>
+      <section class="workspace" aria-label="검색 결과와 상세 정보">
+        <aside class="result-panel" aria-labelledby="result-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">검색 결과</p>
+              <h2 id="result-heading"><span id="result-count">0건</span></h2>
+              <p id="result-caption">검색어를 입력하면 결과가 표시됩니다.</p>
+            </div>
+            <div id="type-counts" class="type-counts" aria-label="유형별 결과 수"></div>
+          </div>
+
+          <div id="result-list" class="result-list" aria-live="polite"></div>
+
+          <nav class="pagination" aria-label="검색 결과 페이지">
+            <button id="page-previous" type="button" disabled>이전</button>
+            <span id="page-label">0–0 / 0</span>
+            <button id="page-next" type="button" disabled>다음</button>
+          </nav>
+        </aside>
+
+        <article class="detail-panel" aria-labelledby="detail-heading">
+          <div class="panel-heading detail-panel-heading">
+            <div>
+              <p class="section-kicker">관계 상세</p>
+              <h2 id="detail-heading">상세 정보</h2>
+              <p id="detail-caption">기본 TABLE과 추가 분기조건을 구분해 표시합니다.</p>
+            </div>
+          </div>
+          <div id="detail-content" class="detail-content" aria-live="polite"></div>
         </article>
-
-        <article class="info-card">
-          <p class="section-kicker">UI 의미 기준</p>
-          <h2>47·48·49번 결과를 기준으로 고정</h2>
-          <dl>
-            <div><dt>조건 TABLE 참조</dt><dd id="count-occurrences">-</dd></div>
-            <div><dt>포함 역할</dt><dd id="count-includes">-</dd></div>
-            <div><dt>제외 역할</dt><dd id="count-excludes">-</dd></div>
-            <div><dt>유형 미확정 TABLE</dt><dd id="count-unknown">-</dd></div>
-          </dl>
-        </article>
-      </section>
-
-      <section class="file-panel">
-        <div>
-          <p class="section-kicker">로드된 기준 파일</p>
-          <h2 id="data-version">KDRG V4.7</h2>
-        </div>
-        <div class="file-list" id="file-list"></div>
       </section>
 
       <footer>
-        Stage 50A는 Electron 실행 기반과 안전한 데이터 로딩까지만 구축합니다.
-        실제 검색 결과 동등성은 Stage 50B에서 연결합니다.
+        검색 결과는 KDRG V4.7 통합 데이터와 Stage 48 UI 표현 계약을 기준으로 표시합니다.
+        코드명·TABLE 유형이 원천에 없으면 임의로 생성하지 않습니다.
       </footer>
     </main>
+
+    <script src="./ui-formatters.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

@@ -16,7 +16,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-27_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V3"
+SCRIPT_VERSION = "2026-07-27_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V4_50C_COMPAT"
 ROOT = Path(__file__).resolve().parent
 ELECTRON = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -563,7 +563,7 @@ def main() -> int:
         "Node Electron 보안 골격 검증",
         {"returncode": skeleton_validation["returncode"], "stdout": skeleton_validation["stdout"], "stderr": skeleton_validation["stderr"]},
         "returncode=0 and PASS",
-        lambda a, _e: a["returncode"] == 0 and "[PASS] Electron Stage 50B 보안 골격 검증" in a["stdout"],
+        lambda a, _e: a["returncode"] == 0 and "[PASS] Electron Stage 50C 보안 골격 검증" in a["stdout"],
     )
 
     node_validation = run_command([str(node), str(ELECTRON / "tests/validate-search-service.js")], ROOT)
@@ -571,7 +571,7 @@ def main() -> int:
         "Node 검색 service 전수검증",
         {"returncode": node_validation["returncode"], "stdout": node_validation["stdout"], "stderr": node_validation["stderr"]},
         "returncode=0 and PASS",
-        lambda a, _e: a["returncode"] == 0 and "[PASS] Electron Stage 50B 검색 service 검증" in a["stdout"],
+        lambda a, _e: a["returncode"] == 0 and "[PASS] Electron Stage 50C 검색 service 호환성 검증" in a["stdout"],
     )
 
     package = json.loads((ELECTRON / "package.json").read_text(encoding="utf-8"))

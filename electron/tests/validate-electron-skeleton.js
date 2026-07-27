@@ -39,8 +39,12 @@ const requiredFiles = [
   'renderer/index.html',
   'renderer/app.js',
   'renderer/styles.css',
+  'renderer/ui-formatters.js',
   'tests/validate-electron-skeleton.js',
+  'tests/validate-renderer-ui.js',
   'README_STAGE50A.md',
+  'README_STAGE50B.md',
+  'README_STAGE50C.md',
 ];
 for (const relativePath of requiredFiles) {
   check(`필수 파일 ${relativePath}`, fs.existsSync(path.join(ELECTRON_ROOT, relativePath)), true);
@@ -55,13 +59,15 @@ check('Node engine', packageJson.engines.node, '>=22.0.0');
 check('start script', packageJson.scripts.start, 'electron .');
 check('validate skeleton script', packageJson.scripts['validate:skeleton'], 'node tests/validate-electron-skeleton.js');
 check('validate search script', packageJson.scripts['validate:search'], 'node tests/validate-search-service.js');
-check('validate aggregate script', packageJson.scripts.validate, 'npm run validate:skeleton && npm run validate:search');
+check('validate UI script', packageJson.scripts['validate:ui'], 'node tests/validate-renderer-ui.js');
+check('validate aggregate script', packageJson.scripts.validate, 'npm run validate:skeleton && npm run validate:search && npm run validate:ui');
 check('repository', packageJson.repository.url, 'https://github.com/hamidong/kdrg-v47-relation-search.git');
 
 const mainSource = read(path.join(ELECTRON_ROOT, 'main.js'));
 const preloadSource = read(path.join(ELECTRON_ROOT, 'preload.js'));
 const htmlSource = read(path.join(ELECTRON_ROOT, 'renderer/index.html'));
 const rendererSource = read(path.join(ELECTRON_ROOT, 'renderer/app.js'));
+const formatterSource = read(path.join(ELECTRON_ROOT, 'renderer/ui-formatters.js'));
 
 check('contextIsolation 활성', mainSource.includes('contextIsolation: true'), true);
 check('nodeIntegration 비활성', mainSource.includes('nodeIntegration: false'), true);
@@ -81,6 +87,11 @@ check('inline script 없음', htmlSource.includes('<script>'), false);
 check('renderer require 없음', rendererSource.includes('require('), false);
 check('동적 데이터 textContent', rendererSource.includes('textContent'), true);
 check('동적 데이터 innerHTML 미사용', rendererSource.includes('innerHTML'), false);
+check('renderer eval 미사용', /\beval\s*\(/.test(rendererSource), false);
+check('formatter require 없음', formatterSource.includes('require('), false);
+check('formatter 선로드', htmlSource.indexOf('ui-formatters.js') < htmlSource.indexOf('app.js'), true);
+check('검색 form 존재', htmlSource.includes('id="search-form"'), true);
+check('상세 panel 존재', htmlSource.includes('id="detail-content"'), true);
 
 const dataDirectory = resolveDataDirectory({
   isPackaged: false,
@@ -112,24 +123,24 @@ check('exclude occurrence count', snapshot.displayContract.excludeOccurrences, 6
 check('unknown TABLE count', snapshot.displayContract.unknownTableCount, 646);
 check('raw corpus 미노출', snapshot.capabilities.rawCorpusExposedToRenderer, false);
 check('검색 서비스 연결 표시', snapshot.capabilities.searchServiceConnected, true);
-check('50B stage', snapshot.capabilities.stage, '50B_JAVASCRIPT_SEARCH_SERVICE');
-check('50C next stage', snapshot.capabilities.nextStage, '50C_RENDERER_SEARCH_UI');
+check('50C stage', snapshot.capabilities.stage, '50C_RENDERER_SEARCH_UI');
+check('50D next stage', snapshot.capabilities.nextStage, '50D_ELECTRON_PACKAGE_AND_WINDOWS_BUILD');
 
 const serialized = JSON.stringify(snapshot);
 check('원본 ADRG 배열 미포함', serialized.includes('adrg_records'), false);
 check('원본 code 배열 미포함', serialized.includes('code_records'), false);
 check('bootstrap snapshot 크기 제한', Buffer.byteLength(serialized, 'utf8') < 20000, true);
 
-console.log(`validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50B_SKELETON_VALIDATOR_V1`);
+console.log(`validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50C_SKELETON_VALIDATOR_V1`);
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {
-  console.log(`[FAIL] Electron Stage 50B 보안 골격 검증: ${passCount} PASS / ${failures.length} FAIL`);
+  console.log(`[FAIL] Electron Stage 50C 보안 골격 검증: ${passCount} PASS / ${failures.length} FAIL`);
   console.log('[FAIL 상세]');
   for (const item of failures) {
     console.log(`- ${item.name} | actual=${JSON.stringify(item.actual)} | expected=${JSON.stringify(item.expected)}`);
   }
   process.exitCode = 1;
 } else {
-  console.log(`[PASS] Electron Stage 50B 보안 골격 검증: ${passCount} PASS / 0 FAIL`);
+  console.log(`[PASS] Electron Stage 50C 보안 골격 검증: ${passCount} PASS / 0 FAIL`);
 }

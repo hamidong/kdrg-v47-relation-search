@@ -17,8 +17,9 @@
     "start": "electron .",
     "validate:skeleton": "node tests/validate-electron-skeleton.js",
     "validate:search": "node tests/validate-search-service.js",
-    "validate": "npm run validate:skeleton && npm run validate:search",
-    "check": "node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && npm run validate"
+    "validate": "npm run validate:skeleton && npm run validate:search && npm run validate:ui",
+    "check": "node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && npm run validate",
+    "validate:ui": "node tests/validate-renderer-ui.js"
   },
   "devDependencies": {
     "electron": "43.2.0"
