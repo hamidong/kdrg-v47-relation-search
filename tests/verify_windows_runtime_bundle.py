@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORTS = ROOT / "reports"
 REPORT_TXT = REPORTS / "windows_runtime_bundle_validation_report.txt"
 REPORT_JSON = REPORTS / "windows_runtime_bundle_validation_report.json"
-SCRIPT_VERSION = "2026-07-24_KDRG_V47_WINDOWS_RUNTIME_BUNDLE_VALIDATOR_V1"
+SCRIPT_VERSION = "2026-07-27_KDRG_V47_WINDOWS_RUNTIME_BUNDLE_VALIDATOR_V2"
 
 
 def sha256_file(path: Path) -> str:
@@ -149,9 +149,20 @@ def main() -> int:
         "exists" if args.require_exe else "optional",
     )
 
+    dist_dir = ROOT / "dist"
+    dist_candidates = [
+        {
+            "name": path.name,
+            "size_bytes": path.stat().st_size,
+            "sha256": sha256_file(path),
+        }
+        for path in sorted(dist_dir.glob("*"))
+        if path.is_file()
+    ]
     exe_info: dict[str, Any] = {
         "path": str(exe_path),
         "exists": exe_exists,
+        "dist_candidates": dist_candidates,
     }
     if exe_exists:
         size = exe_path.stat().st_size
@@ -227,11 +238,30 @@ def main() -> int:
     )
     REPORT_TXT.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
+    print(f"validator={SCRIPT_VERSION}")
+    print(f"expected_exe={exe_path}")
+    print(f"dist_candidates={dist_candidates}")
+    print(f"launch_result={launch_result}")
+    print(f"report={REPORT_TXT}")
+
     if fail_count:
-        print(f"[FAIL] Windows runtime bundle 검증: {pass_count} PASS / {fail_count} FAIL")
+        print(
+            f"[FAIL] Windows runtime bundle 검증: "
+            f"{pass_count} PASS / {fail_count} FAIL"
+        )
+        print("[FAIL 상세]")
+        for item in checks:
+            if item["status"] == "FAIL":
+                print(
+                    f"- {item['name']} | "
+                    f"actual={item['actual']} | expected={item['expected']}"
+                )
         return 1
 
-    print(f"[PASS] Windows runtime bundle 검증: {pass_count} PASS / 0 FAIL")
+    print(
+        f"[PASS] Windows runtime bundle 검증: "
+        f"{pass_count} PASS / 0 FAIL"
+    )
     return 0
 
 

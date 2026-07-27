@@ -69,11 +69,29 @@ jobs:
 
       - name: exe bundle 정적·기동 검증
         shell: pwsh
-        run: >
-          python tests/verify_windows_runtime_bundle.py
-          --require-exe
-          --launch
-          --launch-seconds 8
+        run: |
+          Write-Host "===== dist directory ====="
+          if (Test-Path "dist") {
+            Get-ChildItem "dist" | Format-Table Name, Length, LastWriteTime
+          } else {
+            Write-Host "dist directory missing"
+          }
+
+          python tests/verify_windows_runtime_bundle.py `
+            --require-exe `
+            --launch `
+            --launch-seconds 8
+          $bundleExitCode = $LASTEXITCODE
+
+          if (Test-Path "reports/windows_runtime_bundle_validation_report.txt") {
+            Write-Host ""
+            Write-Host "===== windows_runtime_bundle_validation_report.txt ====="
+            Get-Content "reports/windows_runtime_bundle_validation_report.txt"
+          } else {
+            Write-Host "bundle validation report missing"
+          }
+
+          exit $bundleExitCode
 
       - name: 버전 정보 추출
         id: version
