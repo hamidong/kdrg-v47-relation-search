@@ -17,7 +17,46 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORTS = ROOT / "reports"
 REPORT_TXT = REPORTS / "windows_runtime_bundle_validation_report.txt"
 REPORT_JSON = REPORTS / "windows_runtime_bundle_validation_report.json"
-SCRIPT_VERSION = "2026-07-27_KDRG_V47_WINDOWS_RUNTIME_BUNDLE_VALIDATOR_V2"
+SCRIPT_VERSION = "2026-07-27_KDRG_V47_WINDOWS_RUNTIME_BUNDLE_VALIDATOR_V3"
+
+
+def configure_utf8_stdio() -> None:
+    """Windows CI의 cp1252 기본 스트림을 UTF-8로 일반화한다."""
+    for stream_name in ("stdout", "stderr"):
+        stream = getattr(sys, stream_name, None)
+        if stream is None or not hasattr(stream, "reconfigure"):
+            continue
+        try:
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace")
+        except (AttributeError, OSError, ValueError):
+            pass
+
+
+def safe_print(*values: Any, sep: str = " ", end: str = "\n") -> None:
+    """스트림 설정이 제한된 환경에서도 진단 출력 때문에 검증이 뒤집히지 않게 한다."""
+    text = sep.join(str(value) for value in values) + end
+    stream = getattr(sys, "stdout", None)
+    if stream is None:
+        return
+    try:
+        stream.write(text)
+        stream.flush()
+        return
+    except UnicodeEncodeError:
+        pass
+
+    buffer = getattr(stream, "buffer", None)
+    if buffer is not None:
+        buffer.write(text.encode("utf-8", errors="backslashreplace"))
+        buffer.flush()
+        return
+
+    encoding = getattr(stream, "encoding", None) or "ascii"
+    stream.write(text.encode(encoding, errors="backslashreplace").decode(encoding))
+    stream.flush()
+
+
+configure_utf8_stdio()
 
 
 def sha256_file(path: Path) -> str:
@@ -238,27 +277,27 @@ def main() -> int:
     )
     REPORT_TXT.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
-    print(f"validator={SCRIPT_VERSION}")
-    print(f"expected_exe={exe_path}")
-    print(f"dist_candidates={dist_candidates}")
-    print(f"launch_result={launch_result}")
-    print(f"report={REPORT_TXT}")
+    safe_print(f"validator={SCRIPT_VERSION}")
+    safe_print(f"expected_exe={exe_path}")
+    safe_print(f"dist_candidates={dist_candidates}")
+    safe_print(f"launch_result={launch_result}")
+    safe_print(f"report={REPORT_TXT}")
 
     if fail_count:
-        print(
+        safe_print(
             f"[FAIL] Windows runtime bundle 검증: "
             f"{pass_count} PASS / {fail_count} FAIL"
         )
-        print("[FAIL 상세]")
+        safe_print("[FAIL 상세]")
         for item in checks:
             if item["status"] == "FAIL":
-                print(
+                safe_print(
                     f"- {item['name']} | "
                     f"actual={item['actual']} | expected={item['expected']}"
                 )
         return 1
 
-    print(
+    safe_print(
         f"[PASS] Windows runtime bundle 검증: "
         f"{pass_count} PASS / 0 FAIL"
     )

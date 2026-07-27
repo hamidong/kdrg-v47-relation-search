@@ -21,7 +21,46 @@ if str(ROOT) not in sys.path:
 REPORTS = ROOT / "reports"
 REPORT_TXT = REPORTS / "windows_runtime_source_smoke_report.txt"
 REPORT_JSON = REPORTS / "windows_runtime_source_smoke_report.json"
-SCRIPT_VERSION = "2026-07-24_KDRG_V47_WINDOWS_RUNTIME_SOURCE_SMOKE_V2"
+SCRIPT_VERSION = "2026-07-27_KDRG_V47_WINDOWS_RUNTIME_SOURCE_SMOKE_V3"
+
+
+def configure_utf8_stdio() -> None:
+    """Windows CI의 cp1252 기본 스트림을 UTF-8로 일반화한다."""
+    for stream_name in ("stdout", "stderr"):
+        stream = getattr(sys, stream_name, None)
+        if stream is None or not hasattr(stream, "reconfigure"):
+            continue
+        try:
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace")
+        except (AttributeError, OSError, ValueError):
+            pass
+
+
+def safe_print(*values: Any, sep: str = " ", end: str = "\n") -> None:
+    """실패 상세 출력 자체가 원래 회귀검증 오류를 가리지 않게 한다."""
+    text = sep.join(str(value) for value in values) + end
+    stream = getattr(sys, "stdout", None)
+    if stream is None:
+        return
+    try:
+        stream.write(text)
+        stream.flush()
+        return
+    except UnicodeEncodeError:
+        pass
+
+    buffer = getattr(stream, "buffer", None)
+    if buffer is not None:
+        buffer.write(text.encode("utf-8", errors="backslashreplace"))
+        buffer.flush()
+        return
+
+    encoding = getattr(stream, "encoding", None) or "ascii"
+    stream.write(text.encode(encoding, errors="backslashreplace").decode(encoding))
+    stream.flush()
+
+
+configure_utf8_stdio()
 
 
 def add_check(
@@ -100,9 +139,9 @@ def print_failed_checks(checks: list[dict[str, Any]]) -> None:
     failed = [item for item in checks if item["status"] == "FAIL"]
     if not failed:
         return
-    print("[FAIL 상세]")
+    safe_print("[FAIL 상세]")
     for item in failed:
-        print(
+        safe_print(
             f"- {item['name']} | "
             f"actual={item['actual']} | expected={item['expected']}"
         )
@@ -392,19 +431,19 @@ def main() -> int:
     REPORT_TXT.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     if fail_count:
-        print(
+        safe_print(
             f"[FAIL] Windows runtime source smoke: "
             f"{pass_count} PASS / {fail_count} FAIL"
         )
         print_failed_checks(checks)
-        print(f"report={REPORT_TXT}")
+        safe_print(f"report={REPORT_TXT}")
         return 1
 
-    print(
+    safe_print(
         f"[PASS] Windows runtime source smoke: "
         f"{pass_count} PASS / 0 FAIL"
     )
-    print(f"report={REPORT_TXT}")
+    safe_print(f"report={REPORT_TXT}")
     return 0
 
 
@@ -422,10 +461,10 @@ if __name__ == "__main__":
             + traceback.format_exc(),
             encoding="utf-8",
         )
-        print(
+        safe_print(
             f"[FAIL] Windows runtime source smoke 예외: "
             f"{type(exc).__name__}: {exc}"
         )
-        print(traceback.format_exc())
-        print(f"report={REPORT_TXT}")
+        safe_print(traceback.format_exc())
+        safe_print(f"report={REPORT_TXT}")
         raise SystemExit(1)
