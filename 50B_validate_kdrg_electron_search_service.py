@@ -577,8 +577,8 @@ def main() -> int:
     package = json.loads((ELECTRON / "package.json").read_text(encoding="utf-8"))
     check("package Node engine", package.get("engines", {}).get("node"), ">=22.0.0")
     check("Electron pin 유지", package.get("devDependencies", {}).get("electron"), "43.2.0")
-    check("package-lock 미생성", (ELECTRON / "package-lock.json").exists(), False)
-    check("node_modules 미생성", (ELECTRON / "node_modules").exists(), False)
+    check("Stage 50D package-lock 존재", (ELECTRON / "package-lock.json").exists(), True)
+    check("node_modules 경로가 파일이 아님", (ELECTRON / "node_modules").is_file(), False)
 
     main_source = (ELECTRON / "main.js").read_text(encoding="utf-8")
     preload_source = (ELECTRON / "preload.js").read_text(encoding="utf-8")

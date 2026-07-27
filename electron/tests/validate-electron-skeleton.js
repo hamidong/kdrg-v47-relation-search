@@ -60,7 +60,7 @@ check('start script', packageJson.scripts.start, 'electron .');
 check('validate skeleton script', packageJson.scripts['validate:skeleton'], 'node tests/validate-electron-skeleton.js');
 check('validate search script', packageJson.scripts['validate:search'], 'node tests/validate-search-service.js');
 check('validate UI script', packageJson.scripts['validate:ui'], 'node tests/validate-renderer-ui.js');
-check('validate aggregate script', packageJson.scripts.validate, 'npm run validate:skeleton && npm run validate:search && npm run validate:ui');
+check('validate aggregate script', packageJson.scripts.validate, 'npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:packaging');
 check('repository', packageJson.repository.url, 'https://github.com/hamidong/kdrg-v47-relation-search.git');
 
 const mainSource = read(path.join(ELECTRON_ROOT, 'main.js'));
@@ -123,8 +123,8 @@ check('exclude occurrence count', snapshot.displayContract.excludeOccurrences, 6
 check('unknown TABLE count', snapshot.displayContract.unknownTableCount, 646);
 check('raw corpus 미노출', snapshot.capabilities.rawCorpusExposedToRenderer, false);
 check('검색 서비스 연결 표시', snapshot.capabilities.searchServiceConnected, true);
-check('50C stage', snapshot.capabilities.stage, '50C_RENDERER_SEARCH_UI');
-check('50D next stage', snapshot.capabilities.nextStage, '50D_ELECTRON_PACKAGE_AND_WINDOWS_BUILD');
+check('50D stage', snapshot.capabilities.stage, '50D_ELECTRON_WINDOWS_PACKAGE_READY');
+check('50E next stage', snapshot.capabilities.nextStage, '50E_PREVIEW_RELEASE_AND_UI_REVIEW');
 
 const serialized = JSON.stringify(snapshot);
 check('원본 ADRG 배열 미포함', serialized.includes('adrg_records'), false);

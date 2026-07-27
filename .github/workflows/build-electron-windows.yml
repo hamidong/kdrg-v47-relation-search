@@ -1,0 +1,149 @@
+name: Build Electron Windows portable and publish Release
+
+on:
+  push:
+    tags:
+      - "electron-v*"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  windows-electron-package:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: "utf-8"
+      CSC_IDENTITY_AUTO_DISCOVERY: "false"
+
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 22.23.1 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22.23.1"
+          cache: npm
+          cache-dependency-path: electron/package-lock.json
+
+      - name: Python 3.11 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: npm 잠금 의존성 설치
+        working-directory: electron
+        shell: pwsh
+        run: npm ci --no-audit --no-fund
+
+      - name: Electron source·검색·UI·packaging 검증
+        working-directory: electron
+        shell: pwsh
+        run: npm run check
+
+      - name: Stage 50D Python 독립검증
+        shell: pwsh
+        run: |
+          python -X utf8 50D_validate_kdrg_electron_windows_packaging.py
+          $validationExitCode = $LASTEXITCODE
+
+          if (Test-Path "reports/electron_stage50d_validation_report.txt") {
+            Write-Host ""
+            Write-Host "===== electron_stage50d_validation_report.txt ====="
+            Get-Content "reports/electron_stage50d_validation_report.txt" -Encoding utf8
+          }
+
+          exit $validationExitCode
+
+      - name: Windows x64 portable exe 빌드
+        working-directory: electron
+        shell: pwsh
+        run: npm run dist:win
+
+      - name: portable exe 경로 확인
+        id: artifact
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem "electron/dist" `
+            -Filter "KDRG_V47_Relation_Search_Electron_*_Portable.exe" `
+            -File |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+
+          if (-not $exe) {
+            Write-Error "Electron portable exe를 찾지 못했습니다."
+            exit 1
+          }
+
+          "exe_path=$($exe.FullName)" >> $env:GITHUB_OUTPUT
+          "exe_name=$($exe.Name)" >> $env:GITHUB_OUTPUT
+          Write-Host "Portable exe: $($exe.FullName)"
+          Write-Host "Size: $($exe.Length) bytes"
+
+      - name: packaged exe 데이터·검색·renderer 기동검증
+        shell: pwsh
+        run: |
+          & "electron/scripts/verify-windows-portable.ps1" `
+            -ExePath "${{ steps.artifact.outputs.exe_path }}" `
+            -ReportPath "$env:RUNNER_TEMP\kdrg_electron_packaged_smoke_report.json"
+
+      - name: SHA256 생성
+        shell: pwsh
+        run: |
+          $exePath = "${{ steps.artifact.outputs.exe_path }}"
+          $hash = (Get-FileHash $exePath -Algorithm SHA256).Hash.ToLower()
+          "$hash  ${{ steps.artifact.outputs.exe_name }}" |
+            Set-Content "electron/dist/SHA256SUMS_ELECTRON.txt" -Encoding ascii
+          Get-Content "electron/dist/SHA256SUMS_ELECTRON.txt"
+
+      - name: Electron 버전 정보 추출
+        id: version
+        shell: pwsh
+        run: |
+          $package = Get-Content "electron/package.json" -Raw -Encoding utf8 |
+            ConvertFrom-Json
+          $version = [string]$package.version
+          "app_version=$version" >> $env:GITHUB_OUTPUT
+          "git_tag=electron-v$version" >> $env:GITHUB_OUTPUT
+          "release_title=KDRG V4.7 Electron $version" >> $env:GITHUB_OUTPUT
+
+      - name: Electron 태그와 package 버전 일치 확인
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $pushedTag = "${{ github.ref_name }}"
+          $expectedTag = "${{ steps.version.outputs.git_tag }}"
+
+          if ($pushedTag -ne $expectedTag) {
+            Write-Error "푸시된 태그($pushedTag)와 Electron package 태그($expectedTag)가 일치하지 않습니다."
+            exit 1
+          }
+
+          Write-Host "Electron 태그 일치 확인: $pushedTag"
+
+      - name: 회귀검증 요약
+        shell: pwsh
+        run: |
+          "## KDRG Electron Windows package" >> $env:GITHUB_STEP_SUMMARY
+          "- Node/npm lock install: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Search/UI/security regression: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- electron-builder portable x64: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Packaged data/search/renderer smoke: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Actions artifact upload: 사용하지 않음" >> $env:GITHUB_STEP_SUMMARY
+          "- GitHub Release Assets: Electron 태그에서만 업로드" >> $env:GITHUB_STEP_SUMMARY
+
+      - name: GitHub Release 생성 및 Electron exe 업로드
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.git_tag }}
+          name: ${{ steps.version.outputs.release_title }}
+          prerelease: ${{ contains(steps.version.outputs.app_version, '-') }}
+          files: |
+            electron/dist/${{ steps.artifact.outputs.exe_name }}
+            electron/dist/SHA256SUMS_ELECTRON.txt
+          fail_on_unmatched_files: true
+          generate_release_notes: true

@@ -6,6 +6,10 @@ const { buildBootstrapSnapshot } = require('./src/bootstrap-data');
 const { resolveDataFiles } = require('./src/data-paths');
 const { KdrgSearchService } = require('./src/kdrg-search-service');
 const {
+  shouldRunPackagedSmoke,
+  runPackagedRuntimeSmoke,
+} = require('./src/packaged-runtime-smoke');
+const {
   normalizeSearchRequest,
   normalizeDetailRequest,
 } = require('./src/search-result-contract');
@@ -109,9 +113,29 @@ if (!hasSingleInstanceLock) {
     mainWindow.focus();
   });
 
-  app.whenReady().then(() => {
+  app.whenReady().then(async () => {
     app.setName('KDRG V4.7 관계 검색기');
     Menu.setApplicationMenu(null);
+
+    if (shouldRunPackagedSmoke()) {
+      try {
+        await runPackagedRuntimeSmoke({
+          app,
+          BrowserWindow,
+          resolveDataFiles,
+          buildBootstrapSnapshot,
+          KdrgSearchService,
+          rendererPath: path.join(__dirname, 'renderer', 'index.html'),
+          preloadPath: path.join(__dirname, 'preload.js'),
+        });
+        app.exit(0);
+      } catch (error) {
+        console.error('[KDRG Electron] packaged runtime smoke 실패', error);
+        app.exit(1);
+      }
+      return;
+    }
+
     registerIpcHandlers();
     getSearchService();
     mainWindow = createMainWindow();

@@ -17,11 +17,61 @@
     "start": "electron .",
     "validate:skeleton": "node tests/validate-electron-skeleton.js",
     "validate:search": "node tests/validate-search-service.js",
-    "validate": "npm run validate:skeleton && npm run validate:search && npm run validate:ui",
-    "check": "node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && npm run validate",
-    "validate:ui": "node tests/validate-renderer-ui.js"
+    "validate": "npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:packaging",
+    "check": "node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaging-config.js && npm run validate",
+    "validate:ui": "node tests/validate-renderer-ui.js",
+    "validate:packaging": "node tests/validate-packaging-config.js",
+    "pack:win": "electron-builder --win dir --x64 --publish never",
+    "dist:win": "electron-builder --win portable --x64 --publish never"
   },
   "devDependencies": {
-    "electron": "43.2.0"
+    "electron": "43.2.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "kr.kdrg.v47.relationsearch",
+    "productName": "KDRG V4.7 관계 검색기",
+    "artifactName": "KDRG_V47_Relation_Search_Electron_${version}_Portable.${ext}",
+    "asar": true,
+    "compression": "maximum",
+    "npmRebuild": false,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "src/**/*",
+      "package.json",
+      "!tests/**/*",
+      "!README_STAGE*.md"
+    ],
+    "extraResources": [
+      {
+        "from": "../data/kdrg_v47_search_integrated.json",
+        "to": "data/kdrg_v47_search_integrated.json"
+      },
+      {
+        "from": "../data/kdrg_v47_ui_semantic_profile.json",
+        "to": "data/kdrg_v47_ui_semantic_profile.json"
+      },
+      {
+        "from": "../data/kdrg_v47_ui_display_contract.json",
+        "to": "data/kdrg_v47_ui_display_contract.json"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "executableName": "KDRG_V47_Relation_Search_Electron",
+      "requestedExecutionLevel": "asInvoker"
+    }
   }
 }

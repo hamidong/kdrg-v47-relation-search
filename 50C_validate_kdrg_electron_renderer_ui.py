@@ -14,7 +14,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-27_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V1"
+SCRIPT_VERSION = "2026-07-27_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V2"
 ROOT = Path(__file__).resolve().parent
 ELECTRON_ROOT = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -38,7 +38,7 @@ PROTECTED_HASHES = {
     "electron/.gitignore": "aa5069a33ab1272d0dc50e9968d39d9ad10babc6c545cb10a3a84dd132882ab2",
     "electron/README_STAGE50A.md": "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md": "09dc1a57af65ee56121abc18158c4250cda6af258e7360596ce5f6c7cdfd320f",
-    "electron/main.js": "a8b69820988321fdc2cd2f954b5c942434ecb663683a74cf5bd7e20c8804daf5",
+    "electron/main.js": "56d5dd8fce986e2883d58ab3f39aaba160dc05d98dc95a74409487fb0c61c208",
     "electron/preload.js": "f20cc0a0694f2b365e9e5d67640ac8f3ecd23e86f15234e6614979bb9e4fb672",
     "electron/src/data-paths.js": "27cca98bdf68a2d5d71210c36bcddc6068e413000be860b4e9a1a784a4f61316",
     "electron/src/search-normalizer.js": "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
@@ -48,11 +48,11 @@ PROTECTED_HASHES = {
 }
 
 TARGET_HASHES = {
-    "50B_validate_kdrg_electron_search_service.py": "5ecea71469b3236557248faeab65dbb388342084280af6adeb351385188b06d3",
-    "electron/package.json": "e61bf0fbf0a2520fdef5564ac2a17858627fd0711e17849f2f012d33a1d021a1",
-    "electron/src/bootstrap-data.js": "311f077c22b1212ad0e428e83b31bf54b74247e0d121c28ec448a36affca2226",
-    "electron/tests/validate-electron-skeleton.js": "be8d9163857c89d7a075063eef5e747685ebfd2f728c6d6b0bc7a02d0a58ff9a",
-    "electron/tests/validate-search-service.js": "52a29ee49285bcb2ad9e9949f5bf65ec25cd44a56586ce1081fc383b6037e7f0",
+    "50B_validate_kdrg_electron_search_service.py": "5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea",
+    "electron/package.json": "37e6f5d39e88ea27a07d7712d71a307801245df0f6de3fd7d0cef5359ce1be6c",
+    "electron/src/bootstrap-data.js": "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
+    "electron/tests/validate-electron-skeleton.js": "223680c321fd582f5e4a1641236a673639e41aca3f2ca74ed80f46a0f6394fd0",
+    "electron/tests/validate-search-service.js": "60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05",
     "electron/renderer/index.html": "d48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f",
     "electron/renderer/app.js": "43ea2db9431da87de40d72bd8eec373663f07fc8e986afecb212ee56e40790ce",
     "electron/renderer/styles.css": "275137e8f05bb78de982f0cf777db4e14b2a2aab702d6afb310062f79afe4c76",
@@ -369,8 +369,8 @@ def main() -> int:
                 lambda value, expected_marker, marker=marker: value["returncode"] == 0 and marker in value["stdout"],
             )
 
-    check("package-lock 미생성", (ELECTRON_ROOT / "package-lock.json").exists(), False)
-    check("node_modules 미생성", (ELECTRON_ROOT / "node_modules").exists(), False)
+    check("Stage 50D package-lock 존재", (ELECTRON_ROOT / "package-lock.json").exists(), True)
+    check("node_modules 경로가 파일이 아님", (ELECTRON_ROOT / "node_modules").is_file(), False)
     return write_report(checks, outputs)
 
 

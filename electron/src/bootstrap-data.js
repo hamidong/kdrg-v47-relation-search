@@ -114,8 +114,8 @@ function buildBootstrapSnapshot(dataFiles) {
     capabilities: {
       rawCorpusExposedToRenderer: false,
       searchServiceConnected: true,
-      stage: '50C_RENDERER_SEARCH_UI',
-      nextStage: '50D_ELECTRON_PACKAGE_AND_WINDOWS_BUILD',
+      stage: '50D_ELECTRON_WINDOWS_PACKAGE_READY',
+      nextStage: '50E_PREVIEW_RELEASE_AND_UI_REVIEW',
     },
   };
 

@@ -158,7 +158,7 @@ check('preload search method', preloadSource.includes('search: (request)'), true
 check('preload detail method', preloadSource.includes('getDetail: (request)'), true);
 check('preload ipcRenderer object hidden', preloadSource.includes('ipcRenderer,'), false);
 check('bootstrap search connected', bootstrapSource.includes('searchServiceConnected: true'), true);
-check('bootstrap Stage 50C', bootstrapSource.includes("stage: '50C_RENDERER_SEARCH_UI'"), true);
+check('bootstrap Stage 50D', bootstrapSource.includes("stage: '50D_ELECTRON_WINDOWS_PACKAGE_READY'"), true);
 
 console.log('validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50C_SEARCH_COMPAT_VALIDATOR_V1');
 console.log(`electron_root=${ELECTRON_ROOT}`);
