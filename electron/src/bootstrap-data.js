@@ -113,9 +113,9 @@ function buildBootstrapSnapshot(dataFiles) {
     },
     capabilities: {
       rawCorpusExposedToRenderer: false,
-      searchServiceConnected: false,
-      stage: '50A_ELECTRON_SKELETON',
-      nextStage: '50B_JAVASCRIPT_SEARCH_SERVICE',
+      searchServiceConnected: true,
+      stage: '50B_JAVASCRIPT_SEARCH_SERVICE',
+      nextStage: '50C_RENDERER_SEARCH_UI',
     },
   };
 

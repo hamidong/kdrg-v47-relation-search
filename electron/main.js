@@ -4,27 +4,64 @@ const path = require('node:path');
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const { buildBootstrapSnapshot } = require('./src/bootstrap-data');
 const { resolveDataFiles } = require('./src/data-paths');
+const { KdrgSearchService } = require('./src/kdrg-search-service');
+const {
+  normalizeSearchRequest,
+  normalizeDetailRequest,
+} = require('./src/search-result-contract');
 
-const IPC_CHANNEL = 'kdrg:get-bootstrap-snapshot';
+const IPC_CHANNELS = Object.freeze({
+  bootstrap: 'kdrg:get-bootstrap-snapshot',
+  searchStatus: 'kdrg:get-search-status',
+  search: 'kdrg:search',
+  detail: 'kdrg:get-detail',
+});
+
 let mainWindow = null;
 let bootstrapSnapshot = null;
+let searchService = null;
 
-function getBootstrapSnapshot() {
-  if (bootstrapSnapshot) {
-    return bootstrapSnapshot;
-  }
-
-  const dataFiles = resolveDataFiles({
+function getDataFiles() {
+  return resolveDataFiles({
     isPackaged: app.isPackaged,
     resourcesPath: process.resourcesPath,
   });
-  bootstrapSnapshot = buildBootstrapSnapshot(dataFiles);
+}
+
+function getBootstrapSnapshot() {
+  if (!bootstrapSnapshot) {
+    bootstrapSnapshot = buildBootstrapSnapshot(getDataFiles());
+  }
   return bootstrapSnapshot;
 }
 
+function getSearchService() {
+  if (!searchService) {
+    searchService = new KdrgSearchService(getDataFiles().integrated);
+  }
+  return searchService;
+}
+
 function registerIpcHandlers() {
-  ipcMain.removeHandler(IPC_CHANNEL);
-  ipcMain.handle(IPC_CHANNEL, async () => getBootstrapSnapshot());
+  for (const channel of Object.values(IPC_CHANNELS)) {
+    ipcMain.removeHandler(channel);
+  }
+
+  ipcMain.handle(IPC_CHANNELS.bootstrap, async () => getBootstrapSnapshot());
+  ipcMain.handle(IPC_CHANNELS.searchStatus, async () => getSearchService().status());
+  ipcMain.handle(IPC_CHANNELS.search, async (_event, payload) => {
+    const request = normalizeSearchRequest(payload);
+    return getSearchService().search(request.query, request.entityType, {
+      limit: request.limit,
+      offset: request.offset,
+      mdc: request.mdc,
+      classification: request.classification,
+    });
+  });
+  ipcMain.handle(IPC_CHANNELS.detail, async (_event, payload) => {
+    const request = normalizeDetailRequest(payload);
+    return getSearchService().getDetail(request.entityType, request.entityId);
+  });
 }
 
 function createMainWindow() {
@@ -67,12 +104,8 @@ if (!hasSingleInstanceLock) {
   app.quit();
 } else {
   app.on('second-instance', () => {
-    if (!mainWindow) {
-      return;
-    }
-    if (mainWindow.isMinimized()) {
-      mainWindow.restore();
-    }
+    if (!mainWindow) return;
+    if (mainWindow.isMinimized()) mainWindow.restore();
     mainWindow.focus();
   });
 
@@ -80,6 +113,7 @@ if (!hasSingleInstanceLock) {
     app.setName('KDRG V4.7 관계 검색기');
     Menu.setApplicationMenu(null);
     registerIpcHandlers();
+    getSearchService();
     mainWindow = createMainWindow();
 
     app.on('activate', () => {
@@ -91,7 +125,5 @@ if (!hasSingleInstanceLock) {
 }
 
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  if (process.platform !== 'darwin') app.quit();
 });

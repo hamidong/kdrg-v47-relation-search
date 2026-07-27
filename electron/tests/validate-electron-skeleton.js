@@ -53,7 +53,9 @@ check('package main', packageJson.main, 'main.js');
 check('Electron pin', packageJson.devDependencies.electron, '43.2.0');
 check('Node engine', packageJson.engines.node, '>=22.0.0');
 check('start script', packageJson.scripts.start, 'electron .');
-check('validate script', packageJson.scripts.validate, 'node tests/validate-electron-skeleton.js');
+check('validate skeleton script', packageJson.scripts['validate:skeleton'], 'node tests/validate-electron-skeleton.js');
+check('validate search script', packageJson.scripts['validate:search'], 'node tests/validate-search-service.js');
+check('validate aggregate script', packageJson.scripts.validate, 'npm run validate:skeleton && npm run validate:search');
 check('repository', packageJson.repository.url, 'https://github.com/hamidong/kdrg-v47-relation-search.git');
 
 const mainSource = read(path.join(ELECTRON_ROOT, 'main.js'));
@@ -69,7 +71,10 @@ check('외부 이동 차단', mainSource.includes("on('will-navigate'"), true);
 check('단일 인스턴스', mainSource.includes('requestSingleInstanceLock'), true);
 check('preload contextBridge', preloadSource.includes('contextBridge.exposeInMainWorld'), true);
 check('ipcRenderer 직접 노출 금지', preloadSource.includes('ipcRenderer,'), false);
-check('허용 IPC 단일 채널', (preloadSource.match(/kdrg:get-bootstrap-snapshot/g) || []).length, 1);
+check('bootstrap IPC 채널', (preloadSource.match(/kdrg:get-bootstrap-snapshot/g) || []).length, 1);
+check('search IPC 채널', (preloadSource.match(/kdrg:search/g) || []).length, 1);
+check('detail IPC 채널', (preloadSource.match(/kdrg:get-detail/g) || []).length, 1);
+check('status IPC 채널', (preloadSource.match(/kdrg:get-search-status/g) || []).length, 1);
 check('CSP 존재', htmlSource.includes('Content-Security-Policy'), true);
 check('connect-src none', htmlSource.includes("connect-src 'none'"), true);
 check('inline script 없음', htmlSource.includes('<script>'), false);
@@ -106,25 +111,25 @@ check('include occurrence count', snapshot.displayContract.includeOccurrences, 8
 check('exclude occurrence count', snapshot.displayContract.excludeOccurrences, 65);
 check('unknown TABLE count', snapshot.displayContract.unknownTableCount, 646);
 check('raw corpus 미노출', snapshot.capabilities.rawCorpusExposedToRenderer, false);
-check('검색 서비스 미연결 표시', snapshot.capabilities.searchServiceConnected, false);
-check('50A stage', snapshot.capabilities.stage, '50A_ELECTRON_SKELETON');
-check('50B next stage', snapshot.capabilities.nextStage, '50B_JAVASCRIPT_SEARCH_SERVICE');
+check('검색 서비스 연결 표시', snapshot.capabilities.searchServiceConnected, true);
+check('50B stage', snapshot.capabilities.stage, '50B_JAVASCRIPT_SEARCH_SERVICE');
+check('50C next stage', snapshot.capabilities.nextStage, '50C_RENDERER_SEARCH_UI');
 
 const serialized = JSON.stringify(snapshot);
 check('원본 ADRG 배열 미포함', serialized.includes('adrg_records'), false);
 check('원본 code 배열 미포함', serialized.includes('code_records'), false);
 check('bootstrap snapshot 크기 제한', Buffer.byteLength(serialized, 'utf8') < 20000, true);
 
-console.log(`validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50A_NODE_VALIDATOR_V1`);
+console.log(`validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50B_SKELETON_VALIDATOR_V1`);
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {
-  console.log(`[FAIL] Electron Stage 50A Node 검증: ${passCount} PASS / ${failures.length} FAIL`);
+  console.log(`[FAIL] Electron Stage 50B 보안 골격 검증: ${passCount} PASS / ${failures.length} FAIL`);
   console.log('[FAIL 상세]');
   for (const item of failures) {
     console.log(`- ${item.name} | actual=${JSON.stringify(item.actual)} | expected=${JSON.stringify(item.expected)}`);
   }
   process.exitCode = 1;
 } else {
-  console.log(`[PASS] Electron Stage 50A Node 검증: ${passCount} PASS / 0 FAIL`);
+  console.log(`[PASS] Electron Stage 50B 보안 골격 검증: ${passCount} PASS / 0 FAIL`);
 }
