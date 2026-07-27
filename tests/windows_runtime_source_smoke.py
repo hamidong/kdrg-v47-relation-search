@@ -21,7 +21,7 @@ if str(ROOT) not in sys.path:
 REPORTS = ROOT / "reports"
 REPORT_TXT = REPORTS / "windows_runtime_source_smoke_report.txt"
 REPORT_JSON = REPORTS / "windows_runtime_source_smoke_report.json"
-SCRIPT_VERSION = "2026-07-27_KDRG_V47_WINDOWS_RUNTIME_SOURCE_SMOKE_V3"
+SCRIPT_VERSION = "2026-07-27_KDRG_V47_WINDOWS_RUNTIME_SOURCE_SMOKE_V4"
 
 
 def configure_utf8_stdio() -> None:
@@ -151,7 +151,7 @@ def main() -> int:
     REPORTS.mkdir(parents=True, exist_ok=True)
     checks: list[dict[str, Any]] = []
 
-    from PySide6.QtWidgets import QApplication
+    from PySide6.QtWidgets import QApplication, QLabel, QToolButton
     from app.kdrg_search_service import KdrgSearchService
     from app.runtime_data_store import KDRGRuntimeDataStore
     from app.main_window import MainWindow
@@ -190,6 +190,85 @@ def main() -> int:
     add_check(checks, "RDRG count", counts["rdrg"] == 2699, counts["rdrg"], 2699)
     add_check(checks, "TABLE count", counts["table"] == 1308, counts["table"], 1308)
     add_check(checks, "CODE count", counts["code"] == 16571, counts["code"], 16571)
+
+    semantic_counts = dict(status.get("semantic_context_counts") or {})
+    expected_semantic_counts = {
+        "relationship_occurrence_count": 939,
+        "include_occurrence": 874,
+        "exclude_occurrence": 65,
+        "exclusion_base_occurrence": 28,
+        "exclusion_excluded_occurrence": 65,
+        "exclusion_excluded_final_include": 19,
+        "legacy_misclassification_occurrence": 47,
+    }
+    for key, expected in expected_semantic_counts.items():
+        actual = int(semantic_counts.get(key, -1))
+        add_check(checks, f"UI 의미 polarity {key}", actual == expected, actual, expected)
+
+    e011_groups = store.rules["E011"].condition_groups
+    e011_positive = [component.table_id for group in e011_groups for component in group.components]
+    e011_negative = [component.table_id for group in e011_groups for component in group.exclude_components]
+    add_check(
+        checks,
+        "E011 EXCLUSION base 포함",
+        "LT_E011_002" in e011_positive and "LT_E011_002" not in e011_negative,
+        {"positive": e011_positive, "negative": e011_negative},
+        "LT_E011_002 include only",
+    )
+    add_check(
+        checks,
+        "E011 EXCLUSION excluded 제외",
+        e011_negative == ["LT_E011_003"],
+        e011_negative,
+        ["LT_E011_003"],
+    )
+
+    rule_9610 = store.rules["9610"]
+    coverage_9610 = store.condition_coverage_for_adrg("9610")
+    add_check(
+        checks,
+        "9610 기본 TABLE과 추가조건 분리",
+        coverage_9610.get("basic_table_ids") == ["LT_9610_001"]
+        and not coverage_9610.get("has_condition_ast")
+        and not rule_9610.condition_groups,
+        {"coverage": coverage_9610, "group_count": len(rule_9610.condition_groups)},
+        "basic LT_9610_001 + no extra condition",
+    )
+
+    groups_9620 = store.rules["9620"].condition_groups
+    positive_9620 = [component.table_id for group in groups_9620 for component in group.components]
+    negative_9620 = [component.table_id for group in groups_9620 for component in group.exclude_components]
+    add_check(
+        checks,
+        "9620 포함·제외 역할",
+        positive_9620 == ["LT_9620_001"] and negative_9620 == ["LT_9620_002"],
+        {"positive": positive_9620, "negative": negative_9620},
+        {"positive": ["LT_9620_001"], "negative": ["LT_9620_002"]},
+    )
+
+    table_categories = {
+        "LT_9610_001": (store.table_category("LT_9610_001"), store.tables["LT_9610_001"].code_type),
+        "LT_9620_001": (store.table_category("LT_9620_001"), store.tables["LT_9620_001"].code_type),
+        "LT_9620_002": (store.table_category("LT_9620_002"), store.tables["LT_9620_002"].code_type),
+    }
+    add_check(
+        checks,
+        "TABLE 유형 중립·근거기반 분류",
+        table_categories == {
+            "LT_9610_001": ("unknown", "코드(유형 미확정)"),
+            "LT_9620_001": ("diagnosis", "상병코드"),
+            "LT_9620_002": ("procedure", "수술·처치코드"),
+        },
+        table_categories,
+        "contract categories",
+    )
+
+    all_name_empty = all(
+        not member.name_ko and not member.name_en
+        for table in store.tables.values()
+        for member in table.members
+    )
+    add_check(checks, "코드명 미수록 상태 보존", all_name_empty, all_name_empty, True)
 
     adrg_candidates = [
         "E011",
@@ -361,6 +440,80 @@ def main() -> int:
             },
             table_id,
         )
+
+    window.render_rule_detail("E011")
+    app.processEvents()
+    e011_labels = [label.text() for label in window.detail_container.findChildren(QLabel)]
+    add_check(
+        checks,
+        "UI E011 제외 문구",
+        "단, 다음 대상은 제외" in e011_labels,
+        [text for text in e011_labels if "제외" in text],
+        "단, 다음 대상은 제외",
+    )
+    add_check(
+        checks,
+        "UI 기술식 기본 접힘",
+        all(not button.isChecked() for button in window.detail_container.findChildren(QToolButton) if button.text() == "기술식 보기"),
+        [button.isChecked() for button in window.detail_container.findChildren(QToolButton) if button.text() == "기술식 보기"],
+        "all False",
+    )
+
+    window.render_rule_detail("9610")
+    app.processEvents()
+    labels_9610 = [label.text() for label in window.detail_container.findChildren(QLabel)]
+    add_check(
+        checks,
+        "UI 9610 추가조건 문구",
+        "별도의 추가 분기조건 없음" in labels_9610
+        and not any("본문 조건 AST 없음" in text for text in labels_9610),
+        [text for text in labels_9610 if "조건" in text],
+        "별도의 추가 분기조건 없음",
+    )
+
+    from app.main_window import CodeTableFrame
+
+    frame_9610 = CodeTableFrame(store.tables["LT_9610_001"])
+    frame_9610.ensure_populated()
+    headers_9610 = [
+        frame_9610.table.horizontalHeaderItem(index).text()
+        for index in range(frame_9610.table.columnCount())
+    ]
+    add_check(
+        checks,
+        "UI 코드명 없는 TABLE 단일 열",
+        frame_9610.table.columnCount() == 1 and headers_9610 == ["코드"],
+        {"count": frame_9610.table.columnCount(), "headers": headers_9610},
+        {"count": 1, "headers": ["코드"]},
+    )
+
+    frame_diagnosis = CodeTableFrame(store.tables["LT_9620_001"])
+    frame_diagnosis.ensure_populated()
+    diagnosis_headers = [
+        frame_diagnosis.table.horizontalHeaderItem(index).text()
+        for index in range(frame_diagnosis.table.columnCount())
+    ]
+    add_check(
+        checks,
+        "UI 진단 TABLE 코드 열 명칭",
+        diagnosis_headers == ["상병코드"],
+        diagnosis_headers,
+        ["상병코드"],
+    )
+
+    frame_procedure = CodeTableFrame(store.tables["LT_9620_002"])
+    frame_procedure.ensure_populated()
+    procedure_headers = [
+        frame_procedure.table.horizontalHeaderItem(index).text()
+        for index in range(frame_procedure.table.columnCount())
+    ]
+    add_check(
+        checks,
+        "UI 시술 TABLE 코드 열 명칭",
+        procedure_headers == ["처치코드"],
+        procedure_headers,
+        ["처치코드"],
+    )
 
     window.close()
     app.processEvents()

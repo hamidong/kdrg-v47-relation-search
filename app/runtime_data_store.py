@@ -31,11 +31,25 @@ POSITIVE_CONTEXTS = {
     "positive_required_table",
     "required_table_with_optional_companion",
     "semantic_text_condition",
-}
-NEGATIVE_CONTEXTS = {
-    "negative_or_exclusion_reference",
-    "allowed_exception_under_negated_or_procedure",
     "optional_companion_table",
+}
+NEGATIVE_CONTEXTS = {"negative_or_exclusion_reference"}
+
+DIAGNOSIS_ROLES = {
+    "principal_diagnosis",
+    "diagnosis",
+    "secondary_diagnosis",
+    "principal_or_secondary_diagnosis",
+}
+ADD_ON_ROLES = {"add_on_code"}
+PROCEDURE_ROLES = {"procedure", "text:procedure_count"}
+TABLE_CATEGORY_TO_CODE_TYPE = {
+    "diagnosis": "상병코드",
+    "procedure": "수술·처치코드",
+    "add_on_code": "부가코드",
+    "optional_semantic": "선택 조건 코드",
+    "other_semantic": "기타 조건 코드",
+    "unknown": "코드(유형 미확정)",
 }
 CATEGORY_TO_ENTITY = {
     "전체": "ALL",
@@ -80,7 +94,7 @@ def _code_type_from_text(*values: Any) -> str:
         return "검사·처치코드"
     if any(token in text for token in ("procedure", "surgery", "operation", "시술", "수술", "처치")):
         return "수술·처치코드"
-    return "수술·처치코드"
+    return "코드(유형 미확정)"
 
 
 def _result_kind(code_type: str) -> str:
@@ -90,7 +104,10 @@ def _result_kind(code_type: str) -> str:
         "수술·처치코드": "procedure_code",
         "검사·처치코드": "test_code",
         "부가코드": "supplement_code",
-    }.get(code_type, "procedure_code")
+        "선택 조건 코드": "generic_code",
+        "기타 조건 코드": "generic_code",
+        "코드(유형 미확정)": "generic_code",
+    }.get(code_type, "generic_code")
 
 
 def _short_list(values: Iterable[Any], limit: int = 18) -> str:
@@ -131,6 +148,7 @@ class KDRGRuntimeDataStore:
         self._table_rows = {str(row.get("logical_table_id") or ""): row for row in self.raw.get("logical_table_records") or []}
         self._code_rows = {normalize(row.get("code")): row for row in self.raw.get("code_records") or []}
         self._ast_rows = {str(row.get("adrg") or ""): row for row in self.raw.get("condition_ast_records") or []}
+        self._table_categories: Dict[str, str] = self._build_table_category_index()
 
         self._code_types_by_code: Dict[str, Set[str]] = self._build_code_type_index()
         self._member_by_code: Dict[str, CodeMember] = self._build_member_index()
@@ -148,6 +166,41 @@ class KDRGRuntimeDataStore:
     # 변환 구축
     # ------------------------------------------------------------------
 
+    @staticmethod
+    def _classify_table_category(role_set: Set[str]) -> str:
+        if role_set & DIAGNOSIS_ROLES:
+            return "diagnosis"
+        if role_set & ADD_ON_ROLES:
+            return "add_on_code"
+        if role_set & PROCEDURE_ROLES:
+            return "procedure"
+        if "text:optional_table_presence" in role_set:
+            return "optional_semantic"
+        if role_set:
+            return "other_semantic"
+        return "unknown"
+
+    def _build_table_category_index(self) -> Dict[str, str]:
+        evidence: Dict[str, Set[str]] = defaultdict(set)
+        for ast in self.raw.get("condition_ast_records") or []:
+            for node in ast.get("nodes") or []:
+                node_type = str(node.get("node_type") or "")
+                semantic_type = str(node.get("semantic_type") or "")
+                role = str(node.get("table_role") or "")
+                evidence_value = role or (f"text:{semantic_type}" if node_type == "TEXT_CONDITION" and semantic_type else "")
+                if not evidence_value:
+                    continue
+                for table_id in node.get("logical_table_ids") or []:
+                    evidence[str(table_id)].add(evidence_value)
+        return {
+            table_id: self._classify_table_category(evidence.get(table_id, set()))
+            for table_id in self._table_rows
+        }
+
+    def _table_code_type(self, table_id: str) -> str:
+        category = self._table_categories.get(str(table_id), "unknown")
+        return TABLE_CATEGORY_TO_CODE_TYPE.get(category, "코드(유형 미확정)")
+
     def _build_code_type_index(self) -> Dict[str, Set[str]]:
         output: Dict[str, Set[str]] = defaultdict(set)
         for row in self.raw.get("code_records") or []:
@@ -155,10 +208,9 @@ class KDRGRuntimeDataStore:
             for role in row.get("roles") or []:
                 output[code].add(_code_type_from_text(role))
             for table_id in row.get("logical_table_ids") or []:
-                table = self._table_rows.get(str(table_id)) or {}
-                output[code].add(_code_type_from_text(table.get("logical_table_scope"), table.get("logical_table_type")))
+                output[code].add(self._table_code_type(str(table_id)))
             if not output[code]:
-                output[code].add("수술·처치코드")
+                output[code].add("코드(유형 미확정)")
         return output
 
     def _build_member_index(self) -> Dict[str, CodeMember]:
@@ -171,7 +223,7 @@ class KDRGRuntimeDataStore:
             output[normalize(code)] = CodeMember(
                 code=code,
                 name_en=" / ".join(en_names[:2]),
-                name_ko=" / ".join(ko_names[:2]) or (names[0] if names else "코드명 원천 미수록"),
+                name_ko=" / ".join(ko_names[:2]) or (names[0] if names else ""),
                 original_order=index,
             )
         return output
@@ -199,14 +251,14 @@ class KDRGRuntimeDataStore:
         output: Dict[str, TableDef] = {}
         for row in self.raw.get("logical_table_records") or []:
             table_id = str(row.get("logical_table_id") or "")
-            code_type = _code_type_from_text(row.get("logical_table_scope"), row.get("logical_table_type"))
+            code_type = self._table_code_type(table_id)
             members: list[CodeMember] = []
             for index, code in enumerate(row.get("codes") or [], start=1):
                 base = self._member_by_code.get(normalize(code))
                 if base:
                     members.append(CodeMember(base.code, base.name_en, base.name_ko, index))
                 else:
-                    members.append(CodeMember(str(code), "", "코드명 원천 미수록", index))
+                    members.append(CodeMember(str(code), "", "", index))
             output[table_id] = TableDef(
                 table_id=table_id,
                 display_label=str(row.get("display_name") or table_id),
@@ -250,7 +302,7 @@ class KDRGRuntimeDataStore:
 
     def _condition_groups(self, adrg: str, ast: Optional[dict[str, Any]]) -> Tuple[ConditionGroup, ...]:
         if not ast:
-            return (ConditionGroup(1, "조건식 1", "", (), ("본문 조건 AST 없음",), ()),)
+            return ()
         node_rows = list(ast.get("nodes") or [])
         nodes = {str(node.get("node_id") or ""): node for node in node_rows if str(node.get("node_id") or "")}
         root_id = str(ast.get("root_node_id") or "")
@@ -355,7 +407,7 @@ class KDRGRuntimeDataStore:
             group_code = class_codes[0] if len(class_codes) == 1 else ""
             group_name = class_labels[0] if len(class_labels) == 1 else ("AADRG별 혼합 분류" if class_codes else "분류 미부여")
             ast = self._ast_rows.get(adrg)
-            source_raw = str((ast or {}).get("source_raw_text") or "본문 조건 AST 없음")
+            source_raw = str((ast or {}).get("source_raw_text") or "별도의 추가 분기조건 없음")
             canonical = str((ast or {}).get("canonical_expression") or source_raw)
             output[adrg] = RuleDef(
                 adrg=adrg,
@@ -385,6 +437,43 @@ class KDRGRuntimeDataStore:
     # ------------------------------------------------------------------
     # 기존 MainWindow 호환 API
     # ------------------------------------------------------------------
+
+    def basic_table_ids_for_adrg(self, adrg: str) -> List[str]:
+        row = self._adrg_rows.get(str(adrg)) or {}
+        return [str(value) for value in row.get("source_logical_table_ids") or [] if str(value) in self.tables]
+
+    def basic_tables_for_adrg(self, adrg: str) -> List[TableDef]:
+        return [self.tables[table_id] for table_id in self.basic_table_ids_for_adrg(adrg)]
+
+    def condition_coverage_for_adrg(self, adrg: str) -> dict[str, Any]:
+        source_ids = self.basic_table_ids_for_adrg(adrg)
+        ast = self._ast_rows.get(str(adrg))
+        if source_ids and not ast:
+            state = "BASIC_TABLE_NO_EXTRA_CONDITION"
+            summary = "기본 분류 TABLE 있음 · 별도의 추가 분기조건 없음"
+        elif not source_ids and not ast:
+            state = "NO_BASIC_TABLE_NO_EXTRA_CONDITION"
+            summary = "본문 기본 TABLE 및 별도의 추가 분기조건 없음"
+        elif ast and not any(node.get("logical_table_ids") for node in ast.get("nodes") or []):
+            state = "EXTRA_CONDITION_NO_TABLE_REF"
+            summary = "추가 임상·상태 조건 있음 · TABLE 참조 없음"
+        elif source_ids:
+            state = "BASIC_TABLE_AND_EXTRA_CONDITION_TABLES"
+            summary = "기본 분류 TABLE 및 추가 분기조건 있음"
+        else:
+            state = "EXTRA_CONDITION_TABLES_NO_BASIC_TABLE"
+            summary = "TABLE을 사용하는 추가 분기조건 있음"
+        return {
+            "coverage_state": state,
+            "summary_copy": summary,
+            "basic_table_ids": source_ids,
+            "has_condition_ast": bool(ast),
+            "condition_ast_id": str((ast or {}).get("condition_ast_id") or "") or None,
+            "technical_expression_available": bool((ast or {}).get("canonical_expression")),
+        }
+
+    def table_category(self, table_id: str) -> str:
+        return self._table_categories.get(str(table_id), "unknown")
 
     def rules_for_mdc(self, mdc: str) -> List[RuleDef]:
         code = str(mdc or "").strip().upper()
@@ -482,8 +571,12 @@ class KDRGRuntimeDataStore:
     def _code_type_for_result(self, code: str, category: str) -> str:
         if category in {"상병코드", "기타진단코드", "수술·처치코드", "검사·처치코드", "부가코드"}:
             return category
-        types = sorted(self._code_types_by_code.get(normalize(code), {"수술·처치코드"}))
-        priority = ["상병코드", "기타진단코드", "수술·처치코드", "검사·처치코드", "부가코드"]
+        types = sorted(self._code_types_by_code.get(normalize(code), {"코드(유형 미확정)"}))
+        priority = [
+            "상병코드", "기타진단코드", "수술·처치코드",
+            "검사·처치코드", "부가코드", "선택 조건 코드",
+            "기타 조건 코드", "코드(유형 미확정)",
+        ]
         return next((name for name in priority if name in types), types[0])
 
     def search(self, query: str, category: str = "전체") -> List[SearchResult]:
@@ -568,7 +661,7 @@ class KDRGRuntimeDataStore:
                     "table",
                     entity_id,
                     str(row.get("display_name") or entity_id),
-                    f"{_code_type_from_text(row.get('logical_table_scope'), row.get('logical_table_type'))} · {row.get('code_count', 0)}개 코드",
+                    f"{self.tables.get(entity_id).code_type if self.tables.get(entity_id) else '코드(유형 미확정)'} · {row.get('code_count', 0)}개 코드",
                     priority,
                 )
             else:

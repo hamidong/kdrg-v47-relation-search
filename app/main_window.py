@@ -53,6 +53,20 @@ _CODE_TYPE_ROLE: Dict[str, str] = {
     "수술·처치코드": "수술·처치",
     "검사·처치코드": "검사·처치",
     "부가코드": "부가코드",
+    "선택 조건 코드": "선택 조건",
+    "기타 조건 코드": "기타 조건",
+    "코드(유형 미확정)": "유형 미확정",
+}
+
+_CODE_TABLE_COLUMN_LABELS: Dict[str, Tuple[str, str, str]] = {
+    "상병코드": ("상병코드", "한글 진단명", "영문 진단명"),
+    "기타진단코드": ("상병코드", "한글 진단명", "영문 진단명"),
+    "수술·처치코드": ("처치코드", "한글 처치명", "영문 처치명"),
+    "검사·처치코드": ("검사·처치코드", "한글명", "영문명"),
+    "부가코드": ("부가코드", "코드명", "영문 코드명"),
+    "선택 조건 코드": ("코드", "한글명", "영문명"),
+    "기타 조건 코드": ("코드", "한글명", "영문명"),
+    "코드(유형 미확정)": ("코드", "한글명", "영문명"),
 }
 
 # =============================================================================
@@ -115,6 +129,7 @@ class ResultCard(QFrame):
             "supplement_code": "부가코드",
             "diagnosis_code": "상병코드",
             "secondary_diagnosis_code": "기타진단코드",
+            "generic_code": "코드",
             "adrg": "ADRG",
             "aadrg": "AADRG",
             "table": "TABLE",
@@ -130,6 +145,7 @@ class ResultCard(QFrame):
             "supplement_code": "BadgeOrange",
             "diagnosis_code": "BadgeBlue",
             "secondary_diagnosis_code": "BadgeBlue",
+            "generic_code": "BadgeGray",
             "adrg": "BadgePurple",
             "aadrg": "BadgePurple",
             "table": "BadgeGray",
@@ -144,7 +160,7 @@ class ResultCard(QFrame):
 
 
 class CodeTableFrame(QFrame):
-    """TABLE 버튼 클릭 시 펼쳐지는 상세 코드표 (코드·한글명·영문명 3열, 지연 채우기)."""
+    """원천에 실제 존재하는 열만 표시하는 TABLE 상세 코드표."""
 
     def __init__(
         self,
@@ -155,9 +171,22 @@ class CodeTableFrame(QFrame):
         super().__init__(parent)
         self.table_def = table_def
         self.highlight_code = normalize(highlight_code)
-        self._populated = False  # 지연 채우기: 펼칠 때만 행을 추가
+        self._populated = False
         self.setObjectName("ExpandedTableFrame")
         self.setVisible(False)
+
+        members = list(table_def.members)
+        self._show_ko = any(str(member.name_ko or "").strip() for member in members)
+        self._show_en = any(str(member.name_en or "").strip() for member in members)
+        labels = _CODE_TABLE_COLUMN_LABELS.get(
+            table_def.code_type,
+            _CODE_TABLE_COLUMN_LABELS["코드(유형 미확정)"],
+        )
+        self._columns: List[Tuple[str, str]] = [("code", labels[0])]
+        if self._show_ko:
+            self._columns.append(("name_ko", labels[1]))
+        if self._show_en:
+            self._columns.append(("name_en", labels[2]))
 
         layout = QVBoxLayout(self)
         layout.setContentsMargins(14, 12, 14, 12)
@@ -175,26 +204,32 @@ class CodeTableFrame(QFrame):
         layout.addLayout(title_row)
 
         self.filter_edit = QLineEdit()
-        self.filter_edit.setPlaceholderText("현재 table 안에서 코드 또는 코드명을 검색")
+        target = "코드 또는 코드명" if len(self._columns) > 1 else "코드"
+        self.filter_edit.setPlaceholderText(f"현재 TABLE 안에서 {target} 검색")
         self.filter_edit.setObjectName("InnerSearch")
         self.filter_edit.textChanged.connect(self.apply_filter)
         layout.addWidget(self.filter_edit)
 
         self.table = QTableWidget()
-        self.table.setColumnCount(3)
-        self.table.setHorizontalHeaderLabels(["코드", "한글명", "영문명"])
+        self.table.setColumnCount(len(self._columns))
+        self.table.setHorizontalHeaderLabels([label for _, label in self._columns])
         self.table.verticalHeader().setVisible(False)
         self.table.setAlternatingRowColors(True)
         self.table.setSelectionBehavior(QTableWidget.SelectRows)
         self.table.setEditTriggers(QTableWidget.NoEditTriggers)
         self.table.setObjectName("CodeTable")
         self.table.horizontalHeader().setSectionResizeMode(0, QHeaderView.ResizeToContents)
-        self.table.horizontalHeader().setSectionResizeMode(1, QHeaderView.Stretch)
-        self.table.horizontalHeader().setSectionResizeMode(2, QHeaderView.Stretch)
+        for column in range(1, len(self._columns)):
+            self.table.horizontalHeader().setSectionResizeMode(column, QHeaderView.Stretch)
         layout.addWidget(self.table)
 
+        if len(self._columns) == 1:
+            note = QLabel("현재 통합 데이터에는 코드명이 수록되지 않아 코드 열만 표시합니다.")
+            note.setObjectName("SmallMuted")
+            note.setWordWrap(True)
+            layout.addWidget(note)
+
     def ensure_populated(self) -> None:
-        """처음 펼쳐질 때 한 번만 행을 채웁니다."""
         if not self._populated:
             self.populate_table()
             self._populated = True
@@ -203,45 +238,35 @@ class CodeTableFrame(QFrame):
         members = list(self.table_def.members)
         self.table.setRowCount(len(members))
         for row, member in enumerate(members):
-            # display_name = "en / ko" 또는 "ko" 형식을 분리
-            raw = member.display_name or ""
-            if " / " in raw:
-                parts = raw.split(" / ", 1)
-                en_name, ko_name = parts[0].strip(), parts[1].strip()
-            elif hasattr(member, "name_ko") and hasattr(member, "name_en"):
-                ko_name = getattr(member, "name_ko", raw)
-                en_name = getattr(member, "name_en", "")
-            else:
-                ko_name = raw
-                en_name = ""
-
-            code_item = QTableWidgetItem(member.code)
-            ko_item = QTableWidgetItem(ko_name)
-            en_item = QTableWidgetItem(en_name)
-
+            values = {
+                "code": member.code,
+                "name_ko": member.name_ko,
+                "name_en": member.name_en,
+            }
             is_hl = self.highlight_code and normalize(member.code) == self.highlight_code
-            for item in (code_item, ko_item, en_item):
+            for column, (key, _) in enumerate(self._columns):
+                item = QTableWidgetItem(str(values.get(key) or ""))
                 if is_hl:
                     item.setData(Qt.UserRole, "highlight")
                     item.setBackground(Qt.GlobalColor.transparent)
-                    f = item.font()
-                    f.setBold(True)
-                    item.setFont(f)
-            self.table.setItem(row, 0, code_item)
-            self.table.setItem(row, 1, ko_item)
-            self.table.setItem(row, 2, en_item)
+                    font = item.font()
+                    font.setBold(True)
+                    item.setFont(font)
+                self.table.setItem(row, column, item)
 
         height = min(320, 42 + len(members) * 32)
         self.table.setMinimumHeight(height)
         self.table.setMaximumHeight(height)
 
     def apply_filter(self, text: str) -> None:
-        q = normalize(text)
+        query = normalize(text)
         for row in range(self.table.rowCount()):
-            code = self.table.item(row, 0).text() if self.table.item(row, 0) else ""
-            ko = self.table.item(row, 1).text() if self.table.item(row, 1) else ""
-            en = self.table.item(row, 2).text() if self.table.item(row, 2) else ""
-            visible = not q or q in normalize(code) or q in normalize(ko) or q in normalize(en)
+            values = [
+                self.table.item(row, column).text()
+                for column in range(self.table.columnCount())
+                if self.table.item(row, column) is not None
+            ]
+            visible = not query or any(query in normalize(value) for value in values)
             self.table.setRowHidden(row, not visible)
 
 
@@ -784,7 +809,10 @@ class MainWindow(QMainWindow):
 
         self._clear_detail_history()
         self.selected_result = result
-        if result.kind in {"diagnosis_code", "secondary_diagnosis_code", "procedure_code", "test_code", "supplement_code"}:
+        if result.kind in {
+            "diagnosis_code", "secondary_diagnosis_code", "procedure_code",
+            "test_code", "supplement_code", "generic_code",
+        }:
             self.current_type_label.setText(ResultCard.kind_label(result.kind))
             self.render_code_detail(result.key)
         elif result.kind in {"adrg", "aadrg"}:
@@ -985,6 +1013,7 @@ class MainWindow(QMainWindow):
             self._render_empty_detail("ADRG 상세 정보를 찾을 수 없습니다.")
             return
 
+        coverage = self.store.condition_coverage_for_adrg(rule.adrg)
         self.detail_layout.addWidget(
             self._build_primary_card(
                 badge_text="ADRG",
@@ -995,7 +1024,7 @@ class MainWindow(QMainWindow):
                     ("AADRG", rule.aadrg_display),
                     ("질병군 분류", rule.group_display),
                     ("MDC", rule.mdc),
-                    ("조건 원문", rule.condition_text),
+                    ("조건 구성", coverage["summary_copy"]),
                     ("KDRG 버전", self.store.version),
                     ("교정자료 기준일", self.store.correction_basis),
                     ("질병군 분류 기준", self.store.abc_basis),
@@ -1386,9 +1415,47 @@ class MainWindow(QMainWindow):
             mapping_detail.setWordWrap(True)
             layout.addWidget(mapping_detail)
 
-        condition_label = QLabel("분류조건")
-        condition_label.setObjectName("SmallMutedStrong")
-        layout.addWidget(condition_label)
+        coverage = self.store.condition_coverage_for_adrg(rule.adrg)
+        coverage_label = QLabel(coverage["summary_copy"])
+        coverage_label.setObjectName("ConditionIntro")
+        coverage_label.setWordWrap(True)
+        layout.addWidget(coverage_label)
+
+        basic_label = QLabel("기본 분류 TABLE")
+        basic_label.setObjectName("SmallMutedStrong")
+        layout.addWidget(basic_label)
+
+        basic_box = QFrame()
+        basic_box.setObjectName("ConditionBox")
+        basic_layout = QVBoxLayout(basic_box)
+        basic_layout.setContentsMargins(12, 10, 12, 10)
+        basic_layout.setSpacing(10)
+        basic_tables = self.store.basic_tables_for_adrg(rule.adrg)
+        if basic_tables:
+            for table_def in basic_tables:
+                basic_layout.addWidget(
+                    self._build_condition_table_row(
+                        table_def,
+                        highlight_code,
+                        "본문 정의 TABLE",
+                    )
+                )
+            if coverage["has_condition_ast"]:
+                basic_note = QLabel(
+                    "위 TABLE은 본문에 정의된 목록입니다. 실제 포함·제외 역할은 아래 추가 분기조건에서 확인합니다."
+                )
+                basic_note.setObjectName("SmallMuted")
+                basic_note.setWordWrap(True)
+                basic_layout.addWidget(basic_note)
+        else:
+            empty_basic = QLabel("본문 기본 TABLE 없음")
+            empty_basic.setObjectName("ConditionIntro")
+            basic_layout.addWidget(empty_basic)
+        layout.addWidget(basic_box)
+
+        extra_label = QLabel("추가 분기조건")
+        extra_label.setObjectName("SmallMutedStrong")
+        layout.addWidget(extra_label)
 
         condition_box = QFrame()
         condition_box.setObjectName("ConditionBox")
@@ -1396,66 +1463,109 @@ class MainWindow(QMainWindow):
         condition_layout.setContentsMargins(12, 10, 12, 10)
         condition_layout.setSpacing(10)
 
-        if len(rule.condition_groups) > 1:
-            intro_text = rule.condition_summary or f"아래 {len(rule.condition_groups)}개 조건식 중 하나로 구성됨"
-            intro = QLabel(intro_text)
-            intro.setObjectName("ConditionIntro")
-            intro.setWordWrap(True)
-            condition_layout.addWidget(intro)
+        if not coverage["has_condition_ast"]:
+            no_extra = QLabel("별도의 추가 분기조건 없음")
+            no_extra.setObjectName("ConditionIntro")
+            no_extra.setWordWrap(True)
+            condition_layout.addWidget(no_extra)
+        else:
+            if len(rule.condition_groups) > 1:
+                intro = QLabel(f"다음 {len(rule.condition_groups)}개 조건 중 하나를 충족")
+                intro.setObjectName("ConditionIntro")
+                intro.setWordWrap(True)
+                condition_layout.addWidget(intro)
 
-        for group_index, group_def in enumerate(rule.condition_groups):
-            group_box = QFrame()
-            group_box.setObjectName("ConditionGroupBox")
-            group_layout = QVBoxLayout(group_box)
-            group_layout.setContentsMargins(10, 9, 10, 9)
-            group_layout.setSpacing(8)
+            for group_index, group_def in enumerate(rule.condition_groups):
+                group_box = QFrame()
+                group_box.setObjectName("ConditionGroupBox")
+                group_layout = QVBoxLayout(group_box)
+                group_layout.setContentsMargins(10, 9, 10, 9)
+                group_layout.setSpacing(8)
 
-            show_group_title = len(rule.condition_groups) > 1
-            if show_group_title:
-                group_title = QLabel(group_def.group_label or f"조건식 {group_def.group_no}")
-                group_title.setObjectName("ConditionGroupTitle")
-                group_layout.addWidget(group_title)
+                if len(rule.condition_groups) > 1:
+                    group_title = QLabel(group_def.group_label or f"조건식 {group_def.group_no}")
+                    group_title.setObjectName("ConditionGroupTitle")
+                    group_layout.addWidget(group_title)
 
-            for idx, component in enumerate(group_def.components):
-                if idx > 0:
-                    op_text = component.operator_before or "AND"
-                    op = QLabel("그리고" if op_text.upper() == "AND" else op_text)
-                    op.setObjectName("OperatorLabel")
-                    op.setAlignment(Qt.AlignCenter)
-                    group_layout.addWidget(op)
-
-                table_def = self.store.tables[component.table_id]
-                row = self._build_condition_table_row(table_def, highlight_code, component.requirement_label)
-                group_layout.addWidget(row)
-
-            if group_def.exclude_components:
-                exclude_title = QLabel("미포함·제외조건")
-                exclude_title.setObjectName("ExcludeConditionTitle")
-                group_layout.addWidget(exclude_title)
-                for component in group_def.exclude_components:
+                for index, component in enumerate(group_def.components):
+                    if index > 0:
+                        operator = QLabel("그리고")
+                        operator.setObjectName("OperatorLabel")
+                        operator.setAlignment(Qt.AlignCenter)
+                        group_layout.addWidget(operator)
                     table_def = self.store.tables[component.table_id]
-                    row = self._build_condition_table_row(table_def, highlight_code, component.requirement_label, exclusion=True)
-                    group_layout.addWidget(row)
+                    group_layout.addWidget(
+                        self._build_condition_table_row(
+                            table_def,
+                            highlight_code,
+                            component.requirement_label or "기본 포함조건",
+                        )
+                    )
 
-            if group_def.requirements:
-                requirement_text = QLabel("추가 조건 · " + " · ".join(group_def.requirements))
-                requirement_text.setObjectName("GroupRequirement")
-                requirement_text.setWordWrap(True)
-                group_layout.addWidget(requirement_text)
+                if group_def.exclude_components:
+                    exclude_title = QLabel("단, 다음 대상은 제외")
+                    exclude_title.setObjectName("ExcludeConditionTitle")
+                    group_layout.addWidget(exclude_title)
+                    for component in group_def.exclude_components:
+                        table_def = self.store.tables[component.table_id]
+                        group_layout.addWidget(
+                            self._build_condition_table_row(
+                                table_def,
+                                highlight_code,
+                                component.requirement_label or "제외 대상",
+                                exclusion=True,
+                            )
+                        )
 
-            condition_layout.addWidget(group_box)
+                if group_def.requirements:
+                    requirement_text = QLabel("추가 조건 · " + " · ".join(group_def.requirements))
+                    requirement_text.setObjectName("GroupRequirement")
+                    requirement_text.setWordWrap(True)
+                    group_layout.addWidget(requirement_text)
 
-            if group_index < len(rule.condition_groups) - 1:
-                joiner = group_def.join_to_next_group or "OR"
-                joiner_label = "또는" if joiner.upper() == "OR" else joiner
-                divider = QLabel(f"──── {joiner_label} ────")
-                divider.setObjectName("OrDivider")
-                divider.setAlignment(Qt.AlignCenter)
-                condition_layout.addWidget(divider)
+                if not group_def.components and not group_def.exclude_components and not group_def.requirements:
+                    empty_group = QLabel("표시할 TABLE 조건 없음")
+                    empty_group.setObjectName("ConditionIntro")
+                    group_layout.addWidget(empty_group)
+
+                condition_layout.addWidget(group_box)
+
+                if group_index < len(rule.condition_groups) - 1:
+                    divider = QLabel("──── 또는 ────")
+                    divider.setObjectName("OrDivider")
+                    divider.setAlignment(Qt.AlignCenter)
+                    condition_layout.addWidget(divider)
+
+            if coverage["technical_expression_available"]:
+                technical_button = QToolButton()
+                technical_button.setText("기술식 보기")
+                technical_button.setCheckable(True)
+                technical_button.setArrowType(Qt.RightArrow)
+                technical_button.setCursor(Qt.PointingHandCursor)
+                technical_button.setObjectName("TablePill")
+                condition_layout.addWidget(technical_button)
+
+                technical_frame = QFrame()
+                technical_frame.setObjectName("ExpandedTableFrame")
+                technical_frame.setVisible(False)
+                technical_layout = QVBoxLayout(technical_frame)
+                technical_layout.setContentsMargins(12, 10, 12, 10)
+                technical_text = QLabel(rule.condition_summary)
+                technical_text.setObjectName("EvidenceText")
+                technical_text.setWordWrap(True)
+                technical_text.setTextInteractionFlags(Qt.TextSelectableByMouse)
+                technical_layout.addWidget(technical_text)
+                condition_layout.addWidget(technical_frame)
+
+                def toggle_technical(checked: bool) -> None:
+                    technical_frame.setVisible(checked)
+                    technical_button.setArrowType(Qt.DownArrow if checked else Qt.RightArrow)
+
+                technical_button.toggled.connect(toggle_technical)
 
         layout.addWidget(condition_box)
 
-        note = QLabel("table명 버튼을 누르면 코드·한글명·영문명 상세 코드표가 펼쳐집니다. 코드요약은 원문 순서를 유지합니다.")
+        note = QLabel("TABLE을 열면 원문 순서를 유지한 코드 목록이 표시됩니다. 원천에 없는 코드명은 임의 생성하지 않습니다.")
         note.setObjectName("SmallMuted")
         note.setWordWrap(True)
         layout.addWidget(note)
@@ -1498,7 +1608,7 @@ class MainWindow(QMainWindow):
         # 역할 배지: 코드유형 → 역할명 변환
         role_text = _CODE_TYPE_ROLE.get(table_def.code_type, table_def.code_type)
         if exclusion:
-            role_text = "제외조건"
+            role_text = "제외 대상"
         code_type_lbl = QLabel(role_text)
         code_type_lbl.setObjectName("ExcludeRoleBadge" if exclusion else "MiniTypeBadge")
         code_type_lbl.setAlignment(Qt.AlignCenter)

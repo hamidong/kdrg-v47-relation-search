@@ -194,8 +194,43 @@ class KdrgSearchService:
         return documents
 
     def _build_semantic_context_index(self) -> tuple[dict[tuple[str, str], list[dict[str, Any]]], dict[str, int]]:
+        """조건 AST의 TABLE 역할을 최종 polarity 기준으로 구축한다.
+
+        AND/OR는 현재 polarity를 상속하고, NOT은 반전한다. EXCLUSION은
+        첫 번째 자식(base)은 상속하고 두 번째 자식(excluded)은 반전한다.
+        이 규칙으로 base 오분류와 NOT+EXCLUSION 이중부정을 같은 방식으로 처리한다.
+        """
         output: defaultdict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
         summary = defaultdict(int)
+
+        def occurrence_qualifier(node: dict[str, Any], table_index: int) -> str:
+            node_type = str(node.get("node_type") or "")
+            semantic_type = str(node.get("semantic_type") or "")
+            if node_type == "TABLE_REF":
+                return "DIRECT_TABLE_MEMBERSHIP"
+            if semantic_type == "optional_table_presence":
+                return "REQUIRED_TABLE" if table_index == 0 else "OPTIONAL_COMPANION_TABLE"
+            if semantic_type == "procedure_count":
+                return "PROCEDURE_COUNT_TABLE"
+            if semantic_type == "major_problem":
+                return "MAJOR_PROBLEM_TABLE"
+            if semantic_type == "qualified_table_exclusion":
+                return "QUALIFIED_TABLE_EXCLUSION_TEXT"
+            if semantic_type == "qualified_table_condition":
+                return "QUALIFIED_TABLE_CONDITION_TEXT"
+            return "SEMANTIC_TEXT_TABLE"
+
+        positive_labels = {
+            "DIRECT_TABLE_MEMBERSHIP": "기본 포함조건",
+            "REQUIRED_TABLE": "기본 포함조건",
+            "OPTIONAL_COMPANION_TABLE": "선택적으로 함께 적용",
+            "PROCEDURE_COUNT_TABLE": "건수 조건 TABLE",
+            "MAJOR_PROBLEM_TABLE": "진단 건수 조건 TABLE",
+            "QUALIFIED_TABLE_CONDITION_TEXT": "원문 한정 조건 TABLE",
+            "QUALIFIED_TABLE_EXCLUSION_TEXT": "원문 한정 조건 TABLE",
+            "SEMANTIC_TEXT_TABLE": "의미 조건 TABLE",
+        }
+
         for ast in self.data.get("condition_ast_records") or []:
             adrg = str(ast.get("adrg") or "")
             ast_id = str(ast.get("condition_ast_id") or "")
@@ -204,99 +239,121 @@ class KdrgSearchService:
                 for node in ast.get("nodes") or []
                 if str(node.get("node_id") or "")
             }
+            root_id = str(ast.get("root_node_id") or "")
+            if root_id not in nodes:
+                raise KdrgSearchError(f"조건 AST root가 없습니다: {ast_id} / {root_id}")
+            visited: set[str] = set()
 
-            def ancestors(node_id: str) -> list[dict[str, Any]]:
-                found: list[dict[str, Any]] = []
-                seen: set[str] = set()
-                current = nodes.get(node_id)
-                while current:
-                    parent_id = str(current.get("parent_node_id") or "")
-                    if not parent_id or parent_id in seen:
-                        break
-                    seen.add(parent_id)
-                    parent = nodes.get(parent_id)
-                    if parent is None:
-                        break
-                    found.append(parent)
-                    current = parent
-                return found
-
-            for node in ast.get("nodes") or []:
-                node_id = str(node.get("node_id") or "")
+            def walk(node_id: str, polarity: int, path: list[dict[str, Any]]) -> None:
+                if node_id in visited:
+                    raise KdrgSearchError(f"조건 AST 중복 순회 또는 cycle: {ast_id} / {node_id}")
+                visited.add(node_id)
+                node = nodes[node_id]
                 node_type = str(node.get("node_type") or "")
-                table_ids = _unique_strings(node.get("logical_table_ids") or [])
-                if not table_ids:
-                    continue
-                fragment = str(node.get("source_fragment") or node.get("display_text") or "")
                 semantic_type = str(node.get("semantic_type") or "")
                 evaluation_mode = str(node.get("evaluation_mode") or "")
-                ancestor_types = [str(item.get("node_type") or "") for item in ancestors(node_id)]
+                fragment = str(node.get("source_fragment") or node.get("display_text") or "")
+                table_ids = _unique_strings(node.get("logical_table_ids") or [])
 
-                if node_type == "TEXT_CONDITION" and semantic_type == "optional_table_presence":
-                    for index, table_id in enumerate(table_ids):
-                        context = "required_table_with_optional_companion" if index == 0 else "optional_companion_table"
-                        output[(adrg, table_id)].append({
-                            "context": context,
-                            "display_label": "필수 TABLE" if index == 0 else "시행 여부 무관",
-                            "condition_ast_id": ast_id,
-                            "node_id": node_id,
-                            "source_fragment": fragment,
-                            "semantic_type": semantic_type,
-                            "evaluation_mode": evaluation_mode,
-                        })
-                        summary[context] += 1
-                    continue
+                inside_base = any(
+                    segment.get("operator") == "EXCLUSION" and segment.get("branch") == "base"
+                    for segment in path
+                )
+                inside_excluded = any(
+                    segment.get("operator") == "EXCLUSION" and segment.get("branch") == "excluded"
+                    for segment in path
+                )
 
-                allowed_exception = False
-                if node_type == "TABLE_REF":
-                    parent = nodes.get(str(node.get("parent_node_id") or ""))
-                    if parent and str(parent.get("node_type") or "") == "EXCLUSION":
-                        children = [str(x) for x in parent.get("child_node_ids") or []]
-                        if len(children) >= 2 and children[1] == node_id:
-                            base = nodes.get(children[0])
-                            base_is_or = bool(
-                                base
-                                and str(base.get("node_type") or "") == "TEXT_CONDITION"
-                                and str(base.get("semantic_type") or "") == "or_procedure"
-                            )
-                            parent_ancestor_types = [
-                                str(item.get("node_type") or "")
-                                for item in ancestors(str(parent.get("node_id") or ""))
-                            ]
-                            allowed_exception = base_is_or and "NOT" in parent_ancestor_types
+                for table_index, table_id in enumerate(table_ids):
+                    qualifier = occurrence_qualifier(node, table_index)
+                    is_positive = polarity >= 0
+                    if is_positive:
+                        if qualifier == "OPTIONAL_COMPANION_TABLE":
+                            context = "optional_companion_table"
+                        elif node_type == "TEXT_CONDITION":
+                            context = "semantic_text_condition"
+                        else:
+                            context = "positive_required_table"
+                        display_label = positive_labels.get(qualifier, "기본 포함조건")
+                    else:
+                        context = "negative_or_exclusion_reference"
+                        display_label = "제외 대상"
 
-                if allowed_exception:
-                    context = "allowed_exception_under_negated_or_procedure"
-                    display_label = "OR procedure 허용 예외"
-                elif "NOT" in ancestor_types or "EXCLUSION" in ancestor_types:
-                    context = "negative_or_exclusion_reference"
-                    display_label = "제외 조건"
-                elif node_type == "TEXT_CONDITION":
-                    context = "semantic_text_condition"
-                    display_label = "의미 조건 TABLE"
-                else:
-                    context = "positive_required_table"
-                    display_label = "필수 TABLE"
-
-                for table_id in table_ids:
                     output[(adrg, table_id)].append({
                         "context": context,
                         "display_label": display_label,
+                        "display_role": "INCLUDE" if is_positive else "EXCLUDE",
+                        "polarity_sign": 1 if is_positive else -1,
                         "condition_ast_id": ast_id,
                         "node_id": node_id,
+                        "node_type": node_type,
                         "source_fragment": fragment,
                         "semantic_type": semantic_type or None,
                         "evaluation_mode": evaluation_mode or None,
+                        "occurrence_qualifier": qualifier,
+                        "operator_path": deepcopy(path),
+                        "inside_exclusion_base": inside_base,
+                        "inside_exclusion_excluded": inside_excluded,
+                        "legacy_exclusion_ancestor_collapse_would_misclassify": bool(
+                            is_positive and (inside_base or inside_excluded)
+                        ),
                     })
                     summary[context] += 1
+                    summary["include_occurrence" if is_positive else "exclude_occurrence"] += 1
+                    if inside_base:
+                        summary["exclusion_base_occurrence"] += 1
+                    if inside_excluded:
+                        summary["exclusion_excluded_occurrence"] += 1
+                        if is_positive:
+                            summary["exclusion_excluded_final_include"] += 1
+                    if is_positive and (inside_base or inside_excluded):
+                        summary["legacy_misclassification_occurrence"] += 1
+
+                children = [str(value) for value in node.get("child_node_ids") or []]
+                if node_type == "NOT":
+                    for child_id in children:
+                        walk(child_id, -polarity, path + [{
+                            "node_id": node_id,
+                            "operator": "NOT",
+                            "branch": "negated",
+                            "polarity_after": -1 if polarity >= 0 else 1,
+                        }])
+                elif node_type == "EXCLUSION":
+                    if len(children) != 2:
+                        raise KdrgSearchError(f"EXCLUSION 자식은 정확히 2개여야 합니다: {ast_id} / {node_id}")
+                    walk(children[0], polarity, path + [{
+                        "node_id": node_id,
+                        "operator": "EXCLUSION",
+                        "branch": "base",
+                        "polarity_after": 1 if polarity >= 0 else -1,
+                    }])
+                    walk(children[1], -polarity, path + [{
+                        "node_id": node_id,
+                        "operator": "EXCLUSION",
+                        "branch": "excluded",
+                        "polarity_after": -1 if polarity >= 0 else 1,
+                    }])
+                else:
+                    for child_id in children:
+                        walk(child_id, polarity, path + [{
+                            "node_id": node_id,
+                            "operator": node_type,
+                            "branch": "inherit",
+                            "polarity_after": 1 if polarity >= 0 else -1,
+                        }])
+
+            walk(root_id, 1, [])
+            if visited != set(nodes):
+                missing = sorted(set(nodes) - visited)
+                raise KdrgSearchError(f"조건 AST 미도달 node가 있습니다: {ast_id} / {missing[:10]}")
 
         cleaned = {
             key: sorted(
                 values,
                 key=lambda item: (
-                    str(item.get("context") or ""),
                     str(item.get("condition_ast_id") or ""),
                     str(item.get("node_id") or ""),
+                    str(item.get("display_role") or ""),
                 ),
             )
             for key, values in output.items()
