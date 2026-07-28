@@ -24,6 +24,16 @@ jobs:
       - name: 체크아웃
         uses: actions/checkout@v6
 
+- name: checkout 바이트 정규화·검증
+  shell: pwsh
+  run: |
+    $ErrorActionPreference = "Stop"
+    git config core.autocrlf false
+    git config core.eol lf
+    git reset --hard HEAD
+    python -X utf8 electron/scripts/validate-checkout-byte-integrity.py
+    exit $LASTEXITCODE
+
       - name: Node.js 22.23.1 설치
         uses: actions/setup-node@v6
         with:

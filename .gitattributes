@@ -1,0 +1,30 @@
+# KDRG cross-platform checkout byte policy
+# SHA256-protected source/data files must keep identical bytes on Windows and Linux.
+* text=auto
+
+*.json text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.mjs text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.ps1 text eol=lf
+*.txt text eol=lf
+
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.xlsx binary
+*.xls binary
+*.hwp binary
+*.hwpx binary
+*.exe binary
+*.zip binary

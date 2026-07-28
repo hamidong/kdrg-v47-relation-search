@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-28_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V6"
+SCRIPT_VERSION = "2026-07-28_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V7"
 ROOT = Path(__file__).resolve().parent
 ELECTRON = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -23,7 +23,7 @@ REPORT_TXT = REPORT_DIR / "electron_stage50d_validation_report.txt"
 REPORT_JSON = REPORT_DIR / "electron_stage50d_validation_report.json"
 
 PROTECTED_HASHES = {'data/kdrg_v47_search_integrated.json': '3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1', 'data/kdrg_v47_ui_semantic_profile.json': 'c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e', 'data/kdrg_v47_ui_display_contract.json': '9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac', 'app/kdrg_search_service.py': '35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd', 'app/runtime_data_store.py': 'e2d5bf1de4c9697f84e30f9e8ec9664abf9cda0acddb392620c3a7b71f28d48d', 'app/main_window.py': '291b4f76d389b24695ebe2b180b1cd4a729a8978af758dd279656c67ac5df242', 'tests/windows_runtime_source_smoke.py': '5fc535d44956e4e5efef3e4356c5f8629954b5a9e60bf6d912987257629fc907', 'version.py': '2c30bcec8f896845e26f371297c75dde609a27df693059c9faab3d91b828506c', '.github/workflows/build-windows-release.yml': 'ccd5347a863c277841d5594b81f7471a8cffd9a16da36ff70d8c44d1e4556f9e', 'electron/preload.js': 'f20cc0a0694f2b365e9e5d67640ac8f3ecd23e86f15234e6614979bb9e4fb672', 'electron/src/data-paths.js': '27cca98bdf68a2d5d71210c36bcddc6068e413000be860b4e9a1a784a4f61316', 'electron/src/search-normalizer.js': 'f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e', 'electron/src/search-result-contract.js': 'cf979434aace8fde78c28130901295a2fb8e48049f5ef1ca4b69779cb5c48082', 'electron/src/kdrg-search-service.js': 'acecdeb55267341e7570e3f1c60a97f4f9abf9c74fb2c31ae2d64b84c48baad8', 'electron/renderer/index.html': 'd48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f', 'electron/renderer/app.js': '43ea2db9431da87de40d72bd8eec373663f07fc8e986afecb212ee56e40790ce', 'electron/renderer/styles.css': '275137e8f05bb78de982f0cf777db4e14b2a2aab702d6afb310062f79afe4c76', 'electron/renderer/ui-formatters.js': '64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944', 'electron/tests/run-search-parity.js': '9da5b1529c60f4ea3a7a0507e9a6a796cff3b60e52acd39aef3fd176c980b223', 'electron/tests/validate-renderer-ui.js': '33a915a61cccdd0e4c716f4cd5f5b9c815bced6481dde7f4d8a37be2eeb6ae6f', 'electron/README_STAGE50A.md': 'bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886', 'electron/README_STAGE50B.md': '09dc1a57af65ee56121abc18158c4250cda6af258e7360596ce5f6c7cdfd320f', 'electron/README_STAGE50C.md': '35f92d8bd42649ee7bdb651979626235517ea06a3a185bae3128b2b212e0478f'}
-TARGET_HASHES = {'50B_validate_kdrg_electron_search_service.py': '5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea', '50C_validate_kdrg_electron_renderer_ui.py': 'd40e700a607f43f64526f4b85ecd5b43c2c32d1f9511e2b813404f5297e8834f', 'electron/package.json': '37e6f5d39e88ea27a07d7712d71a307801245df0f6de3fd7d0cef5359ce1be6c', 'electron/main.js': '56d5dd8fce986e2883d58ab3f39aaba160dc05d98dc95a74409487fb0c61c208', 'electron/src/bootstrap-data.js': 'de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c', 'electron/src/packaged-runtime-smoke.js': '4b9b26f56783008b2127e34ac2e653e70776a227501a8d1d4f5c1286d0e3ee30', 'electron/tests/validate-packaging-config.js': '34e59cd9cf7840f8e7be51633d6f237745f844a4753c54a8f60aaeccb96a56b2', 'electron/scripts/verify-windows-portable.ps1': '63c98bbd22a4358f0d9954e702686a03590180f03b254f1909508da9b8916500', '.github/workflows/build-electron-windows.yml': '21180545f7ab96056f6137d7bf55f9ccc71017b1842b8282a89e445b48c61f8b', 'electron/README_STAGE50D.md': 'adad88a75b3e2c3f20de83ffe3d5e086ca39cf8010d666a08527c18a7bb6cc26', 'electron/tests/validate-electron-skeleton.js': '223680c321fd582f5e4a1641236a673639e41aca3f2ca74ed80f46a0f6394fd0', 'electron/tests/validate-search-service.js': '60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05', 'electron/scripts/validate-package-lock-registry.py': 'ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92'}
+TARGET_HASHES = {'50B_validate_kdrg_electron_search_service.py': '5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea', '50C_validate_kdrg_electron_renderer_ui.py': 'd40e700a607f43f64526f4b85ecd5b43c2c32d1f9511e2b813404f5297e8834f', 'electron/package.json': '37e6f5d39e88ea27a07d7712d71a307801245df0f6de3fd7d0cef5359ce1be6c', 'electron/main.js': '56d5dd8fce986e2883d58ab3f39aaba160dc05d98dc95a74409487fb0c61c208', 'electron/src/bootstrap-data.js': 'de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c', 'electron/src/packaged-runtime-smoke.js': '4b9b26f56783008b2127e34ac2e653e70776a227501a8d1d4f5c1286d0e3ee30', 'electron/tests/validate-packaging-config.js': '34e59cd9cf7840f8e7be51633d6f237745f844a4753c54a8f60aaeccb96a56b2', 'electron/scripts/verify-windows-portable.ps1': '63c98bbd22a4358f0d9954e702686a03590180f03b254f1909508da9b8916500', '.github/workflows/build-electron-windows.yml': '83a9ed0606fea6d58c0d54eddcd99aa25c2ec3ab3c024d21c2525ed7b070b842', 'electron/README_STAGE50D.md': 'adad88a75b3e2c3f20de83ffe3d5e086ca39cf8010d666a08527c18a7bb6cc26', 'electron/tests/validate-electron-skeleton.js': '223680c321fd582f5e4a1641236a673639e41aca3f2ca74ed80f46a0f6394fd0', 'electron/tests/validate-search-service.js': '60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05', 'electron/scripts/validate-package-lock-registry.py': 'ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92', '.gitattributes': 'a0f4b46a756c5b8667ebb96d74cc2aaf5308cd489ba5f1c555135f635aa26823', 'electron/scripts/validate-checkout-byte-integrity.py': 'f9e96431c692afe970af3e3e2b3df870b292af843474eb027c6da1ac6bacbc97'}
 EXPECTED_LOCK_HASH = "cf64b4826ff5feabb81b257797492528f4cbdc5c30d1a008d1960b2f1c003f8c"
 
 JS_CHECK_FILES = (
@@ -546,6 +546,11 @@ def main() -> int:
                 ELECTRON,
                 "package-lock registry canonicalization 검증",
             ),
+            "checkout byte integrity 독립검증": (
+                [sys.executable, "scripts/validate-checkout-byte-integrity.py"],
+                ELECTRON,
+                "checkout byte integrity 검증",
+            ),
         }
         for name, (args, cwd, marker) in command_specs.items():
             result = run_command(args, cwd)
@@ -592,6 +597,32 @@ def main() -> int:
     check(
         "registry validator 실행",
         "scripts/validate-package-lock-registry.py" in workflow,
+        True,
+    )
+    check(
+        "checkout 바이트 정규화 단계",
+        "checkout 바이트 정규화·검증" in workflow,
+        True,
+    )
+    check(
+        "checkout Git LF 재구성",
+        "git config core.autocrlf false" in workflow
+        and "git config core.eol lf" in workflow
+        and "git reset --hard HEAD" in workflow,
+        True,
+    )
+    attributes_text = (ROOT / ".gitattributes").read_text(encoding="utf-8")
+    check(
+        ".gitattributes LF 정책",
+        all(
+            rule in attributes_text
+            for rule in (
+                "*.json text eol=lf",
+                "*.js text eol=lf",
+                "*.py text eol=lf",
+                "*.yml text eol=lf",
+            )
+        ),
         True,
     )
     check(
