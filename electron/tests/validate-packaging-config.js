@@ -112,7 +112,20 @@ function main() {
   check('workflow Node 22.23.1', workflow.includes('node-version: "22.23.1"'), true);
   check('workflow npm CLI pin', workflow.includes('NPM_CLI_VERSION: "11.17.0"'), true);
   check('workflow setup-node npm cache 미사용', workflow.includes('cache: npm'), false);
-  check('workflow 실행별 fresh npm cache', workflow.includes('npm-cache-${{ github.run_id }}-${{ github.run_attempt }}'), true);
+  const jobEnvStart = workflow.indexOf('    env:');
+  const stepsStart = workflow.indexOf('    steps:');
+  const jobEnvBlock = jobEnvStart >= 0 && stepsStart > jobEnvStart
+    ? workflow.slice(jobEnvStart, stepsStart)
+    : '';
+  check('workflow job env runner context 미사용', jobEnvBlock.includes('${{ runner.'), false);
+  check('workflow 전체 runner context 조기평가 미사용', workflow.includes('${{ runner.'), false);
+  check('workflow 런타임 임시경로 초기화 단계', workflow.includes('Actions 런타임 임시경로 초기화'), true);
+  check('workflow RUNNER_TEMP 런타임 사용', workflow.includes('$env:RUNNER_TEMP'), true);
+  check('workflow 실행 식별자 환경변수 사용', workflow.includes('$env:GITHUB_RUN_ID') && workflow.includes('$env:GITHUB_RUN_ATTEMPT'), true);
+  check('workflow 실행별 fresh npm cache', workflow.includes('npm-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)'), true);
+  check('workflow npm cache GITHUB_ENV 전달', workflow.includes('"NPM_CONFIG_CACHE=$npmCache" >> $env:GITHUB_ENV'), true);
+  check('workflow Electron cache GITHUB_ENV 전달', workflow.includes('"ELECTRON_CACHE=$electronCache" >> $env:GITHUB_ENV'), true);
+  check('workflow builder cache GITHUB_ENV 전달', workflow.includes('"ELECTRON_BUILDER_CACHE=$builderCache" >> $env:GITHUB_ENV'), true);
   check('workflow npm registry metadata', workflow.includes('https://registry.npmjs.org/npm/$npmVersion'), true);
   check('workflow npm tarball SHA512', workflow.includes('SHA512') && workflow.includes('expectedIntegrity'), true);
   check('workflow npm CLI 직접 실행', workflow.includes('& node $npmCli ci'), true);

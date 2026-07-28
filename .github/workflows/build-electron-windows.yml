@@ -18,9 +18,6 @@ jobs:
       PYTHONIOENCODING: "utf-8"
       CSC_IDENTITY_AUTO_DISCOVERY: "false"
       NPM_CLI_VERSION: "11.17.0"
-      NPM_CONFIG_CACHE: ${{ runner.temp }}\npm-cache-${{ github.run_id }}-${{ github.run_attempt }}
-      ELECTRON_CACHE: ${{ runner.temp }}\electron-cache
-      ELECTRON_BUILDER_CACHE: ${{ runner.temp }}\electron-builder-cache
 
     steps:
       - name: 체크아웃
@@ -35,6 +32,33 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+
+      - name: Actions 런타임 임시경로 초기화
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          if (-not $env:RUNNER_TEMP) {
+            Write-Error "RUNNER_TEMP 환경변수가 없습니다."
+            exit 1
+          }
+
+          $npmCache = Join-Path $env:RUNNER_TEMP "npm-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)"
+          $electronCache = Join-Path $env:RUNNER_TEMP "electron-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)"
+          $builderCache = Join-Path $env:RUNNER_TEMP "electron-builder-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)"
+
+          foreach ($cachePath in @($npmCache, $electronCache, $builderCache)) {
+            Remove-Item $cachePath -Recurse -Force -ErrorAction SilentlyContinue
+            New-Item -ItemType Directory -Path $cachePath -Force | Out-Null
+          }
+
+          "NPM_CONFIG_CACHE=$npmCache" >> $env:GITHUB_ENV
+          "ELECTRON_CACHE=$electronCache" >> $env:GITHUB_ENV
+          "ELECTRON_BUILDER_CACHE=$builderCache" >> $env:GITHUB_ENV
+
+          Write-Host "NPM_CONFIG_CACHE=$npmCache"
+          Write-Host "ELECTRON_CACHE=$electronCache"
+          Write-Host "ELECTRON_BUILDER_CACHE=$builderCache"
 
       - name: npm CLI 11.17.0 무결성 검증 준비
         id: npm_cli
