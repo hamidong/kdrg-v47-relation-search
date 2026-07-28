@@ -11,11 +11,14 @@ Stage 50C에서 검증된 검색 UI를 Windows x64 단일 portable exe로 패키
 - electron-builder 26.15.3
 - npm CLI 11.17.0
 - npm package-lock lockfileVersion 3
+- package-lock resolved URL: `https://registry.npmjs.org/`만 허용
 
 ## npm 재현성·복구 원칙
 
 - Node에 동봉된 npm을 그대로 신뢰하지 않고 npm CLI 11.17.0을 별도로 고정한다.
 - npm registry metadata의 `dist.integrity`와 다운로드한 tarball의 SHA512를 비교한다.
+- Replit에서 생성된 package-lock의 내부 mirror URL은 공식 npm registry URL로 정규화한다.
+- `package-firewall.replit.local`, 평문 HTTP, 비공식 registry URL이 남으면 Actions 시작 전에 실패시킨다.
 - GitHub Actions job 수준 `env`에는 runner context를 사용하지 않고 정적 값만 둔다.
 - runner가 시작된 뒤 `$env:RUNNER_TEMP`와 기본 실행 식별자 환경변수로 임시경로를 계산한다.
 - 계산된 npm·Electron cache 경로는 `$GITHUB_ENV`로 이후 단계에 전달한다.
@@ -38,13 +41,14 @@ Stage 50C에서 검증된 검색 UI를 Windows x64 단일 portable exe로 패키
 
 1. JavaScript 문법·검색·UI·보안 회귀검증
 2. job-level context 허용범위와 runner 임시경로 초기화 검증
-3. 고정 npm CLI tarball SHA512와 package-lock 정확 버전 검증
-4. electron-builder 설정 검증
-5. Windows portable exe 크기 확인
-6. 패키지 내부 데이터 SHA256/schema 확인
-7. E011 검색·상세조회
-8. 숨김 BrowserWindow renderer 로드
-9. smoke JSON 보고서 확인
+3. package-lock resolved URL 공식 registry 정규화 검증
+4. 고정 npm CLI tarball SHA512와 package-lock 정확 버전 검증
+5. electron-builder 설정 검증
+6. Windows portable exe 크기 확인
+7. 패키지 내부 데이터 SHA256/schema 확인
+8. E011 검색·상세조회
+9. 숨김 BrowserWindow renderer 로드
+10. smoke JSON 보고서 확인
 
 ## 다음 단계
 

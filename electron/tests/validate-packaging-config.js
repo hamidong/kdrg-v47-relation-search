@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const VALIDATOR_VERSION =
-  '2026-07-28_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V2';
+  '2026-07-28_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V3';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const ROOT = path.resolve(ELECTRON_ROOT, '..');
 
@@ -33,14 +33,43 @@ function sha256(filePath) {
 function includesAll(value, required) {
   return required.every((item) => value.includes(item));
 }
+function collectResolvedUrls(value, output = []) {
+  if (Array.isArray(value)) {
+    for (const child of value) {
+      collectResolvedUrls(child, output);
+    }
+    return output;
+  }
+  if (value && typeof value === 'object') {
+    if (typeof value.resolved === 'string' && value.resolved.trim()) {
+      output.push(value.resolved.trim());
+    }
+    for (const child of Object.values(value)) {
+      collectResolvedUrls(child, output);
+    }
+  }
+  return output;
+}
 function main() {
   const packagePath = path.join(ELECTRON_ROOT, 'package.json');
   const lockPath = path.join(ELECTRON_ROOT, 'package-lock.json');
   const workflowPath = path.join(ROOT, '.github', 'workflows', 'build-electron-windows.yml');
   const smokeSourcePath = path.join(ELECTRON_ROOT, 'src', 'packaged-runtime-smoke.js');
   const verifyScriptPath = path.join(ELECTRON_ROOT, 'scripts', 'verify-windows-portable.ps1');
+  const registryValidatorPath = path.join(
+    ELECTRON_ROOT,
+    'scripts',
+    'validate-package-lock-registry.py',
+  );
 
-  for (const filePath of [packagePath, lockPath, workflowPath, smokeSourcePath, verifyScriptPath]) {
+  for (const filePath of [
+    packagePath,
+    lockPath,
+    workflowPath,
+    smokeSourcePath,
+    verifyScriptPath,
+    registryValidatorPath,
+  ]) {
     check(`필수 파일 존재 ${path.relative(ROOT, filePath)}`, fs.existsSync(filePath), true);
   }
 
@@ -92,6 +121,30 @@ function main() {
   check('lock resolved Electron version', lockJson.packages?.['node_modules/electron']?.version, '43.2.0');
   check('lock resolved electron-builder version', lockJson.packages?.['node_modules/electron-builder']?.version, '26.15.3');
 
+  const resolvedUrls = collectResolvedUrls(lockJson);
+  const internalRegistryUrls = resolvedUrls.filter((url) =>
+    url.toLowerCase().includes('package-firewall.replit.local'));
+  const plainHttpUrls = resolvedUrls.filter((url) =>
+    url.toLowerCase().startsWith('http://'));
+  const officialRegistryUrls = resolvedUrls.filter((url) =>
+    url.startsWith('https://registry.npmjs.org/'));
+  check('lock resolved URL 수', resolvedUrls.length, '>= 50', (value) => value >= 50);
+  check('lock Replit 내부 registry URL 없음', internalRegistryUrls.length, 0);
+  check('lock 평문 HTTP URL 없음', plainHttpUrls.length, 0);
+  check('lock 공식 npm registry URL 전체', officialRegistryUrls.length, resolvedUrls.length);
+
+  const registryValidatorSource = fs.readFileSync(registryValidatorPath, 'utf8');
+  check(
+    'registry validator 공식 host',
+    registryValidatorSource.includes('registry.npmjs.org'),
+    true,
+  );
+  check(
+    'registry validator 내부 host 차단',
+    registryValidatorSource.includes('package-firewall.replit.local'),
+    true,
+  );
+
   const mainSource = fs.readFileSync(path.join(ELECTRON_ROOT, 'main.js'), 'utf8');
   const smokeSource = fs.readFileSync(smokeSourcePath, 'utf8');
   check('main smoke import', mainSource.includes("require('./src/packaged-runtime-smoke')"), true);
@@ -111,6 +164,26 @@ function main() {
   check('workflow setup-python Node24 세대', workflow.includes('actions/setup-python@v6'), true);
   check('workflow Node 22.23.1', workflow.includes('node-version: "22.23.1"'), true);
   check('workflow npm CLI pin', workflow.includes('NPM_CLI_VERSION: "11.17.0"'), true);
+  check(
+    'workflow 공식 npm registry 고정',
+    workflow.includes('NPM_CONFIG_REGISTRY: "https://registry.npmjs.org"'),
+    true,
+  );
+  check(
+    'workflow package-lock registry 사전검증',
+    workflow.includes('package-lock 공식 registry 사전검증'),
+    true,
+  );
+  check(
+    'workflow registry validator 실행',
+    workflow.includes('scripts/validate-package-lock-registry.py'),
+    true,
+  );
+  check(
+    'workflow npm ci 공식 registry 명시',
+    workflow.includes('--registry=https://registry.npmjs.org'),
+    true,
+  );
   check('workflow setup-node npm cache 미사용', workflow.includes('cache: npm'), false);
   const jobEnvStart = workflow.indexOf('    env:');
   const stepsStart = workflow.indexOf('    steps:');

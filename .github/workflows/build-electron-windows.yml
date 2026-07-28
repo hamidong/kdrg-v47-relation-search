@@ -18,6 +18,7 @@ jobs:
       PYTHONIOENCODING: "utf-8"
       CSC_IDENTITY_AUTO_DISCOVERY: "false"
       NPM_CLI_VERSION: "11.17.0"
+      NPM_CONFIG_REGISTRY: "https://registry.npmjs.org"
 
     steps:
       - name: 체크아웃
@@ -59,6 +60,13 @@ jobs:
           Write-Host "NPM_CONFIG_CACHE=$npmCache"
           Write-Host "ELECTRON_CACHE=$electronCache"
           Write-Host "ELECTRON_BUILDER_CACHE=$builderCache"
+
+      - name: package-lock 공식 registry 사전검증
+        working-directory: electron
+        shell: pwsh
+        run: |
+          python -X utf8 scripts/validate-package-lock-registry.py
+          exit $LASTEXITCODE
 
       - name: npm CLI 11.17.0 무결성 검증 준비
         id: npm_cli
@@ -141,6 +149,7 @@ jobs:
             Write-Host "npm cache verify exit=$LASTEXITCODE"
 
             & node $npmCli ci `
+              --registry=https://registry.npmjs.org `
               --no-audit `
               --no-fund `
               --foreground-scripts `
