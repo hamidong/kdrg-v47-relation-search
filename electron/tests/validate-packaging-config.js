@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const VALIDATOR_VERSION =
-  '2026-07-27_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V1';
+  '2026-07-28_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V2';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const ROOT = path.resolve(ELECTRON_ROOT, '..');
 
@@ -106,11 +106,22 @@ function main() {
 
   const workflow = fs.readFileSync(workflowPath, 'utf8');
   check('workflow Windows runner', workflow.includes('runs-on: windows-latest'), true);
+  check('workflow checkout Node24 세대', workflow.includes('actions/checkout@v6'), true);
+  check('workflow setup-node Node24 세대', workflow.includes('actions/setup-node@v6'), true);
+  check('workflow setup-python Node24 세대', workflow.includes('actions/setup-python@v6'), true);
   check('workflow Node 22.23.1', workflow.includes('node-version: "22.23.1"'), true);
-  check('workflow npm cache', workflow.includes('cache: npm'), true);
-  check('workflow npm ci', workflow.includes('npm ci --no-audit --no-fund'), true);
+  check('workflow npm CLI pin', workflow.includes('NPM_CLI_VERSION: "11.17.0"'), true);
+  check('workflow setup-node npm cache 미사용', workflow.includes('cache: npm'), false);
+  check('workflow 실행별 fresh npm cache', workflow.includes('npm-cache-${{ github.run_id }}-${{ github.run_attempt }}'), true);
+  check('workflow npm registry metadata', workflow.includes('https://registry.npmjs.org/npm/$npmVersion'), true);
+  check('workflow npm tarball SHA512', workflow.includes('SHA512') && workflow.includes('expectedIntegrity'), true);
+  check('workflow npm CLI 직접 실행', workflow.includes('& node $npmCli ci'), true);
+  check('workflow npm ci 옵션', workflow.includes('--no-audit') && workflow.includes('--no-fund') && workflow.includes('--foreground-scripts'), true);
+  check('workflow npm ci 2회 복구', workflow.includes('$attempt -le 2'), true);
+  check('workflow npm debug log 출력', workflow.includes('*-debug-0.log') && workflow.includes('-Tail 250'), true);
+  check('workflow check 고정 npm CLI', workflow.includes('& node $npmCli run check'), true);
+  check('workflow dist 고정 npm CLI', workflow.includes('& node $npmCli run dist:win'), true);
   check('workflow Python 50D 검증', workflow.includes('50D_validate_kdrg_electron_windows_packaging.py'), true);
-  check('workflow portable build', workflow.includes('npm run dist:win'), true);
   check('workflow packaged smoke', workflow.includes('verify-windows-portable.ps1'), true);
   check('workflow tag namespace', workflow.includes('electron-v*'), true);
   check('workflow Release Asset', workflow.includes('softprops/action-gh-release@v2'), true);

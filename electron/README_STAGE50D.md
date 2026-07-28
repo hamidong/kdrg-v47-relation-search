@@ -9,7 +9,17 @@ Stage 50C에서 검증된 검색 UI를 Windows x64 단일 portable exe로 패키
 - Node.js 22.23.1
 - Electron 43.2.0
 - electron-builder 26.15.3
+- npm CLI 11.17.0
 - npm package-lock lockfileVersion 3
+
+## npm 재현성·복구 원칙
+
+- Node에 동봉된 npm을 그대로 신뢰하지 않고 npm CLI 11.17.0을 별도로 고정한다.
+- npm registry metadata의 `dist.integrity`와 다운로드한 tarball의 SHA512를 비교한다.
+- GitHub Actions 실행별로 독립된 npm cache를 사용해 오염된 cache 재사용을 차단한다.
+- `npm ci`는 고정 CLI로 실행하며 실패 시 `node_modules`를 정리하고 최대 2회 수행한다.
+- 두 번 모두 실패하면 최신 npm debug log 250줄을 Actions 로그에 출력한다.
+- 검증과 electron-builder 실행도 동일한 고정 npm CLI를 사용한다.
 
 ## 패키징 원칙
 
@@ -24,7 +34,7 @@ Stage 50C에서 검증된 검색 UI를 Windows x64 단일 portable exe로 패키
 ## 검증
 
 1. JavaScript 문법·검색·UI·보안 회귀검증
-2. package-lock 정확 버전 검증
+2. 고정 npm CLI tarball SHA512와 package-lock 정확 버전 검증
 3. electron-builder 설정 검증
 4. Windows portable exe 크기 확인
 5. 패키지 내부 데이터 SHA256/schema 확인

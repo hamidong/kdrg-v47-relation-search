@@ -17,32 +17,151 @@ jobs:
       PYTHONUTF8: "1"
       PYTHONIOENCODING: "utf-8"
       CSC_IDENTITY_AUTO_DISCOVERY: "false"
+      NPM_CLI_VERSION: "11.17.0"
+      NPM_CONFIG_CACHE: ${{ runner.temp }}\npm-cache-${{ github.run_id }}-${{ github.run_attempt }}
+      ELECTRON_CACHE: ${{ runner.temp }}\electron-cache
+      ELECTRON_BUILDER_CACHE: ${{ runner.temp }}\electron-builder-cache
 
     steps:
       - name: 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Node.js 22.23.1 설치
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: "22.23.1"
-          cache: npm
-          cache-dependency-path: electron/package-lock.json
 
       - name: Python 3.11 설치
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+
+      - name: npm CLI 11.17.0 무결성 검증 준비
+        id: npm_cli
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          $npmVersion = $env:NPM_CLI_VERSION
+          $bootstrapRoot = Join-Path $env:RUNNER_TEMP "kdrg-npm-cli-$npmVersion"
+          $archivePath = Join-Path $bootstrapRoot "npm-$npmVersion.tgz"
+          $extractRoot = Join-Path $bootstrapRoot "extract"
+
+          Remove-Item $bootstrapRoot -Recurse -Force -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Path $extractRoot -Force | Out-Null
+
+          $metadataUri = "https://registry.npmjs.org/npm/$npmVersion"
+          $metadata = Invoke-RestMethod -Uri $metadataUri -Method Get
+          $tarballUri = [string]$metadata.dist.tarball
+          $expectedIntegrity = [string]$metadata.dist.integrity
+
+          if (-not $tarballUri -or -not $expectedIntegrity.StartsWith("sha512-")) {
+            Write-Error "npm registry metadata에 tarball 또는 SHA512 integrity가 없습니다."
+            exit 1
+          }
+
+          Invoke-WebRequest -Uri $tarballUri -OutFile $archivePath
+
+          $sha512 = [System.Security.Cryptography.SHA512]::Create()
+          try {
+            $archiveBytes = [System.IO.File]::ReadAllBytes($archivePath)
+            $actualHash = $sha512.ComputeHash($archiveBytes)
+          }
+          finally {
+            $sha512.Dispose()
+          }
+
+          $actualIntegrity = "sha512-" + [Convert]::ToBase64String($actualHash)
+          if ($actualIntegrity -cne $expectedIntegrity) {
+            Write-Error "npm CLI archive SHA512 integrity 불일치"
+            exit 1
+          }
+
+          tar -xzf $archivePath -C $extractRoot
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "npm CLI archive 압축 해제 실패"
+            exit $LASTEXITCODE
+          }
+
+          $npmCli = Join-Path $extractRoot "package\bin\npm-cli.js"
+          if (-not (Test-Path $npmCli -PathType Leaf)) {
+            Write-Error "검증된 npm CLI 진입파일을 찾지 못했습니다: $npmCli"
+            exit 1
+          }
+
+          $actualVersion = (& node $npmCli --version).Trim()
+          if ($LASTEXITCODE -ne 0 -or $actualVersion -ne $npmVersion) {
+            Write-Error "npm CLI 버전 불일치: actual=$actualVersion expected=$npmVersion"
+            exit 1
+          }
+
+          "npm_cli=$npmCli" >> $env:GITHUB_OUTPUT
+          Write-Host "Node version: $(node --version)"
+          Write-Host "Pinned npm CLI: $actualVersion"
+          Write-Host "npm CLI integrity: PASS"
 
       - name: npm 잠금 의존성 설치
         working-directory: electron
         shell: pwsh
-        run: npm ci --no-audit --no-fund
+        run: |
+          $ErrorActionPreference = "Continue"
+          $npmCli = "${{ steps.npm_cli.outputs.npm_cli }}"
+          $installPassed = $false
+
+          for ($attempt = 1; $attempt -le 2; $attempt++) {
+            Write-Host "===== npm ci attempt $attempt/2 ====="
+
+            Remove-Item "node_modules" -Recurse -Force -ErrorAction SilentlyContinue
+
+            & node $npmCli cache verify
+            Write-Host "npm cache verify exit=$LASTEXITCODE"
+
+            & node $npmCli ci `
+              --no-audit `
+              --no-fund `
+              --foreground-scripts `
+              --loglevel=verbose
+
+            $installExitCode = $LASTEXITCODE
+            if ($installExitCode -eq 0) {
+              $installPassed = $true
+              break
+            }
+
+            Write-Host "npm ci 실패: exit=$installExitCode"
+
+            $logRoot = Join-Path $env:NPM_CONFIG_CACHE "_logs"
+            if (Test-Path $logRoot) {
+              $latestLog = Get-ChildItem $logRoot -Filter "*-debug-0.log" -File |
+                Sort-Object LastWriteTime -Descending |
+                Select-Object -First 1
+
+              if ($latestLog) {
+                Write-Host "===== npm debug log: $($latestLog.FullName) ====="
+                Get-Content $latestLog.FullName -Tail 250
+              }
+            }
+
+            if ($attempt -lt 2) {
+              Start-Sleep -Seconds 5
+            }
+          }
+
+          if (-not $installPassed) {
+            Write-Error "고정 npm CLI로 2회 npm ci를 수행했으나 모두 실패했습니다."
+            exit 1
+          }
+
+          & node $npmCli --version
+          & node -e "require('./node_modules/electron/package.json'); require('./node_modules/electron-builder/package.json'); console.log('dependency-import=PASS')"
 
       - name: Electron source·검색·UI·packaging 검증
         working-directory: electron
         shell: pwsh
-        run: npm run check
+        run: |
+          $npmCli = "${{ steps.npm_cli.outputs.npm_cli }}"
+          & node $npmCli run check
+          exit $LASTEXITCODE
 
       - name: Stage 50D Python 독립검증
         shell: pwsh
@@ -61,7 +180,10 @@ jobs:
       - name: Windows x64 portable exe 빌드
         working-directory: electron
         shell: pwsh
-        run: npm run dist:win
+        run: |
+          $npmCli = "${{ steps.npm_cli.outputs.npm_cli }}"
+          & node $npmCli run dist:win
+          exit $LASTEXITCODE
 
       - name: portable exe 경로 확인
         id: artifact
@@ -128,7 +250,9 @@ jobs:
         shell: pwsh
         run: |
           "## KDRG Electron Windows package" >> $env:GITHUB_STEP_SUMMARY
-          "- Node/npm lock install: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Node.js 22.23.1: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- npm CLI 11.17.0 SHA512 bootstrap: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Fresh npm cache + retry policy: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- Search/UI/security regression: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- electron-builder portable x64: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- Packaged data/search/renderer smoke: PASS" >> $env:GITHUB_STEP_SUMMARY
