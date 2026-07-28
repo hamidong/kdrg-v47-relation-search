@@ -1,6 +1,6 @@
 name: Build Electron Windows portable and publish Release
 
-on:
+"on":
   push:
     tags:
       - "electron-v*"
@@ -8,6 +8,10 @@ on:
 
 permissions:
   contents: write
+
+concurrency:
+  group: kdrg-electron-windows-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   windows-electron-package:
@@ -24,16 +28,6 @@ jobs:
       - name: 체크아웃
         uses: actions/checkout@v6
 
-- name: checkout 바이트 정규화·검증
-  shell: pwsh
-  run: |
-    $ErrorActionPreference = "Stop"
-    git config core.autocrlf false
-    git config core.eol lf
-    git reset --hard HEAD
-    python -X utf8 electron/scripts/validate-checkout-byte-integrity.py
-    exit $LASTEXITCODE
-
       - name: Node.js 22.23.1 설치
         uses: actions/setup-node@v6
         with:
@@ -43,6 +37,18 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+
+      - name: checkout 바이트 무결성 검증
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          git config --local core.autocrlf false
+          git config --local core.eol lf
+          git check-attr eol -- data/kdrg_v47_search_integrated.json
+          git check-attr eol -- data/kdrg_v47_ui_semantic_profile.json
+          git check-attr eol -- data/kdrg_v47_ui_display_contract.json
+          python -X utf8 electron/scripts/validate-checkout-byte-integrity.py
+          exit $LASTEXITCODE
 
       - name: Actions 런타임 임시경로 초기화
         shell: pwsh
@@ -276,7 +282,7 @@ jobs:
           "release_title=KDRG V4.7 Electron $version" >> $env:GITHUB_OUTPUT
 
       - name: Electron 태그와 package 버전 일치 확인
-        if: startsWith(github.ref, 'refs/tags/')
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
         shell: pwsh
         run: |
           $pushedTag = "${{ github.ref_name }}"
@@ -303,7 +309,7 @@ jobs:
           "- GitHub Release Assets: Electron 태그에서만 업로드" >> $env:GITHUB_STEP_SUMMARY
 
       - name: GitHub Release 생성 및 Electron exe 업로드
-        if: startsWith(github.ref, 'refs/tags/')
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.git_tag }}
