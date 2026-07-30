@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-SCRIPT_VERSION = "2026-07-28_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V9_FINAL"
+SCRIPT_VERSION = "2026-07-28_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V10_EOLS"
 NODE_VERSION = "v22.23.1"
 
 ROOT = Path(__file__).resolve().parent
@@ -29,7 +29,7 @@ REPORT_JSON = REPORT_DIR / "electron_stage50d_validation_report.json"
 NODE_CACHE_DIR = REPORT_DIR / "electron_node_v22_cache"
 NODE_CURRENT_DIR = NODE_CACHE_DIR / "current"
 
-EXPECTED_WORKFLOW_HASH = "d266079d4b9786864dbf51c76931098d009bad2b829ff458f1127f26ac631ced"
+EXPECTED_WORKFLOW_HASH = "1e2cafc1c491c3da5989b2a4c9159e2eeb5e557426fda309c6408040aafaa899"
 EXPECTED_LOCK_HASH = "cf64b4826ff5feabb81b257797492528f4cbdc5c30d1a008d1960b2f1c003f8c"
 
 PROTECTED_HASHES = {
@@ -52,7 +52,7 @@ PROTECTED_HASHES = {
     ".github/workflows/build-windows-release.yml":
         "ccd5347a863c277841d5594b81f7471a8cffd9a16da36ff70d8c44d1e4556f9e",
     ".gitattributes":
-        "a0f4b46a756c5b8667ebb96d74cc2aaf5308cd489ba5f1c555135f635aa26823",
+        "6e91da75eb4141a20f8296dce65a413d1a08befbebc6ebf9f485fa036fa73ff8",
     "electron/package.json":
         "37e6f5d39e88ea27a07d7712d71a307801245df0f6de3fd7d0cef5359ce1be6c",
     "electron/package-lock.json":
@@ -96,7 +96,7 @@ PROTECTED_HASHES = {
     "electron/scripts/validate-package-lock-registry.py":
         "ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92",
     "electron/scripts/validate-checkout-byte-integrity.py":
-        "f9e96431c692afe970af3e3e2b3df870b292af843474eb027c6da1ac6bacbc97",
+        "382072fbd01e499e653f2ebfe7aa5776c26d901c9ee22f03552bb3ed9d67ab7a",
     "electron/README_STAGE50A.md":
         "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md":
@@ -444,6 +444,22 @@ def audit_workflow(text: str) -> list[tuple[str, Any, Any, bool]]:
             > step_names.index("Python 3.11 설치")
         ),
     )
+    checkout_hardening_tokens = (
+        "git config --local core.autocrlf false",
+        "git config --local core.eol lf",
+        "git reset --hard HEAD",
+        "git check-attr text eol -- .gitattributes",
+        "git check-attr text eol -- electron/.gitignore",
+        "git check-attr text eol -- electron/renderer/index.html",
+        "git check-attr text eol -- electron/renderer/styles.css",
+        "python -X utf8 electron/scripts/validate-checkout-byte-integrity.py",
+    )
+    add(
+        "workflow checkout EOL 전수보강",
+        all(token in text for token in checkout_hardening_tokens),
+        True,
+        all(token in text for token in checkout_hardening_tokens),
+    )
 
     release_condition = (
         "if: github.event_name == 'push' "
@@ -640,11 +656,11 @@ def main() -> int:
 
     attributes_text = (ROOT / ".gitattributes").read_text(encoding="utf-8")
     required_attributes = (
-        "*.json text eol=lf",
-        "*.js text eol=lf",
-        "*.py text eol=lf",
-        "*.yml text eol=lf",
-        "*.yaml text eol=lf",
+        "* text eol=lf",
+        ".gitattributes text eol=lf",
+        ".gitignore text eol=lf",
+        "*.bat text eol=crlf",
+        "*.cmd text eol=crlf",
     )
     check(
         ".gitattributes LF 정책",
@@ -652,25 +668,33 @@ def main() -> int:
         True,
     )
 
+    critical_eol_files = (
+        ".gitattributes",
+        "electron/.gitignore",
+        "electron/renderer/index.html",
+        "electron/renderer/styles.css",
+        "data/kdrg_v47_search_integrated.json",
+        "data/kdrg_v47_ui_semantic_profile.json",
+        "data/kdrg_v47_ui_display_contract.json",
+    )
     eol_result = run_command(
         [
             "git",
             "ls-files",
             "--eol",
             "--",
-            "data/kdrg_v47_search_integrated.json",
-            "data/kdrg_v47_ui_semantic_profile.json",
-            "data/kdrg_v47_ui_display_contract.json",
+            *critical_eol_files,
         ]
     )
     outputs["Git EOL 정책"] = eol_result
     check("Git EOL 정책 종료코드", eol_result["returncode"], 0)
     check(
-        "Git EOL 세 데이터 LF",
+        "Git EOL 핵심 텍스트 전체 LF",
         eol_result["stdout"],
-        "3 lines with i/lf and attr/text eol=lf",
+        f"{len(critical_eol_files)} lines with i/lf and attr/text eol=lf",
         lambda value, _expected: (
-            len([line for line in value.splitlines() if line.strip()]) == 3
+            len([line for line in value.splitlines() if line.strip()])
+            == len(critical_eol_files)
             and all(
                 "i/lf" in line and "attr/text eol=lf" in line
                 for line in value.splitlines()

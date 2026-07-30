@@ -44,9 +44,17 @@ jobs:
           $ErrorActionPreference = "Stop"
           git config --local core.autocrlf false
           git config --local core.eol lf
-          git check-attr eol -- data/kdrg_v47_search_integrated.json
-          git check-attr eol -- data/kdrg_v47_ui_semantic_profile.json
-          git check-attr eol -- data/kdrg_v47_ui_display_contract.json
+          git reset --hard HEAD
+          git status --short --untracked-files=no
+
+          git check-attr text eol -- .gitattributes
+          git check-attr text eol -- electron/.gitignore
+          git check-attr text eol -- electron/renderer/index.html
+          git check-attr text eol -- electron/renderer/styles.css
+          git check-attr text eol -- data/kdrg_v47_search_integrated.json
+          git check-attr text eol -- data/kdrg_v47_ui_semantic_profile.json
+          git check-attr text eol -- data/kdrg_v47_ui_display_contract.json
+
           python -X utf8 electron/scripts/validate-checkout-byte-integrity.py
           exit $LASTEXITCODE
 

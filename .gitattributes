@@ -1,17 +1,10 @@
 # KDRG cross-platform checkout byte policy
-# SHA256-protected source/data files must keep identical bytes on Windows and Linux.
-* text=auto
+# All tracked text keeps LF bytes on Windows and Linux.
+# Windows command scripts are the only CRLF exceptions.
+* text eol=lf
 
-*.json text eol=lf
-*.js text eol=lf
-*.cjs text eol=lf
-*.mjs text eol=lf
-*.py text eol=lf
-*.yml text eol=lf
-*.yaml text eol=lf
-*.md text eol=lf
-*.ps1 text eol=lf
-*.txt text eol=lf
+.gitattributes text eol=lf
+.gitignore text eol=lf
 
 *.bat text eol=crlf
 *.cmd text eol=crlf
@@ -20,11 +13,54 @@
 *.jpg binary
 *.jpeg binary
 *.gif binary
+*.webp binary
 *.ico binary
+*.bmp binary
+*.tif binary
+*.tiff binary
 *.pdf binary
 *.xlsx binary
 *.xls binary
+*.xlsm binary
+*.doc binary
+*.docx binary
+*.ppt binary
+*.pptx binary
 *.hwp binary
 *.hwpx binary
 *.exe binary
+*.dll binary
+*.pyd binary
+*.so binary
+*.dylib binary
+*.node binary
+*.jar binary
+*.class binary
+*.pyc binary
 *.zip binary
+*.7z binary
+*.rar binary
+*.tar binary
+*.gz binary
+*.xz binary
+*.bin binary
+*.dat binary
+*.db binary
+*.sqlite binary
+*.sqlite3 binary
+*.parquet binary
+*.feather binary
+*.pkl binary
+*.pickle binary
+*.npy binary
+*.npz binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.mp3 binary
+*.wav binary
+*.mp4 binary
+*.avi binary
+*.mov binary
+*.webm binary
