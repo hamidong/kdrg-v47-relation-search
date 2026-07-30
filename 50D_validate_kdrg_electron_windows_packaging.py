@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-SCRIPT_VERSION = "2026-07-28_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V10_EOLS"
+SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V12_AGGREGATE_CONTRACT"
 NODE_VERSION = "v22.23.1"
 
 ROOT = Path(__file__).resolve().parent
@@ -54,7 +54,7 @@ PROTECTED_HASHES = {
     ".gitattributes":
         "6e91da75eb4141a20f8296dce65a413d1a08befbebc6ebf9f485fa036fa73ff8",
     "electron/package.json":
-        "37e6f5d39e88ea27a07d7712d71a307801245df0f6de3fd7d0cef5359ce1be6c",
+        "05bcd0f9466b822f863873113ff742be73889b0f0e2eb07f927eb300456c60b2",
     "electron/package-lock.json":
         "cf64b4826ff5feabb81b257797492528f4cbdc5c30d1a008d1960b2f1c003f8c",
     "electron/main.js":
@@ -72,7 +72,7 @@ PROTECTED_HASHES = {
     "electron/src/kdrg-search-service.js":
         "acecdeb55267341e7570e3f1c60a97f4f9abf9c74fb2c31ae2d64b84c48baad8",
     "electron/src/packaged-runtime-smoke.js":
-        "4b9b26f56783008b2127e34ac2e653e70776a227501a8d1d4f5c1286d0e3ee30",
+        "0d433dda9fd966eec090a543d2ab9ea79dd6141cdc56db3a50b11a9b05d08c24",
     "electron/renderer/index.html":
         "d48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f",
     "electron/renderer/app.js":
@@ -86,11 +86,13 @@ PROTECTED_HASHES = {
     "electron/tests/validate-renderer-ui.js":
         "33a915a61cccdd0e4c716f4cd5f5b9c815bced6481dde7f4d8a37be2eeb6ae6f",
     "electron/tests/validate-electron-skeleton.js":
-        "223680c321fd582f5e4a1641236a673639e41aca3f2ca74ed80f46a0f6394fd0",
+        "6048b5cf37bb31b8d2001231d2b79cf97a22880dbfc203e7b33ef62b3ac957c8",
     "electron/tests/validate-search-service.js":
         "60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05",
     "electron/tests/validate-packaging-config.js":
-        "34e59cd9cf7840f8e7be51633d6f237745f844a4753c54a8f60aaeccb96a56b2",
+        "4997a8e7a9095c4b95f9cbc20ba90bf37ea7c74153cd4129474e8d37730a166f",
+    "electron/tests/validate-packaged-runtime-smoke.js":
+        "a117af0918d8f0f71079df3725abd20710001bf70ad04cb81c246e8b6f2fe292",
     "electron/scripts/verify-windows-portable.ps1":
         "63c98bbd22a4358f0d9954e702686a03590180f03b254f1909508da9b8916500",
     "electron/scripts/validate-package-lock-registry.py":
@@ -108,7 +110,7 @@ PROTECTED_HASHES = {
     "50B_validate_kdrg_electron_search_service.py":
         "5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "d40e700a607f43f64526f4b85ecd5b43c2c32d1f9511e2b813404f5297e8834f",
+        "d37cf3a0b0806c92ef8120b6974b2430c8c93fea6caa6f7e5bbdc825276d2ae6",
 }
 
 JS_CHECK_FILES = (
@@ -126,6 +128,7 @@ JS_CHECK_FILES = (
     "electron/tests/validate-search-service.js",
     "electron/tests/run-search-parity.js",
     "electron/tests/validate-renderer-ui.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
     "electron/tests/validate-packaging-config.js",
 )
 
@@ -777,6 +780,11 @@ def main() -> int:
             check(f"node --check {relative}", result["returncode"], 0)
 
         command_specs = {
+            "Stage 50D packaged smoke 계약 회귀검증": (
+                [str(node), "tests/validate-packaged-runtime-smoke.js"],
+                ELECTRON,
+                "35 PASS / 0 FAIL",
+            ),
             "Stage 50D packaging Node 검증": (
                 [str(node), "tests/validate-packaging-config.js"],
                 ELECTRON,
@@ -827,6 +835,40 @@ def main() -> int:
             )
 
     package = json.loads((ELECTRON / "package.json").read_text(encoding="utf-8"))
+    smoke_source = (ELECTRON / "src/packaged-runtime-smoke.js").read_text(encoding="utf-8")
+    search_service_source = (ELECTRON / "src/kdrg-search-service.js").read_text(encoding="utf-8")
+    package_scripts = package.get("scripts", {})
+    check(
+        "packaged smoke 현재 results 계약 사용",
+        "search.results" in smoke_source and "search.items.some" not in smoke_source,
+        True,
+    )
+    check(
+        "검색 service results 응답 계약 존재",
+        "results," in search_service_source
+        and "schema_version: RESPONSE_SCHEMA_VERSION" in search_service_source,
+        True,
+    )
+    check(
+        "packaged smoke 계약검증 script",
+        package_scripts.get("validate:smoke-contract"),
+        "node tests/validate-packaged-runtime-smoke.js",
+    )
+    check(
+        "전체 validate에 smoke 계약검증 포함",
+        "validate:smoke-contract" in package_scripts.get("validate", ""),
+        True,
+    )
+    check(
+        "전체 check에 smoke 계약검증 문법 포함",
+        "validate-packaged-runtime-smoke.js" in package_scripts.get("check", ""),
+        True,
+    )
+    check(
+        "packaged smoke 단계별 진단 포함",
+        "completed_steps" in smoke_source and "failed_step" in smoke_source,
+        True,
+    )
     check(
         "dist:win script",
         package.get("scripts", {}).get("dist:win"),

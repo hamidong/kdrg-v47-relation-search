@@ -14,7 +14,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-27_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V2"
+SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V4_AGGREGATE_CONTRACT"
 ROOT = Path(__file__).resolve().parent
 ELECTRON_ROOT = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -49,9 +49,9 @@ PROTECTED_HASHES = {
 
 TARGET_HASHES = {
     "50B_validate_kdrg_electron_search_service.py": "5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea",
-    "electron/package.json": "37e6f5d39e88ea27a07d7712d71a307801245df0f6de3fd7d0cef5359ce1be6c",
+    "electron/package.json": "05bcd0f9466b822f863873113ff742be73889b0f0e2eb07f927eb300456c60b2",
     "electron/src/bootstrap-data.js": "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
-    "electron/tests/validate-electron-skeleton.js": "223680c321fd582f5e4a1641236a673639e41aca3f2ca74ed80f46a0f6394fd0",
+    "electron/tests/validate-electron-skeleton.js": "6048b5cf37bb31b8d2001231d2b79cf97a22880dbfc203e7b33ef62b3ac957c8",
     "electron/tests/validate-search-service.js": "60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05",
     "electron/renderer/index.html": "d48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f",
     "electron/renderer/app.js": "43ea2db9431da87de40d72bd8eec373663f07fc8e986afecb212ee56e40790ce",

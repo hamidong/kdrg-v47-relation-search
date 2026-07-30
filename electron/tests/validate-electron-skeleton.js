@@ -60,7 +60,30 @@ check('start script', packageJson.scripts.start, 'electron .');
 check('validate skeleton script', packageJson.scripts['validate:skeleton'], 'node tests/validate-electron-skeleton.js');
 check('validate search script', packageJson.scripts['validate:search'], 'node tests/validate-search-service.js');
 check('validate UI script', packageJson.scripts['validate:ui'], 'node tests/validate-renderer-ui.js');
-check('validate aggregate script', packageJson.scripts.validate, 'npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:packaging');
+check('validate smoke contract script', packageJson.scripts['validate:smoke-contract'], 'node tests/validate-packaged-runtime-smoke.js');
+check('validate packaging script', packageJson.scripts['validate:packaging'], 'node tests/validate-packaging-config.js');
+
+const aggregateScript = String(packageJson.scripts.validate || '');
+const aggregateStages = [
+  'validate:skeleton',
+  'validate:search',
+  'validate:ui',
+  'validate:smoke-contract',
+  'validate:packaging',
+];
+for (const stage of aggregateStages) {
+  const token = `npm run ${stage}`;
+  const occurrences = aggregateScript.split(token).length - 1;
+  check(`validate aggregate ${stage} 단일 포함`, occurrences, 1);
+}
+const aggregatePositions = aggregateStages.map((stage) => aggregateScript.indexOf(`npm run ${stage}`));
+check(
+  'validate aggregate 단계 순서',
+  aggregatePositions,
+  aggregateStages,
+  (positions) => positions.every((position) => position >= 0)
+    && positions.every((position, index) => index === 0 || positions[index - 1] < position),
+);
 check('repository', packageJson.repository.url, 'https://github.com/hamidong/kdrg-v47-relation-search.git');
 
 const mainSource = read(path.join(ELECTRON_ROOT, 'main.js'));
@@ -131,7 +154,7 @@ check('원본 ADRG 배열 미포함', serialized.includes('adrg_records'), false
 check('원본 code 배열 미포함', serialized.includes('code_records'), false);
 check('bootstrap snapshot 크기 제한', Buffer.byteLength(serialized, 'utf8') < 20000, true);
 
-console.log(`validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50C_SKELETON_VALIDATOR_V1`);
+console.log(`validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50C_SKELETON_VALIDATOR_V2_AGGREGATE_CONTRACT`);
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {

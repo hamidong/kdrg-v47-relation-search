@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const VALIDATOR_VERSION =
-  '2026-07-28_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V3';
+  '2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V4';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const ROOT = path.resolve(ELECTRON_ROOT, '..');
 
@@ -56,6 +56,11 @@ function main() {
   const workflowPath = path.join(ROOT, '.github', 'workflows', 'build-electron-windows.yml');
   const smokeSourcePath = path.join(ELECTRON_ROOT, 'src', 'packaged-runtime-smoke.js');
   const verifyScriptPath = path.join(ELECTRON_ROOT, 'scripts', 'verify-windows-portable.ps1');
+  const smokeContractTestPath = path.join(
+    ELECTRON_ROOT,
+    'tests',
+    'validate-packaged-runtime-smoke.js',
+  );
   const registryValidatorPath = path.join(
     ELECTRON_ROOT,
     'scripts',
@@ -67,6 +72,7 @@ function main() {
     lockPath,
     workflowPath,
     smokeSourcePath,
+    smokeContractTestPath,
     verifyScriptPath,
     registryValidatorPath,
   ]) {
@@ -84,8 +90,25 @@ function main() {
   check('electron-builder pin', devDependencies['electron-builder'], '26.15.3');
   check('Node engine', packageJson.engines?.node, '>=22.0.0');
   check('validate:packaging script', scripts['validate:packaging'], 'node tests/validate-packaging-config.js');
+  check(
+    'validate:smoke-contract script',
+    scripts['validate:smoke-contract'],
+    'node tests/validate-packaged-runtime-smoke.js',
+  );
+  check(
+    'validate script smoke contract 포함',
+    scripts.validate || '',
+    'validate:smoke-contract',
+    (value, target) => value.includes(target),
+  );
   check('dist:win script', scripts['dist:win'], 'electron-builder --win portable --x64 --publish never');
   check('check script packaging 포함', scripts.check || '', 'validate-packaging-config.js', (value, target) => value.includes(target));
+  check(
+    'check script smoke contract 문법검증 포함',
+    scripts.check || '',
+    'validate-packaged-runtime-smoke.js',
+    (value, target) => value.includes(target),
+  );
 
   check('build appId', build.appId, 'kr.kdrg.v47.relationsearch');
   check('build productName', build.productName, 'KDRG V4.7 관계 검색기');
@@ -149,9 +172,35 @@ function main() {
   const smokeSource = fs.readFileSync(smokeSourcePath, 'utf8');
   check('main smoke import', mainSource.includes("require('./src/packaged-runtime-smoke')"), true);
   check('main smoke 실행', mainSource.includes('runPackagedRuntimeSmoke({'), true);
-  check('smoke app.isPackaged 기록', smokeSource.includes('app_is_packaged: app.isPackaged'), true);
+  check(
+    'smoke app.isPackaged 기록',
+    smokeSource.includes('app_is_packaged: Boolean(app?.isPackaged)'),
+    true,
+  );
   check('smoke 데이터 경로 검사', smokeSource.includes('resolveDataFiles({'), true);
   check('smoke E011 검색', smokeSource.includes("service.search('E011'"), true);
+  check('smoke 현재 search.results 계약', smokeSource.includes('search.results'), true);
+  check('smoke 과거 search.items 직접참조 제거', smokeSource.includes('search.items.some'), false);
+  check('smoke search 계약 명시검증', smokeSource.includes('validateSearchResponse(search)'), true);
+  check('smoke detail 계약 명시검증', smokeSource.includes('validateDetailResponse'), true);
+  check('smoke 단계별 진단', smokeSource.includes('completed_steps'), true);
+  check('smoke 실패단계 진단', smokeSource.includes('failed_step'), true);
+  const smokeContractTestSource = fs.readFileSync(smokeContractTestPath, 'utf8');
+  check(
+    'smoke contract test 과거 items 회귀 fixture',
+    smokeContractTestSource.includes('obsolete items field detected'),
+    true,
+  );
+  check(
+    'smoke contract test raw TypeError 방지',
+    smokeContractTestSource.includes('legacy report no raw TypeError'),
+    true,
+  );
+  check(
+    'smoke contract test packaged 실행 모의검증',
+    smokeContractTestSource.includes('runPackagedRuntimeSmoke(fixture)'),
+    true,
+  );
   check('smoke renderer load', smokeSource.includes('did-finish-load'), true);
   check('smoke renderer 보안 contextIsolation', smokeSource.includes('contextIsolation: true'), true);
   check('smoke renderer 보안 nodeIntegration', smokeSource.includes('nodeIntegration: false'), true);
