@@ -49,9 +49,8 @@ PROTECTED_HASHES = {
 
 TARGET_HASHES = {
     "50B_validate_kdrg_electron_search_service.py": "5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea",
-    "electron/package.json": "05bcd0f9466b822f863873113ff742be73889b0f0e2eb07f927eb300456c60b2",
     "electron/src/bootstrap-data.js": "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
-    "electron/tests/validate-electron-skeleton.js": "6048b5cf37bb31b8d2001231d2b79cf97a22880dbfc203e7b33ef62b3ac957c8",
+    "electron/tests/validate-electron-skeleton.js": "3963dbe62a659c17c685044b9cc00b0c6782527b8433e4ddd1c59f3d3e50bb54",
     "electron/tests/validate-search-service.js": "60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05",
     "electron/renderer/index.html": "d48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f",
     "electron/renderer/app.js": "43ea2db9431da87de40d72bd8eec373663f07fc8e986afecb212ee56e40790ce",
@@ -331,6 +330,10 @@ def main() -> int:
         check("50C 독립검증기 py_compile", f"{type(exc).__name__}: {exc}", "PASS")
 
     package = json.loads((ELECTRON_ROOT / "package.json").read_text(encoding="utf-8"))
+    package_lock = json.loads((ELECTRON_ROOT / "package-lock.json").read_text(encoding="utf-8"))
+    version_text = str(package.get("version", ""))
+    check("package version semver", bool(re.fullmatch(r"\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?", version_text)), True)
+    check("package-lock 버전 일치", {"top": package_lock.get("version"), "root": package_lock.get("packages", {}).get("", {}).get("version")}, {"top": version_text, "root": version_text})
     check("package validate:ui", package.get("scripts", {}).get("validate:ui"), "node tests/validate-renderer-ui.js")
     check("package validate UI 연결", package.get("scripts", {}).get("validate", ""), "contains validate:ui", lambda value, _expected: "validate:ui" in value)
     check("Electron pin 유지", package.get("devDependencies", {}).get("electron"), "43.2.0")

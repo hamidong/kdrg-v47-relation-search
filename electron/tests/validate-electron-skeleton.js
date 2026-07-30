@@ -31,6 +31,7 @@ function read(filePath) {
 
 const requiredFiles = [
   'package.json',
+  'package-lock.json',
   '.gitignore',
   'main.js',
   'preload.js',
@@ -45,14 +46,19 @@ const requiredFiles = [
   'README_STAGE50A.md',
   'README_STAGE50B.md',
   'README_STAGE50C.md',
+  'tests/validate-release-version.js',
 ];
 for (const relativePath of requiredFiles) {
   check(`필수 파일 ${relativePath}`, fs.existsSync(path.join(ELECTRON_ROOT, relativePath)), true);
 }
 
 const packageJson = JSON.parse(read(path.join(ELECTRON_ROOT, 'package.json')));
+const packageLock = JSON.parse(read(path.join(ELECTRON_ROOT, 'package-lock.json')));
+const stableOrPrereleaseSemver = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/;
 check('package name', packageJson.name, 'kdrg-v47-relation-search-electron');
-check('package version', packageJson.version, '0.3.0-dev.0');
+check('package version semver', packageJson.version, 'semver', (value) => stableOrPrereleaseSemver.test(String(value || '')));
+check('package-lock top version 일치', packageLock.version, packageJson.version);
+check('package-lock root version 일치', packageLock.packages?.['']?.version, packageJson.version);
 check('package main', packageJson.main, 'main.js');
 check('Electron pin', packageJson.devDependencies.electron, '43.2.0');
 check('Node engine', packageJson.engines.node, '>=22.0.0');
@@ -62,6 +68,8 @@ check('validate search script', packageJson.scripts['validate:search'], 'node te
 check('validate UI script', packageJson.scripts['validate:ui'], 'node tests/validate-renderer-ui.js');
 check('validate smoke contract script', packageJson.scripts['validate:smoke-contract'], 'node tests/validate-packaged-runtime-smoke.js');
 check('validate packaging script', packageJson.scripts['validate:packaging'], 'node tests/validate-packaging-config.js');
+check('validate release version script', packageJson.scripts['validate:release-version'], 'node tests/validate-release-version.js');
+check('release validator syntax check 연결', packageJson.scripts.check || '', 'validate-release-version.js', (value, token) => value.includes(token));
 
 const aggregateScript = String(packageJson.scripts.validate || '');
 const aggregateStages = [

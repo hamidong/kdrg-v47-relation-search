@@ -30,7 +30,6 @@ NODE_CACHE_DIR = REPORT_DIR / "electron_node_v22_cache"
 NODE_CURRENT_DIR = NODE_CACHE_DIR / "current"
 
 EXPECTED_WORKFLOW_HASH = "1e2cafc1c491c3da5989b2a4c9159e2eeb5e557426fda309c6408040aafaa899"
-EXPECTED_LOCK_HASH = "cf64b4826ff5feabb81b257797492528f4cbdc5c30d1a008d1960b2f1c003f8c"
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated.json":
@@ -53,10 +52,6 @@ PROTECTED_HASHES = {
         "ccd5347a863c277841d5594b81f7471a8cffd9a16da36ff70d8c44d1e4556f9e",
     ".gitattributes":
         "6e91da75eb4141a20f8296dce65a413d1a08befbebc6ebf9f485fa036fa73ff8",
-    "electron/package.json":
-        "05bcd0f9466b822f863873113ff742be73889b0f0e2eb07f927eb300456c60b2",
-    "electron/package-lock.json":
-        "cf64b4826ff5feabb81b257797492528f4cbdc5c30d1a008d1960b2f1c003f8c",
     "electron/main.js":
         "56d5dd8fce986e2883d58ab3f39aaba160dc05d98dc95a74409487fb0c61c208",
     "electron/preload.js":
@@ -86,13 +81,15 @@ PROTECTED_HASHES = {
     "electron/tests/validate-renderer-ui.js":
         "33a915a61cccdd0e4c716f4cd5f5b9c815bced6481dde7f4d8a37be2eeb6ae6f",
     "electron/tests/validate-electron-skeleton.js":
-        "6048b5cf37bb31b8d2001231d2b79cf97a22880dbfc203e7b33ef62b3ac957c8",
+        "3963dbe62a659c17c685044b9cc00b0c6782527b8433e4ddd1c59f3d3e50bb54",
     "electron/tests/validate-search-service.js":
         "60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05",
     "electron/tests/validate-packaging-config.js":
-        "4997a8e7a9095c4b95f9cbc20ba90bf37ea7c74153cd4129474e8d37730a166f",
+        "8df1b4ad7fa73f8802113f9d1277fd41a9bb2707ccae0981e39c4cc38cc1d9e3",
     "electron/tests/validate-packaged-runtime-smoke.js":
-        "a117af0918d8f0f71079df3725abd20710001bf70ad04cb81c246e8b6f2fe292",
+        "aab6e06658d8d8819da7a11de23c2f053bf49037816c14fe914a4b83cd00dff5",
+    "electron/tests/validate-release-version.js":
+        "d4746b9ab38d914711ff5b6125a8ec33b9d46e574f94f9c1544f0a305bfd0471",
     "electron/scripts/verify-windows-portable.ps1":
         "63c98bbd22a4358f0d9954e702686a03590180f03b254f1909508da9b8916500",
     "electron/scripts/validate-package-lock-registry.py":
@@ -110,7 +107,7 @@ PROTECTED_HASHES = {
     "50B_validate_kdrg_electron_search_service.py":
         "5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "d37cf3a0b0806c92ef8120b6974b2430c8c93fea6caa6f7e5bbdc825276d2ae6",
+        "0c0baa3b731168fb6f7e3cd14d350733009e37c20ad6dc1bc6f2f7ce45740e60",
 }
 
 JS_CHECK_FILES = (
@@ -130,6 +127,7 @@ JS_CHECK_FILES = (
     "electron/tests/validate-renderer-ui.js",
     "electron/tests/validate-packaged-runtime-smoke.js",
     "electron/tests/validate-packaging-config.js",
+    "electron/tests/validate-release-version.js",
 )
 
 EXPECTED_STEPS = (
@@ -711,10 +709,13 @@ def main() -> int:
     if lock_path.is_file():
         lock = json.loads(lock_path.read_text(encoding="utf-8"))
         package = json.loads((ELECTRON / "package.json").read_text(encoding="utf-8"))
-        check("package-lock SHA256", sha256_file(lock_path), EXPECTED_LOCK_HASH)
+        version_text = str(package.get("version", ""))
+        check("package version semver", bool(re.fullmatch(r"\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?", version_text)), True)
+        check("package name", package.get("name"), "kdrg-v47-relation-search-electron")
         check("package-lock lockfileVersion", lock.get("lockfileVersion"), 3)
         check("package-lock root name", lock.get("name"), package.get("name"))
-        check("package-lock root version", lock.get("version"), package.get("version"))
+        check("package-lock top version", lock.get("version"), package.get("version"))
+        check("package-lock root version", lock.get("packages", {}).get("", {}).get("version"), package.get("version"))
         check(
             "Electron pin",
             package.get("devDependencies", {}).get("electron"),
@@ -784,6 +785,11 @@ def main() -> int:
                 [str(node), "tests/validate-packaged-runtime-smoke.js"],
                 ELECTRON,
                 "35 PASS / 0 FAIL",
+            ),
+            "Electron release version 일관성 검증": (
+                [str(node), "tests/validate-release-version.js", str(json.loads((ELECTRON / "package.json").read_text(encoding="utf-8")).get("version", ""))],
+                ELECTRON,
+                "Electron release version 검증",
             ),
             "Stage 50D packaging Node 검증": (
                 [str(node), "tests/validate-packaging-config.js"],

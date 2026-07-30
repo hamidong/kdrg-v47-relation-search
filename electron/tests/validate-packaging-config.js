@@ -61,6 +61,11 @@ function main() {
     'tests',
     'validate-packaged-runtime-smoke.js',
   );
+  const releaseVersionValidatorPath = path.join(
+    ELECTRON_ROOT,
+    'tests',
+    'validate-release-version.js',
+  );
   const registryValidatorPath = path.join(
     ELECTRON_ROOT,
     'scripts',
@@ -73,6 +78,7 @@ function main() {
     workflowPath,
     smokeSourcePath,
     smokeContractTestPath,
+    releaseVersionValidatorPath,
     verifyScriptPath,
     registryValidatorPath,
   ]) {
@@ -85,11 +91,17 @@ function main() {
   const scripts = packageJson.scripts || {};
   const devDependencies = packageJson.devDependencies || {};
 
-  check('package version', packageJson.version, '0.3.0-dev.0');
+  check(
+    'package version semver',
+    packageJson.version,
+    'semver',
+    (value) => /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/.test(String(value || '')),
+  );
   check('Electron pin', devDependencies.electron, '43.2.0');
   check('electron-builder pin', devDependencies['electron-builder'], '26.15.3');
   check('Node engine', packageJson.engines?.node, '>=22.0.0');
   check('validate:packaging script', scripts['validate:packaging'], 'node tests/validate-packaging-config.js');
+  check('validate:release-version script', scripts['validate:release-version'], 'node tests/validate-release-version.js');
   check(
     'validate:smoke-contract script',
     scripts['validate:smoke-contract'],
@@ -138,7 +150,8 @@ function main() {
 
   check('lockfileVersion', lockJson.lockfileVersion, 3);
   check('lock root name', lockJson.name, packageJson.name);
-  check('lock root version', lockJson.version, packageJson.version);
+  check('lock top version', lockJson.version, packageJson.version);
+  check('lock root version', lockJson.packages?.['']?.version, packageJson.version);
   check('lock root Electron pin', lockJson.packages?.['']?.devDependencies?.electron, '43.2.0');
   check('lock root electron-builder pin', lockJson.packages?.['']?.devDependencies?.['electron-builder'], '26.15.3');
   check('lock resolved Electron version', lockJson.packages?.['node_modules/electron']?.version, '43.2.0');
@@ -156,6 +169,9 @@ function main() {
   check('lock 평문 HTTP URL 없음', plainHttpUrls.length, 0);
   check('lock 공식 npm registry URL 전체', officialRegistryUrls.length, resolvedUrls.length);
 
+  const releaseValidatorSource = fs.readFileSync(releaseVersionValidatorPath, 'utf8');
+  check('release validator package-lock 일치검증', releaseValidatorSource.includes('lock root version'), true);
+  check('release validator stable semver', releaseValidatorSource.includes('STABLE_SEMVER'), true);
   const registryValidatorSource = fs.readFileSync(registryValidatorPath, 'utf8');
   check(
     'registry validator 공식 host',

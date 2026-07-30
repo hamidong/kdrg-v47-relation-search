@@ -3,6 +3,7 @@
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
+const PACKAGE_VERSION = require('../package.json').version;
 const { EventEmitter } = require('node:events');
 
 const {
@@ -126,7 +127,7 @@ function makeFixture(root, serviceOverrides = {}) {
   return {
     app: {
       isPackaged: true,
-      getVersion: () => '0.3.0-dev.0',
+      getVersion: () => PACKAGE_VERSION,
     },
     BrowserWindow: MockBrowserWindow,
     resolveDataFiles: () => dataFiles,
