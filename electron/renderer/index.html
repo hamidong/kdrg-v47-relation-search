@@ -34,14 +34,17 @@
         <p id="status-detail">renderer에는 원본 전체 데이터를 직접 노출하지 않습니다.</p>
       </section>
 
-      <section class="metric-strip" aria-label="데이터 집계">
-        <div><span>ADRG</span><strong id="metric-adrg">-</strong></div>
-        <div><span>AADRG</span><strong id="metric-aadrg">-</strong></div>
-        <div><span>RDRG</span><strong id="metric-rdrg">-</strong></div>
-        <div><span>TABLE</span><strong id="metric-table">-</strong></div>
-        <div><span>검색 코드</span><strong id="metric-code">-</strong></div>
-        <div><span>조건 TABLE 참조</span><strong id="metric-condition">-</strong></div>
-      </section>
+      <details id="data-overview" class="data-overview">
+        <summary>데이터 현황 보기 <span id="data-overview-summary">KDRG V4.7 통합 데이터</span></summary>
+        <section class="metric-strip" aria-label="데이터 집계">
+          <div><span>ADRG</span><strong id="metric-adrg">-</strong></div>
+          <div><span>AADRG</span><strong id="metric-aadrg">-</strong></div>
+          <div><span>RDRG</span><strong id="metric-rdrg">-</strong></div>
+          <div><span>TABLE</span><strong id="metric-table">-</strong></div>
+          <div><span>검색 코드</span><strong id="metric-code">-</strong></div>
+          <div><span>조건 TABLE 참조</span><strong id="metric-condition">-</strong></div>
+        </section>
+      </details>
 
       <section class="search-panel" aria-labelledby="search-heading">
         <div class="search-heading-row">
@@ -122,6 +125,34 @@
         </p>
       </section>
 
+
+      <details id="relation-search-panel" class="relation-search-panel">
+        <summary>복수 코드 관계검색 <span>같은 ADRG·조건 선택지 연결 여부 확인</span></summary>
+        <div class="relation-panel-body">
+          <p class="relation-disclaimer">
+            입력 코드가 같은 ADRG·조건식에 연결되는지를 보여주는 관계검색이며 최종 DRG 판정을 의미하지 않습니다.
+          </p>
+          <form id="relation-form" autocomplete="off">
+            <div id="relation-condition-list" class="relation-condition-list"></div>
+            <div class="relation-controls">
+              <label>
+                <span>조건 관계</span>
+                <select id="relation-operator" name="operator">
+                  <option value="AND">AND · 모든 코드</option>
+                  <option value="OR">OR · 하나 이상</option>
+                </select>
+              </label>
+              <button id="relation-add" class="secondary-button" type="button">+ 조건 추가</button>
+              <span class="relation-filter-note">위의 MDC·질병군 분류 필터를 함께 적용합니다.</span>
+              <div class="relation-actions">
+                <button id="relation-reset" class="secondary-button" type="button">초기화</button>
+                <button id="relation-submit" class="relation-primary-button" type="submit">공통 관련 ADRG 검색</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </details>
+
       <section class="workspace" aria-label="검색 결과와 상세 정보">
         <aside class="result-panel" aria-labelledby="result-heading">
           <div class="panel-heading">
@@ -148,6 +179,10 @@
               <p class="section-kicker">관계 상세</p>
               <h2 id="detail-heading">상세 정보</h2>
               <p id="detail-caption">기본 TABLE과 추가 분기조건을 구분해 표시합니다.</p>
+            </div>
+            <div id="detail-fold-actions" class="detail-fold-actions" hidden>
+              <button id="detail-expand-all" type="button">전체 펼치기</button>
+              <button id="detail-collapse-all" type="button">전체 접기</button>
             </div>
           </div>
           <div id="detail-content" class="detail-content" aria-live="polite"></div>

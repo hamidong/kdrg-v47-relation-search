@@ -2,33 +2,29 @@ from __future__ import annotations
 
 import hashlib
 import subprocess
-import sys
 from pathlib import Path
 from typing import Iterable
 
-SCRIPT_VERSION = "2026-07-28_KDRG_V47_CHECKOUT_BYTE_INTEGRITY_VALIDATOR_V2"
+SCRIPT_VERSION = "2026-07-30_KDRG_V47_CHECKOUT_BYTE_INTEGRITY_VALIDATOR_V3"
 
 ROOT = Path(__file__).resolve().parents[2]
 
-CRITICAL_HASHES = {
-    ".gitattributes": "6e91da75eb4141a20f8296dce65a413d1a08befbebc6ebf9f485fa036fa73ff8",
-    "electron/.gitignore": "aa5069a33ab1272d0dc50e9968d39d9ad10babc6c545cb10a3a84dd132882ab2",
-    "electron/renderer/index.html": "d48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f",
-    "electron/renderer/styles.css": "275137e8f05bb78de982f0cf777db4e14b2a2aab702d6afb310062f79afe4c76",
-    "data/kdrg_v47_search_integrated.json": "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
-    "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
-    "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
+IMMUTABLE_DATA_HASHES = {
+    "data/kdrg_v47_search_integrated.json":
+        "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
+    "data/kdrg_v47_ui_semantic_profile.json":
+        "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
+    "data/kdrg_v47_ui_display_contract.json":
+        "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
 }
 
-CRITICAL_EOL = {
-    ".gitattributes": "lf",
-    "electron/.gitignore": "lf",
-    "electron/renderer/index.html": "lf",
-    "electron/renderer/styles.css": "lf",
-    "data/kdrg_v47_search_integrated.json": "lf",
-    "data/kdrg_v47_ui_semantic_profile.json": "lf",
-    "data/kdrg_v47_ui_display_contract.json": "lf",
-}
+OBSERVED_MUTABLE_TEXT_FILES = (
+    ".gitattributes",
+    "electron/.gitignore",
+    "electron/renderer/index.html",
+    "electron/renderer/app.js",
+    "electron/renderer/styles.css",
+)
 
 REQUIRED_ATTRIBUTE_RULES = (
     "* text eol=lf",
@@ -96,9 +92,18 @@ def read_attributes(paths: list[str]) -> dict[str, dict[str, str]]:
                 f"git check-attr 출력 구조 오류: field_count={len(parts)}"
             )
         for index in range(0, len(parts), 3):
-            path = parts[index].decode("utf-8", errors="surrogateescape")
-            name = parts[index + 1].decode("utf-8", errors="replace")
-            value = parts[index + 2].decode("utf-8", errors="replace")
+            path = parts[index].decode(
+                "utf-8",
+                errors="surrogateescape",
+            )
+            name = parts[index + 1].decode(
+                "utf-8",
+                errors="replace",
+            )
+            value = parts[index + 2].decode(
+                "utf-8",
+                errors="replace",
+            )
             attributes.setdefault(path, {})[name] = value
     return attributes
 
@@ -170,7 +175,8 @@ def main() -> int:
             crlf, bare_cr = newline_counts(path)
             if crlf or bare_cr:
                 failures.append(
-                    f"LF 정책 위반: {relative} crlf={crlf} bare_cr={bare_cr}"
+                    f"LF 정책 위반: {relative} "
+                    f"crlf={crlf} bare_cr={bare_cr}"
                 )
         elif eol_value == "crlf":
             crlf_policy_files += 1
@@ -184,30 +190,39 @@ def main() -> int:
                 f"(text={text_value}, eol={eol_value})"
             )
 
-    for relative, expected_eol in CRITICAL_EOL.items():
-        attrs = attr_map.get(relative, {})
-        actual = attrs.get("eol", "missing")
-        if actual != expected_eol:
-            failures.append(
-                f"핵심 파일 EOL 정책 불일치: {relative} "
-                f"actual={actual} expected={expected_eol}"
-            )
-
-    for relative, expected_hash in CRITICAL_HASHES.items():
+    observed_files = (
+        *OBSERVED_MUTABLE_TEXT_FILES,
+        *IMMUTABLE_DATA_HASHES.keys(),
+    )
+    for relative in observed_files:
         path = ROOT / relative
+        attrs = attr_map.get(relative, {})
+        actual_eol = attrs.get("eol", "missing")
         if not path.is_file():
-            failures.append(f"핵심 파일 없음: {relative}")
+            failures.append(f"관찰 대상 파일 없음: {relative}")
             continue
+        if actual_eol != "lf":
+            failures.append(
+                f"관찰 대상 EOL 정책 불일치: {relative} "
+                f"actual={actual_eol} expected=lf"
+            )
         actual_hash = sha256_file(path)
         crlf, bare_cr = newline_counts(path)
         details.append(
             f"file={relative} sha256={actual_hash} "
-            f"crlf={crlf} bare_cr={bare_cr} "
-            f"eol={attr_map.get(relative, {}).get('eol', 'missing')}"
+            f"crlf={crlf} bare_cr={bare_cr} eol={actual_eol} "
+            f"mode={'immutable-data' if relative in IMMUTABLE_DATA_HASHES else 'mutable-eol-only'}"
         )
+
+    for relative, expected_hash in IMMUTABLE_DATA_HASHES.items():
+        path = ROOT / relative
+        if not path.is_file():
+            failures.append(f"불변 데이터 파일 없음: {relative}")
+            continue
+        actual_hash = sha256_file(path)
         if actual_hash != expected_hash:
             failures.append(
-                f"핵심 파일 SHA256 불일치: {relative} "
+                f"불변 데이터 SHA256 불일치: {relative} "
                 f"actual={actual_hash} expected={expected_hash}"
             )
 
@@ -218,6 +233,8 @@ def main() -> int:
     print(f"lf={lf_files}")
     print(f"crlf_policy={crlf_policy_files}")
     print(f"binary={binary_files}")
+    print(f"immutable_data={len(IMMUTABLE_DATA_HASHES)}")
+    print(f"mutable_eol_only={len(OBSERVED_MUTABLE_TEXT_FILES)}")
     for line in details:
         print(line)
 

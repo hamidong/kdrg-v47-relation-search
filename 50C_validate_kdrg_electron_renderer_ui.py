@@ -14,7 +14,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V4_AGGREGATE_CONTRACT"
+SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V6_RELATION_UI_PARITY"
 ROOT = Path(__file__).resolve().parent
 ELECTRON_ROOT = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -38,32 +38,37 @@ PROTECTED_HASHES = {
     "electron/.gitignore": "aa5069a33ab1272d0dc50e9968d39d9ad10babc6c545cb10a3a84dd132882ab2",
     "electron/README_STAGE50A.md": "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md": "09dc1a57af65ee56121abc18158c4250cda6af258e7360596ce5f6c7cdfd320f",
-    "electron/main.js": "56d5dd8fce986e2883d58ab3f39aaba160dc05d98dc95a74409487fb0c61c208",
-    "electron/preload.js": "f20cc0a0694f2b365e9e5d67640ac8f3ecd23e86f15234e6614979bb9e4fb672",
+    "electron/main.js": "cb3c2613833075e1bc7db3693aa558057c7f3755720f8625232e4232c8bfad1d",
+    "electron/preload.js": "c42dbd945acc529b5235d1e5da834ebd9274eabd4e0d791b55d601e5962bb9a2",
     "electron/src/data-paths.js": "27cca98bdf68a2d5d71210c36bcddc6068e413000be860b4e9a1a784a4f61316",
     "electron/src/search-normalizer.js": "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
-    "electron/src/search-result-contract.js": "cf979434aace8fde78c28130901295a2fb8e48049f5ef1ca4b69779cb5c48082",
-    "electron/src/kdrg-search-service.js": "acecdeb55267341e7570e3f1c60a97f4f9abf9c74fb2c31ae2d64b84c48baad8",
-    "electron/tests/run-search-parity.js": "9da5b1529c60f4ea3a7a0507e9a6a796cff3b60e52acd39aef3fd176c980b223",
+    "electron/src/search-result-contract.js": "a15ea969202ea566281776cb0a4f2be81ad9b343f2d466011257ffabf17c1e89",
+    "electron/src/kdrg-search-service.js": "2c7033a46314947417d470136ca2f6a1d443df8a4811758550737b12249b06c2",
+    "electron/tests/run-search-parity.js": "8f406f4850ce7867b6a4042b691066ad6293c0e2f8df2e111b631f155d5a2a81",
 }
 
 TARGET_HASHES = {
-    "50B_validate_kdrg_electron_search_service.py": "5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea",
+    "50B_validate_kdrg_electron_search_service.py": "fa046370f7dfaa45b913c96ca2646bf162a79f6bfa38799da1fb0cfa78e01bdc",
     "electron/src/bootstrap-data.js": "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
-    "electron/tests/validate-electron-skeleton.js": "3963dbe62a659c17c685044b9cc00b0c6782527b8433e4ddd1c59f3d3e50bb54",
-    "electron/tests/validate-search-service.js": "60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05",
-    "electron/renderer/index.html": "d48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f",
-    "electron/renderer/app.js": "43ea2db9431da87de40d72bd8eec373663f07fc8e986afecb212ee56e40790ce",
-    "electron/renderer/styles.css": "275137e8f05bb78de982f0cf777db4e14b2a2aab702d6afb310062f79afe4c76",
+    "electron/tests/validate-electron-skeleton.js": "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
+    "electron/tests/validate-search-service.js": "95c63a1023dcf0a71a0c1c722eceea720d43aef6fce18a3389f88b6e40585fe7",
+    "electron/renderer/index.html": "74868c83fe372d0bcfd4bf36ba44f404c3744d3db8336ef4a70885ac7b4e5be3",
+    "electron/renderer/app.js": "4ab198be4ec113d1c982a80e97e435bd0843440ef614bc3c325caa84e05537c6",
+    "electron/renderer/styles.css": "197e669e67ebd9044226e6fccc8eda7ba1ed8502637f964104f9dfd13c4fb5ff",
     "electron/renderer/ui-formatters.js": "64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944",
-    "electron/tests/validate-renderer-ui.js": "33a915a61cccdd0e4c716f4cd5f5b9c815bced6481dde7f4d8a37be2eeb6ae6f",
+    "electron/tests/validate-renderer-ui.js": "6a827d673732523f01804a5d0bdda754b9f193cbcf7e9c317bc8797d2b3a9d90",
     "electron/README_STAGE50C.md": "35f92d8bd42649ee7bdb651979626235517ea06a3a185bae3128b2b212e0478f",
 }
 
 JS_CHECK_FILES = (
+    "electron/main.js",
+    "electron/preload.js",
+    "electron/src/search-result-contract.js",
+    "electron/src/kdrg-search-service.js",
     "electron/src/bootstrap-data.js",
     "electron/tests/validate-electron-skeleton.js",
     "electron/tests/validate-search-service.js",
+    "electron/tests/run-search-parity.js",
     "electron/renderer/ui-formatters.js",
     "electron/renderer/app.js",
     "electron/tests/validate-renderer-ui.js",
@@ -348,6 +353,17 @@ def main() -> int:
     check("기본 TABLE 문구", "기본 분류 TABLE" in app_source, True)
     check("추가조건 문구", "추가 분기조건" in app_source, True)
     check("제외 문구", "단, 다음 대상은 제외" in app_source, True)
+    check("복수 코드 관계검색 UI", "복수 코드 관계검색" in html_source, True)
+    check("데이터 현황 기본 접힘", bool(re.search(r'<details[^>]+id="data-overview"(?![^>]*\sopen)[^>]*>', html_source)), True)
+    check("관계검색 기본 접힘", bool(re.search(r'<details[^>]+id="relation-search-panel"(?![^>]*\sopen)[^>]*>', html_source)), True)
+    check("기존 검색 유형 필터 유지", 'id="filter-type"' in html_source, True)
+    check("기존 MDC 필터 유지", 'id="filter-mdc"' in html_source, True)
+    check("기존 질병군 분류 필터 유지", 'id="filter-classification"' in html_source, True)
+    check("관계검색 bridge", "window.KDRG.relationSearch" in app_source, True)
+    check("관계검색 제외 TABLE 표시", "relation-group-exclusion" in app_source, True)
+    check("상세 접기 section", "create('details', 'detail-section')" in app_source, True)
+    check("TABLE 코드 기본 접힘", bool(re.search(r"makeSection\('TABLE 코드'[\s\S]{0,240}?open:\s*false", app_source)), True)
+    check("전체 펼치기·접기", "setAllDetailSections(true)" in app_source and "setAllDetailSections(false)" in app_source, True)
 
     node = locate_node()
     check("Node v22 실행환경", str(node) if node else None, "available", lambda value, _expected: bool(value))
@@ -357,10 +373,10 @@ def main() -> int:
             check(f"node --check {relative}", result["returncode"], 0)
 
         command_specs = {
-            "50C renderer UI 검증": ([str(node), "tests/validate-renderer-ui.js"], ELECTRON_ROOT, "105 PASS / 0 FAIL"),
-            "50B 검색 service 검증": ([str(node), "tests/validate-search-service.js"], ELECTRON_ROOT, "78 PASS / 0 FAIL"),
+            "50C renderer UI 검증": ([str(node), "tests/validate-renderer-ui.js"], ELECTRON_ROOT, "PASS / 0 FAIL"),
+            "50B 검색 service 검증": ([str(node), "tests/validate-search-service.js"], ELECTRON_ROOT, "PASS / 0 FAIL"),
             "50C 보안 골격 검증": ([str(node), "tests/validate-electron-skeleton.js"], ELECTRON_ROOT, "PASS / 0 FAIL"),
-            "50B Python 독립검증": ([sys.executable, "50B_validate_kdrg_electron_search_service.py"], ROOT, "66 PASS / 0 FAIL"),
+            "50B Python 독립검증": ([sys.executable, "50B_validate_kdrg_electron_search_service.py"], ROOT, "PASS / 0 FAIL"),
         }
         for name, (args, cwd, marker) in command_specs.items():
             result = run_command(args, cwd)

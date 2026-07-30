@@ -10,6 +10,9 @@ const state = {
   selectedKey: null,
   searchSequence: 0,
   detailSequence: 0,
+  relationSequence: 0,
+  relationResponse: null,
+  activeMode: 'search',
 };
 
 const TYPE_BADGE_CLASS = Object.freeze({
@@ -52,6 +55,8 @@ function setBusy(isBusy, label = '처리 중') {
   reset.disabled = isBusy;
   input.setAttribute('aria-busy', String(isBusy));
   submit.textContent = isBusy ? label : '검색';
+  const relationSubmit = byId('relation-submit');
+  if (relationSubmit) relationSubmit.disabled = isBusy;
 }
 
 function makeBadge(entityType) {
@@ -87,8 +92,9 @@ function renderMetrics(snapshot) {
   setText('metric-table', Ui.formatNumber(snapshot.counts.tables));
   setText('metric-code', Ui.formatNumber(snapshot.counts.codes));
   setText('metric-condition', Ui.formatNumber(snapshot.counts.conditionTableOccurrences));
-  setText('stage-badge', 'Stage 50C');
+  setText('stage-badge', 'Relation Search');
   setText('data-version', snapshot.dataVersion);
+  setText('data-overview-summary', `${Ui.formatNumber(snapshot.counts.codes)}개 코드 · 데이터 정상 로드`);
 }
 
 function renderTypeCounts(response) {
@@ -112,6 +118,8 @@ function renderResults(response) {
   const list = byId('result-list');
   list.replaceChildren();
   state.response = response;
+  state.relationResponse = null;
+  state.activeMode = 'search';
 
   setText('result-count', `${Ui.formatNumber(response.total_count)}건`);
   setText(
@@ -165,6 +173,174 @@ function renderResults(response) {
   setText('page-label', `${Ui.formatNumber(first)}–${Ui.formatNumber(last)} / ${Ui.formatNumber(response.total_count)}`);
 }
 
+function relationLevelDescription(level) {
+  if (level === 'strict') {
+    return '입력 코드가 하나 이상의 동일한 조건 선택지 안에서 모두 연결됩니다. 남은 TABLE과 추가 조건은 별도로 확인해야 합니다.';
+  }
+  if (level === 'split') {
+    return '모든 입력 코드가 같은 ADRG에 연결되지만 서로 다른 OR 조건 선택지에 나뉘어 있습니다. 하나의 조합으로 해석하면 안 됩니다.';
+  }
+  return 'OR 검색에서 입력 코드 중 일부만 이 ADRG의 조건식에 연결됩니다.';
+}
+
+function renderRelationCounts(response) {
+  const container = byId('type-counts');
+  container.replaceChildren();
+  const labels = { strict: '같은 선택지', split: '다른 선택지', partial: '일부 연결' };
+  for (const level of ['strict', 'split', 'partial']) {
+    const count = Number(response?.level_counts?.[level] ?? 0);
+    if (count) container.append(makeChip(`${labels[level]} ${Ui.formatNumber(count)}`, `relation-${level}-chip`));
+  }
+}
+
+function renderRelationResults(response) {
+  const list = byId('result-list');
+  list.replaceChildren();
+  state.response = null;
+  state.relationResponse = response;
+  state.activeMode = 'relation';
+  setText('result-count', `${Ui.formatNumber(response.total_count)}건`);
+  setText(
+    'result-caption',
+    response.total_count
+      ? `${response.operator} 관계검색 · 같은 ADRG·조건 선택지 기준`
+      : '입력 코드가 연결되는 ADRG 조건식을 찾지 못했습니다.',
+  );
+  renderRelationCounts(response);
+  if (!response.results.length) {
+    const empty = create('div', 'empty-state compact');
+    empty.append(
+      create('strong', '', '공통 관계를 찾지 못했습니다.'),
+      create('p', '', '코드 유형·MDC·질병군 분류를 확인하거나 OR 관계로 범위를 넓혀 보세요.'),
+    );
+    list.append(empty);
+  }
+  response.results.forEach((result, index) => {
+    const key = `RELATION:${result.entity_id}:${index}`;
+    const button = create('button', `result-card relation-result-card relation-${result.relation_level}`);
+    button.type = 'button';
+    button.dataset.relationIndex = String(index);
+    button.dataset.resultKey = key;
+    button.setAttribute('aria-label', `관계검색 ADRG ${result.entity_id} ${result.relation_level_label}`);
+    button.setAttribute('aria-pressed', String(state.selectedKey === key));
+    const top = create('div', 'result-card-top');
+    top.append(makeBadge('ADRG'));
+    top.append(makeChip(result.relation_level_label, `relation-${result.relation_level}-chip`));
+    const chips = create('div', 'chip-row');
+    chips.append(
+      makeChip(`${result.matched_count}/${result.total_count} 코드 연결`),
+      makeChip(result.summary?.mdc ? `MDC ${result.summary.mdc}` : 'MDC 미확인'),
+    );
+    for (const label of result.summary?.abc_display_labels ?? []) chips.append(makeChip(label));
+    button.append(top, create('strong', 'result-title', result.title), create('p', 'result-subtitle', result.subtitle), chips);
+    list.append(button);
+  });
+  byId('page-previous').disabled = true;
+  byId('page-next').disabled = true;
+  setText('page-label', response.total_count ? `1–${Ui.formatNumber(response.total_count)} / ${Ui.formatNumber(response.total_count)}` : '0–0 / 0');
+}
+
+function relationMatchCard(match) {
+  const card = create('article', 'relation-match-card');
+  const head = create('div', 'relation-match-head');
+  head.append(
+    makeChip(match.code_type_label || match.code_type || '자동판별', 'role-chip'),
+    create('strong', '', match.code),
+  );
+  card.append(head);
+  if (!match.exact_code_found) {
+    card.append(create('p', 'relation-warning', '통합 검색 데이터에서 정확히 일치하는 코드를 찾지 못했습니다.'));
+    return card;
+  }
+  if (!(match.matched_table_ids ?? []).length) {
+    card.append(create('p', 'muted', '이 ADRG의 포함 조건 TABLE과 연결되지 않습니다.'));
+    return card;
+  }
+  const tables = create('div', 'table-stack compact-stack');
+  for (const table of match.matched_tables ?? []) tables.append(tableCard(table));
+  card.append(tables);
+  return card;
+}
+
+function renderRelationDetail(candidate, response) {
+  const panel = byId('detail-content');
+  panel.replaceChildren();
+  const header = create('div', 'detail-primary relation-detail-primary');
+  header.append(makeBadge('ADRG'));
+  const copy = create('div');
+  copy.append(
+    create('h2', '', candidate.title),
+    create('p', '', `${candidate.relation_level_label} · ${candidate.matched_count}/${candidate.total_count} 코드 연결`),
+  );
+  header.append(copy);
+  const openAdrg = create('button', 'secondary-button relation-open-adrg', 'ADRG 전체 상세');
+  openAdrg.type = 'button';
+  openAdrg.dataset.entityType = 'ADRG';
+  openAdrg.dataset.entityId = candidate.entity_id;
+  header.append(openAdrg);
+  panel.append(header);
+
+  const notice = create('div', `relation-level-notice relation-${candidate.relation_level}`);
+  notice.append(
+    create('strong', '', candidate.relation_level_label),
+    create('p', '', relationLevelDescription(candidate.relation_level)),
+    create('small', '', response.disclaimer),
+  );
+  panel.append(notice);
+  panel.append(makeMetaGrid([
+    ['ADRG', candidate.entity_id],
+    ['질병군명', candidate.title.replace(`${candidate.entity_id} · `, '')],
+    ['MDC', candidate.summary?.mdc ? `MDC ${candidate.summary.mdc}` : '-'],
+    ['질병군 분류', Ui.summarizeList(candidate.summary?.abc_display_labels)],
+    ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`],
+    ['근거 페이지', candidate.source_page ? `PDF p.${candidate.source_page}` : '-'],
+  ]));
+
+  const matchesSection = makeSection('입력 코드별 연결 TABLE', '정확한 코드가 포함된 TABLE과 이 ADRG 조건식의 교집합입니다.', { open: true, count: candidate.code_matches.length });
+  const matchStack = create('div', 'relation-match-stack');
+  for (const match of candidate.code_matches) matchStack.append(relationMatchCard(match));
+  matchesSection.append(matchStack);
+
+  const groupsSection = makeSection('조건 선택지별 연결', '같은 조건 선택지인지, 서로 다른 OR 선택지인지 구분합니다.', { open: true, count: candidate.condition_groups.length });
+  const groupStack = create('div', 'relation-group-stack');
+  for (const group of candidate.condition_groups) {
+    const groupCard = create('article', `relation-group-card ${group.all_inputs ? 'is-strict-group' : ''}`);
+    const groupHead = create('div', 'relation-group-head');
+    groupHead.append(
+      create('strong', '', group.group_label),
+      makeChip(group.all_inputs ? '모든 입력 코드' : `${group.hit_count}/${candidate.total_count} 코드`, group.all_inputs ? 'relation-strict-chip' : ''),
+    );
+    groupCard.append(groupHead);
+    for (const match of group.matches) {
+      const row = create('div', 'relation-group-match');
+      row.append(create('strong', '', match.code), create('span', '', Ui.summarizeList(match.matched_table_ids)));
+      groupCard.append(row);
+    }
+    if ((group.exclude_tables ?? []).length) {
+      const exclusion = create('div', 'relation-group-exclusion');
+      exclusion.append(create('strong', '', '제외 TABLE'));
+      const tables = create('div', 'table-stack compact-stack');
+      for (const table of group.exclude_tables) tables.append(tableCard(table, { exclusion: true }));
+      exclusion.append(tables);
+      groupCard.append(exclusion);
+    }
+    if ((group.requirements ?? []).length) {
+      const requirement = create('p', 'relation-requirement', `추가 확인: ${group.requirements.join(' · ')}`);
+      groupCard.append(requirement);
+    }
+    groupStack.append(groupCard);
+  }
+  if (!candidate.condition_groups.length) groupStack.append(create('p', 'muted', '표시할 조건 선택지 연결이 없습니다.'));
+  groupsSection.append(groupStack);
+
+  const aadrgSection = makeSection('파생 AADRG', '질병군 분류(전문/일반/단순)를 함께 표시합니다.', { open: false, count: candidate.aadrg_records.length });
+  aadrgSection.append(makeSummaryList(candidate.aadrg_records));
+  panel.append(matchesSection, groupsSection, aadrgSection);
+  setText('detail-heading', '복수 코드 관계 상세');
+  setText('detail-caption', `${response.operator} · ADRG ${candidate.entity_id}`);
+  setDetailFoldActions(true);
+}
+
 function clearDetail(message = '검색 결과를 선택하면 상세 관계가 표시됩니다.') {
   const panel = byId('detail-content');
   panel.replaceChildren();
@@ -177,17 +353,35 @@ function clearDetail(message = '검색 결과를 선택하면 상세 관계가 �
   panel.append(empty);
   setText('detail-heading', '상세 정보');
   setText('detail-caption', '기본 TABLE과 추가 분기조건을 구분해 표시합니다.');
+  setDetailFoldActions(false);
 }
 
-function makeSection(title, description = '') {
-  const section = create('section', 'detail-section');
-  const header = create('div', 'section-header');
+function makeSection(title, description = '', options = {}) {
+  const section = create('details', 'detail-section');
+  section.open = options.open === true;
+  const header = create('summary', 'section-header');
   const titleWrap = create('div');
-  titleWrap.append(create('h3', '', title));
+  const titleRow = create('div', 'section-title-row');
+  titleRow.append(create('h3', '', title));
+  if (Number.isFinite(Number(options.count))) {
+    titleRow.append(makeChip(`${Ui.formatNumber(Number(options.count))}개`, 'section-count-chip'));
+  }
+  titleWrap.append(titleRow);
   if (description) titleWrap.append(create('p', '', description));
   header.append(titleWrap);
   section.append(header);
   return section;
+}
+
+function setDetailFoldActions(visible) {
+  const actions = byId('detail-fold-actions');
+  if (actions) actions.hidden = !visible;
+}
+
+function setAllDetailSections(open) {
+  for (const section of document.querySelectorAll('#detail-content details.detail-section')) {
+    section.open = open;
+  }
 }
 
 function makeMetaGrid(rows) {
@@ -242,6 +436,7 @@ function renderBasicTables(detail) {
   const section = makeSection(
     '기본 분류 TABLE',
     '분류집 원문에서 이 ADRG 아래에 정의된 TABLE입니다. 이 목록 자체는 포함·제외 논리를 뜻하지 않습니다.',
+    { open: true, count: Ui.uniqueStrings(detail.source_logical_table_ids ?? []).length },
   );
   const body = create('div', 'table-stack');
   const ids = Ui.uniqueStrings(detail.source_logical_table_ids ?? []);
@@ -270,7 +465,7 @@ function conditionTableRow(leaf, summaryMap, exclusion) {
 function renderConditionGroups(detail) {
   const ast = detail.condition_ast;
   const coverage = Ui.conditionCoverage(detail);
-  const section = makeSection('추가 분기조건', coverage.summary);
+  const section = makeSection('추가 분기조건', coverage.summary, { open: Boolean(ast), count: ast ? Ui.buildConditionGroups(ast).length : 0 });
   const body = create('div', 'condition-groups');
   const summaryMap = Ui.tableSummaryMap(detail);
   const groups = Ui.buildConditionGroups(ast);
@@ -354,7 +549,7 @@ function renderAdrgDetail(payload) {
     ]),
   );
 
-  const aadrgSection = makeSection('파생 AADRG', 'ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.');
+  const aadrgSection = makeSection('파생 AADRG', 'ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.', { open: false, count: (detail.aadrg_records ?? []).length });
   aadrgSection.append(makeSummaryList(detail.aadrg_records));
   fragment.append(aadrgSection, renderBasicTables(detail), renderConditionGroups(detail));
   return fragment;
@@ -373,9 +568,9 @@ function renderAadrgDetail(payload) {
       ['RDRG', `${Ui.formatNumber((detail.rdrg_codes ?? []).length)}개`],
     ]),
   );
-  const parent = makeSection('상위 ADRG');
+  const parent = makeSection('상위 ADRG', '', { open: true, count: detail.parent_adrg ? 1 : 0 });
   parent.append(makeSummaryList(detail.parent_adrg ? [detail.parent_adrg] : []));
-  const rdrg = makeSection('파생 RDRG', '중증도 분기를 포함한 최종 RDRG입니다.');
+  const rdrg = makeSection('파생 RDRG', '중증도 분기를 포함한 최종 RDRG입니다.', { open: false, count: (detail.rdrg_records ?? []).length });
   rdrg.append(makeSummaryList(detail.rdrg_records));
   fragment.append(parent, rdrg);
   return fragment;
@@ -393,7 +588,7 @@ function renderRdrgDetail(payload) {
       ['상위 ADRG', detail.adrg],
     ]),
   );
-  const parents = makeSection('상위 분류 관계');
+  const parents = makeSection('상위 분류 관계', '', { open: true, count: [detail.parent_aadrg, detail.parent_adrg].filter(Boolean).length });
   parents.append(makeSummaryList([detail.parent_aadrg, detail.parent_adrg].filter(Boolean)));
   fragment.append(parents);
   return fragment;
@@ -413,7 +608,7 @@ function renderCodeDetail(payload) {
     ]),
   );
 
-  const tables = makeSection('포함 TABLE', '원문 정의 위치·조건 AST 사용 관계·검색용 통합 관계를 구분합니다.');
+  const tables = makeSection('포함 TABLE', '원문 정의 위치·조건 AST 사용 관계·검색용 통합 관계를 구분합니다.', { open: true, count: (detail.logical_tables ?? []).length });
   const stack = create('div', 'table-stack');
   for (const table of detail.logical_tables ?? []) {
     const summary = {
@@ -435,9 +630,9 @@ function renderCodeDetail(payload) {
   if (!stack.childNodes.length) stack.append(create('p', 'muted', '연결된 TABLE이 없습니다.'));
   tables.append(stack);
 
-  const adrgs = makeSection('관련 ADRG');
+  const adrgs = makeSection('관련 ADRG', '', { open: false, count: (detail.related_adrg_summaries ?? []).length });
   adrgs.append(makeSummaryList(detail.related_adrg_summaries));
-  const aadrgs = makeSection('관련 AADRG');
+  const aadrgs = makeSection('관련 AADRG', '', { open: false, count: (detail.related_aadrg_summaries ?? []).length });
   aadrgs.append(makeSummaryList(detail.related_aadrg_summaries));
   fragment.append(tables, adrgs, aadrgs);
   return fragment;
@@ -495,11 +690,11 @@ function renderTableDetail(payload) {
       ['원문 family 근거', Ui.summarizeList(detail.source_adrg_families)],
     ]),
   );
-  const contexts = makeSection('조건 AST 사용 관계', '포함과 제외 polarity를 분리하여 표시합니다.');
+  const contexts = makeSection('조건 AST 사용 관계', '포함과 제외 polarity를 분리하여 표시합니다.', { open: (detail.runtime_contexts ?? []).length > 0, count: (detail.runtime_contexts ?? []).length });
   contexts.append(renderRuntimeContexts(detail.runtime_contexts));
-  const codes = makeSection('TABLE 코드', '원천에 코드명이 없으면 임의로 생성하지 않습니다.');
+  const codes = makeSection('TABLE 코드', '원천에 코드명이 없으면 임의로 생성하지 않습니다.', { open: false, count: (detail.code_records ?? []).length });
   codes.append(renderCodeRecords(detail.code_records));
-  const related = makeSection('관련 ADRG');
+  const related = makeSection('관련 ADRG', '', { open: false, count: (detail.related_adrg_summaries ?? []).length });
   related.append(makeSummaryList(detail.related_adrg_summaries));
   fragment.append(contexts, codes, related);
   return fragment;
@@ -537,6 +732,7 @@ function renderDetail(payload) {
 
   setText('detail-heading', `${Ui.entityLabel(payload.entity_type)} 상세`);
   setText('detail-caption', payload.entity_id);
+  setDetailFoldActions(true);
 }
 
 function markSelected(key) {
@@ -564,6 +760,142 @@ async function openDetail(entityType, entityId) {
   }
 }
 
+
+const RELATION_CODE_TYPE_OPTIONS = Object.freeze([
+  ['AUTO', '자동판별'],
+  ['DIAGNOSIS', '상병코드'],
+  ['SECONDARY_DIAGNOSIS', '기타진단코드'],
+  ['PROCEDURE', '수술·처치코드'],
+  ['TEST', '검사·처치코드'],
+  ['ADD_ON', '부가코드'],
+  ['OTHER', '기타 조건 코드'],
+]);
+
+function updateRelationRowControls() {
+  const rows = [...document.querySelectorAll('[data-relation-condition]')];
+  rows.forEach((row, index) => {
+    const label = row.querySelector('.relation-condition-number');
+    if (label) label.textContent = `검색 ${index + 1}`;
+    const remove = row.querySelector('[data-relation-remove]');
+    if (remove) remove.disabled = rows.length <= 2;
+  });
+  byId('relation-add').disabled = rows.length >= 6;
+}
+
+function createRelationConditionRow(value = {}) {
+  const row = create('div', 'relation-condition-row');
+  row.dataset.relationCondition = 'true';
+  row.append(create('strong', 'relation-condition-number', '검색'));
+  const type = create('select', 'relation-code-type');
+  type.setAttribute('aria-label', '관계검색 코드 유형');
+  for (const [optionValue, label] of RELATION_CODE_TYPE_OPTIONS) {
+    const option = create('option', '', label);
+    option.value = optionValue;
+    if (optionValue === String(value.codeType ?? 'AUTO')) option.selected = true;
+    type.append(option);
+  }
+  const input = create('input', 'relation-code-input');
+  input.type = 'search';
+  input.maxLength = 100;
+  input.placeholder = '정확한 코드 입력 · 예: O1311';
+  input.value = String(value.code ?? '');
+  input.setAttribute('aria-label', '관계검색 정확한 코드');
+  const remove = create('button', 'relation-remove-button', '삭제');
+  remove.type = 'button';
+  remove.dataset.relationRemove = 'true';
+  row.append(type, input, remove);
+  return row;
+}
+
+function addRelationCondition(value = {}) {
+  const container = byId('relation-condition-list');
+  if (container.childElementCount >= 6) return;
+  container.append(createRelationConditionRow(value));
+  updateRelationRowControls();
+}
+
+function resetRelationForm(options = {}) {
+  const container = byId('relation-condition-list');
+  container.replaceChildren();
+  addRelationCondition();
+  addRelationCondition();
+  byId('relation-operator').value = 'AND';
+  state.relationResponse = null;
+  if (options.clearResults !== false && state.activeMode === 'relation') {
+    byId('result-list').replaceChildren();
+    byId('type-counts').replaceChildren();
+    setText('result-count', '0건');
+    setText('result-caption', '복수 코드를 입력하면 관계검색 결과가 표시됩니다.');
+    setText('page-label', '0–0 / 0');
+    clearDetail('복수 코드 관계검색 결과를 선택하면 연결 구조가 표시됩니다.');
+  }
+}
+
+function currentRelationRequest() {
+  const conditions = [...document.querySelectorAll('[data-relation-condition]')].map((row) => ({
+    codeType: row.querySelector('.relation-code-type').value,
+    code: row.querySelector('.relation-code-input').value,
+  }));
+  return {
+    conditions,
+    operator: byId('relation-operator').value,
+    mdc: byId('filter-mdc').value,
+    classification: byId('filter-classification').value,
+  };
+}
+
+function setRelationBusy(isBusy) {
+  byId('relation-submit').disabled = isBusy;
+  byId('relation-reset').disabled = isBusy;
+  byId('relation-add').disabled = isBusy || document.querySelectorAll('[data-relation-condition]').length >= 6;
+  for (const element of document.querySelectorAll('.relation-code-type, .relation-code-input, [data-relation-remove], #relation-operator')) {
+    element.disabled = isBusy || (element.matches('[data-relation-remove]') && document.querySelectorAll('[data-relation-condition]').length <= 2);
+  }
+  for (const id of ['search-submit', 'search-reset', 'search-query', 'filter-type', 'filter-mdc', 'filter-classification']) {
+    const element = byId(id);
+    if (element) element.disabled = isBusy;
+  }
+  byId('relation-submit').textContent = isBusy ? '관계 검색 중' : '공통 관련 ADRG 검색';
+}
+
+async function runRelationSearch() {
+  const request = currentRelationRequest();
+  const emptyIndex = request.conditions.findIndex((condition) => !String(condition.code ?? '').trim());
+  if (emptyIndex >= 0) {
+    const input = document.querySelectorAll('.relation-code-input')[emptyIndex];
+    input?.focus();
+    setStatus('error', '복수 코드 관계검색 입력을 확인하세요.', `${emptyIndex + 1}번 코드를 입력해야 합니다.`);
+    return;
+  }
+  const sequence = ++state.relationSequence;
+  setRelationBusy(true);
+  setStatus('loading', '복수 코드 관계를 확인하는 중입니다.', `${request.conditions.length}개 코드 · ${request.operator} 조건`);
+  try {
+    const response = await window.KDRG.relationSearch(request);
+    if (sequence !== state.relationSequence) return;
+    state.selectedKey = null;
+    renderRelationResults(response);
+    setStatus(
+      'ready',
+      `${Ui.formatNumber(response.total_count)}개 ADRG 관계를 찾았습니다.`,
+      response.total_count ? response.disclaimer : '코드 유형·MDC·질병군 분류 또는 AND/OR 조건을 조정하세요.',
+    );
+    if (response.results.length) {
+      const first = response.results[0];
+      markSelected(`RELATION:${first.entity_id}:0`);
+      renderRelationDetail(first, response);
+    } else {
+      clearDetail('복수 코드가 연결되는 ADRG 조건식을 찾지 못했습니다.');
+    }
+  } catch (error) {
+    if (sequence !== state.relationSequence) return;
+    setStatus('error', '복수 코드 관계검색을 완료하지 못했습니다.', error?.message || '알 수 없는 오류');
+    byId('result-list').replaceChildren(create('p', 'error-message', error?.message || '관계검색 오류'));
+  } finally {
+    if (sequence === state.relationSequence) setRelationBusy(false);
+  }
+}
+
 function currentRequest(offset = 0) {
   return {
     query: byId('search-query').value,
@@ -583,6 +915,7 @@ async function runSearch(request, options = {}) {
     return;
   }
   const sequence = ++state.searchSequence;
+  state.activeMode = 'search';
   state.request = { ...request, query };
   setBusy(true, '검색 중');
   setStatus('loading', '검색 중입니다.', `${query} · 검색 서비스에서 결과를 확인하고 있습니다.`);
@@ -617,6 +950,8 @@ function resetSearch() {
   state.response = null;
   state.request = null;
   state.selectedKey = null;
+  state.relationResponse = null;
+  state.activeMode = 'search';
   byId('result-list').replaceChildren();
   byId('type-counts').replaceChildren();
   setText('result-count', '0건');
@@ -643,8 +978,33 @@ function bindEvents() {
     if (!state.response || !state.request || !state.response.has_more) return;
     runSearch({ ...state.request, offset: state.response.offset + state.response.limit }, { openFirst: true });
   });
+  byId('relation-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+    runRelationSearch();
+  });
+  byId('relation-add').addEventListener('click', () => addRelationCondition());
+  byId('relation-reset').addEventListener('click', () => resetRelationForm());
+  byId('detail-expand-all').addEventListener('click', () => setAllDetailSections(true));
+  byId('detail-collapse-all').addEventListener('click', () => setAllDetailSections(false));
 
   document.addEventListener('click', (event) => {
+    const removeCondition = event.target.closest('[data-relation-remove]');
+    if (removeCondition) {
+      const rows = document.querySelectorAll('[data-relation-condition]');
+      if (rows.length > 2) removeCondition.closest('[data-relation-condition]')?.remove();
+      updateRelationRowControls();
+      return;
+    }
+    const relationCard = event.target.closest('[data-relation-index]');
+    if (relationCard && state.relationResponse) {
+      const index = Number(relationCard.dataset.relationIndex);
+      const candidate = state.relationResponse.results[index];
+      if (candidate) {
+        markSelected(`RELATION:${candidate.entity_id}:${index}`);
+        renderRelationDetail(candidate, state.relationResponse);
+      }
+      return;
+    }
     const entityButton = event.target.closest('[data-entity-type][data-entity-id]');
     if (entityButton) {
       openDetail(entityButton.dataset.entityType, entityButton.dataset.entityId);
@@ -660,7 +1020,7 @@ function bindEvents() {
 
 async function initialize() {
   if (!Ui) throw new Error('UI formatter 모듈을 찾을 수 없습니다.');
-  if (!window.KDRG || typeof window.KDRG.search !== 'function' || typeof window.KDRG.getDetail !== 'function') {
+  if (!window.KDRG || typeof window.KDRG.search !== 'function' || typeof window.KDRG.relationSearch !== 'function' || typeof window.KDRG.getDetail !== 'function') {
     throw new Error('보안 preload 검색 bridge를 찾을 수 없습니다.');
   }
 
@@ -676,6 +1036,7 @@ async function initialize() {
   state.serviceStatus = serviceStatus;
   renderMetrics(snapshot);
   bindEvents();
+  resetRelationForm({ clearResults: false });
   resetSearch();
 }
 

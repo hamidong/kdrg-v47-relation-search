@@ -13,11 +13,32 @@ const {
 
 const SERVICE_SCHEMA_VERSION = 'kdrg-runtime-search-service-v1';
 const RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-search-response-v1';
+const RELATION_RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-relation-response-v1';
 const SUPPORTED_DATA_SCHEMA = 'kdrg-v47-search-integrated-v2';
 const ENTITY_TYPES = Object.freeze(['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']);
 const ENTITY_ORDER = Object.freeze(
   Object.fromEntries(ENTITY_TYPES.map((name, index) => [name, index])),
 );
+const RELATION_LEVEL_ORDER = Object.freeze({ strict: 0, split: 1, partial: 2 });
+const RELATION_LEVEL_LABELS = Object.freeze({
+  strict: '같은 조건 선택지',
+  split: '같은 ADRG · 다른 조건 선택지',
+  partial: '일부 코드만 연결',
+});
+const CODE_TYPE_LABELS = Object.freeze({
+  AUTO: '자동판별',
+  DIAGNOSIS: '상병코드',
+  SECONDARY_DIAGNOSIS: '기타진단코드',
+  PROCEDURE: '수술·처치코드',
+  TEST: '검사·처치코드',
+  ADD_ON: '부가코드',
+  OTHER: '기타 조건 코드',
+});
+const DIAGNOSIS_ROLES = new Set([
+  'principal_diagnosis', 'diagnosis', 'secondary_diagnosis', 'principal_or_secondary_diagnosis',
+]);
+const ADD_ON_ROLES = new Set(['add_on_code']);
+const PROCEDURE_ROLES = new Set(['procedure', 'text:procedure_count']);
 
 class KdrgSearchError extends Error {
   constructor(message) {
@@ -131,6 +152,17 @@ class KdrgSearchService {
     const semantic = this.buildSemanticContextIndex();
     this.semanticContextIndex = semantic.index;
     this.semanticContextSummary = semantic.summary;
+    this.astByAdrg = new Map(
+      (this.data.condition_ast_records ?? []).map((row) => [String(row.adrg ?? ''), row]),
+    );
+    this.tableCategoryIndex = this.buildTableCategoryIndex();
+    this.codeTypesByCode = this.buildCodeTypeIndex();
+    this.conditionGroupsByAdrg = new Map(
+      (this.data.adrg_records ?? []).map((row) => {
+        const adrg = String(row.adrg ?? '');
+        return [adrg, this.buildConditionGroups(adrg, this.astByAdrg.get(adrg) ?? null)];
+      }),
+    );
     this.searchDocuments = this.buildSearchDocuments();
   }
 
@@ -166,6 +198,7 @@ class KdrgSearchService {
     return {
       service_schema_version: SERVICE_SCHEMA_VERSION,
       response_schema_version: RESPONSE_SCHEMA_VERSION,
+      relation_response_schema_version: RELATION_RESPONSE_SCHEMA_VERSION,
       data_schema_version: this.meta.schema_version ?? null,
       data_version: this.meta.data_version ?? null,
       data_state: this.meta.state ?? null,
@@ -425,6 +458,310 @@ class KdrgSearchService {
     return {
       index: output,
       summary: Object.fromEntries([...summary.entries()].sort(([a], [b]) => compareAscii(a, b))),
+    };
+  }
+
+
+  static classifyCodeTypeText(...values) {
+    const text = values.map((value) => String(value ?? '')).join(' ').toLowerCase();
+    if (['secondary', 'other diagnosis', '기타진단', 'other_diagnosis'].some((token) => text.includes(token))) {
+      return 'SECONDARY_DIAGNOSIS';
+    }
+    if (['diagnosis', '진단', 'principal', '주진단'].some((token) => text.includes(token))) {
+      return 'DIAGNOSIS';
+    }
+    if (['add_on', 'addon', 'supplement', '부가', 'additional'].some((token) => text.includes(token))) {
+      return 'ADD_ON';
+    }
+    if (['test', '검사'].some((token) => text.includes(token))) {
+      return 'TEST';
+    }
+    if (['procedure', 'surgery', 'operation', '시술', '수술', '처치'].some((token) => text.includes(token))) {
+      return 'PROCEDURE';
+    }
+    return 'OTHER';
+  }
+
+  buildTableCategoryIndex() {
+    const evidence = new Map();
+    const add = (tableId, value) => {
+      if (!evidence.has(tableId)) evidence.set(tableId, new Set());
+      evidence.get(tableId).add(value);
+    };
+    for (const ast of this.data.condition_ast_records ?? []) {
+      for (const node of ast.nodes ?? []) {
+        const nodeType = String(node.node_type ?? '');
+        const semanticType = String(node.semantic_type ?? '');
+        const role = String(node.table_role ?? '');
+        const evidenceValue = role || (nodeType === 'TEXT_CONDITION' && semanticType ? `text:${semanticType}` : '');
+        if (!evidenceValue) continue;
+        for (const tableId of uniqueStrings(node.logical_table_ids ?? [])) add(String(tableId), evidenceValue);
+      }
+    }
+    const output = new Map();
+    for (const table of this.data.logical_table_records ?? []) {
+      const tableId = String(table.logical_table_id ?? '');
+      const values = evidence.get(tableId) ?? new Set();
+      let category = 'OTHER';
+      if ([...values].some((value) => DIAGNOSIS_ROLES.has(value))) category = 'DIAGNOSIS';
+      else if ([...values].some((value) => ADD_ON_ROLES.has(value))) category = 'ADD_ON';
+      else if ([...values].some((value) => PROCEDURE_ROLES.has(value))) category = 'PROCEDURE';
+      else if ([...values].some((value) => String(value).toLowerCase().includes('test'))) category = 'TEST';
+      output.set(tableId, category);
+    }
+    return output;
+  }
+
+  buildCodeTypeIndex() {
+    const output = new Map();
+    for (const row of this.data.code_records ?? []) {
+      const normalizedCode = normalizeEntityId(row.code, 'CODE');
+      const types = new Set();
+      for (const role of row.roles ?? []) types.add(KdrgSearchService.classifyCodeTypeText(role));
+      for (const tableId of row.logical_table_ids ?? []) {
+        types.add(this.tableCategoryIndex.get(String(tableId)) ?? 'OTHER');
+      }
+      if (!types.size) types.add('OTHER');
+      output.set(normalizedCode, types);
+    }
+    return output;
+  }
+
+  exactTableIdsForCode(code, codeType = 'AUTO') {
+    const normalizedCode = normalizeEntityId(code, 'CODE');
+    const row = this.recordMaps.CODE.get(normalizedCode);
+    if (!row) return [];
+    const tableIds = uniqueStrings(row.logical_table_ids ?? []);
+    const selectedType = String(codeType ?? 'AUTO').toUpperCase();
+    if (selectedType === 'AUTO') return tableIds;
+    const codeTypes = this.codeTypesByCode.get(normalizedCode) ?? new Set();
+    if (!codeTypes.has(selectedType)) return [];
+    return tableIds.filter((tableId) =>
+      (this.tableCategoryIndex.get(String(tableId)) ?? 'OTHER') === selectedType
+      || codeTypes.has(selectedType),
+    );
+  }
+
+  descendants(nodeId, nodes) {
+    const found = new Set();
+    const stack = [String(nodeId ?? '')];
+    while (stack.length) {
+      const current = stack.pop();
+      if (!current || found.has(current)) continue;
+      found.add(current);
+      const node = nodes.get(current) ?? {};
+      for (const childId of node.child_node_ids ?? []) stack.push(String(childId));
+    }
+    return found;
+  }
+
+  buildConditionGroups(adrg, ast) {
+    if (!ast) return [];
+    const nodeRows = Array.isArray(ast.nodes) ? ast.nodes : [];
+    const nodes = new Map(
+      nodeRows
+        .filter((node) => String(node.node_id ?? ''))
+        .map((node) => [String(node.node_id), node]),
+    );
+    const rootId = String(ast.root_node_id ?? '');
+    const root = nodes.get(rootId) ?? {};
+    const rootSet = rootId ? this.descendants(rootId, nodes) : new Set(nodes.keys());
+    let branchIds = [];
+    let shared = new Set();
+    if (String(root.node_type ?? '') === 'OR' && (root.child_node_ids ?? []).length >= 2) {
+      branchIds = (root.child_node_ids ?? []).map(String);
+    } else {
+      const directOr = (root.child_node_ids ?? [])
+        .map((childId) => nodes.get(String(childId)))
+        .find((node) =>
+          String(node?.node_type ?? '') === 'OR' && (node?.child_node_ids ?? []).length >= 2,
+        );
+      if (directOr) {
+        const orId = String(directOr.node_id ?? '');
+        branchIds = (directOr.child_node_ids ?? []).map(String);
+        const orDescendants = this.descendants(orId, nodes);
+        shared = new Set([...rootSet].filter((nodeId) => !orDescendants.has(nodeId)));
+      }
+    }
+    const branchSets = branchIds.length
+      ? branchIds.map((branchId) => new Set([...this.descendants(branchId, nodes), ...shared]))
+      : [rootSet.size ? rootSet : new Set(nodes.keys())];
+
+    return branchSets.map((nodeSet, index) => {
+      const includeTableIds = [];
+      const excludeTableIds = [];
+      const requirements = [];
+      const includeSeen = new Set();
+      const excludeSeen = new Set();
+      const requirementSeen = new Set();
+      for (const node of nodeRows) {
+        const nodeId = String(node.node_id ?? '');
+        if (!nodeSet.has(nodeId)) continue;
+        const tableIds = uniqueStrings(node.logical_table_ids ?? []);
+        for (const tableId of tableIds) {
+          const contexts = this.semanticContextIndex.get(`${adrg}\u0000${tableId}`) ?? [];
+          const context = contexts.find((value) => String(value.node_id ?? '') === nodeId) ?? {
+            context: 'positive_required_table',
+          };
+          const negative = String(context.context ?? '') === 'negative_or_exclusion_reference';
+          if (negative) {
+            if (!excludeSeen.has(tableId)) {
+              excludeSeen.add(tableId);
+              excludeTableIds.push(tableId);
+            }
+          } else if (!includeSeen.has(tableId)) {
+            includeSeen.add(tableId);
+            includeTableIds.push(tableId);
+          }
+        }
+        if (!tableIds.length && String(node.node_type ?? '') === 'TEXT_CONDITION') {
+          const text = String(node.display_text || node.source_fragment || '').trim();
+          if (text.length >= 2 && text.length <= 180 && !requirementSeen.has(text)) {
+            requirementSeen.add(text);
+            requirements.push(text);
+          }
+        }
+      }
+      return {
+        group_no: index + 1,
+        group_label: `조건식 ${index + 1}`,
+        join_to_next_group: index + 1 < branchSets.length ? 'OR' : '',
+        include_table_ids: includeTableIds,
+        exclude_table_ids: excludeTableIds,
+        requirements: requirements.slice(0, 12),
+      };
+    });
+  }
+
+  relationSearch(conditions, operator = 'AND', options = {}) {
+    if (!Array.isArray(conditions) || conditions.length < 2 || conditions.length > 6) {
+      throw new KdrgSearchError('복수 코드 관계검색은 2~6개 코드가 필요합니다');
+    }
+    const relationOperator = String(operator ?? 'AND').toUpperCase();
+    if (!['AND', 'OR'].includes(relationOperator)) {
+      throw new KdrgSearchError(`지원하지 않는 조건 관계입니다: ${operator}`);
+    }
+    const mdcFilter = String(options.mdc ?? '').toUpperCase().trim();
+    const classFilter = String(options.classification ?? '').toUpperCase().trim();
+    const conditionTables = conditions.map((condition) => {
+      const code = String(condition.code ?? '').trim();
+      const codeType = String(condition.codeType ?? 'AUTO').toUpperCase();
+      const normalizedCode = normalizeEntityId(code, 'CODE');
+      const tableIds = this.exactTableIdsForCode(code, codeType);
+      const actualTypes = [...(this.codeTypesByCode.get(normalizedCode) ?? new Set())].sort(compareAscii);
+      return {
+        code,
+        normalized_code: normalizedCode,
+        code_type: codeType,
+        code_type_label: CODE_TYPE_LABELS[codeType] ?? codeType,
+        actual_code_types: actualTypes,
+        exact_code_found: this.recordMaps.CODE.has(normalizedCode),
+        table_ids: tableIds,
+      };
+    });
+    const totalCount = conditionTables.length;
+    const results = [];
+    for (const row of this.data.adrg_records ?? []) {
+      const adrg = String(row.adrg ?? '');
+      if (mdcFilter && !this.recordMatchesMdc('ADRG', row, mdcFilter)) continue;
+      if (classFilter && !this.recordMatchesClassification('ADRG', row, classFilter)) continue;
+      const groups = this.conditionGroupsByAdrg.get(adrg) ?? [];
+      if (!groups.length) continue;
+      const positiveTableIds = new Set(groups.flatMap((group) => group.include_table_ids));
+      const exclusionTableIds = new Set(groups.flatMap((group) => group.exclude_table_ids));
+      if (conditionTables.some((condition) => condition.table_ids.some((tableId) => exclusionTableIds.has(tableId)))) {
+        continue;
+      }
+      const codeMatches = conditionTables.map((condition) => {
+        const matchedTableIds = condition.table_ids.filter((tableId) => positiveTableIds.has(tableId)).sort(compareAscii);
+        return {
+          ...condition,
+          matched_table_ids: matchedTableIds,
+          matched_tables: matchedTableIds.map((tableId) => this.summaryEntity('TABLE', tableId)),
+        };
+      });
+      const matchedCount = codeMatches.filter((match) => match.matched_table_ids.length).length;
+      if (relationOperator === 'AND' && matchedCount !== totalCount) continue;
+      if (relationOperator === 'OR' && matchedCount === 0) continue;
+
+      let strictGroupExists = false;
+      const groupMatches = [];
+      for (const group of groups) {
+        const groupIds = new Set(group.include_table_ids);
+        const matches = conditionTables.map((condition) => {
+          const matchedTableIds = condition.table_ids.filter((tableId) => groupIds.has(tableId)).sort(compareAscii);
+          return {
+            code: condition.code,
+            code_type: condition.code_type,
+            matched_table_ids: matchedTableIds,
+            matched_tables: matchedTableIds.map((tableId) => this.summaryEntity('TABLE', tableId)),
+          };
+        });
+        const hitCount = matches.filter((match) => match.matched_table_ids.length).length;
+        const allInputs = hitCount === totalCount;
+        if (hitCount) {
+          groupMatches.push({
+            group_no: group.group_no,
+            group_label: group.group_label,
+            all_inputs: allInputs,
+            hit_count: hitCount,
+            matches,
+            requirements: clone(group.requirements),
+            exclude_table_ids: clone(group.exclude_table_ids),
+            exclude_tables: group.exclude_table_ids.map((tableId) => this.summaryEntity('TABLE', tableId)),
+          });
+        }
+        strictGroupExists = strictGroupExists || allInputs;
+      }
+      const relationLevel = matchedCount === totalCount && strictGroupExists
+        ? 'strict'
+        : matchedCount === totalCount
+          ? 'split'
+          : 'partial';
+      const [title, subtitle] = this.titleSubtitle('ADRG', row);
+      const sourceBlock = clone(row.source_block ?? {});
+      results.push({
+        entity_type: 'ADRG',
+        entity_id: adrg,
+        title,
+        subtitle,
+        relation_level: relationLevel,
+        relation_level_label: RELATION_LEVEL_LABELS[relationLevel],
+        matched_count: matchedCount,
+        total_count: totalCount,
+        code_matches: codeMatches,
+        condition_groups: groupMatches,
+        aadrg_records: (row.aadrg_codes ?? []).map((code) => this.summaryEntity('AADRG', code)),
+        summary: this.summaryPayload('ADRG', row),
+        source_page: sourceBlock.pdf_page_start ?? sourceBlock.pdf_page ?? null,
+      });
+    }
+    results.sort((left, right) =>
+      (RELATION_LEVEL_ORDER[left.relation_level] ?? 9) - (RELATION_LEVEL_ORDER[right.relation_level] ?? 9)
+      || right.matched_count - left.matched_count
+      || compareAscii(left.entity_id, right.entity_id),
+    );
+    const levelCounts = {};
+    for (const result of results) {
+      levelCounts[result.relation_level] = (levelCounts[result.relation_level] ?? 0) + 1;
+    }
+    return {
+      schema_version: RELATION_RESPONSE_SCHEMA_VERSION,
+      operator: relationOperator,
+      filters: { mdc: mdcFilter || null, classification: classFilter || null },
+      total_count: results.length,
+      level_counts: levelCounts,
+      conditions: conditionTables.map((condition) => ({
+        code: condition.code,
+        normalized_code: condition.normalized_code,
+        code_type: condition.code_type,
+        code_type_label: condition.code_type_label,
+        actual_code_types: condition.actual_code_types,
+        exact_code_found: condition.exact_code_found,
+        table_ids: clone(condition.table_ids),
+      })),
+      results,
+      disclaimer: '입력 코드가 같은 ADRG·조건식에 연결되는지를 보여주는 관계검색이며 최종 DRG 판정을 의미하지 않습니다.',
     };
   }
 
@@ -855,6 +1192,7 @@ module.exports = Object.freeze({
   KdrgSearchService,
   SERVICE_SCHEMA_VERSION,
   RESPONSE_SCHEMA_VERSION,
+  RELATION_RESPONSE_SCHEMA_VERSION,
   SUPPORTED_DATA_SCHEMA,
   ENTITY_TYPES,
   normalizeEntityId,

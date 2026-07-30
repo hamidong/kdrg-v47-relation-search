@@ -5,7 +5,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const VALIDATOR_VERSION =
-  '2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V4';
+  '2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const ROOT = path.resolve(ELECTRON_ROOT, '..');
 
@@ -55,6 +55,10 @@ function main() {
   const lockPath = path.join(ELECTRON_ROOT, 'package-lock.json');
   const workflowPath = path.join(ROOT, '.github', 'workflows', 'build-electron-windows.yml');
   const smokeSourcePath = path.join(ELECTRON_ROOT, 'src', 'packaged-runtime-smoke.js');
+  const rendererHtmlPath = path.join(ELECTRON_ROOT, 'renderer', 'index.html');
+  const rendererAppPath = path.join(ELECTRON_ROOT, 'renderer', 'app.js');
+  const relationContractPath = path.join(ELECTRON_ROOT, 'src', 'search-result-contract.js');
+  const searchServicePath = path.join(ELECTRON_ROOT, 'src', 'kdrg-search-service.js');
   const verifyScriptPath = path.join(ELECTRON_ROOT, 'scripts', 'verify-windows-portable.ps1');
   const smokeContractTestPath = path.join(
     ELECTRON_ROOT,
@@ -77,6 +81,10 @@ function main() {
     lockPath,
     workflowPath,
     smokeSourcePath,
+    rendererHtmlPath,
+    rendererAppPath,
+    relationContractPath,
+    searchServicePath,
     smokeContractTestPath,
     releaseVersionValidatorPath,
     verifyScriptPath,
@@ -185,9 +193,23 @@ function main() {
   );
 
   const mainSource = fs.readFileSync(path.join(ELECTRON_ROOT, 'main.js'), 'utf8');
+  const preloadSource = fs.readFileSync(path.join(ELECTRON_ROOT, 'preload.js'), 'utf8');
   const smokeSource = fs.readFileSync(smokeSourcePath, 'utf8');
+  const rendererHtml = fs.readFileSync(rendererHtmlPath, 'utf8');
+  const rendererApp = fs.readFileSync(rendererAppPath, 'utf8');
+  const relationContractSource = fs.readFileSync(relationContractPath, 'utf8');
+  const searchServiceSource = fs.readFileSync(searchServicePath, 'utf8');
   check('main smoke import', mainSource.includes("require('./src/packaged-runtime-smoke')"), true);
   check('main smoke 실행', mainSource.includes('runPackagedRuntimeSmoke({'), true);
+  check('main 관계검색 request 검증', mainSource.includes('normalizeRelationRequest(payload)'), true);
+  check('main 관계검색 IPC', mainSource.includes("relationSearch: 'kdrg:relation-search'"), true);
+  check('preload 관계검색 bridge', preloadSource.includes('relationSearch: (request)'), true);
+  check('관계검색 request 2~6개 계약', relationContractSource.includes('payload.conditions.length < 2') && relationContractSource.includes('payload.conditions.length > 6'), true);
+  check('관계검색 중복코드 차단', relationContractSource.includes('같은 코드를 중복 입력할 수 없습니다'), true);
+  check('검색 service 관계 응답 schema', searchServiceSource.includes('kdrg-runtime-relation-response-v1'), true);
+  check('검색 service 관계검색 method', searchServiceSource.includes("relationSearch(conditions, operator = 'AND'"), true);
+  check('검색 service 제외 TABLE 차단', searchServiceSource.includes('exclusionTableIds.has(tableId)'), true);
+  check('검색 service strict split partial', ['strict', 'split', 'partial'].every((level) => searchServiceSource.includes(`'${level}'`)), true);
   check(
     'smoke app.isPackaged 기록',
     smokeSource.includes('app_is_packaged: Boolean(app?.isPackaged)'),
@@ -199,6 +221,9 @@ function main() {
   check('smoke 과거 search.items 직접참조 제거', smokeSource.includes('search.items.some'), false);
   check('smoke search 계약 명시검증', smokeSource.includes('validateSearchResponse(search)'), true);
   check('smoke detail 계약 명시검증', smokeSource.includes('validateDetailResponse'), true);
+  check('smoke 관계검색 실제 fixture 탐색', smokeSource.includes('findRelationSmokeFixture(service)'), true);
+  check('smoke 관계검색 응답 계약 검증', smokeSource.includes('validateRelationResponse'), true);
+  check('smoke 관계검색 완료 단계', smokeSource.includes('relation_contract_verified'), true);
   check('smoke 단계별 진단', smokeSource.includes('completed_steps'), true);
   check('smoke 실패단계 진단', smokeSource.includes('failed_step'), true);
   const smokeContractTestSource = fs.readFileSync(smokeContractTestPath, 'utf8');
@@ -217,10 +242,27 @@ function main() {
     smokeContractTestSource.includes('runPackagedRuntimeSmoke(fixture)'),
     true,
   );
+  check(
+    'smoke contract test 관계검색 정상 fixture',
+    smokeContractTestSource.includes('runtime relation schema'),
+    true,
+  );
+  check(
+    'smoke contract test 관계검색 실패단계',
+    smokeContractTestSource.includes('relation report failed step'),
+    true,
+  );
   check('smoke renderer load', smokeSource.includes('did-finish-load'), true);
   check('smoke renderer 보안 contextIsolation', smokeSource.includes('contextIsolation: true'), true);
   check('smoke renderer 보안 nodeIntegration', smokeSource.includes('nodeIntegration: false'), true);
   check('smoke renderer 보안 sandbox', smokeSource.includes('sandbox: true'), true);
+  check('renderer 데이터 현황 기본 접힘', /<details[^>]+id="data-overview"(?![^>]*\sopen)[^>]*>/.test(rendererHtml), true);
+  check('renderer 복수 코드 관계검색 panel', rendererHtml.includes('id="relation-search-panel"'), true);
+  check('renderer 기존 MDC 필터 유지', rendererHtml.includes('id="filter-mdc"'), true);
+  check('renderer 기존 질병군 분류 필터 유지', rendererHtml.includes('id="filter-classification"'), true);
+  check('renderer 상세 section details', rendererApp.includes("create('details', 'detail-section')"), true);
+  check('renderer TABLE 코드 기본 접힘', rendererApp.includes("makeSection('TABLE 코드'") && rendererApp.includes('open: false'), true);
+  check('renderer 전체 펼치기·접기', rendererApp.includes('setAllDetailSections(true)') && rendererApp.includes('setAllDetailSections(false)'), true);
 
   const workflow = fs.readFileSync(workflowPath, 'utf8');
   check('workflow Windows runner', workflow.includes('runs-on: windows-latest'), true);

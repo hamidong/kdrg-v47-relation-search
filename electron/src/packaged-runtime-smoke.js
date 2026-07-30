@@ -4,6 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-search-response-v1';
+const RELATION_RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-relation-response-v1';
 const EXPECTED_COUNTS = Object.freeze({
   adrg: 1132,
   aadrg: 1233,
@@ -56,6 +57,76 @@ function validateSearchResponse(search) {
     }
   }
   return search.results;
+}
+
+
+function validateRelationResponse(response, expectedAdrg = null) {
+  requirePlainObject(response, 'packaged relation response');
+  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {
+    throw new Error(
+      `packaged relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,
+    );
+  }
+  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {
+    throw new Error('packaged relation response contract mismatch: conditions must contain at least 2 rows');
+  }
+  if (!Array.isArray(response.results)) {
+    throw new Error('packaged relation response contract mismatch: results must be an array');
+  }
+  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {
+    throw new Error(
+      `packaged relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,
+    );
+  }
+  for (const [index, item] of response.results.entries()) {
+    if (!isPlainObject(item)
+      || item.entity_type !== 'ADRG'
+      || typeof item.entity_id !== 'string'
+      || !['strict', 'split', 'partial'].includes(item.relation_level)
+      || !Array.isArray(item.code_matches)
+      || !Array.isArray(item.condition_groups)
+      || item.condition_groups.some((group) => !Array.isArray(group.exclude_table_ids) || !Array.isArray(group.exclude_tables))) {
+      throw new Error(`packaged relation response contract mismatch: invalid results[${index}]`);
+    }
+  }
+  if (expectedAdrg && !response.results.some((item) => item.entity_id === expectedAdrg)) {
+    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);
+  }
+  return response.results;
+}
+
+function findRelationSmokeFixture(service) {
+  const conditionGroups = service?.conditionGroupsByAdrg;
+  const tableMap = service?.recordMaps?.TABLE;
+  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {
+    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');
+  }
+  for (const [adrg, groups] of conditionGroups.entries()) {
+    const exclusionIds = new Set((groups ?? []).flatMap((group) => group.exclude_table_ids ?? []));
+    for (const group of groups ?? []) {
+      const codes = [];
+      const seen = new Set();
+      for (const tableId of group.include_table_ids ?? []) {
+        if (exclusionIds.has(tableId)) continue;
+        const table = tableMap.get(String(tableId));
+        for (const code of table?.codes ?? []) {
+          const normalized = String(code ?? '').replace(/[^0-9A-Za-z]/g, '').toUpperCase();
+          if (!normalized || seen.has(normalized)) continue;
+          seen.add(normalized);
+          codes.push(String(code));
+          if (codes.length >= 2) break;
+        }
+        if (codes.length >= 2) break;
+      }
+      if (codes.length < 2) continue;
+      const conditions = codes.map((code) => ({ code, codeType: 'AUTO' }));
+      const response = service.relationSearch(conditions, 'AND', {});
+      if (response.results.some((item) => item.entity_id === adrg)) {
+        return { adrg, codes, response };
+      }
+    }
+  }
+  throw new Error('packaged relation smoke fixture discovery failed');
 }
 
 function validateDetailResponse(detail) {
@@ -222,6 +293,7 @@ async function runPackagedRuntimeSmoke({
     const service = new KdrgSearchService(dataFiles.integrated);
     if (!service || typeof service.status !== 'function'
       || typeof service.search !== 'function'
+      || typeof service.relationSearch !== 'function'
       || typeof service.getDetail !== 'function') {
       throw new Error('search service contract mismatch: required methods are unavailable');
     }
@@ -245,6 +317,11 @@ async function runPackagedRuntimeSmoke({
     currentStep = 'detail_contract_validation';
     const detail = validateDetailResponse(service.getDetail('ADRG', 'E011'));
     markStep('detail_contract_verified');
+
+    currentStep = 'relation_contract_validation';
+    const relationFixture = findRelationSmokeFixture(service);
+    const relationResults = validateRelationResponse(relationFixture.response, relationFixture.adrg);
+    markStep('relation_contract_verified');
 
     currentStep = 'browser_window_creation';
     smokeWindow = new BrowserWindow({
@@ -290,6 +367,13 @@ async function runPackagedRuntimeSmoke({
         result_entity_id: fixture.entity_id,
         detail_entity_id: detail.entity_id,
       },
+      relation_fixture: {
+        codes: relationFixture.codes,
+        expected_adrg: relationFixture.adrg,
+        response_schema_version: relationFixture.response.schema_version,
+        result_count: relationResults.length,
+        found: true,
+      },
       renderer_loaded: true,
     };
     writeSmokeReport(reportPath, report);
@@ -320,9 +404,12 @@ async function runPackagedRuntimeSmoke({
 
 module.exports = Object.freeze({
   RESPONSE_SCHEMA_VERSION,
+  RELATION_RESPONSE_SCHEMA_VERSION,
   EXPECTED_COUNTS,
   shouldRunPackagedSmoke,
   validateSearchResponse,
+  validateRelationResponse,
+  findRelationSmokeFixture,
   validateDetailResponse,
   validateBootstrapCounts,
   waitForRendererLoad,

@@ -8,6 +8,7 @@ const {
   KdrgSearchService,
   SERVICE_SCHEMA_VERSION,
   RESPONSE_SCHEMA_VERSION,
+  RELATION_RESPONSE_SCHEMA_VERSION,
   SUPPORTED_DATA_SCHEMA,
   normalizeEntityId,
   normalizeQuery,
@@ -16,6 +17,7 @@ const {
 const {
   SearchContractError,
   normalizeSearchRequest,
+  normalizeRelationRequest,
   normalizeDetailRequest,
 } = require('../src/search-result-contract');
 
@@ -61,6 +63,7 @@ const status = service.status();
 
 check('service schema', status.service_schema_version, SERVICE_SCHEMA_VERSION);
 check('response schema', status.response_schema_version, RESPONSE_SCHEMA_VERSION);
+check('relation response schema', status.relation_response_schema_version, RELATION_RESPONSE_SCHEMA_VERSION);
 check('data schema', status.data_schema_version, SUPPORTED_DATA_SCHEMA);
 check('service ready', status.ready, true);
 check('ADRG count', status.counts.adrg_records, 1132);
@@ -124,6 +127,109 @@ check('9610 code count', table961.detail.code_records.length, 7);
 const codeA010 = service.getDetail('CODE', 'A010');
 check('A010 table detail present', codeA010.detail.logical_tables.length > 0, true);
 
+
+function codesForTables(tableIds) {
+  const output = [];
+  const seen = new Set();
+  for (const tableId of tableIds ?? []) {
+    const table = service.recordMaps.TABLE.get(String(tableId));
+    for (const code of table?.codes ?? []) {
+      const normalized = normalizeEntityId(code, 'CODE');
+      if (!normalized || seen.has(normalized)) continue;
+      seen.add(normalized);
+      output.push(String(code));
+    }
+  }
+  return output;
+}
+
+function findStrictFixture() {
+  for (const [adrg, groups] of service.conditionGroupsByAdrg.entries()) {
+    for (const group of groups) {
+      const codes = codesForTables(group.include_table_ids).slice(0, 2);
+      if (codes.length < 2) continue;
+      const response = service.relationSearch(codes.map((code) => ({ code, codeType: 'AUTO' })), 'AND');
+      const candidate = response.results.find((item) => item.entity_id === adrg && item.relation_level === 'strict');
+      if (candidate) return { adrg, codes, response, candidate };
+    }
+  }
+  return null;
+}
+
+function findSplitFixture() {
+  for (const [adrg, groups] of service.conditionGroupsByAdrg.entries()) {
+    if (groups.length < 2) continue;
+    for (let leftIndex = 0; leftIndex < groups.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < groups.length; rightIndex += 1) {
+        const leftCodes = codesForTables(groups[leftIndex].include_table_ids);
+        const rightCodes = codesForTables(groups[rightIndex].include_table_ids);
+        const left = leftCodes[0];
+        const right = rightCodes.find((code) => normalizeEntityId(code, 'CODE') !== normalizeEntityId(left, 'CODE'));
+        if (!left || !right) continue;
+        const response = service.relationSearch([
+          { code: left, codeType: 'AUTO' },
+          { code: right, codeType: 'AUTO' },
+        ], 'AND');
+        const candidate = response.results.find((item) => item.entity_id === adrg && item.relation_level === 'split');
+        if (candidate) return { adrg, codes: [left, right], response, candidate };
+      }
+    }
+  }
+  return null;
+}
+
+const strictFixture = findStrictFixture();
+check('relation strict fixture discovered', Boolean(strictFixture), true);
+if (strictFixture) {
+  check('relation strict schema', strictFixture.response.schema_version, RELATION_RESPONSE_SCHEMA_VERSION);
+  check('relation strict level', strictFixture.candidate.relation_level, 'strict');
+  check('relation strict all inputs', strictFixture.candidate.matched_count, 2);
+  check('relation strict candidate ADRG', strictFixture.response.results.some((item) => item.entity_id === strictFixture.adrg), true);
+  check('relation strict exact code rows', strictFixture.response.conditions.every((item) => item.exact_code_found), true);
+  check('relation group exclusion summaries', strictFixture.candidate.condition_groups.every((group) => Array.isArray(group.exclude_tables)), true);
+  const adrgRow = service.recordMaps.ADRG.get(normalizeEntityId(strictFixture.adrg, 'ADRG'));
+  const filtered = service.relationSearch(
+    strictFixture.codes.map((code) => ({ code, codeType: 'AUTO' })),
+    'AND',
+    { mdc: adrgRow.mdc },
+  );
+  check('relation MDC filter keeps matching ADRG', filtered.results.some((item) => item.entity_id === strictFixture.adrg), true);
+  const partial = service.relationSearch([
+    { code: strictFixture.codes[0], codeType: 'AUTO' },
+    { code: 'KDRG_NOT_FOUND_FIXTURE', codeType: 'AUTO' },
+  ], 'OR');
+  check('relation OR partial level', partial.results.some((item) => item.entity_id === strictFixture.adrg && item.relation_level === 'partial'), true);
+  const blockedAnd = service.relationSearch([
+    { code: strictFixture.codes[0], codeType: 'AUTO' },
+    { code: 'KDRG_NOT_FOUND_FIXTURE', codeType: 'AUTO' },
+  ], 'AND');
+  check('relation AND missing code excludes ADRG', blockedAnd.results.some((item) => item.entity_id === strictFixture.adrg), false);
+}
+
+const splitFixture = findSplitFixture();
+check('relation split fixture discovered', Boolean(splitFixture), true);
+if (splitFixture) {
+  check('relation split level', splitFixture.candidate.relation_level, 'split');
+  check('relation split no all-input group', splitFixture.candidate.condition_groups.some((group) => group.all_inputs), false);
+}
+
+const exclusionFixture = (() => {
+  for (const [adrg, groups] of service.conditionGroupsByAdrg.entries()) {
+    const includeCodes = codesForTables(groups.flatMap((group) => group.include_table_ids));
+    const excludeCodes = codesForTables(groups.flatMap((group) => group.exclude_table_ids));
+    const include = includeCodes[0];
+    const exclude = excludeCodes.find((code) => normalizeEntityId(code, 'CODE') !== normalizeEntityId(include, 'CODE'));
+    if (!include || !exclude) continue;
+    const response = service.relationSearch([
+      { code: include, codeType: 'AUTO' },
+      { code: exclude, codeType: 'AUTO' },
+    ], 'AND');
+    if (!response.results.some((item) => item.entity_id === adrg)) return { adrg, include, exclude };
+  }
+  return null;
+})();
+check('relation exclusion fixture discovered', Boolean(exclusionFixture), true);
+
 const normalizedSearch = normalizeSearchRequest({
   query: ' A01.0 ',
   entityType: ['CODE', 'ADRG', 'CODE'],
@@ -135,6 +241,19 @@ const normalizedSearch = normalizeSearchRequest({
 check('request query trim', normalizedSearch.query, 'A01.0');
 check('request entity dedupe', normalizedSearch.entityType, ['CODE', 'ADRG'], (a, e) => JSON.stringify(a) === JSON.stringify(e));
 check('request classification', normalizedSearch.classification, '전문');
+const normalizedRelation = normalizeRelationRequest({
+  conditions: [
+    { code: ' A01.0 ', codeType: 'diagnosis' },
+    { code: 'O1311', codeType: 'procedure' },
+  ],
+  operator: 'and',
+  mdc: '04',
+  classification: 'B',
+});
+check('relation request operator', normalizedRelation.operator, 'AND');
+check('relation request code normalize', normalizedRelation.conditions[0].normalizedCode, 'A010');
+check('relation request code type', normalizedRelation.conditions[1].codeType, 'PROCEDURE');
+check('relation request shared MDC', normalizedRelation.mdc, '04');
 const normalizedDetail = normalizeDetailRequest({ entityType: 'table', entityId: ' LT_9610_001 ' });
 check('detail type normalize', normalizedDetail.entityType, 'TABLE');
 check('detail id trim', normalizedDetail.entityId, 'LT_9610_001');
@@ -143,6 +262,11 @@ expectError('empty search request rejected', () => normalizeSearchRequest({ quer
 expectError('invalid entity type rejected', () => normalizeSearchRequest({ query: 'A010', entityType: 'BAD' }), SearchContractError);
 expectError('oversized limit rejected', () => normalizeSearchRequest({ query: 'A010', limit: 501 }), SearchContractError);
 expectError('invalid detail rejected', () => normalizeDetailRequest({ entityType: 'BAD', entityId: 'A010' }), SearchContractError);
+expectError('relation one condition rejected', () => normalizeRelationRequest({ conditions: [{ code: 'A010' }] }), SearchContractError);
+expectError('relation duplicate code rejected', () => normalizeRelationRequest({ conditions: [{ code: 'A01.0' }, { code: 'A010' }] }), SearchContractError);
+expectError('relation invalid operator rejected', () => normalizeRelationRequest({ conditions: [{ code: 'A010' }, { code: 'O1311' }], operator: 'XOR' }), SearchContractError);
+expectError('relation invalid code type rejected', () => normalizeRelationRequest({ conditions: [{ code: 'A010', codeType: 'BAD' }, { code: 'O1311' }] }), SearchContractError);
+expectError('service relation one condition rejected', () => service.relationSearch([{ code: 'A010', codeType: 'AUTO' }], 'AND'), KdrgSearchError);
 expectError('service empty query rejected', () => service.search(''), KdrgSearchError);
 expectError('service missing detail rejected', () => service.getDetail('CODE', 'NOT_FOUND_CODE'), KdrgSearchError);
 
@@ -151,16 +275,19 @@ const preloadSource = fs.readFileSync(path.join(ELECTRON_ROOT, 'preload.js'), 'u
 const bootstrapSource = fs.readFileSync(path.join(ELECTRON_ROOT, 'src/bootstrap-data.js'), 'utf8');
 check('main search service singleton', mainSource.includes('new KdrgSearchService'), true);
 check('main search request validation', mainSource.includes('normalizeSearchRequest(payload)'), true);
+check('main relation request validation', mainSource.includes('normalizeRelationRequest(payload)'), true);
 check('main detail request validation', mainSource.includes('normalizeDetailRequest(payload)'), true);
 check('main search IPC', mainSource.includes("search: 'kdrg:search'"), true);
+check('main relation IPC', mainSource.includes("relationSearch: 'kdrg:relation-search'"), true);
 check('main detail IPC', mainSource.includes("detail: 'kdrg:get-detail'"), true);
 check('preload search method', preloadSource.includes('search: (request)'), true);
+check('preload relation method', preloadSource.includes('relationSearch: (request)'), true);
 check('preload detail method', preloadSource.includes('getDetail: (request)'), true);
 check('preload ipcRenderer object hidden', preloadSource.includes('ipcRenderer,'), false);
 check('bootstrap search connected', bootstrapSource.includes('searchServiceConnected: true'), true);
 check('bootstrap Stage 50D', bootstrapSource.includes("stage: '50D_ELECTRON_WINDOWS_PACKAGE_READY'"), true);
 
-console.log('validator=2026-07-27_KDRG_V47_ELECTRON_STAGE50C_SEARCH_COMPAT_VALIDATOR_V1');
+console.log('validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50E_RELATION_SEARCH_VALIDATOR_V1');
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {

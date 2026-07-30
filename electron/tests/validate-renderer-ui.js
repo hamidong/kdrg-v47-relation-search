@@ -6,7 +6,7 @@ const path = require('node:path');
 const { KdrgSearchService } = require('../src/kdrg-search-service');
 const Ui = require('../renderer/ui-formatters');
 
-const SCRIPT_VERSION = '2026-07-27_KDRG_V47_ELECTRON_STAGE50C_RENDERER_VALIDATOR_V1';
+const SCRIPT_VERSION = '2026-07-30_KDRG_V47_ELECTRON_STAGE50E_RENDERER_RELATION_UI_VALIDATOR_V1';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const WORKSPACE_ROOT = path.resolve(ELECTRON_ROOT, '..');
 const DATA_PATH = path.join(WORKSPACE_ROOT, 'data', 'kdrg_v47_search_integrated.json');
@@ -62,6 +62,14 @@ for (const id of [
   'filter-classification',
   'search-submit',
   'search-reset',
+  'data-overview',
+  'relation-search-panel',
+  'relation-form',
+  'relation-condition-list',
+  'relation-operator',
+  'relation-add',
+  'relation-reset',
+  'relation-submit',
   'result-list',
   'result-count',
   'type-counts',
@@ -69,6 +77,9 @@ for (const id of [
   'page-next',
   'detail-content',
   'detail-heading',
+  'detail-fold-actions',
+  'detail-expand-all',
+  'detail-collapse-all',
   'metric-adrg',
   'metric-table',
   'metric-code',
@@ -89,6 +100,22 @@ check('MDC 25', () => assert.match(html, /value="25">MDC 25/));
 check('예시 E011', () => assert.match(html, /data-sample-query="E011"/));
 check('예시 A01.0', () => assert.match(html, /data-sample-query="A01\.0"/));
 check('접근성 live region', () => assert.match(html, /aria-live="polite"/));
+check('데이터 현황 기본 접힘', () => {
+  const tag = html.match(/<details[^>]+id="data-overview"[^>]*>/)?.[0] || '';
+  assert.doesNotMatch(tag, /\sopen(?:\s|>|=)/);
+});
+check('관계검색 기본 접힘', () => {
+  const tag = html.match(/<details[^>]+id="relation-search-panel"[^>]*>/)?.[0] || '';
+  assert.doesNotMatch(tag, /\sopen(?:\s|>|=)/);
+});
+check('관계검색 주의문구', () => assert.match(html, /최종 DRG 판정을 의미하지 않습니다/));
+check('관계검색 AND', () => assert.match(html, /value="AND"/));
+check('관계검색 OR', () => assert.match(html, /value="OR"/));
+check('기존 검색 필터 유지', () => {
+  assert.match(html, /id="filter-type"/);
+  assert.match(html, /id="filter-mdc"/);
+  assert.match(html, /id="filter-classification"/);
+});
 
 check('renderer require 미사용', () => assert.doesNotMatch(appJs, /\brequire\s*\(/));
 check('renderer innerHTML 미사용', () => assert.doesNotMatch(appJs, /\.innerHTML\b/));
@@ -97,12 +124,23 @@ check('renderer eval 미사용', () => assert.doesNotMatch(appJs, /\beval\s*\(/)
 check('renderer textContent 사용', () => assert.match(appJs, /textContent/));
 check('renderer replaceChildren 사용', () => assert.match(appJs, /replaceChildren/));
 check('검색 bridge 사용', () => assert.match(appJs, /window\.KDRG\.search/));
+check('관계검색 bridge 사용', () => assert.match(appJs, /window\.KDRG\.relationSearch/));
 check('상세 bridge 사용', () => assert.match(appJs, /window\.KDRG\.getDetail/));
 check('검색 status bridge 사용', () => assert.match(appJs, /window\.KDRG\.getSearchStatus/));
 check('기본 TABLE 섹션', () => assert.match(appJs, /기본 분류 TABLE/));
 check('추가 분기조건 섹션', () => assert.match(appJs, /추가 분기조건/));
 check('제외 문구', () => assert.match(appJs, /단, 다음 대상은 제외/));
 check('기술식 접기', () => assert.match(appJs, /기술식·원문 근거 보기/));
+check('상세 section details 사용', () => assert.match(appJs, /create\('details', 'detail-section'\)/));
+check('전체 펼치기 제어', () => assert.match(appJs, /setAllDetailSections\(true\)/));
+check('전체 접기 제어', () => assert.match(appJs, /setAllDetailSections\(false\)/));
+check('TABLE 코드 기본 접힘', () => assert.match(appJs, /makeSection\('TABLE 코드'[\s\S]*open: false/));
+check('관계검색 조건 최소 2개 초기화', () => assert.match(appJs, /addRelationCondition\(\);[\s\S]*addRelationCondition\(\);/));
+check('관계검색 최대 6개', () => assert.match(appJs, /childElementCount >= 6/));
+check('관계 level strict 설명', () => assert.match(appJs, /같은 조건 선택지/));
+check('관계 level split 경고', () => assert.match(appJs, /서로 다른 OR 조건 선택지/));
+check('관계검색 제외 TABLE 표시', () => assert.match(appJs, /relation-group-exclusion/));
+check('관계검색 sequence guard', () => assert.match(appJs, /relationSequence/));
 check('TABLE 코드 표시 상한', () => assert.match(appJs, /const limit = 160/));
 check('검색 sequence guard', () => assert.match(appJs, /searchSequence/));
 check('상세 sequence guard', () => assert.match(appJs, /detailSequence/));
@@ -117,6 +155,14 @@ for (const className of [
   'code-grid',
   'entity-badge',
   'status-dot',
+  'data-overview',
+  'relation-search-panel',
+  'relation-condition-row',
+  'relation-result-card',
+  'relation-level-notice',
+  'relation-group-exclusion',
+  'detail-fold-actions',
+  'section-title-row',
 ]) {
   check(`CSS class ${className}`, () => assert.match(css, new RegExp(`\\.${className.replace('-', '\\-')}`)));
 }
@@ -136,6 +182,9 @@ check('빈 AST', () => assert.deepEqual(Ui.buildConditionGroups(null), []));
 const service = new KdrgSearchService(DATA_PATH);
 check('service ready', () => assert.equal(service.status().ready, true));
 check('검색 문서 수', () => assert.equal(service.debugSearchDocumentFingerprint().count, 22943));
+check('관계검색 service method', () => assert.equal(typeof service.relationSearch, 'function'));
+check('관계검색 condition group index', () => assert.ok(service.conditionGroupsByAdrg instanceof Map));
+check('관계검색 AST ADRG 존재', () => assert.ok([...service.conditionGroupsByAdrg.values()].some((groups) => groups.length > 0)));
 
 const e011 = service.getDetail('ADRG', 'E011').detail;
 const e011Groups = Ui.buildConditionGroups(e011.condition_ast);

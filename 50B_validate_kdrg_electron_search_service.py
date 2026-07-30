@@ -16,7 +16,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-27_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V4_50C_COMPAT"
+SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V5_RELATION_SEARCH"
 ROOT = Path(__file__).resolve().parent
 ELECTRON = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -586,6 +586,9 @@ def main() -> int:
     check("nodeIntegration 비활성 유지", "nodeIntegration: false" in main_source, True)
     check("sandbox 유지", "sandbox: true" in main_source, True)
     check("IPC 검색 입력검증", "normalizeSearchRequest(payload)" in main_source, True)
+    check("IPC 관계검색 입력검증", "normalizeRelationRequest(payload)" in main_source, True)
+    check("IPC 관계검색 채널", "kdrg:relation-search" in main_source, True)
+    check("preload 관계검색 bridge", "relationSearch: (request)" in preload_source, True)
     check("IPC 상세 입력검증", "normalizeDetailRequest(payload)" in main_source, True)
     check("preload ipcRenderer 직접 미노출", "ipcRenderer," in preload_source, False)
 

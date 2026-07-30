@@ -110,6 +110,7 @@ check('preload contextBridge', preloadSource.includes('contextBridge.exposeInMai
 check('ipcRenderer 직접 노출 금지', preloadSource.includes('ipcRenderer,'), false);
 check('bootstrap IPC 채널', (preloadSource.match(/kdrg:get-bootstrap-snapshot/g) || []).length, 1);
 check('search IPC 채널', (preloadSource.match(/kdrg:search/g) || []).length, 1);
+check('relation IPC 채널', (preloadSource.match(/kdrg:relation-search/g) || []).length, 1);
 check('detail IPC 채널', (preloadSource.match(/kdrg:get-detail/g) || []).length, 1);
 check('status IPC 채널', (preloadSource.match(/kdrg:get-search-status/g) || []).length, 1);
 check('CSP 존재', htmlSource.includes('Content-Security-Policy'), true);
@@ -122,6 +123,13 @@ check('renderer eval 미사용', /\beval\s*\(/.test(rendererSource), false);
 check('formatter require 없음', formatterSource.includes('require('), false);
 check('formatter 선로드', htmlSource.indexOf('ui-formatters.js') < htmlSource.indexOf('app.js'), true);
 check('검색 form 존재', htmlSource.includes('id="search-form"'), true);
+check('관계검색 form 존재', htmlSource.includes('id="relation-form"'), true);
+check('데이터 현황 details 존재', htmlSource.includes('id="data-overview"'), true);
+check('상세 전체 펼치기 존재', htmlSource.includes('id="detail-expand-all"'), true);
+check('상세 전체 접기 존재', htmlSource.includes('id="detail-collapse-all"'), true);
+check('renderer 관계검색 bridge', rendererSource.includes('window.KDRG.relationSearch'), true);
+check('renderer relation sequence', rendererSource.includes('relationSequence'), true);
+check('renderer detail details section', rendererSource.includes("create('details', 'detail-section')"), true);
 check('상세 panel 존재', htmlSource.includes('id="detail-content"'), true);
 
 const dataDirectory = resolveDataDirectory({
@@ -162,7 +170,7 @@ check('원본 ADRG 배열 미포함', serialized.includes('adrg_records'), false
 check('원본 code 배열 미포함', serialized.includes('code_records'), false);
 check('bootstrap snapshot 크기 제한', Buffer.byteLength(serialized, 'utf8') < 20000, true);
 
-console.log(`validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50C_SKELETON_VALIDATOR_V2_AGGREGATE_CONTRACT`);
+console.log(`validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50E_SKELETON_RELATION_UI_VALIDATOR_V1`);
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {

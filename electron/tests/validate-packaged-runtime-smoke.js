@@ -8,9 +8,12 @@ const { EventEmitter } = require('node:events');
 
 const {
   RESPONSE_SCHEMA_VERSION,
+  RELATION_RESPONSE_SCHEMA_VERSION,
   EXPECTED_COUNTS,
   shouldRunPackagedSmoke,
   validateSearchResponse,
+  validateRelationResponse,
+  findRelationSmokeFixture,
   validateDetailResponse,
   validateBootstrapCounts,
   waitForRendererLoad,
@@ -18,7 +21,7 @@ const {
 } = require('../src/packaged-runtime-smoke');
 
 const VALIDATOR_VERSION =
-  '2026-07-30_KDRG_V47_ELECTRON_PACKAGED_SMOKE_CONTRACT_VALIDATOR_V1';
+  '2026-07-30_KDRG_V47_ELECTRON_PACKAGED_SMOKE_CONTRACT_VALIDATOR_V2';
 const checks = [];
 
 function check(name, actual, expected) {
@@ -90,6 +93,37 @@ function makeSearchResponse(overrides = {}) {
   };
 }
 
+function makeRelationResponse(overrides = {}) {
+  return {
+    schema_version: RELATION_RESPONSE_SCHEMA_VERSION,
+    operator: 'AND',
+    filters: { mdc: null, classification: null },
+    total_count: 1,
+    level_counts: { strict: 1 },
+    conditions: [
+      { code: 'C001', code_type: 'AUTO', table_ids: ['T1'] },
+      { code: 'C002', code_type: 'AUTO', table_ids: ['T2'] },
+    ],
+    results: [{
+      entity_type: 'ADRG',
+      entity_id: 'E011',
+      relation_level: 'strict',
+      code_matches: [],
+      condition_groups: [{
+        group_no: 1,
+        group_label: '조건식 1',
+        all_inputs: true,
+        hit_count: 2,
+        matches: [],
+        exclude_table_ids: [],
+        exclude_tables: [],
+      }],
+    }],
+    disclaimer: 'fixture',
+    ...overrides,
+  };
+}
+
 function makeDetailResponse(overrides = {}) {
   return {
     schema_version: RESPONSE_SCHEMA_VERSION,
@@ -111,12 +145,28 @@ function makeFixture(root, serviceOverrides = {}) {
   }
 
   class MockService {
+    constructor() {
+      this.conditionGroupsByAdrg = new Map([
+        ['E011', [{ include_table_ids: ['T1', 'T2'], exclude_table_ids: [] }]],
+      ]);
+      this.recordMaps = {
+        TABLE: new Map([
+          ['T1', { logical_table_id: 'T1', codes: ['C001'] }],
+          ['T2', { logical_table_id: 'T2', codes: ['C002'] }],
+        ]),
+      };
+    }
+
     status() {
       return serviceOverrides.status || { ready: true };
     }
 
     search() {
       return serviceOverrides.search || makeSearchResponse();
+    }
+
+    relationSearch() {
+      return serviceOverrides.relation || makeRelationResponse();
     }
 
     getDetail() {
@@ -150,6 +200,11 @@ async function main() {
   const validResults = validateSearchResponse(validSearch);
   check('search contract results array', Array.isArray(validResults), true);
   check('search contract E011', validResults[0].entity_id, 'E011');
+  const validRelation = makeRelationResponse();
+  const validRelationResults = validateRelationResponse(validRelation, 'E011');
+  check('relation contract results array', Array.isArray(validRelationResults), true);
+  check('relation contract E011', validRelationResults[0].entity_id, 'E011');
+  check('relation contract exclusion summary array', Array.isArray(validRelationResults[0].condition_groups[0].exclude_tables), true);
   check('detail contract E011', validateDetailResponse(makeDetailResponse()).entity_id, 'E011');
   check('bootstrap contract counts', validateBootstrapCounts({ counts: { ...EXPECTED_COUNTS } }).codes, 16571, 16571);
 
@@ -172,6 +227,24 @@ async function main() {
     () => Promise.resolve(validateSearchResponse({ ...makeSearchResponse(), total_count: 0 })),
     'total_count=0',
   );
+  await expectReject(
+    'relation schema mismatch controlled failure',
+    () => Promise.resolve(validateRelationResponse({ ...makeRelationResponse(), schema_version: 'old' })),
+    'schema_version=old',
+  );
+  await expectReject(
+    'relation result shape controlled failure',
+    () => Promise.resolve(validateRelationResponse({ ...makeRelationResponse(), results: [{}] })),
+    'invalid results[0]',
+  );
+  await expectReject(
+    'relation fixture missing controlled failure',
+    () => Promise.resolve(validateRelationResponse(makeRelationResponse({ results: [{
+      entity_type: 'ADRG', entity_id: 'E999', relation_level: 'strict', code_matches: [], condition_groups: [],
+    }] }), 'E011')),
+    'ADRG E011',
+  );
+
   await expectReject(
     'detail entity mismatch controlled failure',
     () => Promise.resolve(validateDetailResponse(makeDetailResponse({ entity_id: 'E999' }))),
@@ -200,6 +273,11 @@ async function main() {
     check('runtime result_count uses results', report.search_fixture.result_count, 1);
     check('runtime fixture found', report.search_fixture.found, true);
     check('runtime detail verified', report.search_fixture.detail_entity_id, 'E011');
+    check('runtime relation schema', report.relation_fixture.response_schema_version, RELATION_RESPONSE_SCHEMA_VERSION);
+    check('runtime relation fixture found', report.relation_fixture.found, true);
+    check('runtime relation expected ADRG', report.relation_fixture.expected_adrg, 'E011');
+    check('runtime relation discovery helper', findRelationSmokeFixture(new fixture.KdrgSearchService()).adrg, 'E011');
+    check('runtime relation step', report.completed_steps.includes('relation_contract_verified'), true);
     check('runtime renderer loaded', report.renderer_loaded, true);
     check('runtime step search contract', report.completed_steps.includes('search_contract_verified'), true);
     check('runtime step renderer', report.completed_steps.at(-1), 'renderer_loaded');
@@ -227,6 +305,19 @@ async function main() {
     check('legacy report no raw TypeError', legacyReport.error.message.includes('Cannot read properties'), false);
     check('legacy report failed step', legacyReport.failed_step, 'search_contract_validation');
     check('legacy report completed steps', legacyReport.completed_steps.includes('search_service_ready'), true);
+
+    const relationReportPath = path.join(tempRoot, 'relation-report.json');
+    process.env.KDRG_ELECTRON_SMOKE_REPORT = relationReportPath;
+    await expectReject(
+      'runtime relation contract rejected before renderer',
+      () => runPackagedRuntimeSmoke(makeFixture(tempRoot, {
+        relation: { ...makeRelationResponse(), schema_version: 'old' },
+      })),
+      'schema_version=old',
+    );
+    const relationReport = JSON.parse(fs.readFileSync(relationReportPath, 'utf8'));
+    check('relation report FAIL', relationReport.status, 'FAIL');
+    check('relation report failed step', relationReport.failed_step, 'relation_contract_validation');
 
     const missingFixture = makeFixture(tempRoot);
     fs.unlinkSync(missingFixture.resolveDataFiles().integrated);

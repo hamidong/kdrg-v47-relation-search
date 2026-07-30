@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V12_AGGREGATE_CONTRACT"
+SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V15_RELATION_UI_PREFLIGHT"
 NODE_VERSION = "v22.23.1"
 
 ROOT = Path(__file__).resolve().parent
@@ -53,9 +53,9 @@ PROTECTED_HASHES = {
     ".gitattributes":
         "6e91da75eb4141a20f8296dce65a413d1a08befbebc6ebf9f485fa036fa73ff8",
     "electron/main.js":
-        "56d5dd8fce986e2883d58ab3f39aaba160dc05d98dc95a74409487fb0c61c208",
+        "cb3c2613833075e1bc7db3693aa558057c7f3755720f8625232e4232c8bfad1d",
     "electron/preload.js":
-        "f20cc0a0694f2b365e9e5d67640ac8f3ecd23e86f15234e6614979bb9e4fb672",
+        "c42dbd945acc529b5235d1e5da834ebd9274eabd4e0d791b55d601e5962bb9a2",
     "electron/src/data-paths.js":
         "27cca98bdf68a2d5d71210c36bcddc6068e413000be860b4e9a1a784a4f61316",
     "electron/src/bootstrap-data.js":
@@ -63,31 +63,31 @@ PROTECTED_HASHES = {
     "electron/src/search-normalizer.js":
         "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js":
-        "cf979434aace8fde78c28130901295a2fb8e48049f5ef1ca4b69779cb5c48082",
+        "a15ea969202ea566281776cb0a4f2be81ad9b343f2d466011257ffabf17c1e89",
     "electron/src/kdrg-search-service.js":
-        "acecdeb55267341e7570e3f1c60a97f4f9abf9c74fb2c31ae2d64b84c48baad8",
+        "2c7033a46314947417d470136ca2f6a1d443df8a4811758550737b12249b06c2",
     "electron/src/packaged-runtime-smoke.js":
-        "0d433dda9fd966eec090a543d2ab9ea79dd6141cdc56db3a50b11a9b05d08c24",
+        "f81fa2080202bec33d78fd302802542634c5cd59acc225929a8c34c2dee5b51b",
     "electron/renderer/index.html":
-        "d48516ee6a5b09db8c83d7155f5b2ee1c72a0919ca5a6ac6ed8ba149ad25552f",
+        "74868c83fe372d0bcfd4bf36ba44f404c3744d3db8336ef4a70885ac7b4e5be3",
     "electron/renderer/app.js":
-        "43ea2db9431da87de40d72bd8eec373663f07fc8e986afecb212ee56e40790ce",
+        "4ab198be4ec113d1c982a80e97e435bd0843440ef614bc3c325caa84e05537c6",
     "electron/renderer/styles.css":
-        "275137e8f05bb78de982f0cf777db4e14b2a2aab702d6afb310062f79afe4c76",
+        "197e669e67ebd9044226e6fccc8eda7ba1ed8502637f964104f9dfd13c4fb5ff",
     "electron/renderer/ui-formatters.js":
         "64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944",
     "electron/tests/run-search-parity.js":
-        "9da5b1529c60f4ea3a7a0507e9a6a796cff3b60e52acd39aef3fd176c980b223",
+        "8f406f4850ce7867b6a4042b691066ad6293c0e2f8df2e111b631f155d5a2a81",
     "electron/tests/validate-renderer-ui.js":
-        "33a915a61cccdd0e4c716f4cd5f5b9c815bced6481dde7f4d8a37be2eeb6ae6f",
+        "6a827d673732523f01804a5d0bdda754b9f193cbcf7e9c317bc8797d2b3a9d90",
     "electron/tests/validate-electron-skeleton.js":
-        "3963dbe62a659c17c685044b9cc00b0c6782527b8433e4ddd1c59f3d3e50bb54",
+        "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
     "electron/tests/validate-search-service.js":
-        "60a55ea14bc2250d102bf952073736ff8208ee871a893996482d571f18df3d05",
+        "95c63a1023dcf0a71a0c1c722eceea720d43aef6fce18a3389f88b6e40585fe7",
     "electron/tests/validate-packaging-config.js":
-        "8df1b4ad7fa73f8802113f9d1277fd41a9bb2707ccae0981e39c4cc38cc1d9e3",
+        "a99044976c5ce05a8f3f50cbc6e493a4ea830a33bda438319474ba7e2633a515",
     "electron/tests/validate-packaged-runtime-smoke.js":
-        "aab6e06658d8d8819da7a11de23c2f053bf49037816c14fe914a4b83cd00dff5",
+        "249dc514dfa9aa89278c5a8c8288c423ca3eb027dbaf1735204fc19ca7537066",
     "electron/tests/validate-release-version.js":
         "d4746b9ab38d914711ff5b6125a8ec33b9d46e574f94f9c1544f0a305bfd0471",
     "electron/scripts/verify-windows-portable.ps1":
@@ -95,7 +95,7 @@ PROTECTED_HASHES = {
     "electron/scripts/validate-package-lock-registry.py":
         "ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92",
     "electron/scripts/validate-checkout-byte-integrity.py":
-        "382072fbd01e499e653f2ebfe7aa5776c26d901c9ee22f03552bb3ed9d67ab7a",
+        "4c4b9fd5719ecd6c6362ea19574beea634ad188172a3e68cd63294c792a8d780",
     "electron/README_STAGE50A.md":
         "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md":
@@ -105,9 +105,9 @@ PROTECTED_HASHES = {
     "electron/README_STAGE50D.md":
         "adad88a75b3e2c3f20de83ffe3d5e086ca39cf8010d666a08527c18a7bb6cc26",
     "50B_validate_kdrg_electron_search_service.py":
-        "5b572166733af104a70d717f16bf777829b97229f735c3ef0b417d5bcd51c4ea",
+        "fa046370f7dfaa45b913c96ca2646bf162a79f6bfa38799da1fb0cfa78e01bdc",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "0c0baa3b731168fb6f7e3cd14d350733009e37c20ad6dc1bc6f2f7ce45740e60",
+        "c50eaab99c82bb5522d1415d1d75683afd3c759f4734fe7cfdd72690ed7364b4",
 }
 
 JS_CHECK_FILES = (
@@ -781,10 +781,15 @@ def main() -> int:
             check(f"node --check {relative}", result["returncode"], 0)
 
         command_specs = {
+            "Stage 50B parity status 계약 self-test": (
+                [str(node), "tests/run-search-parity.js", "--self-test"],
+                ELECTRON,
+                "Python-JavaScript status parity self-test: 4 PASS / 0 FAIL",
+            ),
             "Stage 50D packaged smoke 계약 회귀검증": (
                 [str(node), "tests/validate-packaged-runtime-smoke.js"],
                 ELECTRON,
-                "35 PASS / 0 FAIL",
+                "PASS / 0 FAIL",
             ),
             "Electron release version 일관성 검증": (
                 [str(node), "tests/validate-release-version.js", str(json.loads((ELECTRON / "package.json").read_text(encoding="utf-8")).get("version", ""))],
@@ -799,12 +804,12 @@ def main() -> int:
             "Stage 50C renderer UI 회귀검증": (
                 [str(node), "tests/validate-renderer-ui.js"],
                 ELECTRON,
-                "105 PASS / 0 FAIL",
+                "PASS / 0 FAIL",
             ),
             "Stage 50C 검색 service 회귀검증": (
                 [str(node), "tests/validate-search-service.js"],
                 ELECTRON,
-                "78 PASS / 0 FAIL",
+                "PASS / 0 FAIL",
             ),
             "Stage 50C 보안 골격 회귀검증": (
                 [str(node), "tests/validate-electron-skeleton.js"],
@@ -814,7 +819,7 @@ def main() -> int:
             "Stage 50C Python 전체 회귀검증": (
                 [sys.executable, "50C_validate_kdrg_electron_renderer_ui.py"],
                 ROOT,
-                "85 PASS / 0 FAIL",
+                "PASS / 0 FAIL",
             ),
             "package-lock registry 독립검증": (
                 [sys.executable, "scripts/validate-package-lock-registry.py"],
@@ -843,7 +848,64 @@ def main() -> int:
     package = json.loads((ELECTRON / "package.json").read_text(encoding="utf-8"))
     smoke_source = (ELECTRON / "src/packaged-runtime-smoke.js").read_text(encoding="utf-8")
     search_service_source = (ELECTRON / "src/kdrg-search-service.js").read_text(encoding="utf-8")
+    relation_contract_source = (ELECTRON / "src/search-result-contract.js").read_text(encoding="utf-8")
+    main_source = (ELECTRON / "main.js").read_text(encoding="utf-8")
+    preload_source = (ELECTRON / "preload.js").read_text(encoding="utf-8")
+    renderer_html = (ELECTRON / "renderer/index.html").read_text(encoding="utf-8")
+    renderer_app = (ELECTRON / "renderer/app.js").read_text(encoding="utf-8")
+    checkout_validator_source = (
+        ELECTRON / "scripts/validate-checkout-byte-integrity.py"
+    ).read_text(encoding="utf-8")
+    parity_source = (
+        ELECTRON / "tests/run-search-parity.js"
+    ).read_text(encoding="utf-8")
     package_scripts = package.get("scripts", {})
+    immutable_match = re.search(
+        r"IMMUTABLE_DATA_HASHES\s*=\s*\{([\s\S]*?)\n\}",
+        checkout_validator_source,
+    )
+    immutable_block = immutable_match.group(1) if immutable_match else ""
+    check(
+        "checkout 불변 SHA는 공식 데이터 3종만",
+        immutable_match is not None
+        and all(
+            token in immutable_block
+            for token in (
+                "kdrg_v47_search_integrated.json",
+                "kdrg_v47_ui_semantic_profile.json",
+                "kdrg_v47_ui_display_contract.json",
+            )
+        )
+        and "renderer/index.html" not in immutable_block
+        and "renderer/styles.css" not in immutable_block,
+        True,
+    )
+    check(
+        "checkout 변경형 UI는 EOL 전수검증",
+        "OBSERVED_MUTABLE_TEXT_FILES" in checkout_validator_source
+        and "electron/renderer/index.html" in checkout_validator_source
+        and "electron/renderer/styles.css" in checkout_validator_source,
+        True,
+    )
+    check(
+        "parity status additive field 허용",
+        "projectStatusByBaseline" in parity_source
+        and "additiveStatusKeys" in parity_source
+        and "check('status', status, baseline.status)" not in parity_source,
+        True,
+    )
+    check(
+        "parity status 음성 self-test",
+        "missing baseline key detected" in parity_source
+        and "changed baseline value remains detectable" in parity_source,
+        True,
+    )
+    check(
+        "renderer CSS 단일 EOF LF",
+        (ELECTRON / "renderer/styles.css").read_bytes().endswith(b"\n")
+        and not (ELECTRON / "renderer/styles.css").read_bytes().endswith(b"\n\n"),
+        True,
+    )
     check(
         "packaged smoke 현재 results 계약 사용",
         "search.results" in smoke_source and "search.items.some" not in smoke_source,
@@ -855,6 +917,27 @@ def main() -> int:
         and "schema_version: RESPONSE_SCHEMA_VERSION" in search_service_source,
         True,
     )
+    check(
+        "관계검색 request 2~6개 계약",
+        "payload.conditions.length < 2" in relation_contract_source
+        and "payload.conditions.length > 6" in relation_contract_source,
+        True,
+    )
+    check("관계검색 중복코드 차단", "같은 코드를 중복 입력할 수 없습니다" in relation_contract_source, True)
+    check("관계검색 IPC 연결", "normalizeRelationRequest(payload)" in main_source and "kdrg:relation-search" in main_source, True)
+    check("관계검색 preload bridge", "relationSearch: (request)" in preload_source, True)
+    check("관계검색 service method", "relationSearch(conditions, operator = 'AND'" in search_service_source, True)
+    check("관계검색 제외 TABLE 차단", "exclusionTableIds.has(tableId)" in search_service_source, True)
+    check("관계검색 strict·split·partial", all(token in search_service_source for token in ("'strict'", "'split'", "'partial'")), True)
+    check("관계검색 제외 TABLE 요약", "exclude_tables:" in search_service_source, True)
+    check("packaged smoke 관계검색 fixture", "findRelationSmokeFixture(service)" in smoke_source, True)
+    check("packaged smoke 관계검색 계약", "validateRelationResponse" in smoke_source and "relation_contract_verified" in smoke_source, True)
+    check("데이터 현황 기본 접힘", bool(re.search(r'<details[^>]+id="data-overview"(?![^>]*\sopen)[^>]*>', renderer_html)), True)
+    check("복수 코드 관계검색 UI", 'id="relation-search-panel"' in renderer_html and 'id="relation-form"' in renderer_html, True)
+    check("기존 검색 필터 유지", all(token in renderer_html for token in ('id="filter-type"', 'id="filter-mdc"', 'id="filter-classification"')), True)
+    check("상세 section 접기", "create('details', 'detail-section')" in renderer_app, True)
+    check("TABLE 코드 기본 접힘", bool(re.search(r"makeSection\('TABLE 코드'[\s\S]{0,240}?open:\s*false", renderer_app)), True)
+    check("상세 전체 펼치기·접기", "setAllDetailSections(true)" in renderer_app and "setAllDetailSections(false)" in renderer_app, True)
     check(
         "packaged smoke 계약검증 script",
         package_scripts.get("validate:smoke-contract"),

@@ -11,6 +11,7 @@ const {
 } = require('./src/packaged-runtime-smoke');
 const {
   normalizeSearchRequest,
+  normalizeRelationRequest,
   normalizeDetailRequest,
 } = require('./src/search-result-contract');
 
@@ -18,6 +19,7 @@ const IPC_CHANNELS = Object.freeze({
   bootstrap: 'kdrg:get-bootstrap-snapshot',
   searchStatus: 'kdrg:get-search-status',
   search: 'kdrg:search',
+  relationSearch: 'kdrg:relation-search',
   detail: 'kdrg:get-detail',
 });
 
@@ -58,6 +60,13 @@ function registerIpcHandlers() {
     return getSearchService().search(request.query, request.entityType, {
       limit: request.limit,
       offset: request.offset,
+      mdc: request.mdc,
+      classification: request.classification,
+    });
+  });
+  ipcMain.handle(IPC_CHANNELS.relationSearch, async (_event, payload) => {
+    const request = normalizeRelationRequest(payload);
+    return getSearchService().relationSearch(request.conditions, request.operator, {
       mdc: request.mdc,
       classification: request.classification,
     });
