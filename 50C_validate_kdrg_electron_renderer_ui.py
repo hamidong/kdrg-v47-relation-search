@@ -14,7 +14,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V7_COMPACT_UI_SEMANTIC"
+SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V8_PUBLIC_ADRG_INLINE_TABLE"
 ROOT = Path(__file__).resolve().parent
 ELECTRON_ROOT = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -42,7 +42,7 @@ PROTECTED_HASHES = {
     "electron/preload.js": "c42dbd945acc529b5235d1e5da834ebd9274eabd4e0d791b55d601e5962bb9a2",
     "electron/src/data-paths.js": "27cca98bdf68a2d5d71210c36bcddc6068e413000be860b4e9a1a784a4f61316",
     "electron/src/search-normalizer.js": "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
-    "electron/src/search-result-contract.js": "a15ea969202ea566281776cb0a4f2be81ad9b343f2d466011257ffabf17c1e89",
+    "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
     "electron/src/kdrg-search-service.js": "2c7033a46314947417d470136ca2f6a1d443df8a4811758550737b12249b06c2",
     "electron/tests/run-search-parity.js": "8f406f4850ce7867b6a4042b691066ad6293c0e2f8df2e111b631f155d5a2a81",
 }
@@ -51,7 +51,7 @@ TARGET_HASHES = {
     "50B_validate_kdrg_electron_search_service.py": "fa046370f7dfaa45b913c96ca2646bf162a79f6bfa38799da1fb0cfa78e01bdc",
     "electron/src/bootstrap-data.js": "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
     "electron/tests/validate-electron-skeleton.js": "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
-    "electron/tests/validate-search-service.js": "95c63a1023dcf0a71a0c1c722eceea720d43aef6fce18a3389f88b6e40585fe7",
+    "electron/tests/validate-search-service.js": "38c7460b03a25e058862419c5ce87bd70d8ddcaab3225bd63c7ad941dccf3ff7",
     "electron/renderer/ui-formatters.js": "64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944",
     "electron/README_STAGE50C.md": "35f92d8bd42649ee7bdb651979626235517ea06a3a185bae3128b2b212e0478f",
 }
@@ -371,13 +371,47 @@ def main() -> int:
     check("복수 코드 관계검색 UI", "복수 코드 관계검색" in html_source, True)
     check("데이터 현황 기본 접힘", bool(re.search(r'<details[^>]+id="data-overview"(?![^>]*\sopen)[^>]*>', html_source)), True)
     check("관계검색 기본 접힘", bool(re.search(r'<details[^>]+id="relation-search-panel"(?![^>]*\sopen)[^>]*>', html_source)), True)
-    check("기존 검색 유형 필터 유지", 'id="filter-type"' in html_source, True)
+    check("사용자 검색 유형 필터 유지", 'id="filter-type"' in html_source, True)
+    check(
+        "사용자 검색 유형 CODE·ADRG만",
+        all(token in html_source for token in ('<option value="ALL">전체</option>', '<option value="CODE">코드</option>', '<option value="ADRG">ADRG</option>'))
+        and all(token not in html_source for token in ('<option value="AADRG">', '<option value="RDRG">', '<option value="TABLE">')),
+        True,
+    )
+    relation_contract_source = (ELECTRON_ROOT / "src/search-result-contract.js").read_text(encoding="utf-8")
+    check(
+        "사용자 검색 계약 CODE·ADRG 제한",
+        "SEARCH_ENTITY_TYPES = Object.freeze(['CODE', 'ADRG'])" in relation_contract_source
+        and "SEARCH_ENTITY_TYPE_SET" in relation_contract_source,
+        True,
+    )
     check("기존 MDC 필터 유지", 'id="filter-mdc"' in html_source, True)
     check("기존 질병군 분류 필터 유지", 'id="filter-classification"' in html_source, True)
     check("관계검색 bridge", "window.KDRG.relationSearch" in app_source, True)
     check("관계검색 제외 TABLE 표시", "relation-group-exclusion" in app_source, True)
     check("상세 접기 section", "create('details', 'detail-section')" in app_source, True)
     check("TABLE 코드 기본 접힘", bool(re.search(r"makeSection\('TABLE 코드'[\s\S]{0,240}?open:\s*false", app_source)), True)
+    check(
+        "TABLE 기본 클릭 인라인 펼치기",
+        "async function loadInlineTable" in app_source
+        and "create('details', `table-card inline-table-card" in app_source
+        and "TABLE을 펼치면 코드가 이 자리에서 표시됩니다." in app_source,
+        True,
+    )
+    check("TABLE 기술 상세 보조 동작", "TABLE 기술 상세" in app_source, True)
+    check(
+        "원문 TABLE명 우선·내부 ID 보조",
+        "OFFICIAL_TABLE_LABEL_PATTERN" in app_source
+        and "원문 TABLE명 미수록" in app_source
+        and "내부 ID ${tableId}" in app_source,
+        True,
+    )
+    check(
+        "AADRG 파생정보 정적 표시",
+        "function renderDerivedAadrgList" in app_source
+        and "검색 결과로 분리하지 않고 ADRG의 파생정보로만 표시합니다." in app_source,
+        True,
+    )
     check("전체 펼치기·접기", "setAllDetailSections(true)" in app_source and "setAllDetailSections(false)" in app_source, True)
     check("컴팩트 상단 헤더", 'class="topbar compact-topbar"' in html_source and 'class="version-chip"' in html_source, True)
     check("중복 검색 제목 제거", "통합 검색" not in html_source and "코드·질병군·TABLE 검색" not in html_source, True)

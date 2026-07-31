@@ -16,6 +16,7 @@ const {
 } = require('../src/kdrg-search-service');
 const {
   SearchContractError,
+  SEARCH_ENTITY_TYPES,
   normalizeSearchRequest,
   normalizeRelationRequest,
   normalizeDetailRequest,
@@ -241,6 +242,16 @@ const normalizedSearch = normalizeSearchRequest({
 check('request query trim', normalizedSearch.query, 'A01.0');
 check('request entity dedupe', normalizedSearch.entityType, ['CODE', 'ADRG'], (a, e) => JSON.stringify(a) === JSON.stringify(e));
 check('request classification', normalizedSearch.classification, '전문');
+check('public search entity types', SEARCH_ENTITY_TYPES, ['CODE', 'ADRG'], (a, e) => JSON.stringify(a) === JSON.stringify(e));
+const normalizedPublicAll = normalizeSearchRequest({ query: 'A0100', entityType: 'ALL', limit: 20 });
+check('ALL maps to public search types', normalizedPublicAll.entityType, ['CODE', 'ADRG'], (a, e) => JSON.stringify(a) === JSON.stringify(e));
+const publicAadrgLookup = service.search(
+  normalizedPublicAll.query,
+  normalizedPublicAll.entityType,
+  { limit: normalizedPublicAll.limit, offset: normalizedPublicAll.offset },
+);
+check('public search only CODE/ADRG', publicAadrgLookup.results.every((item) => ['CODE', 'ADRG'].includes(item.entity_type)), true);
+check('AADRG code resolves through parent ADRG hierarchy field', publicAadrgLookup.results.some((item) => item.entity_type === 'ADRG' && item.entity_id === 'A010'), true);
 const normalizedRelation = normalizeRelationRequest({
   conditions: [
     { code: ' A01.0 ', codeType: 'diagnosis' },
@@ -260,6 +271,9 @@ check('detail id trim', normalizedDetail.entityId, 'LT_9610_001');
 
 expectError('empty search request rejected', () => normalizeSearchRequest({ query: '' }), SearchContractError);
 expectError('invalid entity type rejected', () => normalizeSearchRequest({ query: 'A010', entityType: 'BAD' }), SearchContractError);
+expectError('AADRG public filter rejected', () => normalizeSearchRequest({ query: 'A0100', entityType: 'AADRG' }), SearchContractError);
+expectError('RDRG public filter rejected', () => normalizeSearchRequest({ query: 'A01000', entityType: 'RDRG' }), SearchContractError);
+expectError('TABLE public filter rejected', () => normalizeSearchRequest({ query: 'LT_A010_001', entityType: 'TABLE' }), SearchContractError);
 expectError('oversized limit rejected', () => normalizeSearchRequest({ query: 'A010', limit: 501 }), SearchContractError);
 expectError('invalid detail rejected', () => normalizeDetailRequest({ entityType: 'BAD', entityId: 'A010' }), SearchContractError);
 expectError('relation one condition rejected', () => normalizeRelationRequest({ conditions: [{ code: 'A010' }] }), SearchContractError);
@@ -287,7 +301,7 @@ check('preload ipcRenderer object hidden', preloadSource.includes('ipcRenderer,'
 check('bootstrap search connected', bootstrapSource.includes('searchServiceConnected: true'), true);
 check('bootstrap Stage 50D', bootstrapSource.includes("stage: '50D_ELECTRON_WINDOWS_PACKAGE_READY'"), true);
 
-console.log('validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50E_RELATION_SEARCH_VALIDATOR_V1');
+console.log('validator=2026-07-31_KDRG_V47_ELECTRON_STAGE50G_PUBLIC_SEARCH_CONTRACT_VALIDATOR_V2');
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {

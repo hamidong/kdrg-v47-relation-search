@@ -4,6 +4,8 @@ const { normalizeSpace, normalizeEntityId } = require('./search-normalizer');
 
 const ENTITY_TYPES = Object.freeze(['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']);
 const ENTITY_TYPE_SET = new Set(ENTITY_TYPES);
+const SEARCH_ENTITY_TYPES = Object.freeze(['CODE', 'ADRG']);
+const SEARCH_ENTITY_TYPE_SET = new Set(SEARCH_ENTITY_TYPES);
 const RELATION_OPERATORS = Object.freeze(['AND', 'OR']);
 const RELATION_CODE_TYPES = Object.freeze([
   'AUTO',
@@ -25,7 +27,7 @@ class SearchContractError extends Error {
 
 function normalizeEntityTypes(value) {
   if (value == null || value === 'ALL') {
-    return 'ALL';
+    return [...SEARCH_ENTITY_TYPES];
   }
   const values = Array.isArray(value) ? value : [value];
   if (!values.length) {
@@ -35,10 +37,10 @@ function normalizeEntityTypes(value) {
   for (const item of values) {
     const normalized = String(item ?? '').toUpperCase();
     if (normalized === 'ALL') {
-      return 'ALL';
+      return [...SEARCH_ENTITY_TYPES];
     }
-    if (!ENTITY_TYPE_SET.has(normalized)) {
-      throw new SearchContractError(`지원하지 않는 검색 유형입니다: ${item}`);
+    if (!SEARCH_ENTITY_TYPE_SET.has(normalized)) {
+      throw new SearchContractError(`사용자 검색에서 지원하지 않는 유형입니다: ${item}`);
     }
     if (!output.includes(normalized)) {
       output.push(normalized);
@@ -158,6 +160,7 @@ function normalizeDetailRequest(payload) {
 
 module.exports = Object.freeze({
   ENTITY_TYPES,
+  SEARCH_ENTITY_TYPES,
   RELATION_OPERATORS,
   RELATION_CODE_TYPES,
   SearchContractError,

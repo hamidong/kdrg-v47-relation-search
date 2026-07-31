@@ -101,7 +101,7 @@ function renderTypeCounts(response) {
   const container = byId('type-counts');
   container.replaceChildren();
   const typeCounts = response?.type_counts ?? {};
-  for (const type of ['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']) {
+  for (const type of ['CODE', 'ADRG']) {
     const count = Number(typeCounts[type] ?? 0);
     if (!count) continue;
     const chip = makeChip(`${Ui.entityLabel(type)} ${Ui.formatNumber(count)}`, 'type-count-chip');
@@ -383,7 +383,7 @@ function setDetailFoldActions(visible) {
 }
 
 function setAllDetailSections(open) {
-  for (const section of document.querySelectorAll('#detail-content details.detail-section')) {
+  for (const section of document.querySelectorAll('#detail-content details.detail-section, #detail-content details.table-card')) {
     section.open = open;
   }
 }
@@ -408,21 +408,165 @@ function makeSummaryList(items, emptyMessage = '표시할 항목이 없습니다
   return container;
 }
 
-function tableCard(summary, options = {}) {
-  const card = create('article', `table-card ${options.exclusion ? 'table-card-exclusion' : ''}`.trim());
-  const top = create('div', 'table-card-top');
-  const open = makeEntityButton(summary, 'table-open-button');
-  top.append(open);
-  const role = options.exclusion ? '제외 대상' : Ui.roleLabel(summary?.summary?.logical_table_type || summary?.summary?.logical_table_scope);
-  top.append(makeChip(role, options.exclusion ? 'exclusion-chip' : 'role-chip'));
-  card.append(top);
-  const summaryData = summary?.summary ?? {};
-  const chips = create('div', 'chip-row');
-  chips.append(
-    makeChip(`코드 ${Ui.formatNumber(summaryData.code_count ?? 0)}개`),
-    makeChip(`관련 ADRG ${Ui.formatNumber((summaryData.related_adrgs ?? []).length)}개`),
+const INTERNAL_TABLE_ID_PATTERN = /^LT_[A-Z0-9_]+$/i;
+const OFFICIAL_TABLE_LABEL_PATTERN = /(주진단명|기타진단명|시술명|수술명|처치명|검사명|부가코드(?:명)?)(?:\s*table\s*\d+)?/gi;
+
+function normalizeOfficialTableLabel(value) {
+  return String(value ?? '')
+    .replace(/\s+/g, ' ')
+    .replace(/table\s*(\d+)/i, 'table$1')
+    .trim();
+}
+
+function extractOfficialTableLabels(...values) {
+  const labels = [];
+  const seen = new Set();
+  for (const value of values.flat(Infinity)) {
+    const text = String(value ?? '');
+    OFFICIAL_TABLE_LABEL_PATTERN.lastIndex = 0;
+    for (const match of text.matchAll(OFFICIAL_TABLE_LABEL_PATTERN)) {
+      const label = normalizeOfficialTableLabel(match[0]);
+      if (!label || seen.has(label)) continue;
+      seen.add(label);
+      labels.push(label);
+    }
+  }
+  return labels;
+}
+
+function isInternalTableName(value, tableId = '') {
+  const name = String(value ?? '').trim();
+  if (!name) return true;
+  return name === String(tableId ?? '').trim() || INTERNAL_TABLE_ID_PATTERN.test(name);
+}
+
+function tableLabelMapFromAst(ast) {
+  const output = new Map();
+  for (const node of ast?.nodes ?? []) {
+    const tableIds = Ui.uniqueStrings(node.logical_table_ids ?? []);
+    if (!tableIds.length) continue;
+    const labels = extractOfficialTableLabels(
+      node.source_fragment,
+      node.display_text,
+      node.source_raw_text,
+    );
+    if (labels.length === tableIds.length) {
+      tableIds.forEach((tableId, index) => output.set(tableId, labels[index]));
+    } else if (labels.length === 1) {
+      tableIds.forEach((tableId) => output.set(tableId, labels[0]));
+    }
+  }
+  return output;
+}
+
+function tableUserLabel(summary, options = {}) {
+  const tableId = String(summary?.entity_id ?? summary?.logical_table_id ?? '');
+  const mapped = options.labelMap?.get(tableId);
+  if (mapped) return mapped;
+  const summaryData = summary?.summary ?? summary ?? {};
+  const contextTexts = (summaryData.runtime_contexts ?? []).flatMap((context) => [
+    context.source_fragment,
+    context.requirement_label,
+    context.display_label,
+  ]);
+  const labels = extractOfficialTableLabels(
+    options.sourceText,
+    summary?.title,
+    summary?.subtitle,
+    summaryData.display_name,
+    contextTexts,
   );
-  card.append(chips);
+  if (labels.length) return labels[0];
+  const displayName = String(summaryData.display_name ?? summary?.title ?? '').trim();
+  if (!isInternalTableName(displayName, tableId)) return displayName;
+  return '원문 TABLE명 미수록';
+}
+
+function renderInlineTableCodeList(detail) {
+  const body = create('div', 'inline-table-code-list');
+  const records = Array.isArray(detail?.code_records) ? detail.code_records : [];
+  const limit = 160;
+  if (!records.length) {
+    body.append(create('p', 'muted', 'TABLE 코드가 없습니다.'));
+    return body;
+  }
+  const grid = create('div', 'code-grid inline-code-grid');
+  for (const record of records.slice(0, limit)) {
+    const row = create('div', 'inline-code-row');
+    row.append(
+      makeBadge('CODE'),
+      create('strong', '', record.entity_id || record.summary?.code || '-'),
+      create('small', '', record.subtitle || record.summary?.names?.[0] || '코드명 원천 미수록'),
+    );
+    grid.append(row);
+  }
+  body.append(grid);
+  if (records.length > limit) {
+    body.append(create('p', 'list-limit-note', `화면 성능을 위해 처음 ${Ui.formatNumber(limit)}개만 표시합니다.`));
+  }
+  return body;
+}
+
+async function loadInlineTable(card, summary, options = {}) {
+  if (card.dataset.loaded === 'true' || card.dataset.loading === 'true') return;
+  card.dataset.loading = 'true';
+  const content = card.querySelector('.inline-table-content');
+  content?.replaceChildren(create('p', 'muted', 'TABLE 코드를 불러오는 중입니다.'));
+  try {
+    const tableId = String(summary?.entity_id ?? '');
+    const payload = await window.KDRG.getDetail({ entityType: 'TABLE', entityId: tableId });
+    const label = tableUserLabel({
+      entity_id: tableId,
+      title: payload.detail?.display_name,
+      summary: payload.detail,
+    }, options);
+    const labelNode = card.querySelector('.table-user-label');
+    if (labelNode) labelNode.textContent = label;
+    const countNode = card.querySelector('.table-code-count');
+    if (countNode) countNode.textContent = `코드 ${Ui.formatNumber((payload.detail?.code_records ?? []).length)}개`;
+    const fragment = document.createDocumentFragment();
+    fragment.append(renderInlineTableCodeList(payload.detail));
+    const actions = create('div', 'inline-table-actions');
+    const technical = create('button', 'table-technical-button', 'TABLE 기술 상세');
+    technical.type = 'button';
+    technical.dataset.entityType = 'TABLE';
+    technical.dataset.entityId = tableId;
+    actions.append(technical);
+    fragment.append(actions);
+    content?.replaceChildren(fragment);
+    card.dataset.loaded = 'true';
+  } catch (error) {
+    content?.replaceChildren(create('p', 'error-message', error?.message || 'TABLE 상세를 불러오지 못했습니다.'));
+  } finally {
+    card.dataset.loading = 'false';
+  }
+}
+
+function tableCard(summary, options = {}) {
+  const tableId = String(summary?.entity_id ?? '');
+  const summaryData = summary?.summary ?? {};
+  const card = create('details', `table-card inline-table-card ${options.exclusion ? 'table-card-exclusion' : ''}`.trim());
+  card.dataset.inlineTableId = tableId;
+  const header = create('summary', 'table-card-summary');
+  const identity = create('div', 'table-card-identity');
+  identity.append(
+    makeBadge('TABLE'),
+    create('strong', 'table-user-label', tableUserLabel(summary, options)),
+    create('small', 'table-internal-id', `내부 ID ${tableId}`),
+  );
+  const meta = create('div', 'table-card-summary-meta');
+  const role = options.exclusion ? '제외 대상' : Ui.roleLabel(summaryData.logical_table_type || summaryData.logical_table_scope);
+  meta.append(
+    makeChip(role, options.exclusion ? 'exclusion-chip' : 'role-chip'),
+    makeChip(`코드 ${Ui.formatNumber(summaryData.code_count ?? 0)}개`, 'table-code-count'),
+  );
+  header.append(identity, meta);
+  const content = create('div', 'inline-table-content');
+  content.append(create('p', 'muted', 'TABLE을 펼치면 코드가 이 자리에서 표시됩니다.'));
+  card.append(header, content);
+  card.addEventListener('toggle', () => {
+    if (card.open) loadInlineTable(card, summary, options);
+  });
   return card;
 }
 
@@ -445,13 +589,14 @@ function renderBasicTables(detail) {
   const body = create('div', 'table-stack');
   const ids = Ui.uniqueStrings(detail.source_logical_table_ids ?? []);
   const summaryMap = Ui.tableSummaryMap(detail);
+  const labelMap = tableLabelMapFromAst(detail.condition_ast);
   if (!ids.length) body.append(create('p', 'muted', '기본 분류 TABLE이 확인되지 않았습니다.'));
-  for (const tableId of ids) body.append(tableCard(resolveTableSummary(tableId, summaryMap)));
+  for (const tableId of ids) body.append(tableCard(resolveTableSummary(tableId, summaryMap), { labelMap }));
   section.append(body);
   return section;
 }
 
-function conditionTableRow(leaf, summaryMap, exclusion) {
+function conditionTableRow(leaf, summaryMap, exclusion, labelMap) {
   const wrapper = create('div', `condition-table ${exclusion ? 'condition-exclusion' : 'condition-include'}`);
   const heading = create('div', 'condition-table-heading');
   heading.append(
@@ -460,7 +605,7 @@ function conditionTableRow(leaf, summaryMap, exclusion) {
   );
   wrapper.append(heading);
   for (const tableId of leaf.table_ids ?? []) {
-    wrapper.append(tableCard(resolveTableSummary(tableId, summaryMap), { exclusion }));
+    wrapper.append(tableCard(resolveTableSummary(tableId, summaryMap), { exclusion, labelMap, sourceText: leaf.display_text }));
   }
   if (!(leaf.table_ids ?? []).length) wrapper.append(create('p', 'muted', leaf.display_text));
   return wrapper;
@@ -473,6 +618,7 @@ function renderConditionGroups(detail) {
   const body = create('div', 'condition-groups');
   const summaryMap = Ui.tableSummaryMap(detail);
   const groups = Ui.buildConditionGroups(ast);
+  const labelMap = tableLabelMapFromAst(ast);
 
   if (!ast) {
     const notice = create('div', 'condition-empty');
@@ -491,7 +637,7 @@ function renderConditionGroups(detail) {
         includes.append(create('p', 'condition-label include-label', '다음 조건을 충족'));
         group.includes.forEach((leaf, leafIndex) => {
           if (leafIndex) includes.append(create('div', 'operator-label', '그리고'));
-          includes.append(conditionTableRow(leaf, summaryMap, false));
+          includes.append(conditionTableRow(leaf, summaryMap, false, labelMap));
         });
         box.append(includes);
       }
@@ -539,6 +685,30 @@ function renderConditionGroups(detail) {
   return section;
 }
 
+function renderDerivedAadrgList(records) {
+  const container = create('div', 'derived-aadrg-list');
+  if (!Array.isArray(records) || !records.length) {
+    container.append(create('p', 'muted', '파생 AADRG가 없습니다.'));
+    return container;
+  }
+  for (const record of records) {
+    const row = create('article', 'derived-aadrg-row');
+    const main = create('div', 'derived-aadrg-main');
+    main.append(
+      makeBadge('AADRG'),
+      create('strong', '', record.entity_id || '-'),
+      create('span', '', String(record.title || '').replace(`${record.entity_id} · `, '')),
+    );
+    const meta = create('div', 'chip-row');
+    const summary = record.summary ?? {};
+    meta.append(makeChip(Ui.classificationLabel(summary.classification_code, summary.classification_display_label)));
+    if (Number.isFinite(Number(summary.rdrg_count))) meta.append(makeChip(`RDRG ${Ui.formatNumber(summary.rdrg_count)}개`));
+    row.append(main, meta);
+    container.append(row);
+  }
+  return container;
+}
+
 function renderAdrgDetail(payload) {
   const detail = payload.detail;
   const fragment = document.createDocumentFragment();
@@ -554,7 +724,7 @@ function renderAdrgDetail(payload) {
   );
 
   const aadrgSection = makeSection('파생 AADRG', 'ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.', { open: false, count: (detail.aadrg_records ?? []).length });
-  aadrgSection.append(makeSummaryList(detail.aadrg_records));
+  aadrgSection.append(renderDerivedAadrgList(detail.aadrg_records));
   fragment.append(aadrgSection, renderBasicTables(detail), renderConditionGroups(detail));
   return fragment;
 }
@@ -621,23 +791,24 @@ function renderCodeDetail(payload) {
       title: table.display_name || table.logical_table_id,
       subtitle: `${Ui.roleLabel(table.logical_table_type)} · 관련 ADRG ${(table.related_adrgs ?? []).length}개`,
       summary: {
+        display_name: table.display_name,
         logical_table_type: table.logical_table_type,
         related_adrgs: table.related_adrgs,
+        code_count: table.code_count,
+        runtime_contexts: table.runtime_contexts,
       },
     };
-    const card = tableCard(summary);
-    if ((table.runtime_contexts ?? []).length) {
-      card.append(makeChip(`조건 사용 ${(table.runtime_contexts ?? []).length}건`, 'context-chip'));
-    }
-    stack.append(card);
+    stack.append(tableCard(summary, {
+      sourceText: (table.runtime_contexts ?? []).map((context) => context.source_fragment),
+    }));
   }
   if (!stack.childNodes.length) stack.append(create('p', 'muted', '연결된 TABLE이 없습니다.'));
   tables.append(stack);
 
   const adrgs = makeSection('관련 ADRG', '', { open: false, count: (detail.related_adrg_summaries ?? []).length });
   adrgs.append(makeSummaryList(detail.related_adrg_summaries));
-  const aadrgs = makeSection('관련 AADRG', '', { open: false, count: (detail.related_aadrg_summaries ?? []).length });
-  aadrgs.append(makeSummaryList(detail.related_aadrg_summaries));
+  const aadrgs = makeSection('관련 AADRG', '검색 결과로 분리하지 않고 ADRG의 파생정보로만 표시합니다.', { open: false, count: (detail.related_aadrg_summaries ?? []).length });
+  aadrgs.append(renderDerivedAadrgList(detail.related_aadrg_summaries));
   fragment.append(tables, adrgs, aadrgs);
   return fragment;
 }
@@ -679,14 +850,24 @@ function renderCodeRecords(records) {
   return container;
 }
 
+function tableDetailUserLabel(detail) {
+  return tableUserLabel({
+    entity_id: detail.logical_table_id,
+    title: detail.display_name,
+    summary: detail,
+  }, {
+    sourceText: (detail.runtime_contexts ?? []).map((context) => context.source_fragment),
+  });
+}
+
 function renderTableDetail(payload) {
   const detail = payload.detail;
   const fragment = document.createDocumentFragment();
   fragment.append(
     makeMetaGrid([
-      ['TABLE ID', detail.logical_table_id],
-      ['TABLE명', detail.display_name],
-      ['코드 유형', Ui.roleLabel(detail.logical_table_type || detail.logical_table_scope)],
+      ['원문 TABLE명', tableDetailUserLabel(detail)],
+      ['내부 TABLE ID', detail.logical_table_id],
+      ['코드 구분', Ui.roleLabel(detail.logical_table_type || detail.logical_table_scope)],
       ['코드 수', `${Ui.formatNumber(detail.code_count ?? (detail.codes ?? []).length)}개`],
       ['원문 정의 ADRG', Ui.summarizeList(detail.source_adrgs)],
       ['조건 AST ADRG', Ui.summarizeList(detail.condition_adrgs)],
@@ -740,7 +921,7 @@ function detailTitle(payload) {
   if (payload.entity_type === 'ADRG') return `${detail.adrg} · ${detail.adrg_name}`;
   if (payload.entity_type === 'AADRG') return `${detail.aadrg} · ${detail.group_name}`;
   if (payload.entity_type === 'RDRG') return `${detail.code} · ${detail.group_name}`;
-  if (payload.entity_type === 'TABLE') return detail.display_name || detail.logical_table_id;
+  if (payload.entity_type === 'TABLE') return tableDetailUserLabel(detail);
   return detail.code || payload.entity_id;
 }
 
@@ -946,7 +1127,7 @@ async function runSearch(request, options = {}) {
   const query = String(request.query ?? '').trim();
   if (!query) {
     byId('search-query').focus();
-    setStatus('error', '검색어를 입력해야 합니다.', '코드·ADRG·AADRG·RDRG·TABLE명 또는 질병군명을 입력하세요.');
+    setStatus('error', '검색어를 입력해야 합니다.', '코드·ADRG 또는 질병군명을 입력하세요.');
     return;
   }
   const sequence = ++state.searchSequence;
@@ -995,7 +1176,7 @@ function resetSearch() {
   byId('page-previous').disabled = true;
   byId('page-next').disabled = true;
   clearDetail();
-  setStatus('ready', '검색 준비', '코드·질병군명·ADRG·AADRG·RDRG·TABLE 검색');
+  setStatus('ready', '검색 준비', '코드·ADRG·질병군명 검색');
   byId('search-query').focus();
 }
 

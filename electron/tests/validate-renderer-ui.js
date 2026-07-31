@@ -4,9 +4,10 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const { KdrgSearchService } = require('../src/kdrg-search-service');
+const { normalizeSearchRequest } = require('../src/search-result-contract');
 const Ui = require('../renderer/ui-formatters');
 
-const SCRIPT_VERSION = '2026-07-31_KDRG_V47_ELECTRON_STAGE50F_COMPACT_RENDERER_UI_VALIDATOR_V2';
+const SCRIPT_VERSION = '2026-07-31_KDRG_V47_ELECTRON_STAGE50G_PUBLIC_RESULT_INLINE_TABLE_UI_VALIDATOR_V3';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const WORKSPACE_ROOT = path.resolve(ELECTRON_ROOT, '..');
 const DATA_PATH = path.join(WORKSPACE_ROOT, 'data', 'kdrg_v47_search_integrated.json');
@@ -66,7 +67,7 @@ check('상단 헤더 컴팩트 구조', () => {
 check('검색 패널 컴팩트 구조', () => {
   assert.match(html, /class="search-panel compact-search-panel"/);
   assert.match(html, /class="search-support-row"/);
-  assert.match(html, /placeholder="코드·질병군명·TABLE명 입력"/);
+  assert.match(html, /placeholder="코드·ADRG·질병군명 입력"/);
 });
 check('유틸리티 한 줄 배치', () => assert.match(html, /class="utility-row"/));
 check('결과·상세 헤더 간소화', () => {
@@ -111,8 +112,11 @@ for (const id of [
 }
 
 check('전체 검색 유형', () => assert.match(html, /value="ALL">전체/));
-for (const type of ['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']) {
-  check(`검색 유형 ${type}`, () => assert.match(html, new RegExp(`value="${type}"`)));
+for (const type of ['CODE', 'ADRG']) {
+  check(`사용자 검색 유형 ${type}`, () => assert.match(html, new RegExp(`value="${type}"`)));
+}
+for (const type of ['AADRG', 'RDRG', 'TABLE']) {
+  check(`사용자 검색 유형 ${type} 제거`, () => assert.doesNotMatch(html, new RegExp(`<option value="${type}"`)));
 }
 for (const code of ['A', 'B', 'C']) {
   check(`질병군 분류 ${code}`, () => assert.match(html, new RegExp(`value="${code}"`)));
@@ -166,6 +170,14 @@ check('상태 문구 간소화', () => {
   assert.doesNotMatch(appJs, /건을 찾았습니다/);
 });
 check('TABLE 코드 기본 접힘', () => assert.match(appJs, /makeSection\('TABLE 코드'[\s\S]*open: false/));
+check('TABLE 카드 인라인 details', () => assert.match(appJs, /create\('details', `table-card inline-table-card/));
+check('TABLE 클릭 시 인라인 상세 로드', () => assert.match(appJs, /async function loadInlineTable\(/));
+check('TABLE 기술 상세 보조 버튼', () => assert.match(appJs, /TABLE 기술 상세/));
+check('PDF 원문 TABLE명 추출', () => assert.match(appJs, /OFFICIAL_TABLE_LABEL_PATTERN/));
+check('내부 TABLE ID 보조표시', () => assert.match(appJs, /내부 ID \$\{tableId\}/));
+check('TABLE명 미수록 정직 표시', () => assert.match(appJs, /원문 TABLE명 미수록/));
+check('파생 AADRG 정적 표시', () => assert.match(appJs, /function renderDerivedAadrgList\(/));
+check('전체 펼치기 인라인 TABLE 포함', () => assert.match(appJs, /details\.detail-section, #detail-content details\.table-card/));
 check('관계검색 조건 최소 2개 초기화', () => assert.match(appJs, /addRelationCondition\(\);[\s\S]*addRelationCondition\(\);/));
 check('관계검색 최대 6개', () => assert.match(appJs, /childElementCount >= 6/));
 check('관계 level strict 설명', () => assert.match(appJs, /같은 조건 선택지/));
@@ -203,6 +215,12 @@ for (const className of [
   'result-meta-row',
   'detail-hero',
   'detail-overview-grid',
+  'inline-table-card',
+  'table-card-summary',
+  'inline-table-content',
+  'inline-code-row',
+  'table-technical-button',
+  'derived-aadrg-row',
 ]) {
   check(`CSS class ${className}`, () => assert.match(css, new RegExp(`\\.${className.replace('-', '\\-')}`)));
 }
@@ -226,6 +244,10 @@ check('빈 AST', () => assert.deepEqual(Ui.buildConditionGroups(null), []));
 
 const service = new KdrgSearchService(DATA_PATH);
 check('service ready', () => assert.equal(service.status().ready, true));
+const publicRequest = normalizeSearchRequest({ query: 'A01.0', entityType: 'ALL', limit: 20 });
+const publicResults = service.search(publicRequest.query, publicRequest.entityType, { limit: publicRequest.limit });
+check('renderer ALL 계약 CODE/ADRG만 요청', () => assert.deepEqual(publicRequest.entityType, ['CODE', 'ADRG']));
+check('renderer 결과 CODE/ADRG만 표시', () => assert.ok(publicResults.results.every((item) => ['CODE', 'ADRG'].includes(item.entity_type))));
 check('검색 문서 수', () => assert.equal(service.debugSearchDocumentFingerprint().count, 22943));
 check('관계검색 service method', () => assert.equal(typeof service.relationSearch, 'function'));
 check('관계검색 condition group index', () => assert.ok(service.conditionGroupsByAdrg instanceof Map));

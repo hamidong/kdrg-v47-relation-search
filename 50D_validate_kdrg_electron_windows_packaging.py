@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V16_COMPACT_UI_PREFLIGHT"
+SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V17_PUBLIC_ADRG_INLINE_TABLE_PREFLIGHT"
 NODE_VERSION = "v22.23.1"
 
 ROOT = Path(__file__).resolve().parent
@@ -63,7 +63,7 @@ PROTECTED_HASHES = {
     "electron/src/search-normalizer.js":
         "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js":
-        "a15ea969202ea566281776cb0a4f2be81ad9b343f2d466011257ffabf17c1e89",
+        "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
     "electron/src/kdrg-search-service.js":
         "2c7033a46314947417d470136ca2f6a1d443df8a4811758550737b12249b06c2",
     "electron/src/packaged-runtime-smoke.js":
@@ -75,7 +75,7 @@ PROTECTED_HASHES = {
     "electron/tests/validate-electron-skeleton.js":
         "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
     "electron/tests/validate-search-service.js":
-        "95c63a1023dcf0a71a0c1c722eceea720d43aef6fce18a3389f88b6e40585fe7",
+        "38c7460b03a25e058862419c5ce87bd70d8ddcaab3225bd63c7ad941dccf3ff7",
     "electron/tests/validate-packaging-config.js":
         "a99044976c5ce05a8f3f50cbc6e493a4ea830a33bda438319474ba7e2633a515",
     "electron/tests/validate-packaged-runtime-smoke.js":
@@ -99,7 +99,7 @@ PROTECTED_HASHES = {
     "50B_validate_kdrg_electron_search_service.py":
         "fa046370f7dfaa45b913c96ca2646bf162a79f6bfa38799da1fb0cfa78e01bdc",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "e2af6ab4ae569ad22945bfa2441f2aa20daa39e93e1c5e78c989d22ade9da477",
+        "93f8ae886bbc97fddd9819a64540e313af2bc4e17af9575ae17c8bd99e2727f4",
 }
 
 MUTABLE_UI_FILES = (
@@ -929,6 +929,35 @@ def main() -> int:
         and "result-card-main" in renderer_app
         and "detailSummaryLine" in renderer_app
         and "detail-overview-grid" in renderer_app,
+        True,
+    )
+    check(
+        "사용자 검색 유형 CODE·ADRG만",
+        "SEARCH_ENTITY_TYPES = Object.freeze(['CODE', 'ADRG'])" in relation_contract_source
+        and all(token in renderer_html for token in ('<option value="ALL">전체</option>', '<option value="CODE">코드</option>', '<option value="ADRG">ADRG</option>'))
+        and all(token not in renderer_html for token in ('<option value="AADRG">', '<option value="RDRG">', '<option value="TABLE">')),
+        True,
+    )
+    check(
+        "TABLE 인라인 펼치기·기술 상세 분리",
+        "async function loadInlineTable" in renderer_app
+        and "create('details', `table-card inline-table-card" in renderer_app
+        and "TABLE 기술 상세" in renderer_app
+        and "TABLE을 펼치면 코드가 이 자리에서 표시됩니다." in renderer_app,
+        True,
+    )
+    check(
+        "TABLE 원문명 우선 표시",
+        "OFFICIAL_TABLE_LABEL_PATTERN" in renderer_app
+        and "원문 TABLE명 미수록" in renderer_app
+        and "내부 ID ${tableId}" in renderer_app,
+        True,
+    )
+    check(
+        "AADRG 검색결과 분리 금지·파생정보 유지",
+        "function renderTypeCounts(response)" in renderer_app
+        and "for (const type of ['CODE', 'ADRG'])" in renderer_app
+        and "function renderDerivedAadrgList" in renderer_app,
         True,
     )
     check(
