@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V15_RELATION_UI_PREFLIGHT"
+SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V16_COMPACT_UI_PREFLIGHT"
 NODE_VERSION = "v22.23.1"
 
 ROOT = Path(__file__).resolve().parent
@@ -68,18 +68,10 @@ PROTECTED_HASHES = {
         "2c7033a46314947417d470136ca2f6a1d443df8a4811758550737b12249b06c2",
     "electron/src/packaged-runtime-smoke.js":
         "f81fa2080202bec33d78fd302802542634c5cd59acc225929a8c34c2dee5b51b",
-    "electron/renderer/index.html":
-        "74868c83fe372d0bcfd4bf36ba44f404c3744d3db8336ef4a70885ac7b4e5be3",
-    "electron/renderer/app.js":
-        "4ab198be4ec113d1c982a80e97e435bd0843440ef614bc3c325caa84e05537c6",
-    "electron/renderer/styles.css":
-        "197e669e67ebd9044226e6fccc8eda7ba1ed8502637f964104f9dfd13c4fb5ff",
     "electron/renderer/ui-formatters.js":
         "64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944",
     "electron/tests/run-search-parity.js":
         "8f406f4850ce7867b6a4042b691066ad6293c0e2f8df2e111b631f155d5a2a81",
-    "electron/tests/validate-renderer-ui.js":
-        "6a827d673732523f01804a5d0bdda754b9f193cbcf7e9c317bc8797d2b3a9d90",
     "electron/tests/validate-electron-skeleton.js":
         "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
     "electron/tests/validate-search-service.js":
@@ -107,8 +99,15 @@ PROTECTED_HASHES = {
     "50B_validate_kdrg_electron_search_service.py":
         "fa046370f7dfaa45b913c96ca2646bf162a79f6bfa38799da1fb0cfa78e01bdc",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "c50eaab99c82bb5522d1415d1d75683afd3c759f4734fe7cfdd72690ed7364b4",
+        "e2af6ab4ae569ad22945bfa2441f2aa20daa39e93e1c5e78c989d22ade9da477",
 }
+
+MUTABLE_UI_FILES = (
+    "electron/renderer/index.html",
+    "electron/renderer/app.js",
+    "electron/renderer/styles.css",
+    "electron/tests/validate-renderer-ui.js",
+)
 
 JS_CHECK_FILES = (
     "electron/main.js",
@@ -638,6 +637,18 @@ def main() -> int:
         if path.is_file():
             check(f"보호 파일 SHA256 {relative}", sha256_file(path), expected_hash)
 
+    for relative in MUTABLE_UI_FILES:
+        path = ROOT / relative
+        check(f"변경형 UI 파일 존재 {relative}", path.is_file(), True)
+        if path.is_file():
+            payload = path.read_bytes()
+            check(f"변경형 UI LF 정책 {relative}", b"\r" not in payload, True)
+            check(
+                f"변경형 UI 단일 EOF LF {relative}",
+                payload.endswith(b"\n") and not payload.endswith(b"\n\n"),
+                True,
+            )
+
     for relative in (
         "50B_validate_kdrg_electron_search_service.py",
         "50C_validate_kdrg_electron_renderer_ui.py",
@@ -904,6 +915,20 @@ def main() -> int:
         "renderer CSS 단일 EOF LF",
         (ELECTRON / "renderer/styles.css").read_bytes().endswith(b"\n")
         and not (ELECTRON / "renderer/styles.css").read_bytes().endswith(b"\n\n"),
+        True,
+    )
+    check(
+        "변경형 UI 보호 SHA 비고정",
+        all(relative not in PROTECTED_HASHES for relative in MUTABLE_UI_FILES),
+        True,
+    )
+    check(
+        "컴팩트 상단·결과·상세 UI 계약",
+        'class="topbar compact-topbar"' in renderer_html
+        and 'class="search-panel compact-search-panel"' in renderer_html
+        and "result-card-main" in renderer_app
+        and "detailSummaryLine" in renderer_app
+        and "detail-overview-grid" in renderer_app,
         True,
     )
     check(

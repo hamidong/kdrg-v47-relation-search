@@ -94,7 +94,7 @@ function renderMetrics(snapshot) {
   setText('metric-condition', Ui.formatNumber(snapshot.counts.conditionTableOccurrences));
   setText('stage-badge', 'Relation Search');
   setText('data-version', snapshot.dataVersion);
-  setText('data-overview-summary', `${Ui.formatNumber(snapshot.counts.codes)}개 코드 · 데이터 정상 로드`);
+  setText('data-overview-summary', `${Ui.formatNumber(snapshot.counts.codes)}개 코드`);
 }
 
 function renderTypeCounts(response) {
@@ -149,18 +149,19 @@ function renderResults(response) {
     button.setAttribute('aria-label', resultAriaLabel(result));
     button.setAttribute('aria-pressed', String(state.selectedKey === key));
 
-    const top = create('div', 'result-card-top');
-    top.append(makeBadge(result.entity_type));
-    const match = makeChip(result.match_type || '검색 일치', 'match-chip');
+    const main = create('div', 'result-card-main');
+    main.append(makeBadge(result.entity_type));
+    main.append(create('strong', 'result-title', result.title));
+    const match = makeChip(result.match_type || '검색 일치', 'match-chip result-match-chip');
     match.title = (result.matched_fields ?? []).join(', ');
-    top.append(match);
-
-    const title = create('strong', 'result-title', result.title);
+    main.append(match);
     const subtitle = create('p', 'result-subtitle', result.subtitle);
-    const chips = create('div', 'chip-row');
+    const chips = create('div', 'chip-row result-meta-row');
     for (const label of Ui.resultSummaryChips(result)) chips.append(makeChip(label));
 
-    button.append(top, title, subtitle, chips);
+    button.append(main);
+    if (result.subtitle) button.append(subtitle);
+    if (chips.childElementCount) button.append(chips);
     list.append(button);
   }
 
@@ -223,16 +224,19 @@ function renderRelationResults(response) {
     button.dataset.resultKey = key;
     button.setAttribute('aria-label', `관계검색 ADRG ${result.entity_id} ${result.relation_level_label}`);
     button.setAttribute('aria-pressed', String(state.selectedKey === key));
-    const top = create('div', 'result-card-top');
-    top.append(makeBadge('ADRG'));
-    top.append(makeChip(result.relation_level_label, `relation-${result.relation_level}-chip`));
-    const chips = create('div', 'chip-row');
+    const main = create('div', 'result-card-main');
+    main.append(makeBadge('ADRG'));
+    main.append(create('strong', 'result-title', result.title));
+    main.append(makeChip(result.relation_level_label, `relation-${result.relation_level}-chip result-match-chip`));
+    const chips = create('div', 'chip-row result-meta-row');
     chips.append(
       makeChip(`${result.matched_count}/${result.total_count} 코드 연결`),
       makeChip(result.summary?.mdc ? `MDC ${result.summary.mdc}` : 'MDC 미확인'),
     );
     for (const label of result.summary?.abc_display_labels ?? []) chips.append(makeChip(label));
-    button.append(top, create('strong', 'result-title', result.title), create('p', 'result-subtitle', result.subtitle), chips);
+    button.append(main);
+    if (result.subtitle) button.append(create('p', 'result-subtitle', result.subtitle));
+    button.append(chips);
     list.append(button);
   });
   byId('page-previous').disabled = true;
@@ -265,7 +269,7 @@ function relationMatchCard(match) {
 function renderRelationDetail(candidate, response) {
   const panel = byId('detail-content');
   panel.replaceChildren();
-  const header = create('div', 'detail-primary relation-detail-primary');
+  const header = create('div', 'detail-primary detail-hero relation-detail-primary');
   header.append(makeBadge('ADRG'));
   const copy = create('div');
   copy.append(
@@ -294,7 +298,7 @@ function renderRelationDetail(candidate, response) {
     ['질병군 분류', Ui.summarizeList(candidate.summary?.abc_display_labels)],
     ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`],
     ['근거 페이지', candidate.source_page ? `PDF p.${candidate.source_page}` : '-'],
-  ]));
+  ], 'detail-overview-grid'));
 
   const matchesSection = makeSection('입력 코드별 연결 TABLE', '정확한 코드가 포함된 TABLE과 이 ADRG 조건식의 교집합입니다.', { open: true, count: candidate.code_matches.length });
   const matchStack = create('div', 'relation-match-stack');
@@ -352,7 +356,7 @@ function clearDetail(message = '검색 결과를 선택하면 상세 관계가 �
   );
   panel.append(empty);
   setText('detail-heading', '상세 정보');
-  setText('detail-caption', '기본 TABLE과 추가 분기조건을 구분해 표시합니다.');
+  setText('detail-caption', '검색 결과를 선택하세요.');
   setDetailFoldActions(false);
 }
 
@@ -384,8 +388,8 @@ function setAllDetailSections(open) {
   }
 }
 
-function makeMetaGrid(rows) {
-  const grid = create('dl', 'meta-grid');
+function makeMetaGrid(rows, className = '') {
+  const grid = create('dl', `meta-grid ${className}`.trim());
   for (const [key, value] of rows) {
     const row = create('div');
     row.append(create('dt', '', key), create('dd', '', Ui.text(value)));
@@ -546,7 +550,7 @@ function renderAdrgDetail(payload) {
       ['AADRG', `${Ui.formatNumber(detail.aadrg_count ?? 0)}개`],
       ['질병군 분류', Ui.summarizeList(detail.abc_display_labels)],
       ['조건 AST', detail.condition_ast_id || '별도 AST 없음'],
-    ]),
+    ], 'detail-overview-grid'),
   );
 
   const aadrgSection = makeSection('파생 AADRG', 'ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.', { open: false, count: (detail.aadrg_records ?? []).length });
@@ -566,7 +570,7 @@ function renderAadrgDetail(payload) {
       ['MDC', detail.mdc ? `MDC ${detail.mdc}` : '-'],
       ['질병군 분류', Ui.classificationLabel(detail.classification_code, detail.classification_display_label)],
       ['RDRG', `${Ui.formatNumber((detail.rdrg_codes ?? []).length)}개`],
-    ]),
+    ], 'detail-overview-grid'),
   );
   const parent = makeSection('상위 ADRG', '', { open: true, count: detail.parent_adrg ? 1 : 0 });
   parent.append(makeSummaryList(detail.parent_adrg ? [detail.parent_adrg] : []));
@@ -586,7 +590,7 @@ function renderRdrgDetail(payload) {
       ['중증도', detail.severity_name],
       ['상위 AADRG', detail.aadrg],
       ['상위 ADRG', detail.adrg],
-    ]),
+    ], 'detail-overview-grid'),
   );
   const parents = makeSection('상위 분류 관계', '', { open: true, count: [detail.parent_aadrg, detail.parent_adrg].filter(Boolean).length });
   parents.append(makeSummaryList([detail.parent_aadrg, detail.parent_adrg].filter(Boolean)));
@@ -605,7 +609,7 @@ function renderCodeDetail(payload) {
       ['연결 TABLE', `${Ui.formatNumber((detail.logical_table_ids ?? []).length)}개`],
       ['관련 ADRG', `${Ui.formatNumber((detail.related_adrgs ?? []).length)}개`],
       ['관련 AADRG', `${Ui.formatNumber((detail.related_aadrgs ?? []).length)}개`],
-    ]),
+    ], 'detail-overview-grid'),
   );
 
   const tables = makeSection('포함 TABLE', '원문 정의 위치·조건 AST 사용 관계·검색용 통합 관계를 구분합니다.', { open: true, count: (detail.logical_tables ?? []).length });
@@ -688,7 +692,7 @@ function renderTableDetail(payload) {
       ['조건 AST ADRG', Ui.summarizeList(detail.condition_adrgs)],
       ['검색용 관련 ADRG', Ui.summarizeList(detail.related_adrgs)],
       ['원문 family 근거', Ui.summarizeList(detail.source_adrg_families)],
-    ]),
+    ], 'detail-overview-grid'),
   );
   const contexts = makeSection('조건 AST 사용 관계', '포함과 제외 polarity를 분리하여 표시합니다.', { open: (detail.runtime_contexts ?? []).length > 0, count: (detail.runtime_contexts ?? []).length });
   contexts.append(renderRuntimeContexts(detail.runtime_contexts));
@@ -698,6 +702,37 @@ function renderTableDetail(payload) {
   related.append(makeSummaryList(detail.related_adrg_summaries));
   fragment.append(contexts, codes, related);
   return fragment;
+}
+
+function detailSummaryLine(payload) {
+  const detail = payload.detail ?? {};
+  if (payload.entity_type === 'ADRG') {
+    return [
+      detail.mdc ? `MDC ${detail.mdc}` : '',
+      Number.isFinite(Number(detail.aadrg_count)) ? `AADRG ${Ui.formatNumber(detail.aadrg_count)}개` : '',
+      Ui.summarizeList(detail.abc_display_labels),
+    ].filter(Boolean).join(' · ');
+  }
+  if (payload.entity_type === 'AADRG') {
+    return [
+      detail.adrg ? `상위 ADRG ${detail.adrg}` : '',
+      detail.mdc ? `MDC ${detail.mdc}` : '',
+      Ui.classificationLabel(detail.classification_code, detail.classification_display_label),
+    ].filter(Boolean).join(' · ');
+  }
+  if (payload.entity_type === 'RDRG') {
+    return [detail.severity_name, detail.aadrg ? `상위 AADRG ${detail.aadrg}` : ''].filter(Boolean).join(' · ');
+  }
+  if (payload.entity_type === 'TABLE') {
+    return [
+      `코드 ${Ui.formatNumber(detail.code_count ?? (detail.codes ?? []).length)}개`,
+      `관련 ADRG ${Ui.formatNumber((detail.related_adrgs ?? []).length)}개`,
+    ].join(' · ');
+  }
+  return [
+    `연결 TABLE ${Ui.formatNumber((detail.logical_table_ids ?? []).length)}개`,
+    `관련 ADRG ${Ui.formatNumber((detail.related_adrgs ?? []).length)}개`,
+  ].join(' · ');
 }
 
 function detailTitle(payload) {
@@ -712,12 +747,12 @@ function detailTitle(payload) {
 function renderDetail(payload) {
   const panel = byId('detail-content');
   panel.replaceChildren();
-  const header = create('div', 'detail-primary');
+  const header = create('div', 'detail-primary detail-hero');
   header.append(makeBadge(payload.entity_type));
-  const copy = create('div');
+  const copy = create('div', 'detail-hero-copy');
   copy.append(
     create('h2', '', detailTitle(payload)),
-    create('p', '', `${Ui.entityLabel(payload.entity_type)} 상세 · ID ${payload.entity_id}`),
+    create('p', '', detailSummaryLine(payload) || `${Ui.entityLabel(payload.entity_type)} · ${payload.entity_id}`),
   );
   header.append(copy);
   panel.append(header);
@@ -877,7 +912,7 @@ async function runRelationSearch() {
     renderRelationResults(response);
     setStatus(
       'ready',
-      `${Ui.formatNumber(response.total_count)}개 ADRG 관계를 찾았습니다.`,
+      `${Ui.formatNumber(response.total_count)}개 ADRG`,
       response.total_count ? response.disclaimer : '코드 유형·MDC·질병군 분류 또는 AND/OR 조건을 조정하세요.',
     );
     if (response.results.length) {
@@ -926,7 +961,7 @@ async function runSearch(request, options = {}) {
     renderResults(response);
     setStatus(
       'ready',
-      `${Ui.formatNumber(response.total_count)}건을 찾았습니다.`,
+      `${Ui.formatNumber(response.total_count)}건`,
       response.total_count ? Ui.typeCountText(response.type_counts) : '필터를 조정하거나 다른 검색어를 입력하세요.',
     );
     if (response.results.length && options.openFirst !== false) {
@@ -960,7 +995,7 @@ function resetSearch() {
   byId('page-previous').disabled = true;
   byId('page-next').disabled = true;
   clearDetail();
-  setStatus('ready', '검색 준비가 완료됐습니다.', '코드·질병군명·ADRG·AADRG·RDRG·TABLE을 한 번에 검색할 수 있습니다.');
+  setStatus('ready', '검색 준비', '코드·질병군명·ADRG·AADRG·RDRG·TABLE 검색');
   byId('search-query').focus();
 }
 

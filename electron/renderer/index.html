@@ -12,54 +12,24 @@
   </head>
   <body data-state="loading">
     <main class="app-shell">
-      <header class="topbar">
-        <div class="brand-block">
-          <p class="eyebrow">KDRG V4.7 · Electron 관계 검색</p>
+      <header class="topbar compact-topbar">
+        <div class="brand-row">
           <h1>KDRG 코드 관계 검색기</h1>
-          <p class="subtitle">
-            코드·ADRG·AADRG·RDRG·TABLE을 양방향으로 검색하고 기본 TABLE과 추가 분기조건을 구분해 확인합니다.
-          </p>
+          <strong class="version-chip" id="data-version">KDRG V4.7</strong>
         </div>
-        <div class="topbar-meta">
-          <span class="stage-badge" id="stage-badge">Stage 50C</span>
-          <strong id="data-version">KDRG V4.7</strong>
-        </div>
+        <span class="sr-only" id="stage-badge">Relation Search</span>
       </header>
 
-      <section class="status-panel" aria-live="polite" aria-atomic="true">
+      <section class="status-panel compact-status" aria-live="polite" aria-atomic="true">
         <div class="status-title-row">
           <span class="status-dot" aria-hidden="true"></span>
           <strong id="status-title">통합 데이터를 확인하는 중입니다.</strong>
         </div>
-        <p id="status-detail">renderer에는 원본 전체 데이터를 직접 노출하지 않습니다.</p>
+        <p id="status-detail">검색 서비스를 준비하고 있습니다.</p>
       </section>
 
-      <details id="data-overview" class="data-overview">
-        <summary>데이터 현황 보기 <span id="data-overview-summary">KDRG V4.7 통합 데이터</span></summary>
-        <section class="metric-strip" aria-label="데이터 집계">
-          <div><span>ADRG</span><strong id="metric-adrg">-</strong></div>
-          <div><span>AADRG</span><strong id="metric-aadrg">-</strong></div>
-          <div><span>RDRG</span><strong id="metric-rdrg">-</strong></div>
-          <div><span>TABLE</span><strong id="metric-table">-</strong></div>
-          <div><span>검색 코드</span><strong id="metric-code">-</strong></div>
-          <div><span>조건 TABLE 참조</span><strong id="metric-condition">-</strong></div>
-        </section>
-      </details>
-
-      <section class="search-panel" aria-labelledby="search-heading">
-        <div class="search-heading-row">
-          <div>
-            <p class="section-kicker">통합 검색</p>
-            <h2 id="search-heading">코드·질병군·TABLE 검색</h2>
-          </div>
-          <div class="sample-queries" aria-label="예시 검색어">
-            <button type="button" data-sample-query="E011">E011</button>
-            <button type="button" data-sample-query="A01.0">A01.0</button>
-            <button type="button" data-sample-query="9610">9610</button>
-            <button type="button" data-sample-query="9620">9620</button>
-          </div>
-        </div>
-
+      <section class="search-panel compact-search-panel" aria-labelledby="search-heading">
+        <h2 id="search-heading" class="sr-only">KDRG 검색</h2>
         <form id="search-form" class="search-form" autocomplete="off">
           <label class="search-query-field">
             <span>검색어</span>
@@ -68,7 +38,7 @@
               name="query"
               type="search"
               maxlength="200"
-              placeholder="예: E011, A01.0, LT_9610_001, 기관 및 기관지 수술"
+              placeholder="코드·질병군명·TABLE명 입력"
               aria-describedby="search-help"
             />
           </label>
@@ -120,46 +90,67 @@
             <button id="search-reset" class="secondary-button" type="button">초기화</button>
           </div>
         </form>
-        <p id="search-help" class="search-help">
-          점 표기 코드도 검색할 수 있습니다. 예: A01.0 → A010. 필터는 검색 결과에 실제로 연결된 관계를 기준으로 적용됩니다.
-        </p>
+        <div class="search-support-row">
+          <p id="search-help" class="search-help">
+            점 표기 코드도 검색됩니다. 예: A01.0 → A010
+          </p>
+          <div class="sample-queries" aria-label="예시 검색어">
+            <span>예시</span>
+            <button type="button" data-sample-query="E011">E011</button>
+            <button type="button" data-sample-query="A01.0">A01.0</button>
+            <button type="button" data-sample-query="9610">9610</button>
+            <button type="button" data-sample-query="9620">9620</button>
+          </div>
+        </div>
       </section>
 
+      <div class="utility-row">
+        <details id="data-overview" class="data-overview compact-utility-panel">
+          <summary>데이터 현황 <span id="data-overview-summary">KDRG V4.7 통합 데이터</span></summary>
+          <section class="metric-strip" aria-label="데이터 집계">
+            <div><span>ADRG</span><strong id="metric-adrg">-</strong></div>
+            <div><span>AADRG</span><strong id="metric-aadrg">-</strong></div>
+            <div><span>RDRG</span><strong id="metric-rdrg">-</strong></div>
+            <div><span>TABLE</span><strong id="metric-table">-</strong></div>
+            <div><span>검색 코드</span><strong id="metric-code">-</strong></div>
+            <div><span>조건 TABLE 참조</span><strong id="metric-condition">-</strong></div>
+          </section>
+        </details>
 
-      <details id="relation-search-panel" class="relation-search-panel">
-        <summary>복수 코드 관계검색 <span>같은 ADRG·조건 선택지 연결 여부 확인</span></summary>
-        <div class="relation-panel-body">
-          <p class="relation-disclaimer">
-            입력 코드가 같은 ADRG·조건식에 연결되는지를 보여주는 관계검색이며 최종 DRG 판정을 의미하지 않습니다.
-          </p>
-          <form id="relation-form" autocomplete="off">
-            <div id="relation-condition-list" class="relation-condition-list"></div>
-            <div class="relation-controls">
-              <label>
-                <span>조건 관계</span>
-                <select id="relation-operator" name="operator">
-                  <option value="AND">AND · 모든 코드</option>
-                  <option value="OR">OR · 하나 이상</option>
-                </select>
-              </label>
-              <button id="relation-add" class="secondary-button" type="button">+ 조건 추가</button>
-              <span class="relation-filter-note">위의 MDC·질병군 분류 필터를 함께 적용합니다.</span>
-              <div class="relation-actions">
-                <button id="relation-reset" class="secondary-button" type="button">초기화</button>
-                <button id="relation-submit" class="relation-primary-button" type="submit">공통 관련 ADRG 검색</button>
+        <details id="relation-search-panel" class="relation-search-panel compact-utility-panel">
+          <summary>복수 코드 관계검색 <span>같은 ADRG·조건 선택지 확인</span></summary>
+          <div class="relation-panel-body">
+            <p class="relation-disclaimer">
+              동일 ADRG·조건식의 연결 관계를 보여주며 최종 DRG 판정을 의미하지 않습니다.
+            </p>
+            <form id="relation-form" autocomplete="off">
+              <div id="relation-condition-list" class="relation-condition-list"></div>
+              <div class="relation-controls">
+                <label>
+                  <span>조건 관계</span>
+                  <select id="relation-operator" name="operator">
+                    <option value="AND">AND · 모든 코드</option>
+                    <option value="OR">OR · 하나 이상</option>
+                  </select>
+                </label>
+                <button id="relation-add" class="secondary-button" type="button">+ 조건 추가</button>
+                <span class="relation-filter-note">위 MDC·질병군 분류 필터를 함께 적용합니다.</span>
+                <div class="relation-actions">
+                  <button id="relation-reset" class="secondary-button" type="button">초기화</button>
+                  <button id="relation-submit" class="relation-primary-button" type="submit">공통 관련 ADRG 검색</button>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
-      </details>
+            </form>
+          </div>
+        </details>
+      </div>
 
       <section class="workspace" aria-label="검색 결과와 상세 정보">
         <aside class="result-panel" aria-labelledby="result-heading">
-          <div class="panel-heading">
-            <div>
-              <p class="section-kicker">검색 결과</p>
-              <h2 id="result-heading"><span id="result-count">0건</span></h2>
-              <p id="result-caption">검색어를 입력하면 결과가 표시됩니다.</p>
+          <div class="panel-heading compact-panel-heading result-panel-heading">
+            <div class="panel-title-line">
+              <h2 id="result-heading">검색 결과 <span id="result-count">0건</span></h2>
+              <p id="result-caption">검색어를 입력하세요.</p>
             </div>
             <div id="type-counts" class="type-counts" aria-label="유형별 결과 수"></div>
           </div>
@@ -174,11 +165,10 @@
         </aside>
 
         <article class="detail-panel" aria-labelledby="detail-heading">
-          <div class="panel-heading detail-panel-heading">
-            <div>
-              <p class="section-kicker">관계 상세</p>
+          <div class="panel-heading compact-panel-heading detail-panel-heading">
+            <div class="panel-title-line">
               <h2 id="detail-heading">상세 정보</h2>
-              <p id="detail-caption">기본 TABLE과 추가 분기조건을 구분해 표시합니다.</p>
+              <p id="detail-caption">검색 결과를 선택하세요.</p>
             </div>
             <div id="detail-fold-actions" class="detail-fold-actions" hidden>
               <button id="detail-expand-all" type="button">전체 펼치기</button>
@@ -190,8 +180,7 @@
       </section>
 
       <footer>
-        검색 결과는 KDRG V4.7 통합 데이터와 Stage 48 UI 표현 계약을 기준으로 표시합니다.
-        코드명·TABLE 유형이 원천에 없으면 임의로 생성하지 않습니다.
+        KDRG V4.7 공식 자료 기반 관계검색기 · 최종 DRG 판정 기능이 아닙니다.
       </footer>
     </main>
 

@@ -6,7 +6,7 @@ const path = require('node:path');
 const { KdrgSearchService } = require('../src/kdrg-search-service');
 const Ui = require('../renderer/ui-formatters');
 
-const SCRIPT_VERSION = '2026-07-30_KDRG_V47_ELECTRON_STAGE50E_RENDERER_RELATION_UI_VALIDATOR_V1';
+const SCRIPT_VERSION = '2026-07-31_KDRG_V47_ELECTRON_STAGE50F_COMPACT_RENDERER_UI_VALIDATOR_V2';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const WORKSPACE_ROOT = path.resolve(ELECTRON_ROOT, '..');
 const DATA_PATH = path.join(WORKSPACE_ROOT, 'data', 'kdrg_v47_search_integrated.json');
@@ -50,6 +50,28 @@ check('외부 연결 차단', () => assert.match(html, /connect-src 'none'/));
 check('인라인 script 없음', () => assert.doesNotMatch(html, /<script(?![^>]+src=)[^>]*>/));
 check('formatter가 app보다 먼저 로드', () => {
   assert.ok(html.indexOf('./ui-formatters.js') < html.indexOf('./app.js'));
+});
+
+check('HTML ID 중복 없음', () => {
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]);
+  assert.equal(new Set(ids).size, ids.length);
+});
+check('상단 헤더 컴팩트 구조', () => {
+  assert.match(html, /class="topbar compact-topbar"/);
+  assert.match(html, /class="version-chip" id="data-version"/);
+  assert.doesNotMatch(html, /class="subtitle"/);
+  assert.doesNotMatch(html, />통합 검색</);
+  assert.doesNotMatch(html, />코드·질병군·TABLE 검색</);
+});
+check('검색 패널 컴팩트 구조', () => {
+  assert.match(html, /class="search-panel compact-search-panel"/);
+  assert.match(html, /class="search-support-row"/);
+  assert.match(html, /placeholder="코드·질병군명·TABLE명 입력"/);
+});
+check('유틸리티 한 줄 배치', () => assert.match(html, /class="utility-row"/));
+check('결과·상세 헤더 간소화', () => {
+  assert.match(html, /class="panel-heading compact-panel-heading result-panel-heading"/);
+  assert.match(html, /class="panel-heading compact-panel-heading detail-panel-heading"/);
 });
 
 for (const id of [
@@ -134,6 +156,15 @@ check('기술식 접기', () => assert.match(appJs, /기술식·원문 근거 �
 check('상세 section details 사용', () => assert.match(appJs, /create\('details', 'detail-section'\)/));
 check('전체 펼치기 제어', () => assert.match(appJs, /setAllDetailSections\(true\)/));
 check('전체 접기 제어', () => assert.match(appJs, /setAllDetailSections\(false\)/));
+
+check('검색결과 컴팩트 행 구조', () => assert.match(appJs, /create\('div', 'result-card-main'\)/));
+check('검색결과 보조 메타 행', () => assert.match(appJs, /result-meta-row/));
+check('상세 핵심 요약 함수', () => assert.match(appJs, /function detailSummaryLine\(payload\)/));
+check('상세 요약 그리드', () => assert.match(appJs, /detail-overview-grid/));
+check('상태 문구 간소화', () => {
+  assert.match(appJs, /`\$\{Ui\.formatNumber\(response\.total_count\)\}건`/);
+  assert.doesNotMatch(appJs, /건을 찾았습니다/);
+});
 check('TABLE 코드 기본 접힘', () => assert.match(appJs, /makeSection\('TABLE 코드'[\s\S]*open: false/));
 check('관계검색 조건 최소 2개 초기화', () => assert.match(appJs, /addRelationCondition\(\);[\s\S]*addRelationCondition\(\);/));
 check('관계검색 최대 6개', () => assert.match(appJs, /childElementCount >= 6/));
@@ -163,11 +194,25 @@ for (const className of [
   'relation-group-exclusion',
   'detail-fold-actions',
   'section-title-row',
+  'compact-topbar',
+  'version-chip',
+  'compact-search-panel',
+  'utility-row',
+  'compact-panel-heading',
+  'result-card-main',
+  'result-meta-row',
+  'detail-hero',
+  'detail-overview-grid',
 ]) {
   check(`CSS class ${className}`, () => assert.match(css, new RegExp(`\\.${className.replace('-', '\\-')}`)));
 }
 check('고정 색상모드', () => assert.match(css, /color-scheme: light/));
 check('최소 화면 폭', () => assert.match(css, /min-width: 1180px/));
+
+check('컴팩트 헤더 높이', () => assert.match(css, /\.compact-topbar[\s\S]*?min-height:\s*52px/));
+check('컴팩트 결과 카드 여백', () => assert.match(css, /\.result-card[\s\S]*?padding:\s*8px 9px/));
+check('메인 상세 비중 확대', () => assert.match(css, /grid-template-columns:\s*minmax\(330px, 0\.31fr\) minmax\(720px, 0\.69fr\)/));
+check('상세 accordion 컴팩트 높이', () => assert.match(css, /\.detail-section > \.section-header[\s\S]*?min-height:\s*42px/));
 
 check('formatter module export', () => assert.equal(typeof Ui.buildConditionGroups, 'function'));
 check('숫자 포맷', () => assert.equal(Ui.formatNumber(16571), '16,571'));

@@ -14,7 +14,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V6_RELATION_UI_PARITY"
+SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V7_COMPACT_UI_SEMANTIC"
 ROOT = Path(__file__).resolve().parent
 ELECTRON_ROOT = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -52,13 +52,16 @@ TARGET_HASHES = {
     "electron/src/bootstrap-data.js": "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
     "electron/tests/validate-electron-skeleton.js": "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
     "electron/tests/validate-search-service.js": "95c63a1023dcf0a71a0c1c722eceea720d43aef6fce18a3389f88b6e40585fe7",
-    "electron/renderer/index.html": "74868c83fe372d0bcfd4bf36ba44f404c3744d3db8336ef4a70885ac7b4e5be3",
-    "electron/renderer/app.js": "4ab198be4ec113d1c982a80e97e435bd0843440ef614bc3c325caa84e05537c6",
-    "electron/renderer/styles.css": "197e669e67ebd9044226e6fccc8eda7ba1ed8502637f964104f9dfd13c4fb5ff",
     "electron/renderer/ui-formatters.js": "64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944",
-    "electron/tests/validate-renderer-ui.js": "6a827d673732523f01804a5d0bdda754b9f193cbcf7e9c317bc8797d2b3a9d90",
     "electron/README_STAGE50C.md": "35f92d8bd42649ee7bdb651979626235517ea06a3a185bae3128b2b212e0478f",
 }
+
+MUTABLE_UI_FILES = (
+    "electron/renderer/index.html",
+    "electron/renderer/app.js",
+    "electron/renderer/styles.css",
+    "electron/tests/validate-renderer-ui.js",
+)
 
 JS_CHECK_FILES = (
     "electron/main.js",
@@ -328,6 +331,18 @@ def main() -> int:
         if path.exists():
             check(f"50C 파일 SHA256 {relative}", sha256_file(path), expected_hash)
 
+    for relative in MUTABLE_UI_FILES:
+        path = ROOT / relative
+        check(f"변경형 UI 파일 존재 {relative}", path.is_file(), True)
+        if path.is_file():
+            payload = path.read_bytes()
+            check(f"변경형 UI LF 정책 {relative}", b"\r" not in payload, True)
+            check(
+                f"변경형 UI 단일 EOF LF {relative}",
+                payload.endswith(b"\n") and not payload.endswith(b"\n\n"),
+                True,
+            )
+
     try:
         py_compile.compile(str(Path(__file__).resolve()), doraise=True)
         check("50C 독립검증기 py_compile", "PASS", "PASS")
@@ -364,6 +379,11 @@ def main() -> int:
     check("상세 접기 section", "create('details', 'detail-section')" in app_source, True)
     check("TABLE 코드 기본 접힘", bool(re.search(r"makeSection\('TABLE 코드'[\s\S]{0,240}?open:\s*false", app_source)), True)
     check("전체 펼치기·접기", "setAllDetailSections(true)" in app_source and "setAllDetailSections(false)" in app_source, True)
+    check("컴팩트 상단 헤더", 'class="topbar compact-topbar"' in html_source and 'class="version-chip"' in html_source, True)
+    check("중복 검색 제목 제거", "통합 검색" not in html_source and "코드·질병군·TABLE 검색" not in html_source, True)
+    check("검색결과 컴팩트 행", "result-card-main" in app_source and "result-meta-row" in app_source, True)
+    check("상세 핵심 요약", "detailSummaryLine" in app_source and "detail-overview-grid" in app_source, True)
+    check("변경형 UI SHA 비고정", all(relative not in TARGET_HASHES for relative in MUTABLE_UI_FILES), True)
 
     node = locate_node()
     check("Node v22 실행환경", str(node) if node else None, "available", lambda value, _expected: bool(value))
