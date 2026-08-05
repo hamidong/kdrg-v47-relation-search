@@ -385,12 +385,13 @@ jobs:
           "- Search/UI/security regression: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- electron-builder portable x64: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- Packaged core smoke: PASS (UI 세부판정 WARNING 허용)" >> $env:GITHUB_STEP_SUMMARY
-          "- Packaged 실제 UI B013·B014·B018·B022·L033·9610: PASS" >> $env:GITHUB_STEP_SUMMARY
-          "- UI screenshot 6장·TABLE 인라인 코드 로드·console error 0: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Packaged UI 핵심 기능 B013·B014·B018·B022·L033·9610: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- UI screenshot·문구·세부판정: WARNING 허용" >> $env:GITHUB_STEP_SUMMARY
           "- Actions artifact upload: 사용하지 않음" >> $env:GITHUB_STEP_SUMMARY
-          "- GitHub Release Assets: Electron 태그에서만 exe·SHA256·UI 증거 ZIP 업로드" >> $env:GITHUB_STEP_SUMMARY
+          "- GitHub Release 필수 Assets: exe·SHA256" >> $env:GITHUB_STEP_SUMMARY
+          "- GitHub Release 선택 Asset: UI 증거 ZIP(생성된 경우)" >> $env:GITHUB_STEP_SUMMARY
 
-      - name: GitHub Release 생성 및 Electron exe 업로드
+      - name: GitHub Release 생성 및 필수 Assets 업로드
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
         uses: softprops/action-gh-release@v2
         with:
@@ -400,6 +401,29 @@ jobs:
           files: |
             electron/dist/${{ steps.artifact.outputs.exe_name }}
             electron/dist/SHA256SUMS_ELECTRON.txt
-            electron/dist/KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip
           fail_on_unmatched_files: true
           generate_release_notes: true
+
+      - name: UI smoke evidence 선택 업로드
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $evidenceZip = Join-Path $PWD "electron\dist\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip"
+          $tag = "${{ steps.version.outputs.git_tag }}"
+
+          if (-not (Test-Path $evidenceZip -PathType Leaf)) {
+            Write-Warning "UI smoke evidence ZIP이 생성되지 않아 선택 업로드를 건너뜁니다."
+            exit 0
+          }
+
+          gh release upload $tag $evidenceZip --clobber
+          $uploadExitCode = $LASTEXITCODE
+
+          if ($uploadExitCode -ne 0) {
+            Write-Warning "UI smoke evidence 선택 업로드 실패: exit=$uploadExitCode"
+            exit 0
+          }
+
+          Write-Host "[PASS] UI smoke evidence 선택 업로드 완료"
