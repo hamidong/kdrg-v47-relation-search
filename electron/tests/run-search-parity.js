@@ -2,6 +2,20 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+
+const SCRIPT_VERSION = '2026-08-05_KDRG_V47_ELECTRON_STAGE50B_PARITY_RUNNER_V3';
+
+const STATUS_TRANSITIONS = Object.freeze({
+  data_schema_version: Object.freeze({
+    baseline: 'kdrg-v47-search-integrated-v2',
+    actual: 'kdrg-v47-search-integrated-v3',
+  }),
+  data_state: Object.freeze({
+    baseline: 'search_ready_integrated_base_v2',
+    actual: 'production_ready_with_review_required_exceptions',
+  }),
+});
+
 function canonicalize(value) {
   if (Array.isArray(value)) {
     return value.map(canonicalize);
@@ -23,8 +37,6 @@ function canonicalJson(value) {
   return JSON.stringify(canonicalize(value));
 }
 
-const SCRIPT_VERSION = '2026-07-30_KDRG_V47_ELECTRON_STAGE50B_PARITY_RUNNER_V2';
-
 function fail(message) {
   console.error(`[FAIL] ${message}`);
   process.exit(1);
@@ -37,6 +49,47 @@ function isPlainObject(value) {
     && Object.getPrototypeOf(value) === Object.prototype;
 }
 
+function projectByBaseline(actual, baseline, location = 'root') {
+  if (Array.isArray(baseline)) {
+    if (!Array.isArray(actual)) {
+      throw new TypeError(`${location}: actual value must be an array`);
+    }
+    if (actual.length !== baseline.length) {
+      throw new Error(
+        `${location}: array length changed: actual=${actual.length}, baseline=${baseline.length}`,
+      );
+    }
+    return baseline.map(
+      (baselineItem, index) => projectByBaseline(
+        actual[index],
+        baselineItem,
+        `${location}[${index}]`,
+      ),
+    );
+  }
+
+  if (isPlainObject(baseline)) {
+    if (!isPlainObject(actual)) {
+      throw new TypeError(`${location}: actual value must be a plain object`);
+    }
+
+    const projected = {};
+    for (const key of Object.keys(baseline)) {
+      if (!Object.prototype.hasOwnProperty.call(actual, key)) {
+        throw new Error(`${location}: actual is missing baseline key: ${key}`);
+      }
+      projected[key] = projectByBaseline(
+        actual[key],
+        baseline[key],
+        `${location}.${key}`,
+      );
+    }
+    return projected;
+  }
+
+  return actual;
+}
+
 function projectStatusByBaseline(actualStatus, baselineStatus) {
   if (!isPlainObject(actualStatus)) {
     throw new TypeError('actual status must be a plain object');
@@ -45,19 +98,33 @@ function projectStatusByBaseline(actualStatus, baselineStatus) {
     throw new TypeError('baseline status must be a plain object');
   }
 
-  const projected = {};
-  for (const key of Object.keys(baselineStatus)) {
-    if (!Object.prototype.hasOwnProperty.call(actualStatus, key)) {
-      throw new Error(`actual status is missing baseline key: ${key}`);
+  const comparableActual = { ...actualStatus };
+  for (const [key, transition] of Object.entries(STATUS_TRANSITIONS)) {
+    if (!Object.prototype.hasOwnProperty.call(baselineStatus, key)) {
+      throw new Error(`baseline status is missing transition key: ${key}`);
     }
-    projected[key] = actualStatus[key];
+    if (baselineStatus[key] !== transition.baseline) {
+      throw new Error(
+        `unexpected baseline status transition value: ${key}=${baselineStatus[key]}`,
+      );
+    }
+    if (actualStatus[key] !== transition.actual) {
+      throw new Error(
+        `unexpected actual status transition value: ${key}=${actualStatus[key]}`,
+      );
+    }
+    comparableActual[key] = baselineStatus[key];
   }
-  return projected;
+
+  return projectByBaseline(comparableActual, baselineStatus, 'status');
 }
 
-function additiveStatusKeys(actualStatus, baselineStatus) {
-  return Object.keys(actualStatus)
-    .filter((key) => !Object.prototype.hasOwnProperty.call(baselineStatus, key))
+function additiveObjectKeys(actual, baseline) {
+  if (!isPlainObject(actual) || !isPlainObject(baseline)) {
+    return [];
+  }
+  return Object.keys(actual)
+    .filter((key) => !Object.prototype.hasOwnProperty.call(baseline, key))
     .sort();
 }
 
@@ -70,44 +137,157 @@ function runSelfTest() {
     else failures.push({ name, actual, expected });
   }
 
-  const baseline = { ready: true, response_schema_version: 'search-v1' };
-  const additive = {
+  function detectsError(name, fn, expectedPattern) {
+    let detected = false;
+    try {
+      fn();
+    } catch (error) {
+      detected = expectedPattern.test(String(error.message));
+    }
+    check(name, detected, true);
+  }
+
+  const nestedBaseline = {
+    result: {
+      id: 'E011',
+      summary: {
+        count: 3,
+        labels: ['A', 'B'],
+      },
+    },
+  };
+  const nestedAdditive = {
+    result: {
+      id: 'E011',
+      summary: {
+        count: 3,
+        labels: ['A', 'B'],
+        user_condition_status: 'RESOLVED_AST',
+      },
+      user_condition_table_count: 3,
+    },
+    schema_version: 'response-v1',
+  };
+
+  check(
+    'nested additive fields accepted',
+    projectByBaseline(nestedAdditive, nestedBaseline),
+    nestedBaseline,
+  );
+
+  detectsError(
+    'missing baseline key detected',
+    () => projectByBaseline(
+      { result: { id: 'E011', summary: { labels: ['A', 'B'] } } },
+      nestedBaseline,
+    ),
+    /missing baseline key: count/,
+  );
+
+  check(
+    'changed baseline value remains detectable',
+    canonicalJson(projectByBaseline(
+      {
+        result: {
+          id: 'E012',
+          summary: { count: 3, labels: ['A', 'B'] },
+        },
+      },
+      nestedBaseline,
+    )) !== canonicalJson(nestedBaseline),
+    true,
+  );
+
+  check(
+    'array order change remains detectable',
+    canonicalJson(projectByBaseline(
+      {
+        result: {
+          id: 'E011',
+          summary: { count: 3, labels: ['B', 'A'] },
+        },
+      },
+      nestedBaseline,
+    )) !== canonicalJson(nestedBaseline),
+    true,
+  );
+
+  detectsError(
+    'array length change detected',
+    () => projectByBaseline(
+      {
+        result: {
+          id: 'E011',
+          summary: { count: 3, labels: ['A', 'B', 'C'] },
+        },
+      },
+      nestedBaseline,
+    ),
+    /array length changed/,
+  );
+
+  const statusBaseline = {
     ready: true,
-    response_schema_version: 'search-v1',
+    data_schema_version: STATUS_TRANSITIONS.data_schema_version.baseline,
+    data_state: STATUS_TRANSITIONS.data_state.baseline,
+    policies: {
+      abc_exact_match_only: true,
+    },
+  };
+  const statusActual = {
+    ready: true,
+    data_schema_version: STATUS_TRANSITIONS.data_schema_version.actual,
+    data_state: STATUS_TRANSITIONS.data_state.actual,
+    policies: {
+      abc_exact_match_only: true,
+      user_condition_display_separated_from_source_provenance: true,
+    },
     relation_response_schema_version: 'relation-v1',
   };
 
   check(
-    'additive status field accepted',
-    projectStatusByBaseline(additive, baseline),
-    baseline,
+    'allowed status transition accepted',
+    projectStatusByBaseline(statusActual, statusBaseline),
+    statusBaseline,
   );
+
+  detectsError(
+    'unexpected schema transition rejected',
+    () => projectStatusByBaseline(
+      { ...statusActual, data_schema_version: 'unexpected-v4' },
+      statusBaseline,
+    ),
+    /unexpected actual status transition value/,
+  );
+
+  detectsError(
+    'unexpected data state transition rejected',
+    () => projectStatusByBaseline(
+      { ...statusActual, data_state: 'unexpected-state' },
+      statusBaseline,
+    ),
+    /unexpected actual status transition value/,
+  );
+
+  detectsError(
+    'missing baseline policy rejected',
+    () => projectStatusByBaseline(
+      { ...statusActual, policies: {} },
+      statusBaseline,
+    ),
+    /missing baseline key: abc_exact_match_only/,
+  );
+
   check(
-    'additive status field reported',
-    additiveStatusKeys(additive, baseline),
+    'top-level additive status field reported',
+    additiveObjectKeys(statusActual, statusBaseline),
     ['relation_response_schema_version'],
   );
-
-  let missingDetected = false;
-  try {
-    projectStatusByBaseline({ ready: true }, baseline);
-  } catch (error) {
-    missingDetected = /missing baseline key/.test(String(error.message));
-  }
-  check('missing baseline key detected', missingDetected, true);
-
-  let changedDetected = false;
-  const changed = projectStatusByBaseline(
-    { ready: false, response_schema_version: 'search-v1' },
-    baseline,
-  );
-  changedDetected = canonicalJson(changed) !== canonicalJson(baseline);
-  check('changed baseline value remains detectable', changedDetected, true);
 
   console.log(`validator=${SCRIPT_VERSION}`);
   if (failures.length) {
     console.log(
-      `[FAIL] Python-JavaScript status parity self-test: `
+      `[FAIL] Python-JavaScript recursive subset parity self-test: `
       + `${passCount} PASS / ${failures.length} FAIL`,
     );
     for (const item of failures) {
@@ -118,7 +298,7 @@ function runSelfTest() {
     process.exitCode = 1;
   } else {
     console.log(
-      `[PASS] Python-JavaScript status parity self-test: `
+      `[PASS] Python-JavaScript recursive subset parity self-test: `
       + `${passCount} PASS / 0 FAIL`,
     );
   }
@@ -141,40 +321,47 @@ if (process.argv.includes('--self-test')) {
   const failures = [];
   let passCount = 0;
 
-  function check(name, actual, expected) {
-    if (canonicalJson(actual) === canonicalJson(expected)) passCount += 1;
-    else failures.push({ name, actual, expected });
+  function checkProjected(name, actual, expected, projector = projectByBaseline) {
+    try {
+      const projected = projector(actual, expected);
+      if (canonicalJson(projected) === canonicalJson(expected)) passCount += 1;
+      else failures.push({ name, actual: projected, expected });
+    } catch (error) {
+      failures.push({
+        name,
+        actual: `${error.name}: ${error.message}`,
+        expected,
+      });
+    }
   }
 
   const status = service.status();
   delete status.data_path;
 
-  let projectedStatus;
-  try {
-    projectedStatus = projectStatusByBaseline(status, baseline.status);
-  } catch (error) {
-    failures.push({
-      name: 'status baseline contract',
-      actual: `${error.name}: ${error.message}`,
-      expected: baseline.status,
-    });
-  }
-  if (projectedStatus) {
-    check('status baseline contract', projectedStatus, baseline.status);
-  }
+  checkProjected(
+    'status baseline contract',
+    status,
+    baseline.status,
+    projectStatusByBaseline,
+  );
 
-  const additiveKeys = additiveStatusKeys(status, baseline.status);
-  check(
+  const additiveKeys = additiveObjectKeys(status, baseline.status);
+
+  checkProjected(
     'search document fingerprint',
     service.debugSearchDocumentFingerprint(),
     baseline.search_document_fingerprint,
   );
-  check(
+  checkProjected(
     'semantic context fingerprint',
     service.debugSemanticContextFingerprint(),
     baseline.semantic_context_fingerprint,
   );
-  check('exact ID audit', service.debugExactIdAudit(), baseline.exact_id_audit);
+  checkProjected(
+    'exact ID audit',
+    service.debugExactIdAudit(),
+    baseline.exact_id_audit,
+  );
 
   for (const scenario of baseline.search_scenarios) {
     const actual = service.search(
@@ -182,7 +369,7 @@ if (process.argv.includes('--self-test')) {
       scenario.request.entity_type,
       scenario.request.options,
     );
-    check(`search:${scenario.name}`, actual, scenario.response);
+    checkProjected(`search:${scenario.name}`, actual, scenario.response);
   }
 
   for (const scenario of baseline.detail_scenarios) {
@@ -190,7 +377,7 @@ if (process.argv.includes('--self-test')) {
       scenario.request.entity_type,
       scenario.request.entity_id,
     );
-    check(`detail:${scenario.name}`, actual, scenario.response);
+    checkProjected(`detail:${scenario.name}`, actual, scenario.response);
   }
 
   console.log(`validator=${SCRIPT_VERSION}`);

@@ -128,6 +128,10 @@ if (!hasSingleInstanceLock) {
 
     if (shouldRunPackagedSmoke()) {
       try {
+        // Stage 51D: packaged UI smoke도 일반 실행과 동일한 IPC·검색 service를 사용한다.
+        registerIpcHandlers();
+        getSearchService();
+
         await runPackagedRuntimeSmoke({
           app,
           BrowserWindow,

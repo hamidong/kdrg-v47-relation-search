@@ -14,7 +14,7 @@ const {
 const SERVICE_SCHEMA_VERSION = 'kdrg-runtime-search-service-v1';
 const RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-search-response-v1';
 const RELATION_RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-relation-response-v1';
-const SUPPORTED_DATA_SCHEMA = 'kdrg-v47-search-integrated-v2';
+const SUPPORTED_DATA_SCHEMA = 'kdrg-v47-search-integrated-v3';
 const ENTITY_TYPES = Object.freeze(['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']);
 const ENTITY_ORDER = Object.freeze(
   Object.fromEntries(ENTITY_TYPES.map((name, index) => [name, index])),
@@ -116,7 +116,7 @@ function compareAscii(left, right) {
 class KdrgSearchService {
   constructor(dataPath) {
     if (!dataPath) {
-      dataPath = path.resolve(__dirname, '..', '..', 'data', 'kdrg_v47_search_integrated.json');
+      dataPath = path.resolve(__dirname, '..', '..', 'data', 'kdrg_v47_search_integrated_v3.json');
     }
     this.dataPath = path.resolve(String(dataPath));
     this.data = readJson(this.dataPath);
@@ -970,6 +970,8 @@ class KdrgSearchService {
         condition_table_count: (row.condition_logical_table_ids ?? []).length,
         related_table_count: (row.logical_table_ids ?? []).length,
         condition_ast_id: row.condition_ast_id ?? null,
+        user_condition_status: row.user_condition_status ?? null,
+        user_condition_table_count: (row.user_condition_table_ids ?? []).length,
       };
     }
     if (entityType === 'AADRG') {
@@ -1088,6 +1090,16 @@ class KdrgSearchService {
   adrgDetail(row) {
     const aadrgs = (row.aadrg_codes ?? []).map((code) => this.summaryEntity('AADRG', code));
     const tables = (row.logical_table_ids ?? []).map((tableId) => this.summaryEntity('TABLE', tableId));
+    const userConditionRefs = Array.isArray(row.user_condition_table_refs)
+      ? row.user_condition_table_refs
+      : [];
+    const userConditionTables = userConditionRefs.map((reference) => {
+      const tableId = String(reference?.logical_table_id ?? '');
+      return {
+        ...this.summaryEntity('TABLE', tableId),
+        user_condition_ref: clone(reference),
+      };
+    });
     let ast = null;
     const astId = String(row.condition_ast_id ?? '');
     if (astId) {
@@ -1096,7 +1108,13 @@ class KdrgSearchService {
       );
       ast = found ? clone(found) : null;
     }
-    return { ...clone(row), aadrg_records: aadrgs, logical_tables: tables, condition_ast: ast };
+    return {
+      ...clone(row),
+      aadrg_records: aadrgs,
+      logical_tables: tables,
+      user_condition_tables: userConditionTables,
+      condition_ast: ast,
+    };
   }
 
   aadrgDetail(row) {

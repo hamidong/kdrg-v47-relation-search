@@ -268,27 +268,30 @@
     );
   }
 
-  function conditionCoverage(detail) {
-    const basic = uniqueStrings(detail?.source_logical_table_ids ?? []);
-    const condition = uniqueStrings(detail?.condition_logical_table_ids ?? []);
-    const ast = detail?.condition_ast ?? null;
-    if (!ast) {
-      return {
-        state: basic.length ? 'BASIC_TABLE_NO_EXTRA_CONDITION' : 'NO_TABLE_NO_EXTRA_CONDITION',
-        basic_table_ids: basic,
-        condition_table_ids: condition,
-        has_condition_ast: false,
-        summary: basic.length
-          ? '기본 분류 TABLE 있음 · 별도의 추가 분기조건 없음'
-          : '기본 분류 TABLE과 추가 분기조건이 확인되지 않음',
-      };
-    }
+  function userConditionCoverage(detail) {
+    const status = text(detail?.user_condition_status);
+    const conditionText = text(detail?.user_condition_text);
+    const tableIds = uniqueStrings(detail?.user_condition_table_ids ?? []);
+    const tableRefs = Array.isArray(detail?.user_condition_table_refs)
+      ? detail.user_condition_table_refs
+      : [];
+    const summaries = {
+      RESOLVED_AST: `분류 조건 TABLE ${formatNumber(tableIds.length)}개 연결`,
+      RESOLVED_SOURCE_LABELS: `분류 조건 TABLE ${formatNumber(tableIds.length)}개 연결`,
+      TEXT_ONLY: '분류 조건 문구만 확인됨',
+      UNRESOLVED_TABLE_LINK: '분류 조건은 확인됐으나 TABLE 연결 검토 필요',
+      NO_EXPLICIT_CONDITION: '별도의 명시적 분류 조건이 확인되지 않음',
+    };
     return {
-      state: 'BASIC_TABLE_WITH_EXTRA_CONDITION',
-      basic_table_ids: basic,
-      condition_table_ids: condition,
-      has_condition_ast: true,
-      summary: `기본 분류 TABLE ${formatNumber(basic.length)}개 · 추가 분기조건 ${formatNumber(buildConditionGroups(ast).length)}개`,
+      status,
+      text: conditionText,
+      table_ids: tableIds,
+      table_refs: tableRefs,
+      table_count: tableIds.length,
+      has_text: Boolean(conditionText),
+      has_tables: tableIds.length > 0,
+      needs_review: status === 'UNRESOLVED_TABLE_LINK',
+      summary: summaries[status] || '분류 조건 상태 미확인',
     };
   }
 
@@ -306,6 +309,6 @@
     resultSummaryChips,
     buildConditionGroups,
     tableSummaryMap,
-    conditionCoverage,
+    userConditionCoverage,
   });
 });

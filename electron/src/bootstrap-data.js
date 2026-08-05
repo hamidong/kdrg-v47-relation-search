@@ -5,8 +5,8 @@ const fs = require('node:fs');
 
 const EXPECTED = Object.freeze({
   integrated: Object.freeze({
-    schema: 'kdrg-v47-search-integrated-v2',
-    sha256: '3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1',
+    schema: 'kdrg-v47-search-integrated-v3',
+    sha256: 'd865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda',
   }),
   semanticProfile: Object.freeze({
     schema: 'kdrg-v47-ui-semantic-profile-v1',
@@ -114,8 +114,8 @@ function buildBootstrapSnapshot(dataFiles) {
     capabilities: {
       rawCorpusExposedToRenderer: false,
       searchServiceConnected: true,
-      stage: '50D_ELECTRON_WINDOWS_PACKAGE_READY',
-      nextStage: '50E_PREVIEW_RELEASE_AND_UI_REVIEW',
+      stage: '51C_USER_CONDITION_UI_READY',
+      nextStage: '51D_WINDOWS_PACKAGE_AND_UI_REVIEW',
     },
   };
 

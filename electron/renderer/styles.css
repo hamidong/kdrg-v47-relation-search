@@ -1075,3 +1075,20 @@ footer { display: none; }
   white-space: nowrap;
   color: #425a76;
 }
+
+/* Stage 51C: 사용자 분류조건 통합 UI */
+.user-condition-summary { display: grid; gap: 10px; }
+.user-condition-text {
+  margin: 0; padding: 12px 14px; border: 1px solid #cfd9e6;
+  border-radius: 10px; background: #f8fafc; font-weight: 700; line-height: 1.65;
+}
+.user-condition-warning {
+  margin: 0; padding: 10px 12px; border: 1px solid #efc4c7;
+  border-radius: 9px; background: #fff8f8; line-height: 1.55;
+}
+.user-condition-empty {
+  margin: 0; padding: 10px 12px; border: 1px dashed #cbd5e1;
+  border-radius: 9px; background: #fbfcfe; color: #526273; line-height: 1.55;
+}
+.user-condition-table-stack { display: grid; gap: 8px; }
+.user-condition-evidence { display: grid; gap: 8px; }

@@ -25,6 +25,7 @@ REPORT_JSON = REPORT_DIR / "electron_stage50b_validation_report.json"
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated.json": "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
+    "data/kdrg_v47_search_integrated_v3.json": "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
     "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
     "app/kdrg_search_service.py": "35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd",
@@ -547,7 +548,7 @@ def main() -> int:
                 str(node),
                 str(ELECTRON / "tests/run-search-parity.js"),
                 str(baseline_path),
-                str(ROOT / "data/kdrg_v47_search_integrated.json"),
+                str(ROOT / "data/kdrg_v47_search_integrated_v3.json"),
             ],
             ROOT,
         )

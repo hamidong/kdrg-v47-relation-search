@@ -5,7 +5,7 @@
 이 단계는 전체 runtime 데이터가 연결된 PySide 검색기를 Windows에서 빌드하고,
 생성된 exe가 즉시 종료되지 않는지 자동으로 확인하는 단계입니다.
 
-- runtime 데이터: `data/kdrg_v47_search_integrated.json`
+- runtime 데이터: `data/kdrg_v47_search_integrated_v3.json`
 - ADRG: 1,132개
 - TABLE: 1,308개
 - 검색 코드: 16,571개

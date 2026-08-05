@@ -144,7 +144,7 @@ const dataFiles = resolveDataFiles({
   resourcesPath: null,
   moduleDirectory: path.join(ELECTRON_ROOT, 'src'),
 });
-check('통합 JSON SHA256', sha256(dataFiles.integrated), '3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1');
+check('통합 JSON SHA256', sha256(dataFiles.integrated), 'd865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda');
 check('semantic profile SHA256', sha256(dataFiles.semanticProfile), 'c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e');
 check('display contract SHA256', sha256(dataFiles.displayContract), '9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac');
 
@@ -162,8 +162,8 @@ check('exclude occurrence count', snapshot.displayContract.excludeOccurrences, 6
 check('unknown TABLE count', snapshot.displayContract.unknownTableCount, 646);
 check('raw corpus 미노출', snapshot.capabilities.rawCorpusExposedToRenderer, false);
 check('검색 서비스 연결 표시', snapshot.capabilities.searchServiceConnected, true);
-check('50D stage', snapshot.capabilities.stage, '50D_ELECTRON_WINDOWS_PACKAGE_READY');
-check('50E next stage', snapshot.capabilities.nextStage, '50E_PREVIEW_RELEASE_AND_UI_REVIEW');
+check('51C stage', snapshot.capabilities.stage, '51C_USER_CONDITION_UI_READY');
+check('51D next stage', snapshot.capabilities.nextStage, '51D_WINDOWS_PACKAGE_AND_UI_REVIEW');
 
 const serialized = JSON.stringify(snapshot);
 check('원본 ADRG 배열 미포함', serialized.includes('adrg_records'), false);

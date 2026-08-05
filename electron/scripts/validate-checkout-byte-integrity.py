@@ -5,13 +5,13 @@ import subprocess
 from pathlib import Path
 from typing import Iterable
 
-SCRIPT_VERSION = "2026-07-30_KDRG_V47_CHECKOUT_BYTE_INTEGRITY_VALIDATOR_V3"
+SCRIPT_VERSION = "2026-08-04_KDRG_V47_CHECKOUT_BYTE_INTEGRITY_VALIDATOR_V4"
 
 ROOT = Path(__file__).resolve().parents[2]
 
 IMMUTABLE_DATA_HASHES = {
-    "data/kdrg_v47_search_integrated.json":
-        "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
+    "data/kdrg_v47_search_integrated_v3.json":
+        "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
     "data/kdrg_v47_ui_semantic_profile.json":
         "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json":
@@ -197,6 +197,15 @@ def main() -> int:
     for relative in observed_files:
         path = ROOT / relative
         attrs = attr_map.get(relative, {})
+        if relative not in attr_map:
+            try:
+                attrs = read_attributes([relative]).get(relative, {})
+            except Exception as exc:
+                failures.append(
+                    f"관찰 대상 속성 조회 실패: {relative} "
+                    f"{type(exc).__name__}: {exc}"
+                )
+                attrs = {}
         actual_eol = attrs.get("eol", "missing")
         if not path.is_file():
             failures.append(f"관찰 대상 파일 없음: {relative}")

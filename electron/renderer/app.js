@@ -461,6 +461,10 @@ function tableLabelMapFromAst(ast) {
 
 function tableUserLabel(summary, options = {}) {
   const tableId = String(summary?.entity_id ?? summary?.logical_table_id ?? '');
+  const explicitLabel = normalizeOfficialTableLabel(
+    options.displayLabel ?? summary?.user_condition_ref?.display_label,
+  );
+  if (explicitLabel) return explicitLabel;
   const mapped = options.labelMap?.get(tableId);
   if (mapped) return mapped;
   const summaryData = summary?.summary ?? summary ?? {};
@@ -580,107 +584,90 @@ function resolveTableSummary(tableId, summaryMap) {
   };
 }
 
-function renderBasicTables(detail) {
-  const section = makeSection(
-    '기본 분류 TABLE',
-    '분류집 원문에서 이 ADRG 아래에 정의된 TABLE입니다. 이 목록 자체는 포함·제외 논리를 뜻하지 않습니다.',
-    { open: true, count: Ui.uniqueStrings(detail.source_logical_table_ids ?? []).length },
-  );
-  const body = create('div', 'table-stack');
-  const ids = Ui.uniqueStrings(detail.source_logical_table_ids ?? []);
-  const summaryMap = Ui.tableSummaryMap(detail);
-  const labelMap = tableLabelMapFromAst(detail.condition_ast);
-  if (!ids.length) body.append(create('p', 'muted', '기본 분류 TABLE이 확인되지 않았습니다.'));
-  for (const tableId of ids) body.append(tableCard(resolveTableSummary(tableId, summaryMap), { labelMap }));
+function formatUserConditionText(value) {
+  return String(value ?? '')
+    .replace(/\s+and\s+/gi, ' 그리고 ')
+    .replace(/\s+or\s+/gi, ' 또는 ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function userConditionStatusLabel(status) {
+  const labels = {
+    RESOLVED_AST: '조건 TABLE 연결 완료',
+    RESOLVED_SOURCE_LABELS: '조건 TABLE 연결 완료',
+    TEXT_ONLY: '조건 문구만 확인',
+    UNRESOLVED_TABLE_LINK: 'TABLE 연결 검토 필요',
+    NO_EXPLICIT_CONDITION: '명시적 조건 없음',
+  };
+  return labels[String(status ?? '')] || '조건 상태 미확인';
+}
+
+function renderUserConditionSummary(detail) {
+  const coverage = Ui.userConditionCoverage(detail);
+  const section = makeSection('분류 조건', coverage.summary, {
+    open: true,
+    count: coverage.has_text ? 1 : 0,
+  });
+  const body = create('div', 'user-condition-summary');
+  body.append(makeChip(
+    userConditionStatusLabel(coverage.status),
+    coverage.needs_review ? 'exclusion-chip' : 'role-chip',
+  ));
+  if (coverage.status === 'NO_EXPLICIT_CONDITION') {
+    body.append(create('p', 'user-condition-empty', '분류집에서 별도의 명시적 분류 조건을 확인하지 못했습니다.'));
+  } else if (coverage.has_text) {
+    body.append(create('p', 'user-condition-text', formatUserConditionText(coverage.text)));
+  } else {
+    body.append(create('p', 'user-condition-empty', '표시할 분류 조건 문구가 없습니다.'));
+  }
+  if (coverage.needs_review) {
+    body.append(create('p', 'user-condition-warning', '조건 문구는 확인되지만 연결할 TABLE 근거가 유일하지 않아 TABLE을 추정 표시하지 않습니다.'));
+  }
   section.append(body);
   return section;
 }
 
-function conditionTableRow(leaf, summaryMap, exclusion, labelMap) {
-  const wrapper = create('div', `condition-table ${exclusion ? 'condition-exclusion' : 'condition-include'}`);
-  const heading = create('div', 'condition-table-heading');
-  heading.append(
-    makeChip(exclusion ? '제외 대상' : '기본 포함조건', exclusion ? 'exclusion-chip' : 'include-chip'),
-    makeChip(leaf.role || '코드(유형 미확정)', 'role-chip'),
+function renderUserConditionTables(detail) {
+  const coverage = Ui.userConditionCoverage(detail);
+  const tables = Array.isArray(detail.user_condition_tables) ? detail.user_condition_tables : [];
+  const section = makeSection(
+    '조건 상세',
+    '분류 조건에서 실제로 사용하는 TABLE만 표시합니다. 카드를 펼치면 포함 코드를 현재 화면에서 확인할 수 있습니다.',
+    { open: true, count: tables.length },
   );
-  wrapper.append(heading);
-  for (const tableId of leaf.table_ids ?? []) {
-    wrapper.append(tableCard(resolveTableSummary(tableId, summaryMap), { exclusion, labelMap, sourceText: leaf.display_text }));
+  const body = create('div', 'table-stack user-condition-table-stack');
+  for (const summary of tables) {
+    body.append(tableCard(summary, {
+      displayLabel: summary?.user_condition_ref?.display_label,
+      sourceText: summary?.user_condition_ref?.display_label,
+    }));
   }
-  if (!(leaf.table_ids ?? []).length) wrapper.append(create('p', 'muted', leaf.display_text));
-  return wrapper;
+  if (!tables.length) {
+    body.append(create('p', 'user-condition-empty', coverage.needs_review
+      ? '공식 근거가 유일하지 않아 TABLE 카드를 생성하지 않았습니다.'
+      : '표시할 조건 TABLE이 없습니다.'));
+  }
+  section.append(body);
+  return section;
 }
 
-function renderConditionGroups(detail) {
+function renderUserConditionEvidence(detail) {
   const ast = detail.condition_ast;
-  const coverage = Ui.conditionCoverage(detail);
-  const section = makeSection('추가 분기조건', coverage.summary, { open: Boolean(ast), count: ast ? Ui.buildConditionGroups(ast).length : 0 });
-  const body = create('div', 'condition-groups');
-  const summaryMap = Ui.tableSummaryMap(detail);
-  const groups = Ui.buildConditionGroups(ast);
-  const labelMap = tableLabelMapFromAst(ast);
-
-  if (!ast) {
-    const notice = create('div', 'condition-empty');
-    notice.append(
-      create('strong', '', '별도의 추가 분기조건 없음'),
-      create('p', '', '기본 분류 TABLE은 존재하지만 조건 AST가 없는 ADRG입니다. 조건이 없다는 의미를 임의로 확대하지 않습니다.'),
-    );
-    body.append(notice);
-  } else {
-    groups.forEach((group, index) => {
-      const box = create('article', 'condition-group');
-      box.append(create('h4', '', groups.length > 1 ? `조건 선택지 ${index + 1}` : '적용 조건'));
-
-      if (group.includes.length) {
-        const includes = create('div', 'condition-block');
-        includes.append(create('p', 'condition-label include-label', '다음 조건을 충족'));
-        group.includes.forEach((leaf, leafIndex) => {
-          if (leafIndex) includes.append(create('div', 'operator-label', '그리고'));
-          includes.append(conditionTableRow(leaf, summaryMap, false, labelMap));
-        });
-        box.append(includes);
-      }
-
-      if (group.excludes.length) {
-        const excludes = create('div', 'condition-block exclusion-block');
-        excludes.append(create('p', 'condition-label exclude-label', '단, 다음 대상은 제외'));
-        group.excludes.forEach((leaf) => excludes.append(conditionTableRow(leaf, summaryMap, true)));
-        box.append(excludes);
-      }
-
-      if (group.requirements.length) {
-        const requirements = create('div', 'requirement-list');
-        requirements.append(create('p', 'condition-label', '추가 확인 조건'));
-        for (const requirement of group.requirements) {
-          const row = create('div', `requirement-row ${requirement.polarity === 'exclude' ? 'requirement-exclusion' : ''}`);
-          row.append(create('strong', '', requirement.text));
-          if (requirement.semantic_type) row.append(create('small', '', requirement.semantic_type));
-          requirements.append(row);
-        }
-        box.append(requirements);
-      }
-
-      if (!group.includes.length && !group.excludes.length && !group.requirements.length) {
-        box.append(create('p', 'muted', '표시할 추가 조건이 없습니다.'));
-      }
-      body.append(box);
-      if (index < groups.length - 1) body.append(create('div', 'or-divider', '또는'));
-    });
-
-    const technical = create('details', 'technical-details');
-    technical.append(create('summary', '', '기술식·원문 근거 보기'));
-    technical.append(
-      makeMetaGrid([
-        ['조건 원문', ast.source_raw_text],
-        ['정규화 원문', ast.source_normalized_text],
-        ['기술식', ast.canonical_expression],
-        ['근거 페이지', ast.page_range?.start_printed_page ? `${ast.page_range.start_printed_page}–${ast.page_range.end_printed_page}` : '-'],
-        ['AST ID', ast.condition_ast_id],
-      ]),
-    );
-    body.append(technical);
-  }
+  const page = detail.user_condition_page ?? ast?.page_range?.start_printed_page ?? null;
+  const section = makeSection('원문 근거', '사용자 표시 조건의 출처와 기술 근거를 확인합니다.', {
+    open: false,
+    count: detail.user_condition_source ? 1 : 0,
+  });
+  const body = create('div', 'user-condition-evidence');
+  body.append(makeMetaGrid([
+    ['조건 상태', userConditionStatusLabel(detail.user_condition_status)],
+    ['조건 원문', detail.user_condition_text || '명시적 조건 없음'],
+    ['근거 출처', detail.user_condition_source || '-'],
+    ['근거 페이지', page || '-'],
+    ['조건 AST', detail.condition_ast_id || '별도 AST 없음'],
+    ['기술식', ast?.canonical_expression || '-'],
+  ]));
   section.append(body);
   return section;
 }
@@ -719,13 +706,18 @@ function renderAdrgDetail(payload) {
       ['MDC', detail.mdc ? `MDC ${detail.mdc}` : '-'],
       ['AADRG', `${Ui.formatNumber(detail.aadrg_count ?? 0)}개`],
       ['질병군 분류', Ui.summarizeList(detail.abc_display_labels)],
-      ['조건 AST', detail.condition_ast_id || '별도 AST 없음'],
+      ['조건 상태', userConditionStatusLabel(detail.user_condition_status)],
     ], 'detail-overview-grid'),
   );
 
   const aadrgSection = makeSection('파생 AADRG', 'ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.', { open: false, count: (detail.aadrg_records ?? []).length });
   aadrgSection.append(renderDerivedAadrgList(detail.aadrg_records));
-  fragment.append(aadrgSection, renderBasicTables(detail), renderConditionGroups(detail));
+  fragment.append(
+    aadrgSection,
+    renderUserConditionSummary(detail),
+    renderUserConditionTables(detail),
+    renderUserConditionEvidence(detail),
+  );
   return fragment;
 }
 

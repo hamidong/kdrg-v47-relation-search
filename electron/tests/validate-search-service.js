@@ -121,6 +121,22 @@ for (const [query, type, options, total, leading] of fixtureExpectations) {
 const e011 = service.getDetail('ADRG', 'E011');
 check('E011 detail type', e011.entity_type, 'ADRG');
 check('E011 AST', e011.detail.condition_ast.condition_ast_id, 'AST_E011');
+check('E011 사용자 조건 TABLE 3개', e011.detail.user_condition_tables.length, 3);
+const b013 = service.getDetail('ADRG', 'B013');
+check('B013 사용자 TABLE', b013.detail.user_condition_tables.map((item) => item.entity_id), ['LT_B018_002'], (a, e) => JSON.stringify(a) === JSON.stringify(e));
+const b014 = service.getDetail('ADRG', 'B014');
+check('B014 사용자 TABLE', b014.detail.user_condition_tables.map((item) => item.entity_id), ['LT_B018_003'], (a, e) => JSON.stringify(a) === JSON.stringify(e));
+const b018 = service.getDetail('ADRG', 'B018');
+check('B018 사용자 TABLE 1·4·5', b018.detail.user_condition_tables.map((item) => item.entity_id), ['LT_B018_001', 'LT_B018_004', 'LT_B018_005'], (a, e) => JSON.stringify(a) === JSON.stringify(e));
+const b022 = service.getDetail('ADRG', 'B022');
+check('B022 검토 필요', b022.detail.user_condition_status, 'UNRESOLVED_TABLE_LINK');
+check('B022 사용자 TABLE 없음', b022.detail.user_condition_tables, [], (a, e) => JSON.stringify(a) === JSON.stringify(e));
+const l033 = service.getDetail('ADRG', 'L033');
+check('L033 검토 필요', l033.detail.user_condition_status, 'UNRESOLVED_TABLE_LINK');
+check('L033 사용자 TABLE 없음', l033.detail.user_condition_tables, [], (a, e) => JSON.stringify(a) === JSON.stringify(e));
+const adrg9610 = service.getDetail('ADRG', '9610');
+check('9610 명시적 조건 없음', adrg9610.detail.user_condition_status, 'NO_EXPLICIT_CONDITION');
+check('9610 사용자 TABLE 없음', adrg9610.detail.user_condition_tables, [], (a, e) => JSON.stringify(a) === JSON.stringify(e));
 const table962 = service.getDetail('TABLE', 'LT_9620_002');
 check('9620 excluded context', table962.detail.runtime_contexts.some((item) => item.display_role === 'EXCLUDE'), true);
 const table961 = service.getDetail('TABLE', 'LT_9610_001');
@@ -299,7 +315,7 @@ check('preload relation method', preloadSource.includes('relationSearch: (reques
 check('preload detail method', preloadSource.includes('getDetail: (request)'), true);
 check('preload ipcRenderer object hidden', preloadSource.includes('ipcRenderer,'), false);
 check('bootstrap search connected', bootstrapSource.includes('searchServiceConnected: true'), true);
-check('bootstrap Stage 50D', bootstrapSource.includes("stage: '50D_ELECTRON_WINDOWS_PACKAGE_READY'"), true);
+check('bootstrap Stage 51C', bootstrapSource.includes("stage: '51C_USER_CONDITION_UI_READY'"), true);
 
 console.log('validator=2026-07-31_KDRG_V47_ELECTRON_STAGE50G_PUBLIC_SEARCH_CONTRACT_VALIDATOR_V2');
 console.log(`electron_root=${ELECTRON_ROOT}`);

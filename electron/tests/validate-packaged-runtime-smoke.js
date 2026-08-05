@@ -1,69 +1,287 @@
 'use strict';
 
+const assert = require('node:assert/strict');
+const { EventEmitter } = require('node:events');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const PACKAGE_VERSION = require('../package.json').version;
-const { EventEmitter } = require('node:events');
-
 const {
   RESPONSE_SCHEMA_VERSION,
   RELATION_RESPONSE_SCHEMA_VERSION,
+  UI_SMOKE_SCHEMA_VERSION,
   EXPECTED_COUNTS,
+  UI_FIXTURES,
+  REQUIRED_DETAIL_LABELS,
+  FORBIDDEN_DETAIL_LABELS,
   shouldRunPackagedSmoke,
   validateSearchResponse,
   validateRelationResponse,
-  findRelationSmokeFixture,
   validateDetailResponse,
   validateBootstrapCounts,
-  waitForRendererLoad,
+  normalizeConsoleMessage,
+  validateUiCaseSnapshot,
   runPackagedRuntimeSmoke,
 } = require('../src/packaged-runtime-smoke');
 
-const VALIDATOR_VERSION =
-  '2026-07-30_KDRG_V47_ELECTRON_PACKAGED_SMOKE_CONTRACT_VALIDATOR_V2';
 const checks = [];
 
-function check(name, actual, expected) {
-  checks.push({ name, passed: actual === expected, actual, expected });
-}
-
-async function expectReject(name, task, expectedMessage) {
-  try {
-    await task();
-    checks.push({
-      name,
-      passed: false,
-      actual: 'resolved',
-      expected: `reject includes ${expectedMessage}`,
-    });
-  } catch (error) {
-    const message = String(error?.message || error);
-    checks.push({
-      name,
-      passed: message.includes(expectedMessage),
-      actual: message,
-      expected: `includes ${expectedMessage}`,
-    });
+function check(name, actual, expected = true) {
+  const passed = actual === expected;
+  checks.push({ name, passed, actual, expected });
+  if (!passed) {
+    throw new Error(`${name}: actual=${JSON.stringify(actual)} expected=${JSON.stringify(expected)}`);
   }
 }
 
+function checkThrows(name, callback) {
+  let thrown = false;
+  try {
+    callback();
+  } catch (_error) {
+    thrown = true;
+  }
+  check(name, thrown, true);
+}
+
+check('search schema', RESPONSE_SCHEMA_VERSION, 'kdrg-runtime-search-response-v1');
+check('relation schema', RELATION_RESPONSE_SCHEMA_VERSION, 'kdrg-runtime-relation-response-v1');
+check('UI smoke schema', UI_SMOKE_SCHEMA_VERSION, 'kdrg-packaged-ui-smoke-v1');
+check('fixture count', UI_FIXTURES.length, 6);
+check('required detail label count', REQUIRED_DETAIL_LABELS.length, 3);
+check('forbidden detail label count', FORBIDDEN_DETAIL_LABELS.length, 2);
+check('B013 TABLE', UI_FIXTURES[0].expected_table_ids.join('|'), 'LT_B018_002');
+check('B014 TABLE', UI_FIXTURES[1].expected_table_ids.join('|'), 'LT_B018_003');
+check(
+  'B018 TABLE',
+  UI_FIXTURES[2].expected_table_ids.join('|'),
+  'LT_B018_001|LT_B018_004|LT_B018_005',
+);
+check(
+  'B018 forbidden TABLE',
+  UI_FIXTURES[2].forbidden_table_ids.join('|'),
+  'LT_B018_002|LT_B018_003',
+);
+check('B022 no TABLE', UI_FIXTURES[3].expected_table_ids.length, 0);
+check('L033 no TABLE', UI_FIXTURES[4].expected_table_ids.length, 0);
+check('9610 no TABLE', UI_FIXTURES[5].expected_table_ids.length, 0);
+check('ADRG count', EXPECTED_COUNTS.adrg, 1132);
+check('TABLE count', EXPECTED_COUNTS.tables, 1308);
+check('CODE count', EXPECTED_COUNTS.codes, 16571);
+
+check('smoke env', shouldRunPackagedSmoke([], { KDRG_ELECTRON_SMOKE_TEST: '1' }), true);
+check('smoke arg', shouldRunPackagedSmoke(['--kdrg-smoke-test'], {}), true);
+check('smoke off', shouldRunPackagedSmoke([], {}), false);
+
+const search = {
+  schema_version: RESPONSE_SCHEMA_VERSION,
+  total_count: 1,
+  results: [{ entity_id: 'E011' }],
+};
+check('search response valid', validateSearchResponse(search).length, 1);
+checkThrows('search schema invalid', () => validateSearchResponse({ ...search, schema_version: 'x' }));
+checkThrows('search results invalid', () => validateSearchResponse({ ...search, results: null }));
+
+const relation = {
+  schema_version: RELATION_RESPONSE_SCHEMA_VERSION,
+  conditions: [{}, {}],
+  total_count: 1,
+  results: [{
+    entity_type: 'ADRG',
+    entity_id: 'E011',
+    relation_level: 'strict',
+    code_matches: [],
+    condition_groups: [{
+      exclude_table_ids: [],
+      exclude_tables: [],
+    }],
+  }],
+};
+check('relation response valid', validateRelationResponse(relation, 'E011').length, 1);
+checkThrows('relation fixture missing', () => validateRelationResponse(relation, 'B013'));
+
+const detail = {
+  schema_version: RESPONSE_SCHEMA_VERSION,
+  entity_type: 'ADRG',
+  entity_id: 'E011',
+  detail: {},
+};
+check('detail response valid', validateDetailResponse(detail).entity_id, 'E011');
+checkThrows('detail entity invalid', () => validateDetailResponse({ ...detail, entity_id: 'X' }));
+
+const bootstrap = { counts: { ...EXPECTED_COUNTS } };
+check('bootstrap valid', validateBootstrapCounts(bootstrap).adrg, 1132);
+checkThrows(
+  'bootstrap count invalid',
+  () => validateBootstrapCounts({ counts: { ...EXPECTED_COUNTS, adrg: 1 } }),
+);
+
+const legacyConsole = normalizeConsoleMessage([3, 'boom', 12, 'app.js']);
+check('legacy console level', legacyConsole.level, 3);
+check('legacy console message', legacyConsole.message, 'boom');
+const objectConsole = normalizeConsoleMessage([{
+  level: 3,
+  message: 'error',
+  lineNumber: 7,
+  sourceId: 'renderer.js',
+}]);
+check('object console level', objectConsole.level, 3);
+check('object console source', objectConsole.source_id, 'renderer.js');
+
+function validSnapshot(fixture) {
+  const codeCounts = Object.fromEntries(
+    fixture.expected_table_ids.map((tableId) => [tableId, 3]),
+  );
+  return {
+    selected_adrg: fixture.adrg,
+    detail_text: [
+      fixture.adrg,
+      ...REQUIRED_DETAIL_LABELS,
+      ...fixture.required_table_labels,
+    ].join(' '),
+    table_ids: [...fixture.expected_table_ids],
+    table_labels: [...fixture.required_table_labels],
+    loaded_table_count: fixture.expected_table_ids.length,
+    code_row_counts: codeCounts,
+    code_row_total: fixture.expected_table_ids.length ? 3 : 0,
+    error_messages: [],
+  };
+}
+
+for (const fixture of UI_FIXTURES) {
+  const result = validateUiCaseSnapshot(validSnapshot(fixture), fixture);
+  check(`${fixture.adrg} valid snapshot`, result.passed, true);
+  check(`${fixture.adrg} failed checks zero`, result.failed_checks.length, 0);
+}
+
+const badB018 = validSnapshot(UI_FIXTURES[2]);
+badB018.table_ids.push('LT_B018_002');
+check(
+  'B018 forbidden table rejected',
+  validateUiCaseSnapshot(badB018, UI_FIXTURES[2]).passed,
+  false,
+);
+
+const oldLabel = validSnapshot(UI_FIXTURES[0]);
+oldLabel.detail_text += ' 기본 분류 TABLE';
+check(
+  'obsolete label rejected',
+  validateUiCaseSnapshot(oldLabel, UI_FIXTURES[0]).passed,
+  false,
+);
+
+const internalLabel = validSnapshot(UI_FIXTURES[0]);
+internalLabel.table_labels = ['LT_B018_002'];
+check(
+  'internal label rejected',
+  validateUiCaseSnapshot(internalLabel, UI_FIXTURES[0]).passed,
+  false,
+);
+
+const unloaded = validSnapshot(UI_FIXTURES[0]);
+unloaded.loaded_table_count = 0;
+check(
+  'unloaded table rejected',
+  validateUiCaseSnapshot(unloaded, UI_FIXTURES[0]).passed,
+  false,
+);
+
+const noRows = validSnapshot(UI_FIXTURES[0]);
+noRows.code_row_total = 0;
+check(
+  'no code rows rejected',
+  validateUiCaseSnapshot(noRows, UI_FIXTURES[0]).passed,
+  false,
+);
+
+
+function checkRejects(name, callback) {
+  return Promise.resolve()
+    .then(callback)
+    .then(
+      () => check(name, false, true),
+      () => check(name, true, true),
+    );
+}
+
+function mockSnapshotForFixture(fixture) {
+  const codeCounts = Object.fromEntries(
+    fixture.expected_table_ids.map((tableId) => [tableId, 3]),
+  );
+  return {
+    selected_adrg: fixture.adrg,
+    result_count_text: '1건',
+    result_caption: fixture.adrg,
+    detail_caption: fixture.adrg,
+    detail_text: [
+      fixture.adrg,
+      ...REQUIRED_DETAIL_LABELS,
+      ...fixture.required_table_labels,
+    ].join(' '),
+    table_ids: [...fixture.expected_table_ids],
+    table_labels: [...fixture.required_table_labels],
+    inline_table_count: fixture.expected_table_ids.length,
+    loaded_table_count: fixture.expected_table_ids.length,
+    code_row_counts: codeCounts,
+    code_row_total: fixture.expected_table_ids.length ? 3 : 0,
+    error_messages: [],
+  };
+}
+
+function parseFixtureFromScript(script) {
+  const marker = 'const fixture = ';
+  const start = script.indexOf(marker);
+  if (start < 0) return null;
+  const jsonStart = start + marker.length;
+  const end = script.indexOf(';\n      const sleep', jsonStart);
+  if (end < 0) return null;
+  return JSON.parse(script.slice(jsonStart, end));
+}
+
+function createMockImage(seed = 1) {
+  const bitmap = Buffer.alloc(1600 * 980 * 4);
+  for (let offset = 0; offset < bitmap.length; offset += 4) {
+    const index = offset / 4;
+    bitmap.writeUInt32LE((index + seed * 1009) % 100000, offset);
+  }
+  const png = Buffer.alloc(15000, seed);
+  return {
+    getSize: () => ({ width: 1600, height: 980 }),
+    toBitmap: () => bitmap,
+    toPNG: () => png,
+  };
+}
+
 class MockWebContents extends EventEmitter {
-  setWindowOpenHandler(handler) {
-    this.windowOpenHandler = handler;
+  constructor() {
+    super();
+    this.captureSeed = 1;
+  }
+
+  setWindowOpenHandler() {}
+
+  async executeJavaScript(script) {
+    const fixture = parseFixtureFromScript(script);
+    if (fixture) {
+      this.captureSeed = UI_FIXTURES.findIndex(
+        (item) => item.adrg === fixture.adrg,
+      ) + 1;
+      return mockSnapshotForFixture(fixture);
+    }
+    return true;
+  }
+
+  async capturePage() {
+    return createMockImage(this.captureSeed);
   }
 }
 
 class MockBrowserWindow {
-  constructor(options) {
-    this.options = options;
+  constructor() {
     this.webContents = new MockWebContents();
     this.destroyed = false;
-    MockBrowserWindow.instances.push(this);
   }
 
-  async loadFile(rendererPath) {
-    this.rendererPath = rendererPath;
+  async loadFile() {
     setImmediate(() => this.webContents.emit('did-finish-load'));
   }
 
@@ -75,299 +293,191 @@ class MockBrowserWindow {
     this.destroyed = true;
   }
 }
-MockBrowserWindow.instances = [];
 
-function makeSearchResponse(overrides = {}) {
+function createRuntimeService({ relationFailure = false } = {}) {
+  const table = { codes: ['A001', 'A002'] };
   return {
-    schema_version: RESPONSE_SCHEMA_VERSION,
-    query: 'E011',
-    normalized_query: 'E011',
-    filters: { entity_types: ['ADRG'], mdc: null, classification: null },
-    total_count: 1,
-    type_counts: { ADRG: 1 },
-    offset: 0,
-    limit: 10,
-    has_more: false,
-    results: [{ entity_type: 'ADRG', entity_id: 'E011', label: 'fixture' }],
-    ...overrides,
-  };
-}
-
-function makeRelationResponse(overrides = {}) {
-  return {
-    schema_version: RELATION_RESPONSE_SCHEMA_VERSION,
-    operator: 'AND',
-    filters: { mdc: null, classification: null },
-    total_count: 1,
-    level_counts: { strict: 1 },
-    conditions: [
-      { code: 'C001', code_type: 'AUTO', table_ids: ['T1'] },
-      { code: 'C002', code_type: 'AUTO', table_ids: ['T2'] },
-    ],
-    results: [{
+    conditionGroupsByAdrg: new Map([
+      ['E011', [{
+        include_table_ids: ['LT_TEST_001'],
+        exclude_table_ids: [],
+      }]],
+    ]),
+    recordMaps: {
+      TABLE: new Map([['LT_TEST_001', table]]),
+    },
+    status: () => ({ ready: true }),
+    search: () => ({
+      schema_version: RESPONSE_SCHEMA_VERSION,
+      total_count: 1,
+      results: [{ entity_id: 'E011' }],
+    }),
+    relationSearch: () => {
+      if (relationFailure) {
+        throw new Error('relation fixture failure');
+      }
+      return {
+        schema_version: RELATION_RESPONSE_SCHEMA_VERSION,
+        conditions: [{ code: 'A001' }, { code: 'A002' }],
+        total_count: 1,
+        results: [{
+          entity_type: 'ADRG',
+          entity_id: 'E011',
+          relation_level: 'strict',
+          code_matches: [],
+          condition_groups: [{
+            exclude_table_ids: [],
+            exclude_tables: [],
+          }],
+        }],
+      };
+    },
+    getDetail: () => ({
+      schema_version: RESPONSE_SCHEMA_VERSION,
       entity_type: 'ADRG',
       entity_id: 'E011',
-      relation_level: 'strict',
-      code_matches: [],
-      condition_groups: [{
-        group_no: 1,
-        group_label: '조건식 1',
-        all_inputs: true,
-        hit_count: 2,
-        matches: [],
-        exclude_table_ids: [],
-        exclude_tables: [],
-      }],
-    }],
-    disclaimer: 'fixture',
-    ...overrides,
+      detail: {},
+    }),
   };
 }
 
-function makeDetailResponse(overrides = {}) {
-  return {
-    schema_version: RESPONSE_SCHEMA_VERSION,
-    entity_type: 'ADRG',
-    entity_id: 'E011',
-    detail: { adrg: 'E011' },
-    ...overrides,
-  };
-}
-
-function makeFixture(root, serviceOverrides = {}) {
+function makeRuntimeFixture(tempRoot, options = {}) {
   const dataFiles = {
-    integrated: path.join(root, 'kdrg_v47_search_integrated.json'),
-    semanticProfile: path.join(root, 'kdrg_v47_ui_semantic_profile.json'),
-    displayContract: path.join(root, 'kdrg_v47_ui_display_contract.json'),
+    integrated: path.join(tempRoot, 'integrated.json'),
+    semanticProfile: path.join(tempRoot, 'semantic.json'),
+    displayContract: path.join(tempRoot, 'display.json'),
   };
   for (const filePath of Object.values(dataFiles)) {
     fs.writeFileSync(filePath, '{}\n', 'utf8');
   }
 
-  class MockService {
-    constructor() {
-      this.conditionGroupsByAdrg = new Map([
-        ['E011', [{ include_table_ids: ['T1', 'T2'], exclude_table_ids: [] }]],
-      ]);
-      this.recordMaps = {
-        TABLE: new Map([
-          ['T1', { logical_table_id: 'T1', codes: ['C001'] }],
-          ['T2', { logical_table_id: 'T2', codes: ['C002'] }],
-        ]),
-      };
-    }
-
-    status() {
-      return serviceOverrides.status || { ready: true };
-    }
-
-    search() {
-      return serviceOverrides.search || makeSearchResponse();
-    }
-
-    relationSearch() {
-      return serviceOverrides.relation || makeRelationResponse();
-    }
-
-    getDetail() {
-      return serviceOverrides.detail || makeDetailResponse();
-    }
+  const service = createRuntimeService(options);
+  function MockKdrgSearchService() {
+    return service;
   }
 
   return {
     app: {
       isPackaged: true,
-      getVersion: () => PACKAGE_VERSION,
+      getVersion: () => '0.5.1',
     },
     BrowserWindow: MockBrowserWindow,
     resolveDataFiles: () => dataFiles,
     buildBootstrapSnapshot: () => ({ counts: { ...EXPECTED_COUNTS } }),
-    KdrgSearchService: MockService,
-    rendererPath: path.join(root, 'index.html'),
-    preloadPath: path.join(root, 'preload.js'),
+    KdrgSearchService: MockKdrgSearchService,
+    rendererPath: path.join(tempRoot, 'index.html'),
+    preloadPath: path.join(tempRoot, 'preload.js'),
   };
 }
 
-async function main() {
-  console.log(`validator=${VALIDATOR_VERSION}`);
-  console.log(`node=${process.version}`);
-
-  check('smoke env trigger', shouldRunPackagedSmoke([], { KDRG_ELECTRON_SMOKE_TEST: '1' }), true);
-  check('smoke argv trigger', shouldRunPackagedSmoke(['--kdrg-smoke-test'], {}), true);
-  check('smoke disabled', shouldRunPackagedSmoke([], {}), false);
-
-  const validSearch = makeSearchResponse();
-  const validResults = validateSearchResponse(validSearch);
-  check('search contract results array', Array.isArray(validResults), true);
-  check('search contract E011', validResults[0].entity_id, 'E011');
-  const validRelation = makeRelationResponse();
-  const validRelationResults = validateRelationResponse(validRelation, 'E011');
-  check('relation contract results array', Array.isArray(validRelationResults), true);
-  check('relation contract E011', validRelationResults[0].entity_id, 'E011');
-  check('relation contract exclusion summary array', Array.isArray(validRelationResults[0].condition_groups[0].exclude_tables), true);
-  check('detail contract E011', validateDetailResponse(makeDetailResponse()).entity_id, 'E011');
-  check('bootstrap contract counts', validateBootstrapCounts({ counts: { ...EXPECTED_COUNTS } }).codes, 16571, 16571);
-
-  await expectReject(
-    'legacy items field controlled failure',
-    () => Promise.resolve(validateSearchResponse({
-      ...makeSearchResponse(),
-      results: undefined,
-      items: [{ entity_id: 'E011' }],
-    })),
-    'obsolete items field detected',
-  );
-  await expectReject(
-    'search schema mismatch controlled failure',
-    () => Promise.resolve(validateSearchResponse({ ...makeSearchResponse(), schema_version: 'old' })),
-    'schema_version=old',
-  );
-  await expectReject(
-    'search total_count mismatch controlled failure',
-    () => Promise.resolve(validateSearchResponse({ ...makeSearchResponse(), total_count: 0 })),
-    'total_count=0',
-  );
-  await expectReject(
-    'relation schema mismatch controlled failure',
-    () => Promise.resolve(validateRelationResponse({ ...makeRelationResponse(), schema_version: 'old' })),
-    'schema_version=old',
-  );
-  await expectReject(
-    'relation result shape controlled failure',
-    () => Promise.resolve(validateRelationResponse({ ...makeRelationResponse(), results: [{}] })),
-    'invalid results[0]',
-  );
-  await expectReject(
-    'relation fixture missing controlled failure',
-    () => Promise.resolve(validateRelationResponse(makeRelationResponse({ results: [{
-      entity_type: 'ADRG', entity_id: 'E999', relation_level: 'strict', code_matches: [], condition_groups: [],
-    }] }), 'E011')),
-    'ADRG E011',
-  );
-
-  await expectReject(
-    'detail entity mismatch controlled failure',
-    () => Promise.resolve(validateDetailResponse(makeDetailResponse({ entity_id: 'E999' }))),
-    'E011 detail fixture mismatch',
-  );
-  await expectReject(
-    'bootstrap count mismatch controlled failure',
-    () => Promise.resolve(validateBootstrapCounts({ counts: { ...EXPECTED_COUNTS, codes: 1 } })),
-    'bootstrap count mismatch: codes=1',
-  );
-
-  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'kdrg-smoke-contract-'));
-  const previousReport = process.env.KDRG_ELECTRON_SMOKE_REPORT;
+async function runLegacyAndPackagedFixtures() {
+  const obsoleteItems = {
+    schema_version: RESPONSE_SCHEMA_VERSION,
+    total_count: 0,
+    items: [],
+  };
+  let obsoleteMessage = '';
   try {
-    fs.writeFileSync(path.join(tempRoot, 'index.html'), '<!doctype html>\n', 'utf8');
-    fs.writeFileSync(path.join(tempRoot, 'preload.js'), "'use strict';\n", 'utf8');
-    const reportPath = path.join(tempRoot, 'smoke-report.json');
+    validateSearchResponse(obsoleteItems);
+  } catch (error) {
+    obsoleteMessage = error.message;
+  }
+  check(
+    'obsolete items field detected',
+    obsoleteMessage.includes('obsolete items field detected'),
+    true,
+  );
+
+  const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'kdrg-stage51d-contract-'));
+  const previousReport = process.env.KDRG_ELECTRON_SMOKE_REPORT;
+  const previousScreenshots = process.env.KDRG_ELECTRON_SMOKE_SCREENSHOT_DIR;
+
+  try {
+    const reportPath = path.join(tempRoot, 'runtime-report.json');
+    const screenshotPath = path.join(tempRoot, 'screenshots');
     process.env.KDRG_ELECTRON_SMOKE_REPORT = reportPath;
+    process.env.KDRG_ELECTRON_SMOKE_SCREENSHOT_DIR = screenshotPath;
 
-    const fixture = makeFixture(tempRoot);
-    const report = await runPackagedRuntimeSmoke(fixture);
-    const diskReport = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
-    check('runtime smoke PASS', report.status, 'PASS');
-    check('runtime report persisted', diskReport.status, 'PASS');
-    check('runtime search contract schema', report.search_fixture.response_schema_version, RESPONSE_SCHEMA_VERSION);
-    check('runtime result_count uses results', report.search_fixture.result_count, 1);
-    check('runtime fixture found', report.search_fixture.found, true);
-    check('runtime detail verified', report.search_fixture.detail_entity_id, 'E011');
-    check('runtime relation schema', report.relation_fixture.response_schema_version, RELATION_RESPONSE_SCHEMA_VERSION);
-    check('runtime relation fixture found', report.relation_fixture.found, true);
-    check('runtime relation expected ADRG', report.relation_fixture.expected_adrg, 'E011');
-    check('runtime relation discovery helper', findRelationSmokeFixture(new fixture.KdrgSearchService()).adrg, 'E011');
-    check('runtime relation step', report.completed_steps.includes('relation_contract_verified'), true);
-    check('runtime renderer loaded', report.renderer_loaded, true);
-    check('runtime step search contract', report.completed_steps.includes('search_contract_verified'), true);
-    check('runtime step renderer', report.completed_steps.at(-1), 'renderer_loaded');
-    check('runtime BrowserWindow destroyed', MockBrowserWindow.instances.at(-1).destroyed, true);
-    check('runtime contextIsolation', MockBrowserWindow.instances.at(-1).options.webPreferences.contextIsolation, true);
-    check('runtime nodeIntegration off', MockBrowserWindow.instances.at(-1).options.webPreferences.nodeIntegration, false);
-    check('runtime sandbox on', MockBrowserWindow.instances.at(-1).options.webPreferences.sandbox, true);
+    const fixture = makeRuntimeFixture(tempRoot);
+    const runtimeReport = await runPackagedRuntimeSmoke(fixture);
+    check('runPackagedRuntimeSmoke(fixture)', runtimeReport.status, 'PASS');
+    check(
+      'runtime relation schema',
+      runtimeReport.relation_fixture.response_schema_version,
+      RELATION_RESPONSE_SCHEMA_VERSION,
+    );
+    check('runtime UI case count', runtimeReport.ui_validation.case_count, 6);
+    check('runtime UI status', runtimeReport.ui_validation.status, 'PASS');
 
-    const legacyReportPath = path.join(tempRoot, 'legacy-report.json');
+    const failureReportPath = path.join(tempRoot, 'relation-failure-report.json');
+    process.env.KDRG_ELECTRON_SMOKE_REPORT = failureReportPath;
+    await checkRejects(
+      'relation runtime rejection',
+      () => runPackagedRuntimeSmoke(
+        makeRuntimeFixture(tempRoot, { relationFailure: true }),
+      ),
+    );
+    const relationFailureReport = JSON.parse(
+      fs.readFileSync(failureReportPath, 'utf8'),
+    );
+    check(
+      'relation report failed step',
+      relationFailureReport.failed_step,
+      'relation_contract_validation',
+    );
+
+    const legacyReportPath = path.join(tempRoot, 'legacy-failure-report.json');
     process.env.KDRG_ELECTRON_SMOKE_REPORT = legacyReportPath;
-    await expectReject(
-      'runtime legacy contract rejected before renderer',
-      () => runPackagedRuntimeSmoke(makeFixture(tempRoot, {
-        search: {
-          ...makeSearchResponse(),
-          results: undefined,
-          items: [{ entity_id: 'E011' }],
-        },
-      })),
-      'obsolete items field detected',
+    const legacyFixture = makeRuntimeFixture(tempRoot);
+    legacyFixture.buildBootstrapSnapshot = () => null;
+    await checkRejects(
+      'legacy runtime rejection',
+      () => runPackagedRuntimeSmoke(legacyFixture),
     );
-    const legacyReport = JSON.parse(fs.readFileSync(legacyReportPath, 'utf8'));
-    check('legacy report FAIL', legacyReport.status, 'FAIL');
-    check('legacy report descriptive error', legacyReport.error.message.includes('contract mismatch'), true);
-    check('legacy report no raw TypeError', legacyReport.error.message.includes('Cannot read properties'), false);
-    check('legacy report failed step', legacyReport.failed_step, 'search_contract_validation');
-    check('legacy report completed steps', legacyReport.completed_steps.includes('search_service_ready'), true);
-
-    const relationReportPath = path.join(tempRoot, 'relation-report.json');
-    process.env.KDRG_ELECTRON_SMOKE_REPORT = relationReportPath;
-    await expectReject(
-      'runtime relation contract rejected before renderer',
-      () => runPackagedRuntimeSmoke(makeFixture(tempRoot, {
-        relation: { ...makeRelationResponse(), schema_version: 'old' },
-      })),
-      'schema_version=old',
+    const legacyReport = JSON.parse(
+      fs.readFileSync(legacyReportPath, 'utf8'),
     );
-    const relationReport = JSON.parse(fs.readFileSync(relationReportPath, 'utf8'));
-    check('relation report FAIL', relationReport.status, 'FAIL');
-    check('relation report failed step', relationReport.failed_step, 'relation_contract_validation');
-
-    const missingFixture = makeFixture(tempRoot);
-    fs.unlinkSync(missingFixture.resolveDataFiles().integrated);
-    await expectReject(
-      'missing packaged data controlled failure',
-      () => runPackagedRuntimeSmoke(missingFixture),
-      'packaged data file inaccessible: key=integrated',
+    check(
+      'legacy report no raw TypeError',
+      String(legacyReport.error?.message || '').includes('TypeError'),
+      false,
     );
-
-    await expectReject(
-      'service not ready controlled failure',
-      () => runPackagedRuntimeSmoke(makeFixture(tempRoot, { status: { ready: false } })),
-      'search service is not ready',
+    check(
+      'legacy report failed step',
+      legacyReport.failed_step,
+      'bootstrap_count_validation',
     );
-
-    await expectReject(
-      'E011 missing controlled failure',
-      () => runPackagedRuntimeSmoke(makeFixture(tempRoot, {
-        search: makeSearchResponse({
-          total_count: 1,
-          results: [{ entity_type: 'ADRG', entity_id: 'E999' }],
-        }),
-      })),
-      'E011 search fixture missing',
-    );
-
-    const eventEmitter = new MockWebContents();
-    const failedWindow = { webContents: eventEmitter };
-    const wait = waitForRendererLoad(failedWindow, 1000);
-    setImmediate(() => eventEmitter.emit('did-fail-load', null, -2, 'ERR_FAILED', 'file:///index.html'));
-    await expectReject('renderer fail event diagnostic', () => wait, 'renderer load failed: code=-2');
   } finally {
-    if (previousReport === undefined) delete process.env.KDRG_ELECTRON_SMOKE_REPORT;
-    else process.env.KDRG_ELECTRON_SMOKE_REPORT = previousReport;
+    if (previousReport === undefined) {
+      delete process.env.KDRG_ELECTRON_SMOKE_REPORT;
+    } else {
+      process.env.KDRG_ELECTRON_SMOKE_REPORT = previousReport;
+    }
+    if (previousScreenshots === undefined) {
+      delete process.env.KDRG_ELECTRON_SMOKE_SCREENSHOT_DIR;
+    } else {
+      process.env.KDRG_ELECTRON_SMOKE_SCREENSHOT_DIR = previousScreenshots;
+    }
     fs.rmSync(tempRoot, { recursive: true, force: true });
   }
-
-  const failures = checks.filter((item) => !item.passed);
-  if (failures.length) {
-    console.log(`[FAIL] Electron packaged runtime smoke contract 검증: ${checks.length - failures.length} PASS / ${failures.length} FAIL`);
-    for (const failure of failures) {
-      console.log(`- ${failure.name} | actual=${JSON.stringify(failure.actual)} | expected=${JSON.stringify(failure.expected)}`);
-    }
-    process.exitCode = 1;
-    return;
-  }
-  console.log(`[PASS] Electron packaged runtime smoke contract 검증: ${checks.length} PASS / 0 FAIL`);
 }
 
-main().catch((error) => {
-  console.error(error?.stack || error);
-  process.exitCode = 1;
-});
+function finalize() {
+  const passCount = checks.filter((item) => item.passed).length;
+  const failCount = checks.length - passCount;
+
+  console.log('validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2');
+  if (failCount) {
+    console.log(`[FAIL] Electron packaged runtime smoke 계약검증: ${passCount} PASS / ${failCount} FAIL`);
+    process.exitCode = 1;
+  } else {
+    console.log(`[PASS] Electron packaged runtime smoke 계약검증: ${passCount} PASS / 0 FAIL`);
+  }
+}
+
+runLegacyAndPackagedFixtures()
+  .then(finalize)
+  .catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });

@@ -26,7 +26,7 @@ NODE_RELEASE_BASE = "https://nodejs.org/download/release/latest-v22.x"
 NODE_CACHE_ROOT = ROOT.parent / ".cache" / "kdrg-stage50a-node-v22"
 
 PROTECTED_HASHES = {
-    "data/kdrg_v47_search_integrated.json": "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
+    "data/kdrg_v47_search_integrated_v3.json": "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
     "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
     "app/kdrg_search_service.py": "35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd",
@@ -38,21 +38,21 @@ PROTECTED_HASHES = {
     "electron/.gitignore": "aa5069a33ab1272d0dc50e9968d39d9ad10babc6c545cb10a3a84dd132882ab2",
     "electron/README_STAGE50A.md": "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md": "09dc1a57af65ee56121abc18158c4250cda6af258e7360596ce5f6c7cdfd320f",
-    "electron/main.js": "cb3c2613833075e1bc7db3693aa558057c7f3755720f8625232e4232c8bfad1d",
+    "electron/main.js": "3922ceb09ca64658941652008a6c1f8ff964fe25b9663ec594ca0b21325dd5d6",
     "electron/preload.js": "c42dbd945acc529b5235d1e5da834ebd9274eabd4e0d791b55d601e5962bb9a2",
-    "electron/src/data-paths.js": "27cca98bdf68a2d5d71210c36bcddc6068e413000be860b4e9a1a784a4f61316",
+    "electron/src/data-paths.js": "3d209ade16f25d9f2abfac5d43872b178276e74fba549388b220fa1f72a1dfa3",
     "electron/src/search-normalizer.js": "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
-    "electron/src/kdrg-search-service.js": "2c7033a46314947417d470136ca2f6a1d443df8a4811758550737b12249b06c2",
-    "electron/tests/run-search-parity.js": "8f406f4850ce7867b6a4042b691066ad6293c0e2f8df2e111b631f155d5a2a81",
+    "electron/src/kdrg-search-service.js": "319ad5f29d5a2d8b3bd42d15dad074ab33cea1958452ed58e6138d4fda66a5ed",
+    "electron/tests/run-search-parity.js": "8b6c0dc6ef02477adc8bd1a5f7cbe62e651029e5ffbb295350f6f4eb2e9ad14a",
 }
 
 TARGET_HASHES = {
-    "50B_validate_kdrg_electron_search_service.py": "fa046370f7dfaa45b913c96ca2646bf162a79f6bfa38799da1fb0cfa78e01bdc",
-    "electron/src/bootstrap-data.js": "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
-    "electron/tests/validate-electron-skeleton.js": "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
-    "electron/tests/validate-search-service.js": "38c7460b03a25e058862419c5ce87bd70d8ddcaab3225bd63c7ad941dccf3ff7",
-    "electron/renderer/ui-formatters.js": "64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944",
+    "50B_validate_kdrg_electron_search_service.py": "851ec11913f142a7ccc354cd6b7c83d912dd0bf7a05da097f29e4d591d09fa1a",
+    "electron/src/bootstrap-data.js": "45042a5e577e19a2083880ad6d56b465f1df324c63244ec25d57c58111f30cfe",
+    "electron/tests/validate-electron-skeleton.js": "40d89f0323ded10bb32227c9ea2b059e96b618dec1ebc384c4712c1d92f7c948",
+    "electron/tests/validate-search-service.js": "7a3308381b33836471fb1baebbe239443d1afe94854c159f4144ae0040f34642",
+    "electron/renderer/ui-formatters.js": "e1c00fd9bcb33d577859ff948650c499a6b7504283b0aa75523f79eabaa1730a",
     "electron/README_STAGE50C.md": "35f92d8bd42649ee7bdb651979626235517ea06a3a185bae3128b2b212e0478f",
 }
 
@@ -365,9 +365,11 @@ def main() -> int:
     check("renderer innerHTML 미사용", "innerHTML" in app_source, False)
     check("renderer eval 미사용", bool(re.search(r"\beval\s*\(", app_source)), False)
     check("formatter 선로드", html_source.index("ui-formatters.js") < html_source.index("app.js"), True)
-    check("기본 TABLE 문구", "기본 분류 TABLE" in app_source, True)
-    check("추가조건 문구", "추가 분기조건" in app_source, True)
-    check("제외 문구", "단, 다음 대상은 제외" in app_source, True)
+    check("분류 조건 문구", "분류 조건" in app_source, True)
+    check("구형 기본 TABLE 제거", "기본 분류 TABLE" not in app_source, True)
+    check("조건 상세 문구", "조건 상세" in app_source, True)
+    check("구형 추가조건 제거", "추가 분기조건" not in app_source, True)
+    check("원문 근거 문구", "원문 근거" in app_source, True)
     check("복수 코드 관계검색 UI", "복수 코드 관계검색" in html_source, True)
     check("데이터 현황 기본 접힘", bool(re.search(r'<details[^>]+id="data-overview"(?![^>]*\sopen)[^>]*>', html_source)), True)
     check("관계검색 기본 접힘", bool(re.search(r'<details[^>]+id="relation-search-panel"(?![^>]*\sopen)[^>]*>', html_source)), True)

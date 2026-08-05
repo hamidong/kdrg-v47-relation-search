@@ -29,11 +29,11 @@ REPORT_JSON = REPORT_DIR / "electron_stage50d_validation_report.json"
 NODE_CACHE_DIR = REPORT_DIR / "electron_node_v22_cache"
 NODE_CURRENT_DIR = NODE_CACHE_DIR / "current"
 
-EXPECTED_WORKFLOW_HASH = "1e2cafc1c491c3da5989b2a4c9159e2eeb5e557426fda309c6408040aafaa899"
+EXPECTED_WORKFLOW_HASH = "fea2b590eede3403ba6c03a3627bb5e591ba7ab4226a4320d95dd3d8d29c002c"
 
 PROTECTED_HASHES = {
-    "data/kdrg_v47_search_integrated.json":
-        "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
+    "data/kdrg_v47_search_integrated_v3.json":
+        "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
     "data/kdrg_v47_ui_semantic_profile.json":
         "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json":
@@ -53,41 +53,41 @@ PROTECTED_HASHES = {
     ".gitattributes":
         "6e91da75eb4141a20f8296dce65a413d1a08befbebc6ebf9f485fa036fa73ff8",
     "electron/main.js":
-        "cb3c2613833075e1bc7db3693aa558057c7f3755720f8625232e4232c8bfad1d",
+        "3922ceb09ca64658941652008a6c1f8ff964fe25b9663ec594ca0b21325dd5d6",
     "electron/preload.js":
         "c42dbd945acc529b5235d1e5da834ebd9274eabd4e0d791b55d601e5962bb9a2",
     "electron/src/data-paths.js":
-        "27cca98bdf68a2d5d71210c36bcddc6068e413000be860b4e9a1a784a4f61316",
+        "3d209ade16f25d9f2abfac5d43872b178276e74fba549388b220fa1f72a1dfa3",
     "electron/src/bootstrap-data.js":
-        "de31415aa829254a6e915f8f75cf845965073735712d74604502a9e431ff840c",
+        "45042a5e577e19a2083880ad6d56b465f1df324c63244ec25d57c58111f30cfe",
     "electron/src/search-normalizer.js":
         "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js":
         "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
     "electron/src/kdrg-search-service.js":
-        "2c7033a46314947417d470136ca2f6a1d443df8a4811758550737b12249b06c2",
+        "319ad5f29d5a2d8b3bd42d15dad074ab33cea1958452ed58e6138d4fda66a5ed",
     "electron/src/packaged-runtime-smoke.js":
-        "f81fa2080202bec33d78fd302802542634c5cd59acc225929a8c34c2dee5b51b",
+        "8ff65a5e952f0beb6bbe14a07bbdaaefd8feccfe7ddf3eeb2aa5b604aa2ec9e4",
     "electron/renderer/ui-formatters.js":
-        "64f123958450a0f6081a1ecb0ac7b5b434f459e4e50b1685c5a35248b4630944",
+        "e1c00fd9bcb33d577859ff948650c499a6b7504283b0aa75523f79eabaa1730a",
     "electron/tests/run-search-parity.js":
-        "8f406f4850ce7867b6a4042b691066ad6293c0e2f8df2e111b631f155d5a2a81",
+        "8b6c0dc6ef02477adc8bd1a5f7cbe62e651029e5ffbb295350f6f4eb2e9ad14a",
     "electron/tests/validate-electron-skeleton.js":
-        "c8677cfbf3f11dd90e589e5985cd3f51766ac72d83a08b5c8e6ea4244cd5310b",
+        "40d89f0323ded10bb32227c9ea2b059e96b618dec1ebc384c4712c1d92f7c948",
     "electron/tests/validate-search-service.js":
-        "38c7460b03a25e058862419c5ce87bd70d8ddcaab3225bd63c7ad941dccf3ff7",
+        "7a3308381b33836471fb1baebbe239443d1afe94854c159f4144ae0040f34642",
     "electron/tests/validate-packaging-config.js":
-        "a99044976c5ce05a8f3f50cbc6e493a4ea830a33bda438319474ba7e2633a515",
+        "1a039921cc5342defa6856c2c17533e44ad6912b9e6620726dcdd47f219efad2",
     "electron/tests/validate-packaged-runtime-smoke.js":
-        "249dc514dfa9aa89278c5a8c8288c423ca3eb027dbaf1735204fc19ca7537066",
+        "28f366f1d2405c5e492ecd446a05c06b7bff414f2e3a5a42d218b238928f5569",
     "electron/tests/validate-release-version.js":
         "d4746b9ab38d914711ff5b6125a8ec33b9d46e574f94f9c1544f0a305bfd0471",
     "electron/scripts/verify-windows-portable.ps1":
-        "63c98bbd22a4358f0d9954e702686a03590180f03b254f1909508da9b8916500",
+        "fa8d5fa4a99b2624178df3b1e9942f7601c051b5143485a511f485d75e125ab9",
     "electron/scripts/validate-package-lock-registry.py":
         "ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92",
     "electron/scripts/validate-checkout-byte-integrity.py":
-        "4c4b9fd5719ecd6c6362ea19574beea634ad188172a3e68cd63294c792a8d780",
+        "19e05a48c2502b69a28ab5d4b277d33212b72c9c6df051b975441a47ef256876",
     "electron/README_STAGE50A.md":
         "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md":
@@ -97,9 +97,9 @@ PROTECTED_HASHES = {
     "electron/README_STAGE50D.md":
         "adad88a75b3e2c3f20de83ffe3d5e086ca39cf8010d666a08527c18a7bb6cc26",
     "50B_validate_kdrg_electron_search_service.py":
-        "fa046370f7dfaa45b913c96ca2646bf162a79f6bfa38799da1fb0cfa78e01bdc",
+        "851ec11913f142a7ccc354cd6b7c83d912dd0bf7a05da097f29e4d591d09fa1a",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "93f8ae886bbc97fddd9819a64540e313af2bc4e17af9575ae17c8bd99e2727f4",
+        "e66136903a98099c5465babb255cbbff758bb4de2e6802a747a2007a22ef32a9",
 }
 
 MUTABLE_UI_FILES = (
@@ -685,33 +685,99 @@ def main() -> int:
         "electron/.gitignore",
         "electron/renderer/index.html",
         "electron/renderer/styles.css",
-        "data/kdrg_v47_search_integrated.json",
+        "data/kdrg_v47_search_integrated_v3.json",
         "data/kdrg_v47_ui_semantic_profile.json",
         "data/kdrg_v47_ui_display_contract.json",
     )
+    tracked_critical_result = run_command(
+        [
+            "git",
+            "ls-files",
+            "--",
+            *critical_eol_files,
+        ]
+    )
+    outputs["Git EOL 추적대상"] = tracked_critical_result
+    check(
+        "Git EOL 추적대상 조회 종료코드",
+        tracked_critical_result["returncode"],
+        0,
+    )
+    tracked_critical_files = [
+        line.strip()
+        for line in tracked_critical_result["stdout"].splitlines()
+        if line.strip()
+    ]
+
     eol_result = run_command(
         [
             "git",
             "ls-files",
             "--eol",
             "--",
-            *critical_eol_files,
+            *tracked_critical_files,
         ]
     )
     outputs["Git EOL 정책"] = eol_result
     check("Git EOL 정책 종료코드", eol_result["returncode"], 0)
+
+    eol_lines = [
+        line
+        for line in eol_result["stdout"].splitlines()
+        if line.strip()
+    ]
+    eol_paths = {
+        line.rsplit(None, 1)[-1]
+        for line in eol_lines
+    }
+    untracked_critical_files = [
+        relative
+        for relative in critical_eol_files
+        if relative not in tracked_critical_files
+    ]
+    untracked_eol_details = []
+    for relative in untracked_critical_files:
+        path = ROOT / relative
+        attr_result = run_command(
+            ["git", "check-attr", "eol", "--", relative]
+        )
+        outputs[f"Git EOL 속성 {relative}"] = attr_result
+        raw = path.read_bytes() if path.is_file() else b""
+        untracked_eol_details.append(
+            {
+                "file": relative,
+                "exists": path.is_file(),
+                "has_cr": b"\r" in raw,
+                "attr_returncode": attr_result["returncode"],
+                "attr_stdout": attr_result["stdout"].strip(),
+                "ok": (
+                    path.is_file()
+                    and b"\r" not in raw
+                    and attr_result["returncode"] == 0
+                    and attr_result["stdout"].strip().endswith(": eol: lf")
+                ),
+            }
+        )
+
     check(
         "Git EOL 핵심 텍스트 전체 LF",
-        eol_result["stdout"],
-        f"{len(critical_eol_files)} lines with i/lf and attr/text eol=lf",
+        {
+            "tracked_expected": sorted(tracked_critical_files),
+            "tracked_reported": sorted(eol_paths),
+            "tracked_lines": eol_lines,
+            "untracked": untracked_eol_details,
+        },
+        "tracked=git ls-files --eol / untracked=byte+check-attr eol=lf",
         lambda value, _expected: (
-            len([line for line in value.splitlines() if line.strip()])
+            len(tracked_critical_files) + len(untracked_critical_files)
             == len(critical_eol_files)
+            and value["tracked_reported"] == value["tracked_expected"]
+            and len(value["tracked_lines"]) == len(tracked_critical_files)
             and all(
                 "i/lf" in line and "attr/text eol=lf" in line
-                for line in value.splitlines()
-                if line.strip()
+                for line in value["tracked_lines"]
             )
+            and all(item["ok"] for item in value["untracked"])
         ),
     )
 
@@ -795,7 +861,7 @@ def main() -> int:
             "Stage 50B parity status 계약 self-test": (
                 [str(node), "tests/run-search-parity.js", "--self-test"],
                 ELECTRON,
-                "Python-JavaScript status parity self-test: 4 PASS / 0 FAIL",
+                "Python-JavaScript recursive subset parity self-test: 10 PASS / 0 FAIL",
             ),
             "Stage 50D packaged smoke 계약 회귀검증": (
                 [str(node), "tests/validate-packaged-runtime-smoke.js"],
@@ -882,7 +948,7 @@ def main() -> int:
         and all(
             token in immutable_block
             for token in (
-                "kdrg_v47_search_integrated.json",
+                "kdrg_v47_search_integrated_v3.json",
                 "kdrg_v47_ui_semantic_profile.json",
                 "kdrg_v47_ui_display_contract.json",
             )
@@ -899,10 +965,13 @@ def main() -> int:
         True,
     )
     check(
-        "parity status additive field 허용",
+        "parity 재귀 baseline subset 계약",
         "projectStatusByBaseline" in parity_source
-        and "additiveStatusKeys" in parity_source
-        and "check('status', status, baseline.status)" not in parity_source,
+        and "projectByBaseline" in parity_source
+        and "additiveObjectKeys" in parity_source
+        and "array length changed" in parity_source
+        and "unexpected actual status transition value" in parity_source
+        and "checkProjected" in parity_source,
         True,
     )
     check(

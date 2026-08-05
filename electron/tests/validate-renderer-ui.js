@@ -7,10 +7,10 @@ const { KdrgSearchService } = require('../src/kdrg-search-service');
 const { normalizeSearchRequest } = require('../src/search-result-contract');
 const Ui = require('../renderer/ui-formatters');
 
-const SCRIPT_VERSION = '2026-07-31_KDRG_V47_ELECTRON_STAGE50G_PUBLIC_RESULT_INLINE_TABLE_UI_VALIDATOR_V3';
+const SCRIPT_VERSION = '2026-08-04_KDRG_V47_ELECTRON_STAGE51C_USER_CONDITION_UI_VALIDATOR_V1';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const WORKSPACE_ROOT = path.resolve(ELECTRON_ROOT, '..');
-const DATA_PATH = path.join(WORKSPACE_ROOT, 'data', 'kdrg_v47_search_integrated.json');
+const DATA_PATH = path.join(WORKSPACE_ROOT, 'data', 'kdrg_v47_search_integrated_v3.json');
 
 let passCount = 0;
 const failures = [];
@@ -153,10 +153,13 @@ check('검색 bridge 사용', () => assert.match(appJs, /window\.KDRG\.search/))
 check('관계검색 bridge 사용', () => assert.match(appJs, /window\.KDRG\.relationSearch/));
 check('상세 bridge 사용', () => assert.match(appJs, /window\.KDRG\.getDetail/));
 check('검색 status bridge 사용', () => assert.match(appJs, /window\.KDRG\.getSearchStatus/));
-check('기본 TABLE 섹션', () => assert.match(appJs, /기본 분류 TABLE/));
-check('추가 분기조건 섹션', () => assert.match(appJs, /추가 분기조건/));
-check('제외 문구', () => assert.match(appJs, /단, 다음 대상은 제외/));
-check('기술식 접기', () => assert.match(appJs, /기술식·원문 근거 보기/));
+check('분류 조건 섹션', () => assert.match(appJs, /'분류 조건'/));
+check('조건 상세 섹션', () => assert.match(appJs, /'조건 상세'/));
+check('원문 근거 섹션', () => assert.match(appJs, /'원문 근거'/));
+check('구형 기본 TABLE 제거', () => assert.doesNotMatch(appJs, /기본 분류 TABLE/));
+check('구형 추가 분기조건 제거', () => assert.doesNotMatch(appJs, /추가 분기조건/));
+check('사용자 조건 TABLE 계약', () => assert.match(appJs, /detail\.user_condition_tables/));
+check('추정 TABLE 표시 금지', () => assert.match(appJs, /TABLE을 추정 표시하지 않습니다/));
 check('상세 section details 사용', () => assert.match(appJs, /create\('details', 'detail-section'\)/));
 check('전체 펼치기 제어', () => assert.match(appJs, /setAllDetailSections\(true\)/));
 check('전체 접기 제어', () => assert.match(appJs, /setAllDetailSections\(false\)/));
@@ -221,6 +224,12 @@ for (const className of [
   'inline-code-row',
   'table-technical-button',
   'derived-aadrg-row',
+  'user-condition-summary',
+  'user-condition-text',
+  'user-condition-warning',
+  'user-condition-empty',
+  'user-condition-table-stack',
+  'user-condition-evidence',
 ]) {
   check(`CSS class ${className}`, () => assert.match(css, new RegExp(`\\.${className.replace('-', '\\-')}`)));
 }
@@ -241,6 +250,7 @@ check('분류 A', () => assert.equal(Ui.classificationLabel('A'), '질병군 분
 check('중복 문자열 제거', () => assert.deepEqual(Ui.uniqueStrings(['A', 'A', '', 'B']), ['A', 'B']));
 check('목록 축약', () => assert.equal(Ui.summarizeList(['A', 'B', 'C'], 2), 'A, B 외 1개'));
 check('빈 AST', () => assert.deepEqual(Ui.buildConditionGroups(null), []));
+check('사용자 조건 formatter export', () => assert.equal(typeof Ui.userConditionCoverage, 'function'));
 
 const service = new KdrgSearchService(DATA_PATH);
 check('service ready', () => assert.equal(service.status().ready, true));
@@ -259,13 +269,24 @@ check('E011 조건 그룹 2개', () => assert.equal(e011Groups.length, 2));
 check('E011 첫 그룹 include table1', () => assert.deepEqual(e011Groups[0].includes[0].table_ids, ['LT_E011_001']));
 check('E011 두 번째 include table2', () => assert.deepEqual(e011Groups[1].includes[0].table_ids, ['LT_E011_002']));
 check('E011 두 번째 exclude 부가코드', () => assert.deepEqual(e011Groups[1].excludes[0].table_ids, ['LT_E011_003']));
-check('E011 coverage AST', () => assert.equal(Ui.conditionCoverage(e011).has_condition_ast, true));
-check('E011 기본 TABLE 3개', () => assert.equal(Ui.conditionCoverage(e011).basic_table_ids.length, 3));
+check('E011 사용자 조건 AST', () => assert.equal(Ui.userConditionCoverage(e011).status, 'RESOLVED_AST'));
+check('E011 사용자 조건 TABLE 3개', () => assert.equal(Ui.userConditionCoverage(e011).table_count, 3));
+
+const detailB013 = service.getDetail('ADRG', 'B013').detail;
+check('B013 사용자 table2', () => assert.deepEqual(Ui.userConditionCoverage(detailB013).table_ids, ['LT_B018_002']));
+const detailB018 = service.getDetail('ADRG', 'B018').detail;
+check('B018 사용자 TABLE 1·4·5', () => assert.deepEqual(Ui.userConditionCoverage(detailB018).table_ids, ['LT_B018_001', 'LT_B018_004', 'LT_B018_005']));
+const detailB022 = service.getDetail('ADRG', 'B022').detail;
+check('B022 검토 필요', () => assert.equal(Ui.userConditionCoverage(detailB022).needs_review, true));
+check('B022 TABLE 카드 없음', () => assert.deepEqual(detailB022.user_condition_tables, []));
+const detailL033 = service.getDetail('ADRG', 'L033').detail;
+check('L033 검토 필요', () => assert.equal(Ui.userConditionCoverage(detailL033).needs_review, true));
+check('L033 TABLE 카드 없음', () => assert.deepEqual(detailL033.user_condition_tables, []));
 
 const detail9610 = service.getDetail('ADRG', '9610').detail;
 check('9610 AST 없음', () => assert.equal(detail9610.condition_ast, null));
-check('9610 coverage 기본 TABLE만', () => assert.equal(Ui.conditionCoverage(detail9610).state, 'BASIC_TABLE_NO_EXTRA_CONDITION'));
-check('9610 기본 TABLE ID', () => assert.deepEqual(Ui.conditionCoverage(detail9610).basic_table_ids, ['LT_9610_001']));
+check('9610 명시적 조건 없음', () => assert.equal(Ui.userConditionCoverage(detail9610).status, 'NO_EXPLICIT_CONDITION'));
+check('9610 사용자 TABLE 없음', () => assert.deepEqual(Ui.userConditionCoverage(detail9610).table_ids, []));
 
 const detail9620 = service.getDetail('ADRG', '9620').detail;
 const groups9620 = Ui.buildConditionGroups(detail9620.condition_ast);

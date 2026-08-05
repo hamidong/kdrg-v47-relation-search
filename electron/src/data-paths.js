@@ -3,7 +3,7 @@
 const path = require('node:path');
 
 const DATA_FILES = Object.freeze({
-  integrated: 'kdrg_v47_search_integrated.json',
+  integrated: 'kdrg_v47_search_integrated_v3.json',
   semanticProfile: 'kdrg_v47_ui_semantic_profile.json',
   displayContract: 'kdrg_v47_ui_display_contract.json',
 });

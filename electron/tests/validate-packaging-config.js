@@ -10,8 +10,8 @@ const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const ROOT = path.resolve(ELECTRON_ROOT, '..');
 
 const EXPECTED_DATA = Object.freeze({
-  'kdrg_v47_search_integrated.json':
-    '3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1',
+  'kdrg_v47_search_integrated_v3.json':
+    'd865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda',
   'kdrg_v47_ui_semantic_profile.json':
     'c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e',
   'kdrg_v47_ui_display_contract.json':

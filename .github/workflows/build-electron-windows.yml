@@ -51,7 +51,7 @@ jobs:
           git check-attr text eol -- electron/.gitignore
           git check-attr text eol -- electron/renderer/index.html
           git check-attr text eol -- electron/renderer/styles.css
-          git check-attr text eol -- data/kdrg_v47_search_integrated.json
+          git check-attr text eol -- data/kdrg_v47_search_integrated_v3.json
           git check-attr text eol -- data/kdrg_v47_ui_semantic_profile.json
           git check-attr text eol -- data/kdrg_v47_ui_display_contract.json
 
@@ -265,9 +265,23 @@ jobs:
       - name: packaged exe 데이터·검색·renderer 기동검증
         shell: pwsh
         run: |
+          $reportPath = Join-Path $env:RUNNER_TEMP "kdrg_electron_packaged_smoke_report.json"
+          $screenshotDirectory = Join-Path $env:RUNNER_TEMP "kdrg_electron_packaged_ui_smoke"
+          $evidenceZip = Join-Path $PWD "electron\dist\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip"
+
           & "electron/scripts/verify-windows-portable.ps1" `
             -ExePath "${{ steps.artifact.outputs.exe_path }}" `
-            -ReportPath "$env:RUNNER_TEMP\kdrg_electron_packaged_smoke_report.json"
+            -ReportPath $reportPath `
+            -ScreenshotDirectory $screenshotDirectory `
+            -EvidenceZipPath $evidenceZip
+
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }
+
+          Write-Host "===== UI smoke evidence ====="
+          Get-Item $evidenceZip | Format-List FullName,Length,LastWriteTime
+          Get-FileHash $evidenceZip -Algorithm SHA256 | Format-List
 
       - name: SHA256 생성
         shell: pwsh
@@ -313,8 +327,10 @@ jobs:
           "- Search/UI/security regression: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- electron-builder portable x64: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- Packaged data/search/renderer smoke: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Packaged 실제 UI B013·B014·B018·B022·L033·9610: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- UI screenshot 6장·TABLE 인라인 코드 로드·console error 0: PASS" >> $env:GITHUB_STEP_SUMMARY
           "- Actions artifact upload: 사용하지 않음" >> $env:GITHUB_STEP_SUMMARY
-          "- GitHub Release Assets: Electron 태그에서만 업로드" >> $env:GITHUB_STEP_SUMMARY
+          "- GitHub Release Assets: Electron 태그에서만 exe·SHA256·UI 증거 ZIP 업로드" >> $env:GITHUB_STEP_SUMMARY
 
       - name: GitHub Release 생성 및 Electron exe 업로드
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
@@ -326,5 +342,6 @@ jobs:
           files: |
             electron/dist/${{ steps.artifact.outputs.exe_name }}
             electron/dist/SHA256SUMS_ELECTRON.txt
+            electron/dist/KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip
           fail_on_unmatched_files: true
           generate_release_notes: true
