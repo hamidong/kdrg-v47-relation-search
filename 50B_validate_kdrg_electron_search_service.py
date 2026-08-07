@@ -16,7 +16,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-30_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V5_RELATION_SEARCH"
+SCRIPT_VERSION = "2026-08-07_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V6_DUAL_DATA_FINGERPRINT"
 ROOT = Path(__file__).resolve().parent
 ELECTRON = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -25,7 +25,7 @@ REPORT_JSON = REPORT_DIR / "electron_stage50b_validation_report.json"
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated.json": "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
-    "data/kdrg_v47_search_integrated_v3.json": "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
+    "data/kdrg_v47_search_integrated_v3.json": "3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce",
     "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
     "app/kdrg_search_service.py": "35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd",
@@ -34,6 +34,19 @@ PROTECTED_HASHES = {
     "tests/windows_runtime_source_smoke.py": "5fc535d44956e4e5efef3e4356c5f8629954b5a9e60bf6d912987257629fc907",
     "version.py": "2c30bcec8f896845e26f371297c75dde609a27df693059c9faab3d91b828506c",
 }
+
+PYTHON_BASELINE_SEARCH_DOCUMENT_FINGERPRINT = (
+    "8a832be02ae4dec16c3cfc93d2be8366"
+    "914c23fdb0872bfa088a1a6c788f56f3"
+)
+ELECTRON_V3_SEARCH_DOCUMENT_FINGERPRINT = (
+    "21817c6b75cf307ac4db421020f53d72"
+    "b363f795fef06b319fa6f50fc3d5ee49"
+)
+EXPECTED_SEMANTIC_FINGERPRINT = (
+    "e734f6550461414eedf7d2b042ebf4c2"
+    "74d174b9948e29573c516090fbc62405"
+)
 
 REQUIRED_ELECTRON_FILES = [
     "package.json",
@@ -534,6 +547,16 @@ def main() -> int:
     module, python_service = load_python_service()
     baseline = create_baseline(python_service, module)
     check("Python search document count", baseline["search_document_fingerprint"]["count"], 22943)
+    check(
+        "Python baseline search document fingerprint",
+        baseline["search_document_fingerprint"]["sha256"],
+        PYTHON_BASELINE_SEARCH_DOCUMENT_FINGERPRINT,
+    )
+    check(
+        "Python semantic fingerprint",
+        baseline["semantic_context_fingerprint"]["sha256"],
+        EXPECTED_SEMANTIC_FINGERPRINT,
+    )
     check("Python semantic relationship key count", baseline["semantic_context_fingerprint"]["key_count"], 906)
     check("Python semantic occurrence count", baseline["semantic_context_fingerprint"]["occurrence_count"], 939)
     check("Python exact ID audit", baseline["exact_id_audit"]["failures"], [])
@@ -557,6 +580,16 @@ def main() -> int:
         {"returncode": parity_result["returncode"], "stdout": parity_result["stdout"], "stderr": parity_result["stderr"]},
         "returncode=0 and PASS",
         lambda a, _e: a["returncode"] == 0 and "[PASS] Python-JavaScript 검색 동등성" in a["stdout"],
+    )
+    check(
+        "Python→Electron 검색 fingerprint 전이 계약",
+        parity_result["stdout"],
+        (
+            f"search_document_fingerprint_transition="
+            f"{PYTHON_BASELINE_SEARCH_DOCUMENT_FINGERPRINT}"
+            f"->{ELECTRON_V3_SEARCH_DOCUMENT_FINGERPRINT}"
+        ),
+        lambda actual, expected: expected in actual,
     )
 
     skeleton_validation = run_command([str(node), str(ELECTRON / "tests/validate-electron-skeleton.js")], ROOT)

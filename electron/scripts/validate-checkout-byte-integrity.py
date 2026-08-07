@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 IMMUTABLE_DATA_HASHES = {
     "data/kdrg_v47_search_integrated_v3.json":
-        "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
+        "3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce",
     "data/kdrg_v47_ui_semantic_profile.json":
         "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json":

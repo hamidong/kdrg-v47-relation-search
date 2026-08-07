@@ -1011,29 +1011,78 @@ footer { display: none; }
   padding: 9px;
   background: #fff;
 }
-.inline-code-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  max-height: 320px;
-  overflow: auto;
-  padding-right: 3px;
-}
-.inline-code-row {
-  min-width: 0;
-  display: grid;
-  grid-template-columns: auto minmax(58px, auto) minmax(0, 1fr);
+.inline-code-toolbar {
+  display: flex;
   align-items: center;
-  gap: 7px;
-  border: 1px solid #dce5ef;
-  border-radius: 8px;
-  padding: 7px 8px;
-  background: #fbfdff;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
 }
-.inline-code-row small {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.inline-code-result-count {
+  color: #17375f;
+  font-size: 12px;
   white-space: nowrap;
-  color: #6c7e93;
+}
+.inline-code-search {
+  width: min(420px, 72%);
+  border: 1px solid #bfd0e3;
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: #fff;
+  color: #15263b;
+}
+.inline-code-search:focus {
+  border-color: #5689c2;
+  outline: 2px solid #dcecff;
+}
+.inline-code-table-viewport {
+  max-height: 360px;
+  overflow: auto;
+  border: 1px solid #d4dfeb;
+  border-radius: 8px;
+  background: #fff;
+}
+.inline-code-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 12px;
+}
+.inline-code-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 8px 10px;
+  border-bottom: 1px solid #c9d7e5;
+  background: #eaf2f9;
+  color: #15365d;
+  text-align: left;
+}
+.inline-code-column { width: 150px; }
+.inline-code-row {
+  background: #fff;
+}
+.inline-code-table tbody td {
+  padding: 7px 10px;
+  border-bottom: 1px solid #e1e8f0;
+  vertical-align: top;
+}
+.inline-code-table tbody tr:nth-child(even) { background: #f7faff; }
+.inline-code-table tbody tr:hover { background: #edf6ff; }
+.inline-code-value {
+  font-weight: 800;
+  color: #102d50;
+  word-break: break-all;
+}
+.inline-code-name {
+  color: #344b66;
+  line-height: 1.45;
+  word-break: break-word;
+}
+.inline-code-empty-row td {
+  padding: 20px 10px;
+  color: #64748b;
+  text-align: center;
 }
 .inline-table-actions {
   display: flex;
@@ -1092,3 +1141,71 @@ footer { display: none; }
 }
 .user-condition-table-stack { display: grid; gap: 8px; }
 .user-condition-evidence { display: grid; gap: 8px; }
+/* Stage 52: 논리조건·직접 코드조건·검색형 TABLE */
+.condition-expression {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.condition-operator {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 7px;
+  padding: 5px 8px;
+  font-size: 11px;
+  line-height: 1;
+}
+.condition-operator-and { background: #e7f1ff; color: #174f8b; }
+.condition-operator-or { background: #eee9ff; color: #5c3ea4; }
+.condition-operator-without { background: #fff0f0; color: #a22b35; }
+.condition-logic-group {
+  display: grid;
+  gap: 8px;
+  border: 1px solid #cbd9e8;
+  border-radius: 10px;
+  padding: 10px;
+  background: #f8fbff;
+}
+.condition-logic-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.condition-logic-block {
+  display: grid;
+  gap: 8px;
+  border-radius: 9px;
+  padding: 10px;
+}
+.condition-logic-block > p { margin: 0; color: #536980; }
+.condition-include-block {
+  border: 1px solid #bfd5eb;
+  background: #f3f9ff;
+}
+.condition-exclude-block {
+  border: 1px solid #e7b9bd;
+  background: #fff6f6;
+}
+.direct-condition-block {
+  border: 1px solid #cbbdea;
+  background: #faf7ff;
+}
+.condition-logic-title { color: #17375f; }
+.condition-exclude-block .condition-logic-title { color: #9a2932; }
+.direct-condition-chip {
+  background: #eee8ff;
+  color: #5a3d98;
+}
+.direct-condition-text {
+  border-color: #cbbdea;
+  background: #faf7ff;
+}
+.condition-requirement-block {
+  border: 1px solid #ead6a8;
+  border-radius: 9px;
+  padding: 9px 10px;
+  background: #fffaf0;
+}
+.condition-requirement-block p { margin: 5px 0 0; }

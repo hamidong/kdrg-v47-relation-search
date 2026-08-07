@@ -486,28 +486,82 @@ function tableUserLabel(summary, options = {}) {
   return '원문 TABLE명 미수록';
 }
 
+function codeRecordText(record) {
+  const code = String(record?.entity_id || record?.summary?.code || '-');
+  const name = String(
+    record?.summary?.names?.[0]
+      || record?.subtitle
+      || '코드명 원천 미수록',
+  );
+  return { code, name };
+}
 function renderInlineTableCodeList(detail) {
   const body = create('div', 'inline-table-code-list');
   const records = Array.isArray(detail?.code_records) ? detail.code_records : [];
-  const limit = 160;
   if (!records.length) {
     body.append(create('p', 'muted', 'TABLE 코드가 없습니다.'));
     return body;
   }
-  const grid = create('div', 'code-grid inline-code-grid');
-  for (const record of records.slice(0, limit)) {
-    const row = create('div', 'inline-code-row');
-    row.append(
-      makeBadge('CODE'),
-      create('strong', '', record.entity_id || record.summary?.code || '-'),
-      create('small', '', record.subtitle || record.summary?.names?.[0] || '코드명 원천 미수록'),
-    );
-    grid.append(row);
+
+  const toolbar = create('div', 'inline-code-toolbar');
+  const resultCount = create('strong', 'inline-code-result-count');
+  const search = create('input', 'inline-code-search');
+  search.type = 'search';
+  search.placeholder = '현재 목록에서 코드 또는 코드명 검색';
+  search.setAttribute('aria-label', '현재 TABLE의 코드 또는 코드명 검색');
+  toolbar.append(resultCount, search);
+
+  const viewport = create('div', 'inline-code-table-viewport');
+  const table = create('table', 'inline-code-table');
+  const head = create('thead');
+  const headRow = create('tr');
+  headRow.append(
+    create('th', 'inline-code-column', '코드'),
+    create('th', 'inline-code-name-column', '코드명'),
+  );
+  head.append(headRow);
+  const tbody = create('tbody');
+  table.append(head, tbody);
+  viewport.append(table);
+
+  const normalized = records.map((record) => {
+    const values = codeRecordText(record);
+    return {
+      ...values,
+      searchText: `${values.code} ${values.name}`.toUpperCase(),
+    };
+  });
+
+  function renderRows() {
+    const query = String(search.value || '').trim().toUpperCase();
+    const filtered = query
+      ? normalized.filter((record) => record.searchText.includes(query))
+      : normalized;
+
+    tbody.replaceChildren();
+    for (const record of filtered) {
+      const row = create('tr', 'inline-code-row');
+      row.append(
+        create('td', 'inline-code-value', record.code),
+        create('td', 'inline-code-name', record.name),
+      );
+      tbody.append(row);
+    }
+    if (!filtered.length) {
+      const row = create('tr', 'inline-code-empty-row');
+      const cell = create('td', '', '일치하는 코드 또는 코드명이 없습니다.');
+      cell.colSpan = 2;
+      row.append(cell);
+      tbody.append(row);
+    }
+    resultCount.textContent = query
+      ? `${Ui.formatNumber(filtered.length)} / ${Ui.formatNumber(records.length)}개`
+      : `전체 ${Ui.formatNumber(records.length)}개`;
   }
-  body.append(grid);
-  if (records.length > limit) {
-    body.append(create('p', 'list-limit-note', `화면 성능을 위해 처음 ${Ui.formatNumber(limit)}개만 표시합니다.`));
-  }
+
+  search.addEventListener('input', renderRows);
+  renderRows();
+  body.append(toolbar, viewport);
   return body;
 }
 
@@ -554,12 +608,18 @@ function tableCard(summary, options = {}) {
   const header = create('summary', 'table-card-summary');
   const identity = create('div', 'table-card-identity');
   identity.append(
-    makeBadge('TABLE'),
+    options.directCondition
+      ? makeChip('코드 목록', 'direct-condition-chip')
+      : makeBadge('TABLE'),
     create('strong', 'table-user-label', tableUserLabel(summary, options)),
     create('small', 'table-internal-id', `내부 ID ${tableId}`),
   );
   const meta = create('div', 'table-card-summary-meta');
-  const role = options.exclusion ? '제외 대상' : Ui.roleLabel(summaryData.logical_table_type || summaryData.logical_table_scope);
+  const role = options.directCondition
+    ? '직접 코드 조건'
+    : options.exclusion
+      ? '제외 대상'
+      : Ui.roleLabel(summaryData.logical_table_type || summaryData.logical_table_scope);
   meta.append(
     makeChip(role, options.exclusion ? 'exclusion-chip' : 'role-chip'),
     makeChip(`코드 ${Ui.formatNumber(summaryData.code_count ?? 0)}개`, 'table-code-count'),
@@ -584,18 +644,112 @@ function resolveTableSummary(tableId, summaryMap) {
   };
 }
 
+const DIRECT_CONDITION_ROLE_PATTERN = /^(주진단명|기타진단명|진단명|시술명|수술명|처치명|검사명|부가코드(?:명)?)$/i;
+const DIRECT_CONDITION_NEUTRAL_LABEL = '분류 코드 목록';
+function escapeRegExp(value) {
+  return String(value ?? '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+function directConditionLocalTablePattern(adrg) {
+  return new RegExp(`^LT_${escapeRegExp(adrg)}_\\d{3}$`, 'i');
+}
 function formatUserConditionText(value) {
-  return String(value ?? '')
-    .replace(/\s+and\s+/gi, ' 그리고 ')
-    .replace(/\s+or\s+/gi, ' 또는 ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  return String(value ?? '').replace(/\s+/g, ' ').trim();
+}
+function renderConditionExpression(value) {
+  const output = create('p', 'user-condition-text condition-expression');
+  const parts = formatUserConditionText(value).split(/(\bAND\b|\bOR\b|\bWITHOUT\b)/gi);
+  const operatorLabels = {
+    AND: 'AND · 모두 충족',
+    OR: 'OR · 하나 선택',
+    WITHOUT: 'WITHOUT · 해당 시 제외',
+  };
+  const operatorClasses = {
+    AND: 'condition-operator-and',
+    OR: 'condition-operator-or',
+    WITHOUT: 'condition-operator-without',
+  };
+  for (const part of parts) {
+    const token = String(part || '');
+    const operator = token.trim().toUpperCase();
+    if (operatorLabels[operator]) {
+      output.append(create(
+        'strong',
+        `condition-operator ${operatorClasses[operator]}`,
+        operatorLabels[operator],
+      ));
+    } else if (token) {
+      output.append(document.createTextNode(token));
+    }
+  }
+  return output;
+}
+function directConditionTables(detail) {
+  const coverage = Ui.userConditionCoverage(detail);
+  if (
+    coverage.status !== 'NO_EXPLICIT_CONDITION'
+    || detail?.condition_ast
+    || coverage.table_count
+  ) {
+    return [];
+  }
+
+  const adrg = String(detail?.adrg ?? '').trim();
+  const sourceIds = Ui.uniqueStrings(detail?.source_logical_table_ids ?? []);
+  if (!adrg || sourceIds.length !== 1) return [];
+
+  const tableId = sourceIds[0];
+  if (!directConditionLocalTablePattern(adrg).test(tableId)) return [];
+
+  const summaryMap = Ui.tableSummaryMap(detail);
+  const summary = summaryMap.get(tableId);
+  if (!summary) return [];
+
+  const summaryData = summary?.summary ?? summary ?? {};
+  const codeCount = Number(summaryData.code_count ?? 0);
+  if (codeCount <= 0) return [];
+
+  const sourceLabel = tableUserLabel(summary);
+  const hasOfficialRoleLabel = DIRECT_CONDITION_ROLE_PATTERN.test(sourceLabel);
+  const label = hasOfficialRoleLabel
+    ? sourceLabel
+    : DIRECT_CONDITION_NEUTRAL_LABEL;
+
+  return [{
+    tableId,
+    summary,
+    label,
+    codeCount,
+    hasOfficialRoleLabel,
+  }];
+}
+function conditionPresentation(detail) {
+  const coverage = Ui.userConditionCoverage(detail);
+  const directTables = directConditionTables(detail);
+  const groups = Ui.buildConditionGroups(detail?.condition_ast);
+  if (directTables.length) {
+    const text = directTables.every((item) => item.hasOfficialRoleLabel)
+      ? directTables
+          .map((item) => `${item.label} 코드가 아래 목록에 포함`)
+          .join(' 그리고 ')
+      : '아래 코드 목록 자체가 이 ADRG의 분류 조건입니다.';
+    return {
+      ...coverage,
+      status: 'DIRECT_CODE_CONDITION',
+      summary: `TABLE 번호 없는 직접 코드조건 ${Ui.formatNumber(directTables.length)}개`,
+      text,
+      has_text: true,
+      direct_tables: directTables,
+      groups: [],
+    };
+  }
+  return { ...coverage, direct_tables: [], groups };
 }
 
 function userConditionStatusLabel(status) {
   const labels = {
     RESOLVED_AST: '조건 TABLE 연결 완료',
     RESOLVED_SOURCE_LABELS: '조건 TABLE 연결 완료',
+    DIRECT_CODE_CONDITION: '직접 코드 조건',
     TEXT_ONLY: '조건 문구만 확인',
     UNRESOLVED_TABLE_LINK: 'TABLE 연결 검토 필요',
     NO_EXPLICIT_CONDITION: '명시적 조건 없음',
@@ -604,20 +758,22 @@ function userConditionStatusLabel(status) {
 }
 
 function renderUserConditionSummary(detail) {
-  const coverage = Ui.userConditionCoverage(detail);
+  const coverage = conditionPresentation(detail);
   const section = makeSection('분류 조건', coverage.summary, {
     open: true,
-    count: coverage.has_text ? 1 : 0,
+    count: coverage.has_text || coverage.groups.length ? 1 : 0,
   });
   const body = create('div', 'user-condition-summary');
   body.append(makeChip(
     userConditionStatusLabel(coverage.status),
     coverage.needs_review ? 'exclusion-chip' : 'role-chip',
   ));
-  if (coverage.status === 'NO_EXPLICIT_CONDITION') {
-    body.append(create('p', 'user-condition-empty', '분류집에서 별도의 명시적 분류 조건을 확인하지 못했습니다.'));
+  if (coverage.status === 'DIRECT_CODE_CONDITION') {
+    body.append(create('p', 'user-condition-text direct-condition-text', coverage.text));
   } else if (coverage.has_text) {
-    body.append(create('p', 'user-condition-text', formatUserConditionText(coverage.text)));
+    body.append(renderConditionExpression(coverage.text));
+  } else if (coverage.status === 'NO_EXPLICIT_CONDITION') {
+    body.append(create('p', 'user-condition-empty', '분류집에서 별도의 분류 조건과 직접 코드 목록을 확인하지 못했습니다.'));
   } else {
     body.append(create('p', 'user-condition-empty', '표시할 분류 조건 문구가 없습니다.'));
   }
@@ -628,42 +784,132 @@ function renderUserConditionSummary(detail) {
   return section;
 }
 
+function renderConditionLeafTables(container, leaves, summaryMap, options = {}) {
+  for (const leaf of leaves) {
+    for (const tableId of leaf.table_ids ?? []) {
+      container.append(tableCard(resolveTableSummary(tableId, summaryMap), {
+        displayLabel: leaf.display_text,
+        sourceText: leaf.source_fragment || leaf.display_text,
+        exclusion: options.exclusion === true,
+      }));
+    }
+  }
+}
+function renderConditionGroup(group, index, total, summaryMap) {
+  const article = create('article', 'condition-logic-group');
+  const header = create('div', 'condition-logic-header');
+  const operator = group.excludes.length
+    ? 'WITHOUT 조건'
+    : total > 1
+      ? 'OR 선택지'
+      : group.includes.length > 1
+        ? 'AND 조건'
+        : '포함 조건';
+  header.append(
+    create('strong', '', total > 1 ? `조건 선택지 ${index + 1}` : '조건 구조'),
+    makeChip(operator, group.excludes.length ? 'exclusion-chip' : 'role-chip'),
+  );
+  article.append(header);
+
+  if (group.includes.length) {
+    const includeBlock = create('div', 'condition-logic-block condition-include-block');
+    includeBlock.append(
+      create('strong', 'condition-logic-title', '포함 조건'),
+      create('p', '', '아래 TABLE 조건을 충족해야 합니다.'),
+    );
+    const stack = create('div', 'table-stack');
+    renderConditionLeafTables(stack, group.includes, summaryMap);
+    includeBlock.append(stack);
+    article.append(includeBlock);
+  }
+
+  if (group.excludes.length) {
+    const excludeBlock = create('div', 'condition-logic-block condition-exclude-block');
+    excludeBlock.append(
+      create('strong', 'condition-logic-title', '제외 조건 · WITHOUT'),
+      create('p', '', '아래 TABLE에 해당하면 이 ADRG에서 제외됩니다.'),
+    );
+    const stack = create('div', 'table-stack');
+    renderConditionLeafTables(stack, group.excludes, summaryMap, { exclusion: true });
+    excludeBlock.append(stack);
+    article.append(excludeBlock);
+  }
+
+  if (group.requirements.length) {
+    const requirements = create('div', 'condition-requirement-block');
+    requirements.append(create('strong', '', '추가 확인 조건'));
+    for (const item of group.requirements) {
+      requirements.append(create('p', '', item.text || item.display_text || '-'));
+    }
+    article.append(requirements);
+  }
+  return article;
+}
 function renderUserConditionTables(detail) {
-  const coverage = Ui.userConditionCoverage(detail);
+  const coverage = conditionPresentation(detail);
   const tables = Array.isArray(detail.user_condition_tables) ? detail.user_condition_tables : [];
+  const count = coverage.groups.length
+    || coverage.direct_tables.length
+    || tables.length;
   const section = makeSection(
     '조건 상세',
-    '분류 조건에서 실제로 사용하는 TABLE만 표시합니다. 카드를 펼치면 포함 코드를 현재 화면에서 확인할 수 있습니다.',
-    { open: true, count: tables.length },
+    'AND·OR·WITHOUT와 직접 코드조건을 구분해 표시합니다. 목록을 펼치면 코드·코드명 검색이 가능합니다.',
+    { open: true, count },
   );
   const body = create('div', 'table-stack user-condition-table-stack');
-  for (const summary of tables) {
-    body.append(tableCard(summary, {
-      displayLabel: summary?.user_condition_ref?.display_label,
-      sourceText: summary?.user_condition_ref?.display_label,
-    }));
+  const summaryMap = Ui.tableSummaryMap(detail);
+
+  if (coverage.groups.length) {
+    coverage.groups.forEach((group, index) => {
+      body.append(renderConditionGroup(group, index, coverage.groups.length, summaryMap));
+    });
+  } else if (coverage.direct_tables.length) {
+    const block = create('div', 'condition-logic-block direct-condition-block');
+    block.append(
+      create('strong', 'condition-logic-title', '직접 코드 조건'),
+      create('p', '', '원문에 table 번호가 없으며 아래 코드 목록 자체가 분류 조건입니다.'),
+    );
+    const stack = create('div', 'table-stack');
+    for (const item of coverage.direct_tables) {
+      stack.append(tableCard(item.summary, {
+        displayLabel: item.label,
+        sourceText: item.label,
+        directCondition: true,
+      }));
+    }
+    block.append(stack);
+    body.append(block);
+  } else {
+    for (const summary of tables) {
+      body.append(tableCard(summary, {
+        displayLabel: summary?.user_condition_ref?.display_label,
+        sourceText: summary?.user_condition_ref?.display_label,
+      }));
+    }
   }
-  if (!tables.length) {
+
+  if (!count) {
     body.append(create('p', 'user-condition-empty', coverage.needs_review
       ? '공식 근거가 유일하지 않아 TABLE 카드를 생성하지 않았습니다.'
-      : '표시할 조건 TABLE이 없습니다.'));
+      : '표시할 조건 TABLE 또는 직접 코드 목록이 없습니다.'));
   }
   section.append(body);
   return section;
 }
 
 function renderUserConditionEvidence(detail) {
+  const coverage = conditionPresentation(detail);
   const ast = detail.condition_ast;
   const page = detail.user_condition_page ?? ast?.page_range?.start_printed_page ?? null;
   const section = makeSection('원문 근거', '사용자 표시 조건의 출처와 기술 근거를 확인합니다.', {
     open: false,
-    count: detail.user_condition_source ? 1 : 0,
+    count: detail.user_condition_source || coverage.direct_tables.length ? 1 : 0,
   });
   const body = create('div', 'user-condition-evidence');
   body.append(makeMetaGrid([
-    ['조건 상태', userConditionStatusLabel(detail.user_condition_status)],
-    ['조건 원문', detail.user_condition_text || '명시적 조건 없음'],
-    ['근거 출처', detail.user_condition_source || '-'],
+    ['조건 상태', userConditionStatusLabel(coverage.status)],
+    ['조건 원문', detail.user_condition_text || coverage.text || '명시적 조건 없음'],
+    ['근거 출처', detail.user_condition_source || (coverage.direct_tables.length ? 'ADRG 원천 코드 목록' : '-')],
     ['근거 페이지', page || '-'],
     ['조건 AST', detail.condition_ast_id || '별도 AST 없음'],
     ['기술식', ast?.canonical_expression || '-'],
@@ -696,17 +942,28 @@ function renderDerivedAadrgList(records) {
   return container;
 }
 
+
+function displayNameText(value, fallback = '명칭 미수록') {
+  const text = String(value ?? '').replace(/\s+/g, ' ').trim();
+  if (!text || /^(null|none|undefined)$/i.test(text)) return fallback;
+  return text;
+}
+
+function adrgDisplayName(detail) {
+  return displayNameText(detail?.adrg_name);
+}
+
 function renderAdrgDetail(payload) {
   const detail = payload.detail;
   const fragment = document.createDocumentFragment();
   fragment.append(
     makeMetaGrid([
       ['ADRG', detail.adrg],
-      ['질병군명', detail.adrg_name],
+      ['질병군명', adrgDisplayName(detail)],
       ['MDC', detail.mdc ? `MDC ${detail.mdc}` : '-'],
       ['AADRG', `${Ui.formatNumber(detail.aadrg_count ?? 0)}개`],
       ['질병군 분류', Ui.summarizeList(detail.abc_display_labels)],
-      ['조건 상태', userConditionStatusLabel(detail.user_condition_status)],
+      ['조건 상태', userConditionStatusLabel(conditionPresentation(detail).status)],
     ], 'detail-overview-grid'),
   );
 
@@ -829,17 +1086,9 @@ function renderRuntimeContexts(contexts) {
 }
 
 function renderCodeRecords(records) {
-  const container = create('div', 'code-grid');
-  const limit = 160;
-  const rows = Array.isArray(records) ? records : [];
-  for (const record of rows.slice(0, limit)) {
-    container.append(makeEntityButton(record, 'code-link'));
-  }
-  if (!rows.length) container.append(create('p', 'muted', 'TABLE 코드가 없습니다.'));
-  if (rows.length > limit) {
-    container.append(create('p', 'list-limit-note', `화면 성능을 위해 처음 ${Ui.formatNumber(limit)}개만 표시합니다. 나머지 ${Ui.formatNumber(rows.length - limit)}개는 해당 코드로 검색해 확인할 수 있습니다.`));
-  }
-  return container;
+  return renderInlineTableCodeList({
+    code_records: Array.isArray(records) ? records : [],
+  });
 }
 
 function tableDetailUserLabel(detail) {
@@ -910,7 +1159,7 @@ function detailSummaryLine(payload) {
 
 function detailTitle(payload) {
   const detail = payload.detail ?? {};
-  if (payload.entity_type === 'ADRG') return `${detail.adrg} · ${detail.adrg_name}`;
+  if (payload.entity_type === 'ADRG') return `${detail.adrg} · ${adrgDisplayName(detail)}`;
   if (payload.entity_type === 'AADRG') return `${detail.aadrg} · ${detail.group_name}`;
   if (payload.entity_type === 'RDRG') return `${detail.code} · ${detail.group_name}`;
   if (payload.entity_type === 'TABLE') return tableDetailUserLabel(detail);

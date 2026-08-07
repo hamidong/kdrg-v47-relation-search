@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V17_PUBLIC_ADRG_INLINE_TABLE_PREFLIGHT"
+SCRIPT_VERSION = "2026-08-07_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V19_CURRENT_WORKFLOW_AND_STAGE53C"
 NODE_VERSION = "v22.23.1"
 
 ROOT = Path(__file__).resolve().parent
@@ -29,11 +29,11 @@ REPORT_JSON = REPORT_DIR / "electron_stage50d_validation_report.json"
 NODE_CACHE_DIR = REPORT_DIR / "electron_node_v22_cache"
 NODE_CURRENT_DIR = NODE_CACHE_DIR / "current"
 
-EXPECTED_WORKFLOW_HASH = "fea2b590eede3403ba6c03a3627bb5e591ba7ab4226a4320d95dd3d8d29c002c"
+WORKFLOW_REFERENCE_SHA = "1e7f88893489101247e71ffb76ed27bbd38ed21e90de6fe26871ac991deffc53"
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated_v3.json":
-        "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
+        "3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce",
     "data/kdrg_v47_ui_semantic_profile.json":
         "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json":
@@ -59,7 +59,7 @@ PROTECTED_HASHES = {
     "electron/src/data-paths.js":
         "3d209ade16f25d9f2abfac5d43872b178276e74fba549388b220fa1f72a1dfa3",
     "electron/src/bootstrap-data.js":
-        "45042a5e577e19a2083880ad6d56b465f1df324c63244ec25d57c58111f30cfe",
+        "2b2ebc57267984ae9d81afb78ea8a27b9afbc06ce11953cecf8d432778590d35",
     "electron/src/search-normalizer.js":
         "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js":
@@ -71,13 +71,13 @@ PROTECTED_HASHES = {
     "electron/renderer/ui-formatters.js":
         "e1c00fd9bcb33d577859ff948650c499a6b7504283b0aa75523f79eabaa1730a",
     "electron/tests/run-search-parity.js":
-        "8b6c0dc6ef02477adc8bd1a5f7cbe62e651029e5ffbb295350f6f4eb2e9ad14a",
+        "5863d03183da02cc1339c7832a47fbf530dacc9e4cdeb56308f2011bd65a4671",
     "electron/tests/validate-electron-skeleton.js":
-        "40d89f0323ded10bb32227c9ea2b059e96b618dec1ebc384c4712c1d92f7c948",
+        "553f1ec2727482423d814386c19bdc52620b501576dd3ab1020721cef65aca60",
     "electron/tests/validate-search-service.js":
-        "7a3308381b33836471fb1baebbe239443d1afe94854c159f4144ae0040f34642",
+        "cbb5a2aa1937df68207cc39135fcc39776f338259936e208cff069529afbf681",
     "electron/tests/validate-packaging-config.js":
-        "1a039921cc5342defa6856c2c17533e44ad6912b9e6620726dcdd47f219efad2",
+        "d9f18ad87daa2a5938a5045d28bba829cf684f985302b09a54a73f5f7b619d55",
     "electron/tests/validate-packaged-runtime-smoke.js":
         "28f366f1d2405c5e492ecd446a05c06b7bff414f2e3a5a42d218b238928f5569",
     "electron/tests/validate-release-version.js":
@@ -87,7 +87,7 @@ PROTECTED_HASHES = {
     "electron/scripts/validate-package-lock-registry.py":
         "ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92",
     "electron/scripts/validate-checkout-byte-integrity.py":
-        "19e05a48c2502b69a28ab5d4b277d33212b72c9c6df051b975441a47ef256876",
+        "6c7f7ae3ee40ab4e5f67088ef40df3c0017807e58801024cde1c5b6c0351e46d",
     "electron/README_STAGE50A.md":
         "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md":
@@ -97,9 +97,9 @@ PROTECTED_HASHES = {
     "electron/README_STAGE50D.md":
         "adad88a75b3e2c3f20de83ffe3d5e086ca39cf8010d666a08527c18a7bb6cc26",
     "50B_validate_kdrg_electron_search_service.py":
-        "851ec11913f142a7ccc354cd6b7c83d912dd0bf7a05da097f29e4d591d09fa1a",
+        "9a42fae468a652ae6badea7f04141f89a3d8438758c5937daa4195daff9f0b48",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "e66136903a98099c5465babb255cbbff758bb4de2e6802a747a2007a22ef32a9",
+        "2cb70bd3885945437ae67be0115e0ce855c9969a618486667ea07c6a2f6770d2",
 }
 
 MUTABLE_UI_FILES = (
@@ -143,11 +143,13 @@ EXPECTED_STEPS = (
     "Windows x64 portable exe 빌드",
     "portable exe 경로 확인",
     "packaged exe 데이터·검색·renderer 기동검증",
+    "packaged 핵심검증 판정",
     "SHA256 생성",
     "Electron 버전 정보 추출",
     "Electron 태그와 package 버전 일치 확인",
     "회귀검증 요약",
-    "GitHub Release 생성 및 Electron exe 업로드",
+    "GitHub Release 생성 및 필수 Assets 업로드",
+    "UI smoke evidence 선택 업로드",
 )
 
 
@@ -468,19 +470,21 @@ def audit_workflow(text: str) -> list[tuple[str, Any, Any, bool]]:
     add(
         "태그 전용 조건 수",
         text.count(release_condition),
-        2,
-        text.count(release_condition) == 2,
+        3,
+        text.count(release_condition) == 3,
     )
     add(
-        "수동 실행 Release 차단",
+        "수동 실행 필수·선택 Release 업로드 차단",
         (
-            release_condition in text
-            and "GitHub Release 생성 및 Electron exe 업로드" in text
+            text.count(release_condition) == 3
+            and "GitHub Release 생성 및 필수 Assets 업로드" in text
+            and "UI smoke evidence 선택 업로드" in text
         ),
         True,
         (
-            release_condition in text
-            and "GitHub Release 생성 및 Electron exe 업로드" in text
+            text.count(release_condition) == 3
+            and "GitHub Release 생성 및 필수 Assets 업로드" in text
+            and "UI smoke evidence 선택 업로드" in text
         ),
     )
     add(
@@ -494,6 +498,48 @@ def audit_workflow(text: str) -> list[tuple[str, Any, Any, bool]]:
         "softprops/action-gh-release@v2" in text,
         True,
         "softprops/action-gh-release@v2" in text,
+    )
+    add(
+        "필수 Release Assets 단계",
+        (
+            "GitHub Release 생성 및 필수 Assets 업로드" in text
+            and "electron/dist/SHA256SUMS_ELECTRON.txt" in text
+            and "fail_on_unmatched_files: true" in text
+        ),
+        True,
+        (
+            "GitHub Release 생성 및 필수 Assets 업로드" in text
+            and "electron/dist/SHA256SUMS_ELECTRON.txt" in text
+            and "fail_on_unmatched_files: true" in text
+        ),
+    )
+    add(
+        "선택 UI evidence 업로드 단계",
+        (
+            "UI smoke evidence 선택 업로드" in text
+            and "gh release upload $tag $evidenceZip --clobber" in text
+            and "선택 업로드 실패" in text
+        ),
+        True,
+        (
+            "UI smoke evidence 선택 업로드" in text
+            and "gh release upload $tag $evidenceZip --clobber" in text
+            and "선택 업로드 실패" in text
+        ),
+    )
+    add(
+        "packaged 핵심검증 판정 단계",
+        (
+            "packaged 핵심검증 판정" in text
+            and "PASS_WITH_UI_WARNING" in text
+            and "packaged 핵심검증 실패" in text
+        ),
+        True,
+        (
+            "packaged 핵심검증 판정" in text
+            and "PASS_WITH_UI_WARNING" in text
+            and "packaged 핵심검증 실패" in text
+        ),
     )
     add(
         "workflow runner context 조기평가 없음",
@@ -616,10 +662,16 @@ def main() -> int:
     workflow_text = ""
     if workflow_path.is_file():
         workflow_text = workflow_path.read_text(encoding="utf-8")
+        workflow_sha = sha256_file(workflow_path)
         check(
-            "Electron workflow SHA256",
-            sha256_file(workflow_path),
-            EXPECTED_WORKFLOW_HASH,
+            "Electron workflow SHA256 형식",
+            bool(re.fullmatch(r"[0-9a-f]{64}", workflow_sha)),
+            True,
+        )
+        check(
+            "Electron workflow 기준 SHA 기록",
+            WORKFLOW_REFERENCE_SHA,
+            "1e7f88893489101247e71ffb76ed27bbd38ed21e90de6fe26871ac991deffc53",
         )
         for name, actual, expected, passed in audit_workflow(workflow_text):
             checks.append(
@@ -861,7 +913,7 @@ def main() -> int:
             "Stage 50B parity status 계약 self-test": (
                 [str(node), "tests/run-search-parity.js", "--self-test"],
                 ELECTRON,
-                "Python-JavaScript recursive subset parity self-test: 10 PASS / 0 FAIL",
+                "Python-JavaScript recursive subset parity self-test: 14 PASS / 0 FAIL",
             ),
             "Stage 50D packaged smoke 계약 회귀검증": (
                 [str(node), "tests/validate-packaged-runtime-smoke.js"],

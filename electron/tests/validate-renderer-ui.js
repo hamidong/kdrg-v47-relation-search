@@ -7,7 +7,7 @@ const { KdrgSearchService } = require('../src/kdrg-search-service');
 const { normalizeSearchRequest } = require('../src/search-result-contract');
 const Ui = require('../renderer/ui-formatters');
 
-const SCRIPT_VERSION = '2026-08-04_KDRG_V47_ELECTRON_STAGE51C_USER_CONDITION_UI_VALIDATOR_V1';
+const SCRIPT_VERSION = '2026-08-07_KDRG_V47_ELECTRON_STAGE53C_ADRG_NAME_RECOVERY_VALIDATOR_V5';
 const ELECTRON_ROOT = path.resolve(__dirname, '..');
 const WORKSPACE_ROOT = path.resolve(ELECTRON_ROOT, '..');
 const DATA_PATH = path.join(WORKSPACE_ROOT, 'data', 'kdrg_v47_search_integrated_v3.json');
@@ -167,6 +167,11 @@ check('전체 접기 제어', () => assert.match(appJs, /setAllDetailSections\(f
 check('검색결과 컴팩트 행 구조', () => assert.match(appJs, /create\('div', 'result-card-main'\)/));
 check('검색결과 보조 메타 행', () => assert.match(appJs, /result-meta-row/));
 check('상세 핵심 요약 함수', () => assert.match(appJs, /function detailSummaryLine\(payload\)/));
+check('ADRG 명칭 null 방어 함수', () => assert.match(appJs, /function displayNameText\(/));
+check('ADRG 표시명 전용 함수', () => assert.match(appJs, /function adrgDisplayName\(/));
+check('ADRG 상세 제목 null 방어', () => assert.match(appJs, /\$\{detail\.adrg\} · \$\{adrgDisplayName\(detail\)\}/));
+check('ADRG 메타 명칭 null 방어', () => assert.match(appJs, /\['질병군명', adrgDisplayName\(detail\)\]/));
+check('ADRG 원시 명칭 직접 보간 제거', () => assert.doesNotMatch(appJs, /\$\{detail\.adrg\} · \$\{detail\.adrg_name\}/));
 check('상세 요약 그리드', () => assert.match(appJs, /detail-overview-grid/));
 check('상태 문구 간소화', () => {
   assert.match(appJs, /`\$\{Ui\.formatNumber\(response\.total_count\)\}건`/);
@@ -187,7 +192,16 @@ check('관계 level strict 설명', () => assert.match(appJs, /같은 조건 선
 check('관계 level split 경고', () => assert.match(appJs, /서로 다른 OR 조건 선택지/));
 check('관계검색 제외 TABLE 표시', () => assert.match(appJs, /relation-group-exclusion/));
 check('관계검색 sequence guard', () => assert.match(appJs, /relationSequence/));
-check('TABLE 코드 표시 상한', () => assert.match(appJs, /const limit = 160/));
+check('TABLE 코드·코드명 검색', () => assert.match(appJs, /현재 TABLE의 코드 또는 코드명 검색/));
+check('TABLE 검색형 2열 표', () => assert.match(appJs, /create\('table', 'inline-code-table'\)/));
+check('TABLE 전체 코드 표시', () => assert.doesNotMatch(appJs, /const limit = 160/));
+check('직접 코드조건 판별', () => assert.match(appJs, /function directConditionTables\(/));
+check('직접 코드조건 단일 원천 TABLE 제한', () => assert.match(appJs, /sourceIds\.length !== 1/));
+check('직접 코드조건 ADRG 로컬 TABLE 제한', () => assert.match(appJs, /function directConditionLocalTablePattern\(/));
+check('직접 코드조건 중립 라벨', () => assert.match(appJs, /분류 코드 목록/));
+check('직접 코드조건 중립 설명', () => assert.match(appJs, /아래 코드 목록 자체가 이 ADRG의 분류 조건입니다/));
+check('WITHOUT 제외 구조', () => assert.match(appJs, /제외 조건 · WITHOUT/));
+check('AND·OR·WITHOUT 시각 토큰', () => assert.match(appJs, /condition-operator-without/));
 check('검색 sequence guard', () => assert.match(appJs, /searchSequence/));
 check('상세 sequence guard', () => assert.match(appJs, /detailSequence/));
 
@@ -222,6 +236,11 @@ for (const className of [
   'table-card-summary',
   'inline-table-content',
   'inline-code-row',
+  'inline-code-table',
+  'inline-code-search',
+  'condition-logic-group',
+  'condition-exclude-block',
+  'direct-condition-block',
   'table-technical-button',
   'derived-aadrg-row',
   'user-condition-summary',
@@ -254,6 +273,31 @@ check('사용자 조건 formatter export', () => assert.equal(typeof Ui.userCond
 
 const service = new KdrgSearchService(DATA_PATH);
 check('service ready', () => assert.equal(service.status().ready, true));
+const integratedData = JSON.parse(fs.readFileSync(DATA_PATH, 'utf8'));
+const missingAdrgNames = (integratedData.adrg_records ?? []).filter((record) => {
+  const value = String(record?.adrg_name ?? '').trim();
+  return !value || /^(null|none|undefined)$/i.test(value);
+});
+check('ADRG 데이터 1,132개', () => assert.equal((integratedData.adrg_records ?? []).length, 1132));
+check('ADRG 명칭 누락 0개', () => assert.equal(missingAdrgNames.length, 0));
+
+const detailI653Name = service.getDetail('ADRG', 'I653').detail;
+check('I653 공식 ADRG명', () => assert.equal(detailI653Name.adrg_name, '병적 골절을 포함한 결합조직의 악성종양(방사선치료 및 화학요법을 받지 않은 경우)'));
+const detailI760Name = service.getDetail('ADRG', 'I760').detail;
+check('I760 복원 ADRG명', () => assert.equal(detailI760Name.adrg_name, '기타 근골격계 질환'));
+const detailB510Name = service.getDetail('ADRG', 'B510').detail;
+check('B510 복원 ADRG명', () => assert.equal(detailB510Name.adrg_name, '뇌파검사'));
+const detailT620Name = service.getDetail('ADRG', 'T620').detail;
+check('T620 한 글자 ADRG명', () => assert.equal(detailT620Name.adrg_name, '열'));
+
+const searchI653Name = service.search('병적 골절을 포함한 결합조직의 악성종양', 'ADRG', { limit: 100 });
+check('I653 복원 명칭검색', () => assert.ok(searchI653Name.results.some((item) => item.entity_type === 'ADRG' && item.entity_id === 'I653')));
+const searchI760Name = service.search('기타 근골격계 질환', 'ADRG', { limit: 50 });
+check('I760 복원 명칭검색', () => assert.ok(searchI760Name.results.some((item) => item.entity_type === 'ADRG' && item.entity_id === 'I760')));
+const searchB510Name = service.search('뇌파검사', 'ADRG', { limit: 50 });
+check('B510 복원 명칭검색', () => assert.ok(searchB510Name.results.some((item) => item.entity_type === 'ADRG' && item.entity_id === 'B510')));
+const searchT620Name = service.search('열', 'ADRG', { limit: 50 });
+check('T620 한 글자 명칭검색', () => assert.ok(searchT620Name.results.some((item) => item.entity_type === 'ADRG' && item.entity_id === 'T620')));
 const publicRequest = normalizeSearchRequest({ query: 'A01.0', entityType: 'ALL', limit: 20 });
 const publicResults = service.search(publicRequest.query, publicRequest.entityType, { limit: publicRequest.limit });
 check('renderer ALL 계약 CODE/ADRG만 요청', () => assert.deepEqual(publicRequest.entityType, ['CODE', 'ADRG']));
@@ -285,8 +329,26 @@ check('L033 TABLE 카드 없음', () => assert.deepEqual(detailL033.user_conditi
 
 const detail9610 = service.getDetail('ADRG', '9610').detail;
 check('9610 AST 없음', () => assert.equal(detail9610.condition_ast, null));
-check('9610 명시적 조건 없음', () => assert.equal(Ui.userConditionCoverage(detail9610).status, 'NO_EXPLICIT_CONDITION'));
-check('9610 사용자 TABLE 없음', () => assert.deepEqual(Ui.userConditionCoverage(detail9610).table_ids, []));
+check('9610 원천 status 보존', () => assert.equal(Ui.userConditionCoverage(detail9610).status, 'NO_EXPLICIT_CONDITION'));
+check('9610 명시적 사용자 TABLE 없음', () => assert.deepEqual(Ui.userConditionCoverage(detail9610).table_ids, []));
+check('9610 source TABLE 존재', () => assert.deepEqual(detail9610.source_logical_table_ids, ['LT_9610_001']));
+check('9610 source TABLE ADRG 요약 존재', () => {
+  const summary = detail9610.logical_tables.find((item) => item.entity_id === 'LT_9610_001');
+  assert.ok(summary);
+  assert.equal(Number(summary.summary?.code_count ?? 0), 7);
+});
+check('9610 단일 로컬 TABLE 구조', () => {
+  assert.equal(detail9610.source_logical_table_ids.length, 1);
+  assert.match(detail9610.source_logical_table_ids[0], /^LT_9610_\d{3}$/);
+});
+check('9610 직접 코드조건 UI 계약', () => assert.match(appJs, /DIRECT_CODE_CONDITION/));
+
+const detailI760 = service.getDetail('ADRG', 'I760').detail;
+check('I760 다중 원천 TABLE 36개', () => assert.equal(detailI760.source_logical_table_ids.length, 36));
+check('I760 공용 TABLE 포함', () => assert.ok(
+  detailI760.source_logical_table_ids.some((tableId) => tableId.startsWith('LT_GROUP_')),
+));
+check('I760 직접 코드조건 자동 승격 차단 계약', () => assert.match(appJs, /sourceIds\.length !== 1/));
 
 const detail9620 = service.getDetail('ADRG', '9620').detail;
 const groups9620 = Ui.buildConditionGroups(detail9620.condition_ast);

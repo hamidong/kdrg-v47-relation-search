@@ -92,7 +92,7 @@ check('전체 entity exact ID audit failures', exactAudit.failures, [], (a) => a
 
 const documentFingerprint = service.debugSearchDocumentFingerprint();
 check('search document fingerprint count', documentFingerprint.count, 22943);
-check('search document fingerprint', documentFingerprint.sha256, '8a832be02ae4dec16c3cfc93d2be8366914c23fdb0872bfa088a1a6c788f56f3');
+check('search document fingerprint', documentFingerprint.sha256, '21817c6b75cf307ac4db421020f53d72b363f795fef06b319fa6f50fc3d5ee49');
 const semanticFingerprint = service.debugSemanticContextFingerprint();
 check('semantic fingerprint keys', semanticFingerprint.key_count, 906);
 check('semantic fingerprint occurrence', semanticFingerprint.occurrence_count, 939);
@@ -317,7 +317,7 @@ check('preload ipcRenderer object hidden', preloadSource.includes('ipcRenderer,'
 check('bootstrap search connected', bootstrapSource.includes('searchServiceConnected: true'), true);
 check('bootstrap Stage 51C', bootstrapSource.includes("stage: '51C_USER_CONDITION_UI_READY'"), true);
 
-console.log('validator=2026-07-31_KDRG_V47_ELECTRON_STAGE50G_PUBLIC_SEARCH_CONTRACT_VALIDATOR_V2');
+console.log('validator=2026-08-07_KDRG_V47_ELECTRON_STAGE53C_NAME_RECOVERY_SEARCH_VALIDATOR_V3');
 console.log(`electron_root=${ELECTRON_ROOT}`);
 console.log(`node=${process.version}`);
 if (failures.length) {

@@ -7,7 +7,7 @@ const path = require('node:path');
 const { DATA_FILES, resolveDataFiles } = require('../src/data-paths');
 const { buildBootstrapSnapshot } = require('../src/bootstrap-data');
 const { KdrgSearchService } = require('../src/kdrg-search-service');
-const EXPECTED_SHA = 'd865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda';
+const EXPECTED_SHA = '3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce';
 const ROOT = path.resolve(__dirname, '..');
 const failures = [];
 let passes = 0;
@@ -60,7 +60,7 @@ check('Stage 51C README old UI absent', () => {
   assert.doesNotMatch(currentReadme, /ADRG 추가 분기조건/);
 });
 check('byte validator v3 file', () => assert.match(byteValidator, /data\/kdrg_v47_search_integrated_v3\.json/));
-check('byte validator v3 SHA', () => assert.match(byteValidator, /d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda/));
+check('byte validator v3 SHA', () => assert.match(byteValidator, /3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce/));
 check('byte validator old runtime removed', () => assert.doesNotMatch(byteValidator, /data\/kdrg_v47_search_integrated\.json/));
 console.log(`sha256=${sha(files.integrated)}`);
 if (failures.length) { console.log(`[FAIL] Electron Stage 51C 독립검증: ${passes} PASS / ${failures.length} FAIL`); failures.forEach((x) => console.log(`- ${x}`)); process.exitCode = 1; }

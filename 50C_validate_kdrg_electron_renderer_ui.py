@@ -14,7 +14,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-07-31_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V8_PUBLIC_ADRG_INLINE_TABLE"
+SCRIPT_VERSION = "2026-08-07_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V9_STAGE53C_NAME_RECOVERY"
 ROOT = Path(__file__).resolve().parent
 ELECTRON_ROOT = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -26,7 +26,7 @@ NODE_RELEASE_BASE = "https://nodejs.org/download/release/latest-v22.x"
 NODE_CACHE_ROOT = ROOT.parent / ".cache" / "kdrg-stage50a-node-v22"
 
 PROTECTED_HASHES = {
-    "data/kdrg_v47_search_integrated_v3.json": "d865b8a421acb728b9cbc01ef3ba01036206bdc22b1877e70f938ead724e3dda",
+    "data/kdrg_v47_search_integrated_v3.json": "3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce",
     "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
     "app/kdrg_search_service.py": "35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd",
@@ -44,14 +44,14 @@ PROTECTED_HASHES = {
     "electron/src/search-normalizer.js": "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
     "electron/src/kdrg-search-service.js": "319ad5f29d5a2d8b3bd42d15dad074ab33cea1958452ed58e6138d4fda66a5ed",
-    "electron/tests/run-search-parity.js": "8b6c0dc6ef02477adc8bd1a5f7cbe62e651029e5ffbb295350f6f4eb2e9ad14a",
+    "electron/tests/run-search-parity.js": "5863d03183da02cc1339c7832a47fbf530dacc9e4cdeb56308f2011bd65a4671",
 }
 
 TARGET_HASHES = {
-    "50B_validate_kdrg_electron_search_service.py": "851ec11913f142a7ccc354cd6b7c83d912dd0bf7a05da097f29e4d591d09fa1a",
-    "electron/src/bootstrap-data.js": "45042a5e577e19a2083880ad6d56b465f1df324c63244ec25d57c58111f30cfe",
-    "electron/tests/validate-electron-skeleton.js": "40d89f0323ded10bb32227c9ea2b059e96b618dec1ebc384c4712c1d92f7c948",
-    "electron/tests/validate-search-service.js": "7a3308381b33836471fb1baebbe239443d1afe94854c159f4144ae0040f34642",
+    "50B_validate_kdrg_electron_search_service.py": "9a42fae468a652ae6badea7f04141f89a3d8438758c5937daa4195daff9f0b48",
+    "electron/src/bootstrap-data.js": "2b2ebc57267984ae9d81afb78ea8a27b9afbc06ce11953cecf8d432778590d35",
+    "electron/tests/validate-electron-skeleton.js": "553f1ec2727482423d814386c19bdc52620b501576dd3ab1020721cef65aca60",
+    "electron/tests/validate-search-service.js": "cbb5a2aa1937df68207cc39135fcc39776f338259936e208cff069529afbf681",
     "electron/renderer/ui-formatters.js": "e1c00fd9bcb33d577859ff948650c499a6b7504283b0aa75523f79eabaa1730a",
     "electron/README_STAGE50C.md": "35f92d8bd42649ee7bdb651979626235517ea06a3a185bae3128b2b212e0478f",
 }

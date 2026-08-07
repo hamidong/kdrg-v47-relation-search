@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const SCRIPT_VERSION = '2026-08-05_KDRG_V47_ELECTRON_STAGE50B_PARITY_RUNNER_V3';
+const SCRIPT_VERSION = '2026-08-07_KDRG_V47_ELECTRON_STAGE50B_PARITY_RUNNER_V4_DUAL_DATA_FINGERPRINT';
 
 const STATUS_TRANSITIONS = Object.freeze({
   data_schema_version: Object.freeze({
@@ -14,6 +14,18 @@ const STATUS_TRANSITIONS = Object.freeze({
     baseline: 'search_ready_integrated_base_v2',
     actual: 'production_ready_with_review_required_exceptions',
   }),
+});
+
+const SEARCH_DOCUMENT_FINGERPRINT_TRANSITION = Object.freeze({
+  baseline: Object.freeze({
+    count: 22943,
+    sha256: '8a832be02ae4dec16c3cfc93d2be8366914c23fdb0872bfa088a1a6c788f56f3',
+  }),
+  actual: Object.freeze({
+    count: 22943,
+    sha256: '21817c6b75cf307ac4db421020f53d72b363f795fef06b319fa6f50fc3d5ee49',
+  }),
+  reason: 'Stage 53 ADRG name recovery changes only Electron v3 search documents',
 });
 
 function canonicalize(value) {
@@ -88,6 +100,30 @@ function projectByBaseline(actual, baseline, location = 'root') {
   }
 
   return actual;
+}
+
+function projectSearchDocumentFingerprint(actual, baseline) {
+  if (!isPlainObject(actual)) {
+    throw new TypeError('actual search document fingerprint must be a plain object');
+  }
+  if (!isPlainObject(baseline)) {
+    throw new TypeError('baseline search document fingerprint must be a plain object');
+  }
+
+  const expectedBaseline = SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.baseline;
+  const expectedActual = SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.actual;
+
+  if (canonicalJson(baseline) !== canonicalJson(expectedBaseline)) {
+    throw new Error(
+      `unexpected baseline search document fingerprint: ${canonicalJson(baseline)}`,
+    );
+  }
+  if (canonicalJson(actual) !== canonicalJson(expectedActual)) {
+    throw new Error(
+      `unexpected actual search document fingerprint: ${canonicalJson(actual)}`,
+    );
+  }
+  return baseline;
 }
 
 function projectStatusByBaseline(actualStatus, baselineStatus) {
@@ -284,6 +320,51 @@ function runSelfTest() {
     ['relation_response_schema_version'],
   );
 
+  check(
+    'allowed search fingerprint transition accepted',
+    projectSearchDocumentFingerprint(
+      SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.actual,
+      SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.baseline,
+    ),
+    SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.baseline,
+  );
+
+  detectsError(
+    'unexpected baseline search fingerprint rejected',
+    () => projectSearchDocumentFingerprint(
+      SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.actual,
+      {
+        ...SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.baseline,
+        sha256: '0'.repeat(64),
+      },
+    ),
+    /unexpected baseline search document fingerprint/,
+  );
+
+  detectsError(
+    'unexpected actual search fingerprint rejected',
+    () => projectSearchDocumentFingerprint(
+      {
+        ...SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.actual,
+        sha256: 'f'.repeat(64),
+      },
+      SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.baseline,
+    ),
+    /unexpected actual search document fingerprint/,
+  );
+
+  detectsError(
+    'search fingerprint count change rejected',
+    () => projectSearchDocumentFingerprint(
+      {
+        ...SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.actual,
+        count: 22944,
+      },
+      SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.baseline,
+    ),
+    /unexpected actual search document fingerprint/,
+  );
+
   console.log(`validator=${SCRIPT_VERSION}`);
   if (failures.length) {
     console.log(
@@ -348,9 +429,10 @@ if (process.argv.includes('--self-test')) {
   const additiveKeys = additiveObjectKeys(status, baseline.status);
 
   checkProjected(
-    'search document fingerprint',
+    'search document fingerprint transition',
     service.debugSearchDocumentFingerprint(),
     baseline.search_document_fingerprint,
+    projectSearchDocumentFingerprint,
   );
   checkProjected(
     'semantic context fingerprint',
@@ -385,6 +467,11 @@ if (process.argv.includes('--self-test')) {
   console.log(`baseline=${path.resolve(baselinePath)}`);
   console.log(
     `status_additive_keys=${additiveKeys.length ? additiveKeys.join(',') : 'none'}`,
+  );
+  console.log(
+    `search_document_fingerprint_transition=`
+    + `${SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.baseline.sha256}`
+    + `->${SEARCH_DOCUMENT_FINGERPRINT_TRANSITION.actual.sha256}`,
   );
 
   if (failures.length) {
