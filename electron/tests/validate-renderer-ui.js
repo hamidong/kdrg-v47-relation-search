@@ -202,6 +202,13 @@ check('직접 코드조건 중립 라벨', () => assert.match(appJs, /분류 코
 check('직접 코드조건 중립 설명', () => assert.match(appJs, /아래 코드 목록 자체가 이 ADRG의 분류 조건입니다/));
 check('WITHOUT 제외 구조', () => assert.match(appJs, /제외 조건 · WITHOUT/));
 check('AND·OR·WITHOUT 시각 토큰', () => assert.match(appJs, /condition-operator-without/));
+check('조건 연산자 보조문구 제거', () => {
+  assert.doesNotMatch(appJs, /AND · 모두 충족/);
+  assert.doesNotMatch(appJs, /OR · 하나 선택/);
+  assert.doesNotMatch(appJs, /WITHOUT · 해당 시 제외/);
+});
+check('조건 구조 기반 요약 함수', () => assert.match(appJs, /function conditionGroupsExpression\(/));
+check('조건 구조식 우선 표시', () => assert.match(appJs, /const text = structuralText \|\| coverage\.text/));
 check('검색 sequence guard', () => assert.match(appJs, /searchSequence/));
 check('상세 sequence guard', () => assert.match(appJs, /detailSequence/));
 
@@ -355,6 +362,91 @@ const groups9620 = Ui.buildConditionGroups(detail9620.condition_ast);
 check('9620 조건 그룹 1개', () => assert.equal(groups9620.length, 1));
 check('9620 include 진단 TABLE', () => assert.deepEqual(groups9620[0].includes[0].table_ids, ['LT_9620_001']));
 check('9620 exclude 시술 TABLE', () => assert.deepEqual(groups9620[0].excludes[0].table_ids, ['LT_9620_002']));
+check('9620 표시용 TABLE 라벨', () => {
+  assert.match(groups9620[0].includes[0].display_text, /주진단명\s*table1/i);
+  assert.match(groups9620[0].excludes[0].display_text, /시술명\s*table2/i);
+});
+const detailF600 = service.getDetail('ADRG', 'F600').detail;
+const groupsF600 = Ui.buildConditionGroups(detailF600.condition_ast);
+check('F600 조건 그룹 2개', () => assert.equal(groupsF600.length, 2));
+check('F600 첫 OR 분기 주진단명 table1', () => {
+  assert.equal(groupsF600[0].includes.length, 1);
+  assert.match(groupsF600[0].includes[0].display_text, /주진단명\s*table1/i);
+});
+check('F600 두 번째 OR 분기 AND 2개', () => {
+  assert.equal(groupsF600[1].includes.length, 2);
+  const labels = groupsF600[1].includes.map((item) => item.display_text).join(' | ');
+  assert.match(labels, /주진단명\s*table2/i);
+  assert.match(labels, /기타진단명\s*table3/i);
+});
+const conditionLabelCollisionCases = [
+  ['C063', 'LT_C064_004', '부가코드 table1'],
+  ['C063', 'LT_C064_005', '부가코드 table2'],
+  ['C064', 'LT_C064_004', '부가코드 table1'],
+  ['C064', 'LT_C064_005', '부가코드 table2'],
+  ['D062', 'LT_D068_005', '부가코드 table1'],
+  ['D062', 'LT_D068_006', '부가코드 table2'],
+  ['G222', 'LT_G224_002', '부가코드 table1'],
+  ['G222', 'LT_G224_003', '부가코드 table2'],
+  ['G242', 'LT_G242_002', '부가코드 table1'],
+  ['G242', 'LT_G242_003', '부가코드 table2'],
+];
+function conditionRefMatchesTable(ref, tableId) {
+  return [
+    ref?.entity_id,
+    ref?.logical_table_id,
+    ref?.table_id,
+    ref?.id,
+  ]
+    .filter(Boolean)
+    .map(String)
+    .includes(String(tableId));
+}
+check('조건 요약 TABLE 충돌 일반화 helper', () => {
+  assert.match(appJs, /function conditionDisambiguatedLeafTerms\(/);
+  assert.match(appJs, /function conditionNumberedRefLabels\(/);
+  assert.match(appJs, /user_condition_table_refs/);
+  assert.match(appJs, /conditionGroupsExpression\(groups, detail\)/);
+});
+check('구조식 operator는 uppercase 논리연산자만 토큰화', () => {
+  assert.match(appJs, /const strictOperators = options\.strictOperators === true/);
+  assert.match(appJs, /\? \/\(\\bAND\\b\|\\bOR\\b\|\\bWITHOUT\\b\)\/g/);
+  assert.match(appJs, /: \/\(\\bAND\\b\|\\bOR\\b\|\\bWITHOUT\\b\)\/gi/);
+  assert.match(appJs, /structural_text: Boolean\(structuralText\)/);
+  assert.match(appJs, /strictOperators: coverage\.structural_text === true/);
+});
+for (const adrg of ['C063', 'C064']) {
+  const detail = service.getDetail('ADRG', adrg).detail;
+  const groups = Ui.buildConditionGroups(detail.condition_ast);
+  check(`${adrg} source phrase with or without 보존 근거`, () => {
+    const texts = groups.flatMap((group) => [
+      ...(group.includes ?? []).flatMap((leaf) => [
+        leaf.display_text,
+        leaf.source_fragment,
+      ]),
+      ...(group.excludes ?? []).flatMap((leaf) => [
+        leaf.display_text,
+        leaf.source_fragment,
+      ]),
+      ...(group.requirements ?? []).map(
+        (item) => item.text || item.display_text || '',
+      ),
+    ]).map((value) => String(value || ''));
+    assert.ok(texts.some((value) => /with or without/i.test(value)));
+  });
+}
+for (const [adrg, tableId, expectedLabel] of conditionLabelCollisionCases) {
+  const detail = service.getDetail('ADRG', adrg).detail;
+  check(`${adrg} ${tableId} 공식 numbered label`, () => {
+    const refs = (detail.user_condition_table_refs ?? [])
+      .filter((ref) => conditionRefMatchesTable(ref, tableId));
+    assert.ok(refs.length >= 1);
+    const labels = refs
+      .map((ref) => String(ref.display_label ?? '').trim())
+      .filter(Boolean);
+    assert.ok(labels.includes(expectedLabel));
+  });
+}
 
 const resultA010 = service.search('A01.0', 'ALL', { limit: 20 });
 check('A01.0 점표기 검색', () => assert.ok(resultA010.results.some((item) => item.entity_type === 'CODE' && item.entity_id === 'A010')));

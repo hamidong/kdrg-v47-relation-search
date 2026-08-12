@@ -655,13 +655,17 @@ function directConditionLocalTablePattern(adrg) {
 function formatUserConditionText(value) {
   return String(value ?? '').replace(/\s+/g, ' ').trim();
 }
-function renderConditionExpression(value) {
+function renderConditionExpression(value, options = {}) {
   const output = create('p', 'user-condition-text condition-expression');
-  const parts = formatUserConditionText(value).split(/(\bAND\b|\bOR\b|\bWITHOUT\b)/gi);
+  const strictOperators = options.strictOperators === true;
+  const operatorPattern = strictOperators
+    ? /(\bAND\b|\bOR\b|\bWITHOUT\b)/g
+    : /(\bAND\b|\bOR\b|\bWITHOUT\b)/gi;
+  const parts = formatUserConditionText(value).split(operatorPattern);
   const operatorLabels = {
-    AND: 'AND · 모두 충족',
-    OR: 'OR · 하나 선택',
-    WITHOUT: 'WITHOUT · 해당 시 제외',
+    AND: 'AND',
+    OR: 'OR',
+    WITHOUT: 'WITHOUT',
   };
   const operatorClasses = {
     AND: 'condition-operator-and',
@@ -683,6 +687,156 @@ function renderConditionExpression(value) {
   }
   return output;
 }
+function uniqueConditionTerms(values) {
+  const output = [];
+  const seen = new Set();
+  for (const value of values) {
+    const text = formatUserConditionText(value);
+    if (!text || seen.has(text)) continue;
+    seen.add(text);
+    output.push(text);
+  }
+  return output;
+}
+function conditionLeafText(leaf) {
+  const labels = extractOfficialTableLabels(
+    leaf?.display_text,
+    leaf?.source_fragment,
+  );
+  if (labels.length) return labels.join(' AND ');
+  return formatUserConditionText(
+    leaf?.display_text
+      || leaf?.source_fragment
+      || (leaf?.table_ids ?? []).join(', '),
+  );
+}
+function conditionRefIds(ref) {
+  return uniqueConditionTerms([
+    ref?.entity_id,
+    ref?.logical_table_id,
+    ref?.table_id,
+    ref?.id,
+  ]);
+}
+function conditionNumberedRefLabels(detail, leaf) {
+  const tableIds = new Set(
+    uniqueConditionTerms(leaf?.table_ids ?? []),
+  );
+  if (!tableIds.size) return [];
+  const refs = (detail?.user_condition_table_refs ?? [])
+    .filter((ref) => (
+      conditionRefIds(ref)
+        .some((id) => tableIds.has(id))
+    ));
+  const labels = refs.flatMap((ref) => (
+    extractOfficialTableLabels(
+      ref?.display_label,
+      ref?.display_name,
+      ref?.label,
+      ref?.source_label,
+      ref?.table_name,
+      ref?.role_label,
+    )
+  ));
+  return uniqueConditionTerms(labels)
+    .filter((label) => /\btable\d+\b/i.test(label));
+}
+function conditionLeafTableKey(leaf) {
+  return uniqueConditionTerms(leaf?.table_ids ?? [])
+    .sort()
+    .join('|');
+}
+function conditionDisambiguatedLeafTerms(detail, leaves) {
+  const rows = (leaves ?? []).map((leaf) => ({
+    leaf,
+    text: conditionLeafText(leaf),
+    tableKey: conditionLeafTableKey(leaf),
+  }));
+  return rows.map((row) => {
+    const peers = rows.filter(
+      (candidate) => candidate.text === row.text,
+    );
+    const distinctTableKeys = uniqueConditionTerms(
+      peers.map((candidate) => candidate.tableKey),
+    );
+    if (
+      peers.length > 1
+      && distinctTableKeys.length > 1
+    ) {
+      const numberedLabels = conditionNumberedRefLabels(
+        detail,
+        row.leaf,
+      );
+      if (numberedLabels.length === 1) {
+        return numberedLabels[0];
+      }
+    }
+    return row.text;
+  });
+}
+function conditionRequirementText(item) {
+  return formatUserConditionText(
+    String(
+      item?.text
+        || item?.display_text
+        || '',
+    ).replace(/^제외 조건\s*·\s*/i, ''),
+  );
+}
+function conditionGroupExpression(group, detail) {
+  const positiveRequirements = (
+    group?.requirements ?? []
+  ).filter(
+    (item) => String(item?.polarity ?? 'include') !== 'exclude',
+  );
+  const negativeRequirements = (
+    group?.requirements ?? []
+  ).filter(
+    (item) => String(item?.polarity ?? '') === 'exclude',
+  );
+  const includeTerms = uniqueConditionTerms([
+    ...conditionDisambiguatedLeafTerms(
+      detail,
+      group?.includes ?? [],
+    ),
+    ...positiveRequirements.map(conditionRequirementText),
+  ]);
+  const excludeTerms = uniqueConditionTerms([
+    ...conditionDisambiguatedLeafTerms(
+      detail,
+      group?.excludes ?? [],
+    ),
+    ...negativeRequirements.map(conditionRequirementText),
+  ]);
+  let expression = includeTerms.join(' AND ');
+  if (excludeTerms.length) {
+    const excluded = excludeTerms.length > 1
+      ? `(${excludeTerms.join(' OR ')})`
+      : excludeTerms[0];
+    expression = expression
+      ? `${expression} WITHOUT ${excluded}`
+      : `WITHOUT ${excluded}`;
+  }
+  return formatUserConditionText(expression);
+}
+function conditionGroupsExpression(groups, detail) {
+  const expressions = uniqueConditionTerms(
+    (groups ?? [])
+      .map((group) => conditionGroupExpression(group, detail))
+      .filter(Boolean),
+  );
+  const text = expressions
+    .map((expression) => (
+      expressions.length > 1
+      && /\b(?:AND|WITHOUT)\b/i.test(expression)
+        ? `(${expression})`
+        : expression
+    ))
+    .join(' OR ');
+  if (/\bLT_[A-Z0-9_]+\b/i.test(text)) return '';
+  return text;
+}
+
 function directConditionTables(detail) {
   const coverage = Ui.userConditionCoverage(detail);
   if (
@@ -742,7 +896,16 @@ function conditionPresentation(detail) {
       groups: [],
     };
   }
-  return { ...coverage, direct_tables: [], groups };
+  const structuralText = conditionGroupsExpression(groups, detail);
+  const text = structuralText || coverage.text;
+  return {
+    ...coverage,
+    text,
+    has_text: Boolean(text),
+    structural_text: Boolean(structuralText),
+    direct_tables: [],
+    groups,
+  };
 }
 
 function userConditionStatusLabel(status) {
@@ -771,7 +934,9 @@ function renderUserConditionSummary(detail) {
   if (coverage.status === 'DIRECT_CODE_CONDITION') {
     body.append(create('p', 'user-condition-text direct-condition-text', coverage.text));
   } else if (coverage.has_text) {
-    body.append(renderConditionExpression(coverage.text));
+    body.append(renderConditionExpression(coverage.text, {
+      strictOperators: coverage.structural_text === true,
+    }));
   } else if (coverage.status === 'NO_EXPLICIT_CONDITION') {
     body.append(create('p', 'user-condition-empty', '분류집에서 별도의 분류 조건과 직접 코드 목록을 확인하지 못했습니다.'));
   } else {
