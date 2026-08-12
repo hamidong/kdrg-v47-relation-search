@@ -16,7 +16,7 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-SCRIPT_VERSION = "2026-08-07_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V6_DUAL_DATA_FINGERPRINT"
+SCRIPT_VERSION = "2026-08-12_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V7_CODE_NAME_ENRICHMENT"
 ROOT = Path(__file__).resolve().parent
 ELECTRON = ROOT / "electron"
 REPORT_DIR = ROOT / "reports"
@@ -25,7 +25,7 @@ REPORT_JSON = REPORT_DIR / "electron_stage50b_validation_report.json"
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated.json": "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
-    "data/kdrg_v47_search_integrated_v3.json": "3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce",
+    "data/kdrg_v47_search_integrated_v3.json": "3cc370dfb7e3d3c9480e66fc6cdb2b83c9f05f39fa82c0ce4d9403c0812d7f0b",
     "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
     "app/kdrg_search_service.py": "35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd",
@@ -40,8 +40,8 @@ PYTHON_BASELINE_SEARCH_DOCUMENT_FINGERPRINT = (
     "914c23fdb0872bfa088a1a6c788f56f3"
 )
 ELECTRON_V3_SEARCH_DOCUMENT_FINGERPRINT = (
-    "21817c6b75cf307ac4db421020f53d72"
-    "b363f795fef06b319fa6f50fc3d5ee49"
+    "2e6e89bb7dd3eb027c2aa8d65fe90e59"
+    "a50f26e08991061c989640a0489f33dd"
 )
 EXPECTED_SEMANTIC_FINGERPRINT = (
     "e734f6550461414eedf7d2b042ebf4c2"

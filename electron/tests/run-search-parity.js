@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const SCRIPT_VERSION = '2026-08-07_KDRG_V47_ELECTRON_STAGE50B_PARITY_RUNNER_V4_DUAL_DATA_FINGERPRINT';
+const SCRIPT_VERSION = '2026-08-12_KDRG_V47_ELECTRON_STAGE50B_PARITY_RUNNER_V5_CODE_NAME_ENRICHMENT';
 
 const STATUS_TRANSITIONS = Object.freeze({
   data_schema_version: Object.freeze({
@@ -23,9 +23,9 @@ const SEARCH_DOCUMENT_FINGERPRINT_TRANSITION = Object.freeze({
   }),
   actual: Object.freeze({
     count: 22943,
-    sha256: '21817c6b75cf307ac4db421020f53d72b363f795fef06b319fa6f50fc3d5ee49',
+    sha256: '2e6e89bb7dd3eb027c2aa8d65fe90e59a50f26e08991061c989640a0489f33dd',
   }),
-  reason: 'Stage 53 ADRG name recovery changes only Electron v3 search documents',
+  reason: 'Stage 54 official code-name enrichment changes Electron v3 CODE documents while preserving prior baseline entities',
 });
 
 function canonicalize(value) {
@@ -124,6 +124,384 @@ function projectSearchDocumentFingerprint(actual, baseline) {
     );
   }
   return baseline;
+}
+
+function entityKey(row) {
+  return `${row?.entity_type || ''}:${row?.entity_id || ''}`;
+}
+
+function projectCodeNameEnrichment(
+  actual,
+  baseline,
+  location = 'root',
+  inheritedCodeContext = false,
+  key = '',
+) {
+  if (
+    inheritedCodeContext
+    && key === 'names'
+    && Array.isArray(baseline)
+  ) {
+    if (!Array.isArray(actual)) {
+      throw new TypeError(
+        `${location}: CODE names actual value must be an array`,
+      );
+    }
+    return baseline;
+  }
+
+  if (
+    inheritedCodeContext
+    && key === 'subtitle'
+    && typeof baseline === 'string'
+  ) {
+    if (typeof actual !== 'string') {
+      throw new TypeError(
+        `${location}: CODE subtitle actual value must be a string`,
+      );
+    }
+    return baseline;
+  }
+
+  if (Array.isArray(baseline)) {
+    if (!Array.isArray(actual)) {
+      throw new TypeError(
+        `${location}: actual value must be an array`,
+      );
+    }
+    if (actual.length !== baseline.length) {
+      throw new Error(
+        `${location}: array length changed: `
+        + `actual=${actual.length}, baseline=${baseline.length}`,
+      );
+    }
+    return baseline.map(
+      (baselineItem, index) => projectCodeNameEnrichment(
+        actual[index],
+        baselineItem,
+        `${location}[${index}]`,
+        false,
+        '',
+      ),
+    );
+  }
+
+  if (isPlainObject(baseline)) {
+    if (!isPlainObject(actual)) {
+      throw new TypeError(
+        `${location}: actual value must be a plain object`,
+      );
+    }
+
+    const ownCodeContext = (
+      baseline.entity_type === 'CODE'
+      && actual.entity_type === 'CODE'
+      && baseline.entity_id === actual.entity_id
+    );
+    const activeCodeContext = (
+      inheritedCodeContext || ownCodeContext
+    );
+
+    const projected = {};
+    for (const baselineKey of Object.keys(baseline)) {
+      if (!Object.prototype.hasOwnProperty.call(actual, baselineKey)) {
+        throw new Error(
+          `${location}: actual is missing baseline key: ${baselineKey}`,
+        );
+      }
+
+      const childCodeContext = (
+        activeCodeContext
+        && (
+          baselineKey === 'summary'
+          || baselineKey === 'detail'
+          || baselineKey === 'names'
+          || baselineKey === 'subtitle'
+        )
+      );
+
+      projected[baselineKey] = projectCodeNameEnrichment(
+        actual[baselineKey],
+        baseline[baselineKey],
+        `${location}.${baselineKey}`,
+        childCodeContext,
+        baselineKey,
+      );
+    }
+    return projected;
+  }
+
+  return actual;
+}
+
+function projectSearchCodeResult(actual, baseline) {
+  if (
+    actual?.entity_type !== 'CODE'
+    || baseline?.entity_type !== 'CODE'
+  ) {
+    throw new TypeError(
+      'search CODE projector requires CODE rows',
+    );
+  }
+
+  const comparable = {
+    ...actual,
+    subtitle: baseline.subtitle,
+    score: baseline.score,
+    match_type: baseline.match_type,
+    matched_fields: baseline.matched_fields,
+    summary: {
+      ...(actual.summary || {}),
+      names: baseline.summary?.names || [],
+    },
+  };
+
+  return projectByBaseline(
+    comparable,
+    baseline,
+    'search-code-item',
+  );
+}
+
+function collectSearchComparison(
+  service,
+  query,
+  entityType,
+  options,
+) {
+  const results = [];
+  let first = null;
+  let offset = 0;
+
+  while (true) {
+    const page = service.search(
+      query,
+      entityType,
+      {
+        ...options,
+        limit: 500,
+        offset,
+      },
+    );
+
+    if (!first) first = page;
+
+    if (page.offset !== offset) {
+      throw new Error(
+        `comparison pagination offset mismatch: `
+        + `actual=${page.offset}, expected=${offset}`,
+      );
+    }
+
+    results.push(...page.results);
+
+    if (!page.has_more) break;
+
+    if (!page.results.length) {
+      throw new Error(
+        'comparison pagination stalled with has_more=true',
+      );
+    }
+
+    offset += page.results.length;
+
+    if (offset > page.total_count) {
+      throw new Error(
+        'comparison pagination exceeded total_count',
+      );
+    }
+  }
+
+  if (!first) {
+    throw new Error(
+      'comparison pagination produced no response',
+    );
+  }
+
+  if (results.length !== first.total_count) {
+    throw new Error(
+      `comparison pagination incomplete: `
+      + `results=${results.length}, total=${first.total_count}`,
+    );
+  }
+
+  return {
+    total_count: first.total_count,
+    type_counts: first.type_counts,
+    results,
+  };
+}
+
+function projectSearchScenarioByCodeNames(
+  actual,
+  baseline,
+  actualComparison,
+) {
+  if (!isPlainObject(actual) || !isPlainObject(baseline)) {
+    throw new TypeError(
+      'search responses must be plain objects',
+    );
+  }
+
+  if (!isPlainObject(actualComparison)) {
+    throw new TypeError(
+      'actual full search comparison must be a plain object',
+    );
+  }
+
+  if (
+    actualComparison.results.length
+      !== actualComparison.total_count
+  ) {
+    throw new Error(
+      'actual full search comparison is incomplete',
+    );
+  }
+
+  for (const key of [
+    'schema_version',
+    'query',
+    'normalized_query',
+    'filters',
+    'offset',
+    'limit',
+  ]) {
+    const projected = projectByBaseline(
+      actual[key],
+      baseline[key],
+      `search.${key}`,
+    );
+
+    if (
+      canonicalJson(projected)
+        !== canonicalJson(baseline[key])
+    ) {
+      throw new Error(
+        `search metadata changed: ${key}`,
+      );
+    }
+  }
+
+  const baselineTypeCounts = baseline.type_counts || {};
+  const actualTypeCounts = actualComparison.type_counts || {};
+  const typeNames = new Set([
+    ...Object.keys(baselineTypeCounts),
+    ...Object.keys(actualTypeCounts),
+  ]);
+
+  for (const typeName of typeNames) {
+    const before = Number(
+      baselineTypeCounts[typeName] || 0,
+    );
+    const after = Number(
+      actualTypeCounts[typeName] || 0,
+    );
+
+    if (typeName === 'CODE') {
+      if (after < before) {
+        throw new Error(
+          `CODE result count decreased: `
+          + `actual=${after}, baseline=${before}`,
+        );
+      }
+    } else if (after !== before) {
+      throw new Error(
+        `non-CODE result count changed: `
+        + `${typeName} actual=${after}, baseline=${before}`,
+      );
+    }
+  }
+
+  const baselineCodeCount = Number(
+    baselineTypeCounts.CODE || 0,
+  );
+  const actualCodeCount = Number(
+    actualTypeCounts.CODE || 0,
+  );
+  const totalDelta = (
+    actualComparison.total_count - baseline.total_count
+  );
+  const codeDelta = (
+    actualCodeCount - baselineCodeCount
+  );
+
+  if (totalDelta !== codeDelta) {
+    throw new Error(
+      `search total delta is not CODE-only: `
+      + `total_delta=${totalDelta}, code_delta=${codeDelta}`,
+    );
+  }
+
+  const actualMap = new Map(
+    actualComparison.results.map(
+      (row) => [entityKey(row), row],
+    ),
+  );
+
+  if (actualMap.size !== actualComparison.results.length) {
+    throw new Error(
+      'actual comparison contains duplicate entity keys',
+    );
+  }
+
+  // Python v2 baseline 전체 deep 결과가 아니라,
+  // 기존 parity가 실제로 보증하던 baseline page를 보존한다.
+  for (const baselineItem of baseline.results) {
+    const key = entityKey(baselineItem);
+    const actualItem = actualMap.get(key);
+
+    if (!actualItem) {
+      throw new Error(
+        `baseline page result disappeared: ${key}`,
+      );
+    }
+
+    const projected = (
+      baselineItem.entity_type === 'CODE'
+        ? projectSearchCodeResult(
+          actualItem,
+          baselineItem,
+        )
+        : projectByBaseline(
+          actualItem,
+          baselineItem,
+          'baseline-page-non-code-item',
+        )
+    );
+
+    if (
+      canonicalJson(projected)
+        !== canonicalJson(baselineItem)
+    ) {
+      throw new Error(
+        `baseline page result changed: ${key}`,
+      );
+    }
+  }
+
+  const expectedHasMore = (
+    actual.offset + actual.results.length
+      < actual.total_count
+  );
+
+  if (actual.has_more !== expectedHasMore) {
+    throw new Error(
+      'actual has_more is inconsistent',
+    );
+  }
+
+  return baseline;
+}
+
+function projectDetailByCodeNameEnrichment(
+  actual,
+  baseline,
+) {
+  return projectCodeNameEnrichment(
+    actual,
+    baseline,
+    'detail',
+  );
 }
 
 function projectStatusByBaseline(actualStatus, baselineStatus) {
@@ -365,6 +743,224 @@ function runSelfTest() {
     /unexpected actual search document fingerprint/,
   );
 
+  const searchBaseline = {
+    schema_version: 'search-v1',
+    query: 'sample',
+    normalized_query: 'sample',
+    filters: {
+      classification: null,
+      entity_types: ['CODE', 'ADRG'],
+      mdc: null,
+    },
+    offset: 0,
+    limit: 2,
+    has_more: false,
+    total_count: 2,
+    type_counts: {
+      ADRG: 1,
+      CODE: 1,
+    },
+    results: [
+      {
+        entity_type: 'ADRG',
+        entity_id: '9600',
+        title: '9600',
+        subtitle: 'A',
+        score: 920,
+        match_type: 'EXACT_TEXT',
+        matched_fields: ['classification'],
+        summary: { mdc: 'PRE' },
+      },
+      {
+        entity_type: 'CODE',
+        entity_id: 'A010',
+        title: 'A010',
+        subtitle: '',
+        score: 500,
+        match_type: 'ANY_TOKEN',
+        matched_fields: ['text'],
+        summary: {
+          names: [],
+          logical_table_count: 1,
+        },
+      },
+    ],
+  };
+
+  const searchActual = {
+    ...searchBaseline,
+    has_more: true,
+    total_count: 3,
+    type_counts: {
+      ADRG: 1,
+      CODE: 2,
+    },
+    results: [
+      {
+        entity_type: 'CODE',
+        entity_id: 'B020',
+        title: 'B020',
+        subtitle: '신규 코드명',
+        score: 920,
+        match_type: 'EXACT_TEXT',
+        matched_fields: ['name'],
+        summary: {
+          names: ['신규 코드명'],
+          logical_table_count: 1,
+        },
+      },
+      searchBaseline.results[0],
+    ],
+  };
+
+  const actualComparison = {
+    total_count: 3,
+    type_counts: {
+      ADRG: 1,
+      CODE: 2,
+    },
+    results: [
+      searchActual.results[0],
+      searchActual.results[1],
+      {
+        entity_type: 'CODE',
+        entity_id: 'A010',
+        title: 'A010',
+        subtitle: '기존 코드명',
+        score: 920,
+        match_type: 'EXACT_TEXT',
+        matched_fields: ['name'],
+        summary: {
+          names: ['기존 코드명'],
+          logical_table_count: 1,
+        },
+      },
+    ],
+  };
+
+  check(
+    'additive CODE-name search accepted',
+    projectSearchScenarioByCodeNames(
+      searchActual,
+      searchBaseline,
+      actualComparison,
+    ),
+    searchBaseline,
+  );
+
+  detectsError(
+    'additive non-CODE count rejected',
+    () => projectSearchScenarioByCodeNames(
+      {
+        ...searchActual,
+        total_count: 4,
+        type_counts: {
+          ADRG: 2,
+          CODE: 2,
+        },
+      },
+      searchBaseline,
+      {
+        total_count: 4,
+        type_counts: {
+          ADRG: 2,
+          CODE: 2,
+        },
+        results: [
+          ...actualComparison.results,
+          {
+            entity_type: 'ADRG',
+            entity_id: '9700',
+          },
+        ],
+      },
+    ),
+    /non-CODE result count changed/,
+  );
+
+  detectsError(
+    'baseline page result disappearance rejected',
+    () => projectSearchScenarioByCodeNames(
+      {
+        ...searchActual,
+        total_count: 2,
+        type_counts: {
+          ADRG: 1,
+          CODE: 1,
+        },
+      },
+      searchBaseline,
+      {
+        total_count: 2,
+        type_counts: {
+          ADRG: 1,
+          CODE: 1,
+        },
+        results: actualComparison.results.filter(
+          (row) => row.entity_id !== 'A010',
+        ),
+      },
+    ),
+    /baseline page result disappeared/,
+  );
+
+  check(
+    'nested TABLE CODE names enrichment accepted',
+    projectDetailByCodeNameEnrichment(
+      {
+        entity_type: 'TABLE',
+        entity_id: 'LT_SAMPLE',
+        detail: {
+          code_records: [
+            {
+              entity_type: 'CODE',
+              entity_id: 'A010',
+              subtitle: '공식명',
+              summary: {
+                names: ['공식명', 'Official name'],
+                logical_table_count: 1,
+              },
+            },
+          ],
+        },
+      },
+      {
+        entity_type: 'TABLE',
+        entity_id: 'LT_SAMPLE',
+        detail: {
+          code_records: [
+            {
+              entity_type: 'CODE',
+              entity_id: 'A010',
+              subtitle: '코드명 원천 미수록',
+              summary: {
+                names: [],
+                logical_table_count: 1,
+              },
+            },
+          ],
+        },
+      },
+    ),
+    {
+      entity_type: 'TABLE',
+      entity_id: 'LT_SAMPLE',
+      detail: {
+        code_records: [
+          {
+            entity_type: 'CODE',
+            entity_id: 'A010',
+            subtitle: '코드명 원천 미수록',
+            summary: {
+              names: [],
+              logical_table_count: 1,
+            },
+          },
+        ],
+      },
+    },
+  );
+
   console.log(`validator=${SCRIPT_VERSION}`);
   if (failures.length) {
     console.log(
@@ -451,7 +1047,24 @@ if (process.argv.includes('--self-test')) {
       scenario.request.entity_type,
       scenario.request.options,
     );
-    checkProjected(`search:${scenario.name}`, actual, scenario.response);
+
+    const actualComparison = collectSearchComparison(
+      service,
+      scenario.request.query,
+      scenario.request.entity_type,
+      scenario.request.options,
+    );
+
+    checkProjected(
+      `search:${scenario.name}`,
+      actual,
+      scenario.response,
+      (actualValue, expectedValue) => projectSearchScenarioByCodeNames(
+        actualValue,
+        expectedValue,
+        actualComparison,
+      ),
+    );
   }
 
   for (const scenario of baseline.detail_scenarios) {
@@ -459,7 +1072,13 @@ if (process.argv.includes('--self-test')) {
       scenario.request.entity_type,
       scenario.request.entity_id,
     );
-    checkProjected(`detail:${scenario.name}`, actual, scenario.response);
+
+    checkProjected(
+      `detail:${scenario.name}`,
+      actual,
+      scenario.response,
+      projectDetailByCodeNameEnrichment,
+    );
   }
 
   console.log(`validator=${SCRIPT_VERSION}`);

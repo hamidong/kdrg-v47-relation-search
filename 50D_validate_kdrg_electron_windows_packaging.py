@@ -17,7 +17,7 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
-SCRIPT_VERSION = "2026-08-07_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V19_CURRENT_WORKFLOW_AND_STAGE53C"
+SCRIPT_VERSION = "2026-08-12_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V20_CURRENT_WORKFLOW_AND_STAGE54"
 NODE_VERSION = "v22.23.1"
 
 ROOT = Path(__file__).resolve().parent
@@ -33,7 +33,7 @@ WORKFLOW_REFERENCE_SHA = "1e7f88893489101247e71ffb76ed27bbd38ed21e90de6fe26871ac
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated_v3.json":
-        "3f602e08374cb139f74efc5c935a124c560e2802935567f682b69d1ea5d951ce",
+        "3cc370dfb7e3d3c9480e66fc6cdb2b83c9f05f39fa82c0ce4d9403c0812d7f0b",
     "data/kdrg_v47_ui_semantic_profile.json":
         "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json":
@@ -59,7 +59,7 @@ PROTECTED_HASHES = {
     "electron/src/data-paths.js":
         "3d209ade16f25d9f2abfac5d43872b178276e74fba549388b220fa1f72a1dfa3",
     "electron/src/bootstrap-data.js":
-        "2b2ebc57267984ae9d81afb78ea8a27b9afbc06ce11953cecf8d432778590d35",
+        "bff503d1a0a6b548fa6a47f56598f5bc4206012771b9ed9df56325a56709564e",
     "electron/src/search-normalizer.js":
         "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js":
@@ -71,13 +71,13 @@ PROTECTED_HASHES = {
     "electron/renderer/ui-formatters.js":
         "e1c00fd9bcb33d577859ff948650c499a6b7504283b0aa75523f79eabaa1730a",
     "electron/tests/run-search-parity.js":
-        "5863d03183da02cc1339c7832a47fbf530dacc9e4cdeb56308f2011bd65a4671",
+        "24be2d6310eaff9bd63e9b5b3a2fef3990a023ce2072515b816c7b94fe7755fe",
     "electron/tests/validate-electron-skeleton.js":
-        "553f1ec2727482423d814386c19bdc52620b501576dd3ab1020721cef65aca60",
+        "51f387682e4e2f3e3a1435a2f77ec96d8ebc8824cc3abf78c486fa381cf6adb5",
     "electron/tests/validate-search-service.js":
-        "cbb5a2aa1937df68207cc39135fcc39776f338259936e208cff069529afbf681",
+        "72ac8f38a4dc7ea4a4dd8c44b215f085adabddf34c8ff7f4e5a37a3db61e7e8e",
     "electron/tests/validate-packaging-config.js":
-        "d9f18ad87daa2a5938a5045d28bba829cf684f985302b09a54a73f5f7b619d55",
+        "fb68bc312e5208a3689c7d22604b633b3d36a8135b3abb4d659a6e502e5d8fd1",
     "electron/tests/validate-packaged-runtime-smoke.js":
         "28f366f1d2405c5e492ecd446a05c06b7bff414f2e3a5a42d218b238928f5569",
     "electron/tests/validate-release-version.js":
@@ -87,7 +87,7 @@ PROTECTED_HASHES = {
     "electron/scripts/validate-package-lock-registry.py":
         "ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92",
     "electron/scripts/validate-checkout-byte-integrity.py":
-        "6c7f7ae3ee40ab4e5f67088ef40df3c0017807e58801024cde1c5b6c0351e46d",
+        "0eb52bec3bbfaa2ef2285865867311349b1ca0428f39efae259db72a02e1eb59",
     "electron/README_STAGE50A.md":
         "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md":
@@ -97,9 +97,9 @@ PROTECTED_HASHES = {
     "electron/README_STAGE50D.md":
         "adad88a75b3e2c3f20de83ffe3d5e086ca39cf8010d666a08527c18a7bb6cc26",
     "50B_validate_kdrg_electron_search_service.py":
-        "9a42fae468a652ae6badea7f04141f89a3d8438758c5937daa4195daff9f0b48",
+        "e1adf80f857d956b87c4c776565eec30b6fe3290ad7484bd21ab041230f1caeb",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "2cb70bd3885945437ae67be0115e0ce855c9969a618486667ea07c6a2f6770d2",
+        "2f9e46dc91eb1e980740e2aebd67f7cb268f5fe6d867b12f35b4eb0e6c8adebd",
 }
 
 MUTABLE_UI_FILES = (
@@ -913,7 +913,7 @@ def main() -> int:
             "Stage 50B parity status 계약 self-test": (
                 [str(node), "tests/run-search-parity.js", "--self-test"],
                 ELECTRON,
-                "Python-JavaScript recursive subset parity self-test: 14 PASS / 0 FAIL",
+                "Python-JavaScript recursive subset parity self-test: 18 PASS / 0 FAIL",
             ),
             "Stage 50D packaged smoke 계약 회귀검증": (
                 [str(node), "tests/validate-packaged-runtime-smoke.js"],

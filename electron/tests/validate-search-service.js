@@ -92,19 +92,79 @@ check('전체 entity exact ID audit failures', exactAudit.failures, [], (a) => a
 
 const documentFingerprint = service.debugSearchDocumentFingerprint();
 check('search document fingerprint count', documentFingerprint.count, 22943);
-check('search document fingerprint', documentFingerprint.sha256, '21817c6b75cf307ac4db421020f53d72b363f795fef06b319fa6f50fc3d5ee49');
+check('search document fingerprint', documentFingerprint.sha256, '2e6e89bb7dd3eb027c2aa8d65fe90e59a50f26e08991061c989640a0489f33dd');
 const semanticFingerprint = service.debugSemanticContextFingerprint();
 check('semantic fingerprint keys', semanticFingerprint.key_count, 906);
 check('semantic fingerprint occurrence', semanticFingerprint.occurrence_count, 939);
 check('semantic fingerprint', semanticFingerprint.sha256, 'e734f6550461414eedf7d2b042ebf4c274d174b9948e29573c516090fbc62405');
 
 const fixtureExpectations = [
-  ['E011', 'ALL', {}, 24, ['CODE:E011', 'ADRG:E011']],
-  ['A010', 'ALL', {}, 31, ['CODE:A010', 'ADRG:A010']],
-  ['A01.0', 'ALL', {}, 5, ['CODE:A010', 'ADRG:A010', 'AADRG:A0100']],
-  ['LT_9610_001', 'TABLE', {}, 1, ['TABLE:LT_9610_001']],
-  ['9610', ['ADRG', 'AADRG', 'RDRG'], {}, 3, ['ADRG:9610', 'AADRG:96100', 'RDRG:961000']],
-  ['조기 사망', 'ALL', {}, 6, ['ADRG:9600', 'AADRG:96000', 'RDRG:960000']],
+  [
+    "E011",
+    "ALL",
+    {},
+    24,
+    [
+      "CODE:E011",
+      "ADRG:E011"
+    ]
+  ],
+  [
+    "A010",
+    "ALL",
+    {},
+    31,
+    [
+      "CODE:A010",
+      "ADRG:A010"
+    ]
+  ],
+  [
+    "A01.0",
+    "ALL",
+    {},
+    83,
+    [
+      "CODE:A010",
+      "ADRG:A010",
+      "AADRG:A0100"
+    ]
+  ],
+  [
+    "LT_9610_001",
+    "TABLE",
+    {},
+    1,
+    [
+      "TABLE:LT_9610_001"
+    ]
+  ],
+  [
+    "9610",
+    [
+      "ADRG",
+      "AADRG",
+      "RDRG"
+    ],
+    {},
+    3,
+    [
+      "ADRG:9610",
+      "AADRG:96100",
+      "RDRG:961000"
+    ]
+  ],
+  [
+    "조기 사망",
+    "ALL",
+    {},
+    25,
+    [
+      "ADRG:9600",
+      "AADRG:96000",
+      "RDRG:960000"
+    ]
+  ]
 ];
 for (const [query, type, options, total, leading] of fixtureExpectations) {
   const response = service.search(query, type, { limit: 50, ...options });
