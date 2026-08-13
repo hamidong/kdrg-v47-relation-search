@@ -223,9 +223,21 @@ check('Stage56 검색결과 분류 badge 사용', () => {
     appJs,
     /appendResultSummaryMeta\(chips, result\)/,
   );
+
+  const resultStart = appJs.indexOf('function renderResults(response)');
+  const resultEnd = appJs.indexOf('function relationLevelDescription(level)');
+  assert.ok(resultStart >= 0);
+  assert.ok(resultEnd > resultStart);
+
+  const resultSource = appJs.slice(resultStart, resultEnd);
+
   assert.match(
-    appJs,
-    /appendClassificationBadges\([\s\S]*?summary\.abc_display_labels/,
+    resultSource,
+    /appendClassificationBadges\(/,
+  );
+  assert.match(
+    resultSource,
+    /result\.summary\?\.abc_display_labels/,
   );
 });
 
@@ -242,6 +254,43 @@ check('Stage56 ADRG 상세 분류 badge 사용', () => {
     appJs,
     /classification-badge-group/,
   );
+});
+check('Stage57 일반 검색 EXACT chip 사용자 비노출', () => {
+  const start = appJs.indexOf('function renderResults(response)');
+  const end = appJs.indexOf('function relationLevelDescription(level)');
+  const source = appJs.slice(start, end);
+  assert.doesNotMatch(source, /result\.match_type/);
+  assert.doesNotMatch(source, /result-match-chip/);
+});
+check('Stage57 ADRG 검색결과 A-B-C 우측 배치', () => {
+  const start = appJs.indexOf('function renderResults(response)');
+  const end = appJs.indexOf('function relationLevelDescription(level)');
+  const source = appJs.slice(start, end);
+  assert.match(source, /result-card-classification/);
+  assert.match(source, /appendClassificationBadges\(/);
+  assert.match(source, /classificationCount/);
+});
+check('Stage57 ADRG 검색결과 하단 분류 중복 제거', () => {
+  const start = appJs.indexOf('function appendResultSummaryMeta(container, result)');
+  const end = appJs.indexOf('function makeEntityButton(summary, className');
+  const source = appJs.slice(start, end);
+  assert.doesNotMatch(source, /appendClassificationBadges\(/);
+});
+check('Stage57 ADRG 상세 badge 우측 독립 배치', () => {
+  const start = appJs.indexOf('function renderDetail(payload)');
+  const end = appJs.indexOf('function markSelected(key)');
+  const source = appJs.slice(start, end);
+  const copyPos = source.indexOf('header.append(copy);');
+  const badgePos = source.indexOf("'detail-hero-classification'");
+  assert.ok(copyPos >= 0);
+  assert.ok(badgePos > copyPos);
+  assert.match(source, /header\.append\([\s\S]*?makeClassificationBadgeGroup/);
+});
+check('Stage57 badge 위치 크기 CSS', () => {
+  assert.match(css, /\.result-card-classification/);
+  assert.match(css, /\.result-card-classification \.classification-badge[\s\S]*?min-height:\s*26px/);
+  assert.match(css, /\.detail-hero-classification[\s\S]*?margin:\s*0 4px 0 auto/);
+  assert.match(css, /\.detail-hero-classification \.classification-badge[\s\S]*?min-height:\s*34px/);
 });
 check('구형 기본 TABLE 제거', () => assert.doesNotMatch(appJs, /기본 분류 TABLE/));
 check('구형 추가 분기조건 제거', () => assert.doesNotMatch(appJs, /추가 분기조건/));

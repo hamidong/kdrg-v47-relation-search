@@ -182,10 +182,6 @@ function appendResultSummaryMeta(container, result) {
         makeChip(`MDC ${summary.mdc}`),
       );
     }
-    appendClassificationBadges(
-      container,
-      summary.abc_display_labels ?? [],
-    );
     container.append(
       makeChip(
         `AADRG ${Ui.formatNumber(summary.aadrg_count ?? 0)}개`,
@@ -285,9 +281,17 @@ function renderResults(response) {
     const main = create('div', 'result-card-main');
     main.append(makeBadge(result.entity_type));
     main.append(create('strong', 'result-title', result.title));
-    const match = makeChip(result.match_type || '검색 일치', 'match-chip result-match-chip');
-    match.title = (result.matched_fields ?? []).join(', ');
-    main.append(match);
+    if (String(result.entity_type ?? '').toUpperCase() === 'ADRG') {
+      const classification = create(
+        'span',
+        'classification-badge-group result-card-classification',
+      );
+      const classificationCount = appendClassificationBadges(
+        classification,
+        result.summary?.abc_display_labels ?? [],
+      );
+      if (classificationCount) main.append(classification);
+    }
     const subtitle = create('p', 'result-subtitle', result.subtitle);
     const chips = create('div', 'chip-row result-meta-row');
     appendResultSummaryMeta(chips, result);
@@ -1528,8 +1532,9 @@ function renderDetail(payload) {
     create('h2', '', detailTitle(payload)),
     create('p', '', detailSummaryLine(payload) || `${Ui.entityLabel(payload.entity_type)} · ${payload.entity_id}`),
   );
+  header.append(copy);
   if (payload.entity_type === 'ADRG') {
-    copy.append(
+    header.append(
       makeClassificationBadgeGroup(
         (payload.detail?.abc_classification_codes ?? []).length
           ? payload.detail.abc_classification_codes
@@ -1538,7 +1543,6 @@ function renderDetail(payload) {
       ),
     );
   }
-  header.append(copy);
   panel.append(header);
 
   let content;
