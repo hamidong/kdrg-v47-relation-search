@@ -213,6 +213,55 @@ body[data-state="loading"] .status-dot { animation: pulse 1.2s ease-in-out infin
 .include-chip { color: #246c4d; background: #dff4e9; }
 .exclusion-chip { color: #a23e45; background: #fde6e8; }
 .context-chip { margin-top: 8px; color: #315c92; background: #e8f1fb; }
+.classification-badge-group {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  vertical-align: middle;
+}
+.classification-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 22px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 2px 8px 2px 3px;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+.classification-code {
+  display: inline-grid;
+  place-items: center;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 900;
+}
+.classification-a {
+  border-color: #bfd2f2;
+  color: #24579b;
+  background: #eaf2ff;
+}
+.classification-a .classification-code { background: #3f73b5; }
+.classification-b {
+  border-color: #b9dfcd;
+  color: #21684c;
+  background: #e7f6ee;
+}
+.classification-b .classification-code { background: #338361; }
+.classification-c {
+  border-color: #efd29f;
+  color: #8d5b13;
+  background: #fff3dc;
+}
+.classification-c .classification-code { background: #b87a1d; }
+.detail-hero-classification { margin-top: 4px; }
 .pagination { display: flex; align-items: center; justify-content: center; gap: 11px; min-height: 50px; border-top: 1px solid #e5ebf2; }
 .pagination button { min-height: 32px; padding: 0 12px; font-size: 11px; }
 .pagination span { color: #66758a; font-size: 11px; }
@@ -809,6 +858,20 @@ body[data-state="error"] .compact-status .status-dot { box-shadow: 0 0 0 3px #fd
   min-height: 17px;
   padding: 2px 6px;
   font-size: 8px;
+}
+.result-meta-row .classification-badge {
+  min-height: 17px;
+  gap: 3px;
+  padding: 1px 6px 1px 2px;
+  font-size: 8px;
+}
+.result-meta-row .classification-code {
+  min-width: 13px;
+  height: 13px;
+  font-size: 7px;
+}
+.detail-overview-grid .classification-badge {
+  min-height: 20px;
 }
 .result-card.is-selected {
   box-shadow: inset 3px 0 #3f73b5;

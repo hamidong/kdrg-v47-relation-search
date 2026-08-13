@@ -23,6 +23,25 @@ const TYPE_BADGE_CLASS = Object.freeze({
   TABLE: 'badge-table',
 });
 
+// Stage 56: 일반 사용자 화면에서는 개발·검증 메타데이터를 숨깁니다.
+// 개발 시 이 상수를 true로 바꾸면 조건 상태와 원문 근거를 다시 확인할 수 있습니다.
+const SHOW_DEVELOPER_METADATA = false;
+
+const CLASSIFICATION_BADGE_META = Object.freeze({
+  A: Object.freeze({
+    label: '전문',
+    className: 'classification-a',
+  }),
+  B: Object.freeze({
+    label: '일반',
+    className: 'classification-b',
+  }),
+  C: Object.freeze({
+    label: '단순',
+    className: 'classification-c',
+  }),
+});
+
 function byId(id) {
   return document.getElementById(id);
 }
@@ -68,6 +87,120 @@ function makeBadge(entityType) {
 
 function makeChip(textValue, className = '') {
   return create('span', `chip ${className}`.trim(), textValue);
+}
+function classificationCode(value) {
+  const raw = String(value ?? '').replace(/\s+/g, ' ').trim();
+  const upper = raw.toUpperCase();
+  if (CLASSIFICATION_BADGE_META[upper]) return upper;
+  if (raw.includes('전문')) return 'A';
+  if (raw.includes('일반')) return 'B';
+  if (raw.includes('단순')) return 'C';
+  const parenthesized = raw.match(/(?:^|\()([ABC])(?:\)|$)/i);
+  return parenthesized ? parenthesized[1].toUpperCase() : '';
+}
+function classificationCodes(values) {
+  const output = [];
+  const seen = new Set();
+  for (const value of Array.isArray(values) ? values : [values]) {
+    const code = classificationCode(value);
+    if (!code || seen.has(code)) continue;
+    seen.add(code);
+    output.push(code);
+  }
+  return output;
+}
+function makeClassificationBadge(value) {
+  const code = classificationCode(value);
+  const meta = CLASSIFICATION_BADGE_META[code];
+  if (!meta) return null;
+  const badge = create(
+    'span',
+    `classification-badge ${meta.className}`,
+  );
+  badge.dataset.classificationCode = code;
+  badge.setAttribute(
+    'aria-label',
+    `질병군 분류 ${code} ${meta.label}`,
+  );
+  badge.append(
+    create('strong', 'classification-code', code),
+    create('span', 'classification-name', meta.label),
+  );
+  return badge;
+}
+function appendClassificationBadges(container, values) {
+  const codes = classificationCodes(values);
+  for (const code of codes) {
+    const badge = makeClassificationBadge(code);
+    if (badge) container.append(badge);
+  }
+  return codes.length;
+}
+function makeClassificationBadgeGroup(values, className = '') {
+  const group = create(
+    'span',
+    `classification-badge-group ${className}`.trim(),
+  );
+  const count = appendClassificationBadges(
+    group,
+    values,
+  );
+  if (!count) {
+    group.append(
+      makeChip(
+        Ui.summarizeList(
+          Array.isArray(values) ? values : [values],
+        ),
+      ),
+    );
+  }
+  return group;
+}
+function classificationSummaryText(values) {
+  const codes = classificationCodes(values);
+  if (!codes.length) {
+    return Ui.summarizeList(
+      Array.isArray(values) ? values : [values],
+    );
+  }
+  return codes
+    .map(
+      (code) => (
+        `${code} ${CLASSIFICATION_BADGE_META[code].label}`
+      ),
+    )
+    .join(', ');
+}
+function appendResultSummaryMeta(container, result) {
+  const summary = result?.summary ?? {};
+  const type = String(
+    result?.entity_type ?? '',
+  ).toUpperCase();
+  if (type === 'ADRG') {
+    if (summary.mdc) {
+      container.append(
+        makeChip(`MDC ${summary.mdc}`),
+      );
+    }
+    appendClassificationBadges(
+      container,
+      summary.abc_display_labels ?? [],
+    );
+    container.append(
+      makeChip(
+        `AADRG ${Ui.formatNumber(summary.aadrg_count ?? 0)}개`,
+      ),
+    );
+    return;
+  }
+  for (
+    const label
+    of Ui.resultSummaryChips(result)
+  ) {
+    container.append(
+      makeChip(label),
+    );
+  }
 }
 
 function makeEntityButton(summary, className = 'entity-link') {
@@ -157,7 +290,7 @@ function renderResults(response) {
     main.append(match);
     const subtitle = create('p', 'result-subtitle', result.subtitle);
     const chips = create('div', 'chip-row result-meta-row');
-    for (const label of Ui.resultSummaryChips(result)) chips.append(makeChip(label));
+    appendResultSummaryMeta(chips, result);
 
     button.append(main);
     if (result.subtitle) button.append(subtitle);
@@ -233,7 +366,10 @@ function renderRelationResults(response) {
       makeChip(`${result.matched_count}/${result.total_count} 코드 연결`),
       makeChip(result.summary?.mdc ? `MDC ${result.summary.mdc}` : 'MDC 미확인'),
     );
-    for (const label of result.summary?.abc_display_labels ?? []) chips.append(makeChip(label));
+    appendClassificationBadges(
+      chips,
+      result.summary?.abc_display_labels ?? [],
+    );
     button.append(main);
     if (result.subtitle) button.append(create('p', 'result-subtitle', result.subtitle));
     button.append(chips);
@@ -295,7 +431,12 @@ function renderRelationDetail(candidate, response) {
     ['ADRG', candidate.entity_id],
     ['질병군명', candidate.title.replace(`${candidate.entity_id} · `, '')],
     ['MDC', candidate.summary?.mdc ? `MDC ${candidate.summary.mdc}` : '-'],
-    ['질병군 분류', Ui.summarizeList(candidate.summary?.abc_display_labels)],
+    [
+      '질병군 분류',
+      makeClassificationBadgeGroup(
+        candidate.summary?.abc_display_labels ?? [],
+      ),
+    ],
     ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`],
     ['근거 페이지', candidate.source_page ? `PDF p.${candidate.source_page}` : '-'],
   ], 'detail-overview-grid'));
@@ -392,7 +533,18 @@ function makeMetaGrid(rows, className = '') {
   const grid = create('dl', `meta-grid ${className}`.trim());
   for (const [key, value] of rows) {
     const row = create('div');
-    row.append(create('dt', '', key), create('dd', '', Ui.text(value)));
+    const term = create('dt', '', key);
+    const description = create('dd');
+    if (
+      value
+      && typeof value === 'object'
+      && typeof value.nodeType === 'number'
+    ) {
+      description.append(value);
+    } else {
+      description.textContent = Ui.text(value);
+    }
+    row.append(term, description);
     grid.append(row);
   }
   return grid;
@@ -922,15 +1074,23 @@ function userConditionStatusLabel(status) {
 
 function renderUserConditionSummary(detail) {
   const coverage = conditionPresentation(detail);
-  const section = makeSection('분류 조건', coverage.summary, {
+  const description = coverage.needs_review
+    ? '일부 조건 TABLE 연결은 검토가 필요합니다.'
+    : 'ADRG 분류에 적용되는 조건입니다.';
+  const section = makeSection('분류 조건', description, {
     open: true,
     count: coverage.has_text || coverage.groups.length ? 1 : 0,
   });
   const body = create('div', 'user-condition-summary');
-  body.append(makeChip(
-    userConditionStatusLabel(coverage.status),
-    coverage.needs_review ? 'exclusion-chip' : 'role-chip',
-  ));
+  if (
+    SHOW_DEVELOPER_METADATA
+    || coverage.needs_review
+  ) {
+    body.append(makeChip(
+      userConditionStatusLabel(coverage.status),
+      coverage.needs_review ? 'exclusion-chip' : 'role-chip',
+    ));
+  }
   if (coverage.status === 'DIRECT_CODE_CONDITION') {
     body.append(create('p', 'user-condition-text direct-condition-text', coverage.text));
   } else if (coverage.has_text) {
@@ -1099,7 +1259,13 @@ function renderDerivedAadrgList(records) {
     );
     const meta = create('div', 'chip-row');
     const summary = record.summary ?? {};
-    meta.append(makeChip(Ui.classificationLabel(summary.classification_code, summary.classification_display_label)));
+    appendClassificationBadges(
+      meta,
+      [
+        summary.classification_code
+          || summary.classification_display_label,
+      ],
+    );
     if (Number.isFinite(Number(summary.rdrg_count))) meta.append(makeChip(`RDRG ${Ui.formatNumber(summary.rdrg_count)}개`));
     row.append(main, meta);
     container.append(row);
@@ -1127,8 +1293,22 @@ function renderAdrgDetail(payload) {
       ['질병군명', adrgDisplayName(detail)],
       ['MDC', detail.mdc ? `MDC ${detail.mdc}` : '-'],
       ['AADRG', `${Ui.formatNumber(detail.aadrg_count ?? 0)}개`],
-      ['질병군 분류', Ui.summarizeList(detail.abc_display_labels)],
-      ['조건 상태', userConditionStatusLabel(conditionPresentation(detail).status)],
+      [
+        '질병군 분류',
+        makeClassificationBadgeGroup(
+          (detail.abc_classification_codes ?? []).length
+            ? detail.abc_classification_codes
+            : detail.abc_display_labels,
+        ),
+      ],
+      ...(SHOW_DEVELOPER_METADATA
+        ? [[
+          '조건 상태',
+          userConditionStatusLabel(
+            conditionPresentation(detail).status,
+          ),
+        ]]
+        : []),
     ], 'detail-overview-grid'),
   );
 
@@ -1138,7 +1318,9 @@ function renderAdrgDetail(payload) {
     aadrgSection,
     renderUserConditionSummary(detail),
     renderUserConditionTables(detail),
-    renderUserConditionEvidence(detail),
+    ...(SHOW_DEVELOPER_METADATA
+      ? [renderUserConditionEvidence(detail)]
+      : []),
   );
   return fragment;
 }
@@ -1152,7 +1334,13 @@ function renderAadrgDetail(payload) {
       ['질병군명', detail.group_name],
       ['상위 ADRG', detail.adrg],
       ['MDC', detail.mdc ? `MDC ${detail.mdc}` : '-'],
-      ['질병군 분류', Ui.classificationLabel(detail.classification_code, detail.classification_display_label)],
+      [
+        '질병군 분류',
+        makeClassificationBadgeGroup([
+          detail.classification_code
+            || detail.classification_display_label,
+        ]),
+      ],
       ['RDRG', `${Ui.formatNumber((detail.rdrg_codes ?? []).length)}개`],
     ], 'detail-overview-grid'),
   );
@@ -1297,7 +1485,6 @@ function detailSummaryLine(payload) {
     return [
       detail.mdc ? `MDC ${detail.mdc}` : '',
       Number.isFinite(Number(detail.aadrg_count)) ? `AADRG ${Ui.formatNumber(detail.aadrg_count)}개` : '',
-      Ui.summarizeList(detail.abc_display_labels),
     ].filter(Boolean).join(' · ');
   }
   if (payload.entity_type === 'AADRG') {
@@ -1341,6 +1528,16 @@ function renderDetail(payload) {
     create('h2', '', detailTitle(payload)),
     create('p', '', detailSummaryLine(payload) || `${Ui.entityLabel(payload.entity_type)} · ${payload.entity_id}`),
   );
+  if (payload.entity_type === 'ADRG') {
+    copy.append(
+      makeClassificationBadgeGroup(
+        (payload.detail?.abc_classification_codes ?? []).length
+          ? payload.detail.abc_classification_codes
+          : payload.detail?.abc_display_labels,
+        'detail-hero-classification',
+      ),
+    );
+  }
   header.append(copy);
   panel.append(header);
 

@@ -156,6 +156,93 @@ check('검색 status bridge 사용', () => assert.match(appJs, /window\.KDRG\.ge
 check('분류 조건 섹션', () => assert.match(appJs, /'분류 조건'/));
 check('조건 상세 섹션', () => assert.match(appJs, /'조건 상세'/));
 check('원문 근거 섹션', () => assert.match(appJs, /'원문 근거'/));
+check('Stage56 개발 메타 기본 숨김', () => {
+  assert.match(appJs, /const SHOW_DEVELOPER_METADATA = false/);
+
+  const adrgStart = appJs.indexOf('function renderAdrgDetail(payload)');
+  const adrgEnd = appJs.indexOf('function renderAadrgDetail(payload)');
+  assert.ok(adrgStart >= 0);
+  assert.ok(adrgEnd > adrgStart);
+
+  const renderAdrgSource = appJs.slice(adrgStart, adrgEnd);
+
+  assert.match(
+    renderAdrgSource,
+    /\.\.\.\(SHOW_DEVELOPER_METADATA[\s\S]*?'조건 상태'[\s\S]*?: \[\]\)/,
+  );
+  assert.match(
+    renderAdrgSource,
+    /\.\.\.\(SHOW_DEVELOPER_METADATA[\s\S]*?renderUserConditionEvidence\(detail\)[\s\S]*?: \[\]\)/,
+  );
+  assert.doesNotMatch(
+    renderAdrgSource,
+    /\['조건 상태',\s*userConditionStatusLabel/,
+  );
+});
+
+check('Stage56 분류조건 기술상태 기본 숨김', () => {
+  assert.match(
+    appJs,
+    /SHOW_DEVELOPER_METADATA[\s\S]*?\|\| coverage\.needs_review/,
+  );
+  assert.match(
+    appJs,
+    /ADRG 분류에 적용되는 조건입니다/,
+  );
+});
+
+check('Stage56 질병군 분류 badge helper', () => {
+  assert.match(
+    appJs,
+    /const CLASSIFICATION_BADGE_META = Object\.freeze/,
+  );
+  assert.match(
+    appJs,
+    /function makeClassificationBadge\(/,
+  );
+  assert.match(
+    appJs,
+    /function appendClassificationBadges\(/,
+  );
+  assert.match(
+    appJs,
+    /function makeClassificationBadgeGroup\(/,
+  );
+  assert.match(
+    appJs,
+    /function classificationCode\(/,
+  );
+});
+
+check('Stage56 검색결과 분류 badge 사용', () => {
+  assert.match(
+    appJs,
+    /function appendResultSummaryMeta\(/,
+  );
+  assert.match(
+    appJs,
+    /appendResultSummaryMeta\(chips, result\)/,
+  );
+  assert.match(
+    appJs,
+    /appendClassificationBadges\([\s\S]*?summary\.abc_display_labels/,
+  );
+});
+
+check('Stage56 ADRG 상세 분류 badge 사용', () => {
+  assert.match(
+    appJs,
+    /makeClassificationBadgeGroup\([\s\S]*?detail\.abc_classification_codes/,
+  );
+  assert.match(
+    appJs,
+    /detail-hero-classification/,
+  );
+  assert.match(
+    appJs,
+    /classification-badge-group/,
+  );
+});
 check('구형 기본 TABLE 제거', () => assert.doesNotMatch(appJs, /기본 분류 TABLE/));
 check('구형 추가 분기조건 제거', () => assert.doesNotMatch(appJs, /추가 분기조건/));
 check('사용자 조건 TABLE 계약', () => assert.match(appJs, /detail\.user_condition_tables/));
@@ -256,6 +343,13 @@ for (const className of [
   'user-condition-empty',
   'user-condition-table-stack',
   'user-condition-evidence',
+  'classification-badge',
+  'classification-code',
+  'classification-badge-group',
+  'classification-a',
+  'classification-b',
+  'classification-c',
+  'detail-hero-classification',
 ]) {
   check(`CSS class ${className}`, () => assert.match(css, new RegExp(`\\.${className.replace('-', '\\-')}`)));
 }
@@ -315,6 +409,20 @@ check('관계검색 condition group index', () => assert.ok(service.conditionGro
 check('관계검색 AST ADRG 존재', () => assert.ok([...service.conditionGroupsByAdrg.values()].some((groups) => groups.length > 0)));
 
 const e011 = service.getDetail('ADRG', 'E011').detail;
+check('E011 질병군 분류 A 전문', () => {
+  assert.ok((e011.abc_classification_codes ?? []).includes('A'));
+  assert.ok((e011.abc_display_labels ?? []).some((value) => String(value).includes('전문')));
+});
+const detailB172Stage56 = service.getDetail('ADRG', 'B172').detail;
+check('B172 질병군 분류 C 단순', () => {
+  assert.ok((detailB172Stage56.abc_classification_codes ?? []).includes('C'));
+  assert.ok((detailB172Stage56.abc_display_labels ?? []).some((value) => String(value).includes('단순')));
+});
+check('Stage56 분류 badge CSS A/B/C 개별색', () => {
+  assert.match(css, /\.classification-a[\s\S]*?background:/);
+  assert.match(css, /\.classification-b[\s\S]*?background:/);
+  assert.match(css, /\.classification-c[\s\S]*?background:/);
+});
 const e011Groups = Ui.buildConditionGroups(e011.condition_ast);
 check('E011 조건 그룹 2개', () => assert.equal(e011Groups.length, 2));
 check('E011 첫 그룹 include table1', () => assert.deepEqual(e011Groups[0].includes[0].table_ids, ['LT_E011_001']));
