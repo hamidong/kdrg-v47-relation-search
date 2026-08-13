@@ -26,7 +26,7 @@ NODE_RELEASE_BASE = "https://nodejs.org/download/release/latest-v22.x"
 NODE_CACHE_ROOT = ROOT.parent / ".cache" / "kdrg-stage50a-node-v22"
 
 PROTECTED_HASHES = {
-    "data/kdrg_v47_search_integrated_v3.json": "3cc370dfb7e3d3c9480e66fc6cdb2b83c9f05f39fa82c0ce4d9403c0812d7f0b",
+    "data/kdrg_v47_search_integrated_v3.json": "75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0",
     "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
     "app/kdrg_search_service.py": "35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd",
@@ -48,9 +48,9 @@ PROTECTED_HASHES = {
 }
 
 TARGET_HASHES = {
-    "50B_validate_kdrg_electron_search_service.py": "e1adf80f857d956b87c4c776565eec30b6fe3290ad7484bd21ab041230f1caeb",
-    "electron/src/bootstrap-data.js": "bff503d1a0a6b548fa6a47f56598f5bc4206012771b9ed9df56325a56709564e",
-    "electron/tests/validate-electron-skeleton.js": "51f387682e4e2f3e3a1435a2f77ec96d8ebc8824cc3abf78c486fa381cf6adb5",
+    "50B_validate_kdrg_electron_search_service.py": "c64a63ed26ec3eab45b9b5629ecff4df72156ae1d647a5ee524e95be385cfc1f",
+    "electron/src/bootstrap-data.js": "49b7bc32f0307041d817437602bdfe76defd299092364167ce87ec50fd25ffb0",
+    "electron/tests/validate-electron-skeleton.js": "5675f617cf1b57249e90bf96356844c73b38003e2bb0501ced4cd2e25d8db0d9",
     "electron/tests/validate-search-service.js": "72ac8f38a4dc7ea4a4dd8c44b215f085adabddf34c8ff7f4e5a37a3db61e7e8e",
     "electron/renderer/ui-formatters.js": "e1c00fd9bcb33d577859ff948650c499a6b7504283b0aa75523f79eabaa1730a",
     "electron/README_STAGE50C.md": "35f92d8bd42649ee7bdb651979626235517ea06a3a185bae3128b2b212e0478f",

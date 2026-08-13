@@ -33,7 +33,7 @@ WORKFLOW_REFERENCE_SHA = "1e7f88893489101247e71ffb76ed27bbd38ed21e90de6fe26871ac
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated_v3.json":
-        "3cc370dfb7e3d3c9480e66fc6cdb2b83c9f05f39fa82c0ce4d9403c0812d7f0b",
+        "75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0",
     "data/kdrg_v47_ui_semantic_profile.json":
         "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json":
@@ -59,7 +59,7 @@ PROTECTED_HASHES = {
     "electron/src/data-paths.js":
         "3d209ade16f25d9f2abfac5d43872b178276e74fba549388b220fa1f72a1dfa3",
     "electron/src/bootstrap-data.js":
-        "bff503d1a0a6b548fa6a47f56598f5bc4206012771b9ed9df56325a56709564e",
+        "49b7bc32f0307041d817437602bdfe76defd299092364167ce87ec50fd25ffb0",
     "electron/src/search-normalizer.js":
         "f59ccccd3a380df450d934b8bdd322f71c906fc68e69caa293e500d7f355d65e",
     "electron/src/search-result-contract.js":
@@ -73,11 +73,11 @@ PROTECTED_HASHES = {
     "electron/tests/run-search-parity.js":
         "24be2d6310eaff9bd63e9b5b3a2fef3990a023ce2072515b816c7b94fe7755fe",
     "electron/tests/validate-electron-skeleton.js":
-        "51f387682e4e2f3e3a1435a2f77ec96d8ebc8824cc3abf78c486fa381cf6adb5",
+        "5675f617cf1b57249e90bf96356844c73b38003e2bb0501ced4cd2e25d8db0d9",
     "electron/tests/validate-search-service.js":
         "72ac8f38a4dc7ea4a4dd8c44b215f085adabddf34c8ff7f4e5a37a3db61e7e8e",
     "electron/tests/validate-packaging-config.js":
-        "fb68bc312e5208a3689c7d22604b633b3d36a8135b3abb4d659a6e502e5d8fd1",
+        "186a7dac712945116a8181b94b7df1fb4d8cb307c86d6feb889f954ebd7af5d7",
     "electron/tests/validate-packaged-runtime-smoke.js":
         "28f366f1d2405c5e492ecd446a05c06b7bff414f2e3a5a42d218b238928f5569",
     "electron/tests/validate-release-version.js":
@@ -87,7 +87,7 @@ PROTECTED_HASHES = {
     "electron/scripts/validate-package-lock-registry.py":
         "ef5dfd00fc5acdb68243119b0d40b71689103c52e02f4ad5c1db7dc66b995d92",
     "electron/scripts/validate-checkout-byte-integrity.py":
-        "0eb52bec3bbfaa2ef2285865867311349b1ca0428f39efae259db72a02e1eb59",
+        "165ff54d801c677a9abf4963bcf2c098cc853c298b15e611663dd34a9a5ac703",
     "electron/README_STAGE50A.md":
         "bdf76fc3075e4ab0d2eec90e144bc4b221e6dd0e0275db2e21a7b299fbe7e886",
     "electron/README_STAGE50B.md":
@@ -97,9 +97,9 @@ PROTECTED_HASHES = {
     "electron/README_STAGE50D.md":
         "adad88a75b3e2c3f20de83ffe3d5e086ca39cf8010d666a08527c18a7bb6cc26",
     "50B_validate_kdrg_electron_search_service.py":
-        "e1adf80f857d956b87c4c776565eec30b6fe3290ad7484bd21ab041230f1caeb",
+        "c64a63ed26ec3eab45b9b5629ecff4df72156ae1d647a5ee524e95be385cfc1f",
     "50C_validate_kdrg_electron_renderer_ui.py":
-        "2f9e46dc91eb1e980740e2aebd67f7cb268f5fe6d867b12f35b4eb0e6c8adebd",
+        "9c254cbdb92781c1b15975ed8c859f39e25c56b6203d06e4154bdb347dbfa929",
 }
 
 MUTABLE_UI_FILES = (

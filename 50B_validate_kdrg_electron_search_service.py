@@ -25,7 +25,7 @@ REPORT_JSON = REPORT_DIR / "electron_stage50b_validation_report.json"
 
 PROTECTED_HASHES = {
     "data/kdrg_v47_search_integrated.json": "3de5d6d95cd9cbd16e674f5a4cffcd8bf89da2ee70627501f56d81b05bbe8af1",
-    "data/kdrg_v47_search_integrated_v3.json": "3cc370dfb7e3d3c9480e66fc6cdb2b83c9f05f39fa82c0ce4d9403c0812d7f0b",
+    "data/kdrg_v47_search_integrated_v3.json": "75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0",
     "data/kdrg_v47_ui_semantic_profile.json": "c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e",
     "data/kdrg_v47_ui_display_contract.json": "9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac",
     "app/kdrg_search_service.py": "35766cfd10b887c9852536a2165d6719e20c5ad2791a5d1a0d0166d7b94cb6cd",

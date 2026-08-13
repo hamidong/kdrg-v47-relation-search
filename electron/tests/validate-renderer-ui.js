@@ -568,7 +568,7 @@ check('조건 요약 TABLE 충돌 일반화 helper', () => {
 check('구조식 operator는 uppercase 논리연산자만 토큰화', () => {
   assert.match(appJs, /const strictOperators = options\.strictOperators === true/);
   assert.match(appJs, /\? \/\(\\bAND\\b\|\\bOR\\b\|\\bWITHOUT\\b\)\/g/);
-  assert.match(appJs, /: \/\(\\bAND\\b\|\\bOR\\b\|\\bWITHOUT\\b\)\/gi/);
+  assert.match(appJs, /: \/\(\\bAND\\b\|\\bOR\\b\|\\bWITHOUT\\b\)\/g/);
   assert.match(appJs, /structural_text: Boolean\(structuralText\)/);
   assert.match(appJs, /strictOperators: coverage\.structural_text === true/);
 });

@@ -816,7 +816,7 @@ function renderConditionExpression(value, options = {}) {
   const strictOperators = options.strictOperators === true;
   const operatorPattern = strictOperators
     ? /(\bAND\b|\bOR\b|\bWITHOUT\b)/g
-    : /(\bAND\b|\bOR\b|\bWITHOUT\b)/gi;
+    : /(\bAND\b|\bOR\b|\bWITHOUT\b)/g;
   const parts = formatUserConditionText(value).split(operatorPattern);
   const operatorLabels = {
     AND: 'AND',

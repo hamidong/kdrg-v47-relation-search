@@ -144,7 +144,7 @@ const dataFiles = resolveDataFiles({
   resourcesPath: null,
   moduleDirectory: path.join(ELECTRON_ROOT, 'src'),
 });
-check('통합 JSON SHA256', sha256(dataFiles.integrated), '3cc370dfb7e3d3c9480e66fc6cdb2b83c9f05f39fa82c0ce4d9403c0812d7f0b');
+check('통합 JSON SHA256', sha256(dataFiles.integrated), '75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0');
 check('semantic profile SHA256', sha256(dataFiles.semanticProfile), 'c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e');
 check('display contract SHA256', sha256(dataFiles.displayContract), '9976307acd77bb6a0c8a48b2788d055faf563d497381b2c2cacfc7435df0f1ac');
 
