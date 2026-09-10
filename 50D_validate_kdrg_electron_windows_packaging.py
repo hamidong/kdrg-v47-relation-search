@@ -33,7 +33,7 @@ def main():
     def check(name,actual,expected=True): checks.append({"name":name,"actual":actual,"expected":expected,"passed":actual==expected})
     pkg=json.loads((ELECTRON/"package.json").read_text(encoding="utf-8")); lock=json.loads((ELECTRON/"package-lock.json").read_text(encoding="utf-8")); scripts=pkg.get("scripts",{})
     check("운영 JSON SHA",sha256(DATA),EXPECTED_JSON_SHA)
-    check("package version",pkg.get("version"),"0.5.9"); check("lock version",lock.get("version"),"0.5.9")
+    check("package version",pkg.get("version"),"0.5.10"); check("lock version",lock.get("version"),"0.5.10")
     check("validate skeleton current",scripts.get("validate:skeleton"),"node tests/validate-stage59b-skeleton.js")
     check("validate search current",scripts.get("validate:search"),"node tests/validate-stage59b-search.js")
     check("validate UI current",scripts.get("validate:ui"),"node tests/validate-stage59b-ui.js")
