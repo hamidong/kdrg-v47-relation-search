@@ -78,7 +78,7 @@
   }
 
   function typeCountText(typeCounts) {
-    const ordered = ['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE'];
+    const ordered = ['CODE', 'AADRG'];
     return ordered
       .filter((key) => Number(typeCounts?.[key] ?? 0) > 0)
       .map((key) => `${entityLabel(key)} ${formatNumber(typeCounts[key])}건`)
@@ -117,8 +117,7 @@
     }
     return uniqueStrings([
       ...(summary.roles ?? []).map(roleLabel),
-      `TABLE ${formatNumber(summary.logical_table_count ?? 0)}개`,
-      `관련 ADRG ${formatNumber((summary.related_adrgs ?? []).length)}개`,
+      Number(summary.related_aadrg_count ?? 0) > 0 ? `관련 AADRG ${formatNumber(summary.related_aadrg_count)}개` : '',
     ]);
   }
 

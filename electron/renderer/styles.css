@@ -1306,3 +1306,15 @@ footer { display: none; }
   background: #fffaf0;
 }
 .condition-requirement-block p { margin: 5px 0 0; }
+
+/* Stage59B 0.5.10 Shadow R3 */
+.detail-heading-actions { display:flex; align-items:center; gap:8px; }
+#detail-back { min-height:34px; padding:6px 12px; border-radius:9px; }
+.related-aadrg-section > summary .section-title-row h3 { font-size:1.12rem; font-weight:800; }
+.condition-pretty-expression { display:grid; gap:8px; padding:14px 16px; border-radius:12px; background:rgba(0,0,0,.025); }
+.condition-pretty-line { display:grid; grid-template-columns:auto minmax(0,1fr); align-items:start; gap:10px; line-height:1.65; }
+.condition-pretty-line:first-child { grid-template-columns:minmax(0,1fr); }
+.condition-pretty-operator { min-width:3.2em; text-transform:lowercase; font-weight:800; }
+.condition-pretty-line .condition-expression { margin:0; }
+.detail-section + .detail-section { margin-top:14px; }
+.detail-overview-grid { margin-bottom:18px; }

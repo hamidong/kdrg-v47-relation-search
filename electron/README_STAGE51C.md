@@ -41,7 +41,7 @@ KDRG V4.7 통합 검색 데이터 v3의 `user_condition_*` 필드를 Electron AD
 
 - 파일: `data/kdrg_v47_search_integrated_v3.json`
 - schema: `kdrg-v47-search-integrated-v3`
-- SHA256: `75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0`
+- SHA256: `1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58`
 
 ## 검증
 

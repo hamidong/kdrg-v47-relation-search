@@ -1205,6 +1205,138 @@ class KdrgSearchService {
   }
 }
 
+
+// Stage59B 0.5.10 Shadow R3
+const STAGE59B_PUBLIC_TYPES = Object.freeze(['CODE', 'AADRG']);
+const _s59Status = KdrgSearchService.prototype.status;
+const _s59RelationSearch = KdrgSearchService.prototype.relationSearch;
+const _s59AdrgDetail = KdrgSearchService.prototype.adrgDetail;
+const _s59SummaryPayload = KdrgSearchService.prototype.summaryPayload;
+
+KdrgSearchService.prototype.status = function () {
+  const base = _s59Status.call(this);
+  return { ...base, public_search_types: [...STAGE59B_PUBLIC_TYPES], mdc_master: clone(this.data?.mdc_master ?? null) };
+};
+
+KdrgSearchService.prototype.buildSearchDocuments = function () {
+  const documents = new Map();
+  for (const [entityType, rows] of Object.entries(this.records)) {
+    const idField = this.idFields[entityType];
+    for (const row of rows) {
+      const entityId = String(row[idField] ?? '');
+      const [title, subtitle] = this.titleSubtitle(entityType, row);
+      const fields = { entity_id: [entityId], title: [title], subtitle: [subtitle] };
+      if (entityType === 'CODE') fields.name = (row.names ?? []).map(String);
+      else if (entityType === 'AADRG') {
+        fields.name = [String(row.group_name ?? '')];
+        fields.parent_adrg = [String(row.adrg ?? '')];
+        fields.classification = [String(row.classification_display_label ?? '')];
+      } else if (entityType === 'ADRG') fields.name = [String(row.adrg_name ?? '')];
+      else if (entityType === 'RDRG') fields.name = [String(row.group_name ?? ''), String(row.severity_name ?? '')];
+      else if (entityType === 'TABLE') fields.name = [String(row.display_name ?? '')];
+      const normalizedFields = Object.fromEntries(Object.entries(fields).map(([key, values]) => [key, values.filter((v) => normalizeSpace(v)).map(normalizeQuery)]));
+      const flat = Object.values(normalizedFields).flat();
+      documents.set(`${entityType}:${entityId}`, { entity_type: entityType, entity_id: entityId, title, subtitle, fields: normalizedFields, haystack: flat.join(' '), tokens: new Set(queryTokens(flat.join(' '))) });
+    }
+  }
+  return documents;
+};
+
+KdrgSearchService.prototype.normalizeEntityTypes = function (entityType) {
+  if (entityType == null || entityType === 'ALL') return [...STAGE59B_PUBLIC_TYPES];
+  const values = typeof entityType === 'string' ? [entityType] : [...entityType];
+  const output = [];
+  for (const value of values) {
+    const name = String(value ?? '').toUpperCase();
+    if (name === 'ALL') return [...STAGE59B_PUBLIC_TYPES];
+    if (!ENTITY_TYPES.includes(name)) throw new KdrgSearchError(`지원하지 않는 검색 유형입니다: ${value}`);
+    if (!output.includes(name)) output.push(name);
+  }
+  if (!output.length) throw new KdrgSearchError('검색 유형이 비어 있습니다');
+  return output;
+};
+
+KdrgSearchService.prototype.search = function (query, entityType = 'ALL', options = {}) {
+  const queryText = normalizeSpace(query);
+  if (!queryText) throw new KdrgSearchError('검색어를 입력해야 합니다');
+  const limit = options.limit ?? 50;
+  const offset = options.offset ?? 0;
+  const entityTypes = this.normalizeEntityTypes(entityType);
+  const mdcFilter = String(options.mdc ?? '').toUpperCase().trim();
+  const classFilter = String(options.classification ?? '').toUpperCase().trim();
+  const exactId = normalizeEntityId(queryText, 'CODE');
+  const exactCode = this.recordMaps.CODE.get(exactId);
+  if (exactCode) {
+    const rows = [];
+    const seen = new Set();
+    const add = (typeName, id, score, kind) => {
+      const key = `${typeName}:${id}`;
+      if (seen.has(key)) return;
+      const rec = this.recordMaps[typeName].get(normalizeEntityId(id, typeName));
+      if (!rec) return;
+      if (mdcFilter && !this.recordMatchesMdc(typeName, rec, mdcFilter)) return;
+      if (classFilter && !this.recordMatchesClassification(typeName, rec, classFilter)) return;
+      seen.add(key);
+      rows.push(this.makeSearchResult(typeName, String(id), score, kind, ['entity_id']));
+    };
+    if (entityTypes.includes('CODE')) add('CODE', exactCode.code, 1000, 'EXACT_ID');
+    if (entityTypes.includes('AADRG')) for (const aadrg of uniqueStrings(exactCode.related_aadrgs ?? [])) add('AADRG', aadrg, 990, 'DIRECT_CODE_RELATION');
+    const typeCounts = {};
+    for (const row of rows) typeCounts[row.entity_type] = (typeCounts[row.entity_type] ?? 0) + 1;
+    return { schema_version: RESPONSE_SCHEMA_VERSION, query: queryText, normalized_query: normalizeQuery(queryText), filters: { entity_types: entityTypes, mdc: mdcFilter || null, classification: classFilter || null }, total_count: rows.length, type_counts: typeCounts, offset, limit, has_more: false, results: rows.slice(offset, offset + limit) };
+  }
+  const tokens = queryTokens(queryText);
+  const scored = [];
+  for (const document of this.searchDocuments.values()) {
+    if (!entityTypes.includes(document.entity_type)) continue;
+    const record = this.recordMaps[document.entity_type].get(normalizeEntityId(document.entity_id, document.entity_type));
+    if (mdcFilter && !this.recordMatchesMdc(document.entity_type, record, mdcFilter)) continue;
+    if (classFilter && !this.recordMatchesClassification(document.entity_type, record, classFilter)) continue;
+    const match = this.matchDocument(document, queryText, tokens);
+    if (!match) continue;
+    scored.push([match[0], document.entity_type, document.entity_id, match[2], match[1]]);
+  }
+  scored.sort((a, b) => b[0] - a[0] || ENTITY_ORDER[a[1]] - ENTITY_ORDER[b[1]] || compareAscii(a[2], b[2]));
+  const all = scored.map(([score, typeName, entityId, fields, kind]) => this.makeSearchResult(typeName, entityId, score, kind, fields));
+  const typeCounts = {};
+  for (const row of all) typeCounts[row.entity_type] = (typeCounts[row.entity_type] ?? 0) + 1;
+  const results = all.slice(offset, offset + limit);
+  return { schema_version: RESPONSE_SCHEMA_VERSION, query: queryText, normalized_query: normalizeQuery(queryText), filters: { entity_types: entityTypes, mdc: mdcFilter || null, classification: classFilter || null }, total_count: all.length, type_counts: typeCounts, offset, limit, has_more: offset + results.length < all.length, results };
+};
+
+KdrgSearchService.prototype.summaryPayload = function (entityType, row) {
+  const base = _s59SummaryPayload.call(this, entityType, row);
+  if (entityType === 'CODE') return { names: clone(row.names ?? []), roles: clone(row.roles ?? []), related_aadrg_count: (row.related_aadrgs ?? []).length, namespace_meanings: clone(row.namespace_meanings ?? null) };
+  if (entityType === 'AADRG') {
+    const item = (this.data?.mdc_master?.items ?? []).find((x) => String(x.code) === String(row.mdc));
+    return { ...base, mdc_name: item?.title ?? null };
+  }
+  return base;
+};
+
+KdrgSearchService.prototype.aadrgDetail = function (row) {
+  const parentRow = this.recordMaps.ADRG.get(normalizeEntityId(row.adrg, 'ADRG'));
+  const parent = parentRow ? _s59AdrgDetail.call(this, parentRow) : null;
+  const relatedCodes = [];
+  for (const codeRow of this.data.code_records ?? []) {
+    if ((codeRow.related_aadrgs ?? []).map(String).includes(String(row.aadrg))) relatedCodes.push(this.summaryEntity('CODE', String(codeRow.code)));
+  }
+  const item = (this.data?.mdc_master?.items ?? []).find((x) => String(x.code) === String(row.mdc));
+  return { ...clone(row), parent_adrg: this.summaryEntity('ADRG', String(row.adrg ?? '')), parent_adrg_detail: parent, condition_ast: clone(parent?.condition_ast ?? null), user_condition_status: parent?.user_condition_status ?? null, user_condition_text: parent?.user_condition_text ?? null, user_condition_source: parent?.user_condition_source ?? null, user_condition_page: parent?.user_condition_page ?? null, user_condition_table_ids: clone(parent?.user_condition_table_ids ?? []), user_condition_table_refs: clone(parent?.user_condition_table_refs ?? []), user_condition_tables: clone(parent?.user_condition_tables ?? []), logical_tables: clone(parent?.logical_tables ?? []), related_code_summaries: relatedCodes, rdrg_records: (row.rdrg_codes ?? []).map((code) => this.summaryEntity('RDRG', code)), mdc_name: item?.title ?? null, virtual_condition_sets: parentRow?.mdc_virtual_principal_diagnosis ? [{ label: `MDC ${parentRow.mdc_virtual_principal_diagnosis.mdc} 전체 주진단`, ...clone(parentRow.mdc_virtual_principal_diagnosis), code_records: (parentRow.mdc_virtual_principal_diagnosis.codes ?? []).map((code) => this.summaryEntity('CODE', code)) }] : [] };
+};
+
+KdrgSearchService.prototype.relationSearch = function (conditions, operator = 'AND', options = {}) {
+  const raw = _s59RelationSearch.call(this, conditions, operator, options);
+  const results = [];
+  for (const parent of raw.results ?? []) {
+    for (const child of parent.aadrg_records ?? []) results.push({ ...clone(parent), entity_type: 'AADRG', entity_id: child.entity_id, title: child.title, subtitle: child.subtitle, parent_adrg: parent.entity_id, aadrg_records: undefined, summary: { ...(child.summary ?? {}), parent_adrg: parent.entity_id } });
+  }
+  const levelCounts = {};
+  for (const row of results) levelCounts[row.relation_level] = (levelCounts[row.relation_level] ?? 0) + 1;
+  return { ...raw, total_count: results.length, level_counts: levelCounts, results, disclaimer: '입력 코드가 같은 ADRG 조건식에 연결되는지를 내부 판정한 뒤 AADRG 사용자 단위로 표시합니다. 최종 DRG 판정을 의미하지 않습니다.' };
+};
+
+
 module.exports = Object.freeze({
   KdrgSearchError,
   KdrgSearchService,
