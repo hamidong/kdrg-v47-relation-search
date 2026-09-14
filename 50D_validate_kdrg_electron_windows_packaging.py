@@ -17,6 +17,12 @@ def sha256(path):
     return h.hexdigest()
 
 def run(cmd,cwd,timeout=1200):
+    if isinstance(cmd, (list, tuple)) and cmd:
+        executable = str(cmd[0]).lower()
+        if executable in {"npm", "npm.cmd"}:
+            resolved = shutil.which("npm.cmd") or shutil.which("npm")
+            if resolved:
+                cmd = [resolved, *cmd[1:]]
     try:
         p=subprocess.run(cmd,cwd=cwd,text=True,capture_output=True,timeout=timeout)
         return {"returncode":p.returncode,"stdout":p.stdout,"stderr":p.stderr}

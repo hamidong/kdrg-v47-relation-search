@@ -175,7 +175,7 @@ function validateRelationResponse(response, expectedAdrg = null) {
   return response.results;
 }
 
-function findRelationSmokeFixture(service) {
+function findLegacyRelationSmokeFixture(service) {
   const conditionGroups = service?.conditionGroupsByAdrg;
   const tableMap = service?.recordMaps?.TABLE;
   if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {
@@ -207,6 +207,130 @@ function findRelationSmokeFixture(service) {
     }
   }
   throw new Error('packaged relation smoke fixture discovery failed');
+}
+
+function findRelationSmokeFixture(service) {
+  const runtimeService = (
+    String(service?.constructor?.name ?? '') === 'KdrgSearchService'
+    || Boolean(
+      service?.recordMaps?.CODE
+      && service?.recordMaps?.AADRG
+      && typeof service.recordMaps.CODE.values === 'function'
+      && typeof service.recordMaps.AADRG.values === 'function'
+    )
+  );
+
+  // 기존 validate-packaged-runtime-smoke.js는 실제 runtime service가 아닌
+  // contract test-double을 주입한다. 그 경로는 기존 fixture discovery를 그대로 보존한다.
+  if (!runtimeService) {
+    return findLegacyRelationSmokeFixture(service);
+  }
+
+  // 실제 packaged runtime에서는 Stage59 이후 public relation 결과가 AADRG이므로,
+  // CODE -> parent ADRG 후보를 실제 recordMaps에서 만들고 relationSearch 결과의
+  // AADRG + parent_adrg projection을 직접 검증한다.
+  const codeRows = Array.from(service.recordMaps.CODE.values());
+  const byParent = new Map();
+
+  for (const row of codeRows) {
+    const code = String(row?.code ?? row?.entity_id ?? '').trim();
+    if (!code) continue;
+
+    for (const rawParent of row?.related_adrgs ?? []) {
+      const parent = String(rawParent ?? '').trim();
+      if (!parent) continue;
+      if (!byParent.has(parent)) byParent.set(parent, []);
+
+      const bucket = byParent.get(parent);
+      if (!bucket.includes(code)) bucket.push(code);
+    }
+  }
+
+  const parents = [...byParent.entries()]
+    .filter(([, codes]) => codes.length >= 2)
+    .sort((a, b) => a[0].localeCompare(b[0]));
+
+  let attempts = 0;
+  const maxAttempts = 1200;
+
+  for (const [adrg, codes] of parents) {
+    const candidates = codes.slice(0, 20);
+
+    for (let i = 0; i < candidates.length; i += 1) {
+      for (let j = i + 1; j < candidates.length; j += 1) {
+        if (attempts >= maxAttempts) break;
+        attempts += 1;
+
+        const conditions = [
+          { codeType: 'AUTO', code: candidates[i] },
+          { codeType: 'AUTO', code: candidates[j] },
+        ];
+
+        let response;
+        try {
+          response = service.relationSearch(
+            conditions,
+            'AND',
+            { limit: 500 },
+          );
+        } catch {
+          continue;
+        }
+
+        const results = Array.isArray(response?.results)
+          ? response.results
+          : [];
+        if (!results.length) continue;
+
+        if (!results.every(
+          (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
+        )) {
+          throw new Error(
+            'packaged runtime relation smoke exposed non-AADRG public result',
+          );
+        }
+
+        const match = results.find(
+          (item) => String(item?.parent_adrg ?? '') === adrg,
+        );
+        if (!match) continue;
+
+        const aadrg = String(match?.entity_id ?? '').trim();
+        if (!aadrg) {
+          throw new Error('packaged runtime relation smoke AADRG id is empty');
+        }
+
+        return {
+          conditions,
+          operator: 'AND',
+          options: { limit: 500 },
+          codes: [candidates[i], candidates[j]],
+          code1: candidates[i],
+          code2: candidates[j],
+          adrg,
+          parent_adrg: adrg,
+          parentAdrg: adrg,
+          aadrg,
+          expected_aadrg: aadrg,
+          expectedAadrg: aadrg,
+          public_entity_type: 'AADRG',
+          response,
+          result: match,
+          match,
+          attempts,
+          runtime_fixture: true,
+        };
+      }
+
+      if (attempts >= maxAttempts) break;
+    }
+
+    if (attempts >= maxAttempts) break;
+  }
+
+  throw new Error(
+    `packaged AADRG relation smoke fixture discovery failed after ${attempts} attempts`,
+  );
 }
 
 function validateDetailResponse(detail) {

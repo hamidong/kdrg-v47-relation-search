@@ -221,7 +221,6 @@ jobs:
           exit $LASTEXITCODE
 
       - name: Stage 50D Python 독립검증
-        continue-on-error: true
         shell: pwsh
         run: |
           python -X utf8 50D_validate_kdrg_electron_windows_packaging.py
