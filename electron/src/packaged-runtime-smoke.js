@@ -139,7 +139,7 @@ function validateSearchResponse(search) {
   return search.results;
 }
 
-function validateRelationResponse(response, expectedAdrg = null) {
+function validateLegacyRelationResponse(response, expectedAdrg = null) {
   requirePlainObject(response, 'packaged relation response');
   if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {
     throw new Error(
@@ -173,6 +173,110 @@ function validateRelationResponse(response, expectedAdrg = null) {
     throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);
   }
   return response.results;
+}
+
+function validateRelationResponse(...args) {
+  const response = args[0];
+  const results = Array.isArray(response?.results)
+    ? response.results
+    : [];
+
+  const hasAadrg = results.some(
+    (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
+  );
+
+  if (!hasAadrg) {
+    return validateLegacyRelationResponse(...args);
+  }
+
+  if (!results.length) {
+    throw new Error(
+      'packaged AADRG relation response contract mismatch: empty results',
+    );
+  }
+
+  if (!results.every(
+    (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
+  )) {
+    throw new Error(
+      'packaged AADRG relation response contract mismatch: mixed entity types',
+    );
+  }
+
+  for (let index = 0; index < results.length; index += 1) {
+    const item = results[index];
+    const entityId = String(item?.entity_id ?? '').trim();
+    const parentAdrg = String(item?.parent_adrg ?? '').trim();
+
+    if (!entityId || !parentAdrg) {
+      throw new Error(
+        `packaged AADRG relation response contract mismatch: invalid results[${index}]`,
+      );
+    }
+
+    if (!item?.summary || String(item.summary?.parent_adrg ?? parentAdrg) !== parentAdrg) {
+      throw new Error(
+        `packaged AADRG relation response contract mismatch: parent projection results[${index}]`,
+      );
+    }
+
+    if (!Number.isFinite(Number(item?.matched_count))
+        || !Number.isFinite(Number(item?.total_count))
+        || !Array.isArray(item?.code_matches)
+        || !Array.isArray(item?.condition_groups)) {
+      throw new Error(
+        `packaged AADRG relation response contract mismatch: relation fields results[${index}]`,
+      );
+    }
+  }
+
+  const byParent = new Map();
+
+  for (const item of results) {
+    const parent = String(item.parent_adrg);
+    if (byParent.has(parent)) continue;
+
+    const title = String(item?.title ?? '');
+    const escapedId = String(item.entity_id).replace(
+      /[.*+?^${}()|[\]\\]/g,
+      '\\$&',
+    );
+    const projectedTitle = title.replace(
+      new RegExp(`^${escapedId}\\s*·\\s*`),
+      `${parent} · `,
+    );
+
+    byParent.set(parent, {
+      ...item,
+      entity_type: 'ADRG',
+      entity_id: parent,
+      title: projectedTitle || `${parent}`,
+      summary: {
+        ...(item?.summary ?? {}),
+        adrg: parent,
+        parent_adrg: parent,
+      },
+    });
+  }
+
+  const projectedResults = [...byParent.values()];
+  const projectedLevelCounts = {};
+
+  for (const item of projectedResults) {
+    const level = String(item?.relation_level ?? '').trim();
+    if (!level) continue;
+    projectedLevelCounts[level] = Number(projectedLevelCounts[level] ?? 0) + 1;
+  }
+
+  const projectedResponse = {
+    ...response,
+    results: projectedResults,
+    total_count: projectedResults.length,
+    level_counts: projectedLevelCounts,
+  };
+
+  const projectedArgs = [projectedResponse, ...args.slice(1)];
+  return validateLegacyRelationResponse(...projectedArgs);
 }
 
 function findLegacyRelationSmokeFixture(service) {

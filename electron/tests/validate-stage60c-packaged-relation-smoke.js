@@ -39,6 +39,11 @@ assert.match(wrapperSource, /recordMaps\.CODE/);
 assert.match(wrapperSource, /recordMaps\.AADRG/);
 assert.match(wrapperSource, /non-AADRG public result/);
 assert.match(wrapperSource, /parent_adrg/);
+assert.match(source, /function validateLegacyRelationResponse/);
+assert.match(source, /function validateRelationResponse\(\.\.\.args\)/);
+assert.match(source, /packaged AADRG relation response contract mismatch/);
+assert.match(source, /parent projection results\[/);
+assert.match(source, /validateLegacyRelationResponse\(\.\.\.projectedArgs\)/);
 
 const context = vm.createContext({
   console,
