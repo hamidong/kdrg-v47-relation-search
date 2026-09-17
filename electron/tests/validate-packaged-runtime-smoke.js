@@ -127,12 +127,104 @@ const objectConsole = normalizeConsoleMessage([{
 check('object console level', objectConsole.level, 3);
 check('object console source', objectConsole.source_id, 'renderer.js');
 
+const packagedSmokeSource = fs.readFileSync(
+  path.join(__dirname, '..', 'src', 'packaged-runtime-smoke.js'),
+  'utf8',
+);
+const uiFixtureStart = packagedSmokeSource.indexOf('const UI_FIXTURES = Object.freeze([');
+const uiFixtureEnd = packagedSmokeSource.indexOf(
+  'const REQUIRED_DETAIL_LABELS',
+  uiFixtureStart,
+);
+const uiFixtureSource = (
+  uiFixtureStart >= 0 && uiFixtureEnd > uiFixtureStart
+    ? packagedSmokeSource.slice(uiFixtureStart, uiFixtureEnd)
+    : ''
+);
+const executeFixtureStart = packagedSmokeSource.indexOf(
+  'async function executeRendererFixture',
+);
+const executeFixtureEnd = packagedSmokeSource.indexOf(
+  'async function runPackagedUiValidation',
+  executeFixtureStart,
+);
+const executeFixtureSource = (
+  executeFixtureStart >= 0 && executeFixtureEnd > executeFixtureStart
+    ? packagedSmokeSource.slice(executeFixtureStart, executeFixtureEnd)
+    : ''
+);
+
+check('UI fixture source located', uiFixtureSource.length > 0, true);
+check(
+  'UI fixture aadrg fields x6',
+  (uiFixtureSource.match(/\baadrg\s*:/g) || []).length,
+  6,
+);
+check(
+  'UI fixture search_query fields x6',
+  (uiFixtureSource.match(/\bsearch_query\s*:/g) || []).length,
+  6,
+);
+check('renderer fixture source located', executeFixtureSource.length > 0, true);
+check(
+  'packaged smoke AADRG filter',
+  executeFixtureSource.includes("filter.value = 'AADRG';"),
+  true,
+);
+check(
+  'packaged smoke uses fixture.search_query',
+  executeFixtureSource.includes('input.value = fixture.search_query;'),
+  true,
+);
+check(
+  'packaged smoke AADRG result selector',
+  executeFixtureSource.includes('data-entity-type="AADRG"')
+    && executeFixtureSource.includes('fixture.aadrg'),
+  true,
+);
+check(
+  'packaged smoke selected result click',
+  executeFixtureSource.includes('selectedResult.click();'),
+  true,
+);
+check(
+  'packaged smoke AADRG detail caption',
+  executeFixtureSource.includes('detailCaption === fixture.aadrg'),
+  true,
+);
+check(
+  'packaged smoke selected_aadrg snapshot',
+  executeFixtureSource.includes('selected_aadrg: fixture.aadrg'),
+  true,
+);
+check(
+  'packaged smoke legacy ADRG filter absent',
+  executeFixtureSource.includes("filter.value = 'ADRG';"),
+  false,
+);
+
+const expectedUiFixtureMap = [
+  ['B013', 'B0130', 'B013'],
+  ['B014', 'B0140', 'B014'],
+  ['B018', 'B0180', 'B0180'],
+  ['B022', 'B0220', 'B0220'],
+  ['L033', 'L0330', 'L033'],
+  ['9610', '96100', '9610'],
+];
+for (const [index, expected] of expectedUiFixtureMap.entries()) {
+  const fixture = UI_FIXTURES[index];
+  check(`fixture ${expected[0]} parent`, fixture.adrg, expected[0]);
+  check(`fixture ${expected[0]} child`, fixture.aadrg, expected[1]);
+  check(`fixture ${expected[0]} query`, fixture.search_query, expected[2]);
+}
 function validSnapshot(fixture) {
   const codeCounts = Object.fromEntries(
     fixture.expected_table_ids.map((tableId) => [tableId, 3]),
   );
   return {
     selected_adrg: fixture.adrg,
+    selected_aadrg: fixture.aadrg,
+    detail_caption: fixture.aadrg,
     detail_text: [
       fixture.adrg,
       ...REQUIRED_DETAIL_LABELS,
@@ -148,6 +240,8 @@ function validSnapshot(fixture) {
 }
 
 for (const fixture of UI_FIXTURES) {
+  check(`${fixture.adrg} aadrg present`, /^[A-Z0-9-]+$/.test(String(fixture.aadrg || '')), true);
+  check(`${fixture.adrg} search_query present`, String(fixture.search_query || '').trim().length > 0, true);
   const result = validateUiCaseSnapshot(validSnapshot(fixture), fixture);
   check(`${fixture.adrg} valid snapshot`, result.passed, true);
   check(`${fixture.adrg} failed checks zero`, result.failed_checks.length, 0);
@@ -209,9 +303,10 @@ function mockSnapshotForFixture(fixture) {
   );
   return {
     selected_adrg: fixture.adrg,
+    selected_aadrg: fixture.aadrg,
     result_count_text: '1건',
-    result_caption: fixture.adrg,
-    detail_caption: fixture.adrg,
+    result_caption: fixture.search_query,
+    detail_caption: fixture.aadrg,
     detail_text: [
       fixture.adrg,
       ...REQUIRED_DETAIL_LABELS,

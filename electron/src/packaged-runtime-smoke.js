@@ -21,18 +21,24 @@ const EXPECTED_COUNTS = Object.freeze({
 const UI_FIXTURES = Object.freeze([
   Object.freeze({
     adrg: 'B013',
+    aadrg: 'B0130',
+    search_query: 'B013',
     expected_table_ids: Object.freeze(['LT_B018_002']),
     forbidden_table_ids: Object.freeze([]),
     required_table_labels: Object.freeze(['시술명 table2']),
   }),
   Object.freeze({
     adrg: 'B014',
+    aadrg: 'B0140',
+    search_query: 'B014',
     expected_table_ids: Object.freeze(['LT_B018_003']),
     forbidden_table_ids: Object.freeze([]),
     required_table_labels: Object.freeze(['시술명 table3']),
   }),
   Object.freeze({
     adrg: 'B018',
+    aadrg: 'B0180',
+    search_query: 'B0180',
     expected_table_ids: Object.freeze([
       'LT_B018_001',
       'LT_B018_004',
@@ -50,18 +56,24 @@ const UI_FIXTURES = Object.freeze([
   }),
   Object.freeze({
     adrg: 'B022',
+    aadrg: 'B0220',
+    search_query: 'B0220',
     expected_table_ids: Object.freeze([]),
     forbidden_table_ids: Object.freeze([]),
     required_table_labels: Object.freeze([]),
   }),
   Object.freeze({
     adrg: 'L033',
+    aadrg: 'L0330',
+    search_query: 'L033',
     expected_table_ids: Object.freeze([]),
     forbidden_table_ids: Object.freeze([]),
     required_table_labels: Object.freeze([]),
   }),
   Object.freeze({
     adrg: '9610',
+    aadrg: '96100',
+    search_query: '9610',
     expected_table_ids: Object.freeze([]),
     forbidden_table_ids: Object.freeze([]),
     required_table_labels: Object.freeze([]),
@@ -608,6 +620,9 @@ function validateUiCaseSnapshot(snapshot, fixture) {
   };
 
   add('selected_adrg', snapshot.selected_adrg === fixture.adrg, snapshot.selected_adrg, fixture.adrg);
+  add('selected_aadrg', snapshot.selected_aadrg === fixture.aadrg, snapshot.selected_aadrg, fixture.aadrg);
+  add('detail_caption', snapshot.detail_caption === fixture.aadrg, snapshot.detail_caption, fixture.aadrg);
+  add('parent_adrg_visible', detailText.includes(fixture.adrg), detailText.includes(fixture.adrg), true);
   add('table_ids_exact', sameStringSet(tableIds, expectedTableIds), tableIds, expectedTableIds);
   add(
     'forbidden_table_ids_absent',
@@ -703,9 +718,9 @@ async function executeRendererFixture(webContents, fixture) {
         throw new Error('search DOM contract mismatch');
       }
 
-      filter.value = 'ADRG';
+      filter.value = 'AADRG';
       filter.dispatchEvent(new Event('change', { bubbles: true }));
-      input.value = fixture.adrg;
+      input.value = fixture.search_query;
       input.dispatchEvent(new Event('input', { bubbles: true }));
       input.dispatchEvent(new Event('change', { bubbles: true }));
 
@@ -715,18 +730,24 @@ async function executeRendererFixture(webContents, fixture) {
         form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
       }
 
+      const selectedResult = await waitFor(
+        () => document.querySelector(
+          '#result-list [data-entity-type="AADRG"][data-entity-id="' + fixture.aadrg + '"]'
+        ),
+        fixture.aadrg + ' result ready',
+      );
+      selectedResult.click();
+
       await waitFor(() => {
         const detail = document.querySelector('#detail-content');
-        const result = document.querySelector(
-          '#result-list [data-entity-type="ADRG"][data-entity-id="' + fixture.adrg + '"]'
-        );
+        const detailCaption = document.querySelector('#detail-caption')?.textContent?.trim() || '';
         return Boolean(
           detail
-          && result
+          && detailCaption === fixture.aadrg
           && detail.textContent.includes(fixture.adrg)
           && !document.querySelector('#search-submit')?.disabled
         );
-      }, fixture.adrg + ' detail ready');
+      }, fixture.aadrg + ' detail ready');
 
       const cards = [
         ...document.querySelectorAll('#detail-content details.inline-table-card')
@@ -775,6 +796,7 @@ async function executeRendererFixture(webContents, fixture) {
 
       return {
         selected_adrg: fixture.adrg,
+        selected_aadrg: fixture.aadrg,
         result_count_text: document.querySelector('#result-count')?.textContent?.trim() || '',
         result_caption: document.querySelector('#result-caption')?.textContent?.trim() || '',
         detail_caption: document.querySelector('#detail-caption')?.textContent?.trim() || '',
@@ -891,6 +913,8 @@ async function runPackagedUiValidation(smokeWindow, screenshotDirectory) {
 
       cases.push({
         adrg: fixture.adrg,
+        aadrg: fixture.aadrg,
+        search_query: fixture.search_query,
         expected_table_ids: [...fixture.expected_table_ids],
         forbidden_table_ids: [...fixture.forbidden_table_ids],
         required_table_labels: [...fixture.required_table_labels],
