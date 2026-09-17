@@ -902,31 +902,169 @@ function populateMdcFilter() {
   }
   if ([...select.options].some((x) => x.value === old)) select.value = old;
 }
-function prettyConditionLines(value) {
-  const text = formatUserConditionText(value); if (!text) return [];
-  const out = []; let depth = 0; let start = 0; let pending = ''; const upper = text.toUpperCase();
-  for (let i = 0; i < text.length; i += 1) {
-    if (text[i] === '(' || text[i] === '{') depth += 1; else if (text[i] === ')' || text[i] === '}') depth = Math.max(0, depth - 1);
-    if (depth) continue;
-    for (const op of [' AND ', ' WITHOUT ', ' OR ']) {
-      if (upper.startsWith(op, i)) {
-        const part = text.slice(start, i).trim(); if (part) out.push({ operator: pending, text: part }); pending = op.trim().toLowerCase(); start = i + op.length; i += op.length - 1; break;
-      }
-    }
-  }
-  const tail = text.slice(start).trim(); if (tail) out.push({ operator: pending, text: tail });
-  if (out.length) out[0].operator = '';
-  return out.length ? out : [{ operator: '', text }];
+function conditionAstLeafText(detail, node) {
+  const leaf = {
+    display_text: node?.display_text,
+    source_fragment: node?.source_fragment,
+    table_ids: Ui.uniqueStrings(node?.logical_table_ids ?? []),
+  };
+  const numbered = conditionNumberedRefLabels(detail, leaf);
+  if (numbered.length === 1) return numbered[0];
+  return conditionLeafText(leaf)
+    || formatUserConditionText(node?.display_text || node?.source_fragment)
+    || '조건 원문 확인';
 }
-function renderPrettyCondition(value) {
+
+function appendPrettyConditionNode(container, tree, depth = 0, leadingOperator = '') {
+  if (!tree) return;
+
+  const appendLine = (operator, textValue, extraClass = '') => {
+    const row = create(
+      'div',
+      `condition-pretty-line ${extraClass}`.trim(),
+    );
+    row.style.setProperty('--condition-depth', String(depth));
+    if (operator) {
+      row.append(
+        create('strong', 'condition-pretty-operator', operator),
+      );
+    }
+    row.append(create('span', 'condition-pretty-text', textValue));
+    container.append(row);
+  };
+
+  if (tree.kind === 'leaf' || tree.kind === 'requirement') {
+    appendLine(leadingOperator, tree.text);
+    return;
+  }
+
+  if (tree.kind === 'not') {
+    const group = create('div', 'condition-pretty-group');
+    group.style.setProperty('--condition-depth', String(depth));
+    const notOperator = leadingOperator
+      ? `${leadingOperator} not`
+      : 'not';
+    const open = create(
+      'div',
+      'condition-pretty-line condition-pretty-open',
+    );
+    open.style.setProperty('--condition-depth', String(depth));
+    open.append(
+      create('strong', 'condition-pretty-operator', notOperator),
+      create('span', 'condition-pretty-text', '('),
+    );
+    group.append(open);
+    appendPrettyConditionNode(group, tree.child, depth + 1, '');
+    const close = create('div', 'condition-pretty-bracket', ')');
+    close.style.setProperty('--condition-depth', String(depth));
+    group.append(close);
+    container.append(group);
+    return;
+  }
+
+  if (tree.kind === 'without') {
+    if (tree.left) {
+      appendPrettyConditionNode(
+        container,
+        tree.left,
+        depth,
+        leadingOperator,
+      );
+    }
+    if (tree.right) {
+      const group = create('div', 'condition-pretty-group');
+      group.style.setProperty('--condition-depth', String(depth));
+      const open = create('div', 'condition-pretty-line condition-pretty-open');
+      open.style.setProperty('--condition-depth', String(depth));
+      open.append(
+        create('strong', 'condition-pretty-operator', 'and not'),
+        create('span', 'condition-pretty-text', '('),
+      );
+      group.append(open);
+      appendPrettyConditionNode(group, tree.right, depth + 1, '');
+      const close = create('div', 'condition-pretty-bracket', ')');
+      close.style.setProperty('--condition-depth', String(depth));
+      group.append(close);
+      container.append(group);
+    }
+    return;
+  }
+
+  if (tree.kind === 'group') {
+    const children = Array.isArray(tree.children) ? tree.children : [];
+    const nested = depth > 0;
+    const group = create('div', 'condition-pretty-group');
+    group.style.setProperty('--condition-depth', String(depth));
+
+    if (nested) {
+      const open = create('div', 'condition-pretty-line condition-pretty-open');
+      open.style.setProperty('--condition-depth', String(depth));
+      if (leadingOperator) {
+        open.append(
+          create('strong', 'condition-pretty-operator', leadingOperator),
+        );
+      }
+      open.append(
+        create(
+          'span',
+          'condition-pretty-text',
+          tree.operator === 'and' ? '{' : '(',
+        ),
+      );
+      group.append(open);
+    }
+
+    children.forEach((child, index) => {
+      const operator = index === 0
+        ? (nested ? '' : leadingOperator)
+        : tree.operator;
+      const compound = ['group', 'not', 'without'].includes(child?.kind);
+      const childDepth = nested || compound ? depth + 1 : depth;
+      appendPrettyConditionNode(
+        group,
+        child,
+        childDepth,
+        operator,
+      );
+    });
+
+    if (nested) {
+      const close = create(
+        'div',
+        'condition-pretty-bracket',
+        tree.operator === 'and' ? '}' : ')',
+      );
+      close.style.setProperty('--condition-depth', String(depth));
+      group.append(close);
+    }
+    container.append(group);
+  }
+}
+
+function renderPrettyCondition(detail, fallbackText = '') {
   const wrap = create('div', 'condition-pretty-expression');
-  for (const line of prettyConditionLines(value)) {
+  const tree = Ui.buildPrettyConditionTree(
+    detail?.condition_ast,
+    {
+      leafText: (node) => conditionAstLeafText(detail, node),
+    },
+  );
+
+  if (tree) {
+    appendPrettyConditionNode(wrap, tree, 0, '');
+    return wrap;
+  }
+
+  const text = formatUserConditionText(fallbackText);
+  if (text) {
     const row = create('div', 'condition-pretty-line');
-    if (line.operator) row.append(create('strong', 'condition-pretty-operator', line.operator));
-    row.append(renderConditionExpression(line.text, { strictOperators: true })); wrap.append(row);
+    row.style.setProperty('--condition-depth', '0');
+    row.append(create('span', 'condition-pretty-text', text));
+    wrap.append(row);
   }
   return wrap;
 }
+
 function applySearchRequestToControls(request) {
   if (!request) return;
   if (byId('search-query')) byId('search-query').value = request.query ?? '';
@@ -988,8 +1126,38 @@ async function goBack() {
 
 
 function renderUserConditionSummary(detail) {
-  const coverage = conditionPresentation(detail); const section = makeSection('분류 조건', '공식 조건구조를 읽기 쉽게 줄바꿈해 표시합니다.', { open: true, count: coverage.has_text || coverage.groups.length ? 1 : 0 }); const body = create('div', 'user-condition-summary');
-  if (coverage.has_text) body.append(renderPrettyCondition(coverage.text)); else body.append(create('p', 'user-condition-empty', '표시할 분류 조건 문구가 없습니다.')); if (coverage.needs_review) body.append(create('p', 'user-condition-warning', '근거가 유일하지 않은 조건은 임의 추정하지 않습니다.')); section.append(body); return section;
+  const coverage = conditionPresentation(detail);
+  const section = makeSection(
+    '분류 조건',
+    '공식 조건구조를 PDF 조건식처럼 의미단위로 줄바꿈해 표시합니다.',
+    {
+      open: true,
+      count: coverage.has_text || coverage.groups.length ? 1 : 0,
+    },
+  );
+  const body = create('div', 'user-condition-summary');
+  if (coverage.has_text || detail?.condition_ast) {
+    body.append(renderPrettyCondition(detail, coverage.text));
+  } else {
+    body.append(
+      create(
+        'p',
+        'user-condition-empty',
+        '표시할 분류 조건 문구가 없습니다.',
+      ),
+    );
+  }
+  if (coverage.needs_review) {
+    body.append(
+      create(
+        'p',
+        'user-condition-warning',
+        '근거가 유일하지 않은 조건은 임의 추정하지 않습니다.',
+      ),
+    );
+  }
+  section.append(body);
+  return section;
 }
 
 function renderConditionLeafTables(container, leaves, summaryMap, options = {}) {
@@ -1048,12 +1216,23 @@ function renderDerivedAadrgList(records) {
     return container;
   }
   for (const record of records) {
-    const row = create('article', 'derived-aadrg-row');
+    const row = create('button', 'derived-aadrg-row');
+    row.type = 'button';
+    row.dataset.entityType = 'AADRG';
+    row.dataset.entityId = String(record.entity_id || '');
+    row.setAttribute(
+      'aria-label',
+      `AADRG ${record.entity_id || ''} ${String(record.title || '')}`.trim(),
+    );
     const main = create('div', 'derived-aadrg-main');
     main.append(
       makeBadge('AADRG'),
       create('strong', '', record.entity_id || '-'),
-      create('span', '', String(record.title || '').replace(`${record.entity_id} · `, '')),
+      create(
+        'span',
+        'derived-aadrg-name',
+        String(record.title || '').replace(`${record.entity_id} · `, ''),
+      ),
     );
     const meta = create('div', 'chip-row');
     const summary = record.summary ?? {};
@@ -1064,7 +1243,11 @@ function renderDerivedAadrgList(records) {
           || summary.classification_display_label,
       ],
     );
-    if (Number.isFinite(Number(summary.rdrg_count))) meta.append(makeChip(`RDRG ${Ui.formatNumber(summary.rdrg_count)}개`));
+    if (Number.isFinite(Number(summary.rdrg_count))) {
+      meta.append(
+        makeChip(`RDRG ${Ui.formatNumber(summary.rdrg_count)}개`),
+      );
+    }
     row.append(main, meta);
     container.append(row);
   }
@@ -1220,18 +1403,26 @@ function detailSummaryLine(payload) {
   if (payload.entity_type === 'ADRG') {
     return [
       detail.mdc ? `MDC ${detail.mdc}` : '',
-      Number.isFinite(Number(detail.aadrg_count)) ? `AADRG ${Ui.formatNumber(detail.aadrg_count)}개` : '',
+      Number.isFinite(Number(detail.aadrg_count))
+        ? `AADRG ${Ui.formatNumber(detail.aadrg_count)}개`
+        : '',
     ].filter(Boolean).join(' · ');
   }
   if (payload.entity_type === 'AADRG') {
     return [
       detail.adrg ? `상위 ADRG ${detail.adrg}` : '',
       detail.mdc ? `MDC ${detail.mdc}` : '',
-      Ui.classificationLabel(detail.classification_code, detail.classification_display_label),
+      Ui.classificationLabel(
+        detail.classification_code,
+        detail.classification_display_label,
+      ),
     ].filter(Boolean).join(' · ');
   }
   if (payload.entity_type === 'RDRG') {
-    return [detail.severity_name, detail.aadrg ? `상위 AADRG ${detail.aadrg}` : ''].filter(Boolean).join(' · ');
+    return [
+      detail.severity_name,
+      detail.aadrg ? `상위 AADRG ${detail.aadrg}` : '',
+    ].filter(Boolean).join(' · ');
   }
   if (payload.entity_type === 'TABLE') {
     return [
@@ -1239,10 +1430,12 @@ function detailSummaryLine(payload) {
       `관련 ADRG ${Ui.formatNumber((detail.related_adrgs ?? []).length)}개`,
     ].join(' · ');
   }
-  return [
-    `연결 TABLE ${Ui.formatNumber((detail.logical_table_ids ?? []).length)}개`,
-    `관련 ADRG ${Ui.formatNumber((detail.related_adrgs ?? []).length)}개`,
-  ].join(' · ');
+  if (payload.entity_type === 'CODE') {
+    return `관련 AADRG ${Ui.formatNumber(
+      (detail.related_aadrg_summaries ?? []).length,
+    )}개`;
+  }
+  return '';
 }
 
 function detailTitle(payload) {

@@ -261,6 +261,75 @@
     return normalizeGroups(walk(ast.root_node_id, 1));
   }
 
+
+  function buildPrettyConditionTree(ast, options = {}) {
+    if (!ast || !Array.isArray(ast.nodes) || !ast.root_node_id) return null;
+    const nodeMap = new Map(
+      ast.nodes.map((node) => [String(node.node_id), node]),
+    );
+    const leafText = typeof options.leafText === 'function'
+      ? options.leafText
+      : (node) => text(
+          node?.display_text || node?.source_fragment,
+          uniqueStrings(node?.logical_table_ids ?? []).join(', '),
+        );
+
+    function leaf(node, kind = 'leaf') {
+      return {
+        kind,
+        text: text(leafText(node), '조건 원문 확인'),
+        node_type: String(node?.node_type ?? '').toUpperCase(),
+        node_id: text(node?.node_id, ''),
+      };
+    }
+
+    function walk(nodeId) {
+      const node = nodeMap.get(String(nodeId));
+      if (!node) return null;
+      const type = String(node.node_type ?? '').toUpperCase();
+      const children = Array.isArray(node.child_node_ids)
+        ? node.child_node_ids.map(walk).filter(Boolean)
+        : [];
+
+      if (type === 'TABLE_REF' || type === 'TEXT_CONDITION') return leaf(node);
+      if (type === 'NOT') {
+        return {
+          kind: 'not',
+          child: children[0] || leaf(node),
+          node_id: text(node?.node_id, ''),
+        };
+      }
+      if (type === 'EXCLUSION') {
+        return {
+          kind: 'without',
+          left: children[0] || null,
+          right: children[1] || null,
+          node_id: text(node?.node_id, ''),
+        };
+      }
+      if (type === 'AND' || type === 'OR') {
+        return {
+          kind: 'group',
+          operator: type.toLowerCase(),
+          children,
+          node_id: text(node?.node_id, ''),
+        };
+      }
+      if (children.length === 1) return children[0];
+      if (children.length > 1) {
+        return {
+          kind: 'group',
+          operator: 'and',
+          children,
+          node_id: text(node?.node_id, ''),
+        };
+      }
+      return leaf(node, 'requirement');
+    }
+
+    return walk(ast.root_node_id);
+  }
+
   function tableSummaryMap(detail) {
     return new Map(
       (detail?.logical_tables ?? []).map((item) => [String(item.entity_id), item]),
@@ -307,6 +376,7 @@
     typeCountText,
     resultSummaryChips,
     buildConditionGroups,
+    buildPrettyConditionTree,
     tableSummaryMap,
     userConditionCoverage,
   });
