@@ -99,14 +99,30 @@ check('TABLE technical hidden', () => {
   assert.doesNotMatch(app, /내부 ID \$\{tableId\}/);
 });
 
-check('PDF-style AST formatter exported', () => {
+check('PDF-style AST formatter exported / compact', () => {
   assert.equal(typeof Ui.buildPrettyConditionTree, 'function');
   assert.match(app, /Ui\.buildPrettyConditionTree/);
   assert.doesNotMatch(app, /function prettyConditionLines/);
-  assert.match(css, /condition-pretty-group/);
-  assert.match(css, /--condition-depth/);
-  assert.match(app, /\$\{leadingOperator\} not/);
-  assert.match(app, /const childDepth = nested \|\| compound \? depth \+ 1 : depth/);
+
+  const body = functionBlock(app, 'appendPrettyConditionNode');
+  const render = functionBlock(app, 'renderPrettyCondition');
+
+  assert.match(app, /function appendCompactConditionToken/);
+  assert.match(body, /condition-pretty-bracket-inline/);
+  assert.match(body, /op\('and not'\)/);
+  assert.match(render, /condition-pretty-line-compact/);
+  assert.match(render, /index === 0 \? '' : tree\.operator/);
+  assert.doesNotMatch(body, /condition-pretty-group/);
+
+  assert.match(
+    css,
+    /Stage63B: 0\.5\.12 compact condition presentation/,
+  );
+  assert.match(css, /flex-wrap:\s*wrap/);
+  assert.match(
+    css,
+    /\.condition-pretty-expression-compact[\s\S]*margin-left:\s*0/,
+  );
 });
 
 check('P651-like nested AST stays nested', () => {
@@ -155,6 +171,24 @@ check('relation AADRG', () => {
 
 check('formatter public counts', () => {
   assert.match(fmt, /const ordered = \['CODE', 'AADRG'\]/);
+});
+
+check('Stage63B generic parent direct-condition inheritance', () => {
+  const body = functionBlock(app, 'directConditionTables');
+  assert.match(body, /detail\?\.parent_adrg_detail/); assert.match(body, /childParentAdrg === parentAdrg/); assert.match(body, /inheritedFromParent: sourceDetail !== detail/); assert.doesNotMatch(body, /F2120|F212/);
+});
+check('Stage63B compact condition renderer', () => {
+  const body = functionBlock(app, 'appendPrettyConditionNode'); const render = functionBlock(app, 'renderPrettyCondition');
+  assert.match(app, /function appendCompactConditionToken/); assert.match(body, /condition-pretty-bracket-inline/); assert.match(body, /op\('and not'\)/); assert.match(render, /condition-pretty-line-compact/); assert.doesNotMatch(body, /condition-pretty-group/); assert.match(css, /Stage63B: 0\.5\.12 compact condition presentation/); assert.match(css, /flex-wrap:\s*wrap/);
+});
+check('Stage63B direct-condition wording', () => {
+  const body = functionBlock(app, 'conditionPresentation'); assert.match(body, /직접 코드 조건/); assert.match(body, /이 질병군의 분류 조건입니다/); assert.doesNotMatch(body, /TABLE 번호 없는 직접 코드조건/);
+});
+check('Stage63B F2120 source evidence remains intact', () => {
+  const { KdrgSearchService: S63 } = require(path.join(root, 'src/kdrg-search-service.js'));
+  const s63 = new S63(path.resolve(root, '..', 'data', 'kdrg_v47_search_integrated_v3.json'));
+  const d = s63.getDetail('AADRG', 'F2120').detail; assert.equal(d.adrg, 'F212'); assert.deepEqual(d.source_logical_table_ids ?? [], []); assert.deepEqual(d.parent_adrg_detail.source_logical_table_ids ?? [], ['LT_F212_001']);
+  const t=s63.getDetail('TABLE','LT_F212_001').detail; const codes=new Set((t.code_records||[]).map(x=>x.entity_id)); for(const c of ['O0205','O0206','O0241','O2223']) assert.ok(codes.has(c),c);
 });
 
 console.log(`stage59_ui: ${pass} PASS / ${fail.length} FAIL`);

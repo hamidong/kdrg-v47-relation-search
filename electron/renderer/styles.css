@@ -1397,3 +1397,10 @@ footer { display: none; }
   font-weight: 800;
   line-height: 1.4;
 }
+
+/* Stage63B: 0.5.12 compact condition presentation */
+.condition-pretty-expression.condition-pretty-expression-compact { display:flex; flex-direction:column; gap:10px; padding:14px 16px; }
+.condition-pretty-expression-compact .condition-pretty-line-compact { display:flex; flex-wrap:wrap; align-items:baseline; column-gap:.34em; row-gap:.18em; margin-left:0; line-height:1.7; }
+.condition-pretty-expression-compact .condition-pretty-operator { min-width:0; line-height:inherit; white-space:nowrap; }
+.condition-pretty-expression-compact .condition-pretty-text { min-width:0; line-height:inherit; }
+.condition-pretty-expression-compact .condition-pretty-bracket, .condition-pretty-expression-compact .condition-pretty-bracket-inline { margin-left:0; line-height:inherit; display:inline; }

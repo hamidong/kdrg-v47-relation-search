@@ -802,42 +802,34 @@ function conditionGroupsExpression(groups, detail) {
 
 function directConditionTables(detail) {
   const coverage = Ui.userConditionCoverage(detail);
-  if (
-    coverage.status !== 'NO_EXPLICIT_CONDITION'
-    || detail?.condition_ast
-    || coverage.table_count
-  ) {
-    return [];
+  if (coverage.status !== 'NO_EXPLICIT_CONDITION' || detail?.condition_ast || coverage.table_count) return [];
+
+  let sourceDetail = detail;
+  let sourceIds = Ui.uniqueStrings(sourceDetail?.source_logical_table_ids ?? []);
+  if (!sourceIds.length && detail?.parent_adrg_detail) {
+    const parent = detail.parent_adrg_detail;
+    const parentCoverage = Ui.userConditionCoverage(parent);
+    const childParentAdrg = String(detail?.adrg ?? '').trim();
+    const parentAdrg = String(parent?.adrg ?? '').trim();
+    const inheritedSourceIds = Ui.uniqueStrings(parent?.source_logical_table_ids ?? []);
+    if (childParentAdrg && childParentAdrg === parentAdrg && parentCoverage.status === 'NO_EXPLICIT_CONDITION' && !parent?.condition_ast && !parentCoverage.table_count && inheritedSourceIds.length) {
+      sourceDetail = parent;
+      sourceIds = inheritedSourceIds;
+    }
   }
 
-  const adrg = String(detail?.adrg ?? '').trim();
-  const sourceIds = Ui.uniqueStrings(detail?.source_logical_table_ids ?? []);
+  const adrg = String(sourceDetail?.adrg ?? detail?.adrg ?? '').trim();
   if (!adrg || sourceIds.length !== 1) return [];
-
   const tableId = sourceIds[0];
   if (!directConditionLocalTablePattern(adrg).test(tableId)) return [];
-
-  const summaryMap = Ui.tableSummaryMap(detail);
-  const summary = summaryMap.get(tableId);
+  const summary = Ui.tableSummaryMap(sourceDetail).get(tableId);
   if (!summary) return [];
-
   const summaryData = summary?.summary ?? summary ?? {};
   const codeCount = Number(summaryData.code_count ?? 0);
   if (codeCount <= 0) return [];
-
   const sourceLabel = tableUserLabel(summary);
   const hasOfficialRoleLabel = DIRECT_CONDITION_ROLE_PATTERN.test(sourceLabel);
-  const label = hasOfficialRoleLabel
-    ? sourceLabel
-    : DIRECT_CONDITION_NEUTRAL_LABEL;
-
-  return [{
-    tableId,
-    summary,
-    label,
-    codeCount,
-    hasOfficialRoleLabel,
-  }];
+  return [{ tableId, summary, label: hasOfficialRoleLabel ? sourceLabel : DIRECT_CONDITION_NEUTRAL_LABEL, codeCount, hasOfficialRoleLabel, inheritedFromParent: sourceDetail !== detail, sourceAdrg: adrg }];
 }
 function conditionPresentation(detail) {
   const coverage = Ui.userConditionCoverage(detail);
@@ -845,30 +837,13 @@ function conditionPresentation(detail) {
   const groups = Ui.buildConditionGroups(detail?.condition_ast);
   if (directTables.length) {
     const text = directTables.every((item) => item.hasOfficialRoleLabel)
-      ? directTables
-          .map((item) => `${item.label} 코드가 아래 목록에 포함`)
-          .join(' 그리고 ')
-      : '아래 코드 목록 자체가 이 ADRG의 분류 조건입니다.';
-    return {
-      ...coverage,
-      status: 'DIRECT_CODE_CONDITION',
-      summary: `TABLE 번호 없는 직접 코드조건 ${Ui.formatNumber(directTables.length)}개`,
-      text,
-      has_text: true,
-      direct_tables: directTables,
-      groups: [],
-    };
+      ? directTables.map((item) => `${item.label} 코드가 아래 목록에 포함`).join(' 그리고 ')
+      : '아래 코드 목록 자체가 이 질병군의 분류 조건입니다.';
+    return { ...coverage, status: 'DIRECT_CODE_CONDITION', summary: `직접 코드 조건 ${Ui.formatNumber(directTables.length)}개`, text, has_text: true, inherited_direct_condition: directTables.some((item) => item.inheritedFromParent), direct_tables: directTables, groups: [] };
   }
   const structuralText = conditionGroupsExpression(groups, detail);
   const text = structuralText || coverage.text;
-  return {
-    ...coverage,
-    text,
-    has_text: Boolean(text),
-    structural_text: Boolean(structuralText),
-    direct_tables: [],
-    groups,
-  };
+  return { ...coverage, text, has_text: Boolean(text), structural_text: Boolean(structuralText), inherited_direct_condition: false, direct_tables: [], groups };
 }
 
 function userConditionStatusLabel(status) {
@@ -915,153 +890,51 @@ function conditionAstLeafText(detail, node) {
     || '조건 원문 확인';
 }
 
-function appendPrettyConditionNode(container, tree, depth = 0, leadingOperator = '') {
+function appendCompactConditionToken(container, textValue, className = 'condition-pretty-text') {
+  const value = String(textValue ?? '').trim();
+  if (value) container.append(create('span', className, value));
+}
+
+function appendPrettyConditionNode(container, tree, leadingOperator = '', nested = false) {
   if (!tree) return;
-
-  const appendLine = (operator, textValue, extraClass = '') => {
-    const row = create(
-      'div',
-      `condition-pretty-line ${extraClass}`.trim(),
-    );
-    row.style.setProperty('--condition-depth', String(depth));
-    if (operator) {
-      row.append(
-        create('strong', 'condition-pretty-operator', operator),
-      );
-    }
-    row.append(create('span', 'condition-pretty-text', textValue));
-    container.append(row);
-  };
-
-  if (tree.kind === 'leaf' || tree.kind === 'requirement') {
-    appendLine(leadingOperator, tree.text);
-    return;
-  }
-
-  if (tree.kind === 'not') {
-    const group = create('div', 'condition-pretty-group');
-    group.style.setProperty('--condition-depth', String(depth));
-    const notOperator = leadingOperator
-      ? `${leadingOperator} not`
-      : 'not';
-    const open = create(
-      'div',
-      'condition-pretty-line condition-pretty-open',
-    );
-    open.style.setProperty('--condition-depth', String(depth));
-    open.append(
-      create('strong', 'condition-pretty-operator', notOperator),
-      create('span', 'condition-pretty-text', '('),
-    );
-    group.append(open);
-    appendPrettyConditionNode(group, tree.child, depth + 1, '');
-    const close = create('div', 'condition-pretty-bracket', ')');
-    close.style.setProperty('--condition-depth', String(depth));
-    group.append(close);
-    container.append(group);
-    return;
-  }
-
+  const op = (value) => appendCompactConditionToken(container, String(value ?? '').toLowerCase(), 'condition-pretty-operator');
+  const bracket = (value) => appendCompactConditionToken(container, value, 'condition-pretty-bracket condition-pretty-bracket-inline');
+  if (leadingOperator) op(leadingOperator);
+  if (tree.kind === 'leaf' || tree.kind === 'requirement') { appendCompactConditionToken(container, tree.text); return; }
+  if (tree.kind === 'not') { op('not'); bracket('('); appendPrettyConditionNode(container, tree.child, '', false); bracket(')'); return; }
   if (tree.kind === 'without') {
-    if (tree.left) {
-      appendPrettyConditionNode(
-        container,
-        tree.left,
-        depth,
-        leadingOperator,
-      );
-    }
-    if (tree.right) {
-      const group = create('div', 'condition-pretty-group');
-      group.style.setProperty('--condition-depth', String(depth));
-      const open = create('div', 'condition-pretty-line condition-pretty-open');
-      open.style.setProperty('--condition-depth', String(depth));
-      open.append(
-        create('strong', 'condition-pretty-operator', 'and not'),
-        create('span', 'condition-pretty-text', '('),
-      );
-      group.append(open);
-      appendPrettyConditionNode(group, tree.right, depth + 1, '');
-      const close = create('div', 'condition-pretty-bracket', ')');
-      close.style.setProperty('--condition-depth', String(depth));
-      group.append(close);
-      container.append(group);
-    }
+    if (tree.left) appendPrettyConditionNode(container, tree.left, '', tree.left?.kind === 'group');
+    if (tree.right) { op('and not'); bracket('('); appendPrettyConditionNode(container, tree.right, '', false); bracket(')'); }
     return;
   }
-
   if (tree.kind === 'group') {
     const children = Array.isArray(tree.children) ? tree.children : [];
-    const nested = depth > 0;
-    const group = create('div', 'condition-pretty-group');
-    group.style.setProperty('--condition-depth', String(depth));
-
-    if (nested) {
-      const open = create('div', 'condition-pretty-line condition-pretty-open');
-      open.style.setProperty('--condition-depth', String(depth));
-      if (leadingOperator) {
-        open.append(
-          create('strong', 'condition-pretty-operator', leadingOperator),
-        );
-      }
-      open.append(
-        create(
-          'span',
-          'condition-pretty-text',
-          tree.operator === 'and' ? '{' : '(',
-        ),
-      );
-      group.append(open);
-    }
-
-    children.forEach((child, index) => {
-      const operator = index === 0
-        ? (nested ? '' : leadingOperator)
-        : tree.operator;
-      const compound = ['group', 'not', 'without'].includes(child?.kind);
-      const childDepth = nested || compound ? depth + 1 : depth;
-      appendPrettyConditionNode(
-        group,
-        child,
-        childDepth,
-        operator,
-      );
-    });
-
-    if (nested) {
-      const close = create(
-        'div',
-        'condition-pretty-bracket',
-        tree.operator === 'and' ? '}' : ')',
-      );
-      close.style.setProperty('--condition-depth', String(depth));
-      group.append(close);
-    }
-    container.append(group);
+    const open = tree.operator === 'and' ? '{' : '(';
+    const close = tree.operator === 'and' ? '}' : ')';
+    if (nested) bracket(open);
+    children.forEach((child, index) => { if (index > 0) op(tree.operator); appendPrettyConditionNode(container, child, '', child?.kind === 'group'); });
+    if (nested) bracket(close);
   }
 }
 
 function renderPrettyCondition(detail, fallbackText = '') {
-  const wrap = create('div', 'condition-pretty-expression');
-  const tree = Ui.buildPrettyConditionTree(
-    detail?.condition_ast,
-    {
-      leafText: (node) => conditionAstLeafText(detail, node),
-    },
-  );
-
+  const wrap = create('div', 'condition-pretty-expression condition-pretty-expression-compact');
+  const tree = Ui.buildPrettyConditionTree(detail?.condition_ast, { leafText: (node) => conditionAstLeafText(detail, node) });
   if (tree) {
-    appendPrettyConditionNode(wrap, tree, 0, '');
+    if (tree.kind === 'group' && Array.isArray(tree.children)) {
+      tree.children.forEach((child, index) => {
+        const row = create('div', 'condition-pretty-line condition-pretty-line-compact');
+        appendPrettyConditionNode(row, child, index === 0 ? '' : tree.operator, child?.kind === 'group');
+        wrap.append(row);
+      });
+    } else {
+      const row = create('div', 'condition-pretty-line condition-pretty-line-compact');
+      appendPrettyConditionNode(row, tree, '', false); wrap.append(row);
+    }
     return wrap;
   }
-
   const text = formatUserConditionText(fallbackText);
-  if (text) {
-    const row = create('div', 'condition-pretty-line');
-    row.style.setProperty('--condition-depth', '0');
-    row.append(create('span', 'condition-pretty-text', text));
-    wrap.append(row);
-  }
+  if (text) { const row = create('div', 'condition-pretty-line condition-pretty-line-compact'); appendCompactConditionToken(row, text); wrap.append(row); }
   return wrap;
 }
 
