@@ -191,6 +191,69 @@ check('Stage63B F2120 source evidence remains intact', () => {
   const t=s63.getDetail('TABLE','LT_F212_001').detail; const codes=new Set((t.code_records||[]).map(x=>x.entity_id)); for(const c of ['O0205','O0206','O0241','O2223']) assert.ok(codes.has(c),c);
 });
 
+check('Stage64B official condition source map', () => {
+  const official = require(
+    path.join(root, 'renderer/official-condition-text.js'),
+  );
+  assert.equal(
+    official.meta.schema_version,
+    'kdrg-official-condition-text-v3-authority-overlay',
+  );
+  assert.equal(
+    official.meta.base_source_pdf_sha256,
+    'f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4',
+  );
+  assert.equal(
+    official.meta.correction_source_sha256,
+    '5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3',
+  );
+  assert.equal(official.meta.ast_adrg_count, 390);
+  assert.equal(official.meta.override_adrg_count, 121);
+  assert.equal(official.meta.base_pdf_override_count, 120);
+  assert.equal(official.meta.official_correction_override_count, 1);
+  assert.equal(official.meta.ast_fallback_already_matches_count, 269);
+  assert.equal(Object.keys(official.byAdrg).length, 121);
+  assert.match(
+    official.byAdrg.P651.text,
+    /시술명 table2을 제외한 OR procedure/,
+  );
+  assert.doesNotMatch(
+    official.byAdrg.P651.text,
+    /OR procedure\s+and not\(시술명 table2\)/,
+  );
+  assert.equal(
+    official.byAdrg.F022.source_kind,
+    'OFFICIAL_CORRECTION_20260731',
+  );
+  assert.equal(
+    official.byAdrg.F022.text,
+    '(시술명 table2 and 시술명 table 3) or 시술명 table6',
+  );
+});
+
+check('Stage64B source-first condition renderer contract', () => {
+  const stage64Index = fs.readFileSync(
+    path.join(root, 'renderer/index.html'),
+    'utf8',
+  );
+  const render = functionBlock(app, 'renderPrettyCondition');
+  const helper = functionBlock(app, 'officialConditionDisplayText');
+
+  assert.match(
+    stage64Index,
+    /official-condition-text\.js/,
+  );
+  assert.ok(
+    stage64Index.indexOf('official-condition-text.js')
+      < stage64Index.indexOf('app.js'),
+  );
+  assert.match(helper, /KDRGOfficialConditionText/);
+  assert.match(render, /officialConditionDisplayText\(detail\)/);
+  assert.match(render, /conditionSource = 'official-pdf'/);
+  assert.match(render, /conditionSource = 'ast-fallback'/);
+  assert.match(render, /Ui\.buildPrettyConditionTree/);
+});
+
 console.log(`stage59_ui: ${pass} PASS / ${fail.length} FAIL`);
 if (fail.length) {
   fail.forEach((item) => console.log(`- ${item}`));

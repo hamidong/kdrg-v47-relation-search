@@ -917,24 +917,100 @@ function appendPrettyConditionNode(container, tree, leadingOperator = '', nested
   }
 }
 
+function normalizeOfficialConditionDisplayLine(value) {
+  return String(value ?? '')
+    .trim()
+    .replace(/([≥≤])\s*(\d)/g, '$1 $2')
+    .replace(/\{\s*\(/g, '{ (')
+    .replace(/\)\s*\}/g, ') }');
+}
+
+function officialConditionDisplayText(detail) {
+  const adrg = String(
+    detail?.adrg
+      ?? detail?.parent_adrg_detail?.adrg
+      ?? '',
+  ).trim().toUpperCase();
+  if (!adrg) return '';
+
+  const row = window.KDRGOfficialConditionText?.byAdrg?.[adrg];
+  if (!row?.text) return '';
+
+  return String(row.text)
+    .replace(/\r\n?/g, '\n')
+    .split('\n')
+    .map(normalizeOfficialConditionDisplayLine)
+    .filter(Boolean)
+    .join('\n');
+}
+
 function renderPrettyCondition(detail, fallbackText = '') {
-  const wrap = create('div', 'condition-pretty-expression condition-pretty-expression-compact');
-  const tree = Ui.buildPrettyConditionTree(detail?.condition_ast, { leafText: (node) => conditionAstLeafText(detail, node) });
-  if (tree) {
-    if (tree.kind === 'group' && Array.isArray(tree.children)) {
-      tree.children.forEach((child, index) => {
-        const row = create('div', 'condition-pretty-line condition-pretty-line-compact');
-        appendPrettyConditionNode(row, child, index === 0 ? '' : tree.operator, child?.kind === 'group');
-        wrap.append(row);
-      });
-    } else {
-      const row = create('div', 'condition-pretty-line condition-pretty-line-compact');
-      appendPrettyConditionNode(row, tree, '', false); wrap.append(row);
+  const wrap = create(
+    'div',
+    'condition-pretty-expression condition-pretty-expression-compact',
+  );
+
+  const officialText = detail?.condition_ast
+    ? officialConditionDisplayText(detail)
+    : '';
+
+  if (officialText) {
+    wrap.dataset.conditionSource = 'official-pdf';
+    for (const line of officialText.split('\n')) {
+      const row = create(
+        'div',
+        'condition-pretty-line condition-pretty-line-compact',
+      );
+      appendCompactConditionToken(row, line);
+      wrap.append(row);
     }
     return wrap;
   }
+
+  wrap.dataset.conditionSource = 'ast-fallback';
+
+  const tree = Ui.buildPrettyConditionTree(
+    detail?.condition_ast,
+    {
+      leafText: (node) => conditionAstLeafText(detail, node),
+    },
+  );
+
+  if (tree) {
+    if (tree.kind === 'group' && Array.isArray(tree.children)) {
+      tree.children.forEach((child, index) => {
+        const row = create(
+          'div',
+          'condition-pretty-line condition-pretty-line-compact',
+        );
+        appendPrettyConditionNode(
+          row,
+          child,
+          index === 0 ? '' : tree.operator,
+          child?.kind === 'group',
+        );
+        wrap.append(row);
+      });
+    } else {
+      const row = create(
+        'div',
+        'condition-pretty-line condition-pretty-line-compact',
+      );
+      appendPrettyConditionNode(row, tree, '', false);
+      wrap.append(row);
+    }
+    return wrap;
+  }
+
   const text = formatUserConditionText(fallbackText);
-  if (text) { const row = create('div', 'condition-pretty-line condition-pretty-line-compact'); appendCompactConditionToken(row, text); wrap.append(row); }
+  if (text) {
+    const row = create(
+      'div',
+      'condition-pretty-line condition-pretty-line-compact',
+    );
+    appendCompactConditionToken(row, text);
+    wrap.append(row);
+  }
   return wrap;
 }
 

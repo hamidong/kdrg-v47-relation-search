@@ -342,5 +342,67 @@ function main() {
 }
 console.log(`validator=${VALIDATOR_VERSION}`);
 console.log(`electron_root=${ELECTRON_ROOT}`);
+{
+  const stage65Assert = require('node:assert/strict');
+  const stage65Fs = require('node:fs');
+  const stage65Path = require('node:path');
+
+  const stage65Root = stage65Path.resolve(__dirname, '..');
+  const stage65Package = JSON.parse(
+    stage65Fs.readFileSync(
+      stage65Path.join(stage65Root, 'package.json'),
+      'utf8',
+    ),
+  );
+
+  stage65Assert.equal(
+    stage65Package?.build?.win?.icon,
+    'renderer/assets/icon-kdrg-v47.ico',
+  );
+
+  const stage65PngPath = stage65Path.join(
+    stage65Root,
+    'renderer',
+    'assets',
+    'icon-kdrg-v47.png',
+  );
+  const stage65IcoPath = stage65Path.join(
+    stage65Root,
+    'renderer',
+    'assets',
+    'icon-kdrg-v47.ico',
+  );
+
+  stage65Assert.ok(stage65Fs.existsSync(stage65PngPath));
+  stage65Assert.ok(stage65Fs.existsSync(stage65IcoPath));
+
+  const stage65Png = stage65Fs.readFileSync(stage65PngPath);
+  stage65Assert.equal(
+    stage65Png.subarray(0, 8).toString('hex'),
+    '89504e470d0a1a0a',
+  );
+  stage65Assert.equal(stage65Png.readUInt32BE(16), 512);
+  stage65Assert.equal(stage65Png.readUInt32BE(20), 512);
+
+  const stage65Ico = stage65Fs.readFileSync(stage65IcoPath);
+  stage65Assert.equal(stage65Ico.readUInt16LE(0), 0);
+  stage65Assert.equal(stage65Ico.readUInt16LE(2), 1);
+
+  const stage65Count = stage65Ico.readUInt16LE(4);
+  const stage65Sizes = [];
+  for (let i = 0; i < stage65Count; i += 1) {
+    const pos = 6 + (i * 16);
+    const w = stage65Ico[pos] || 256;
+    const h = stage65Ico[pos + 1] || 256;
+    stage65Assert.equal(w, h);
+    stage65Sizes.push(w);
+  }
+
+  stage65Assert.deepEqual(
+    [...new Set(stage65Sizes)].sort((a, b) => a - b),
+    [16, 20, 24, 32, 40, 48, 64, 128, 256],
+  );
+}
+
 console.log(`node=${process.version}`);
 main();
