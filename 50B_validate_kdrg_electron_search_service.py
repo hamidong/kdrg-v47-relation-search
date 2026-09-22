@@ -51,11 +51,11 @@ def main():
 const path=require('node:path');
 const {KdrgSearchService}=require('./src/kdrg-search-service');
 const s=new KdrgSearchService(path.resolve('..','data','kdrg_v47_search_integrated_v3.json'));
-if(JSON.stringify(s.status().public_search_types)!==JSON.stringify(['CODE','AADRG'])) throw new Error('public types');
+if(JSON.stringify(s.status().public_search_types)!==JSON.stringify(['CODE','ADRG'])) throw new Error('public types');
 for(const code of ['T601','ADC3A','E011']){
  const row=s.recordMaps.CODE.get(code); if(!row) throw new Error('missing '+code);
  const r=s.search(code,'ALL',{limit:500});
- const expected=new Set(['CODE:'+code,...(row.related_aadrgs||[]).map(x=>'AADRG:'+x)]);
+ const expected=new Set(['CODE:'+code,...(row.related_adrgs||[]).map(x=>'ADRG:'+x)]);
  const actual=new Set(r.results.map(x=>x.entity_type+':'+x.entity_id));
  if(expected.size!==actual.size || [...expected].some(x=>!actual.has(x))) throw new Error('exact projection '+code);
 }

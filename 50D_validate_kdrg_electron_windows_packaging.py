@@ -2,7 +2,7 @@ from __future__ import annotations
 import hashlib, json, shutil, subprocess, sys
 from pathlib import Path
 
-SCRIPT_VERSION="2026-09-21_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V13_0514"
+SCRIPT_VERSION="2026-09-21_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V14_0515"
 ROOT=Path(__file__).resolve().parent
 ELECTRON=ROOT/"electron"
 DATA=ROOT/"data/kdrg_v47_search_integrated_v3.json"
@@ -129,7 +129,7 @@ def main():
     def check(name,actual,expected=True): checks.append({"name":name,"actual":actual,"expected":expected,"passed":actual==expected})
     pkg=json.loads((ELECTRON/"package.json").read_text(encoding="utf-8")); lock=json.loads((ELECTRON/"package-lock.json").read_text(encoding="utf-8")); scripts=pkg.get("scripts",{})
     check("운영 JSON SHA",sha256(DATA),EXPECTED_JSON_SHA)
-    check("package version",pkg.get("version"),"0.5.14"); check("lock version",lock.get("version"),"0.5.14")
+    check("package version",pkg.get("version"),"0.5.15"); check("lock version",lock.get("version"),"0.5.15")
     check("validate skeleton current",scripts.get("validate:skeleton"),"node tests/validate-stage59b-skeleton.js")
     check("validate search current",scripts.get("validate:search"),"node tests/validate-stage59b-search.js")
     check("validate UI current",scripts.get("validate:ui"),"node tests/validate-stage59b-ui.js")
@@ -146,14 +146,14 @@ def main():
     b=run([sys.executable,"50B_validate_kdrg_electron_search_service.py"],ROOT); outputs["50B"]=b; check("50B independent",b["returncode"],0)
     c=run([sys.executable,"50C_validate_kdrg_electron_renderer_ui.py"],ROOT); outputs["50C"]=c; check("50C independent",c["returncode"],0)
     app=(ELECTRON/"renderer/app.js").read_text(encoding="utf-8"); html=(ELECTRON/"renderer/index.html").read_text(encoding="utf-8")
-    check("사용자 검색 유형 CODE·AADRG",'<option value="CODE">코드</option>' in html and '<option value="AADRG">AADRG</option>' in html and '<option value="ADRG">ADRG</option>' not in html,True)
+    check("사용자 검색 유형 CODE·ADRG",'<option value="CODE">코드</option>' in html and '<option value="ADRG">ADRG</option>' in html and '<option value="AADRG">AADRG</option>' not in html,True)
     check("TABLE 기술상세 비노출","TABLE 기술 상세" not in app and "table-technical-button" not in app,True)
-    check("AADRG 사용자 결과","makeBadge('AADRG')" in app and "renderAadrgDetail" in app,True)
-    check("CODE 상세 관련 AADRG","'관련 AADRG'" in app,True)
+    check("ADRG 사용자 결과","makeBadge('ADRG')" in app and "renderAdrgDetail" in app,True)
+    check("CODE 상세 관련 ADRG","'관련 ADRG'" in app,True)
     check("history back","pushHistory" in app and "restoreScroll" in app,True)
     failures=[x for x in checks if not x["passed"]]
     REPORT_TXT.parent.mkdir(parents=True,exist_ok=True)
-    lines=["KDRG V4.7 Stage 50D Electron Windows packaging 독립검증 - 0.5.14","="*92,f"스크립트 버전: {SCRIPT_VERSION}",""]
+    lines=["KDRG V4.7 Stage 50D Electron Windows packaging 독립검증 - 0.5.15","="*92,f"스크립트 버전: {SCRIPT_VERSION}",""]
     for x in checks: lines.append(f"- [{'PASS' if x['passed'] else 'FAIL'}] {x['name']} | actual={x['actual']} | expected={x['expected']}")
     for name,v in outputs.items(): lines+=["",f"[{name} stdout]",v["stdout"],f"[{name} stderr]",v["stderr"]]
     lines+=["",f"전체 결과: {'PASS' if not failures else 'FAIL'}"]

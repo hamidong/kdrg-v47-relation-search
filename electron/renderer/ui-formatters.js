@@ -78,7 +78,7 @@
   }
 
   function typeCountText(typeCounts) {
-    const ordered = ['CODE', 'AADRG'];
+    const ordered = ['CODE', 'ADRG'];
     return ordered
       .filter((key) => Number(typeCounts?.[key] ?? 0) > 0)
       .map((key) => `${entityLabel(key)} ${formatNumber(typeCounts[key])}건`)
@@ -92,7 +92,7 @@
       return uniqueStrings([
         summary.mdc ? `MDC ${summary.mdc}` : '',
         ...(summary.abc_display_labels ?? []),
-        `AADRG ${formatNumber(summary.aadrg_count ?? 0)}개`,
+        `세부 질병군 ${formatNumber(summary.aadrg_count ?? 0)}개`,
       ]);
     }
     if (type === 'AADRG') {
@@ -117,7 +117,7 @@
     }
     return uniqueStrings([
       ...(summary.roles ?? []).map(roleLabel),
-      Number(summary.related_aadrg_count ?? 0) > 0 ? `관련 AADRG ${formatNumber(summary.related_aadrg_count)}개` : '',
+      Number(summary.related_aadrg_count ?? 0) > 0 ? `관련 세부 질병군 ${formatNumber(summary.related_aadrg_count)}개` : '',
     ]);
   }
 

@@ -26,9 +26,9 @@ function functionBlock(source, name) {
   return source.slice(start, next > start ? next : source.length);
 }
 
-check('public type AADRG', () => {
-  assert.match(html, /value="AADRG">AADRG/);
-  assert.doesNotMatch(html, /<option value="ADRG">/);
+check('public type ADRG', () => {
+  assert.match(html, /value="ADRG">ADRG/);
+  assert.doesNotMatch(html, /<option value="AADRG">/);
 });
 
 check('MDC dynamic', () => {
@@ -66,30 +66,30 @@ check('related AADRG names wrap', () => {
   assert.match(css, /\.derived-aadrg-row[\s\S]*cursor:\s*pointer/);
 });
 
-check('CODE detail hero is AADRG centered', () => {
+check('CODE detail hero is ADRG centered', () => {
   const body = functionBlock(app, 'detailSummaryLine');
   const codeStart = body.indexOf("if (payload.entity_type === 'CODE')");
   assert.ok(codeStart >= 0);
   const codeBody = body.slice(codeStart);
-  assert.match(codeBody, /관련 AADRG/);
-  assert.match(codeBody, /related_aadrg_summaries/);
+  assert.match(codeBody, /관련 ADRG/);
+  assert.match(codeBody, /related_adrg_summaries/);
   assert.doesNotMatch(codeBody, /연결 TABLE/);
   assert.doesNotMatch(codeBody, /related_adrgs/);
 });
 
-check('CODE detail section is AADRG centered', () => {
+check('CODE detail section is ADRG centered', () => {
   const body = functionBlock(app, 'renderCodeDetail');
-  assert.match(body, /'관련 AADRG'/);
-  assert.doesNotMatch(body, /'관련 ADRG'/);
+  assert.match(body, /'관련 ADRG'/);
+  assert.doesNotMatch(body, /'관련 AADRG'/);
   assert.doesNotMatch(body, /'포함 TABLE'/);
   assert.doesNotMatch(body, /'연결 TABLE'/);
 });
 
-check('AADRG overview metric uses AADRG count', () => {
+check('ADRG overview metric uses ADRG count', () => {
   const body = functionBlock(app, 'renderMetrics');
   assert.match(
     body,
-    /setText\('metric-aadrg', Ui\.formatNumber\(snapshot\.counts\.aadrg\)\)/,
+    /setText\('metric-aadrg', Ui\.formatNumber\(snapshot\.counts\.adrg\)\)/,
   );
 });
 
@@ -162,15 +162,15 @@ check('condition summary/detail roles remain separated', () => {
   assert.match(app, /function renderConditionGroup/);
 });
 
-check('relation AADRG', () => {
-  assert.match(app, /관계검색 AADRG/);
-  assert.match(app, /makeBadge\('AADRG'\)/);
-  assert.match(app, /AADRG 상세 보기/);
+check('relation ADRG', () => {
+  assert.match(app, /관계검색 ADRG/);
+  assert.match(app, /makeBadge\('ADRG'\)/);
+  assert.match(app, /ADRG 상세 보기/);
   assert.doesNotMatch(app, /ADRG 전체 상세/);
 });
 
 check('formatter public counts', () => {
-  assert.match(fmt, /const ordered = \['CODE', 'AADRG'\]/);
+  assert.match(fmt, /const ordered = \['CODE', 'ADRG'\]/);
 });
 
 check('Stage63B generic parent direct-condition inheritance', () => {

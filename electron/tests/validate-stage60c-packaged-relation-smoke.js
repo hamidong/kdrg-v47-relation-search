@@ -33,17 +33,23 @@ const wrapperSource = declarationSlice(
 );
 
 assert.match(legacySource, /condition\/table indexes unavailable/);
-assert.match(wrapperSource, /KdrgSearchService/);
-assert.match(wrapperSource, /findLegacyRelationSmokeFixture/);
-assert.match(wrapperSource, /recordMaps\.CODE/);
-assert.match(wrapperSource, /recordMaps\.AADRG/);
-assert.match(wrapperSource, /non-AADRG public result/);
-assert.match(wrapperSource, /parent_adrg/);
-assert.match(source, /function validateLegacyRelationResponse/);
-assert.match(source, /function validateRelationResponse\(\.\.\.args\)/);
-assert.match(source, /packaged AADRG relation response contract mismatch/);
-assert.match(source, /parent projection results\[/);
-assert.match(source, /validateLegacyRelationResponse\(\.\.\.projectedArgs\)/);
+assert.match(wrapperSource, /conditionGroupsByAdrg/);
+assert.match(wrapperSource, /recordMaps\?\.TABLE|recordMaps\.TABLE|recordMaps\?\.TABLE/);
+assert.match(wrapperSource, /relationSearch/);
+assert.match(wrapperSource, /public_entity_type: 'ADRG'/);
+assert.match(wrapperSource, /aadrg: null/);
+assert.doesNotMatch(wrapperSource, /findLegacyRelationSmokeFixture/);
+assert.doesNotMatch(wrapperSource, /KdrgSearchService/);
+assert.doesNotMatch(wrapperSource, /non-AADRG public result/);
+assert.match(source, /function validateRelationResponse\(response, expectedAdrg = null\)/);
+assert.match(source, /packaged ADRG relation response contract mismatch/);
+assert.match(source, /String\(item\.entity_type \?\? ''\)\.toUpperCase\(\) !== 'ADRG'/);
+assert.match(source, /duplicate ADRG results/);
+assert.match(source, /public AADRG payload leak/);
+assert.match(source, /function findRelationSmokeFixture\(service\)/);
+assert.match(source, /public_entity_type: 'ADRG'/);
+assert.match(source, /aadrg: null/);
+assert.doesNotMatch(source, /function validateRelationResponse\(\.\.\.args\)/);
 
 const context = vm.createContext({
   console,
@@ -66,11 +72,12 @@ const service = new KdrgSearchService(dataPath);
 const fixture = findRelationSmokeFixture(service);
 
 assert.equal(fixture.runtime_fixture, true);
-assert.equal(fixture.public_entity_type, 'AADRG');
+assert.equal(fixture.public_entity_type, 'ADRG');
 assert.ok(Array.isArray(fixture.conditions) && fixture.conditions.length >= 2);
 assert.equal(fixture.operator, 'AND');
 assert.match(String(fixture.adrg || ''), /^[A-Z0-9-]+$/);
-assert.match(String(fixture.aadrg || ''), /^[A-Z0-9-]+$/);
+assert.equal(fixture.aadrg, null);
+assert.ok(service.recordMaps.AADRG instanceof Map && service.recordMaps.AADRG.size > 0, 'internal AADRG map missing');
 
 const response = service.relationSearch(
   fixture.conditions,
@@ -78,15 +85,15 @@ const response = service.relationSearch(
   fixture.options || { limit: 500 },
 );
 assert.ok(response.results.length > 0);
-assert.ok(response.results.every((item) => item.entity_type === 'AADRG'));
+assert.ok(response.results.every((item) => item.entity_type === 'ADRG'));
 
 const projected = response.results.find(
   (item) => (
-    String(item.entity_id) === String(fixture.aadrg)
+    String(item.entity_id) === String(fixture.adrg)
     && String(item.parent_adrg) === String(fixture.adrg)
   ),
 );
-assert.ok(projected, 'runtime AADRG projection fixture not found');
+assert.ok(projected, 'runtime ADRG projection fixture not found');
 
 const runStart = source.indexOf('async function runPackagedRuntimeSmoke');
 assert.ok(runStart >= 0);
@@ -95,5 +102,5 @@ const contractMarker = source.indexOf('relation_contract_verified', callStart);
 assert.ok(callStart >= 0 && contractMarker > callStart);
 
 console.log(
-  `[PASS] Stage60C runtime relation fixture: ${fixture.adrg} -> ${fixture.aadrg} | ${fixture.codes.join(',')}`,
+  `[PASS] Stage60C runtime ADRG relation fixture: ${fixture.adrg} | ${fixture.codes.join(',')}`,
 );

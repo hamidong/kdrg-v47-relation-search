@@ -217,7 +217,7 @@ class KdrgSearchService {
     }
     if (entityType === 'ADRG') {
       const title = `${pythonFString(row.adrg)} · ${pythonFString(row.adrg_name)}`.replace(/^[ ·]+|[ ·]+$/g, '');
-      return [title, `MDC ${pythonFString(row.mdc, '-')} · AADRG ${pythonFString(row.aadrg_count, 0)}개`];
+      return [title, `MDC ${pythonFString(row.mdc, '-')} · 세부 질병군 ${pythonFString(row.aadrg_count, 0)}개`];
     }
     if (entityType === 'AADRG') {
       const title = `${pythonFString(row.aadrg)} · ${pythonFString(row.group_name)}`.replace(/^[ ·]+|[ ·]+$/g, '');
@@ -1207,7 +1207,7 @@ class KdrgSearchService {
 
 
 // Stage59B 0.5.10 Shadow R3
-const STAGE59B_PUBLIC_TYPES = Object.freeze(['CODE', 'AADRG']);
+const STAGE59B_PUBLIC_TYPES = Object.freeze(['CODE', 'ADRG']);
 const _s59Status = KdrgSearchService.prototype.status;
 const _s59RelationSearch = KdrgSearchService.prototype.relationSearch;
 const _s59AdrgDetail = KdrgSearchService.prototype.adrgDetail;
@@ -1280,7 +1280,7 @@ KdrgSearchService.prototype.search = function (query, entityType = 'ALL', option
       rows.push(this.makeSearchResult(typeName, String(id), score, kind, ['entity_id']));
     };
     if (entityTypes.includes('CODE')) add('CODE', exactCode.code, 1000, 'EXACT_ID');
-    if (entityTypes.includes('AADRG')) for (const aadrg of uniqueStrings(exactCode.related_aadrgs ?? [])) add('AADRG', aadrg, 990, 'DIRECT_CODE_RELATION');
+    if (entityTypes.includes('ADRG')) for (const adrg of uniqueStrings(exactCode.related_adrgs ?? [])) add('ADRG', adrg, 990, 'DIRECT_CODE_RELATION');
     const typeCounts = {};
     for (const row of rows) typeCounts[row.entity_type] = (typeCounts[row.entity_type] ?? 0) + 1;
     return { schema_version: RESPONSE_SCHEMA_VERSION, query: queryText, normalized_query: normalizeQuery(queryText), filters: { entity_types: entityTypes, mdc: mdcFilter || null, classification: classFilter || null }, total_count: rows.length, type_counts: typeCounts, offset, limit, has_more: false, results: rows.slice(offset, offset + limit) };
@@ -1329,11 +1329,11 @@ KdrgSearchService.prototype.relationSearch = function (conditions, operator = 'A
   const raw = _s59RelationSearch.call(this, conditions, operator, options);
   const results = [];
   for (const parent of raw.results ?? []) {
-    for (const child of parent.aadrg_records ?? []) results.push({ ...clone(parent), entity_type: 'AADRG', entity_id: child.entity_id, title: child.title, subtitle: child.subtitle, parent_adrg: parent.entity_id, aadrg_records: undefined, summary: { ...(child.summary ?? {}), parent_adrg: parent.entity_id } });
+    results.push({ ...clone(parent), entity_type: 'ADRG', entity_id: parent.entity_id, parent_adrg: parent.entity_id, aadrg_records: undefined, summary: { ...(parent.summary ?? {}), parent_adrg: parent.entity_id } });
   }
   const levelCounts = {};
   for (const row of results) levelCounts[row.relation_level] = (levelCounts[row.relation_level] ?? 0) + 1;
-  return { ...raw, total_count: results.length, level_counts: levelCounts, results, disclaimer: '입력 코드가 같은 ADRG 조건식에 연결되는지를 내부 판정한 뒤 AADRG 사용자 단위로 표시합니다. 최종 DRG 판정을 의미하지 않습니다.' };
+  return { ...raw, total_count: results.length, level_counts: levelCounts, results, disclaimer: '입력 코드가 같은 ADRG 조건식에 연결되는지를 내부 판정한 뒤 ADRG 단위로 표시합니다. 최종 DRG 판정을 의미하지 않습니다.' };
 };
 
 

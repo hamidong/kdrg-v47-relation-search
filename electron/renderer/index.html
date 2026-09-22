@@ -38,7 +38,7 @@
               name="query"
               type="search"
               maxlength="200"
-              placeholder="코드·AADRG·질병군명 입력"
+              placeholder="코드·ADRG·질병군명 입력"
               aria-describedby="search-help"
             />
           </label>
@@ -48,7 +48,7 @@
             <select id="filter-type" name="entityType">
               <option value="ALL">전체</option>
               <option value="CODE">코드</option>
-              <option value="AADRG">AADRG</option>
+              <option value="ADRG">ADRG</option>
             </select>
           </label>
 
@@ -92,16 +92,16 @@
         <details id="data-overview" class="data-overview compact-utility-panel">
           <summary>데이터 현황 <span id="data-overview-summary">KDRG V4.7 통합 데이터</span></summary>
           <section class="metric-strip" aria-label="데이터 집계">
-            <div><span>AADRG</span><strong id="metric-aadrg">-</strong></div>
+            <div><span>ADRG</span><strong id="metric-aadrg">-</strong></div>
             <div><span>검색 코드</span><strong id="metric-code">-</strong></div>
           </section>
         </details>
 
         <details id="relation-search-panel" class="relation-search-panel compact-utility-panel">
-          <summary>복수 코드 관계검색 <span>같은 분류조건의 AADRG 확인</span></summary>
+          <summary>복수 코드 관계검색 <span>같은 분류조건의 ADRG 확인</span></summary>
           <div class="relation-panel-body">
             <p class="relation-disclaimer">
-              동일 ADRG 조건식의 내부 연결을 AADRG 사용자 단위로를 보여주며 최종 DRG 판정을 의미하지 않습니다.
+              동일 ADRG 조건식의 내부 연결을 ADRG 사용자 단위로를 보여주며 최종 DRG 판정을 의미하지 않습니다.
             </p>
             <form id="relation-form" autocomplete="off">
               <div id="relation-condition-list" class="relation-condition-list"></div>
@@ -117,7 +117,7 @@
                 <span class="relation-filter-note">위 MDC·질병군 분류 필터를 함께 적용합니다.</span>
                 <div class="relation-actions">
                   <button id="relation-reset" class="secondary-button" type="button">초기화</button>
-                  <button id="relation-submit" class="relation-primary-button" type="submit">공통 관련 AADRG 검색</button>
+                  <button id="relation-submit" class="relation-primary-button" type="submit">공통 관련 ADRG 검색</button>
                 </div>
               </div>
             </form>

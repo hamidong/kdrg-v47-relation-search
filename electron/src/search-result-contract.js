@@ -4,7 +4,7 @@ const { normalizeSpace, normalizeEntityId } = require('./search-normalizer');
 
 const ENTITY_TYPES = Object.freeze(['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']);
 const ENTITY_TYPE_SET = new Set(ENTITY_TYPES);
-const SEARCH_ENTITY_TYPES = Object.freeze(['CODE', 'AADRG']);
+const SEARCH_ENTITY_TYPES = Object.freeze(['CODE', 'ADRG']);
 const SEARCH_ENTITY_TYPE_SET = new Set(SEARCH_ENTITY_TYPES);
 const RELATION_OPERATORS = Object.freeze(['AND', 'OR']);
 const RELATION_CODE_TYPES = Object.freeze([

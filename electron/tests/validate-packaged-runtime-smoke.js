@@ -167,8 +167,8 @@ check(
 );
 check('renderer fixture source located', executeFixtureSource.length > 0, true);
 check(
-  'packaged smoke AADRG filter',
-  executeFixtureSource.includes("filter.value = 'AADRG';"),
+  'packaged smoke ADRG filter',
+  executeFixtureSource.includes("filter.value = 'ADRG';"),
   true,
 );
 check(
@@ -177,9 +177,9 @@ check(
   true,
 );
 check(
-  'packaged smoke AADRG result selector',
-  executeFixtureSource.includes('data-entity-type="AADRG"')
-    && executeFixtureSource.includes('fixture.aadrg'),
+  'packaged smoke ADRG result selector',
+  executeFixtureSource.includes('data-entity-type="ADRG"')
+    && executeFixtureSource.includes('fixture.adrg'),
   true,
 );
 check(
@@ -188,18 +188,18 @@ check(
   true,
 );
 check(
-  'packaged smoke AADRG detail caption',
-  executeFixtureSource.includes('detailCaption === fixture.aadrg'),
+  'packaged smoke ADRG detail caption',
+  executeFixtureSource.includes('detailCaption === fixture.adrg'),
   true,
 );
 check(
   'packaged smoke selected_aadrg snapshot',
-  executeFixtureSource.includes('selected_aadrg: fixture.aadrg'),
+  executeFixtureSource.includes('selected_aadrg: null'),
   true,
 );
 check(
-  'packaged smoke legacy ADRG filter absent',
-  executeFixtureSource.includes("filter.value = 'ADRG';"),
+  'packaged smoke public AADRG filter absent',
+  executeFixtureSource.includes("filter.value = 'AADRG';"),
   false,
 );
 
@@ -223,8 +223,8 @@ function validSnapshot(fixture) {
   );
   return {
     selected_adrg: fixture.adrg,
-    selected_aadrg: fixture.aadrg,
-    detail_caption: fixture.aadrg,
+    selected_aadrg: null,
+    detail_caption: fixture.adrg,
     detail_text: [
       fixture.adrg,
       ...REQUIRED_DETAIL_LABELS,
@@ -303,10 +303,10 @@ function mockSnapshotForFixture(fixture) {
   );
   return {
     selected_adrg: fixture.adrg,
-    selected_aadrg: fixture.aadrg,
+    selected_aadrg: null,
     result_count_text: '1건',
     result_caption: fixture.search_query,
-    detail_caption: fixture.aadrg,
+    detail_caption: fixture.adrg,
     detail_text: [
       fixture.adrg,
       ...REQUIRED_DETAIL_LABELS,

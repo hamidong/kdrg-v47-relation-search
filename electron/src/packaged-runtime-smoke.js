@@ -187,108 +187,82 @@ function validateLegacyRelationResponse(response, expectedAdrg = null) {
   return response.results;
 }
 
-function validateRelationResponse(...args) {
-  const response = args[0];
-  const results = Array.isArray(response?.results)
-    ? response.results
-    : [];
-
-  const hasAadrg = results.some(
-    (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
-  );
-
-  if (!hasAadrg) {
-    return validateLegacyRelationResponse(...args);
-  }
-
-  if (!results.length) {
+function validateRelationResponse(response, expectedAdrg = null) {
+  requirePlainObject(response, 'packaged relation response');
+  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {
     throw new Error(
-      'packaged AADRG relation response contract mismatch: empty results',
+      `packaged ADRG relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,
     );
   }
-
-  if (!results.every(
-    (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
-  )) {
+  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {
+    throw new Error('packaged ADRG relation response contract mismatch: conditions must contain at least 2 rows');
+  }
+  if (!Array.isArray(response.results)) {
+    throw new Error('packaged ADRG relation response contract mismatch: results must be an array');
+  }
+  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {
     throw new Error(
-      'packaged AADRG relation response contract mismatch: mixed entity types',
+      `packaged ADRG relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,
     );
   }
+  if (!response.results.length) {
+    throw new Error('packaged ADRG relation response contract mismatch: empty results');
+  }
 
-  for (let index = 0; index < results.length; index += 1) {
-    const item = results[index];
-    const entityId = String(item?.entity_id ?? '').trim();
-    const parentAdrg = String(item?.parent_adrg ?? '').trim();
-
-    if (!entityId || !parentAdrg) {
+  const seen = new Set();
+  for (const [index, item] of response.results.entries()) {
+    if (!isPlainObject(item)
+      || String(item.entity_type ?? '').toUpperCase() !== 'ADRG'
+      || typeof item.entity_id !== 'string'
+      || !item.entity_id
+      || !['strict', 'split', 'partial'].includes(item.relation_level)
+      || !Array.isArray(item.code_matches)
+      || !Array.isArray(item.condition_groups)
+      || item.condition_groups.some(
+        (group) => !Array.isArray(group.exclude_table_ids)
+          || !Array.isArray(group.exclude_tables),
+      )) {
       throw new Error(
-        `packaged AADRG relation response contract mismatch: invalid results[${index}]`,
+        `packaged ADRG relation response contract mismatch: invalid results[${index}]`,
       );
     }
 
-    if (!item?.summary || String(item.summary?.parent_adrg ?? parentAdrg) !== parentAdrg) {
+    const entityId = String(item.entity_id);
+    if (seen.has(entityId)) {
       throw new Error(
-        `packaged AADRG relation response contract mismatch: parent projection results[${index}]`,
+        `packaged ADRG relation response contract mismatch: duplicate ADRG results[${index}]`,
+      );
+    }
+    seen.add(entityId);
+
+    const parentAdrg = String(item.parent_adrg ?? '').trim();
+    if (parentAdrg && parentAdrg !== entityId) {
+      throw new Error(
+        `packaged ADRG relation response contract mismatch: parent projection results[${index}]`,
       );
     }
 
-    if (!Number.isFinite(Number(item?.matched_count))
-        || !Number.isFinite(Number(item?.total_count))
-        || !Array.isArray(item?.code_matches)
-        || !Array.isArray(item?.condition_groups)) {
+    const summaryParentAdrg = String(item.summary?.parent_adrg ?? '').trim();
+    if (summaryParentAdrg && summaryParentAdrg !== entityId) {
       throw new Error(
-        `packaged AADRG relation response contract mismatch: relation fields results[${index}]`,
+        `packaged ADRG relation response contract mismatch: summary parent projection results[${index}]`,
+      );
+    }
+
+    if (Object.prototype.hasOwnProperty.call(item, 'aadrg_records')
+      && item.aadrg_records !== undefined) {
+      throw new Error(
+        `packaged ADRG relation response contract mismatch: public AADRG payload leak results[${index}]`,
       );
     }
   }
 
-  const byParent = new Map();
-
-  for (const item of results) {
-    const parent = String(item.parent_adrg);
-    if (byParent.has(parent)) continue;
-
-    const title = String(item?.title ?? '');
-    const escapedId = String(item.entity_id).replace(
-      /[.*+?^${}()|[\]\\]/g,
-      '\\$&',
-    );
-    const projectedTitle = title.replace(
-      new RegExp(`^${escapedId}\\s*·\\s*`),
-      `${parent} · `,
-    );
-
-    byParent.set(parent, {
-      ...item,
-      entity_type: 'ADRG',
-      entity_id: parent,
-      title: projectedTitle || `${parent}`,
-      summary: {
-        ...(item?.summary ?? {}),
-        adrg: parent,
-        parent_adrg: parent,
-      },
-    });
+  if (expectedAdrg
+    && !response.results.some((item) => String(item.entity_id) === String(expectedAdrg))) {
+    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);
   }
 
-  const projectedResults = [...byParent.values()];
-  const projectedLevelCounts = {};
-
-  for (const item of projectedResults) {
-    const level = String(item?.relation_level ?? '').trim();
-    if (!level) continue;
-    projectedLevelCounts[level] = Number(projectedLevelCounts[level] ?? 0) + 1;
-  }
-
-  const projectedResponse = {
-    ...response,
-    results: projectedResults,
-    total_count: projectedResults.length,
-    level_counts: projectedLevelCounts,
-  };
-
-  const projectedArgs = [projectedResponse, ...args.slice(1)];
-  return validateLegacyRelationResponse(...projectedArgs);
+  return response.results;
 }
 
 function findLegacyRelationSmokeFixture(service) {
@@ -326,126 +300,84 @@ function findLegacyRelationSmokeFixture(service) {
 }
 
 function findRelationSmokeFixture(service) {
-  const runtimeService = (
-    String(service?.constructor?.name ?? '') === 'KdrgSearchService'
-    || Boolean(
-      service?.recordMaps?.CODE
-      && service?.recordMaps?.AADRG
-      && typeof service.recordMaps.CODE.values === 'function'
-      && typeof service.recordMaps.AADRG.values === 'function'
-    )
-  );
-
-  // 기존 validate-packaged-runtime-smoke.js는 실제 runtime service가 아닌
-  // contract test-double을 주입한다. 그 경로는 기존 fixture discovery를 그대로 보존한다.
-  if (!runtimeService) {
-    return findLegacyRelationSmokeFixture(service);
+  const conditionGroups = service?.conditionGroupsByAdrg;
+  const tableMap = service?.recordMaps?.TABLE;
+  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {
+    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');
   }
-
-  // 실제 packaged runtime에서는 Stage59 이후 public relation 결과가 AADRG이므로,
-  // CODE -> parent ADRG 후보를 실제 recordMaps에서 만들고 relationSearch 결과의
-  // AADRG + parent_adrg projection을 직접 검증한다.
-  const codeRows = Array.from(service.recordMaps.CODE.values());
-  const byParent = new Map();
-
-  for (const row of codeRows) {
-    const code = String(row?.code ?? row?.entity_id ?? '').trim();
-    if (!code) continue;
-
-    for (const rawParent of row?.related_adrgs ?? []) {
-      const parent = String(rawParent ?? '').trim();
-      if (!parent) continue;
-      if (!byParent.has(parent)) byParent.set(parent, []);
-
-      const bucket = byParent.get(parent);
-      if (!bucket.includes(code)) bucket.push(code);
-    }
-  }
-
-  const parents = [...byParent.entries()]
-    .filter(([, codes]) => codes.length >= 2)
-    .sort((a, b) => a[0].localeCompare(b[0]));
 
   let attempts = 0;
-  const maxAttempts = 1200;
+  for (const [adrg, groups] of conditionGroups.entries()) {
+    const exclusionIds = new Set(
+      (groups ?? []).flatMap((group) => group.exclude_table_ids ?? []),
+    );
 
-  for (const [adrg, codes] of parents) {
-    const candidates = codes.slice(0, 20);
+    for (const group of groups ?? []) {
+      const codes = [];
+      const seen = new Set();
 
-    for (let i = 0; i < candidates.length; i += 1) {
-      for (let j = i + 1; j < candidates.length; j += 1) {
-        if (attempts >= maxAttempts) break;
-        attempts += 1;
+      for (const tableId of group.include_table_ids ?? []) {
+        if (exclusionIds.has(tableId)) continue;
+        const table = tableMap.get(String(tableId));
 
-        const conditions = [
-          { codeType: 'AUTO', code: candidates[i] },
-          { codeType: 'AUTO', code: candidates[j] },
-        ];
-
-        let response;
-        try {
-          response = service.relationSearch(
-            conditions,
-            'AND',
-            { limit: 500 },
-          );
-        } catch {
-          continue;
+        for (const code of table?.codes ?? []) {
+          const normalized = String(code ?? '')
+            .replace(/[^0-9A-Za-z]/g, '')
+            .toUpperCase();
+          if (!normalized || seen.has(normalized)) continue;
+          seen.add(normalized);
+          codes.push(String(code));
+          if (codes.length >= 2) break;
         }
 
-        const results = Array.isArray(response?.results)
-          ? response.results
-          : [];
-        if (!results.length) continue;
-
-        if (!results.every(
-          (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
-        )) {
-          throw new Error(
-            'packaged runtime relation smoke exposed non-AADRG public result',
-          );
-        }
-
-        const match = results.find(
-          (item) => String(item?.parent_adrg ?? '') === adrg,
-        );
-        if (!match) continue;
-
-        const aadrg = String(match?.entity_id ?? '').trim();
-        if (!aadrg) {
-          throw new Error('packaged runtime relation smoke AADRG id is empty');
-        }
-
-        return {
-          conditions,
-          operator: 'AND',
-          options: { limit: 500 },
-          codes: [candidates[i], candidates[j]],
-          code1: candidates[i],
-          code2: candidates[j],
-          adrg,
-          parent_adrg: adrg,
-          parentAdrg: adrg,
-          aadrg,
-          expected_aadrg: aadrg,
-          expectedAadrg: aadrg,
-          public_entity_type: 'AADRG',
-          response,
-          result: match,
-          match,
-          attempts,
-          runtime_fixture: true,
-        };
+        if (codes.length >= 2) break;
       }
 
-      if (attempts >= maxAttempts) break;
-    }
+      if (codes.length < 2) continue;
+      attempts += 1;
 
-    if (attempts >= maxAttempts) break;
+      const conditions = codes.map((code) => ({
+        code,
+        codeType: 'AUTO',
+      }));
+      const operator = 'AND';
+      const options = { limit: 500 };
+      const response = service.relationSearch(
+        conditions,
+        operator,
+        options,
+      );
+
+      const projected = (response.results ?? []).find(
+        (item) => (
+          String(item?.entity_type ?? '').toUpperCase() === 'ADRG'
+          && String(item?.entity_id ?? '') === String(adrg)
+          && (
+            !String(item?.parent_adrg ?? '').trim()
+            || String(item.parent_adrg) === String(adrg)
+          )
+        ),
+      );
+      if (!projected) continue;
+
+      return {
+        runtime_fixture: true,
+        public_entity_type: 'ADRG',
+        adrg: String(adrg),
+        aadrg: null,
+        codes,
+        conditions,
+        operator,
+        options,
+        response,
+        expected_adrg: String(adrg),
+        expectedAdrg: String(adrg),
+      };
+    }
   }
 
   throw new Error(
-    `packaged AADRG relation smoke fixture discovery failed after ${attempts} attempts`,
+    `packaged ADRG relation smoke fixture discovery failed after ${attempts} attempts`,
   );
 }
 
@@ -620,8 +552,8 @@ function validateUiCaseSnapshot(snapshot, fixture) {
   };
 
   add('selected_adrg', snapshot.selected_adrg === fixture.adrg, snapshot.selected_adrg, fixture.adrg);
-  add('selected_aadrg', snapshot.selected_aadrg === fixture.aadrg, snapshot.selected_aadrg, fixture.aadrg);
-  add('detail_caption', snapshot.detail_caption === fixture.aadrg, snapshot.detail_caption, fixture.aadrg);
+  add('selected_aadrg_hidden', !snapshot.selected_aadrg, snapshot.selected_aadrg, null);
+  add('detail_caption', snapshot.detail_caption === fixture.adrg, snapshot.detail_caption, fixture.adrg);
   add('parent_adrg_visible', detailText.includes(fixture.adrg), detailText.includes(fixture.adrg), true);
   add('table_ids_exact', sameStringSet(tableIds, expectedTableIds), tableIds, expectedTableIds);
   add(
@@ -718,7 +650,7 @@ async function executeRendererFixture(webContents, fixture) {
         throw new Error('search DOM contract mismatch');
       }
 
-      filter.value = 'AADRG';
+      filter.value = 'ADRG';
       filter.dispatchEvent(new Event('change', { bubbles: true }));
       input.value = fixture.search_query;
       input.dispatchEvent(new Event('input', { bubbles: true }));
@@ -732,9 +664,9 @@ async function executeRendererFixture(webContents, fixture) {
 
       const selectedResult = await waitFor(
         () => document.querySelector(
-          '#result-list [data-entity-type="AADRG"][data-entity-id="' + fixture.aadrg + '"]'
+          '#result-list [data-entity-type="ADRG"][data-entity-id="' + fixture.adrg + '"]'
         ),
-        fixture.aadrg + ' result ready',
+        fixture.adrg + ' result ready',
       );
       selectedResult.click();
 
@@ -743,11 +675,11 @@ async function executeRendererFixture(webContents, fixture) {
         const detailCaption = document.querySelector('#detail-caption')?.textContent?.trim() || '';
         return Boolean(
           detail
-          && detailCaption === fixture.aadrg
+          && detailCaption === fixture.adrg
           && detail.textContent.includes(fixture.adrg)
           && !document.querySelector('#search-submit')?.disabled
         );
-      }, fixture.aadrg + ' detail ready');
+      }, fixture.adrg + ' detail ready');
 
       const cards = [
         ...document.querySelectorAll('#detail-content details.inline-table-card')
@@ -796,7 +728,7 @@ async function executeRendererFixture(webContents, fixture) {
 
       return {
         selected_adrg: fixture.adrg,
-        selected_aadrg: fixture.aadrg,
+        selected_aadrg: null,
         result_count_text: document.querySelector('#result-count')?.textContent?.trim() || '',
         result_caption: document.querySelector('#result-caption')?.textContent?.trim() || '',
         detail_caption: document.querySelector('#detail-caption')?.textContent?.trim() || '',
