@@ -215,7 +215,7 @@ for (const [index, expected] of expectedUiFixtureMap.entries()) {
   const fixture = UI_FIXTURES[index];
   check(`fixture ${expected[0]} parent`, fixture.adrg, expected[0]);
   check(`fixture ${expected[0]} child`, fixture.aadrg, expected[1]);
-  check(`fixture ${expected[0]} query`, fixture.search_query, expected[2]);
+  check(`fixture ${expected[0]} query`, fixture.search_query, expected[0]);
 }
 function validSnapshot(fixture) {
   const codeCounts = Object.fromEntries(
@@ -242,6 +242,7 @@ function validSnapshot(fixture) {
 for (const fixture of UI_FIXTURES) {
   check(`${fixture.adrg} aadrg present`, /^[A-Z0-9-]+$/.test(String(fixture.aadrg || '')), true);
   check(`${fixture.adrg} search_query present`, String(fixture.search_query || '').trim().length > 0, true);
+  check(`${fixture.adrg} public ADRG search_query`, String(fixture.search_query || '').trim(), String(fixture.adrg || '').trim());
   const result = validateUiCaseSnapshot(validSnapshot(fixture), fixture);
   check(`${fixture.adrg} valid snapshot`, result.passed, true);
   check(`${fixture.adrg} failed checks zero`, result.failed_checks.length, 0);

@@ -1266,7 +1266,9 @@ KdrgSearchService.prototype.search = function (query, entityType = 'ALL', option
   const classFilter = String(options.classification ?? '').toUpperCase().trim();
   const exactId = normalizeEntityId(queryText, 'CODE');
   const exactCode = this.recordMaps.CODE.get(exactId);
-  if (exactCode) {
+  const preferExactAdrgNamespace = entityType === 'ADRG'
+  && this.recordMaps.ADRG.has(normalizeEntityId(query, 'ADRG'));
+if (exactCode && !preferExactAdrgNamespace) {
     const rows = [];
     const seen = new Set();
     const add = (typeName, id, score, kind) => {

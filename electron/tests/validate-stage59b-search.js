@@ -23,3 +23,17 @@ check('M6536 F022/P020',()=>{ for(const tid of ['LT_PATCH_F022_PROCEDURE_TABLE06
 for (const [adrg,count] of Object.entries({'9630':3376,'E013':427,'G504':610,'G524':610,'G534':610,'J031':738,'J032':738,'R020':161,'R040':161})) check(`MDC virtual ${adrg}`,()=>assert.equal(service.recordMaps.ADRG.get(adrg)?.mdc_virtual_principal_diagnosis?.code_count,count));
 for (const adrg of ['B024','B092','H612','L632','O024','O062','S630']) check(`MDC HOLD ${adrg}`,()=>assert.equal(service.recordMaps.ADRG.get(adrg)?.mdc_virtual_review_status,'HOLD'));
 console.log(`stage59_search: ${pass} PASS / ${fail.length} FAIL`); if(fail.length){fail.forEach(x=>console.log('- '+x));process.exitCode=1;}
+
+check('ADRG exact-id namespace coverage', () => {
+  const adrgIds = [...service.recordMaps.ADRG.keys()].map(String).sort();
+  assert.equal(adrgIds.length, 1132);
+  for (const adrg of adrgIds) {
+    const response = service.search(adrg, 'ADRG', { limit: 500, offset: 0 });
+    assert.ok(
+      (response.results || []).some(
+        (item) => item.entity_type === 'ADRG' && item.entity_id === adrg,
+      ),
+      `ADRG exact-id search missing: ${adrg}`,
+    );
+  }
+});

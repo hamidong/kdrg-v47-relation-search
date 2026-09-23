@@ -38,7 +38,7 @@ const UI_FIXTURES = Object.freeze([
   Object.freeze({
     adrg: 'B018',
     aadrg: 'B0180',
-    search_query: 'B0180',
+    search_query: 'B018',
     expected_table_ids: Object.freeze([
       'LT_B018_001',
       'LT_B018_004',
@@ -57,7 +57,7 @@ const UI_FIXTURES = Object.freeze([
   Object.freeze({
     adrg: 'B022',
     aadrg: 'B0220',
-    search_query: 'B0220',
+    search_query: 'B022',
     expected_table_ids: Object.freeze([]),
     forbidden_table_ids: Object.freeze([]),
     required_table_labels: Object.freeze([]),
