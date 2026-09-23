@@ -577,3 +577,57 @@ runLegacyAndPackagedFixtures()
     console.error(error);
     process.exitCode = 1;
   });
+
+// Stage67I4B packaged normalized request bridge
+{
+  const assert67I4B = require('node:assert/strict');
+  const path67I4B = require('node:path');
+  const {
+    normalizeSearchRequest: normalizeSearchRequest67I4B,
+  } = require('../src/search-result-contract');
+  const {
+    KdrgSearchService: KdrgSearchService67I4B,
+  } = require('../src/kdrg-search-service');
+
+  const normalize67I4B = (type, query = 'B018') =>
+    normalizeSearchRequest67I4B({
+      query,
+      entityType: type,
+      limit: 500,
+      offset: 0,
+    });
+
+  assert67I4B.equal(normalize67I4B('CODE').entityType, 'CODE');
+  assert67I4B.equal(normalize67I4B('ADRG').entityType, 'ADRG');
+  assert67I4B.equal(normalize67I4B('ALL').entityType, 'ALL');
+  for (const hidden67I4B of ['AADRG', 'RDRG', 'TABLE', 'INVALID']) {
+    assert67I4B.throws(
+      () => normalize67I4B(hidden67I4B),
+      /사용자 검색에서 지원하지 않는 유형입니다/,
+    );
+  }
+
+  const service67I4B = new KdrgSearchService67I4B(
+    path67I4B.resolve(
+      '..',
+      'data',
+      'kdrg_v47_search_integrated_v3.json',
+    ),
+  );
+  const request67I4B = normalize67I4B('ADRG');
+  assert67I4B.equal(typeof request67I4B.entityType, 'string');
+  const response67I4B = service67I4B.search(
+    request67I4B.query,
+    request67I4B.entityType,
+    {
+      limit: request67I4B.limit,
+      offset: request67I4B.offset,
+      mdc: request67I4B.mdc,
+      classification: request67I4B.classification,
+    },
+  );
+  assert67I4B.ok(response67I4B.results.some(
+    (row) => row.entity_type === 'ADRG' && row.entity_id === 'B018',
+  ));
+  console.log('[PASS] Stage67I4B packaged normalized request bridge');
+}

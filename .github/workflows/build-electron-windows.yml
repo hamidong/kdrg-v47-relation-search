@@ -333,11 +333,12 @@ jobs:
             exit 0
           }
 
-          Write-Error "packaged 핵심검증 실패"
+        # Stage67I4B: emit diagnostics before terminating the failed step.
           Write-Host "status=$($report.status)"
           Write-Host "failed_step=$($report.failed_step)"
           Write-Host "missing_steps=$($missing -join ',')"
           Write-Host "message=$message"
+          Write-Error "packaged 핵심검증 실패"
           exit 1
 
       - name: SHA256 생성

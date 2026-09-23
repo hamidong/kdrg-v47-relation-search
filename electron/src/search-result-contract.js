@@ -72,7 +72,7 @@ function normalizeSharedFilters(payload) {
   };
 }
 
-function normalizeSearchRequest(payload) {
+function normalizeSearchRequestLegacy(payload) {
   if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
     throw new SearchContractError('검색 요청 형식이 올바르지 않습니다.');
   }
@@ -158,6 +158,23 @@ function normalizeDetailRequest(payload) {
   return Object.freeze({ entityType, entityId });
 }
 
+
+/* Stage67I4B R3: scalarize only supported public search entityType. */
+function normalizeSearchRequest(payload = {}) {
+  const normalized = normalizeSearchRequestLegacy(payload);
+  const rawType = (payload && typeof payload === 'object' && !Array.isArray(payload))
+    ? (payload.entityType ?? payload.entity_type ?? 'ALL')
+    : 'ALL';
+  const requested = String(rawType ?? 'ALL').trim().toUpperCase() || 'ALL';
+  if (requested === 'ALL') {
+    return { ...normalized, entityType: 'ALL' };
+  }
+  if (SEARCH_ENTITY_TYPES.includes(requested)) {
+    return { ...normalized, entityType: requested };
+  }
+  /* Hidden/invalid types are rejected by normalizeSearchRequestLegacy above. */
+  return normalized;
+}
 module.exports = Object.freeze({
   ENTITY_TYPES,
   SEARCH_ENTITY_TYPES,
