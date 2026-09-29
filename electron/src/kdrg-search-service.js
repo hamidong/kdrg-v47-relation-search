@@ -1353,3 +1353,92 @@ module.exports = Object.freeze({
   canonicalJson,
   sha256Canonical,
 });
+
+/* STAGE69B_EXACT_PUBLIC_ID_V2 */
+const STAGE69B_ORIGINAL_SEARCH = KdrgSearchService.prototype.search;
+
+KdrgSearchService.prototype.search = function stage69bExactPublicIdSearch(
+  query,
+  entityType = 'ALL',
+  options = {},
+) {
+  const requestedType = String(entityType ?? 'ALL').trim().toUpperCase();
+  if (requestedType !== 'ALL') {
+    return STAGE69B_ORIGINAL_SEARCH.call(this, query, entityType, options);
+  }
+
+  const queryText = normalizeSpace(query);
+  if (!queryText) {
+    throw new KdrgSearchError('검색어를 입력해야 합니다');
+  }
+
+  const limit = options?.limit ?? 50;
+  const offset = options?.offset ?? 0;
+  if (!Number.isInteger(limit) || limit < 1 || limit > 500) {
+    throw new KdrgSearchError('limit은 1~500 범위여야 합니다');
+  }
+  if (!Number.isInteger(offset) || offset < 0) {
+    throw new KdrgSearchError('offset은 0 이상이어야 합니다');
+  }
+
+  const entityTypes = this.normalizeEntityTypes(entityType);
+  const codeId = normalizeEntityId(queryText, 'CODE');
+  const adrgId = normalizeEntityId(queryText, 'ADRG');
+  const hasCode = Boolean(codeId && this.recordMaps?.CODE?.has(codeId));
+  const hasAdrg = Boolean(adrgId && this.recordMaps?.ADRG?.has(adrgId));
+
+  if (!hasCode && !hasAdrg) {
+    return STAGE69B_ORIGINAL_SEARCH.call(this, query, entityType, options);
+  }
+
+  const mdcFilter = String(options?.mdc ?? '').toUpperCase().trim();
+  const classFilter = String(options?.classification ?? '').toUpperCase().trim();
+  const rows = [];
+
+  const addExact = (typeName, entityId) => {
+    if (!entityTypes.includes(typeName)) return;
+    const record = this.recordMaps[typeName].get(
+      normalizeEntityId(entityId, typeName),
+    );
+    if (!record) return;
+    if (mdcFilter && !this.recordMatchesMdc(typeName, record, mdcFilter)) return;
+    if (
+      classFilter
+      && !this.recordMatchesClassification(typeName, record, classFilter)
+    ) return;
+    rows.push(
+      this.makeSearchResult(
+        typeName,
+        String(entityId),
+        1000,
+        'EXACT_ID',
+        ['entity_id'],
+      ),
+    );
+  };
+
+  if (hasCode) addExact('CODE', codeId);
+  if (hasAdrg) addExact('ADRG', adrgId);
+
+  const typeCounts = {};
+  for (const row of rows) {
+    typeCounts[row.entity_type] = (typeCounts[row.entity_type] ?? 0) + 1;
+  }
+
+  return {
+    schema_version: RESPONSE_SCHEMA_VERSION,
+    query: queryText,
+    normalized_query: normalizeQuery(queryText),
+    filters: {
+      entity_types: entityTypes,
+      mdc: mdcFilter || null,
+      classification: classFilter || null,
+    },
+    total_count: rows.length,
+    type_counts: typeCounts,
+    offset,
+    limit,
+    has_more: offset + limit < rows.length,
+    results: rows.slice(offset, offset + limit),
+  };
+};

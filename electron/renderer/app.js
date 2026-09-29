@@ -331,7 +331,7 @@ function renderRelationResults(response) {
   response.results.forEach((result, index) => {
     const key = `RELATION:${result.entity_id}:${index}`; const button = create('button', `result-card relation-result-card relation-${result.relation_level}`); button.type = 'button'; button.dataset.relationIndex = String(index); button.dataset.resultKey = key; button.setAttribute('aria-label', `관계검색 ADRG ${result.entity_id} ${result.relation_level_label}`); button.setAttribute('aria-pressed', String(state.selectedKey === key));
     const main = create('div', 'result-card-main'); main.append(makeBadge('ADRG'), create('strong', 'result-title', result.title), makeChip(result.relation_level_label, `relation-${result.relation_level}-chip result-match-chip`));
-    const chips = create('div', 'chip-row result-meta-row'); chips.append(makeChip(`${result.matched_count}/${result.total_count} 코드 연결`)); if (result.parent_adrg) chips.append(makeChip(`상위 ADRG ${result.parent_adrg}`)); if (result.summary?.mdc) chips.append(makeChip(`MDC ${result.summary.mdc}`)); appendClassificationBadges(chips, [result.summary?.classification_code || result.summary?.classification_display_label]); button.append(main); if (result.subtitle) button.append(create('p', 'result-subtitle', result.subtitle)); button.append(chips); list.append(button);
+    const chips = create('div', 'chip-row result-meta-row'); chips.append(makeChip(`${result.matched_count}/${result.total_count} 코드 연결`)); if (result.parent_adrg) chips.append(makeChip(`상위 ADRG ${result.parent_adrg}`)); if (result.summary?.mdc) chips.append(makeChip(`MDC ${result.summary.mdc}`)); /* STAGE69B_RELATION_RESULT_CLASSIFICATION_TITLE_ROW */ const relationClassificationValues = (result.summary?.abc_display_labels ?? []).length ? result.summary.abc_display_labels : [result.summary?.classification_code || result.summary?.classification_display_label]; const relationClassification = create('span', 'classification-badge-group result-card-classification'); const relationClassificationCount = appendClassificationBadges(relationClassification, relationClassificationValues); if (relationClassificationCount) main.append(relationClassification); button.append(main); if (result.subtitle) button.append(create('p', 'result-subtitle', result.subtitle)); button.append(chips); list.append(button);
   });
   byId('page-previous').disabled = true; byId('page-next').disabled = true; setText('page-label', response.total_count ? `1–${Ui.formatNumber(response.total_count)} / ${Ui.formatNumber(response.total_count)}` : '0–0 / 0');
 }
@@ -343,6 +343,43 @@ function relationMatchCard(match) {
   const stack = create('div', 'table-stack compact-stack'); for (const item of match.matched_tables ?? []) stack.append(tableCard(item)); card.append(stack); return card;
 }
 
+async function loadRelationOfficialAdrgConditions(candidate, host) {
+  host.replaceChildren(
+    create('p', 'muted', 'ADRG 분류 조건을 불러오는 중입니다.'),
+  );
+  try {
+    const payload = await window.KDRG.getDetail({
+      entityType: 'ADRG',
+      entityId: candidate.entity_id,
+    });
+    if (!host.isConnected) return;
+
+    const detail = payload?.detail;
+    if (!detail) {
+      throw new Error(`ADRG ${candidate.entity_id} 상세정보 없음`);
+    }
+
+    const fragment = document.createDocumentFragment();
+    fragment.append(
+      renderUserConditionSummary(detail),
+      renderUserConditionTables(detail),
+    );
+    if (SHOW_DEVELOPER_METADATA) {
+      fragment.append(renderUserConditionEvidence(detail));
+    }
+    host.replaceChildren(fragment);
+  } catch (error) {
+    if (!host.isConnected) return;
+    host.replaceChildren(
+      create(
+        'p',
+        'error-message',
+        error?.message || 'ADRG 분류 조건을 불러오지 못했습니다.',
+      ),
+    );
+  }
+}
+
 function renderRelationDetail(candidate, response, options = {}) {
   if (options.push !== false) pushHistory();
   const panel = byId('detail-content'); panel.replaceChildren(); state.currentDetail = null; state.currentRelationIndex = response.results.indexOf(candidate);
@@ -350,7 +387,7 @@ function renderRelationDetail(candidate, response, options = {}) {
   const openAadrg = create('button', 'secondary-button relation-open-aadrg', 'ADRG 상세 보기'); openAadrg.type = 'button'; openAadrg.dataset.entityType = 'ADRG'; openAadrg.dataset.entityId = candidate.entity_id; header.append(openAadrg); panel.append(header);
   const notice = create('div', `relation-level-notice relation-${candidate.relation_level}`); notice.append(create('strong', '', candidate.relation_level_label), create('p', '', relationLevelDescription(candidate.relation_level)), create('small', '', response.disclaimer)); panel.append(notice);
   panel.append(makeMetaGrid([['ADRG', candidate.entity_id], ['MDC', candidate.summary?.mdc ? mdcDisplayText(candidate.summary.mdc, candidate.summary?.mdc_name) : '-'], ['질병군 분류', makeClassificationBadgeGroup((candidate.summary?.abc_display_labels ?? []).length ? candidate.summary.abc_display_labels : [candidate.summary?.classification_code || candidate.summary?.classification_display_label])], ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`]], 'detail-overview-grid'));
-  const matches = makeSection('입력 코드별 연결 조건', '입력 코드가 분류조건의 어떤 코드집합과 연결되는지 확인합니다.', { open: true, count: candidate.code_matches.length }); const stack = create('div', 'relation-match-stack'); for (const match of candidate.code_matches) stack.append(relationMatchCard(match)); matches.append(stack); panel.append(matches);
+  /* STAGE69B_RELATION_OFFICIAL_CONDITIONS */ const officialConditionHost = create('div', 'relation-official-condition-host'); panel.append(officialConditionHost); loadRelationOfficialAdrgConditions(candidate, officialConditionHost); const matches = makeSection('입력 코드별 연결 조건', '입력 코드가 분류조건의 어떤 코드집합과 연결되는지 확인합니다.', { open: true, count: candidate.code_matches.length }); const stack = create('div', 'relation-match-stack'); for (const match of candidate.code_matches) stack.append(relationMatchCard(match)); matches.append(stack); panel.append(matches);
   setText('detail-heading', '복수 코드 관계 상세'); setText('detail-caption', `ADRG ${candidate.entity_id}`); setDetailFoldActions(true); updateBackButton();
 }
 

@@ -10,7 +10,10 @@ check('public types', () => assert.deepEqual(SEARCH_ENTITY_TYPES, ['CODE','ADRG'
 for (const code of ['T601','ADC3A']) check(`exact ${code}`, () => {
   const row = service.recordMaps.CODE.get(code); assert.ok(row);
   const res = service.search(code, 'ALL', {limit:500});
-  const expected = new Set([`CODE:${code}`, ...(row.related_adrgs||[]).map(x=>`ADRG:${x}`)]);
+  const expected = new Set([
+    ...(service.recordMaps.CODE.has(code) ? [`CODE:${code}`] : []),
+    ...(service.recordMaps.ADRG.has(code) ? [`ADRG:${code}`] : []),
+  ]);
   const actual = new Set(res.results.map(x=>`${x.entity_type}:${x.entity_id}`));
   assert.equal(actual.size, expected.size); for (const x of expected) assert.ok(actual.has(x), x);
 });

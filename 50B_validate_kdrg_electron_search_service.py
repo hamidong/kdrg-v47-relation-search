@@ -55,8 +55,11 @@ if(JSON.stringify(s.status().public_search_types)!==JSON.stringify(['CODE','ADRG
 for(const code of ['T601','ADC3A','E011']){
  const row=s.recordMaps.CODE.get(code); if(!row) throw new Error('missing '+code);
  const r=s.search(code,'ALL',{limit:500});
- const expected=new Set(['CODE:'+code,...(row.related_adrgs||[]).map(x=>'ADRG:'+x)]);
- const actual=new Set(r.results.map(x=>x.entity_type+':'+x.entity_id));
+  const expected = new Set([
+   ...(s.recordMaps.CODE.has(code) ? ['CODE:' + code] : []),
+   ...(s.recordMaps.ADRG.has(code) ? ['ADRG:' + code] : []),
+ ]);
+const actual=new Set(r.results.map(x=>x.entity_type+':'+x.entity_id));
  if(expected.size!==actual.size || [...expected].some(x=>!actual.has(x))) throw new Error('exact projection '+code);
 }
 const p=s.getDetail('AADRG','P6510').detail;
@@ -66,13 +69,13 @@ if(!(m.names||[]).includes('결절성 힘줄병, 아래다리')) throw new Error
 if(!(m.names||[]).includes('클립을 사용한 경피적 경도관 승모판 재건술')) throw new Error('procedure lost');
 const ns=[...s.recordMaps.CODE.values()].filter(x=>x.namespace_meanings?.diagnosis&&x.namespace_meanings?.procedure);
 if(ns.length!==60) throw new Error('dual role '+ns.length);
-console.log('[PASS] Stage50B 0.5.10 runtime contract');
+console.log('[PASS] Stage50B 0.5.17 exact public-ID runtime contract');
 """
-        result=run([node,"-e",probe],ELECTRON); outputs["runtime_probe"]=result; check("0.5.10 runtime probe",result["returncode"],0)
+        result=run([node,"-e",probe],ELECTRON); outputs["runtime_probe"]=result; check("0.5.17 exact public-ID runtime probe",result["returncode"],0)
 
     failures=[x for x in checks if not x["passed"]]
     REPORT_TXT.parent.mkdir(parents=True,exist_ok=True)
-    lines=["KDRG V4.7 Stage 50B Electron 검색 service 독립검증 - 0.5.10","="*90,f"스크립트 버전: {SCRIPT_VERSION}",""]
+    lines=["KDRG V4.7 Stage 50B Electron 검색 service 독립검증 - 0.5.17 exact public-ID","="*90,f"스크립트 버전: {SCRIPT_VERSION}",""]
     for x in checks: lines.append(f"- [{'PASS' if x['passed'] else 'FAIL'}] {x['name']} | actual={x['actual']} | expected={x['expected']}")
     for name,v in outputs.items(): lines+=["",f"[{name} stdout]",v["stdout"],f"[{name} stderr]",v["stderr"]]
     lines+=["",f"전체 결과: {'PASS' if not failures else 'FAIL'}"]
