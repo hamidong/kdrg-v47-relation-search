@@ -1,0 +1,5289 @@
+{
+  "meta": {
+    "version": "2026-08-25_KDRG_V47_STAGE59A_FINAL_PRECISION_AUDIT_V5",
+    "status": "FAIL",
+    "head": "73c40c164bd7eb103fea30ac22f5bd0c34a9d3bc",
+    "package_version": "0.5.9",
+    "operating_json_sha256": "75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0"
+  },
+  "official_delta_contract": {
+    "checks": {
+      "procedure_added_M6536": true,
+      "procedure_removed_none": true,
+      "procedure_changed_none": true,
+      "correction_all_dates": true,
+      "correction_july_complete": true,
+      "correction_old_preserved": true,
+      "source_changes_18": true,
+      "patch_operations_24": true,
+      "F022_target": true,
+      "F022_has_M6586": true,
+      "F022_no_M6536": true,
+      "P020_target": true,
+      "P020_has_M6586": true,
+      "P020_no_M6536": true
+    },
+    "failed": [],
+    "report_status": "FAIL"
+  },
+  "page_condition_contamination": {
+    "count": 86,
+    "relation_counts": {
+      "EXACT": 42,
+      "MIXED_OVERLAP": 9,
+      "NO_SOURCE_CODES": 5,
+      "RAW_SUBSET_OF_SOURCE": 18,
+      "RAW_SUPERSET_OF_SOURCE": 12
+    },
+    "source_covered_count": 54,
+    "safe_source_recovery_count": 54,
+    "safe_source_recovery_ids": [
+      "B082",
+      "B530",
+      "B670",
+      "B800",
+      "D031",
+      "D150",
+      "D161",
+      "D162",
+      "D180",
+      "D610",
+      "D640",
+      "D700",
+      "D720",
+      "D740",
+      "D760",
+      "D800",
+      "E550",
+      "E600",
+      "E630",
+      "E660",
+      "E742",
+      "F033",
+      "F240",
+      "F620",
+      "F640",
+      "F770",
+      "G190",
+      "G230",
+      "G300",
+      "G650",
+      "G660",
+      "H520",
+      "I050",
+      "I240",
+      "I600",
+      "I610",
+      "J600",
+      "J670",
+      "K080",
+      "L010",
+      "L120",
+      "L520",
+      "L530",
+      "M610",
+      "N110",
+      "N130",
+      "N142",
+      "O120",
+      "O630",
+      "T610",
+      "T632",
+      "T633",
+      "V600",
+      "Y600"
+    ],
+    "J600": {
+      "adrg": "J600",
+      "status": "TEXT_ONLY",
+      "source_table_ids": [
+        "LT_J600_001"
+      ],
+      "source_role": "",
+      "source_owner_exact": true,
+      "local_source_id": true,
+      "source_code_count": 8,
+      "raw_known_code_count": 9,
+      "source_covered_by_raw": true,
+      "relation": "RAW_SUPERSET_OF_SOURCE",
+      "safe_source_recovery": true,
+      "source_codes": [
+        "J61",
+        "L890",
+        "L891",
+        "L892",
+        "L893",
+        "L899",
+        "L97",
+        "L984"
+      ],
+      "raw_extra_codes": [
+        "J60"
+      ],
+      "text_length": 502,
+      "sample": "[PDF_PAGE=741 PRINTED_PAGE=715] J60 피부궤양 SKIN ULCERS J6001 피부궤양, 연령<65세 Skin Ulcers, Age <65 J6002 피부궤양, 연령≥65세 MDC Skin Ulcers, Age ≥65 09 주진단명 (J) L890 Stage I decubitus ulcer and pressure area L899 Decubitus ulcer and pressure area, unspecified L891 Stage II decubitus ulcer and pressure area L97 Ulcer of lower limb, NEC L892 Stage III decubitus ulcer and pressure area L984 Chronic ulcer of skin, NEC L893 Stage IV decubitus ulcer and pressure area [PDF_PAGE=742 PRINTED_PAGE=716] J61 악성피부질환 MAL"
+    },
+    "J600_source_matches_official_7": false,
+    "rows": [
+      {
+        "adrg": "9630",
+        "status": "RESOLVED_AST",
+        "source_table_ids": [],
+        "source_role": "",
+        "source_owner_exact": false,
+        "local_source_id": false,
+        "source_code_count": 0,
+        "raw_known_code_count": 0,
+        "source_covered_by_raw": false,
+        "relation": "NO_SOURCE_CODES",
+        "safe_source_recovery": false,
+        "source_codes": [],
+        "raw_extra_codes": [],
+        "text_length": 204,
+        "sample": "[PDF_PAGE=84 PRINTED_PAGE=58] 963 연령/체중과일치하지않는신생아진단 NEONATAL DIAGNOSIS NOT CONSISTENT WITH AGE/WEIGHT MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+      },
+      {
+        "adrg": "B082",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B082_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 6,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "S0433",
+          "S0434",
+          "S4733",
+          "S4735",
+          "S4736",
+          "S4737"
+        ],
+        "raw_extra_codes": [
+          "B082",
+          "B09"
+        ],
+        "text_length": 330,
+        "sample": "B082 뇌전증수술(전극삽입술미시행) Epilepsy Procedures without Implantation of Electrodes 시술명 자473나(1) 뇌전증수술-뇌엽절제술-측두엽절제술 S4733 자473나(2) 뇌전증수술-뇌엽절제술-측두엽 외 절제술 S0433 자473다 뇌전증수술-뇌량체절단술 S4735 자473라 뇌전증수술-반구절제술 혹은 반구절개술 S4736 자473마 뇌전증수술-다발성대뇌피질연막하절단술 S4737 자473바 뇌전증수술-대뇌피질절제술 S0434 [PDF_PAGE=121 PRINTED_PAGE=95] B09 정위수술 STEREOTACTIC PROCEDURES"
+      },
+      {
+        "adrg": "B130",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B130_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 19,
+        "raw_known_code_count": 15,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "N0331",
+          "N0339",
+          "N0342",
+          "N0344",
+          "N0345",
+          "N0347",
+          "S4625",
+          "S4681",
+          "S4721",
+          "S4723",
+          "S4724",
+          "S4741",
+          "S4742",
+          "S4743",
+          "S4760",
+          "S4771",
+          "S4772",
+          "S4780",
+          "S4805"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=127 PRINTED_PAGE=101] B13 기타개두술 OTHER CRANIOTOMY 시술명 자33가 개두술 또는 두개절제술(진단목적) N0331 자33다 개두술 또는 두개절제술(두개골 병소 제거) N0339 자34가(2) 두개골성형술-두개골뿐인것[복잡] N0347 자34나 두개골성형술-경뇌막성형을동반하는것 N0342 자34다(1) 두개골성형술-두개골조기봉합교정[단순] N0344 자34다(2) 두개골성형술-두개골조기봉합교정[복잡] N0345 자462-1 두개강내이물제거 S4625 자468가 중추신경계기형수술-대뇌류 S4681 자472가 뇌척수액루수술-두개강내 S4721 자472다 뇌척수액루수술-비강접근 S4723 자472라 뇌척수액루수술-이과적접근 S4724 자474가 뇌내시경수술-진단목적 S4741 자474나 뇌내시경수술-개창술 S4742 자474다 뇌내시경수술-종양또는낭종절제 S4743 자476 뇌엽절단술[대상회전절개포함] S4760 자477가 농양배농또는적출"
+      },
+      {
+        "adrg": "B201",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B201_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 17,
+        "raw_known_code_count": 12,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "S4593",
+          "S4594",
+          "S4595",
+          "S4601",
+          "S4602",
+          "S4603",
+          "S4605",
+          "S4606",
+          "S4607",
+          "S4615",
+          "S4616",
+          "S4831",
+          "S4832",
+          "S4833",
+          "S4834",
+          "S4835",
+          "S4836"
+        ],
+        "raw_extra_codes": [
+          "B201"
+        ],
+        "text_length": 502,
+        "sample": "B201 주요말초및뇌신경수술 Major Peripheral and Cranial Nerve Procedures 시술명 자459가 신경성형술[감압,박리등]-두개강외뇌신경 S4593 자459나 신경성형술[감압,박리등]-상완및요,천추신경총 S4594 자459다 신경성형술[감압,박리등]-중요말초신경[사지부,구간등] S4595 자460-1가 신경봉합술-두개강외뇌신경 S4601 [PDF_PAGE=138 PRINTED_PAGE=112] 자460-1나 신경봉합술-상완및요,천추신경총 S4602 자460-1다 신경봉합술-중요말초신경[사지부,구간등] S4603 자460가(1) 신경이식술-자가신경 이용 [채취료 포함]-4cm 미만 S4605 자460가(2) 신경이식술-자가신경 이용 [채취료 포함]-4cm 이상 S4606 MDC 자460나 신경이식술-동종신경 이용 S4607 01 자461-1가 신경종양절제술-양성 S4615 (B) 자461-1나 신경종양절제술-악성 S4616 자483가 교감신경절절제술-경부"
+      },
+      {
+        "adrg": "B530",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B530_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 6,
+        "raw_known_code_count": 6,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "HA601",
+          "HA602",
+          "HA603",
+          "HA604",
+          "HA605",
+          "HA606"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 354,
+        "sample": "[PDF_PAGE=145 PRINTED_PAGE=119] B53 진단적두경부동맥조영술 DIAGNOSTIC HEAD AND NECK ANGIOGRAPHY 시술명 다260가‡ 두경부 동맥조영-추골동맥 HA601 다260나‡ 두경부 동맥조영-총경동맥 HA602 다260다‡ 두경부 동맥조영-외경동맥 HA603 [PDF_PAGE=146 PRINTED_PAGE=120] 다260라‡ 두경부 동맥조영-내경동맥 HA604 다260라주‡ 두경부 동맥조영-내경동맥폐색검사 (조영술료 포함) HA606 다260마‡ 두경부 동맥조영-전뇌동맥 HA605 MDC 01 B60 척수질환및손상 (B) SPINAL CORD DISEASES AND INJURIES"
+      },
+      {
+        "adrg": "B662",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B662_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 12,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "G360",
+          "G361",
+          "G368",
+          "G369",
+          "G370",
+          "G371",
+          "G372",
+          "G373",
+          "G374",
+          "G375",
+          "G378",
+          "G379"
+        ],
+        "raw_extra_codes": [
+          "B662"
+        ],
+        "text_length": 502,
+        "sample": "B662 시신경척수염및기타탈수초질환 Neuromyelitis Optica and Other Demyelinating Diseases 주진단명 G360 Neuromyelitis optica[Devic] G370 Diffuse sclerosis G361 Acute and subacute haemorrhagic leukoencephalitis G371 Central demyelination of corpus callosum [Hurst] G372 Central pontine myelinolysis G368 Other specified acute disseminated demyelination G373 Acute transverse myelitis in demyelinating disease G369 Acute disseminated demyelination, unspecified of central nervous system [PDF_PAGE=153 PRINTED_PAGE=127] G37"
+      },
+      {
+        "adrg": "B670",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B670_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 5,
+        "raw_known_code_count": 5,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "G450",
+          "G451",
+          "G452",
+          "G458",
+          "G459"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 362,
+        "sample": "[PDF_PAGE=153 PRINTED_PAGE=127] B67 일과성뇌허혈 (B) TRANSIENT CEREBRAL ISCHEMIC ATTACK 주진단명 G450 Vertebro-basilar artery syndrome G458 Other transient cerebral ischaemic attacks and G451 Carotid artery syndrome(hemispheric) related syndromes G452 Multiple and bilateral precerebral artery syndromes G459 Transient cerebral ischaemic attack, unspecified B68 뇌졸중 STROKE"
+      },
+      {
+        "adrg": "B780",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B780_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 17,
+        "raw_known_code_count": 14,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "B79",
+          "F072",
+          "G430",
+          "G431",
+          "G432",
+          "G433",
+          "G438",
+          "G439",
+          "G440",
+          "G441",
+          "G442",
+          "G443",
+          "G444",
+          "G448",
+          "G932",
+          "G971",
+          "R51"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=165 PRINTED_PAGE=139] B78 두통 HEADACHE 주진단명 MDC 01 F072 Postconcussional syndrome G441 Vascular headache, NEC (B) G430 Migraine without aura [common migraine] G442 Tension-type headache G431 Migraine with aura [classical migraine] G443 Chronic post-traumatic headache G432 Status migrainosus G444 Drug-induced headache, NEC G433 Complicated migraine G448 Other specified headache syndromes G438 Other migraine G932 Benign intracranial hypertension G439 Migraine, unspecified G971 Other react"
+      },
+      {
+        "adrg": "B800",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_B800_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 3,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "S0600",
+          "S0601"
+        ],
+        "raw_extra_codes": [
+          "B80"
+        ],
+        "text_length": 195,
+        "sample": "[PDF_PAGE=166 PRINTED_PAGE=140] B80 뇌진탕 CONCUSSION 주진단명 S0600 Concussion, without open intracranial wound S0601 Concussion, with open intracranial wound B81 기타신경계장애 OTHER NERVOUS SYSTEM DISORDERS"
+      },
+      {
+        "adrg": "D031",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D031_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 3,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "S5581",
+          "S5582"
+        ],
+        "raw_extra_codes": [
+          "D031"
+        ],
+        "text_length": 140,
+        "sample": "D031 주요외이및귀수술 Major External Ear or Other Ear Procedures [PDF_PAGE=240 PRINTED_PAGE=214] 시술명 자558가 외이도폐쇄증수술-완전 S5581 자558나 외이도폐쇄증수술-부분 S5582"
+      },
+      {
+        "adrg": "D090",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D090_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 13,
+        "raw_known_code_count": 10,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "N0435",
+          "N0436",
+          "N0437",
+          "Q2150",
+          "Q2181",
+          "Q2182",
+          "Q2183",
+          "Q2203",
+          "Q2206",
+          "Q2232",
+          "U4881",
+          "U4882",
+          "U4883"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=234 PRINTED_PAGE=208] D09 구강및타액선악성종양수술 PROCEDURES FOR MOUTH AND SALIVARY GLAND MALIGNANCY 시술명 자215 구순암적출술[림프절청소포함] Q2150 자218가 설암수술[림프절청소포함]-설부분절제 Q2181 자218나 설암수술[림프절청소포함]-설반측절제 Q2182 자218다 설암수술[림프절청소포함]-설전절제 Q2183 자220다 구강내종양적출술(악성[림프절청소포함]) Q2203 자220다주 구강내종양적출술(악성[림프절청소포함])-구강저 병소제거 Q2206 자223나 이하선종양적출술(악성[림프절청소포함]) Q2232 자43나(1) 하악골악성종양절제술[림프절청소포함]-하악골변연절제 N0435 자43나(2) 하악골악성종양절제술[림프절청소포함]-하악골부분절제 N0436 자43나(3) 하악골악성종양절제술[림프절청소포함]-하악골반측절제 N0437 차88가 하악골악성종양절제술[림프절청소포함]-하악골변연절제 U48"
+      },
+      {
+        "adrg": "D150",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D150_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 11,
+        "raw_known_code_count": 11,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "N0870",
+          "P2102",
+          "P2103",
+          "P2106",
+          "P2107",
+          "P2131",
+          "P2133",
+          "P2134",
+          "P2135",
+          "P4558",
+          "P4565"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 446,
+        "sample": "[PDF_PAGE=255 PRINTED_PAGE=229] D15 경부수술 NECK PROCEDURES 시술명 자210-1가 결핵성림프선종절제술(표재성) P2106 자210-1나 결핵성림프선종절제술(심재성) P2107 자210가 경부림프절절제술(표재성) P2102 자210나 경부림프절절제술(심재성) P2103 자213가‡ 림프관종경화요법[낭성림프관종포함] P2131 자213나(1)(가) 림프관종절제술[낭성림프관종포함]-경부(국소) P2133 자213나(1)(나) 림프관종절제술[낭성림프관종포함]-경부(광범위) P2134 자213나(2) 림프관종절제술[낭성림프관종포함]-기타 P2135 자455-1 갑상선설관낭종절제술 P4558 자456-1 설근갑상선절제또는분획성형술 P4565 자87 경부새열루새열낭적출술 N0870 D16 편도및아데노이드수술 TONSIL AND ADENOID PROCEDURES"
+      },
+      {
+        "adrg": "D161",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D161_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 4,
+        "raw_known_code_count": 4,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "Q2280",
+          "Q2281",
+          "Q2300",
+          "Q2310"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 302,
+        "sample": "[PDF_PAGE=255 PRINTED_PAGE=229] D1611 주요편도및아데노이드수술, 연령≤18세 Major Tonsil and Adenoid Procedures, Age ≤18 D1612 주요편도및아데노이드수술, 연령>18세 Major Tonsil and Adenoid Procedures, Age >18 시술명 자228 아데노이드절제술 Q2280 자228주 아데노이드절제술-내시경하에서 실시한 경우 Q2281 [PDF_PAGE=256 PRINTED_PAGE=230] 자230 편도전적출술 Q2300 자231 설편도절제술 Q2310"
+      },
+      {
+        "adrg": "D162",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D162_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "Q2320",
+          "U4520"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 289,
+        "sample": "[PDF_PAGE=256 PRINTED_PAGE=230] D1621 단순편도및아데노이드수술, 연령≤18세 Minor Tonsil and Adenoid Procedures, Age ≤18 D1622 단순편도및아데노이드수술, 연령>18세 Minor Tonsil and Adenoid Procedures, Age >18 시술명 자232 편도주위농양절개술또는흡인술 Q2320 차52 치성편도주위농양절개술 U4520 MDC 03 D17 구강, 인후두수술 (D) MOUTH, PHARYNX AND LARYNX PROCEDURES"
+      },
+      {
+        "adrg": "D180",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D180_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 11,
+        "raw_known_code_count": 11,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "Q2161",
+          "Q2162",
+          "Q2167",
+          "Q2168",
+          "Q2169",
+          "Q2191",
+          "Q2192",
+          "Q2193",
+          "Q2194",
+          "Q2198",
+          "Q2199"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 446,
+        "sample": "[PDF_PAGE=257 PRINTED_PAGE=231] D18 구순열및구개열수술 CLEFT LIP AND CLEFT PALATE PROCEDURES 시술명 자216-3가(1) 구순열비교정술-비내접근법-연골에 달하는 것 Q2167 자216-3가(2) 구순열비교정술-비내접근법-비중격에 달하는 것 Q2168 자216-3나 구순열비교정술-개방접근법 Q2169 자216가 순열수술-일측성 Q2161 자216나 순열수술-양측성 Q2162 자219-2가 치조열수술(편측) Q2198 자219-2나 치조열수술(양측) Q2199 자219가 구개열수술-연구개열수술 [점막하구개열수술] Q2191 자219나(1) 구개열수술-경구개열수술-편측 Q2193 자219나(2) 구개열수술-경구개열수술-양측 Q2194 자219다 구개열수술-구개인두부전증교정술 Q2192 D19 구강내수술 INTRAORAL PROCEDURES"
+      },
+      {
+        "adrg": "D610",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D610_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "D62",
+          "H602"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 169,
+        "sample": "[PDF_PAGE=240 PRINTED_PAGE=214] D61 악성외이도염 MALIGNANT EXTERNAL OTITIS 주진단명 H602 Malignant otitis externa D62 내이및중이의감염및염증 INNER AND MIDDLE EAR INFECTIONS AND INFLAMMATIONS"
+      },
+      {
+        "adrg": "D640",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D640_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 11,
+        "raw_known_code_count": 11,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "H810",
+          "H811",
+          "H812",
+          "H8130",
+          "H8138",
+          "H814",
+          "H818",
+          "H819",
+          "H82",
+          "R42",
+          "T753"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 434,
+        "sample": "[PDF_PAGE=242 PRINTED_PAGE=216] D64 평형장애 BALANCE DISORDERS 주진단명 H810 Ménière’s disease H818 Other disorders of vestibular function H811 Benign paroxysmal vertigo H819 Disorder of vestibular function, unspecified H812 Vestibular neuronitis H82 Vertiginous syndromes in diseases classified H8130 Other aural vertigo elsewhere H8138 Other peripheral vertigo R42 Dizziness and giddiness H814 Vertigo of central origin T753 Motion sickness"
+      },
+      {
+        "adrg": "D700",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D700_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 3,
+        "raw_known_code_count": 4,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "J342",
+          "J343",
+          "M950"
+        ],
+        "raw_extra_codes": [
+          "D70"
+        ],
+        "text_length": 182,
+        "sample": "[PDF_PAGE=249 PRINTED_PAGE=223] D70 비중격및비갑개질환 NASAL SEPTUM AND TURBINATE DISEASES 주진단명 J342 Deviated nasal septum M950 Acquired deformity of nose J343 Hypertrophy of nasal turbinates"
+      },
+      {
+        "adrg": "D720",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D720_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 10,
+        "raw_known_code_count": 10,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "S0120",
+          "S0121",
+          "S0122",
+          "S0128",
+          "S0129",
+          "S0220",
+          "S0221",
+          "S031",
+          "T170",
+          "T171"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 431,
+        "sample": "[PDF_PAGE=250 PRINTED_PAGE=224] D72 코외상 NASAL TRAUMA 주진단명 S0120 Open wound of nose, external skin S0220 Fracture of nasal bone, closed S0121 Open wound of nares S0221 Fracture of nasal bone, open S0122 Open wound of nasal septum S031 Dislocation of septal cartilage of nose S0128 Open wound of other and multiple parts of nose T170 Foreign body in nasal sinus S0129 Open wound of nose, part unspecified T171 Foreign body in nostril"
+      },
+      {
+        "adrg": "D730",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D730_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 15,
+        "raw_known_code_count": 10,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "D106",
+          "D140",
+          "D1804",
+          "J340",
+          "J341",
+          "J348",
+          "Q188",
+          "Q300",
+          "Q301",
+          "Q302",
+          "Q303",
+          "Q308",
+          "Q309",
+          "R065",
+          "R492"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=250 PRINTED_PAGE=224] D73 기타코질환 MDC OTHER NOSE DISEASES 03 (D) 주진단명 D106 Benign neoplasm of nasopharynx Q300 Choanal atresia D140 Benign neoplasm of middle ear, nasal cavity and Q301 Agenesis and underdevelopment of nose accessory sinuses Q302 Fissured, notched and cleft nose D1804 Hemangioma of ear, nose, mouth and throat Q303 Congenital perforated nasal septum J340 Abscess, furuncle and carbuncle of nose Q308 Other congenital malformations of nose J341 Cyst and mucocele of nose and n"
+      },
+      {
+        "adrg": "D740",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D740_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "A691",
+          "J390"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 160,
+        "sample": "[PDF_PAGE=267 PRINTED_PAGE=241] D74 심부경부감염증 DEEP NECK INFECTIONS MDC 주진단명 03 (D) A691 Other Vincent’s infections J390 Retropharyngeal and parapharyngeal abscess"
+      },
+      {
+        "adrg": "D750",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D750_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 13,
+        "raw_known_code_count": 7,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "A362",
+          "J040",
+          "J042",
+          "J050",
+          "J0510",
+          "J0511",
+          "J060",
+          "J068",
+          "J069",
+          "J101",
+          "J111",
+          "J370",
+          "J371"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 501,
+        "sample": "[PDF_PAGE=267 PRINTED_PAGE=241] D75 후두기관염및후두개염 LARYNGOTRACHEITIS AND EPIGLOTTITIS D7501 후두기관염및후두개염, 연령≤18세 Laryngotracheitis and Epiglottitis, Age ≤18 D7502 후두기관염및후두개염, 연령>18세 Laryngotracheitis and Epiglottitis, Age >18 주진단명 A362 Laryngeal diphtheria J069 Acute upper respiratory infection, unspecified J040 Acute laryngitis J101 Seasonal influenza virus identified influenza with J042 Acute laryngotracheitis other respiratory manifestations J050 Acute obstructive laryngitis [croup] J111 Influenza "
+      },
+      {
+        "adrg": "D760",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D760_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 9,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "D77",
+          "J3800",
+          "J3809",
+          "J3810",
+          "J3811",
+          "J382",
+          "R490",
+          "R491",
+          "R498"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 441,
+        "sample": "[PDF_PAGE=267 PRINTED_PAGE=241] D76 음성장애 VOICE DISORDERS 주진단명 J3800 Paralysis of vocal cords and larynx, unilateral J382 Nodules of vocal cords J3809 Paralysis of vocal cords and larynx, unspecified side R490 Dysphonia J3810 Polyp of vocal cord R491 Aphonia J3811 Polyp of larynx R498 Other and unspecified voice disturbances [PDF_PAGE=268 PRINTED_PAGE=242] D77 치아및구강질환(발치및보존치료제외) DENTAL AND ORAL DISEASES EXCEPT EXTRACTIONS AND RESTORATIONS"
+      },
+      {
+        "adrg": "D800",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_D800_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 9,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "A665",
+          "Q387",
+          "Q3880",
+          "Q3888",
+          "R041",
+          "R070",
+          "T172",
+          "T280",
+          "T285"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 325,
+        "sample": "[PDF_PAGE=272 PRINTED_PAGE=246] D80 인두질환 PHARYNX DISEASES 주진단명 A665 Gangosa R070 Pain in throat Q387 Pharyngeal pouch T172 Foreign body in pharynx Q3880 Velopharyngeal insufficiency T280 Burn of mouth and pharynx Q3888 Other congenital malformations of pharynx T285 Corrosion of mouth and pharynx R041 Haemorrhage from throat"
+      },
+      {
+        "adrg": "E020",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E020_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 12,
+        "raw_known_code_count": 11,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "M6661",
+          "M6662",
+          "O1315",
+          "O1316",
+          "O1318",
+          "O1319",
+          "O1332",
+          "O1333",
+          "O1346",
+          "O1347",
+          "O1348",
+          "OZ201"
+        ],
+        "raw_extra_codes": [
+          "E02"
+        ],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=295 PRINTED_PAGE=269] E02 기관지경및방사선하수술 BRONCHOSCOPIC AND FLUOROSCOPIC PROCEDURES 시술명 자131-1가 내시경적기관또는기관지종양제거술[육아조직포함]-연성기관지경 O1315 MDC 자131-1나 내시경적기관또는기관지종양제거술[육아조직포함]-경성기관지경 O1316 자131-2 내시경적냉동치료[기관(지)및폐종양] O1318 04 자131-3 내시경적 기관지 열성형술 O1319 (E) 자133가 내시경적기관또는기관지이물제거술(연성기관지경) O1332 자133나 내시경적기관또는기관지이물제거술(경성기관지경) O1333 자134-1가 내시경적기관또는기관지협착확장술-풍선카테터에의한것 O1346 자134-1나 내시경적기관또는기관지협착확장술-스텐트삽입술에의한것 O1347 자134-1다 내시경적기관또는기관지협착확장술-기타[레이저치료등] O1348 자147-1 기관지경이용 폐용적축소-일방향기관지밸브삽입 OZ201 자666가 방"
+      },
+      {
+        "adrg": "E550",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E550_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "C8512",
+          "C8513"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 161,
+        "sample": "[PDF_PAGE=303 PRINTED_PAGE=277] E55 폐흉부질환의침흡인생검 NEEDLE ASPIRATION BIOPSY FOR CHEST AND LUNG DISEASE 시술명 나850나(2)‡ 침생검(심부)-흉막 C8512 나850나(3)‡ 침생검(심부)-장기[편측] C8513"
+      },
+      {
+        "adrg": "E600",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E600_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 5,
+        "raw_known_code_count": 6,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "I260",
+          "I269",
+          "T790",
+          "T791",
+          "T800"
+        ],
+        "raw_extra_codes": [
+          "E60"
+        ],
+        "text_length": 323,
+        "sample": "[PDF_PAGE=303 PRINTED_PAGE=277] E60 폐색전증 PULMONARY EMBOLISM 주진단명 I260 Pulmonary embolism with mention of acute cor T790 Air embolism (traumatic) pulmonale T791 Fat embolism (traumatic) I269 Pulmonary embolism without mention of acute cor T800 Air embolism following infusion, transfusion and pulmonale therapeutic injection"
+      },
+      {
+        "adrg": "E630",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E630_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 4,
+        "raw_known_code_count": 4,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "A065",
+          "J850",
+          "J851",
+          "J852"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 193,
+        "sample": "[PDF_PAGE=306 PRINTED_PAGE=280] E63 폐농양 LUNG ABSCESS 주진단명 A065 Amoebic lung abscess J851 Abscess of lung with pneumonia J850 Gangrene and necrosis of lung J852 Abscess of lung without pneumonia"
+      },
+      {
+        "adrg": "E640",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E640_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 10,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "A370",
+          "A371",
+          "A378",
+          "A379",
+          "J210",
+          "J211",
+          "J2180",
+          "J2181",
+          "J2188",
+          "J219"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=306 PRINTED_PAGE=280] E64 백일해및급성세기관지염 WHOOPING COUGH AND ACUTE BRONCHIOLITIS 주진단명 A370 Whooping cough due to bordetella pertussis J211 Acute bronchiolitis due to human metapneumovirus A371 Whooping cough due to bordetella para- pertussis J2180 Acute bronchiolitis due to human bocavirus A378 Whooping cough due to other bordetella species J2181 Acute bronchiolitis due to parainfluenza virus A379 Whooping cough, unspecified J2188 Acute bronchiolitis due to other specified organisms J210 A"
+      },
+      {
+        "adrg": "E650",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E650_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 13,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "A202",
+          "A212",
+          "A221",
+          "A420",
+          "A430",
+          "B583",
+          "B664",
+          "B671",
+          "J173",
+          "J178",
+          "J188",
+          "J853",
+          "J987"
+        ],
+        "raw_extra_codes": [
+          "E65"
+        ],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=307 PRINTED_PAGE=281] E65 기타호흡기감염및염증 OTHER RESPIRATORY INFECTION AND INFLAMMATION E6501 기타호흡기감염및염증, 연령≤18세 Other Respiratory Infection and Inflammation, Age ≤18 E6502 기타호흡기감염및염증, 연령>18세 Other Respiratory Infection and Inflammation, Age >18 주진단명 A202 Pneumonic plague B671 Echinococcus granulosus infection of lung A212 Pulmonary tularaemia J173 Pneumonia in parasitic diseases A221 Pulmonary anthrax J178 Pneumonia in other diseases classified elsewhere A420 Pulmonary actinomycosis J188 Ot"
+      },
+      {
+        "adrg": "E660",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E660_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 4,
+        "raw_known_code_count": 4,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "G4730",
+          "G4731",
+          "G4732",
+          "G4738"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 226,
+        "sample": "[PDF_PAGE=307 PRINTED_PAGE=281] E66 수면무호흡증후군 SLEEP APNEA SYNDROME 주진단명 G4730 Obstructive sleep apnoea G4732 Mixed sleep apnoea G4731 Central sleep apnoea G4738 Other and unspecified sleep apnoea E67 호흡기신생물 RESPIRATORY NEOPLASM"
+      },
+      {
+        "adrg": "E730",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E730_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 15,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "J041",
+          "J200",
+          "J201",
+          "J202",
+          "J203",
+          "J204",
+          "J205",
+          "J206",
+          "J207",
+          "J2080",
+          "J2088",
+          "J209",
+          "J22",
+          "J40",
+          "J410"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=313 PRINTED_PAGE=287] E73 기관지염 BRONCHITIS E7301 기관지염, 연령≤18세 Bronchitis, Age ≤18 E7302 기관지염, 연령>18세 Bronchitis, Age >18 주진단명 J041 Acute tracheitis J207 Acute bronchitis due to echovirus J200 Acute bronchitis due to Mycoplasma pneumoniae J2080 Acute bronchitis due to human bocavirus J201 Acute bronchitis due to Haemophilus influenzae J2088 Acute bronchitis due to other specified organisms J202 Acute bronchitis due to streptococcus J209 Acute bronchitis, unspecified J203 Acute bronchitis"
+      },
+      {
+        "adrg": "E742",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E742_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 6,
+        "raw_known_code_count": 6,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "J4501",
+          "J4502",
+          "J4503",
+          "J4509",
+          "J4580",
+          "J4581"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 443,
+        "sample": "[PDF_PAGE=313 PRINTED_PAGE=287] E7421 알레르기천식, 연령≤18세 Allergic Asthma, Age ≤18 E7422 알레르기천식, 18세<연령<65세 Allergic Asthma, 18<Age<65 E7423 알레르기천식, 연령≥65세 Allergic Asthma, Age ≥65 주진단명 J4501 Other allergic asthma, intermittent and mild persistent J4509 Unspecified predominantly allergic asthma J4502 Other allergic asthma, moderate persistent J4580 Occupational asthma J4503 Other allergic asthma, severe persistent J4581 Aspirin-sensitive asthma"
+      },
+      {
+        "adrg": "E743",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E743_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 8,
+        "raw_known_code_count": 6,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "J4500",
+          "J4510",
+          "J4511",
+          "J4512",
+          "J4513",
+          "J4519",
+          "J4588",
+          "J459"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=314 PRINTED_PAGE=288] E7431 비알레르기및기타상세불명천식, 연령≤18세 Non-allergic and Unspecified Asthma, Age ≤18 E7432 비알레르기및기타상세불명천식, 18세<연령<65세 Non-allergic and Unspecified Asthma, 18<Age<65 E7433 비알레르기및기타상세불명천식, 연령≥65세 Non-allergic and Unspecified Asthma, Age ≥65 주진단명 J4500 Cough variant asthma J4513 Other nonallergic asthma, severe persistent J4510 Exercise-induced asthma, bronchospasm J4519 Unspecified nonallergic asthma J4511 Other nonallergic asthma, intermittent and mild J4588 Other mixed asthm"
+      },
+      {
+        "adrg": "E760",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_E760_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 20,
+        "raw_known_code_count": 12,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "Q330",
+          "Q331",
+          "Q332",
+          "Q333",
+          "Q335",
+          "Q336",
+          "Q338",
+          "Q339",
+          "Q340",
+          "Q341",
+          "Q348",
+          "Q349",
+          "Q676",
+          "Q677",
+          "Q766",
+          "Q767",
+          "Q768",
+          "Q769",
+          "Q790",
+          "Q791"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=315 PRINTED_PAGE=289] E76 선천성폐기형 CONGENITAL LUNG ANOMALY 주진단명 Q330 Congenital cystic lung respiratory system Q331 Accessory lobe of lung Q349 Congenital malformation of respiratory system, Q332 Sequestration of lung unspecified Q333 Agenesis of lung Q676 Pectus excavatum Q335 Ectopic tissue in lung Q677 Pectus carinatum Q336 Hypoplasia and dysplasia of lung Q766 Other congenital malformations of ribs Q338 Other congenital malformations of lung Q767 Congenital malformation of sternum Q3"
+      },
+      {
+        "adrg": "F033",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F033_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 7,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "O1750",
+          "O1770",
+          "O1797",
+          "O1798",
+          "O1810",
+          "O1825",
+          "O1826"
+        ],
+        "raw_extra_codes": [
+          "F04"
+        ],
+        "text_length": 341,
+        "sample": "F033 폐동맥판수술(심도자술미사용) Pulmonary Valve Procedures without Cardiac Catheterization 시술명 자175 폐동맥판협착증수술 O1750 자177 심방중격결손증겸 폐동맥판협착증 수술 O1770 [PDF_PAGE=341 PRINTED_PAGE=315] 자179-1라 인공판막재치환술(폐동맥판) O1798 자179라 인공판막치환술(폐동맥판) O1797 자181 심실중격결손증겸 폐동맥판협착증 수술 O1810 자182-3 좌심실유출로성형술 O1825 자182-4 우심실유출로성형술[폐동맥판성형술포함] O1826 F04 관상동맥우회로조성술 CORONARY BYPASS"
+      },
+      {
+        "adrg": "F240",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F240_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 3,
+        "raw_known_code_count": 4,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "N0566",
+          "N0574",
+          "N0575"
+        ],
+        "raw_extra_codes": [
+          "F24"
+        ],
+        "text_length": 242,
+        "sample": "[PDF_PAGE=363 PRINTED_PAGE=337] F24 순환장애수족부절단술 AMPUTATION OF CIRCULATORY DISORDERS FOR HAND AND FOOT 시술명 자56바 사지관절이단술[지관절] N0566 자57라 사지절단술[수족] N0574 자57마 사지절단술[지] N0575 [PDF_PAGE=364 PRINTED_PAGE=338] F25 정맥결찰및스트리핑 VEIN LIGATION AND TRIPPING"
+      },
+      {
+        "adrg": "F610",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F610_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 10,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "I210",
+          "I211",
+          "I212",
+          "I213",
+          "I214",
+          "I219",
+          "I220",
+          "I221",
+          "I228",
+          "I229"
+        ],
+        "raw_extra_codes": [
+          "F61"
+        ],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F61 주요합병증이없는급성심근경색증을동반한순환기질환 CIRCULATORY DISEASES WITH ACUTE MYOCARDIAL INFARCTION WITHOUT MAJOR COMPLICATION 주진단명 I210 Acute transmural myocardial infarction of anterior wall I219 Acute myocardial infarction, unspecified I211 Acute transmural myocardial infarction of inferior wall I220 Subsequent myocardial infarction of anterior wall I212 Acute transmural myocardial infarction of other sites I221 Subsequent myocardial infarction of inferior wall I213 Acute trans"
+      },
+      {
+        "adrg": "F620",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F620_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 6,
+        "raw_known_code_count": 6,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "I330",
+          "I339",
+          "I38",
+          "I398",
+          "T826",
+          "T827"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 462,
+        "sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F62 급성및아급성심내막염 ACUTE AND SUBACUTE ENDOCARDITIS 주진단명 I330 Acute and subacute infective endocarditis T826 Infection and inflammatory reaction due to cardiac I339 Acute endocarditis, unspecified valve prosthesis I38 Endocarditis, valve unspecified T827 Infection and inflammatory reaction due to other I398 Endocarditis, valve unspecified, in diseases cardiac and vascular devices, implants and grafts MDC classified elsewhere 05 (F)"
+      },
+      {
+        "adrg": "F630",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F630_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 13,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "I110",
+          "I130",
+          "I132",
+          "I5003",
+          "I5008",
+          "I5010",
+          "I5011",
+          "I5012",
+          "I5019",
+          "I509",
+          "R570",
+          "R571",
+          "R579"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F63 심부전및쇼크 HEART FAILURE AND SHOCK 주진단명 I110 Hypertensive heart disease with (congestive) heart I5010 Left ventricular failure with preserved ejection fraction failure I5011 Left ventricular failure with mid range ejection fraction I130 Hypertensive heart and renal disease with I5012 Left ventricular failure with reduced ejection fraction (congestive) heart failure I5019 Left ventricular failure, unspecified I132 Hypertensive heart and renal disease with both I509"
+      },
+      {
+        "adrg": "F640",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F640_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 6,
+        "raw_known_code_count": 6,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "I801",
+          "I802",
+          "I803",
+          "I822",
+          "I828",
+          "I829"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 481,
+        "sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F64 혈전정맥염 THROMBOPHLEBITIS 주진단명 I801 Phlebitis and thrombophlebitis of femoral vein unspecified I802 Phlebitis and thrombophlebitis of other deep vessels I822 Embolism and thrombosis of vena cava of lower extremities I828 Embolism and thrombosis of other specified veins I803 Phlebitis and thrombophlebitis of lower extremities, I829 Embolism and thrombosis of unspecified vein [PDF_PAGE=372 PRINTED_PAGE=346] F65 상세불명심장정지 CARDIAC ARREST UNSPECIFIED"
+      },
+      {
+        "adrg": "F662",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F662_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 11,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "I7000",
+          "I7101",
+          "I7102",
+          "I7103",
+          "I7104",
+          "I7105",
+          "I7109",
+          "I7120",
+          "I7121",
+          "I7129",
+          "I714"
+        ],
+        "raw_extra_codes": [
+          "F662"
+        ],
+        "text_length": 502,
+        "sample": "F662 기타대동맥박리 Other Aortic Dissection [PDF_PAGE=373 PRINTED_PAGE=347] 주진단명 I7000 Atherosclerosis of aorta, without gangrene mention of rupture I7101 Dissection of abdominal aorta I7121 Descending thoracic aortic aneurysm, without I7102 Dissection of thoracoabdominal aorta mention of rupture I7103 Dissection of thoracic aorta, ascending I7129 Unspecified thoracic aortic aneurysm, without I7104 Dissection of thoracic aorta, descending mention of rupture I7105 Dissection of unspecified thoracic aort"
+      },
+      {
+        "adrg": "F680",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F680_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 11,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "F69",
+          "I740",
+          "I741",
+          "I742",
+          "I7430",
+          "I7431",
+          "I7439",
+          "I744",
+          "I745",
+          "I748",
+          "I749"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=374 PRINTED_PAGE=348] F68 색전증 EMBOLISM 주진단명 I740 Embolism and thrombosis of abdominal aorta I7439 Other and unspecified embolism and thrombosis I741 Embolism and thrombosis of other and unspecified I744 Embolism and thrombosis of arteries of extremities, parts of aorta unspecified I742 Embolism and thrombosis of arteries of upper extremities I745 Embolism and thrombosis of iliac artery I7430 Embolism and thrombosis of below knee I748 Embolism and thrombosis of other arteries I7431 Embo"
+      },
+      {
+        "adrg": "F770",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_F770_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 3,
+        "raw_known_code_count": 3,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "I951",
+          "R550",
+          "R558"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 162,
+        "sample": "[PDF_PAGE=379 PRINTED_PAGE=353] F77 실신및허탈 SYNCOPE AND COLLAPSE 주진단명 MDC I951 Orthostatic hypotension R558 Other syncope and collapse 05 R550 Vasovagal syncope (F)"
+      },
+      {
+        "adrg": "G190",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_G190_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 3,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "O1600",
+          "O1610"
+        ],
+        "raw_extra_codes": [
+          "G20"
+        ],
+        "text_length": 345,
+        "sample": "[PDF_PAGE=416 PRINTED_PAGE=390] G19 횡격막탈장수술 DIAPHRAGMATIC HERNIA PROCEDURES G1901 횡격막탈장수술, 연령≤18세 Diaphragmatic Hernia Procedures, Age ≤18 G1902 횡격막탈장수술, 연령>18세 Diaphragmatic Hernia Procedures, Age >18 시술명 자160 횡격막봉합술 O1600 자161 횡격막탈장정복술 O1610 [PDF_PAGE=417 PRINTED_PAGE=391] G20 탈장수술, 서혜및대퇴부제외 HERNIA PROCEDURES EXCEPT INGUINAL AND FEMORAL AREA"
+      },
+      {
+        "adrg": "G230",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_G230_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "Q2753",
+          "Q2754"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=419 PRINTED_PAGE=393] G23 서혜및대퇴부탈장수술(장절제동반) INGUINAL AND FEMORAL HERNIA PROCEDURES WITH RESECTION OF INTESTINE G2301 서혜및대퇴부탈장수술(장절제동반), 연령≤18세 Inguinal and Femoral Hernia Procedures with Resection of Intestine, Age ≤18 G2302 서혜및대퇴부탈장수술(장절제동반), 연령>18세 Inguinal and Femoral Hernia Procedures with Resection of Intestine, Age >18 시술명 자275가(1) 서혜부허니아근본수술(장관절제를동반하는것,고위결찰만하는경우) Q2753 자275가(2) 서혜부허니아근본수술(장관절제를동반하는것,고위결찰및후벽보강-인공막이용포함) Q2754 G24 복강경을이용한서혜및대퇴부탈장수술(장절제미동반) LAPAROSCOPIC INGUINAL AND"
+      },
+      {
+        "adrg": "G300",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_G300_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 3,
+        "raw_known_code_count": 3,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "Q2950",
+          "Q2991",
+          "Q2992"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 257,
+        "sample": "[PDF_PAGE=422 PRINTED_PAGE=396] G30 치열수술및항문협착증수술 ANAL FISSURE AND ANAL STENOSIS PROCEDURES 시술명 자295 치열수술 Q2950 자299가 항문협착증교정술-항문협착부위절단술 Q2991 자299나 항문협착증교정술-피부판, 피부편 이용 Q2992 [PDF_PAGE=423 PRINTED_PAGE=397] G31 경항문및질접근수술 TRANSANAL OR TRANSVAGINAL PROCEDURES"
+      },
+      {
+        "adrg": "G650",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_G650_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 8,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "K560",
+          "K561",
+          "K562",
+          "K563",
+          "K564",
+          "K565",
+          "K566",
+          "K567"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 426,
+        "sample": "[PDF_PAGE=447 PRINTED_PAGE=421] G65 위장관폐색 GASTROINTESTINAL OBSTRUCTION G6501 위장관폐색, 연령≤18세 Gastrointestinal Obstruction, Age ≤18 G6502 위장관폐색, 연령>18세 Gastrointestinal Obstruction, Age >18 주진단명 K560 Paralytic ileus K564 Other impaction of intestine K561 Intussusception K565 Intestine adhesions [bands] with obstruction K562 Volvulus K566 Other and unspecified intestinal obstruction K563 Gallstone ileus K567 Ileus, unspecified"
+      },
+      {
+        "adrg": "G660",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_G660_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 13,
+        "raw_known_code_count": 13,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "I880",
+          "R100",
+          "R1010",
+          "R1011",
+          "R1012",
+          "R1019",
+          "R1030",
+          "R1031",
+          "R1032",
+          "R1039",
+          "R1042",
+          "R1044",
+          "R1049"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=447 PRINTED_PAGE=421] G66 복통또는장간막선염 ABDOMINAL PAIN OR MESENTERIC ADENITIS 주진단명 I880 Nonspecific mesenteric lymphadenitis R1031 Left lower quadrant abdominal pain R100 Acute abdomen R1032 Periumbilical pain R1010 Right upper quadrant abdominal pain R1039 Lower abdominal pain, unspecified R1011 Left upper quadrant abdominal pain R1042 Colic R1012 Epigastric pain R1044 Flank pain MDC R1019 Upper abdominal pain, unspecified R1049 Unspecified abdominal pain R1030 Right lower quadrant abdomi"
+      },
+      {
+        "adrg": "G672",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_G672_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 16,
+        "raw_known_code_count": 10,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "B3780",
+          "K200",
+          "K208",
+          "K210",
+          "K219",
+          "K230",
+          "K291",
+          "K292",
+          "K293",
+          "K294",
+          "K295",
+          "K2960",
+          "K2968",
+          "K297",
+          "K298",
+          "K299"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=449 PRINTED_PAGE=423] G6721 식도염및위십이지장염, 연령≤18세 Esophagitis and Gastroduodenitis, Age ≤18 G6722 식도염및위십이지장염, 연령>18세 Esophagitis and Gastroduodenitis, Age >18 주진단명 B3780 Candidal esophagitis K292 Alcoholic gastritis K200 Eosinophilic esophagitis K293 Chronic superficial gastritis K208 Other and unspecified oesophagitis K294 Chronic atrophic gastritis K210 Gastro-oesophageal reflux disease with K295 Chronic gastritis, unspecified oesophagitis K2960 Gastric intestinal metaplasia K219 Gastro"
+      },
+      {
+        "adrg": "H520",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_H520_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 1,
+        "raw_known_code_count": 1,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "M6741"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 148,
+        "sample": "[PDF_PAGE=483 PRINTED_PAGE=457] H52 간담도및췌장질환의경피적배액술 PERCUTANEOUS DRAINAGE OF HEPATOBILIARY AND PANCREATIC DISEASES 시술명 자674‡ 경피적튜브배액술[유도료별도산정] M6741"
+      },
+      {
+        "adrg": "I050",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_I050_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 8,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "N0587",
+          "N0588",
+          "N1581",
+          "N1582",
+          "N1583",
+          "N1584",
+          "N1585",
+          "N2584"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 478,
+        "sample": "[PDF_PAGE=570 PRINTED_PAGE=544] I05 혈관부착골피부판이식및사지재접합술 VASCULARIZED OSTEOCUTANEOUS FREE FLAP AND LIMB REATTACHMENT PROCEDURES 시술명 자58-1가 사지접합수술[사지] N0587 자58-1나 사지접합수술[수,족지] N0588 MDC 자58-2 수지의 무지화성형술 N1581 08 자58-3 족지를 이용한 수지재건술(공여부절단술 포함) N1582 (I) 자58-4가 생골 및 생피부판 이식술(혈관부착 골이식술) N1583 자58-4나 생골 및 생피부판 이식술(혈관부착 골피부판 이식술) N1584 자58-4나주 생골 및 생피부판 이식술(혈관부착 골피부판 이식술)-천공지를 이용하여 피부판을 이식한 경우 N2584 자58-4다 생골 및 생피부판 이식술(유경혈관화 골이식술) N1585 I06 척추강내병소절제술 EXCISION OF INTRASPINAL LESION"
+      },
+      {
+        "adrg": "I240",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_I240_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 5,
+        "raw_known_code_count": 5,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "C8583",
+          "C8601",
+          "C8602",
+          "C8603",
+          "C8604"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 325,
+        "sample": "[PDF_PAGE=589 PRINTED_PAGE=563] I24 생검을포함한골과관절의진단적수술 BONE AND JOINT DIAGNOSTIC PROCEDURES INCLUDING BIOPSY 시술명 나858나(2) 골생검(절개생검)-기타부위 C8583 나860가 관절절개생검술-견관절,고관절,천장관절 C8601 나860나 관절절개생검술-주관절,슬관절 C8602 나860다 관절절개생검술-완관절및족관절 C8603 나860라 관절절개생검술-기타부위 C8604 [PDF_PAGE=590 PRINTED_PAGE=564] I25 완관절및수부수술 WRIST AND HAND PROCEDURES"
+      },
+      {
+        "adrg": "I600",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_I600_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "S7230",
+          "S7231"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 176,
+        "sample": "[PDF_PAGE=607 PRINTED_PAGE=581] I60 대퇴골간및대퇴골융기골절 FEMORAL SHAFT AND FEMORAL CONDYLE FRACTURE 주진단명 S7230 Fracture of shaft of femur, closed S7231 Fracture of shaft of femur, open"
+      },
+      {
+        "adrg": "I610",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_I610_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 8,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "S7240",
+          "S7241",
+          "S7270",
+          "S7271",
+          "S7280",
+          "S7281",
+          "S7290",
+          "S7291"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 478,
+        "sample": "[PDF_PAGE=607 PRINTED_PAGE=581] I61 기타대퇴골골절 OTHER FEMORAL FRACTURES 주진단명 S7240 Fracture of lower end of femur, closed S7280 Fracture of other parts of femur, closed S7241 Fracture of lower end of femur, open S7281 Fracture of other parts of femur, open S7270 Multiple fractures of femur, closed S7290 Fracture of femur,part unspecified, closed S7271 Multiple fractures of femur, open S7291 Fracture of femur,part unspecified, open I62 골반부및대퇴경부골절 PELVIS AND FEMORAL NECK FRACTURE"
+      },
+      {
+        "adrg": "J100",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_J100_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 17,
+        "raw_known_code_count": 11,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "Q2881",
+          "Q2882",
+          "Q2883",
+          "Q2950",
+          "Q2974",
+          "Q2975",
+          "Q2976",
+          "Q2977",
+          "Q2978",
+          "Q2991",
+          "Q2992",
+          "Q3002",
+          "Q3003",
+          "Q3041",
+          "Q3042",
+          "Q3062",
+          "Q3063"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=738 PRINTED_PAGE=712] J10 항문주위및모소수술 (J) PERIANAL AND PILONIDAL PROCEDURES 시술명 자288가(1) 직장항문주위농양수술(표재성-절개배농) Q2881 자288가(2) 직장항문주위농양수술(표재성-괄약근절개동반) Q2882 자288나 직장항문주위농양수술(심부) Q2883 자295 치열수술 Q2950 자297가 저위관통형치루절개술및절제술 Q2974 [PDF_PAGE=739 PRINTED_PAGE=713] 자297나(1) 고위혹은복잡형치루수술(한리수술및기타괄약근보존술식) Q2975 자297나(2) 고위혹은복잡형치루수술(근충전술혹은점막근육편이동) Q2976 자297나(3)(가) 고위혹은복잡형치루수술(시톤수술-설치술) Q2977 자297나(3)(나) 고위혹은복잡형치루수술(시톤수술-절단술) Q2978 자299가 항문협착증교정술-항문협착부위절단술 Q2991 자299나 항문협착증교정술-피부판, 피부편 이용 Q2992 자300-1"
+      },
+      {
+        "adrg": "J600",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_J600_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 8,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "J61",
+          "L890",
+          "L891",
+          "L892",
+          "L893",
+          "L899",
+          "L97",
+          "L984"
+        ],
+        "raw_extra_codes": [
+          "J60"
+        ],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=741 PRINTED_PAGE=715] J60 피부궤양 SKIN ULCERS J6001 피부궤양, 연령<65세 Skin Ulcers, Age <65 J6002 피부궤양, 연령≥65세 MDC Skin Ulcers, Age ≥65 09 주진단명 (J) L890 Stage I decubitus ulcer and pressure area L899 Decubitus ulcer and pressure area, unspecified L891 Stage II decubitus ulcer and pressure area L97 Ulcer of lower limb, NEC L892 Stage III decubitus ulcer and pressure area L984 Chronic ulcer of skin, NEC L893 Stage IV decubitus ulcer and pressure area [PDF_PAGE=742 PRINTED_PAGE=716] J61 악성피부질환 MAL"
+      },
+      {
+        "adrg": "J670",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_J670_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 1,
+        "raw_known_code_count": 1,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "B029"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 118,
+        "sample": "[PDF_PAGE=749 PRINTED_PAGE=723] J67 합병증없는대상포진 HERPES ZOSTER WITHOUT COMPLICATION 주진단명 B029 Zoster without complication"
+      },
+      {
+        "adrg": "K080",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_K080_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 4,
+        "raw_known_code_count": 4,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "C8592",
+          "M6991",
+          "P4558",
+          "P4565"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 355,
+        "sample": "[PDF_PAGE=772 PRINTED_PAGE=746] K08 기타갑상선수술 OTHER THYROID PROCEDURES K0801 기타갑상선수술, 연령≤18세 Other Thyroid Procedures, Age ≤18 K0802 기타갑상선수술, 연령>18세 Other Thyroid Procedures, Age >18 시술명 나859나 갑상선생검-관혈적생검 C8592 자455-1 갑상선설관낭종절제술 P4558 자456-1 설근갑상선절제또는분획성형술 P4565 자690라 경피적 고주파열치료술 [유도료 별도 산정]-갑상선암 M6991 MDC 10 (K) K09 비만대사수술 BARIATRIC AND METABOLIC SURGERY"
+      },
+      {
+        "adrg": "K670",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_K670_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 14,
+        "raw_known_code_count": 11,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "C750",
+          "D351",
+          "D442",
+          "E200",
+          "E201",
+          "E208",
+          "E209",
+          "E210",
+          "E211",
+          "E212",
+          "E213",
+          "E214",
+          "E215",
+          "E892"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=789 PRINTED_PAGE=763] K67 부갑상선장애 PARATHYROID DISORDERS 주진단명 C750 Malignant neoplasm of parathyroid gland E210 Primary hyperparathyroidism D351 Benign neoplasm of parathyroid gland E211 Secondary hyperparathyroidism, NEC D442 Neoplasm of uncertain or unknown behaviour of E212 Other hyperparathyroidism parathyroid gland E213 Hyperparathyroidism, unspecified E200 Idiopathic hypoparathyroidism E214 Other specified disorders of parathyroid gland E201 Pseudohypoparathyroidism E215 Disorder o"
+      },
+      {
+        "adrg": "K720",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_K720_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 12,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "E860",
+          "E861",
+          "E868",
+          "E870",
+          "E871",
+          "E872",
+          "E873",
+          "E874",
+          "E875",
+          "E876",
+          "E877",
+          "E878"
+        ],
+        "raw_extra_codes": [
+          "K7201"
+        ],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=791 PRINTED_PAGE=765] K72 수분, 전해질및산-염기균형의장애 DISORDERS OF FLUID, ELECTROLYTE AND ACID-BASE BALANCE K7201 수분, 전해질및산-염기균형의장애, 연령≤18세 Disorders of Fluid, Electrolyte and Acid-Base Balance, Age ≤18 K7202 수분, 전해질및산-염기균형의장애, 연령>18세 Disorders of Fluid, Electrolyte and Acid-Base Balance, Age >18 주진단명 E860 Dehydration E873 Alkalosis E861 Hypovolaemia E874 Mixed disorder of acid-base balance E868 Other or unspecified volume depletion E875 Hyperkalaemia E870 Hyperosmolality and hypernatraemia E876"
+      },
+      {
+        "adrg": "L010",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_L010_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "O7071",
+          "O7072"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 234,
+        "sample": "[PDF_PAGE=810 PRINTED_PAGE=784] L01 복막투석도관삽입술 CATHETER INSERTION FOR PERITONEAL DIALYSIS 시술명 자707가(1) 계속적복막관류술-도관삽입술(대망절제를동반한경우) O7071 자707가(2) 계속적복막관류술-도관삽입술(기타) O7072 L02 신장및비뇨기계신생물수술 PROCEDURES FOR KIDNEY AND URINARY TRACT NEOPLASM"
+      },
+      {
+        "adrg": "L120",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_L120_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "M6613",
+          "M6644"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 286,
+        "sample": "[PDF_PAGE=818 PRINTED_PAGE=792] L12 기타신장및비뇨기질환의경피적시술 OTHER PERCUTANEOUS PROCEDURES OF KIDNEY AND URINARY TRACT DISEASES 시술명 자661다 경피적혈관내스텐트-이식설치술[기타혈관] M6613 MDC 자664나 혈관색전술-기타혈관 M6644 11 (L) [PDF_PAGE=819 PRINTED_PAGE=793] L13 기타신장및비뇨기계시술 OTHER PROCEDURES FOR KIDNEY AND URINARY SYSTEM"
+      },
+      {
+        "adrg": "L520",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_L520_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 1,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "M6741"
+        ],
+        "raw_extra_codes": [
+          "L52"
+        ],
+        "text_length": 144,
+        "sample": "[PDF_PAGE=823 PRINTED_PAGE=797] L52 신장및비뇨기질환의경피적배액술 PERCUTANEOUS DRAINAGE OF KIDNEY AND URINARY TRACT DISEASES 시술명 자674‡ 경피적튜브배액술[유도료별도산정] M6741"
+      },
+      {
+        "adrg": "L530",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_L530_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "M1773",
+          "M1777"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 285,
+        "sample": "[PDF_PAGE=823 PRINTED_PAGE=797] L53 신장및비뇨기질환의경피적경화술 PERCUTANEOUS SCLEROTHERAPY OF KIDNEY AND URINARY TRACT DISEASES 시술명 MDC 자677가(2)(가)‡ 경피적경화술-단순천자법에의한것[두경부이외-낭종] M1773 자677나(2)(가)‡ 경피적경화술-카테터천자법에의한것[두경부이외-낭종] M1777 11 (L) [PDF_PAGE=824 PRINTED_PAGE=798] L60 급성신부전 ACUTE RENAL FAILURE"
+      },
+      {
+        "adrg": "M610",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_M610_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 5,
+        "raw_known_code_count": 5,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "N400",
+          "N401",
+          "N402",
+          "N403",
+          "N408"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 359,
+        "sample": "[PDF_PAGE=859 PRINTED_PAGE=833] M61 양성전립선비대증 BENIGN PROSTATIC HYPERTROPHY 주진단명 N400 Hyperplasia of prostate without complication N403 Hyperplasia of prostate with urinary tract obstruction N401 Hyperplasia of prostate with urinary tract obstruction and hematuria N402 Hyperplasia of prostate with hematuria N408 Hyperplasia of prostate with other complication"
+      },
+      {
+        "adrg": "N110",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_N110_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 6,
+        "raw_known_code_count": 7,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "R0408",
+          "R0409",
+          "R0410",
+          "R0411",
+          "R0412",
+          "R0413"
+        ],
+        "raw_extra_codes": [
+          "N12"
+        ],
+        "text_length": 492,
+        "sample": "[PDF_PAGE=882 PRINTED_PAGE=856] N11 기타여성생식기계복원술 OTHER FEMALE REPRODUCTIVE SYSTEM RECONSTRUCTIVE PROCEDURES 시술명 자408가(1) 질벽봉합술[분만시제외,치료목적]-전질벽 성형-방광류동반 R0408 자408가(2) 질벽봉합술[분만시제외,치료목적]-전질벽 성형-방광류동반치않는경우 R0409 자408나(1) 질벽봉합술[분만시제외,치료목적]-후질벽및회음성형-직장류동반 R0410 자408나(2) 질벽봉합술[분만시제외,치료목적]-후질벽및회음성형-직장류동반치않는경우 R0411 자408다(1) 질벽봉합술[분만시제외,치료목적]-전질벽,후질벽및회음성형-방광류및직장류동반 R0412 자408다(2) 질벽봉합술[분만시제외,치료목적]-전질벽,후질벽및회음성형-방광류및직장류동반치않는경우 R0413 N12 복강경수술및기타난관결찰술 LAPAROSCOPIC PROCEDURES AND OTHER TUBAL LIGATION"
+      },
+      {
+        "adrg": "N130",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_N130_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 7,
+        "raw_known_code_count": 7,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "E7710",
+          "R4028",
+          "R4230",
+          "R4235",
+          "R4241",
+          "R4242",
+          "R4295"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 308,
+        "sample": "[PDF_PAGE=883 PRINTED_PAGE=857] N13 자궁경수술 HYSTEROSCOPIC PROCEDURES 시술명 나771‡ 자궁경검사 E7710 자402-3‡ 자궁내풍선카테터충전술[자궁용적측정포함] R4028 자423 자궁경하 자궁내막소작박리술 R4230 자423-1 자궁경하 자궁강내유착박리술 R4235 자424-1 자궁경하 자궁내막폴립절제술 R4241 자424-1주 자궁경하 자궁내막폴립절제술-전동식세절기 이용 R4242 자429-1 자궁경하 자궁강내격막절제술 R4295 자궁소파술 N14 DILATATION AND CURETTAGE"
+      },
+      {
+        "adrg": "N142",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_N142_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 3,
+        "raw_known_code_count": 4,
+        "source_covered_by_raw": true,
+        "relation": "RAW_SUPERSET_OF_SOURCE",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "C8572",
+          "C8574",
+          "C8575"
+        ],
+        "raw_extra_codes": [
+          "N142"
+        ],
+        "text_length": 260,
+        "sample": "N142 진단적자궁소파술 Diagnostic Dilatation and Curettage 시술명 나857나 자궁내막조직생검-단순소파생검 C8574 나857다 자궁내막조직생검-자궁경내소파술 C8575 나857라 자궁내막조직생검-구획소파생검 C8572 [PDF_PAGE=884 PRINTED_PAGE=858] 13 N15 여성생식기계질환을위한진단적수술 (N) DIAGNOSTIC PROCEDURES FOR FEMALE REPRODUCTIVE SYSTEM DISEASES"
+      },
+      {
+        "adrg": "O120",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_O120_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 8,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "R4441",
+          "R4442",
+          "R4452",
+          "R4456",
+          "R4457",
+          "R4458",
+          "R4459",
+          "R4521"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 316,
+        "sample": "[PDF_PAGE=927 PRINTED_PAGE=901] O12 자궁소파술및흡인소파술 D&C AND ASPIRATION CURETTAGE 시술명 자444가 계류유산소파술-12주미만 R4441 자444나 계류유산소파술-12주이상 R4442 자445가 인공임신중절수술[임신8주이내] R4452 자445나 인공임신중절수술[임신8주초과-12주미만] R4456 자445다 인공임신중절수술[임신12주이상-16주미만] R4457 자445라 인공임신중절수술[임신16주이상-20주미만] R4458 자445마 인공임신중절수술[임신20주이상] R4459 자452 자궁소파수술 R4521"
+      },
+      {
+        "adrg": "O630",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_O630_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 3,
+        "raw_known_code_count": 3,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "O470",
+          "O471",
+          "O479"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 256,
+        "sample": "[PDF_PAGE=933 PRINTED_PAGE=907] O63 가성분만 FALSE LABOUR 주진단명 MDC 14 O470 False labour before 37 completed weeks of gestation gestation (O) O471 False labour at or after 37 completed weeks of O479 False labour, unspecified O64 기타산전질환 OTHER ANTEPARTUM DISEASES"
+      },
+      {
+        "adrg": "R640",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_R640_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 10,
+        "raw_known_code_count": 7,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "Z850",
+          "Z851",
+          "Z852",
+          "Z853",
+          "Z854",
+          "Z855",
+          "Z856",
+          "Z857",
+          "Z858",
+          "Z859"
+        ],
+        "raw_extra_codes": [
+          "R64"
+        ],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=1055 PRINTED_PAGE=1029] R64 악성종양의병력 HISTORY OF MALIGNANT NEOPLASMS 주진단명 Z850 Personal history of malignant neoplasm of digestive respiratory and intrathoracic organs organs Z853 Personal history of malignant neoplasm of breast Z851 Personal history of malignant neoplasm of trachea, Z854 Personal history of malignant neoplasm of genital bronchus and lung organs Z852 Personal history of malignant neoplasm of other Z855 Personal history of malignant neoplasm of urinary tract [PDF_PAGE=105"
+      },
+      {
+        "adrg": "T610",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_T610_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 2,
+        "raw_known_code_count": 2,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "T793",
+          "T814"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 178,
+        "sample": "[PDF_PAGE=1098 PRINTED_PAGE=1072] T61 수술및외상후감염 POSTOPERATIVE AND POST TRAUMATIC INFECTIONS 주진단명 T793 Post-traumatic wound infection, NEC T814 Infection following a procedure, NEC"
+      },
+      {
+        "adrg": "T632",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_T632_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 6,
+        "raw_known_code_count": 6,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "B007",
+          "B008",
+          "B018",
+          "B019",
+          "B027",
+          "B028"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 375,
+        "sample": "[PDF_PAGE=1099 PRINTED_PAGE=1073] T6321 헤르페스바이러스질환, 연령≤18세 Herpesviral Diseases, Age ≤18 T6322 헤르페스바이러스질환, 연령>18세 Herpesviral Diseases, Age >18 주진단명 B007 Disseminated herpesviral disease B019 Varicella without complication B008 Other forms of herpesviral infection B027 Disseminated zoster B018 Varicella with other complications B028 Zoster with other complications MDC 18-2"
+      },
+      {
+        "adrg": "T633",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_T633_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 3,
+        "raw_known_code_count": 3,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "J09",
+          "J108",
+          "J118"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 330,
+        "sample": "[PDF_PAGE=1099 PRINTED_PAGE=1073] T6331 인플루엔자, 연령≤18세 (T) Influenza, Age ≤18 T6332 인플루엔자, 연령>18세 Influenza, Age >18 주진단명 J09 Influenza due to identified zoonotic or pandemic influenza virus identified influenza virus J118 Influenza with other manifestations, virus not J108 Influenza with other manifestations, seasonal identified"
+      },
+      {
+        "adrg": "U010",
+        "status": "RESOLVED_AST",
+        "source_table_ids": [],
+        "source_role": "",
+        "source_owner_exact": false,
+        "local_source_id": false,
+        "source_code_count": 0,
+        "raw_known_code_count": 0,
+        "source_covered_by_raw": false,
+        "relation": "NO_SOURCE_CODES",
+        "safe_source_recovery": false,
+        "source_codes": [],
+        "raw_extra_codes": [],
+        "text_length": 153,
+        "sample": "[PDF_PAGE=1114 PRINTED_PAGE=1088] U01 정신장애치료목적의수술 OR PROCEDURES FOR MENTAL DISORDERS OR Procedure U60 기질성장애및정신지연 ORGANIC DISORDERS AND MENTAL RETARDATION"
+      },
+      {
+        "adrg": "U602",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_U602_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 18,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "MIXED_OVERLAP",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "F000",
+          "F001",
+          "F002",
+          "F009",
+          "F010",
+          "F011",
+          "F012",
+          "F013",
+          "F018",
+          "F019",
+          "F020",
+          "F021",
+          "F022",
+          "F023",
+          "F028",
+          "F03",
+          "F051",
+          "R54"
+        ],
+        "raw_extra_codes": [
+          "G10"
+        ],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=1115 PRINTED_PAGE=1089] U6021 치매, 연령<65세 Dementia, Age <65 U6022 치매, 연령≥65세 Dementia, Age ≥65 주진단명 F000 Dementia in Alzheimer’s disease with early F018 Other vascular dementia onset(G30.0†) F019 Vascular dementia, unspecified F001 Dementia in Alzheimer’s disease with late F020 Dementia in Pick’s disease(G31.00†) onset(G30.1†) F021 Dementia in Creutzfeldt-Jakob disease(A81.0†) F002 Dementia in Alzheimer’s disease, atypical or mixed F022 Dementia in Huntington’s disease(G10†) type(G30.8†"
+      },
+      {
+        "adrg": "U610",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_U610_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 19,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "F200",
+          "F201",
+          "F202",
+          "F203",
+          "F204",
+          "F205",
+          "F206",
+          "F208",
+          "F209",
+          "F21",
+          "F220",
+          "F228",
+          "F229",
+          "F24",
+          "F250",
+          "F251",
+          "F252",
+          "F258",
+          "F259"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=1116 PRINTED_PAGE=1090] U61 조현병및망상장애 SCHIZOPHRENIA AND DELUSIONAL DISORDERS U6101 조현병및망상장애, 연령<65세 Schizophrenia and Delusional Disorders, Age <65 U6102 조현병및망상장애, 연령≥65세 Schizophrenia and Delusional Disorders, Age ≥65 주진단명 F200 Paranoid schizophrenia F220 Delusional disorder F201 Hebephrenic schizophrenia F228 Other persistent delusional disorders F202 Catatonic schizophrenia F229 Persistent delusional disorder, unspecified F203 Undifferentiated schizophrenia F24 Induced delusional dis"
+      },
+      {
+        "adrg": "U660",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_U660_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 14,
+        "raw_known_code_count": 5,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "F420",
+          "F421",
+          "F422",
+          "F428",
+          "F429",
+          "F500",
+          "F501",
+          "F502",
+          "F503",
+          "F504",
+          "F505",
+          "F508",
+          "F509",
+          "F605"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=1118 PRINTED_PAGE=1092] U66 섭식장애및강박장애 (U) EATING AND OBSESSIVE-COMPULSIVE DISORDERS U6601 섭식장애및강박장애, 연령≤18세 Eating and Obsessive-Compulsive Disorders, Age ≤18 U6602 섭식장애및강박장애, 연령>18세 Eating and Obsessive-Compulsive Disorders, Age >18 주진단명 F420 Predominantly obsessional thoughts or ruminations F503 Atypical bulimia nervosa F421 Predominantly compulsive acts [obsessional rituals] F504 Overeating associated with other psychological F422 Mixed obsessional thoughts and acts disturbances F42"
+      },
+      {
+        "adrg": "U680",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_U680_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 16,
+        "raw_known_code_count": 11,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "F430",
+          "F431",
+          "F432",
+          "F438",
+          "F439",
+          "F54",
+          "F99",
+          "R440",
+          "R441",
+          "R442",
+          "R443",
+          "R448",
+          "R450",
+          "R451",
+          "R454",
+          "Z032"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=1119 PRINTED_PAGE=1093] U68 스트레스반응및기타정신장애 STRESS REACTION AND OTHER PSYCHIATRIC DISORDERS 주진단명 F430 Acute stress reaction R442 Other hallucinations F431 Post-traumatic stress disorder R443 Hallucinations, unspecified F432 Adjustment disorders R448 Other and unspecified symptoms and signs involving F438 Other reactions to severe stress general sensations and perceptions F439 Reaction to severe stress, unspecified R450 Nervousness F54 Psychological and behavioural factors associated R451"
+      },
+      {
+        "adrg": "V600",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_V600_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 1,
+        "raw_known_code_count": 1,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "ADC6A"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 149,
+        "sample": "[PDF_PAGE=1126 PRINTED_PAGE=1100] V60 알콜및약물남용과의존, 자의퇴원 ALCOHOL/DRUG ABUSE AND DEPENDENCE, DISCHARGE AGAINST MEDICAL ADVICE 부가코드 부가코드 부가코드 ADC6A 자의 퇴원"
+      },
+      {
+        "adrg": "W600",
+        "status": "RESOLVED_AST",
+        "source_table_ids": [],
+        "source_role": "",
+        "source_owner_exact": false,
+        "local_source_id": false,
+        "source_code_count": 0,
+        "raw_known_code_count": 0,
+        "source_covered_by_raw": false,
+        "relation": "NO_SOURCE_CODES",
+        "safe_source_recovery": false,
+        "source_codes": [],
+        "raw_extra_codes": [],
+        "text_length": 176,
+        "sample": "[PDF_PAGE=1176 PRINTED_PAGE=1150] W60 다발성외상, 다른의료기관으로이송된경우(재원기간5일미만) MULTIPLE TRAUMA, TRANSFERRED TO ANOTHER ACUTE CARE FACILITY, LOS<5 DAYS 재원기간 < 5일 and (퇴원유형 = 다른 의료기관으로 이송)"
+      },
+      {
+        "adrg": "W610",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [],
+        "source_role": "",
+        "source_owner_exact": false,
+        "local_source_id": false,
+        "source_code_count": 0,
+        "raw_known_code_count": 0,
+        "source_covered_by_raw": false,
+        "relation": "NO_SOURCE_CODES",
+        "safe_source_recovery": false,
+        "source_codes": [],
+        "raw_extra_codes": [],
+        "text_length": 85,
+        "sample": "[PDF_PAGE=1176 PRINTED_PAGE=1150] W61 수술을받지않은다발성외상 MULTIPLE TRAUMA WITHOUT PROCEDURES"
+      },
+      {
+        "adrg": "Y600",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_Y600_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 8,
+        "raw_known_code_count": 8,
+        "source_covered_by_raw": true,
+        "relation": "EXACT",
+        "safe_source_recovery": true,
+        "source_codes": [
+          "T312",
+          "T313",
+          "T314",
+          "T315",
+          "T316",
+          "T317",
+          "T318",
+          "T319"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 446,
+        "sample": "[PDF_PAGE=1252 PRINTED_PAGE=1226] Y60 중증화상(피부이식미동반) SEVERE BURNS WITHOUT SKIN GRAFT 주진단명 또는 기타진단명 T312 Burns involving 20-29％of body surface T316 Burns involving 60-69％of body surface T313 Burns involving 30-39％of body surface T317 Burns involving 70-79％of body surface T314 Burns involving 40-49％of body surface T318 Burns involving 80-89％of body surface T315 Burns involving 50-59％of body surface T319 Burns involving 90％or more of body surface"
+      },
+      {
+        "adrg": "Z010",
+        "status": "RESOLVED_AST",
+        "source_table_ids": [],
+        "source_role": "",
+        "source_owner_exact": false,
+        "local_source_id": false,
+        "source_code_count": 0,
+        "raw_known_code_count": 0,
+        "source_covered_by_raw": false,
+        "relation": "NO_SOURCE_CODES",
+        "safe_source_recovery": false,
+        "source_codes": [],
+        "raw_extra_codes": [],
+        "text_length": 133,
+        "sample": "[PDF_PAGE=1270 PRINTED_PAGE=1244] Z01 기타보건의료서비스에관한수술 OR PROCEDURES WITH DIAGNOSES OF OTHER CONTACTS WITH HEALTH SERVICES OR procedure"
+      },
+      {
+        "adrg": "Z650",
+        "status": "TEXT_ONLY",
+        "source_table_ids": [
+          "LT_Z650_001"
+        ],
+        "source_role": "",
+        "source_owner_exact": true,
+        "local_source_id": true,
+        "source_code_count": 16,
+        "raw_known_code_count": 9,
+        "source_covered_by_raw": false,
+        "relation": "RAW_SUBSET_OF_SOURCE",
+        "safe_source_recovery": false,
+        "source_codes": [
+          "P350",
+          "Q861",
+          "Q862",
+          "Q868",
+          "Q871",
+          "Q872",
+          "Q873",
+          "Q874",
+          "Q875",
+          "Q878",
+          "Q894",
+          "Q897",
+          "Q898",
+          "Q899",
+          "Q992",
+          "Q999"
+        ],
+        "raw_extra_codes": [],
+        "text_length": 502,
+        "sample": "[PDF_PAGE=1279 PRINTED_PAGE=1253] Z65 기타및상세불명의선천적이상 OTHER AND UNSPECIFIED CONGENITAL ANOMALIES 주진단명 P350 Congenital rubella syndrome Q875 Other congenital malformation syndromes with other Q861 Fetal hydantoin syndrome skeletal changes Q862 Dysmorphism due to warfarin Q878 Other specified congenital malformation syndromes, Q868 Other congenital malformation syndromes due to NEC known exogenous causes Q894 Conjoined twins Q871 Congenital malformation syndromes predominantly Q897 Multiple congenit"
+      }
+    ]
+  },
+  "namespace_collision": {
+    "current_dual_role_count": 0,
+    "current_dual_role_codes": [],
+    "distinct_semantic_count": 0,
+    "operating_preserves_both_role_names_count": 0,
+    "diagnosis_role_name_missing_count": 0,
+    "procedure_role_name_missing_count": 0,
+    "rows": [],
+    "M6536_preupdate": {
+      "is_current_dual_role": false,
+      "diagnosis_names": [],
+      "operating_names": [
+        "Nodular tendinous disease, lower leg",
+        "결절성 힘줄병, 아래다리"
+      ],
+      "will_be_new_procedure_role": true
+    }
+  },
+  "mdc_principal_condition": {
+    "structured_case_count": 9,
+    "structured_adrgs": [
+      "9630",
+      "E013",
+      "G504",
+      "G524",
+      "G534",
+      "J031",
+      "J032",
+      "R020",
+      "R040"
+    ],
+    "review_only_case_count": 7,
+    "review_only_adrgs": [
+      "B024",
+      "B092",
+      "H612",
+      "L632",
+      "O024",
+      "O062",
+      "S630"
+    ],
+    "missing_expected_core": [],
+    "virtual_sets": {
+      "9630": {
+        "mdcs": [
+          "15"
+        ],
+        "sets": {
+          "15": {
+            "code_count": 3376,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "E013": {
+        "mdcs": [
+          "04"
+        ],
+        "sets": {
+          "04": {
+            "code_count": 427,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "G504": {
+        "mdcs": [
+          "06"
+        ],
+        "sets": {
+          "06": {
+            "code_count": 610,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "G524": {
+        "mdcs": [
+          "06"
+        ],
+        "sets": {
+          "06": {
+            "code_count": 610,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "G534": {
+        "mdcs": [
+          "06"
+        ],
+        "sets": {
+          "06": {
+            "code_count": 610,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "J031": {
+        "mdcs": [
+          "09"
+        ],
+        "sets": {
+          "09": {
+            "code_count": 738,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "J032": {
+        "mdcs": [
+          "09"
+        ],
+        "sets": {
+          "09": {
+            "code_count": 738,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "R020": {
+        "mdcs": [
+          "17"
+        ],
+        "sets": {
+          "17": {
+            "code_count": 161,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      },
+      "R040": {
+        "mdcs": [
+          "17"
+        ],
+        "sets": {
+          "17": {
+            "code_count": 161,
+            "operating_coverage": 1.0,
+            "missing_codes": []
+          }
+        }
+      }
+    },
+    "coverage_failure_count": 0,
+    "coverage_failures": [],
+    "structured_by_adrg": {
+      "9630": [
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "[PDF_PAGE=84 PRINTED_PAGE=58] 963 연령/체중과일치하지않는신생아진단 NEONATAL DIAGNOSIS NOT CONSISTENT WITH AGE/WEIGHT MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "((TEXT[MDC 15의 주진단명] AND (TEXT[age > 27 days] AND TEXT[age < 366 days]) AND TEXT[입원시 체중 ≥2500g]) OR (TEXT[MDC 15의 주진단명] AND TEXT[age > 0 year]))"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "operating",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g"
+        },
+        {
+          "adrg": "9630",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "current_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "((TEXT[MDC 15의 주진단명] AND (TEXT[age > 27 days] AND TEXT[age < 366 days]) AND TEXT[입원시 체중 ≥2500g]) OR (TEXT[MDC 15의 주진단명] AND TEXT[age > 0 year]))"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "MDC 15의 주진단명"
+        },
+        {
+          "adrg": "9630",
+          "source": "repaired_ast",
+          "mdcs": [
+            "15"
+          ],
+          "text": "((TEXT[MDC 15의 주진단명] AND (TEXT[age > 27 days] AND TEXT[age < 366 days]) AND TEXT[입원시 체중 ≥2500g]) OR (TEXT[MDC 15의 주진단명] AND TEXT[age > 0 year]))"
+        }
+      ],
+      "E013": [
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "((EXCLUSION(base=TEXT[MDC04의 주진단명], excluded=TABLE_REF[LT_E012_001]) AND TABLE_REF[LT_E013_001]) OR (EXCLUSION(base=TEXT[MDC04의 주진단명], excluded=TABLE_REF[LT_E012_001]) AND EXCLUSION(base=TABLE_REF[LT_E013_002], excluded=TABLE_REF[LT_E013_003])))"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "operating",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1)"
+        },
+        {
+          "adrg": "E013",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "04"
+          ],
+          "text": "or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "current_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "((EXCLUSION(base=TEXT[MDC04의 주진단명], excluded=TABLE_REF[LT_E012_001]) AND TABLE_REF[LT_E013_001]) OR (EXCLUSION(base=TEXT[MDC04의 주진단명], excluded=TABLE_REF[LT_E012_001]) AND EXCLUSION(base=TABLE_REF[LT_E013_002], excluded=TABLE_REF[LT_E013_003])))"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "E012의 주진단명 table1을 제외한 MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "MDC04의 주진단명"
+        },
+        {
+          "adrg": "E013",
+          "source": "repaired_ast",
+          "mdcs": [
+            "04"
+          ],
+          "text": "((EXCLUSION(base=TEXT[MDC04의 주진단명], excluded=TABLE_REF[LT_E012_001]) AND TABLE_REF[LT_E013_001]) OR (EXCLUSION(base=TEXT[MDC04의 주진단명], excluded=TABLE_REF[LT_E012_001]) AND EXCLUSION(base=TABLE_REF[LT_E013_002], excluded=TABLE_REF[LT_E013_003])))"
+        },
+        {
+          "adrg": "E013",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "04"
+          ],
+          "text": "(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1)"
+        },
+        {
+          "adrg": "E013",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "04"
+          ],
+          "text": "or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)"
+        }
+      ],
+      "G504": [
+        {
+          "adrg": "G504",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G505_001]) AND TABLE_REF[LT_G505_002])"
+        },
+        {
+          "adrg": "G504",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G505_001]) AND TABLE_REF[LT_G505_002])"
+        },
+        {
+          "adrg": "G504",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G504",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G504",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G505_001]) AND TABLE_REF[LT_G505_002])"
+        },
+        {
+          "adrg": "G504",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        }
+      ],
+      "G524": [
+        {
+          "adrg": "G524",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G525_001]) AND TABLE_REF[LT_G525_002])"
+        },
+        {
+          "adrg": "G524",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G525_001]) AND TABLE_REF[LT_G525_002])"
+        },
+        {
+          "adrg": "G524",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G524",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G524",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G525_001]) AND TABLE_REF[LT_G525_002])"
+        },
+        {
+          "adrg": "G524",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        }
+      ],
+      "G534": [
+        {
+          "adrg": "G534",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G534_001]) AND TABLE_REF[LT_G534_002])"
+        },
+        {
+          "adrg": "G534",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "operating",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "current_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G534_001]) AND TABLE_REF[LT_G534_002])"
+        },
+        {
+          "adrg": "G534",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "G534",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "MDC06의 주진단명"
+        },
+        {
+          "adrg": "G534",
+          "source": "repaired_ast",
+          "mdcs": [
+            "06"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC06의 주진단명], excluded=TABLE_REF[LT_G534_001]) AND TABLE_REF[LT_G534_002])"
+        },
+        {
+          "adrg": "G534",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "06"
+          ],
+          "text": "주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2"
+        }
+      ],
+      "J031": [
+        {
+          "adrg": "J031",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC09의 주진단명], excluded=TABLE_REF[LT_J022_001]) AND TABLE_REF[LT_J031_001])"
+        },
+        {
+          "adrg": "J031",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC09의 주진단명], excluded=TABLE_REF[LT_J022_001]) AND TABLE_REF[LT_J031_001])"
+        },
+        {
+          "adrg": "J031",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "J031",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J031",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC09의 주진단명], excluded=TABLE_REF[LT_J022_001]) AND TABLE_REF[LT_J031_001])"
+        },
+        {
+          "adrg": "J031",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1"
+        }
+      ],
+      "J032": [
+        {
+          "adrg": "J032",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC09의 주진단명], excluded=TABLE_REF[LT_J022_001]) AND TABLE_REF[LT_J032_001])"
+        },
+        {
+          "adrg": "J032",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "operating",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "current_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC09의 주진단명], excluded=TABLE_REF[LT_J022_001]) AND TABLE_REF[LT_J032_001])"
+        },
+        {
+          "adrg": "J032",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        },
+        {
+          "adrg": "J032",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "MDC09의 주진단명"
+        },
+        {
+          "adrg": "J032",
+          "source": "repaired_ast",
+          "mdcs": [
+            "09"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC09의 주진단명], excluded=TABLE_REF[LT_J022_001]) AND TABLE_REF[LT_J032_001])"
+        },
+        {
+          "adrg": "J032",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "09"
+          ],
+          "text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2"
+        }
+      ],
+      "R020": [
+        {
+          "adrg": "R020",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC17의 주진단명], excluded=TABLE_REF[LT_R010_001]) AND TABLE_REF[LT_R020_001])"
+        },
+        {
+          "adrg": "R020",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC17의 주진단명], excluded=TABLE_REF[LT_R010_001]) AND TABLE_REF[LT_R020_001])"
+        },
+        {
+          "adrg": "R020",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        },
+        {
+          "adrg": "R020",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R020",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC17의 주진단명], excluded=TABLE_REF[LT_R010_001]) AND TABLE_REF[LT_R020_001])"
+        },
+        {
+          "adrg": "R020",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1"
+        }
+      ],
+      "R040": [
+        {
+          "adrg": "R040",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC17의 주진단명], excluded=TABLE_REF[LT_R030_001]) AND EXCLUSION(base=TEXT[OR procedure], excluded=TABLE_REF[LT_R020_001]))"
+        },
+        {
+          "adrg": "R040",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "operating",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "condition_source_blocks",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "current_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC17의 주진단명], excluded=TABLE_REF[LT_R030_001]) AND EXCLUSION(base=TEXT[OR procedure], excluded=TABLE_REF[LT_R020_001]))"
+        },
+        {
+          "adrg": "R040",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR procedure"
+        },
+        {
+          "adrg": "R040",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "MDC17의 주진단명"
+        },
+        {
+          "adrg": "R040",
+          "source": "repaired_ast",
+          "mdcs": [
+            "17"
+          ],
+          "text": "(EXCLUSION(base=TEXT[MDC17의 주진단명], excluded=TABLE_REF[LT_R030_001]) AND EXCLUSION(base=TEXT[OR procedure], excluded=TABLE_REF[LT_R020_001]))"
+        },
+        {
+          "adrg": "R040",
+          "source": "table_section_candidates",
+          "mdcs": [
+            "17"
+          ],
+          "text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure"
+        }
+      ]
+    },
+    "review_only_by_adrg": {
+      "B024": [
+        {
+          "adrg": "B024",
+          "source": "main_page_blocks",
+          "mdcs": [
+            "01"
+          ],
+          "text": "[PDF_PAGE=113 PRINTED_PAGE=87] B024 뇌신경계혈관기형및동정맥루색전술(뇌졸중미동반) Embolization of Central Nervous System Vascular Malformation or Arteriovenous Fistula without Stroke 시술명 table3 MDC 01 주진단명 또는 기타진단명 table1 (B) G450 Vertebro-basilar artery syndrome I6301 Cerebral infarction due to thrombosis of basilar artery G451 Carotid artery syndrome(hemispheric) I6302 Cerebral infarction due to thrombosis of carotid artery G452 Multiple and bilateral precerebral artery syndromes I6308 Cerebral infarction due to thrombosis of other G454 Transient global amnesia precerebral artery G458 Other transient cerebral ischaemic attacks and I6309 Cerebral infarction due to thrombosis of unspecified related syndromes pre"
+        }
+      ],
+      "B092": [
+        {
+          "adrg": "B092",
+          "source": "main_page_blocks",
+          "mdcs": [
+            "01"
+          ],
+          "text": "[PDF_PAGE=122 PRINTED_PAGE=96] B092 중추신경계정위수술(두개내출혈) CNS Stereotactic Procedures in Intracranial Hemorrhage 주진단명 table3 and 시술명 table4 MDC 01 주진단명 table3 (B) I600 Subarachnoid haemorrhage from carotid siphon and I609 Subarachnoid haemorrhage, unspecified bifurcation I610 Intracerebral haemorrhage in hemisphere, subcortical I601 Subarachnoid haemorrhage from middle cerebral I611 Intracerebral haemorrhage in hemisphere, cortical artery I612 Intracerebral haemorrhage in hemisphere, I602 Subarachnoid haemorrhage from anterior unspecified communicating artery I613 Intracerebral haemorrhage in brain stem I603 Subarachnoid haemorrhage from posterior I614 Intracerebral haemorrhage in cerebellum comm"
+        }
+      ],
+      "H612": [
+        {
+          "adrg": "H612",
+          "source": "main_page_blocks",
+          "mdcs": [
+            "07"
+          ],
+          "text": "[PDF_PAGE=486 PRINTED_PAGE=460] H612 합병증을동반하지않은알코올성간질환(간경변증제외) Alcohol-related Liver diseases without complications(Except Liver Cirrhosis) 주진단명 table2 주진단명 table1 K7011 Alcoholic hepatitis, with ascites K7043 Alcoholic hepatic failure with coma K7042 Alcoholic hepatic failure without coma MDC 07 주진단명 table2 (H) K700 Alcoholic fatty liver K709 Alcoholic liver disease, unspecified K7010 Alcoholic hepatitis, without ascites 기타진단명 table3 I850 Esophageal varices with bleeding K7043 Alcoholic hepatic failure with coma I8640 Gastric varices with bleeding K7200 Acute and subacute hepatic failure, without coma I983 Oesophageal varices with bleeding in diseases K7201 Acute and subacute hepatic failur"
+        }
+      ],
+      "L632": [
+        {
+          "adrg": "L632",
+          "source": "main_page_blocks",
+          "mdcs": [
+            "11"
+          ],
+          "text": "[PDF_PAGE=828 PRINTED_PAGE=802] L632 신장및요로신생물(화학요법을받은경우) Kidney and Urinary Tract Neoplasms with Chemotherapy MDC 11 주진단명 table1 and (시술명 table3 or 부가코드) (L)"
+        }
+      ],
+      "O024": [
+        {
+          "adrg": "O024",
+          "source": "main_page_blocks",
+          "mdcs": [
+            "14"
+          ],
+          "text": "[PDF_PAGE=914 PRINTED_PAGE=888] O024 고위험제왕절개분만(다태아) High Risk Cesarean Delivery(Multiple Births) (주진단명 table1 or 연령>34세) and 시술명 table2 MDC 14 주진단명 table1 (O) O100 Pre-existing essential hypertension complicating O351 Maternal care for (suspected) Chromosomal pregnancy, childbirth and the puerperium abnormality in fetus O101 Pre-existing hypertensive heart disease O352 Maternal care for (suspected) hereditary disease in complicating pregnancy, childbirth and the fetus puerperium O353 Maternal care for (suspected) damage to fetus from O102 Pre-existing hypertensive renal disease viral disease in mother complicating pregnancy, childbirth and the O354 Maternal care for (suspected) damage to fet"
+        }
+      ],
+      "O062": [
+        {
+          "adrg": "O062",
+          "source": "main_page_blocks",
+          "mdcs": [
+            "14"
+          ],
+          "text": "[PDF_PAGE=919 PRINTED_PAGE=893] O062 제왕절개술기왕력이있는고위험질식분만 High Risk Vaginal Delivery After Cesarean Section (주진단명 table1 or 연령>34세) and 시술명 table2 MDC 14 주진단명 table1 (O) O100 Pre-existing essential hypertension complicating O350 Maternal care for (suspected) central nervous pregnancy, childbirth and the puerperium system malformation in fetus O101 Pre-existing hypertensive heart disease O351 Maternal care for (suspected) Chromosomal complicating pregnancy, childbirth and the abnormality in fetus puerperium O352 Maternal care for (suspected) hereditary disease in O102 Pre-existing hypertensive renal disease fetus complicating pregnancy, childbirth and the O353 Maternal care for (suspected) dama"
+        }
+      ],
+      "S630": [
+        {
+          "adrg": "S630",
+          "source": "main_page_blocks",
+          "mdcs": [
+            "18-1"
+          ],
+          "text": "[PDF_PAGE=1073 PRINTED_PAGE=1047] S63 HIV 관련감염 HIV-RELATED INFECTION MDC 18-1 주진단명 (S) A020 Salmonella enteritis infectious origin A021 Salmonella sepsis A099 Gastroenteritis and colitis of unspecified origin A022 Localized salmonella infections A1500 Tuberculosis of lung with cavitation, confirmed by A028 Other specified salmonella infections sputum microscopy with or without culture A029 Salmonella infection, unspecified A1501 Tuberculosis of lung without cavitation or unspecified, A040 Enteropathogenic Escherichia coli infection confirmed by sputum microscopy with or without culture A041 Enterotoxigenic Escherichia coli infection A1510 Tuberculosis of lung with cavitation, confirmed by A0"
+        }
+      ]
+    }
+  },
+  "ui_table_exposure": {
+    "search_result_TABLE_count": true,
+    "code_detail_linked_TABLE": true,
+    "code_detail_included_TABLE": true,
+    "TABLE_technical_detail_button": true,
+    "standalone_TABLE_detail_renderer": true
+  },
+  "old_basis_scan": {
+    "date_2026_05_01": [
+      {
+        "path": "41_build_kdrg_pyside_runtime_ui_bridge.py",
+        "occurrences": 2
+      },
+      {
+        "path": "README.md",
+        "occurrences": 1
+      },
+      {
+        "path": "app/runtime_data_store.py",
+        "occurrences": 2
+      },
+      {
+        "path": "data/kdrg_v47_pilot_schema_v2.json",
+        "occurrences": 5
+      },
+      {
+        "path": "data/kdrg_v47_ui_fixture.json",
+        "occurrences": 3
+      },
+      {
+        "path": "docs/SOURCE_PRECEDENCE_V2.md",
+        "occurrences": 1
+      },
+      {
+        "path": "sources/SOURCE_MANIFEST.md",
+        "occurrences": 2
+      },
+      {
+        "path": "tools/convert_pilot_v1_to_v2.py",
+        "occurrences": 5
+      }
+    ],
+    "date_20260501": [
+      {
+        "path": "data/kdrg_v47_pilot_schema_v2.json",
+        "occurrences": 3
+      },
+      {
+        "path": "data/kdrg_v47_search_integrated.json",
+        "occurrences": 1
+      },
+      {
+        "path": "data/kdrg_v47_search_integrated_v3.json",
+        "occurrences": 1
+      },
+      {
+        "path": "docs/SCHEMA_V2_MIGRATION_NOTES.md",
+        "occurrences": 1
+      },
+      {
+        "path": "docs/SOURCE_PRECEDENCE_V2.md",
+        "occurrences": 2
+      },
+      {
+        "path": "reports/schema_v2_migration_report.txt",
+        "occurrences": 2
+      },
+      {
+        "path": "reports/schema_v2_validation_report.txt",
+        "occurrences": 1
+      },
+      {
+        "path": "sources/SOURCE_MANIFEST.md",
+        "occurrences": 2
+      },
+      {
+        "path": "tools/convert_pilot_v1_to_v2.py",
+        "occurrences": 3
+      }
+    ],
+    "procedure_count_2790": [
+      {
+        "path": "data/kdrg_v47_search_integrated.json",
+        "occurrences": 9
+      },
+      {
+        "path": "data/kdrg_v47_search_integrated_v3.json",
+        "occurrences": 26
+      }
+    ],
+    "patch_count_24": [
+      {
+        "path": "37_build_kdrg_search_integrated_json.py",
+        "occurrences": 2
+      },
+      {
+        "path": "38_validate_kdrg_search_integrated_json.py",
+        "occurrences": 2
+      },
+      {
+        "path": "39_build_kdrg_runtime_search_service.py",
+        "occurrences": 3
+      },
+      {
+        "path": "40_validate_kdrg_runtime_search_service.py",
+        "occurrences": 2
+      },
+      {
+        "path": "41_build_kdrg_pyside_runtime_ui_bridge.py",
+        "occurrences": 7
+      },
+      {
+        "path": "42_validate_kdrg_runtime_ui_bridge.py",
+        "occurrences": 4
+      },
+      {
+        "path": "43_build_kdrg_runtime_ui_preview.py",
+        "occurrences": 10
+      },
+      {
+        "path": "44_build_kdrg_windows_runtime_regression.py",
+        "occurrences": 11
+      },
+      {
+        "path": "44_fix_kdrg_windows_bundle_diagnostics.py",
+        "occurrences": 3
+      },
+      {
+        "path": "44_fix_kdrg_windows_source_smoke.py",
+        "occurrences": 4
+      },
+      {
+        "path": "45_validate_kdrg_windows_ci_utf8_output.py",
+        "occurrences": 2
+      },
+      {
+        "path": "46_validate_kdrg_release_version_v021.py",
+        "occurrences": 4
+      },
+      {
+        "path": "47A_build_kdrg_ui_semantic_audit.py",
+        "occurrences": 2
+      },
+      {
+        "path": "47B_validate_kdrg_ui_semantic_audit.py",
+        "occurrences": 2
+      },
+      {
+        "path": "48A_build_kdrg_ui_display_contract.py",
+        "occurrences": 2
+      },
+      {
+        "path": "48B_validate_kdrg_ui_display_contract.py",
+        "occurrences": 2
+      },
+      {
+        "path": "49_validate_kdrg_pyside_ui_semantics.py",
+        "occurrences": 4
+      },
+      {
+        "path": "50A_validate_kdrg_electron_skeleton.py",
+        "occurrences": 14
+      },
+      {
+        "path": "50B_validate_kdrg_electron_search_service.py",
+        "occurrences": 13
+      },
+      {
+        "path": "50C_validate_kdrg_electron_renderer_ui.py",
+        "occurrences": 10
+      },
+      {
+        "path": "50D_validate_kdrg_electron_windows_packaging.py",
+        "occurrences": 13
+      },
+      {
+        "path": "51D_validate_kdrg_windows_packaged_ui.py",
+        "occurrences": 4
+      },
+      {
+        "path": "app/dialogs.py",
+        "occurrences": 7
+      },
+      {
+        "path": "app/styles.py",
+        "occurrences": 8
+      },
+      {
+        "path": "data/kdrg_v47_pilot_schema_v2.json",
+        "occurrences": 10
+      },
+      {
+        "path": "data/kdrg_v47_search_integrated.json",
+        "occurrences": 11384
+      },
+      {
+        "path": "data/kdrg_v47_search_integrated_v3.json",
+        "occurrences": 16441
+      },
+      {
+        "path": "data/kdrg_v47_ui_display_contract.json",
+        "occurrences": 427
+      },
+      {
+        "path": "data/kdrg_v47_ui_fixture.json",
+        "occurrences": 3
+      },
+      {
+        "path": "data/kdrg_v47_ui_semantic_profile.json",
+        "occurrences": 116
+      },
+      {
+        "path": "electron/package-lock.json",
+        "occurrences": 7
+      },
+      {
+        "path": "electron/renderer/index.html",
+        "occurrences": 2
+      },
+      {
+        "path": "electron/renderer/styles.css",
+        "occurrences": 9
+      },
+      {
+        "path": "electron/scripts/validate-checkout-byte-integrity.py",
+        "occurrences": 2
+      },
+      {
+        "path": "electron/src/bootstrap-data.js",
+        "occurrences": 2
+      },
+      {
+        "path": "electron/src/packaged-runtime-smoke.js",
+        "occurrences": 2
+      },
+      {
+        "path": "electron/tests/validate-packaging-config.js",
+        "occurrences": 3
+      },
+      {
+        "path": "electron/tests/validate-renderer-ui.js",
+        "occurrences": 6
+      },
+      {
+        "path": "electron/tests/validate-search-service.js",
+        "occurrences": 2
+      },
+      {
+        "path": "legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json",
+        "occurrences": 134
+      },
+      {
+        "path": "legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py",
+        "occurrences": 6
+      },
+      {
+        "path": "tests/smoke_test_kdrg_search_service.py",
+        "occurrences": 1
+      },
+      {
+        "path": "tests/test_ui_v02_structure.py",
+        "occurrences": 1
+      },
+      {
+        "path": "tests/verify_release_readiness.py",
+        "occurrences": 2
+      },
+      {
+        "path": "tests/verify_windows_runtime_bundle.py",
+        "occurrences": 4
+      },
+      {
+        "path": "tools/convert_pilot_v1_to_v2.py",
+        "occurrences": 5
+      }
+    ]
+  },
+  "blockers": [
+    "J600 source TABLE 7개 불일치: ['J61', 'L890', 'L891', 'L892', 'L893', 'L899', 'L97', 'L984']"
+  ],
+  "safety": {
+    "head_unchanged": true,
+    "operating_json_unchanged": true,
+    "tracked_diff_after": "",
+    "staged_after": ""
+  }
+}

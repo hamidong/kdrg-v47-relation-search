@@ -1,0 +1,1576 @@
+{
+  "status": "PASS",
+  "started_at": "2026-09-23 01:31:08",
+  "state": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "branch": "main",
+    "tracked_clean": true,
+    "staging_empty": true,
+    "package_version": "0.5.15",
+    "runtime_unchanged": true,
+    "official_condition_unchanged": true,
+    "icon_unchanged": true,
+    "base_tag_immutable": true,
+    "release_tag_absent": true,
+    "release_absent": true,
+    "previous_diagnosis": {
+      "status": "PASS",
+      "diagnosed_fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+      "failed_step": "packaged_ui_validation",
+      "error_message": "B018 result ready timeout: 30000ms",
+      "signals": [
+        "DIRECT_SERVICE_AND_FIXTURE_QUERY_OK",
+        "NORMALIZE_REQUEST_DROPS_ADRG"
+      ]
+    }
+  },
+  "normalizer_locations": {
+    "definitions": [
+      {
+        "path": "electron/src/search-result-contract.js",
+        "line": 75,
+        "text": "function normalizeSearchRequest(payload) {"
+      }
+    ],
+    "uses": [
+      {
+        "path": "electron/main.js",
+        "line": 13,
+        "text": "normalizeSearchRequest,"
+      },
+      {
+        "path": "electron/main.js",
+        "line": 59,
+        "text": "const request = normalizeSearchRequest(payload);"
+      },
+      {
+        "path": "electron/src/search-result-contract.js",
+        "line": 167,
+        "text": "normalizeSearchRequest,"
+      }
+    ],
+    "definition_count": 1,
+    "use_count": 3
+  },
+  "contract_probe": {
+    "exports": [
+      "ENTITY_TYPES",
+      "RELATION_CODE_TYPES",
+      "RELATION_OPERATORS",
+      "SEARCH_ENTITY_TYPES",
+      "SearchContractError",
+      "normalizeDetailRequest",
+      "normalizeRelationRequest",
+      "normalizeSearchRequest"
+    ],
+    "search_entity_types": [
+      "CODE",
+      "ADRG"
+    ],
+    "normalize_type": "function",
+    "normalize_length": 1,
+    "normalize_source": "function normalizeSearchRequest(payload) {\n  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {\n    throw new SearchContractError('검색 요청 형식이 올바르지 않습니다.');\n  }\n  const query = normalizeSpace(payload.query);\n  if (!query) {\n    throw new SearchContractError('검색어를 입력해야 합니다.');\n  }\n  if (query.length > 200) {\n    throw new SearchContractError('검색어는 200자 이하여야 합니다.');\n  }\n  const filters = normalizeSharedFilters(payload);\n  return Object.freeze({\n    query,\n    entityType: normalizeEntityTypes(payload.entityType),\n    limit: boundedInteger(payload.limit, 'limit', 50, 1, 500),\n    offset: boundedInteger(payload.offset, 'offset', 0, 0, 1000000),\n    ...filters,\n  });\n}",
+    "probes": {
+      "object_CODE": {
+        "ok": true,
+        "value": {
+          "query": "B018",
+          "entityType": [
+            "CODE"
+          ],
+          "limit": 100,
+          "offset": 0,
+          "mdc": null,
+          "classification": null
+        }
+      },
+      "object_ADRG": {
+        "ok": true,
+        "value": {
+          "query": "B018",
+          "entityType": [
+            "ADRG"
+          ],
+          "limit": 100,
+          "offset": 0,
+          "mdc": null,
+          "classification": null
+        }
+      },
+      "object_ALL": {
+        "ok": true,
+        "value": {
+          "query": "B018",
+          "entityType": [
+            "CODE",
+            "ADRG"
+          ],
+          "limit": 100,
+          "offset": 0,
+          "mdc": null,
+          "classification": null
+        }
+      },
+      "object_AADRG": {
+        "ok": false,
+        "error": "사용자 검색에서 지원하지 않는 유형입니다: AADRG",
+        "stack": "SearchContractError: 사용자 검색에서 지원하지 않는 유형입니다: AADRG\n    at normalizeEntityTypes (/home/runner/workspace/electron/src/search-result-contract.js:43:13)\n    at normalizeSearchRequest (/home/runner/workspace/electron/src/search-result-contract.js:89:17)\n    at [eval]:30:47"
+      },
+      "object_INVALID": {
+        "ok": false,
+        "error": "사용자 검색에서 지원하지 않는 유형입니다: INVALID",
+        "stack": "SearchContractError: 사용자 검색에서 지원하지 않는 유형입니다: INVALID\n    at normalizeEntityTypes (/home/runner/workspace/electron/src/search-result-contract.js:43:13)\n    at normalizeSearchRequest (/home/runner/workspace/electron/src/search-result-contract.js:89:17)\n    at [eval]:30:47"
+      },
+      "object_entity_type_ADRG": {
+        "ok": true,
+        "value": {
+          "query": "B018",
+          "entityType": [
+            "CODE",
+            "ADRG"
+          ],
+          "limit": 100,
+          "offset": 0,
+          "mdc": null,
+          "classification": null
+        }
+      },
+      "positional_B018_ADRG": {
+        "ok": false,
+        "error": "검색 요청 형식이 올바르지 않습니다.",
+        "stack": "SearchContractError: 검색 요청 형식이 올바르지 않습니다.\n    at normalizeSearchRequest (/home/runner/workspace/electron/src/search-result-contract.js:77:11)\n    at [eval]:45:48\n    at safe ([eval]:6:29)"
+      }
+    }
+  },
+  "service_probe": {
+    "b018_total_count": 1,
+    "b018_exact_count": 1,
+    "b018_first_results": [
+      "ADRG:B018"
+    ],
+    "adrg_count": 1132,
+    "collision_count": 471,
+    "failure_count": 0,
+    "noncollision_failure_count": 0
+  },
+  "paths": {
+    "main_path": "electron/main.js",
+    "preload_path": "electron/preload.js"
+  },
+  "trace": {
+    "signals": {
+      "renderer_calls_window_KDRG_search": true,
+      "renderer_mentions_search_type": false,
+      "preload_invokes_kdrg_search": true,
+      "main_handles_kdrg_search": true,
+      "main_uses_normalizeSearchRequest": true,
+      "main_calls_service_search": false,
+      "packaged_sets_ADRG_filter": true,
+      "packaged_queries_fixture_search_query": true,
+      "packaged_waits_ADRG_result": true,
+      "contract_public_types_CODE_ADRG": true
+    },
+    "contexts": {
+      "renderer": [
+        {
+          "line": 79,
+          "text": "  submit.textContent = isBusy ? label : '검색';"
+        },
+        {
+          "line": 80,
+          "text": "  const relationSubmit = byId('relation-submit');"
+        },
+        {
+          "line": 81,
+          "text": "  if (relationSubmit) relationSubmit.disabled = isBusy;"
+        },
+        {
+          "line": 82,
+          "text": "}"
+        },
+        {
+          "line": 83,
+          "text": ""
+        },
+        {
+          "line": 84,
+          "text": "function makeBadge(entityType) {"
+        },
+        {
+          "line": 85,
+          "text": "  const type = String(entityType ?? '').toUpperCase();"
+        },
+        {
+          "line": 86,
+          "text": "  const badge = create('span', `entity-badge ${TYPE_BADGE_CLASS[type] ?? ''}`, Ui.entityLabel(type));"
+        },
+        {
+          "line": 87,
+          "text": "  badge.dataset.entityType = type;"
+        },
+        {
+          "line": 88,
+          "text": "  return badge;"
+        },
+        {
+          "line": 89,
+          "text": "}"
+        },
+        {
+          "line": 90,
+          "text": ""
+        },
+        {
+          "line": 91,
+          "text": "function makeChip(textValue, className = '') {"
+        },
+        {
+          "line": 92,
+          "text": "  return create('span', `chip ${className}`.trim(), textValue);"
+        },
+        {
+          "line": 203,
+          "text": "}"
+        },
+        {
+          "line": 204,
+          "text": ""
+        },
+        {
+          "line": 205,
+          "text": "function makeEntityButton(summary, className = 'entity-link') {"
+        },
+        {
+          "line": 206,
+          "text": "  const button = create('button', className);"
+        },
+        {
+          "line": 207,
+          "text": "  button.type = 'button';"
+        },
+        {
+          "line": 208,
+          "text": "  button.dataset.entityType = String(summary?.entity_type ?? '');"
+        },
+        {
+          "line": 209,
+          "text": "  button.dataset.entityId = String(summary?.entity_id ?? '');"
+        },
+        {
+          "line": 210,
+          "text": "  button.append(makeBadge(summary?.entity_type));"
+        },
+        {
+          "line": 211,
+          "text": "  const copy = create('span', 'entity-link-copy');"
+        },
+        {
+          "line": 212,
+          "text": "  copy.append("
+        },
+        {
+          "line": 213,
+          "text": "    create('strong', '', summary?.title || summary?.entity_id || '-'),"
+        },
+        {
+          "line": 229,
+          "text": "  setText('data-overview-summary', `${Ui.formatNumber(snapshot.counts.codes)}개 코드`);"
+        },
+        {
+          "line": 230,
+          "text": "}"
+        },
+        {
+          "line": 231,
+          "text": ""
+        },
+        {
+          "line": 232,
+          "text": "function renderTypeCounts(response) {"
+        },
+        {
+          "line": 233,
+          "text": "  const container = byId('type-counts'); container.replaceChildren(); const typeCounts = response?.type_counts ?? {};"
+        },
+        {
+          "line": 234,
+          "text": "  for (const type of ['CODE', 'ADRG']) { const count = Number(typeCounts[type] ?? 0); if (!count) continue; const chip = makeChip(`${Ui.entityLabel(type)} ${Ui.formatNumber(count)}`, 'type-count-chip'); chip.dataset.entityType = type; container.append(chip); }"
+        },
+        {
+          "line": 235,
+          "text": "}"
+        },
+        {
+          "line": 236,
+          "text": ""
+        },
+        {
+          "line": 237,
+          "text": "function resultAriaLabel(result) {"
+        },
+        {
+          "line": 238,
+          "text": "  return `${Ui.entityLabel(result.entity_type)} ${result.entity_id} ${result.title}`;"
+        },
+        {
+          "line": 239,
+          "text": "}"
+        },
+        {
+          "line": 265,
+          "text": ""
+        },
+        {
+          "line": 266,
+          "text": "  for (const result of response.results) {"
+        },
+        {
+          "line": 267,
+          "text": "    const key = `${result.entity_type}:${result.entity_id}`;"
+        },
+        {
+          "line": 268,
+          "text": "    const button = create('button', 'result-card');"
+        },
+        {
+          "line": 269,
+          "text": "    button.type = 'button';"
+        },
+        {
+          "line": 270,
+          "text": "    button.dataset.entityType = result.entity_type;"
+        },
+        {
+          "line": 271,
+          "text": "    button.dataset.entityId = result.entity_id;"
+        },
+        {
+          "line": 272,
+          "text": "    button.dataset.resultKey = key;"
+        },
+        {
+          "line": 273,
+          "text": "    button.setAttribute('aria-label', resultAriaLabel(result));"
+        },
+        {
+          "line": 274,
+          "text": "    button.setAttribute('aria-pressed', String(state.selectedKey === key));"
+        },
+        {
+          "line": 275,
+          "text": ""
+        },
+        {
+          "line": 345,
+          "text": ""
+        },
+        {
+          "line": 346,
+          "text": "function renderRelationDetail(candidate, response, options = {}) {"
+        },
+        {
+          "line": 347,
+          "text": "  if (options.push !== false) pushHistory();"
+        },
+        {
+          "line": 348,
+          "text": "  const panel = byId('detail-content'); panel.replaceChildren(); state.currentDetail = null; state.currentRelationIndex = response.results.indexOf(candidate);"
+        },
+        {
+          "line": 349,
+          "text": "  const header = create('div', 'detail-primary detail-hero relation-detail-primary'); header.append(makeBadge('ADRG')); const copy = create('div'); copy.append(create('h2', '', candidate.title), create('p', '', `${candidate.relation_level_label} · ${candidate.matched_count}/${candidate.total_count} 코드 연결`)); header.append(copy);"
+        },
+        {
+          "line": 350,
+          "text": "  const openAadrg = create('button', 'secondary-button relation-open-aadrg', 'ADRG 상세 보기'); openAadrg.type = 'button'; openAadrg.dataset.entityType = 'ADRG'; openAadrg.dataset.entityId = candidate.entity_id; header.append(openAadrg); panel.append(header);"
+        },
+        {
+          "line": 351,
+          "text": "  const notice = create('div', `relation-level-notice relation-${candidate.relation_level}`); notice.append(create('strong', '', candidate.relation_level_label), create('p', '', relationLevelDescription(candidate.relation_level)), create('small', '', response.disclaimer)); panel.append(notice);"
+        },
+        {
+          "line": 352,
+          "text": "  panel.append(makeMetaGrid([['ADRG', candidate.entity_id], ['MDC', candidate.summary?.mdc ? mdcDisplayText(candidate.summary.mdc, candidate.summary?.mdc_name) : '-'], ['질병군 분류', makeClassificationBadgeGroup([candidate.summary?.classification_code || candidate.summary?.classification_display_label])], ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`]], 'detail-overview-grid'));"
+        },
+        {
+          "line": 353,
+          "text": "  const matches = makeSection('입력 코드별 연결 조건', '입력 코드가 분류조건의 어떤 코드집합과 연결되는지 확인합니다.', { open: true, count: candidate.code_matches.length }); const stack = create('div', 'relation-match-stack'); for (const match of candidate.code_matches) stack.append(relationMatchCard(match)); matches.append(stack); panel.append(matches);"
+        },
+        {
+          "line": 354,
+          "text": "  setText('detail-heading', '복수 코드 관계 상세'); setText('detail-caption', `ADRG ${candidate.entity_id}`); setDetailFoldActions(true); updateBackButton();"
+        },
+        {
+          "line": 355,
+          "text": "}"
+        },
+        {
+          "line": 585,
+          "text": "  return body;"
+        },
+        {
+          "line": 586,
+          "text": "}"
+        },
+        {
+          "line": 587,
+          "text": ""
+        },
+        {
+          "line": 588,
+          "text": "async function loadInlineTable(card, summary, options = {}) {"
+        },
+        {
+          "line": 589,
+          "text": "  if (card.dataset.loaded === 'true' || card.dataset.loading === 'true') return; card.dataset.loading = 'true'; const content = card.querySelector('.inline-table-content'); content?.replaceChildren(create('p', 'muted', '코드 목록을 불러오는 중입니다.'));"
+        },
+        {
+          "line": 590,
+          "text": "  try { const tableId = String(summary?.entity_id ?? ''); const payload = await window.KDRG.getDetail({ entityType: 'TABLE', entityId: tableId }); const labelNode = card.querySelector('.table-user-label'); if (labelNode) labelNode.textContent = tableUserLabel(summary, options); const countNode = card.querySelector('.table-code-count'); if (countNode) countNode.textContent = `코드 ${Ui.formatNumber((payload.detail?.code_records ?? []).length)}개`; content?.replaceChildren(renderInlineTableCodeList(payload.detail)); card.dataset.loaded = 'true'; }"
+        },
+        {
+          "line": 591,
+          "text": "  catch (error) { content?.replaceChildren(create('p', 'error-message', error?.message || '코드 목록을 불러오지 못했습니다.')); } finally { card.dataset.loading = 'false'; }"
+        },
+        {
+          "line": 592,
+          "text": "}"
+        },
+        {
+          "line": 593,
+          "text": ""
+        },
+        {
+          "line": 594,
+          "text": "function tableCard(summary, options = {}) {"
+        },
+        {
+          "line": 595,
+          "text": "  const tableId = String(summary?.entity_id ?? ''); const summaryData = summary?.summary ?? {}; const card = create('details', `table-card inline-table-card condition-code-set ${options.exclusion ? 'table-card-exclusion' : ''}`.trim()); card.dataset.inlineTableId = tableId;"
+        },
+        {
+          "line": 1015,
+          "text": "}"
+        },
+        {
+          "line": 1016,
+          "text": ""
+        },
+        {
+          "line": 1017,
+          "text": "function applySearchRequestToControls(request) {"
+        },
+        {
+          "line": 1018,
+          "text": "  if (!request) return;"
+        },
+        {
+          "line": 1019,
+          "text": "  if (byId('search-query')) byId('search-query').value = request.query ?? '';"
+        },
+        {
+          "line": 1020,
+          "text": "  if (byId('filter-type')) byId('filter-type').value = request.entityType ?? 'ALL';"
+        },
+        {
+          "line": 1021,
+          "text": "  if (byId('filter-mdc')) byId('filter-mdc').value = request.mdc ?? '';"
+        },
+        {
+          "line": 1022,
+          "text": "  if (byId('filter-classification')) byId('filter-classification').value = request.classification ?? '';"
+        },
+        {
+          "line": 1023,
+          "text": "}"
+        },
+        {
+          "line": 1024,
+          "text": "function updateBackButton() {"
+        },
+        {
+          "line": 1025,
+          "text": "  const back = byId('detail-back');"
+        },
+        {
+          "line": 1046,
+          "text": "async function goBack() {"
+        },
+        {
+          "line": 1047,
+          "text": "  const entry = state.historyStack?.pop();"
+        },
+        {
+          "line": 1048,
+          "text": "  updateBackButton();"
+        },
+        {
+          "line": 1049,
+          "text": "  if (!entry) return;"
+        },
+        {
+          "line": 1050,
+          "text": "  if (entry.kind === 'detail') {"
+        },
+        {
+          "line": 1051,
+          "text": "    await openDetail(entry.entityType, entry.entityId, { push: false });"
+        },
+        {
+          "line": 1052,
+          "text": "    return;"
+        },
+        {
+          "line": 1053,
+          "text": "  }"
+        },
+        {
+          "line": 1054,
+          "text": "  if (entry.kind === 'relation-detail') {"
+        },
+        {
+          "line": 1055,
+          "text": "    const candidate = state.relationResponse?.results?.[entry.index];"
+        },
+        {
+          "line": 1056,
+          "text": "    if (candidate) renderRelationDetail(candidate, state.relationResponse, { push: false });"
+        },
+        {
+          "line": 1165,
+          "text": "    return container;"
+        },
+        {
+          "line": 1166,
+          "text": "  }"
+        },
+        {
+          "line": 1167,
+          "text": "  for (const record of records) {"
+        },
+        {
+          "line": 1168,
+          "text": "    const row = create('button', 'derived-aadrg-row');"
+        },
+        {
+          "line": 1169,
+          "text": "    row.type = 'button';"
+        },
+        {
+          "line": 1170,
+          "text": "    row.dataset.entityType = 'AADRG';"
+        },
+        {
+          "line": 1171,
+          "text": "    row.dataset.entityId = String(record.entity_id || '');"
+        },
+        {
+          "line": 1172,
+          "text": "    row.setAttribute("
+        },
+        {
+          "line": 1173,
+          "text": "      'aria-label',"
+        },
+        {
+          "line": 1174,
+          "text": "      `AADRG ${record.entity_id || ''} ${String(record.title || '')}`.trim(),"
+        },
+        {
+          "line": 1175,
+          "text": "    );"
+        },
+        {
+          "line": 1210,
+          "text": "    return container;"
+        },
+        {
+          "line": 1211,
+          "text": "  }"
+        },
+        {
+          "line": 1212,
+          "text": "  for (const record of records) {"
+        },
+        {
+          "line": 1213,
+          "text": "    const row = create('button', 'derived-aadrg-row');"
+        },
+        {
+          "line": 1214,
+          "text": "    row.type = 'button';"
+        },
+        {
+          "line": 1215,
+          "text": "    row.dataset.entityType = 'ADRG';"
+        },
+        {
+          "line": 1216,
+          "text": "    row.dataset.entityId = String(record.entity_id || '');"
+        },
+        {
+          "line": 1217,
+          "text": "    row.setAttribute("
+        },
+        {
+          "line": 1218,
+          "text": "      'aria-label',"
+        },
+        {
+          "line": 1219,
+          "text": "      `ADRG ${record.entity_id || ''} ${String(record.title || '')}`.trim(),"
+        },
+        {
+          "line": 1220,
+          "text": "    );"
+        },
+        {
+          "line": 1495,
+          "text": "    card.classList.toggle('is-selected', selected);"
+        },
+        {
+          "line": 1496,
+          "text": "    card.setAttribute('aria-pressed', String(selected));"
+        },
+        {
+          "line": 1497,
+          "text": "  }"
+        },
+        {
+          "line": 1498,
+          "text": "}"
+        },
+        {
+          "line": 1499,
+          "text": ""
+        },
+        {
+          "line": 1500,
+          "text": "async function openDetail(entityType, entityId, options = {}) {"
+        },
+        {
+          "line": 1501,
+          "text": "  if (options.push !== false) pushHistory(); const sequence = ++state.detailSequence; const key = `${entityType}:${entityId}`; markSelected(key); setText('detail-heading', '상세 정보를 불러오는 중'); setText('detail-caption', key);"
+        }
+      ],
+      "preload": [
+        {
+          "line": 3,
+          "text": "const { contextBridge, ipcRenderer } = require('electron');"
+        },
+        {
+          "line": 4,
+          "text": ""
+        },
+        {
+          "line": 5,
+          "text": "const CHANNELS = Object.freeze({"
+        },
+        {
+          "line": 6,
+          "text": "  getBootstrapSnapshot: 'kdrg:get-bootstrap-snapshot',"
+        },
+        {
+          "line": 7,
+          "text": "  getSearchStatus: 'kdrg:get-search-status',"
+        },
+        {
+          "line": 8,
+          "text": "  search: 'kdrg:search',"
+        },
+        {
+          "line": 9,
+          "text": "  relationSearch: 'kdrg:relation-search',"
+        },
+        {
+          "line": 10,
+          "text": "  getDetail: 'kdrg:get-detail',"
+        },
+        {
+          "line": 11,
+          "text": "});"
+        },
+        {
+          "line": 12,
+          "text": ""
+        },
+        {
+          "line": 13,
+          "text": "const api = Object.freeze({"
+        },
+        {
+          "line": 14,
+          "text": "  getBootstrapSnapshot: () => ipcRenderer.invoke(CHANNELS.getBootstrapSnapshot),"
+        },
+        {
+          "line": 15,
+          "text": "  getSearchStatus: () => ipcRenderer.invoke(CHANNELS.getSearchStatus),"
+        },
+        {
+          "line": 16,
+          "text": "  search: (request) => ipcRenderer.invoke(CHANNELS.search, request),"
+        },
+        {
+          "line": 17,
+          "text": "  relationSearch: (request) => ipcRenderer.invoke(CHANNELS.relationSearch, request),"
+        },
+        {
+          "line": 18,
+          "text": "  getDetail: (request) => ipcRenderer.invoke(CHANNELS.getDetail, request),"
+        },
+        {
+          "line": 19,
+          "text": "});"
+        },
+        {
+          "line": 20,
+          "text": ""
+        },
+        {
+          "line": 21,
+          "text": "contextBridge.exposeInMainWorld('KDRG', api);"
+        }
+      ],
+      "main": [
+        {
+          "line": 7,
+          "text": "const { KdrgSearchService } = require('./src/kdrg-search-service');"
+        },
+        {
+          "line": 8,
+          "text": "const {"
+        },
+        {
+          "line": 9,
+          "text": "  shouldRunPackagedSmoke,"
+        },
+        {
+          "line": 10,
+          "text": "  runPackagedRuntimeSmoke,"
+        },
+        {
+          "line": 11,
+          "text": "} = require('./src/packaged-runtime-smoke');"
+        },
+        {
+          "line": 12,
+          "text": "const {"
+        },
+        {
+          "line": 13,
+          "text": "  normalizeSearchRequest,"
+        },
+        {
+          "line": 14,
+          "text": "  normalizeRelationRequest,"
+        },
+        {
+          "line": 15,
+          "text": "  normalizeDetailRequest,"
+        },
+        {
+          "line": 16,
+          "text": "} = require('./src/search-result-contract');"
+        },
+        {
+          "line": 17,
+          "text": ""
+        },
+        {
+          "line": 18,
+          "text": "const IPC_CHANNELS = Object.freeze({"
+        },
+        {
+          "line": 19,
+          "text": "  bootstrap: 'kdrg:get-bootstrap-snapshot',"
+        },
+        {
+          "line": 20,
+          "text": "  searchStatus: 'kdrg:get-search-status',"
+        },
+        {
+          "line": 21,
+          "text": "  search: 'kdrg:search',"
+        },
+        {
+          "line": 22,
+          "text": "  relationSearch: 'kdrg:relation-search',"
+        },
+        {
+          "line": 23,
+          "text": "  detail: 'kdrg:get-detail',"
+        },
+        {
+          "line": 24,
+          "text": "});"
+        },
+        {
+          "line": 25,
+          "text": ""
+        },
+        {
+          "line": 26,
+          "text": "let mainWindow = null;"
+        },
+        {
+          "line": 27,
+          "text": "let bootstrapSnapshot = null;"
+        },
+        {
+          "line": 53,
+          "text": "    ipcMain.removeHandler(channel);"
+        },
+        {
+          "line": 54,
+          "text": "  }"
+        },
+        {
+          "line": 55,
+          "text": ""
+        },
+        {
+          "line": 56,
+          "text": "  ipcMain.handle(IPC_CHANNELS.bootstrap, async () => getBootstrapSnapshot());"
+        },
+        {
+          "line": 57,
+          "text": "  ipcMain.handle(IPC_CHANNELS.searchStatus, async () => getSearchService().status());"
+        },
+        {
+          "line": 58,
+          "text": "  ipcMain.handle(IPC_CHANNELS.search, async (_event, payload) => {"
+        },
+        {
+          "line": 59,
+          "text": "    const request = normalizeSearchRequest(payload);"
+        },
+        {
+          "line": 60,
+          "text": "    return getSearchService().search(request.query, request.entityType, {"
+        },
+        {
+          "line": 61,
+          "text": "      limit: request.limit,"
+        },
+        {
+          "line": 62,
+          "text": "      offset: request.offset,"
+        },
+        {
+          "line": 63,
+          "text": "      mdc: request.mdc,"
+        },
+        {
+          "line": 64,
+          "text": "      classification: request.classification,"
+        },
+        {
+          "line": 65,
+          "text": "    });"
+        }
+      ],
+      "contract": [
+        {
+          "line": 1,
+          "text": "'use strict';"
+        },
+        {
+          "line": 2,
+          "text": ""
+        },
+        {
+          "line": 3,
+          "text": "const { normalizeSpace, normalizeEntityId } = require('./search-normalizer');"
+        },
+        {
+          "line": 4,
+          "text": ""
+        },
+        {
+          "line": 5,
+          "text": "const ENTITY_TYPES = Object.freeze(['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']);"
+        },
+        {
+          "line": 6,
+          "text": "const ENTITY_TYPE_SET = new Set(ENTITY_TYPES);"
+        },
+        {
+          "line": 7,
+          "text": "const SEARCH_ENTITY_TYPES = Object.freeze(['CODE', 'ADRG']);"
+        },
+        {
+          "line": 8,
+          "text": "const SEARCH_ENTITY_TYPE_SET = new Set(SEARCH_ENTITY_TYPES);"
+        },
+        {
+          "line": 9,
+          "text": "const RELATION_OPERATORS = Object.freeze(['AND', 'OR']);"
+        },
+        {
+          "line": 10,
+          "text": "const RELATION_CODE_TYPES = Object.freeze(["
+        },
+        {
+          "line": 11,
+          "text": "  'AUTO',"
+        },
+        {
+          "line": 12,
+          "text": "  'DIAGNOSIS',"
+        },
+        {
+          "line": 13,
+          "text": "  'SECONDARY_DIAGNOSIS',"
+        },
+        {
+          "line": 14,
+          "text": "  'PROCEDURE',"
+        },
+        {
+          "line": 15,
+          "text": "  'TEST',"
+        },
+        {
+          "line": 16,
+          "text": "  'ADD_ON',"
+        },
+        {
+          "line": 22,
+          "text": "  constructor(message) {"
+        },
+        {
+          "line": 23,
+          "text": "    super(message);"
+        },
+        {
+          "line": 24,
+          "text": "    this.name = 'SearchContractError';"
+        },
+        {
+          "line": 25,
+          "text": "  }"
+        },
+        {
+          "line": 26,
+          "text": "}"
+        },
+        {
+          "line": 27,
+          "text": ""
+        },
+        {
+          "line": 28,
+          "text": "function normalizeEntityTypes(value) {"
+        },
+        {
+          "line": 29,
+          "text": "  if (value == null || value === 'ALL') {"
+        },
+        {
+          "line": 30,
+          "text": "    return [...SEARCH_ENTITY_TYPES];"
+        },
+        {
+          "line": 31,
+          "text": "  }"
+        },
+        {
+          "line": 32,
+          "text": "  const values = Array.isArray(value) ? value : [value];"
+        },
+        {
+          "line": 33,
+          "text": "  if (!values.length) {"
+        },
+        {
+          "line": 34,
+          "text": "    throw new SearchContractError('검색 유형이 비어 있습니다.');"
+        },
+        {
+          "line": 35,
+          "text": "  }"
+        },
+        {
+          "line": 36,
+          "text": "  const output = [];"
+        },
+        {
+          "line": 37,
+          "text": "  for (const item of values) {"
+        },
+        {
+          "line": 38,
+          "text": "    const normalized = String(item ?? '').toUpperCase();"
+        },
+        {
+          "line": 39,
+          "text": "    if (normalized === 'ALL') {"
+        },
+        {
+          "line": 40,
+          "text": "      return [...SEARCH_ENTITY_TYPES];"
+        },
+        {
+          "line": 41,
+          "text": "    }"
+        },
+        {
+          "line": 42,
+          "text": "    if (!SEARCH_ENTITY_TYPE_SET.has(normalized)) {"
+        },
+        {
+          "line": 43,
+          "text": "      throw new SearchContractError(`사용자 검색에서 지원하지 않는 유형입니다: ${item}`);"
+        },
+        {
+          "line": 44,
+          "text": "    }"
+        },
+        {
+          "line": 45,
+          "text": "    if (!output.includes(normalized)) {"
+        },
+        {
+          "line": 46,
+          "text": "      output.push(normalized);"
+        },
+        {
+          "line": 47,
+          "text": "    }"
+        },
+        {
+          "line": 48,
+          "text": "  }"
+        },
+        {
+          "line": 67,
+          "text": "    throw new SearchContractError('필터 값이 허용 길이를 초과했습니다.');"
+        },
+        {
+          "line": 68,
+          "text": "  }"
+        },
+        {
+          "line": 69,
+          "text": "  return {"
+        },
+        {
+          "line": 70,
+          "text": "    mdc: mdc || null,"
+        },
+        {
+          "line": 71,
+          "text": "    classification: classification || null,"
+        },
+        {
+          "line": 72,
+          "text": "  };"
+        },
+        {
+          "line": 73,
+          "text": "}"
+        },
+        {
+          "line": 74,
+          "text": ""
+        },
+        {
+          "line": 75,
+          "text": "function normalizeSearchRequest(payload) {"
+        },
+        {
+          "line": 76,
+          "text": "  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {"
+        },
+        {
+          "line": 77,
+          "text": "    throw new SearchContractError('검색 요청 형식이 올바르지 않습니다.');"
+        },
+        {
+          "line": 78,
+          "text": "  }"
+        },
+        {
+          "line": 79,
+          "text": "  const query = normalizeSpace(payload.query);"
+        },
+        {
+          "line": 80,
+          "text": "  if (!query) {"
+        },
+        {
+          "line": 81,
+          "text": "    throw new SearchContractError('검색어를 입력해야 합니다.');"
+        },
+        {
+          "line": 82,
+          "text": "  }"
+        },
+        {
+          "line": 83,
+          "text": "  if (query.length > 200) {"
+        },
+        {
+          "line": 155,
+          "text": "  if (!entityId || entityId.length > 100) {"
+        },
+        {
+          "line": 156,
+          "text": "    throw new SearchContractError('상세조회 ID는 1~100자여야 합니다.');"
+        },
+        {
+          "line": 157,
+          "text": "  }"
+        },
+        {
+          "line": 158,
+          "text": "  return Object.freeze({ entityType, entityId });"
+        },
+        {
+          "line": 159,
+          "text": "}"
+        },
+        {
+          "line": 160,
+          "text": ""
+        },
+        {
+          "line": 161,
+          "text": "module.exports = Object.freeze({"
+        },
+        {
+          "line": 162,
+          "text": "  ENTITY_TYPES,"
+        },
+        {
+          "line": 163,
+          "text": "  SEARCH_ENTITY_TYPES,"
+        },
+        {
+          "line": 164,
+          "text": "  RELATION_OPERATORS,"
+        },
+        {
+          "line": 165,
+          "text": "  RELATION_CODE_TYPES,"
+        },
+        {
+          "line": 166,
+          "text": "  SearchContractError,"
+        },
+        {
+          "line": 167,
+          "text": "  normalizeSearchRequest,"
+        },
+        {
+          "line": 168,
+          "text": "  normalizeRelationRequest,"
+        },
+        {
+          "line": 169,
+          "text": "  normalizeDetailRequest,"
+        },
+        {
+          "line": 170,
+          "text": "});"
+        }
+      ],
+      "packaged": [
+        {
+          "line": 646,
+          "text": "      const input = document.querySelector('#search-query');"
+        },
+        {
+          "line": 647,
+          "text": "      const filter = document.querySelector('#filter-type');"
+        },
+        {
+          "line": 648,
+          "text": "      const form = document.querySelector('#search-form');"
+        },
+        {
+          "line": 649,
+          "text": "      if (!input || !filter || !form) {"
+        },
+        {
+          "line": 650,
+          "text": "        throw new Error('search DOM contract mismatch');"
+        },
+        {
+          "line": 651,
+          "text": "      }"
+        },
+        {
+          "line": 652,
+          "text": ""
+        },
+        {
+          "line": 653,
+          "text": "      filter.value = 'ADRG';"
+        },
+        {
+          "line": 654,
+          "text": "      filter.dispatchEvent(new Event('change', { bubbles: true }));"
+        },
+        {
+          "line": 655,
+          "text": "      input.value = fixture.search_query;"
+        },
+        {
+          "line": 656,
+          "text": "      input.dispatchEvent(new Event('input', { bubbles: true }));"
+        },
+        {
+          "line": 657,
+          "text": "      input.dispatchEvent(new Event('change', { bubbles: true }));"
+        },
+        {
+          "line": 658,
+          "text": ""
+        },
+        {
+          "line": 659,
+          "text": "      if (typeof form.requestSubmit === 'function') {"
+        },
+        {
+          "line": 660,
+          "text": "        form.requestSubmit();"
+        },
+        {
+          "line": 661,
+          "text": "      } else {"
+        },
+        {
+          "line": 662,
+          "text": "        form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));"
+        },
+        {
+          "line": 663,
+          "text": "      }"
+        },
+        {
+          "line": 664,
+          "text": ""
+        },
+        {
+          "line": 665,
+          "text": "      const selectedResult = await waitFor("
+        },
+        {
+          "line": 666,
+          "text": "        () => document.querySelector("
+        },
+        {
+          "line": 667,
+          "text": "          '#result-list [data-entity-type=\"ADRG\"][data-entity-id=\"' + fixture.adrg + '\"]'"
+        },
+        {
+          "line": 668,
+          "text": "        ),"
+        },
+        {
+          "line": 669,
+          "text": "        fixture.adrg + ' result ready',"
+        },
+        {
+          "line": 670,
+          "text": "      );"
+        },
+        {
+          "line": 671,
+          "text": "      selectedResult.click();"
+        },
+        {
+          "line": 672,
+          "text": ""
+        },
+        {
+          "line": 673,
+          "text": "      await waitFor(() => {"
+        },
+        {
+          "line": 674,
+          "text": "        const detail = document.querySelector('#detail-content');"
+        },
+        {
+          "line": 675,
+          "text": "        const detailCaption = document.querySelector('#detail-caption')?.textContent?.trim() || '';"
+        },
+        {
+          "line": 676,
+          "text": "        return Boolean("
+        },
+        {
+          "line": 842,
+          "text": "      const metrics = analyzeNativeImage(image, png);"
+        },
+        {
+          "line": 843,
+          "text": "      const screenshotSha256 = sha256Buffer(png);"
+        },
+        {
+          "line": 844,
+          "text": "      fs.writeFileSync(screenshotPath, png);"
+        },
+        {
+          "line": 845,
+          "text": ""
+        },
+        {
+          "line": 846,
+          "text": "      cases.push({"
+        },
+        {
+          "line": 847,
+          "text": "        adrg: fixture.adrg,"
+        },
+        {
+          "line": 848,
+          "text": "        aadrg: fixture.aadrg,"
+        },
+        {
+          "line": 849,
+          "text": "        search_query: fixture.search_query,"
+        },
+        {
+          "line": 850,
+          "text": "        expected_table_ids: [...fixture.expected_table_ids],"
+        },
+        {
+          "line": 851,
+          "text": "        forbidden_table_ids: [...fixture.forbidden_table_ids],"
+        },
+        {
+          "line": 852,
+          "text": "        required_table_labels: [...fixture.required_table_labels],"
+        },
+        {
+          "line": 853,
+          "text": "        ...snapshot,"
+        },
+        {
+          "line": 854,
+          "text": "        ...validation,"
+        },
+        {
+          "line": 855,
+          "text": "        screenshot_filename: filename,"
+        },
+        {
+          "line": 856,
+          "text": "        screenshot_path: screenshotPath,"
+        }
+      ]
+    }
+  },
+  "stale_public_refs": {
+    "candidate_count": 10,
+    "candidates": [
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/renderer/app.js",
+        "line": 1170,
+        "text": "row.dataset.entityType = 'AADRG';"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/src/kdrg-search-service.js",
+        "line": 222,
+        "text": "if (entityType === 'AADRG') {"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/src/kdrg-search-service.js",
+        "line": 258,
+        "text": "} else if (entityType === 'AADRG') {"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/src/kdrg-search-service.js",
+        "line": 887,
+        "text": "if (entityType === 'ADRG' || entityType === 'AADRG') {"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/src/kdrg-search-service.js",
+        "line": 903,
+        "text": "if (entityType === 'AADRG') {"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/src/kdrg-search-service.js",
+        "line": 977,
+        "text": "if (entityType === 'AADRG') {"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/src/kdrg-search-service.js",
+        "line": 1230,
+        "text": "else if (entityType === 'AADRG') {"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/src/kdrg-search-service.js",
+        "line": 1312,
+        "text": "if (entityType === 'AADRG') {"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/tests/validate-packaged-runtime-smoke.js",
+        "line": 202,
+        "text": "executeFixtureSource.includes(\"filter.value = 'AADRG';\"),"
+      },
+      {
+        "kind": "FILTER_AADRG",
+        "path": "electron/tests/validate-stage59b-ui.js",
+        "line": 58,
+        "text": "assert.match(body, /row\\.dataset\\.entityType = 'AADRG'/);"
+      }
+    ]
+  },
+  "packaged_fixture": {
+    "fixtures": [
+      {
+        "adrg": "B013",
+        "search_query": "B013"
+      },
+      {
+        "adrg": "B014",
+        "search_query": "B014"
+      },
+      {
+        "adrg": "B018",
+        "search_query": "B018"
+      },
+      {
+        "adrg": "B022",
+        "search_query": "B022"
+      },
+      {
+        "adrg": "L033",
+        "search_query": "L033"
+      },
+      {
+        "adrg": "9610",
+        "search_query": "9610"
+      }
+    ],
+    "all_search_query_equals_adrg": true,
+    "filter_adrg": true,
+    "selector_adrg": true
+  },
+  "future_risk_validators": {
+    "stage59b_search_public_ADRG": true,
+    "packaged_validator_ADRG_filter": true,
+    "stage59b_ui_ADRG": true,
+    "stage60c_packaged_relation_ADRG": true,
+    "workflow_packaged_smoke_gate": true
+  },
+  "baseline": {
+    "pass_count": 10,
+    "fail_count": 0,
+    "results": [
+      {
+        "cmd": "node tests/validate-stage59b-search.js",
+        "cwd": "electron",
+        "returncode": 0,
+        "tail": "stage59_search: 29 PASS / 0 FAIL"
+      },
+      {
+        "cmd": "node tests/validate-packaged-runtime-smoke.js",
+        "cwd": "electron",
+        "returncode": 0,
+        "tail": "validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL"
+      },
+      {
+        "cmd": "node tests/validate-stage60c-packaged-relation-smoke.js",
+        "cwd": "electron",
+        "returncode": 0,
+        "tail": "[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011"
+      },
+      {
+        "cmd": "node tests/validate-stage59b-ui.js",
+        "cwd": "electron",
+        "returncode": 0,
+        "tail": "stage59_ui: 21 PASS / 0 FAIL"
+      },
+      {
+        "cmd": "node tests/validate-stage59b-smoke.js",
+        "cwd": "electron",
+        "returncode": 0,
+        "tail": "stage59_smoke: PASS"
+      },
+      {
+        "cmd": "npm run check",
+        "cwd": "electron",
+        "returncode": 0,
+        "tail": "npm notice\nnpm notice New major version of npm available! 10.8.2 -> 12.1.0\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0\nnpm notice To update run: npm install -g npm@12.1.0\nnpm notice"
+      },
+      {
+        "cmd": "python 50B_validate_kdrg_electron_search_service.py",
+        "cwd": ".",
+        "returncode": 0,
+        "tail": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt"
+      },
+      {
+        "cmd": "python 50C_validate_kdrg_electron_renderer_ui.py",
+        "cwd": ".",
+        "returncode": 0,
+        "tail": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt"
+      },
+      {
+        "cmd": "python 50D_validate_kdrg_electron_windows_packaging.py",
+        "cwd": ".",
+        "returncode": 0,
+        "tail": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50d_validation_report.txt"
+      },
+      {
+        "cmd": "node tests/validate-release-version.js 0.5.15",
+        "cwd": "electron",
+        "returncode": 0,
+        "tail": "[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.15\" | expected=\"electron-v0.5.15\"\n[PASS] version has no prerelease | actual=\"0.5.15\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL"
+      }
+    ],
+    "tracked_files_unchanged": true
+  },
+  "classification": {
+    "normalized_object_ADRG_result": [
+      "ADRG"
+    ],
+    "reasons": [
+      "SERVICE_LAYER_HEALTHY",
+      "PACKAGED_FIXTURE_ADRG_CONTRACT_HEALTHY",
+      "NORMALIZER_DEFINITION_UNIQUE",
+      "CURRENT_SOURCE_BASELINE_VALIDATORS_PASS"
+    ],
+    "blockers": [
+      "NORMALIZER_OBJECT_ADRG_NOT_PRESERVED",
+      "STATIC_PATH_GAPS:renderer_mentions_search_type,main_calls_service_search"
+    ],
+    "required_repair_file_scope": [
+      "electron/src/search-result-contract.js",
+      "electron/tests/validate-stage59b-search.js"
+    ],
+    "required_downstream_validation_scope": [
+      "node tests/validate-stage59b-search.js",
+      "node tests/validate-packaged-runtime-smoke.js",
+      "node tests/validate-stage60c-packaged-relation-smoke.js",
+      "node tests/validate-stage59b-ui.js",
+      "node tests/validate-stage59b-smoke.js",
+      "npm run check",
+      "50B / 50C / 50D",
+      "validate-release-version.js 0.5.15",
+      "1132 ADRG exact-id audit",
+      "B018 renderer request normalizer bridge",
+      "F022 / P651 / F212 official-source regression",
+      "Actual tracked diff guard",
+      "new fix commit only after Shadow+Actual PASS",
+      "new workflow_dispatch RC",
+      "tag/release only after RC success"
+    ],
+    "readiness": "NEEDS_MULTI_LAYER_REPAIR_DESIGN"
+  },
+  "error": null,
+  "finished_at": "2026-09-23 01:32:12"
+}

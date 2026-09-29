@@ -1,0 +1,123 @@
+{
+  "schema_version": "kdrg-0515-release-prep-shadow-v1",
+  "stage67g_status": "PASS",
+  "stage67g_readiness": "READY_FOR_0515_RELEASE_PREP_ACTUAL",
+  "base_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "base_tag": "electron-v0.5.14",
+  "target_version": "0.5.15",
+  "shadow_root": "/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "release_prep_file_count": 3,
+  "release_prep_files": [
+    {
+      "path": "50D_validate_kdrg_electron_windows_packaging.py",
+      "source": "/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1/50D_validate_kdrg_electron_windows_packaging.py",
+      "actual_before_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd",
+      "shadow_apply_sha256": "4d715c4316a57ee45bd11a46b18a19f068e76415e78a053d0a53ccd3f2f64e4b"
+    },
+    {
+      "path": "electron/package-lock.json",
+      "source": "/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1/electron/package-lock.json",
+      "actual_before_sha256": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+      "shadow_apply_sha256": "c44de42f347fcad0a06fd0fe1ae14f5dacbbf60d4dbe69342c6896136b7dddcf"
+    },
+    {
+      "path": "electron/package.json",
+      "source": "/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1/electron/package.json",
+      "actual_before_sha256": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+      "shadow_apply_sha256": "b3710124c323b1c2028a695186b252dc6684c224ed3ac323229b5b160bd975d4"
+    }
+  ],
+  "final_release_file_count": 16,
+  "final_release_files": [
+    {
+      "path": "50B_validate_kdrg_electron_search_service.py",
+      "release_candidate_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9"
+    },
+    {
+      "path": "50C_validate_kdrg_electron_renderer_ui.py",
+      "release_candidate_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f"
+    },
+    {
+      "path": "50D_validate_kdrg_electron_windows_packaging.py",
+      "release_candidate_sha256": "4d715c4316a57ee45bd11a46b18a19f068e76415e78a053d0a53ccd3f2f64e4b"
+    },
+    {
+      "path": "electron/package-lock.json",
+      "release_candidate_sha256": "c44de42f347fcad0a06fd0fe1ae14f5dacbbf60d4dbe69342c6896136b7dddcf"
+    },
+    {
+      "path": "electron/package.json",
+      "release_candidate_sha256": "b3710124c323b1c2028a695186b252dc6684c224ed3ac323229b5b160bd975d4"
+    },
+    {
+      "path": "electron/renderer/app.js",
+      "release_candidate_sha256": "7c02cf2c65e34ace5b5ec5ed1428fb6ecfc4e5aac18e8495a1bc8b8238ed9117"
+    },
+    {
+      "path": "electron/renderer/index.html",
+      "release_candidate_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093"
+    },
+    {
+      "path": "electron/renderer/ui-formatters.js",
+      "release_candidate_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77"
+    },
+    {
+      "path": "electron/src/kdrg-search-service.js",
+      "release_candidate_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c"
+    },
+    {
+      "path": "electron/src/packaged-runtime-smoke.js",
+      "release_candidate_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca"
+    },
+    {
+      "path": "electron/src/search-result-contract.js",
+      "release_candidate_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309"
+    },
+    {
+      "path": "electron/tests/validate-packaged-runtime-smoke.js",
+      "release_candidate_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9"
+    },
+    {
+      "path": "electron/tests/validate-stage59b-search.js",
+      "release_candidate_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65"
+    },
+    {
+      "path": "electron/tests/validate-stage59b-smoke.js",
+      "release_candidate_sha256": "6072be48968fc26915728bc3b29cbbdb0eda385eadbe2b97c6366f82c1aed4c6"
+    },
+    {
+      "path": "electron/tests/validate-stage59b-ui.js",
+      "release_candidate_sha256": "2d3665fcf3d3890d12c9c72045a58d1a19833ab46f3af15a2e3991df77f7edf7"
+    },
+    {
+      "path": "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+      "release_candidate_sha256": "f2b3d49c6063224b9ba3f5eacd203602cc2aceb693789b9082981aab5f2aa339"
+    }
+  ],
+  "patch_details": {
+    "electron/package.json": {
+      "old_version": "0.5.14",
+      "new_version": "0.5.15",
+      "replacement_count": 1
+    },
+    "electron/package-lock.json": {
+      "old_version": "0.5.14",
+      "new_version": "0.5.15",
+      "replacement_count": 2
+    },
+    "50D_validate_kdrg_electron_windows_packaging.py": {
+      "old_version_literal_count": 3,
+      "old_marker": "STAGE50D_VALIDATOR_V13_0514",
+      "new_marker": "STAGE50D_VALIDATOR_V14_0515",
+      "marker_replacement_count": 1
+    }
+  },
+  "policy": {
+    "actual_current_diff_count": 14,
+    "actual_package_before_apply": "0.5.14",
+    "shadow_package_after_prep": "0.5.15",
+    "stage_exact_release_files_after_actual_apply": 16,
+    "commit_push_tag_release": "NOT_ALLOWED_IN_STAGE67G"
+  }
+}

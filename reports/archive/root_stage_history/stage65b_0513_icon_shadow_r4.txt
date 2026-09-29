@@ -1,0 +1,61 @@
+KDRG V4.7 Electron Stage65B / 0.5.13 Icon Shadow R4
+============================================================================================
+status=PASS
+readiness=READY_FOR_0513_ICON_ACTUAL_APPLY
+
+[PREFLIGHT]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "stage64_product_status": [" M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/official-condition-text.js"], "stage64d_status": "PASS", "stage65a_status": "PASS", "stage65a_icon_mode": "SOURCE_OR_WORKFLOW_ICON_REFERENCE_ONLY", "stage65a_proposed_icon_files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/build/icon-kdrg-v47.ico", "electron/build/icon-kdrg-v47.png", "electron/package.json", "electron/tests/validate-packaging-config.js"], "r2_ignored_build_assets": {"electron/build/icon-kdrg-v47.png": {"returncode": 0, "output": ".gitignore:8:build/\telectron/build/icon-kdrg-v47.png"}, "electron/build/icon-kdrg-v47.ico": {"returncode": 0, "output": ".gitignore:8:build/\telectron/build/icon-kdrg-v47.ico"}}, "r3_git_visible_icon_assets": {"electron/renderer/assets/icon-kdrg-v47.png": {"returncode": 1, "output": ""}, "electron/renderer/assets/icon-kdrg-v47.ico": {"returncode": 1, "output": ""}}, "r3_icon_paths": ["electron/renderer/assets/icon-kdrg-v47.png", "electron/renderer/assets/icon-kdrg-v47.ico"], "builder_icon_value": "renderer/assets/icon-kdrg-v47.ico", "approved_png_sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "approved_ico_sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7"}
+
+[ICON SOURCE]
+{"png": {"path": "electron/renderer/assets/icon-kdrg-v47.png", "sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "size_bytes": 244101}, "ico": {"path": "electron/renderer/assets/icon-kdrg-v47.ico", "sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7", "size_bytes": 112188}}
+
+[PATCH DETAILS]
+{"package_sha256": "063fffcc4e5c298bdd8c6875ca7930c5d8703d827b61a1b01160e8c9ed96cc39", "packaging_js_sha256": "4838136e03a3856263c7702c2d024b8cea96ba26216613bd5d5c3c9a1d003c63", "packaging_py": {"sha256": "47ed1e4ad1f645de9d1644e89fe0cb52aef0e27190ee00c9b6c2a7322af85197", "patch_mode": "AST_INSERT_BEFORE_TOP_LEVEL_MAIN", "main_lineno_before": 37, "baseline_sha256": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373"}}
+
+[SHADOW DIFF]
+{"changed_files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/package.json", "electron/renderer/app.js", "electron/renderer/assets/icon-kdrg-v47.ico", "electron/renderer/assets/icon-kdrg-v47.png", "electron/renderer/index.html", "electron/renderer/official-condition-text.js", "electron/tests/validate-packaging-config.js", "electron/tests/validate-stage59b-ui.js"], "stage64_files": ["electron/renderer/app.js", "electron/renderer/index.html", "electron/renderer/official-condition-text.js", "electron/tests/validate-stage59b-ui.js"], "icon_pipeline_files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/package.json", "electron/renderer/assets/icon-kdrg-v47.ico", "electron/renderer/assets/icon-kdrg-v47.png", "electron/tests/validate-packaging-config.js"], "sha256": {"50D_validate_kdrg_electron_windows_packaging.py": "47ed1e4ad1f645de9d1644e89fe0cb52aef0e27190ee00c9b6c2a7322af85197", "electron/package.json": "063fffcc4e5c298bdd8c6875ca7930c5d8703d827b61a1b01160e8c9ed96cc39", "electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491", "electron/renderer/assets/icon-kdrg-v47.ico": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7", "electron/renderer/assets/icon-kdrg-v47.png": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2", "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e", "electron/tests/validate-packaging-config.js": "4838136e03a3856263c7702c2d024b8cea96ba26216613bd5d5c3c9a1d003c63", "electron/tests/validate-stage59b-ui.js": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c"}}
+
+[ICON CONTRACT]
+{"png": {"width": 512, "height": 512, "size_bytes": 244101}, "ico": {"frame_count": 9, "sizes": [16, 20, 24, 32, 40, 48, 64, 128, 256], "entries": [{"width": 16, "height": 16, "bit_count": 32, "size_bytes": 749, "image_offset": 150}, {"width": 20, "height": 20, "bit_count": 32, "size_bytes": 998, "image_offset": 899}, {"width": 24, "height": 24, "bit_count": 32, "size_bytes": 1321, "image_offset": 1897}, {"width": 32, "height": 32, "bit_count": 32, "size_bytes": 2058, "image_offset": 3218}, {"width": 40, "height": 40, "bit_count": 32, "size_bytes": 2938, "image_offset": 5276}, {"width": 48, "height": 48, "bit_count": 32, "size_bytes": 3965, "image_offset": 8214}, {"width": 64, "height": 64, "bit_count": 32, "size_bytes": 6431, "image_offset": 12179}, {"width": 128, "height": 128, "bit_count": 32, "size_bytes": 20428, "image_offset": 18610}, {"width": 256, "height": 256, "bit_count": 32, "size_bytes": 73150, "image_offset": 39038}], "size_bytes": 112188}, "png_sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "ico_sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7", "builder_field": "build.win.icon", "builder_value": "renderer/assets/icon-kdrg-v47.ico", "version": "0.5.12"}
+
+[BUILDER PATH CONSISTENCY]
+{"package_builder_icon": "renderer/assets/icon-kdrg-v47.ico", "expected_builder_icon": "renderer/assets/icon-kdrg-v47.ico", "js_contains_builder_icon": true, "python_contains_builder_icon": true, "legacy_builder_literal_in_js": false, "legacy_builder_literal_in_python": false}
+
+[VALIDATION SUPPORT]
+{"path": "/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron/node_modules", "target": "/home/runner/workspace/electron/node_modules", "purpose": "validation_only_not_product_diff"}
+
+[VALIDATION]
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node --check renderer/official-condition-text.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node --check tests/validate-packaging-config.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node tests/validate-packaging-config.js
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/tmp/kdrg_stage65b_0513_icon_shadow_r4_d846osav/workspace/electron cmd=node tests/validate-release-version.js 0.5.12
+
+[ARTIFACTS]
+{"50D_validate_kdrg_electron_windows_packaging.py": {"path": "/home/runner/workspace/reports/stage65b_0513_icon_shadow_r4/50D_validate_kdrg_electron_windows_packaging.py", "sha256": "47ed1e4ad1f645de9d1644e89fe0cb52aef0e27190ee00c9b6c2a7322af85197", "size_bytes": 8610}, "electron/renderer/assets/icon-kdrg-v47.ico": {"path": "/home/runner/workspace/reports/stage65b_0513_icon_shadow_r4/icon-kdrg-v47.ico", "sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7", "size_bytes": 112188}, "electron/renderer/assets/icon-kdrg-v47.png": {"path": "/home/runner/workspace/reports/stage65b_0513_icon_shadow_r4/icon-kdrg-v47.png", "sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "size_bytes": 244101}, "electron/package.json": {"path": "/home/runner/workspace/reports/stage65b_0513_icon_shadow_r4/package.json", "sha256": "063fffcc4e5c298bdd8c6875ca7930c5d8703d827b61a1b01160e8c9ed96cc39", "size_bytes": 3780}, "electron/tests/validate-packaging-config.js": {"path": "/home/runner/workspace/reports/stage65b_0513_icon_shadow_r4/validate-packaging-config.js", "sha256": "4838136e03a3856263c7702c2d024b8cea96ba26216613bd5d5c3c9a1d003c63", "size_bytes": 20897}}
+
+[ACTUAL UNCHANGED]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "stage64_product_status": [" M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/official-condition-text.js"], "icon_pipeline_paths_clean": true, "icon_assets_absent": true, "staging_empty": true}
+
+[NEXT]
+- PASS이면 승인된 KDRG 아이콘의 PNG/ICO 및 build.win.icon Shadow 계약 확정.
+- R2는 50D의 실제 top-level main() 구조를 AST로 찾아 검증 블록을 삽입하며 __main__ guard를 가정하지 않음.
+- R3는 Git에서 무시되는 electron/build 대신 Git-visible renderer/assets 경로를 사용.
+- R4는 R3에 남아 있던 두 개의 구 builder 경로 후조건을 제거하고 package/JS/50D의 경로 일치성을 한 번 더 전수검증.
+- Stage64 조건표시 변경 4개는 byte-for-byte 유지.
+- 다음은 Stage65C Actual 아이콘 적용. Actual 적용 뒤에도 package version은 0.5.12 유지.
+- 이후 0.5.13 Release Prep에서 조건표시 4개 + 아이콘 파이프라인 5개 + 버전 관련 파일만 정확히 확정.
+- Actual 적용 전 commit/push/tag/Release 금지.
+
+report_txt=/home/runner/workspace/stage65b_0513_icon_shadow_r4.txt
+report_json=/home/runner/workspace/stage65b_0513_icon_shadow_r4.json

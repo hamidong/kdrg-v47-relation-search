@@ -1,0 +1,94 @@
+KDRG V4.7 Electron Stage67I4A / 0.5.15 Full Pipeline Audit R1
+============================================================================================
+status=PASS
+readiness=NEEDS_MULTI_LAYER_REPAIR_DESIGN
+
+[STATE]
+{
+  "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "tracked_clean": true,
+  "staging_empty": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[NORMALIZER]
+{
+  "definition_count": 1,
+  "definitions": [
+    {
+      "path": "electron/src/search-result-contract.js",
+      "line": 75,
+      "text": "function normalizeSearchRequest(payload) {"
+    }
+  ],
+  "exports": [
+    "ENTITY_TYPES",
+    "RELATION_CODE_TYPES",
+    "RELATION_OPERATORS",
+    "SEARCH_ENTITY_TYPES",
+    "SearchContractError",
+    "normalizeDetailRequest",
+    "normalizeRelationRequest",
+    "normalizeSearchRequest"
+  ],
+  "function_type": "function",
+  "function_length": 1,
+  "object_ADRG_probe_ok": true,
+  "object_ADRG_probe_value": {
+    "query": "B018",
+    "entityType": [
+      "ADRG"
+    ],
+    "limit": 100,
+    "offset": 0,
+    "mdc": null,
+    "classification": null
+  },
+  "object_ADRG_probe_error": null
+}
+
+[SERVICE / PACKAGED]
+{
+  "B018_exact_count": 1,
+  "ADRG_count": 1132,
+  "collision_count": 471,
+  "ADRG_failure_count": 0,
+  "fixture_all_query_equals_adrg": true,
+  "fixture_filter_adrg": true,
+  "fixture_selector_adrg": true
+}
+
+[BASELINE]
+{
+  "pass_count": 10,
+  "fail_count": 0,
+  "failed_commands": []
+}
+
+[CLASSIFICATION]
+{
+  "normalized_object_ADRG_result": [
+    "ADRG"
+  ],
+  "reasons": [
+    "SERVICE_LAYER_HEALTHY",
+    "PACKAGED_FIXTURE_ADRG_CONTRACT_HEALTHY",
+    "NORMALIZER_DEFINITION_UNIQUE",
+    "CURRENT_SOURCE_BASELINE_VALIDATORS_PASS"
+  ],
+  "blockers": [
+    "NORMALIZER_OBJECT_ADRG_NOT_PRESERVED",
+    "STATIC_PATH_GAPS:renderer_mentions_search_type,main_calls_service_search"
+  ],
+  "required_repair_file_scope": [
+    "electron/src/search-result-contract.js",
+    "electron/tests/validate-stage59b-search.js"
+  ],
+  "required_downstream_validation_count": 15
+}
+
+[STOP]
+audit only; no repair / Actual apply / commit / push / RC / tag / release
+report_json=/home/runner/workspace/stage67i4a_0515_normalizer_full_pipeline_audit_r1.json

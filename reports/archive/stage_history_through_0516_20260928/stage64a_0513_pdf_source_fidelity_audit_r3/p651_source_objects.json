@@ -1,0 +1,305 @@
+[
+  {
+    "condition_block_id": "CB_P651",
+    "adrg": "P651",
+    "adrg_family": "P65",
+    "mdc": "15",
+    "partition": "M",
+    "description": "신생아,입원시체중1500-1999g(중요수술미시행,다발성주요문제동반)",
+    "reconstruction_method": "reference_anchored_multiline",
+    "source_line_range": {
+      "start_raw_line_no": 5,
+      "end_raw_line_no": 7,
+      "first_physical_section_raw_line_no": 8,
+      "formula_anchor_raw_line_no": 5
+    },
+    "page_range": {
+      "start_pdf_page": 959,
+      "end_pdf_page": 960,
+      "start_printed_page": 933,
+      "end_printed_page": 934
+    },
+    "source_lines": [
+      {
+        "raw_line_no": 5,
+        "text": "입원시 체중 1500 - 1999g",
+        "pdf_page_context": null,
+        "printed_page_context": null
+      },
+      {
+        "raw_line_no": 6,
+        "text": "and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)",
+        "pdf_page_context": null,
+        "printed_page_context": null
+      },
+      {
+        "raw_line_no": 7,
+        "text": "and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }",
+        "pdf_page_context": null,
+        "printed_page_context": null
+      }
+    ],
+    "raw_text": "입원시 체중 1500 - 1999g\nand not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)\nand { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }",
+    "joined_text": "입원시 체중 1500 - 1999g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }",
+    "normalized_text": "입원시 체중 1500 - 1999g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and ( (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 )",
+    "raw_text_sha256": "7427c279a950948c8e0cc8d194b1c084f651dd42f7c80b13a22e19f805761ef0",
+    "linked_condition_reference_ids": [
+      "COND_P651_0006",
+      "COND_P651_0007"
+    ],
+    "linked_condition_reference_count": 2,
+    "linked_condition_references": [
+      {
+        "condition_id": "COND_P651_0006",
+        "adrg": "P651",
+        "adrg_family": "P65",
+        "mdc": "15",
+        "raw_line_no": 6,
+        "raw_text": "and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)",
+        "reference_atom_count": 2,
+        "resolution_status_counts": {
+          "resolved_by_nearest_definition": 1,
+          "special_condition_not_table": 1
+        },
+        "reference_atoms": [
+          {
+            "atom_type": "family_numbered_table_reference",
+            "raw_text": "시술명 table2",
+            "role": "procedure",
+            "table_number": 2,
+            "descriptor": null,
+            "variant": null,
+            "logical_key_candidate": "FAMILY:P65|procedure|TABLE:2",
+            "candidate_section_ids": [
+              "SEC_P654_002"
+            ],
+            "resolved_section_ids": [
+              "SEC_P654_002"
+            ],
+            "selected_section_id": "SEC_P654_002",
+            "resolution_status": "resolved_by_nearest_definition",
+            "final_resolution": {
+              "status": "resolved_logical_table",
+              "logical_table_ids": [
+                "LT_P654_002"
+              ],
+              "method": "existing_section_resolution",
+              "evidence": [
+                "09번 resolved_section_ids=['SEC_P654_002']"
+              ]
+            }
+          },
+          {
+            "atom_type": "or_procedure_special_condition",
+            "raw_text": "OR procedure",
+            "role": "or_procedure",
+            "table_number": null,
+            "descriptor": null,
+            "variant": null,
+            "logical_key_candidate": null,
+            "resolved_section_ids": [],
+            "resolution_status": "special_condition_not_table",
+            "final_resolution": {
+              "status": "special_condition_not_table",
+              "logical_table_ids": [],
+              "method": "preserve_non_table_condition",
+              "evidence": [
+                "OR procedure는 TABLE 정의가 아닌 특수 조건으로 보존"
+              ]
+            }
+          }
+        ],
+        "final_resolution_status_counts": {
+          "resolved_logical_table": 1,
+          "special_condition_not_table": 1
+        }
+      },
+      {
+        "condition_id": "COND_P651_0007",
+        "adrg": "P651",
+        "adrg_family": "P65",
+        "mdc": "15",
+        "raw_line_no": 7,
+        "raw_text": "and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }",
+        "reference_atom_count": 1,
+        "resolution_status_counts": {
+          "resolved_by_nearest_definition": 1
+        },
+        "reference_atoms": [
+          {
+            "atom_type": "family_numbered_table_reference",
+            "raw_text": "시술명 table3",
+            "role": "procedure",
+            "table_number": 3,
+            "descriptor": null,
+            "variant": null,
+            "logical_key_candidate": "FAMILY:P65|procedure|TABLE:3",
+            "candidate_section_ids": [
+              "SEC_P654_003"
+            ],
+            "resolved_section_ids": [
+              "SEC_P654_003"
+            ],
+            "selected_section_id": "SEC_P654_003",
+            "resolution_status": "resolved_by_nearest_definition",
+            "final_resolution": {
+              "status": "resolved_logical_table",
+              "logical_table_ids": [
+                "LT_P654_003"
+              ],
+              "method": "existing_section_resolution",
+              "evidence": [
+                "09번 resolved_section_ids=['SEC_P654_003']"
+              ]
+            }
+          }
+        ],
+        "final_resolution_status_counts": {
+          "resolved_logical_table": 1
+        }
+      }
+    ],
+    "resolved_logical_table_ids": [
+      "LT_P654_002",
+      "LT_P654_003"
+    ],
+    "resolved_logical_table_count": 2,
+    "pure_text_source_line_numbers": [],
+    "signals": {
+      "and_count": 3,
+      "or_count": 3,
+      "not_count": 1,
+      "without_count": 0,
+      "korean_exclusion_count": 1,
+      "comparison_count": 2,
+      "parenthesis_present": true,
+      "nested_group_present": true,
+      "age_condition_present": false,
+      "weight_condition_present": true,
+      "duration_condition_present": true,
+      "ventilation_condition_present": true,
+      "count_or_multiplicity_present": true,
+      "or_procedure_present": true,
+      "table_reference_text_present": true
+    },
+    "ast_status": "not_built_source_block_only"
+  },
+  {
+    "condition_id": "COND_P651_0006",
+    "adrg": "P651",
+    "adrg_family": "P65",
+    "mdc": "15",
+    "raw_line_no": 6,
+    "raw_text": "and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)",
+    "reference_atom_count": 2,
+    "resolution_status_counts": {
+      "resolved_by_nearest_definition": 1,
+      "special_condition_not_table": 1
+    },
+    "reference_atoms": [
+      {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "시술명 table2",
+        "role": "procedure",
+        "table_number": 2,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:P65|procedure|TABLE:2",
+        "candidate_section_ids": [
+          "SEC_P654_002"
+        ],
+        "resolved_section_ids": [
+          "SEC_P654_002"
+        ],
+        "selected_section_id": "SEC_P654_002",
+        "resolution_status": "resolved_by_nearest_definition",
+        "final_resolution": {
+          "status": "resolved_logical_table",
+          "logical_table_ids": [
+            "LT_P654_002"
+          ],
+          "method": "existing_section_resolution",
+          "evidence": [
+            "09번 resolved_section_ids=['SEC_P654_002']"
+          ]
+        }
+      },
+      {
+        "atom_type": "or_procedure_special_condition",
+        "raw_text": "OR procedure",
+        "role": "or_procedure",
+        "table_number": null,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": null,
+        "resolved_section_ids": [],
+        "resolution_status": "special_condition_not_table",
+        "final_resolution": {
+          "status": "special_condition_not_table",
+          "logical_table_ids": [],
+          "method": "preserve_non_table_condition",
+          "evidence": [
+            "OR procedure는 TABLE 정의가 아닌 특수 조건으로 보존"
+          ]
+        }
+      }
+    ],
+    "final_resolution_status_counts": {
+      "resolved_logical_table": 1,
+      "special_condition_not_table": 1
+    }
+  },
+  {
+    "condition_id": "COND_P651_0007",
+    "adrg": "P651",
+    "adrg_family": "P65",
+    "mdc": "15",
+    "raw_line_no": 7,
+    "raw_text": "and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }",
+    "reference_atom_count": 1,
+    "resolution_status_counts": {
+      "resolved_by_nearest_definition": 1
+    },
+    "reference_atoms": [
+      {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "시술명 table3",
+        "role": "procedure",
+        "table_number": 3,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:P65|procedure|TABLE:3",
+        "candidate_section_ids": [
+          "SEC_P654_003"
+        ],
+        "resolved_section_ids": [
+          "SEC_P654_003"
+        ],
+        "selected_section_id": "SEC_P654_003",
+        "resolution_status": "resolved_by_nearest_definition",
+        "final_resolution": {
+          "status": "resolved_logical_table",
+          "logical_table_ids": [
+            "LT_P654_003"
+          ],
+          "method": "existing_section_resolution",
+          "evidence": [
+            "09번 resolved_section_ids=['SEC_P654_003']"
+          ]
+        }
+      }
+    ],
+    "final_resolution_status_counts": {
+      "resolved_logical_table": 1
+    }
+  },
+  {
+    "condition_id": "COND_P651_0004",
+    "adrg": "P651",
+    "mdc": "15",
+    "raw_line_no": 4,
+    "raw_text": "Neonate, Admission Weight 1500-1999g without Significant OR Procedures with Multiple Major Problems",
+    "reason": "adrg_title_or_english_description",
+    "reference_atom_count": 1
+  }
+]

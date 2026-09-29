@@ -1,0 +1,88 @@
+KDRG V4.7 Electron Stage67I3D / 0.5.15 Fix RC Failure Diagnosis R1
+================================================================================================
+status=PASS
+classification=PACKAGED_UI_VALIDATION
+
+[STATE]
+{
+  "fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "fix_parent": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "fix_files": [
+    "electron/src/kdrg-search-service.js",
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage59b-search.js"
+  ],
+  "head_origin_exact": true,
+  "worktree_clean": true,
+  "staging_empty": true,
+  "base_tag_immutable": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[RUN]
+{
+  "conclusion": "failure",
+  "createdAt": "2026-09-23T00:48:17Z",
+  "databaseId": 35803633211,
+  "event": "workflow_dispatch",
+  "headBranch": "main",
+  "headSha": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "name": "Build Electron Windows portable and publish Release",
+  "status": "completed",
+  "updatedAt": "2026-09-23T00:52:38Z",
+  "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35803633211",
+  "workflowName": "Build Electron Windows portable and publish Release"
+}
+
+[FAILED STEPS]
+[
+  {
+    "job_name": "windows-electron-package",
+    "job_conclusion": "failure",
+    "step_number": 15,
+    "step_name": "packaged 핵심검증 판정",
+    "step_status": "completed",
+    "step_conclusion": "failure"
+  }
+]
+
+[ERROR FOCUS]
+3: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3547320Z [36;1m[0m
+4: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3547589Z [36;1mif (-not (Test-Path $reportPath -PathType Leaf)) {[0m
+5: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3547994Z [36;1m  Write-Error "packaged smoke 보고서가 없습니다: $reportPath"[0m
+6: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3548307Z [36;1m  exit 1[0m
+7: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3548482Z [36;1m}[0m
+30: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3554018Z [36;1m$completed = @($report.completed_steps | ForEach-Object { [string]$_ })[0m
+31: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3554527Z [36;1m$missing = @($requiredSteps | Where-Object { $completed -notcontains $_ })[0m
+32: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3554954Z [36;1m$message = [string]$report.error.message[0m
+33: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3555222Z [36;1m[0m
+34: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3555624Z [36;1m$uiWarningOnly = ([0m
+35: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3555948Z [36;1m  [string]$report.failed_step -eq "packaged_ui_validation" -and[0m
+36: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3556341Z [36;1m  $message -match "console=0, gone=0, load=0"[0m
+37: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3556610Z [36;1m)[0m
+39: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3556986Z [36;1mif ($uiWarningOnly -and $missing.Count -eq 0) {[0m
+40: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3557339Z [36;1m  Write-Warning "packaged UI 세부 판정은 경고로 기록하고 진행합니다."[0m
+41: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3557723Z [36;1m  Write-Host "failed_step=$($report.failed_step)"[0m
+42: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3558050Z [36;1m  Write-Host "message=$message"[0m
+43: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3558432Z [36;1m  Write-Host "[PASS_WITH_UI_WARNING] 데이터·검색·상세·관계검색·renderer 핵심검증 완료"[0m
+45: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3558984Z [36;1m}[0m
+46: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3559139Z [36;1m[0m
+47: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3559318Z [36;1mWrite-Error "packaged 핵심검증 실패"[0m
+48: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3559599Z [36;1mWrite-Host "status=$($report.status)"[0m
+49: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3559943Z [36;1mWrite-Host "failed_step=$($report.failed_step)"[0m
+50: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3560296Z [36;1mWrite-Host "missing_steps=$($missing -join ',')"[0m
+51: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3560616Z [36;1mWrite-Host "message=$message"[0m
+67: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3640866Z   ELECTRON_BUILDER_CACHE: D:\a\_temp\electron-builder-cache-35803633211-1
+68: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:31.3641226Z ##[endgroup]
+69: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:32.4401867Z [31;1mWrite-Error: [31;1mpackaged 핵심검증 실패[0m
+70: windows-electron-package	packaged 핵심검증 판정	2026-09-23T00:52:32.5001620Z ##[error]Process completed with exit code 1.
+
+[NEXT]
+- 이 단계는 진단 전용.
+- commit/push/RC 재실행/tag/release 없음.
+- ERROR FOCUS와 FAILED STEPS를 기준으로 다음 수정 여부 결정.
+
+report_txt=/home/runner/workspace/stage67i3d_0515_fix_rc_failure_diagnosis_r1.txt
+report_json=/home/runner/workspace/stage67i3d_0515_fix_rc_failure_diagnosis_r1.json

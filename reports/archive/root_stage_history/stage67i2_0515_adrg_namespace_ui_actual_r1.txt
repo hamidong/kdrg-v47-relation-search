@@ -1,0 +1,67 @@
+KDRG V4.7 Electron Stage67I2 / 0.5.15 ADRG Namespace + Packaged UI Actual Apply R1
+================================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_FIX_COMMIT_PUSH_RC
+
+[PREFLIGHT]
+{
+  "gate": {
+    "report_status": "PASS",
+    "report_readiness": "READY_FOR_0515_ADRG_NAMESPACE_UI_ACTUAL_APPLY",
+    "manifest_schema": "kdrg-0515-adrg-namespace-ui-repair-v4",
+    "repair_contract": {
+      "explicit_adrg_exact_id_precedes_code_collision": true,
+      "all_1132_adrg_exact_ids_pass": true,
+      "all_code_behavior_unchanged": true,
+      "ui_fixture_search_query_uses_public_adrg_identity": true,
+      "product_hardcoding_B018_B022": false
+    }
+  },
+  "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "package_version": "0.5.15",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "base_tag_immutable": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[APPLY]
+{}
+
+[VALIDATION SUMMARY]
+{
+  "adrg_count": null,
+  "collision_count": null,
+  "failure_count": null,
+  "noncollision_failure_count": null,
+  "npm_run_check": null,
+  "root_50b": null,
+  "root_50c": null,
+  "root_50d": null,
+  "release_version": null,
+  "adrg_contract": null
+}
+
+[ROLLBACK]
+{
+  "performed": true,
+  "status": "PASS",
+  "restored_count": 4,
+  "tracked_worktree_clean": true,
+  "staging_empty": true
+}
+
+[FINAL GUARD]
+{}
+
+[BLOCKER]
+StageError: git diff --check failed:
+
+[NEXT]
+- PASS이면 4개 Actual 수정이 전수검증된 상태.
+- 다음 Stage67I3에서 정확한 4개만 stage/commit/push 후 새 workflow_dispatch RC 실행.
+- 새 RC success 전에는 electron-v0.5.15 tag/release 금지.
+
+report_txt=/home/runner/workspace/stage67i2_0515_adrg_namespace_ui_actual_r1.txt
+report_json=/home/runner/workspace/stage67i2_0515_adrg_namespace_ui_actual_r1.json

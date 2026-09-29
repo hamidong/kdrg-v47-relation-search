@@ -1,0 +1,365 @@
+KDRG V4.7 Electron Stage63B / 0.5.12 Condition Presentation Shadow R3
+====================================================================================================
+status=PASS
+readiness=READY_FOR_0512_ACTUAL_APPLY_ONLY
+
+[PREFLIGHT]
+{"head": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4", "version": "0.5.11", "target_sha_before": {"electron/renderer/app.js": "08f1b4dac93f7cb8f2bc1b07b611af09f1dfe695a56d50d7c95593be1edc30a1", "electron/renderer/styles.css": "f89331c45b46fd02c967b4282892ca9e94962a50f8789ddc6e4c82a012a8227c", "electron/tests/validate-stage59b-ui.js": "ac449291ba73d06f51446ef8990da94315b387035540f32e83e2ecf61e390bc7"}, "staged_cleanup_count": 19}
+
+[SHADOW DIFF]
+{"changed_files": ["electron/renderer/app.js", "electron/renderer/styles.css", "electron/tests/validate-stage59b-ui.js"], "sha256": {"electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660", "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26", "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}}
+
+[VALIDATION]
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node tests/validate-packaging-config.js
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node -e 
+'use strict';
+
+const path = require('node:path');
+const fs = require('node:fs');
+const {
+  KdrgSearchService,
+} = require('./src/kdrg-search-service');
+const Ui = require('./renderer/ui-formatters');
+
+const service = new KdrgSearchService(
+  path.resolve(
+    '..',
+    'data',
+    'kdrg_v47_search_integrated_v3.json',
+  ),
+);
+
+const app = fs.readFileSync(
+  'renderer/app.js',
+  'utf8',
+);
+
+if (
+  !app.includes('detail?.parent_adrg_detail')
+  || !app.includes(
+    'inheritedFromParent: sourceDetail !== detail',
+  )
+) {
+  throw new Error(
+    'generic renderer parent fallback missing',
+  );
+}
+
+if (
+  app.includes(
+    "if (detail?.aadrg === 'F2120'",
+  )
+) {
+  throw new Error('F2120 hardcode detected');
+}
+
+function uniqueStrings(values) {
+  return Ui.uniqueStrings(
+    Array.isArray(values) ? values : [],
+  );
+}
+
+function safeDetail(type, id) {
+  try {
+    return service.getDetail(type, id)?.detail || null;
+  } catch {
+    return null;
+  }
+}
+
+const adrgIds = [
+  ...service.recordMaps.ADRG.keys(),
+].sort();
+
+if (adrgIds.length !== 1132) {
+  throw new Error(
+    `ADRG record-map count ${adrgIds.length}`,
+  );
+}
+
+/*
+ * IMPORTANT:
+ * recordMaps.ADRG values are search/index records, not the complete
+ * user-condition detail objects. Stage63B R2 read those values directly,
+ * which made every source_logical_table_ids lookup empty and produced
+ * parent count 0. Always dereference with getDetail('ADRG', id).
+ */
+const parents = new Map();
+
+for (const id of adrgIds) {
+  const detail = safeDetail('ADRG', id);
+  if (!detail) {
+    throw new Error(`ADRG detail missing ${id}`);
+  }
+
+  const coverage = Ui.userConditionCoverage(detail);
+  const sourceIds = uniqueStrings(
+    detail.source_logical_table_ids ?? [],
+  );
+
+  if (
+    coverage.status !== 'NO_EXPLICIT_CONDITION'
+    || detail.condition_ast
+    || coverage.table_count
+    || sourceIds.length !== 1
+  ) {
+    continue;
+  }
+
+  const escaped = String(id).replace(
+    /[.*+?^${}()|[\]\\]/g,
+    '\\$&',
+  );
+  const localPattern = new RegExp(
+    `^LT_${escaped}_\\d{3}$`,
+    'i',
+  );
+
+  if (!localPattern.test(sourceIds[0])) {
+    continue;
+  }
+
+  const summary = Ui.tableSummaryMap(detail)
+    .get(sourceIds[0]);
+  const codeCount = Number(
+    summary?.summary?.code_count ?? 0,
+  );
+
+  if (codeCount <= 0) {
+    continue;
+  }
+
+  parents.set(id, {
+    tableId: sourceIds[0],
+    codeCount,
+  });
+}
+
+if (parents.size !== 479) {
+  throw new Error(
+    `parent count ${parents.size}`,
+  );
+}
+
+let candidateChildren = 0;
+let inheritedGapShapes = 0;
+let parentSummaryResolvable = 0;
+let parentIdentityMatched = 0;
+
+for (
+  const id
+  of [...service.recordMaps.AADRG.keys()].sort()
+) {
+  const child = safeDetail('AADRG', id);
+  if (!child) {
+    throw new Error(`AADRG detail missing ${id}`);
+  }
+
+  if (!parents.has(child.adrg)) {
+    continue;
+  }
+
+  candidateChildren += 1;
+
+  const ownSourceIds = uniqueStrings(
+    child.source_logical_table_ids ?? [],
+  );
+  const parent = child.parent_adrg_detail || null;
+  const parentSourceIds = uniqueStrings(
+    parent?.source_logical_table_ids ?? [],
+  );
+
+  if (
+    parent
+    && String(parent.adrg || '') === String(child.adrg)
+  ) {
+    parentIdentityMatched += 1;
+  }
+
+  if (
+    !child.condition_ast
+    && ownSourceIds.length === 0
+    && parentSourceIds.length === 1
+  ) {
+    inheritedGapShapes += 1;
+
+    const summary = Ui.tableSummaryMap(parent)
+      .get(parentSourceIds[0]);
+    const codeCount = Number(
+      summary?.summary?.code_count ?? 0,
+    );
+
+    if (codeCount > 0) {
+      parentSummaryResolvable += 1;
+    }
+  }
+}
+
+if (candidateChildren !== 521) {
+  throw new Error(
+    `candidate child count ${candidateChildren}`,
+  );
+}
+if (inheritedGapShapes !== 521) {
+  throw new Error(
+    `inherited gap shape ${inheritedGapShapes}`,
+  );
+}
+if (parentIdentityMatched !== 521) {
+  throw new Error(
+    `parent identity matched ${parentIdentityMatched}`,
+  );
+}
+if (parentSummaryResolvable !== 521) {
+  throw new Error(
+    `parent summary resolvable ${parentSummaryResolvable}`,
+  );
+}
+
+const f2120 = safeDetail('AADRG', 'F2120');
+if (!f2120) {
+  throw new Error('F2120 detail missing');
+}
+if (f2120.adrg !== 'F212') {
+  throw new Error(
+    `F2120 parent mismatch ${f2120.adrg}`,
+  );
+}
+if (
+  uniqueStrings(
+    f2120.source_logical_table_ids ?? [],
+  ).length !== 0
+) {
+  throw new Error(
+    'F2120 unexpectedly owns direct source table',
+  );
+}
+
+const f212ParentIds = uniqueStrings(
+  f2120.parent_adrg_detail
+    ?.source_logical_table_ids ?? [],
+);
+if (
+  JSON.stringify(f212ParentIds)
+  !== JSON.stringify(['LT_F212_001'])
+) {
+  throw new Error(
+    `F2120 parent source ${JSON.stringify(
+      f212ParentIds,
+    )}`,
+  );
+}
+
+const f212Table = safeDetail(
+  'TABLE',
+  'LT_F212_001',
+);
+if (!f212Table) {
+  throw new Error('LT_F212_001 detail missing');
+}
+const f212Codes = new Set(
+  (f212Table.code_records ?? [])
+    .map((row) => row.entity_id),
+);
+const expectedF212Codes = [
+  'O0205',
+  'O0206',
+  'O0241',
+  'O2223',
+];
+for (const code of expectedF212Codes) {
+  if (!f212Codes.has(code)) {
+    throw new Error(
+      `F212 source code missing ${code}`,
+    );
+  }
+}
+
+for (const code of expectedF212Codes) {
+  const response = service.search(
+    code,
+    'ALL',
+    { limit: 100 },
+  );
+  const types = new Set(
+    response.results.map(
+      (row) => row.entity_type,
+    ),
+  );
+
+  if (
+    !types.has('CODE')
+    || !types.has('AADRG')
+    || types.has('ADRG')
+    || types.has('TABLE')
+  ) {
+    throw new Error(
+      `${code} search contract ${[
+        ...types,
+      ].join(',')}`,
+    );
+  }
+}
+
+const p6510 = safeDetail('AADRG', 'P6510');
+if (
+  !p6510
+  || p6510.adrg !== 'P651'
+  || !p6510.condition_ast
+) {
+  throw new Error(
+    'P6510 inherited AST regression',
+  );
+}
+
+const pretty = Ui.buildPrettyConditionTree(
+  p6510.condition_ast,
+);
+if (!pretty) {
+  throw new Error(
+    'P6510 pretty condition tree missing',
+  );
+}
+
+console.log(
+  '[PASS] Stage63B full impact probe',
+  JSON.stringify({
+    adrgCount: adrgIds.length,
+    parents: parents.size,
+    candidateChildren,
+    inheritedGapShapes,
+    parentIdentityMatched,
+    parentSummaryResolvable,
+    f212Codes: expectedF212Codes,
+    p651TreeKind: pretty.kind,
+  }),
+);
+
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/tmp/kdrg_stage63b_0512_shadow_r3_bet0kfpr/workspace/electron cmd=node tests/validate-release-version.js 0.5.11
+
+[ARTIFACTS]
+{"electron/renderer/app.js": {"path": "/home/runner/workspace/reports/stage63b_0512_condition_presentation_shadow_r3/app.js", "sha256": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660"}, "electron/renderer/styles.css": {"path": "/home/runner/workspace/reports/stage63b_0512_condition_presentation_shadow_r3/styles.css", "sha256": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26"}, "electron/tests/validate-stage59b-ui.js": {"path": "/home/runner/workspace/reports/stage63b_0512_condition_presentation_shadow_r3/validate-stage59b-ui.js", "sha256": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}}
+
+[ACTUAL UNCHANGED]
+{"target_sha_after": {"electron/renderer/app.js": "08f1b4dac93f7cb8f2bc1b07b611af09f1dfe695a56d50d7c95593be1edc30a1", "electron/renderer/styles.css": "f89331c45b46fd02c967b4282892ca9e94962a50f8789ddc6e4c82a012a8227c", "electron/tests/validate-stage59b-ui.js": "ac449291ba73d06f51446ef8990da94315b387035540f32e83e2ecf61e390bc7"}, "staged_cleanup_preserved": true}
+
+[NEXT]
+- R3는 recordMaps의 index record를 직접 읽지 않고 모든 ADRG/AADRG를 getDetail()로 역참조한다.
+- 479 parent / 521 child / parentSummaryResolvable=521을 같은 probe에서 확인한다.
+- PASS일 때만 검증된 3개 artifact를 Actual에 byte-for-byte 적용한다.
+- Actual에서도 521건 전수 probe + 전체 validator를 다시 수행한다.
+- Actual PASS 전 0.5.12 version/commit/push/tag/release 금지.
+
+report_txt=/home/runner/workspace/stage63b_0512_condition_presentation_shadow_r3.txt
+report_json=/home/runner/workspace/stage63b_0512_condition_presentation_shadow_r3.json

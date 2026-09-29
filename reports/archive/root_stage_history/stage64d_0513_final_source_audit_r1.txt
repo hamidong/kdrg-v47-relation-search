@@ -1,0 +1,113 @@
+KDRG V4.7 Electron Stage64D / 0.5.13 Final Source Audit R1
+================================================================================================
+status=PASS
+readiness=READY_FOR_0513_ICON_SHADOW
+
+[PREFLIGHT]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "product_status": [" M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/official-condition-text.js"], "target_sha256": {"electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491", "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2", "electron/tests/validate-stage59b-ui.js": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c", "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e"}, "stage64c_status": "PASS", "stage64c_readiness": "READY_FOR_0513_FINAL_SOURCE_AUDIT"}
+
+[SOURCE AUDIT]
+{"pdf_extractor": "PyMuPDF", "base_pdf_override_pass": 120, "official_correction_override_pass": 1, "ast_fallback_pass": 269, "current_official_source_pass": 390, "p651_official_wording": true, "f022_official_correction_wording": true, "detail_tsv": "/home/runner/workspace/reports/stage64d_0513_final_source_audit_r1/final_source_cases.tsv", "pdf_sha256": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4", "correction_sha256": "5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3"}
+
+[VALIDATION]
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check renderer/official-condition-text.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-packaging-config.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node -e 
+'use strict';
+
+const path = require('node:path');
+const fs = require('node:fs');
+const official = require('./renderer/official-condition-text.js');
+const {
+  KdrgSearchService,
+} = require('./src/kdrg-search-service');
+
+if (Object.keys(official.byAdrg).length !== 121) {
+  throw new Error('override map count');
+}
+
+if (
+  official.meta.schema_version
+  !== 'kdrg-official-condition-text-v3-authority-overlay'
+) {
+  throw new Error('overlay schema');
+}
+
+const p651 = official.byAdrg.P651?.text || '';
+if (!p651.includes('시술명 table2을 제외한 OR procedure')) {
+  throw new Error('P651 official exclusion wording missing');
+}
+if (/OR procedure\s+and not\(시술명 table2\)/.test(p651)) {
+  throw new Error('P651 reconstructed wording leaked');
+}
+
+const f022 = official.byAdrg.F022;
+if (
+  !f022
+  || f022.source_kind !== 'OFFICIAL_CORRECTION_20260731'
+  || f022.text !==
+    '(시술명 table2 and 시술명 table 3) or 시술명 table6'
+) {
+  throw new Error('F022 current correction contract mismatch');
+}
+
+const app = fs.readFileSync('renderer/app.js', 'utf8');
+const index = fs.readFileSync('renderer/index.html', 'utf8');
+
+if (!app.includes('officialConditionDisplayText(detail)')) {
+  throw new Error('source-first renderer call missing');
+}
+if (!app.includes("conditionSource = 'official-pdf'")) {
+  throw new Error('official source marker missing');
+}
+if (!app.includes("conditionSource = 'ast-fallback'")) {
+  throw new Error('AST fallback marker missing');
+}
+if (
+  index.indexOf('official-condition-text.js') < 0
+  || index.indexOf('official-condition-text.js')
+    >= index.indexOf('app.js')
+) {
+  throw new Error('source module load order');
+}
+
+const service = new KdrgSearchService(
+  path.resolve(
+    '..',
+    'data',
+    'kdrg_v47_search_integrated_v3.json',
+  ),
+);
+
+const p6510 = service.getDetail('AADRG', 'P6510').detail;
+if (!p6510 || p6510.adrg !== 'P651' || !p6510.condition_ast) {
+  throw new Error('P6510 inheritance regression');
+}
+
+console.log('[PASS] Stage64D source-first final probe');
+
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-release-version.js 0.5.12
+
+[FINAL GUARD]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "product_status": [" M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/official-condition-text.js"], "staging_empty": true, "audit_read_only": true}
+
+[NEXT]
+- PASS이면 0.5.13 조건표시 수정은 최종 원천감사까지 완료.
+- 다음 단계는 KDRG 전용 아이콘 제작/적용 Shadow.
+- 아이콘 단계에서도 Actual 적용 전 Shadow 빌드/패키징 계약을 먼저 검증.
+- 아이콘까지 PASS한 뒤에만 0.5.13 Release Prep에서 package version과 커밋 범위를 확정.
+
+report_txt=/home/runner/workspace/stage64d_0513_final_source_audit_r1.txt
+report_json=/home/runner/workspace/stage64d_0513_final_source_audit_r1.json
+detail_tsv=/home/runner/workspace/reports/stage64d_0513_final_source_audit_r1/final_source_cases.tsv

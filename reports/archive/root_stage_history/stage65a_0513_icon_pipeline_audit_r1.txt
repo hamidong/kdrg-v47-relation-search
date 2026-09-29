@@ -1,0 +1,40 @@
+KDRG V4.7 Electron Stage65A / 0.5.13 Icon Pipeline Audit R1
+================================================================================================
+status=PASS
+readiness=READY_FOR_0513_ICON_DESIGN_AND_SHADOW
+
+[PREFLIGHT]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "stage64d_status": "PASS", "stage64d_readiness": "READY_FOR_0513_ICON_SHADOW", "product_status": [" M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/official-condition-text.js"]}
+
+[PACKAGE ICON CONTRACT]
+{"package_name": "kdrg-v47-relation-search-electron", "product_name": "KDRG V4.7 관계 검색기", "version": "0.5.12", "build_icon": null, "win_icon": null, "build_resources": null, "explicit_icon_fields": [], "default_icon_candidates": [], "builder_files": ["main.js", "preload.js", "renderer/**/*", "src/**/*", "package.json", "!tests/**/*", "!README_STAGE*.md"], "win_target": [{"target": "portable", "arch": ["x64"]}], "artifact_name": "KDRG_V47_Relation_Search_Electron_${version}_Portable.${ext}"}
+
+[CURRENT ICON MODE]
+{"mode": "SOURCE_OR_WORKFLOW_ICON_REFERENCE_ONLY", "reason": "icon references exist, but no explicit builder icon/default resource candidate was resolved", "references": [{"file": "electron/renderer/app.js", "line": 362, "text": "create('div', 'empty-icon', 'KDRG'),"}, {"file": "electron/renderer/styles.css", "line": 392, "text": ".empty-icon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 15px; border-radius: 18px; color: #5375a0; background: #eaf1fa; font-size: 12px; font-weight: 900; }"}]}
+
+[ICON ASSETS]
+
+[ICON REFERENCES]
+{"file": "electron/renderer/app.js", "line": 362, "text": "create('div', 'empty-icon', 'KDRG'),"}
+{"file": "electron/renderer/styles.css", "line": 392, "text": ".empty-icon { display: grid; place-items: center; width: 64px; height: 64px; margin-bottom: 15px; border-radius: 18px; color: #5375a0; background: #eaf1fa; font-size: 12px; font-weight: 900; }"}
+{"file": "electron/src/packaged-runtime-smoke.js", "line": 906, "text": "const filename = `${String(index + 1).padStart(2, '0')}_${fixture.adrg}.png`;"}
+{"file": "electron/tests/run-stage51d-runtime-ui-preview.js", "line": 370, "text": "const fileName = `${adrg}.png`;"}
+
+[WINDOWS WORKFLOW]
+{"path": ".github/workflows/build-electron-windows.yml", "sha256": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06", "relevant_lines": [{"line": 1, "text": "name: Build Electron Windows portable and publish Release"}, {"line": 73, "text": "$builderCache = Join-Path $env:RUNNER_TEMP \"electron-builder-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)\""}, {"line": 213, "text": "& node -e \"require('./node_modules/electron/package.json'); require('./node_modules/electron-builder/package.json'); console.log('dependency-import=PASS')\""}, {"line": 237, "text": "- name: Windows x64 portable exe 빌드"}, {"line": 245, "text": "- name: portable exe 경로 확인"}, {"line": 246, "text": "id: artifact"}, {"line": 250, "text": "-Filter \"KDRG_V47_Relation_Search_Electron_*_Portable.exe\" `"}, {"line": 256, "text": "Write-Error \"Electron portable exe를 찾지 못했습니다.\""}, {"line": 262, "text": "Write-Host \"Portable exe: $($exe.FullName)\""}, {"line": 273, "text": "& \"electron/scripts/verify-windows-portable.ps1\" `"}, {"line": 274, "text": "-ExePath \"${{ steps.artifact.outputs.exe_path }}\" `"}, {"line": 285, "text": "Get-FileHash $evidenceZip -Algorithm SHA256 | Format-List"}, {"line": 343, "text": "- name: SHA256 생성"}, {"line": 346, "text": "$exePath = \"${{ steps.artifact.outputs.exe_path }}\""}, {"line": 347, "text": "$hash = (Get-FileHash $exePath -Algorithm SHA256).Hash.ToLower()"}, {"line": 348, "text": "\"$hash  ${{ steps.artifact.outputs.exe_name }}\" |"}, {"line": 349, "text": "Set-Content \"electron/dist/SHA256SUMS_ELECTRON.txt\" -Encoding ascii"}, {"line": 350, "text": "Get-Content \"electron/dist/SHA256SUMS_ELECTRON.txt\""}, {"line": 385, "text": "\"- electron-builder portable x64: PASS\" >> $env:GITHUB_STEP_SUMMARY"}, {"line": 389, "text": "\"- Actions artifact upload: 사용하지 않음\" >> $env:GITHUB_STEP_SUMMARY"}, {"line": 390, "text": "\"- GitHub Release 필수 Assets: exe·SHA256\" >> $env:GITHUB_STEP_SUMMARY"}, {"line": 401, "text": "electron/dist/${{ steps.artifact.outputs.exe_name }}"}, {"line": 402, "text": "electron/dist/SHA256SUMS_ELECTRON.txt"}]}
+
+[STAGE65B SHADOW PLAN]
+{"recommended_source_png": "electron/build/icon-kdrg-v47.png", "recommended_windows_ico": "electron/build/icon-kdrg-v47.ico", "recommended_builder_field": "build.win.icon", "package_json_needs_change": true, "packaging_js_validator_needs_change": true, "packaging_python_validator_needs_change": true, "proposed_shadow_change_files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/build/icon-kdrg-v47.ico", "electron/build/icon-kdrg-v47.png", "electron/package.json", "electron/tests/validate-packaging-config.js"], "existing_recommended_png": false, "existing_recommended_ico": false, "note": "Stage65B should build/test this only in a Shadow worktree. Actual Stage64 files must remain unchanged until icon Shadow PASS."}
+
+[FINAL GUARD]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "product_status": [" M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/official-condition-text.js"], "staging_empty": true, "read_only": true}
+
+[NEXT]
+- PASS이면 현재 Windows 아이콘 적용경로와 최소 변경범위가 확정됨.
+- 다음 단계에서 KDRG 전용 PNG 아이콘 원본을 확정하고 ICO를 생성.
+- Stage65B는 아이콘/패키징 설정만 Shadow에서 적용하고 Windows 빌드 계약을 검증.
+- Stage64 조건표시 변경 4개는 아이콘 Shadow 중에도 byte-for-byte 보호.
+- 아이콘 Shadow PASS 전 Actual/version/commit/push/tag/Release 금지.
+
+report_txt=/home/runner/workspace/stage65a_0513_icon_pipeline_audit_r1.txt
+report_json=/home/runner/workspace/stage65a_0513_icon_pipeline_audit_r1.json

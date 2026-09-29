@@ -1,0 +1,25 @@
+Stage64A R3 P651 official-source evidence
+========================================================================
+pdf_page=63
+
+[OFFICIAL PDF]
+입원시 체중 1500 - 1999g
+and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥ 96 hours)
+and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }
+
+[CURRENT 0.5.12 SIMULATED RENDER]
+입원시 체중 1500 - 1999g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and {(시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제}
+
+[DISPLAY CLASS]
+CURRENT_RENDER_REWORDS_OFFICIAL
+
+[OFFICIAL CANDIDATE SOURCE]
+SOURCE_BLOCK_TEXT
+입원시 체중 1500 - 1999g
+and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)
+and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }
+
+[PDF WINDOW]
+

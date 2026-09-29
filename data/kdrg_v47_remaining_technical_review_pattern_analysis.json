@@ -1,0 +1,5366 @@
+{
+  "meta": {
+    "schema_version": "kdrg-v47-remaining-technical-review-pattern-analysis-v1",
+    "data_version": "KDRG V4.7",
+    "script_version": "2026-07-22_KDRG_V47_REMAINING_TECHNICAL_REVIEW_ANALYZER_V1",
+    "generated_at": "2026-07-22T08:02:00+00:00",
+    "source_files": {
+      "repaired_semantic_audit_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_repaired_appendix_main_semantic_audit.json",
+        "sha256": "8a3d7a899d937b733b6c5930b7aaef97dc4589f1178b3564f95d2233996042e8"
+      },
+      "logical_tables_repaired_current_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_logical_tables_repaired_current.json",
+        "sha256": "74378cb7b9b9fc27ead6ec0b11b873e889b6e034c0c003fec4ed76b823406a58"
+      },
+      "condition_ast_repaired_current_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_condition_ast_repaired_current.json",
+        "sha256": "c091dcb148968fd48fcc119268b712c211a217d8173c84975a7d996efe1c1878"
+      },
+      "appendix_code_index_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_appendix_code_index.json",
+        "sha256": "5d8179e26cc2b3554a671b2fb3a2fd8fe746bee7e6c7069890c5d9948748adbc"
+      },
+      "table_section_candidates_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_table_section_candidates.json",
+        "sha256": "13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f"
+      },
+      "parser_repaired_current_validation_report_json": {
+        "path": "/home/runner/workspace/reports/parser_repaired_current_validation_report.json",
+        "sha256": "05e14e6e60478e778a8c723e032061db1a1f756a1a0a265d39cc48e6c112fe81"
+      },
+      "repaired_cross_validation_validation_report_json": {
+        "path": "/home/runner/workspace/reports/repaired_appendix_main_cross_validation_validation_report.json",
+        "sha256": "d6601a909cc8d064ab20f159cd641e3b8084a8307b1aefe167929b3debdc427f"
+      },
+      "main_pdf": {
+        "path": "/home/runner/workspace/sources/kdrg_v47/main/KDRG V4.7 분류집.pdf",
+        "sha256": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4"
+      }
+    },
+    "resolved_candidate_set_sha256": "cbe666b0ab9e7f9ec41ab8b62f452b4754ad15fa3eaeb65b04392776b71512a2",
+    "full_corpus_pattern_sha256": "678df2f597c493f02c380ca26c841ec4b9db06ceaf547f81a366d2a7db9cf2ad"
+  },
+  "summary": {
+    "input_technical_review_count": 184,
+    "input_unique_code_count": 16,
+    "input_adrg_count": 35,
+    "input_logical_table_count": 17,
+    "resolution_pattern_counts": {
+      "main_pdf_source_only_diagnosis_code": 9,
+      "negated_or_procedure_allowed_exception": 154,
+      "with_or_without_optional_companion": 21
+    },
+    "resolved_count": 184,
+    "unresolved_technical_review_count": 0,
+    "data_repair_required": false,
+    "user_decision_required_count": 0,
+    "manual_excel_review": false,
+    "source_data_modified": false
+  },
+  "resolved_candidates": [
+    {
+      "candidate_id": "XVAL_F9251D06A693982BA2E2",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z895",
+      "mdc": "08",
+      "adrg": "I160",
+      "logical_table_ids": [
+        "LT_I760_020"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_I760_020",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_I160_N006",
+          "source_fragment": "Diagnosis table4(경골 및 비골 질환)-A"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_0AB2D0E9B0199B6AC668",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z896",
+      "mdc": "08",
+      "adrg": "I141",
+      "logical_table_ids": [
+        "LT_I760_015"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_I760_015",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_I141_N007",
+          "source_fragment": "Diagnosis table2(고관절 및 대퇴부 질환)-A"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_000454A8CCD30AD954AB",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z896",
+      "mdc": "08",
+      "adrg": "I142",
+      "logical_table_ids": [
+        "LT_I760_015"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_I760_015",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_I142_N004",
+          "source_fragment": "Diagnosis table2(고관절 및 대퇴부 질환-A)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_9283F68B2EE9E93ABEC7",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z901",
+      "mdc": "09",
+      "adrg": "J063",
+      "logical_table_ids": [
+        "LT_J063_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_J063_001",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_J063_N002",
+          "source_fragment": "주진단명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_7D9F13BB2B79FED2954A",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z901",
+      "mdc": "09",
+      "adrg": "J071",
+      "logical_table_ids": [
+        "LT_J072_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_J072_001",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_J071_N002",
+          "source_fragment": "주진단명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_29A60B4789C9DCD94F66",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z901",
+      "mdc": "09",
+      "adrg": "J072",
+      "logical_table_ids": [
+        "LT_J072_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_J072_001",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_J072_N002",
+          "source_fragment": "주진단명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_5E62C0E15D2B8AA6A4B1",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z901",
+      "mdc": "09",
+      "adrg": "J080",
+      "logical_table_ids": [
+        "LT_J080_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_J080_001",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_J080_N002",
+          "source_fragment": "주진단명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_AC61FCA181B387C8A18C",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z901",
+      "mdc": "09",
+      "adrg": "J090",
+      "logical_table_ids": [
+        "LT_J090_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_J090_001",
+          "context": "ordinary_table_reference",
+          "node_id": "AST_J090_N002",
+          "source_fragment": "주진단명 또는 기타진단명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_450F820A4B71EBBD7A01",
+      "scope": "diagnosis",
+      "direction": "main_only",
+      "code": "Z901",
+      "mdc": "09",
+      "adrg": "J502",
+      "logical_table_ids": [
+        "LT_J502_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+      "ast_context_evidence": []
+    },
+    {
+      "candidate_id": "XVAL_E854C0ED843EBEE19E9F",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B55389936D84BD16DAF8",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_891C4853F0889B8971C7",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_73D6D6B7F06D20582994",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_7125810481AC24094B66",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_10C373EB74564D1A2D88",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3DF99983ED0CF0D0B073",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_4E3787739AD1075AD242",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D57C46462757E1FB2173",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_07C0FC7EB18479BEEF9C",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_96612FFE9D4875F11D7B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_884317E2D387B6EBB5A3",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F9FA0B135D68A3363B77",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_AB1044EE136AA34F5367",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3D41D5144AA2A8B15CFB",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2561",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_C8A1F4770E1FFE5AAFBB",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_31B86CAD4652D604AD56",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_46F67B694E5351240D57",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_53993CB0041EE31EF053",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_E447977C0A421E9D4864",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_CEF9607B9E45598D4E5D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_FF2E01A7DEE80EBB3166",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_5FA4D6DDAD75EBDAA351",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_55377FB348C043529D90",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F78E5DDEA85DA3411C68",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3658A68520EAA98CC28B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_27B0034E486518EDDCAE",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_BFA7E7C495486E23F0E8",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_4AAAA07B008E7EA2A8D0",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_0D5FDEEEEE6833F947D8",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2753",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_954E39C9F339066CFC06",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_A5988CC1D3F5F5BBB95D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_2AF08172A0A9494B26A0",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_09072C7BD4279ABAC044",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_960BB29A4090DDDF53E0",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_392D5467BC41D8051C42",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_8C091F0B16756FA7BBEF",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B47C242B36014722F555",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_A5D63B7EA8597C15EB9D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_28777E621B2A016FAA5B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_072B02FC5BEE4D12B5E0",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_587398E18ADF01999B6B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_BBE3667F7156204E17BB",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_0504781221AFA541473D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_A875C207BF1F7873044E",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2754",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F50C5836F7B5FD98DF85",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_2244B79EBFBBFE644776",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_8AD3C25637E8CF770B60",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_DF86711BDDB3B8D877BB",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_43CB97678CB9F2BA6912",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3899A5FBC14E159CC0DA",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F3BC792C66D1AF904322",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_CDD20B03C27095600A7C",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F7176BF4011994FE08C1",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_986B1D6625A70916A45F",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_AAA6CCFDC98F3A02DE5D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3EF3B59E3B93473B74D9",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_701B670BF5C0EAEFC909",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D667C8A309E6D1E425C9",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_47128F6193302424ADFB",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2755",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_891FBC58E5BA1E88FD28",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B94CE0A13F07D8868EDD",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_6BD13785019705C7C627",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_1F35D080FEFFAB979BD8",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_964B5D3599A9DC847E1B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_7BCEFCB30FF67F7D916A",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3DA1EDC757BBB42A242D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_7686891D663C02B9BE22",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D8E5E305EC74CEFCF22E",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_0B96DEE7F3B76BCA17F6",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B3450DAB393778062114",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_8AD78621B10E1AF631B4",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_88C42AF13D66DDFB009F",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_DB0253FC2A1DABD7A7D7",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_500CB3667260952A7BE1",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "Q2756",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_139D48256CE5534FF5CA",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_41BFA5546CDBCBDF871F",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_C08F20D70EA745CBC381",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B23C2B105406529594A7",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_CE16CCE07DBD51730228",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_08B594B1D2FB9653142C",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_C1B4BE48B944BDC821C4",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_5DFFABF08512981C0164",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_61AD11022E87EEC5997D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_42AB8FE6B6F1154B9C82",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F29C99B7D05B77F3DDB3",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_532778EFD53250342623",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_E5CABCE97D0B0643F767",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_E067CFF15EA27BB65BAE",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_911DF9A3B36A0571A4A7",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA753",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_8D700C1F54E7E4D795F7",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_903C42E881689DCA7869",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_4208D6F13D59989D1B62",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B65FC074ED141F1CA9D9",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_16C4998E8FE45C86DE28",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_8C2A03C08F59A11EDC37",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_767500002BABEEC16761",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_68817B52DE0362862997",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_1B9558B9FA162B6F2E27",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_2688F06F9FDC0C6BF167",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_007E5A8E571B75605611",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_C12B8E28B45CCB9F550B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_C063493FF432F9D114A0",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_E1885BF1A7334C1E3B4F",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_5AB4D4868885CF883B05",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA754",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_9FA01FE920019DA21577",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_74802AB832E52BC6696B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_05B0F63F162B17002652",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_085E66AD6345748511DF",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_7004504D6526E8C7F301",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_4BD0384970013802F144",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_1D04B62711AA23F42389",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F7E51DDC47F7A5F23282",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_5A23BBCE502634B40842",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_DB5DD032DEE681C430A1",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_FCEB20D9F6A0795293DC",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_E3ABCD02B11AEC9D38D8",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_06E268A73A07B4A2EEC2",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D820BDCFCED475861ECD",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_DD2642B44CA8CA885DA6",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA755",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_412B38B445AA722A9723",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_831A30755732D99F0E0B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B01339F4A6D371A68362",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_48B0DBD5CC077383EDCC",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_400CDA9DACDA2561CCA2",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_E77B1BAF769FDD438614",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_526AECF8C0155BB8628A",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_F659A11F729FCD885583",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D7B1B921ACEACAF59EE5",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_89DF7813A5ED85973662",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_CEFC9EB772380F7D7349",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_08ECED6B87D751E3C08E",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_CA541825DD4F382A8F91",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_EF9A5BCD858C5FE50513",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_90F31FBF464148C71711",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "QA756",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_E772513992FCB00F43A3",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P601",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P601_N009",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_104969F029371683DBC2",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P602",
+      "logical_table_ids": [
+        "LT_P602_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P602_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P602_N008",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_42B941CAC40BEEF06BCB",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P610",
+      "logical_table_ids": [
+        "LT_P610_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P610_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P610_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_27A05EBF14B86F967942",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P620",
+      "logical_table_ids": [
+        "LT_P620_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P620_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P620_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_CCC6644B2CB6F8D174C5",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P630",
+      "logical_table_ids": [
+        "LT_P630_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P630_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P630_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_88BAE42B505E1F12C7F8",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P641",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P641_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_B409205457E2ADBC3BAC",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P642",
+      "logical_table_ids": [
+        "LT_P642_001"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P642_001",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P642_N007",
+          "source_fragment": "시술명 table1"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_488B8C2AEBA3DE2113FD",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P651",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P651_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_8CA1ED36E3C19FE3C21E",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P652",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P652_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_78C4DAC188AAAF81A4FB",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P653",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P653_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_29A9ACBE9D2CB66055E7",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P654",
+      "logical_table_ids": [
+        "LT_P654_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P654_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P654_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D61B8A0E7717CE026840",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P661",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P661_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_FDCC0F201B5D7D06F6C5",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P662",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P662_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_8CA0FD6AD0D172AE210E",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P663",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P663_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_7DDB348B23AF1019B7F4",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P664",
+      "logical_table_ids": [
+        "LT_P664_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P664_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P664_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_0F203433C999CD125121",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P671",
+      "logical_table_ids": [
+        "LT_P674_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P674_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P671_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_402FF03D751F8DA5E7C8",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P672",
+      "logical_table_ids": [
+        "LT_P674_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P674_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P672_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_1BD51DBB604BA06C3A98",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P673",
+      "logical_table_ids": [
+        "LT_P674_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P674_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P673_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_057ECA11CC9D73E31CC7",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "R3822",
+      "mdc": "15",
+      "adrg": "P674",
+      "logical_table_ids": [
+        "LT_P674_002"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "negated_or_procedure_allowed_exception",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_P674_002",
+          "context": "allowed_exception_under_negated_or_procedure",
+          "node_id": "AST_P674_N007",
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_17D0536D2E100D7D1BED",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5050",
+      "mdc": "02",
+      "adrg": "C061",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C061_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_CDF31B684424A5E71211",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5050",
+      "mdc": "02",
+      "adrg": "C062",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C062_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_4A5E191C11D2D4587C6C",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5050",
+      "mdc": "02",
+      "adrg": "C063",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C063_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_BDFF7106F5DD2EDE383D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5050",
+      "mdc": "02",
+      "adrg": "C064",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C064_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_81A481C08BF7D67B4328",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5050",
+      "mdc": "02",
+      "adrg": "C071",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C071_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_A5C33306AD2520014FE2",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5050",
+      "mdc": "02",
+      "adrg": "C072",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C072_N001",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_31FC269B81EDAF3E7A9D",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5050",
+      "mdc": "02",
+      "adrg": "C073",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C073_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3B287C8C9E19A2BB71CD",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5070",
+      "mdc": "02",
+      "adrg": "C061",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C061_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_99CFF954C66C8178C0C1",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5070",
+      "mdc": "02",
+      "adrg": "C062",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C062_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_3542C504D468091AC7F6",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5070",
+      "mdc": "02",
+      "adrg": "C063",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C063_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_C8B1E6EFF4215D6932C3",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5070",
+      "mdc": "02",
+      "adrg": "C064",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C064_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_AF978C82A2A045DE39BE",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5070",
+      "mdc": "02",
+      "adrg": "C071",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C071_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_4894A9417C804544CC28",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5070",
+      "mdc": "02",
+      "adrg": "C072",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C072_N001",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_65262C8401C895F55746",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5070",
+      "mdc": "02",
+      "adrg": "C073",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C073_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D57FE134B9DF29701D4A",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5122",
+      "mdc": "02",
+      "adrg": "C061",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C061_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_A6697E91BC57F22A0AA5",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5122",
+      "mdc": "02",
+      "adrg": "C062",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C062_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_7F6EB30EADC3F30796CC",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5122",
+      "mdc": "02",
+      "adrg": "C063",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C063_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_9EFE01D2067BE57C4F23",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5122",
+      "mdc": "02",
+      "adrg": "C064",
+      "logical_table_ids": [
+        "LT_C064_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C064_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C064_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_481CFD86F540C3117E6B",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5122",
+      "mdc": "02",
+      "adrg": "C071",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C071_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_D8B2935D10269BE30C59",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5122",
+      "mdc": "02",
+      "adrg": "C072",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C072_N001",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    },
+    {
+      "candidate_id": "XVAL_71AE7127156C5EEFC8F6",
+      "scope": "procedure",
+      "direction": "main_only",
+      "code": "S5122",
+      "mdc": "02",
+      "adrg": "C073",
+      "logical_table_ids": [
+        "LT_C073_003"
+      ],
+      "input_semantic_category": "strict_positive_main_only",
+      "resolution_pattern": "with_or_without_optional_companion",
+      "resolution_status": "RESOLVED",
+      "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+      "ast_context_evidence": [
+        {
+          "logical_table_id": "LT_C073_003",
+          "context": "optional_companion_table",
+          "node_id": "AST_C073_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+        }
+      ]
+    }
+  ],
+  "unresolved_candidates": [],
+  "full_corpus_analog_audit": {
+    "logical_table_count": 1308,
+    "condition_ast_count": 390,
+    "ast_node_count": 1727,
+    "negated_or_procedure_allowed_exception": {
+      "node_count": 19,
+      "adrg_count": 19,
+      "logical_table_count": 8,
+      "relation_universe_count": 190,
+      "appendix_exact_relation_count": 9,
+      "family_granularity_relation_count": 27,
+      "technical_candidate_relation_count": 154,
+      "nodes": [
+        {
+          "adrg": "P601",
+          "node_id": "AST_P601_N009",
+          "logical_table_ids": [
+            "LT_P602_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P602",
+          "node_id": "AST_P602_N008",
+          "logical_table_ids": [
+            "LT_P602_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P610",
+          "node_id": "AST_P610_N007",
+          "logical_table_ids": [
+            "LT_P610_001"
+          ],
+          "source_fragment": "시술명 table1"
+        },
+        {
+          "adrg": "P620",
+          "node_id": "AST_P620_N007",
+          "logical_table_ids": [
+            "LT_P620_001"
+          ],
+          "source_fragment": "시술명 table1"
+        },
+        {
+          "adrg": "P630",
+          "node_id": "AST_P630_N007",
+          "logical_table_ids": [
+            "LT_P630_001"
+          ],
+          "source_fragment": "시술명 table1"
+        },
+        {
+          "adrg": "P641",
+          "node_id": "AST_P641_N007",
+          "logical_table_ids": [
+            "LT_P642_001"
+          ],
+          "source_fragment": "시술명 table1"
+        },
+        {
+          "adrg": "P642",
+          "node_id": "AST_P642_N007",
+          "logical_table_ids": [
+            "LT_P642_001"
+          ],
+          "source_fragment": "시술명 table1"
+        },
+        {
+          "adrg": "P651",
+          "node_id": "AST_P651_N007",
+          "logical_table_ids": [
+            "LT_P654_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P652",
+          "node_id": "AST_P652_N007",
+          "logical_table_ids": [
+            "LT_P654_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P653",
+          "node_id": "AST_P653_N007",
+          "logical_table_ids": [
+            "LT_P654_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P654",
+          "node_id": "AST_P654_N007",
+          "logical_table_ids": [
+            "LT_P654_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P661",
+          "node_id": "AST_P661_N007",
+          "logical_table_ids": [
+            "LT_P664_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P662",
+          "node_id": "AST_P662_N007",
+          "logical_table_ids": [
+            "LT_P664_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P663",
+          "node_id": "AST_P663_N007",
+          "logical_table_ids": [
+            "LT_P664_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P664",
+          "node_id": "AST_P664_N007",
+          "logical_table_ids": [
+            "LT_P664_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P671",
+          "node_id": "AST_P671_N007",
+          "logical_table_ids": [
+            "LT_P674_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P672",
+          "node_id": "AST_P672_N007",
+          "logical_table_ids": [
+            "LT_P674_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P673",
+          "node_id": "AST_P673_N007",
+          "logical_table_ids": [
+            "LT_P674_002"
+          ],
+          "source_fragment": "시술명 table2"
+        },
+        {
+          "adrg": "P674",
+          "node_id": "AST_P674_N007",
+          "logical_table_ids": [
+            "LT_P674_002"
+          ],
+          "source_fragment": "시술명 table2"
+        }
+      ]
+    },
+    "with_or_without_optional_companion": {
+      "node_count": 7,
+      "adrg_count": 7,
+      "optional_logical_table_count": 2,
+      "optional_relation_count": 21,
+      "technical_candidate_relation_count": 21,
+      "nodes": [
+        {
+          "adrg": "C061",
+          "node_id": "AST_C061_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)",
+          "required_logical_table_ids": [
+            "LT_C064_002"
+          ],
+          "optional_logical_table_ids": [
+            "LT_C064_003"
+          ],
+          "all_logical_table_ids": [
+            "LT_C064_002",
+            "LT_C064_003"
+          ]
+        },
+        {
+          "adrg": "C062",
+          "node_id": "AST_C062_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)",
+          "required_logical_table_ids": [
+            "LT_C064_001"
+          ],
+          "optional_logical_table_ids": [
+            "LT_C064_003"
+          ],
+          "all_logical_table_ids": [
+            "LT_C064_001",
+            "LT_C064_003"
+          ]
+        },
+        {
+          "adrg": "C063",
+          "node_id": "AST_C063_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)",
+          "required_logical_table_ids": [
+            "LT_C064_002"
+          ],
+          "optional_logical_table_ids": [
+            "LT_C064_003"
+          ],
+          "all_logical_table_ids": [
+            "LT_C064_002",
+            "LT_C064_003"
+          ]
+        },
+        {
+          "adrg": "C064",
+          "node_id": "AST_C064_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)",
+          "required_logical_table_ids": [
+            "LT_C064_001"
+          ],
+          "optional_logical_table_ids": [
+            "LT_C064_003"
+          ],
+          "all_logical_table_ids": [
+            "LT_C064_001",
+            "LT_C064_003"
+          ]
+        },
+        {
+          "adrg": "C071",
+          "node_id": "AST_C071_N003",
+          "source_fragment": "시술명 table2 (with or without 시술명 table3)",
+          "required_logical_table_ids": [
+            "LT_C073_002"
+          ],
+          "optional_logical_table_ids": [
+            "LT_C073_003"
+          ],
+          "all_logical_table_ids": [
+            "LT_C073_002",
+            "LT_C073_003"
+          ]
+        },
+        {
+          "adrg": "C072",
+          "node_id": "AST_C072_N001",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)",
+          "required_logical_table_ids": [
+            "LT_C073_001"
+          ],
+          "optional_logical_table_ids": [
+            "LT_C073_003"
+          ],
+          "all_logical_table_ids": [
+            "LT_C073_001",
+            "LT_C073_003"
+          ]
+        },
+        {
+          "adrg": "C073",
+          "node_id": "AST_C073_N002",
+          "source_fragment": "시술명 table1 (with or without 시술명 table3)",
+          "required_logical_table_ids": [
+            "LT_C073_001"
+          ],
+          "optional_logical_table_ids": [
+            "LT_C073_003"
+          ],
+          "all_logical_table_ids": [
+            "LT_C073_001",
+            "LT_C073_003"
+          ]
+        }
+      ]
+    },
+    "main_pdf_source_only_diagnosis_code": {
+      "physical_source_only_row_count": 101,
+      "physical_source_only_unique_code_count": 93,
+      "physical_source_only_table_count": 18,
+      "technical_candidate_relation_count": 9,
+      "technical_candidate_codes": [
+        "Z895",
+        "Z896",
+        "Z901"
+      ],
+      "technical_candidate_adrgs": [
+        "I141",
+        "I142",
+        "I160",
+        "J063",
+        "J071",
+        "J072",
+        "J080",
+        "J090",
+        "J502"
+      ],
+      "technical_candidate_logical_table_ids": [
+        "LT_I760_015",
+        "LT_I760_020",
+        "LT_J063_001",
+        "LT_J072_001",
+        "LT_J080_001",
+        "LT_J090_001",
+        "LT_J502_002"
+      ],
+      "pdf_occurrence_count": 7,
+      "pdf_verified_occurrence_count": 7,
+      "pdf_verification": [
+        {
+          "occurrence_id": "SEC_I760_020_CODE_0146",
+          "section_id": "SEC_I760_020",
+          "code": "Z895",
+          "pdf_page": 683,
+          "printed_page": 657,
+          "bbox": [
+            293.277,
+            612.864,
+            309.713,
+            620.784
+          ],
+          "line_text": "Z895",
+          "clipped_text": "Z895",
+          "verified": true
+        },
+        {
+          "occurrence_id": "SEC_I760_015_CODE_0329",
+          "section_id": "SEC_I760_015",
+          "code": "Z896",
+          "pdf_page": 678,
+          "printed_page": 652,
+          "bbox": [
+            284.875,
+            515.663,
+            301.311,
+            523.583
+          ],
+          "line_text": "Z896",
+          "clipped_text": "Z896",
+          "verified": true
+        },
+        {
+          "occurrence_id": "SEC_J063_001_CODE_0041",
+          "section_id": "SEC_J063_001",
+          "code": "Z901",
+          "pdf_page": 733,
+          "printed_page": 707,
+          "bbox": [
+            293.277,
+            459.984,
+            309.713,
+            467.904
+          ],
+          "line_text": "Z901",
+          "clipped_text": "Z901",
+          "verified": true
+        },
+        {
+          "occurrence_id": "SEC_J072_001_CODE_0084",
+          "section_id": "SEC_J072_001",
+          "code": "Z901",
+          "pdf_page": 735,
+          "printed_page": 709,
+          "bbox": [
+            293.278,
+            288.864,
+            309.714,
+            296.784
+          ],
+          "line_text": "Z901",
+          "clipped_text": "Z901",
+          "verified": true
+        },
+        {
+          "occurrence_id": "SEC_J080_001_CODE_0084",
+          "section_id": "SEC_J080_001",
+          "code": "Z901",
+          "pdf_page": 736,
+          "printed_page": 710,
+          "bbox": [
+            284.875,
+            515.663,
+            301.311,
+            523.583
+          ],
+          "line_text": "Z901",
+          "clipped_text": "Z901",
+          "verified": true
+        },
+        {
+          "occurrence_id": "SEC_J090_001_CODE_0084",
+          "section_id": "SEC_J090_001",
+          "code": "Z901",
+          "pdf_page": 738,
+          "printed_page": 712,
+          "bbox": [
+            284.879,
+            148.464,
+            301.315,
+            156.384
+          ],
+          "line_text": "Z901",
+          "clipped_text": "Z901",
+          "verified": true
+        },
+        {
+          "occurrence_id": "SEC_J502_002_CODE_0083",
+          "section_id": "SEC_J502_002",
+          "code": "Z901",
+          "pdf_page": 741,
+          "printed_page": 715,
+          "bbox": [
+            293.276,
+            407.663,
+            309.712,
+            415.583
+          ],
+          "line_text": "Z901",
+          "clipped_text": "Z901",
+          "verified": true
+        }
+      ]
+    },
+    "unclassified_allowed_exception_node_count": 0,
+    "unclassified_optional_node_count": 0,
+    "duplicate_or_unclassified_candidate_count": 0
+  },
+  "runtime_semantic_rules": [
+    {
+      "rule_id": "RUNTIME_SEMANTIC_RULE_01",
+      "name": "negated_or_procedure_allowed_exception",
+      "display_policy": "필수 시술이 아니라 OR procedure 판정의 허용 예외로 표시",
+      "search_index_policy": "positive_required_procedure 인덱스에서 제외하고 allowed_exception 인덱스에 저장"
+    },
+    {
+      "rule_id": "RUNTIME_SEMANTIC_RULE_02",
+      "name": "with_or_without_optional_companion",
+      "display_policy": "선택 TABLE은 '시행 여부 무관'으로 표시",
+      "search_index_policy": "필수조건 인덱스에서 제외하고 optional_companion 인덱스에 저장"
+    },
+    {
+      "rule_id": "RUNTIME_SEMANTIC_RULE_03",
+      "name": "main_pdf_source_only_diagnosis_code",
+      "display_policy": "본문 TABLE 코드는 유지하고 '부록 관계 미수록' provenance를 표시",
+      "search_index_policy": "본문 TABLE membership을 유지하며 appendix_relation_absent 플래그 추가"
+    }
+  ],
+  "samples_by_pattern": {
+    "main_pdf_source_only_diagnosis_code": [
+      {
+        "candidate_id": "XVAL_F9251D06A693982BA2E2",
+        "scope": "diagnosis",
+        "direction": "main_only",
+        "code": "Z895",
+        "mdc": "08",
+        "adrg": "I160",
+        "logical_table_ids": [
+          "LT_I760_020"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_I760_020",
+            "context": "ordinary_table_reference",
+            "node_id": "AST_I160_N006",
+            "source_fragment": "Diagnosis table4(경골 및 비골 질환)-A"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_0AB2D0E9B0199B6AC668",
+        "scope": "diagnosis",
+        "direction": "main_only",
+        "code": "Z896",
+        "mdc": "08",
+        "adrg": "I141",
+        "logical_table_ids": [
+          "LT_I760_015"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_I760_015",
+            "context": "ordinary_table_reference",
+            "node_id": "AST_I141_N007",
+            "source_fragment": "Diagnosis table2(고관절 및 대퇴부 질환)-A"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_000454A8CCD30AD954AB",
+        "scope": "diagnosis",
+        "direction": "main_only",
+        "code": "Z896",
+        "mdc": "08",
+        "adrg": "I142",
+        "logical_table_ids": [
+          "LT_I760_015"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_I760_015",
+            "context": "ordinary_table_reference",
+            "node_id": "AST_I142_N004",
+            "source_fragment": "Diagnosis table2(고관절 및 대퇴부 질환-A)"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_9283F68B2EE9E93ABEC7",
+        "scope": "diagnosis",
+        "direction": "main_only",
+        "code": "Z901",
+        "mdc": "09",
+        "adrg": "J063",
+        "logical_table_ids": [
+          "LT_J063_001"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_J063_001",
+            "context": "ordinary_table_reference",
+            "node_id": "AST_J063_N002",
+            "source_fragment": "주진단명 table1"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_7D9F13BB2B79FED2954A",
+        "scope": "diagnosis",
+        "direction": "main_only",
+        "code": "Z901",
+        "mdc": "09",
+        "adrg": "J071",
+        "logical_table_ids": [
+          "LT_J072_001"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "main_pdf_source_only_diagnosis_code",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "본문 TABLE에 독립 code row로 존재하지만 부록 진단 역색인에는 없는 원천 차이이므로 본문 코드를 보존함",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_J072_001",
+            "context": "ordinary_table_reference",
+            "node_id": "AST_J071_N002",
+            "source_fragment": "주진단명 table1"
+          }
+        ]
+      }
+    ],
+    "negated_or_procedure_allowed_exception": [
+      {
+        "candidate_id": "XVAL_E854C0ED843EBEE19E9F",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "Q2561",
+        "mdc": "15",
+        "adrg": "P601",
+        "logical_table_ids": [
+          "LT_P602_002"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "negated_or_procedure_allowed_exception",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_P602_002",
+            "context": "allowed_exception_under_negated_or_procedure",
+            "node_id": "AST_P601_N009",
+            "source_fragment": "시술명 table2"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_B55389936D84BD16DAF8",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "Q2561",
+        "mdc": "15",
+        "adrg": "P602",
+        "logical_table_ids": [
+          "LT_P602_002"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "negated_or_procedure_allowed_exception",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_P602_002",
+            "context": "allowed_exception_under_negated_or_procedure",
+            "node_id": "AST_P602_N008",
+            "source_fragment": "시술명 table2"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_891C4853F0889B8971C7",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "Q2561",
+        "mdc": "15",
+        "adrg": "P610",
+        "logical_table_ids": [
+          "LT_P610_001"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "negated_or_procedure_allowed_exception",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_P610_001",
+            "context": "allowed_exception_under_negated_or_procedure",
+            "node_id": "AST_P610_N007",
+            "source_fragment": "시술명 table1"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_73D6D6B7F06D20582994",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "Q2561",
+        "mdc": "15",
+        "adrg": "P620",
+        "logical_table_ids": [
+          "LT_P620_001"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "negated_or_procedure_allowed_exception",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_P620_001",
+            "context": "allowed_exception_under_negated_or_procedure",
+            "node_id": "AST_P620_N007",
+            "source_fragment": "시술명 table1"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_7125810481AC24094B66",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "Q2561",
+        "mdc": "15",
+        "adrg": "P630",
+        "logical_table_ids": [
+          "LT_P630_001"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "negated_or_procedure_allowed_exception",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "NOT 안의 'OR procedure에서 특정 TABLE 제외'는 해당 TABLE 시술을 필수로 요구하는 것이 아니라 OR procedure 판정에서 허용하는 예외 목록임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_P630_001",
+            "context": "allowed_exception_under_negated_or_procedure",
+            "node_id": "AST_P630_N007",
+            "source_fragment": "시술명 table1"
+          }
+        ]
+      }
+    ],
+    "with_or_without_optional_companion": [
+      {
+        "candidate_id": "XVAL_17D0536D2E100D7D1BED",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "S5050",
+        "mdc": "02",
+        "adrg": "C061",
+        "logical_table_ids": [
+          "LT_C064_003"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "with_or_without_optional_companion",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_C064_003",
+            "context": "optional_companion_table",
+            "node_id": "AST_C061_N003",
+            "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_CDF31B684424A5E71211",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "S5050",
+        "mdc": "02",
+        "adrg": "C062",
+        "logical_table_ids": [
+          "LT_C064_003"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "with_or_without_optional_companion",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_C064_003",
+            "context": "optional_companion_table",
+            "node_id": "AST_C062_N002",
+            "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_4A5E191C11D2D4587C6C",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "S5050",
+        "mdc": "02",
+        "adrg": "C063",
+        "logical_table_ids": [
+          "LT_C064_003"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "with_or_without_optional_companion",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_C064_003",
+            "context": "optional_companion_table",
+            "node_id": "AST_C063_N003",
+            "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_BDFF7106F5DD2EDE383D",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "S5050",
+        "mdc": "02",
+        "adrg": "C064",
+        "logical_table_ids": [
+          "LT_C064_003"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "with_or_without_optional_companion",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_C064_003",
+            "context": "optional_companion_table",
+            "node_id": "AST_C064_N002",
+            "source_fragment": "시술명 table1 (with or without 시술명 table3)"
+          }
+        ]
+      },
+      {
+        "candidate_id": "XVAL_81A481C08BF7D67B4328",
+        "scope": "procedure",
+        "direction": "main_only",
+        "code": "S5050",
+        "mdc": "02",
+        "adrg": "C071",
+        "logical_table_ids": [
+          "LT_C073_003"
+        ],
+        "input_semantic_category": "strict_positive_main_only",
+        "resolution_pattern": "with_or_without_optional_companion",
+        "resolution_status": "RESOLVED",
+        "resolution_reason": "with or without 뒤의 TABLE은 시행 여부가 질병군 분류를 제한하지 않는 선택 동반 TABLE임",
+        "ast_context_evidence": [
+          {
+            "logical_table_id": "LT_C073_003",
+            "context": "optional_companion_table",
+            "node_id": "AST_C071_N003",
+            "source_fragment": "시술명 table2 (with or without 시술명 table3)"
+          }
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "status": "PASS",
+    "pass_count": 44,
+    "fail_count": 0,
+    "checks": [
+      {
+        "check_id": "R01",
+        "title": "32번 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-repaired-appendix-main-semantic-audit-v1"
+      },
+      {
+        "check_id": "R02",
+        "title": "repaired TABLE schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-logical-tables-repaired-current-v1"
+      },
+      {
+        "check_id": "R03",
+        "title": "repaired AST schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-condition-ast-repaired-current-v1"
+      },
+      {
+        "check_id": "R04",
+        "title": "부록 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-appendix-code-index-v1"
+      },
+      {
+        "check_id": "R05",
+        "title": "section schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-table-section-candidates-v1"
+      },
+      {
+        "check_id": "R06",
+        "title": "repaired current 검증 보고서 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-parser-repaired-current-validation-report-v1"
+      },
+      {
+        "check_id": "R07",
+        "title": "repaired 교차검증 보고서 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-repaired-appendix-main-cross-validation-validation-report-v1"
+      },
+      {
+        "check_id": "R08",
+        "title": "선행 JSON PASS",
+        "status": "PASS",
+        "detail": "all PASS"
+      },
+      {
+        "check_id": "R09",
+        "title": "선행 보고서 PASS",
+        "status": "PASS",
+        "detail": "PASS/PASS"
+      },
+      {
+        "check_id": "R10",
+        "title": "입력 TECHNICAL_REVIEW 184건",
+        "status": "PASS",
+        "detail": "184"
+      },
+      {
+        "check_id": "R11",
+        "title": "저장 candidate ID 집합 일치",
+        "status": "PASS",
+        "detail": "rows=184 ids=184"
+      },
+      {
+        "check_id": "R12",
+        "title": "candidate ID 중복 없음",
+        "status": "PASS",
+        "detail": "0"
+      },
+      {
+        "check_id": "R13",
+        "title": "논리 TABLE 1,308개",
+        "status": "PASS",
+        "detail": "1308"
+      },
+      {
+        "check_id": "R14",
+        "title": "조건 AST 390개",
+        "status": "PASS",
+        "detail": "390"
+      },
+      {
+        "check_id": "R15",
+        "title": "AST parent 누락·순환 없음",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "R16",
+        "title": "미지원 AST node 없음",
+        "status": "PASS",
+        "detail": "{}"
+      },
+      {
+        "check_id": "R17",
+        "title": "허용 예외 후보 154건",
+        "status": "PASS",
+        "detail": "Counter({'negated_or_procedure_allowed_exception': 154, 'with_or_without_optional_companion': 21, 'main_pdf_source_only_diagnosis_code': 9})"
+      },
+      {
+        "check_id": "R18",
+        "title": "with or without 후보 21건",
+        "status": "PASS",
+        "detail": "Counter({'negated_or_procedure_allowed_exception': 154, 'with_or_without_optional_companion': 21, 'main_pdf_source_only_diagnosis_code': 9})"
+      },
+      {
+        "check_id": "R19",
+        "title": "본문 source-only 진단 후보 9건",
+        "status": "PASS",
+        "detail": "Counter({'negated_or_procedure_allowed_exception': 154, 'with_or_without_optional_companion': 21, 'main_pdf_source_only_diagnosis_code': 9})"
+      },
+      {
+        "check_id": "R20",
+        "title": "184건 전부 단일 분류",
+        "status": "PASS",
+        "detail": "sum=184 unresolved=0"
+      },
+      {
+        "check_id": "R21",
+        "title": "허용 예외 AST node 전수 19개",
+        "status": "PASS",
+        "detail": "19"
+      },
+      {
+        "check_id": "R22",
+        "title": "허용 예외 TABLE 8개",
+        "status": "PASS",
+        "detail": "8"
+      },
+      {
+        "check_id": "R23",
+        "title": "허용 예외 관계 190건",
+        "status": "PASS",
+        "detail": "190"
+      },
+      {
+        "check_id": "R24",
+        "title": "허용 예외 비exact 181건",
+        "status": "PASS",
+        "detail": "181"
+      },
+      {
+        "check_id": "R25",
+        "title": "허용 예외 family granularity 27건",
+        "status": "PASS",
+        "detail": "27"
+      },
+      {
+        "check_id": "R26",
+        "title": "허용 예외 nonexact 전수 설명",
+        "status": "PASS",
+        "detail": "technical=154 family=27 universe=181"
+      },
+      {
+        "check_id": "R26",
+        "title": "with or without node 전수 7개",
+        "status": "PASS",
+        "detail": "7"
+      },
+      {
+        "check_id": "R27",
+        "title": "선택 동반 TABLE 2개",
+        "status": "PASS",
+        "detail": "2"
+      },
+      {
+        "check_id": "R28",
+        "title": "선택 동반 관계 21건",
+        "status": "PASS",
+        "detail": "21"
+      },
+      {
+        "check_id": "R29",
+        "title": "선택 동반 후보와 전체 관계 일치",
+        "status": "PASS",
+        "detail": "candidate=21 universe=21"
+      },
+      {
+        "check_id": "R30",
+        "title": "물리 source-only 진단 row 101개",
+        "status": "PASS",
+        "detail": "101"
+      },
+      {
+        "check_id": "R31",
+        "title": "물리 source-only 고유 코드 93개",
+        "status": "PASS",
+        "detail": "93"
+      },
+      {
+        "check_id": "R32",
+        "title": "물리 source-only TABLE 18개",
+        "status": "PASS",
+        "detail": "18"
+      },
+      {
+        "check_id": "R33",
+        "title": "source-only 후보 고유 코드 3개",
+        "status": "PASS",
+        "detail": "['Z895', 'Z896', 'Z901']"
+      },
+      {
+        "check_id": "R34",
+        "title": "source-only 후보 ADRG 9개",
+        "status": "PASS",
+        "detail": "9"
+      },
+      {
+        "check_id": "R35",
+        "title": "source-only 후보 TABLE 7개",
+        "status": "PASS",
+        "detail": "7"
+      },
+      {
+        "check_id": "R36",
+        "title": "source occurrence 연결 누락 없음",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "R37",
+        "title": "source-only 후보 PDF occurrence 7개",
+        "status": "PASS",
+        "detail": "7"
+      },
+      {
+        "check_id": "R38",
+        "title": "source-only 후보 PDF code row 7/7 확인",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "R39",
+        "title": "허용 예외 동형 관계 추가 누락 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "R40",
+        "title": "with or without 동형 관계 추가 누락 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "R41",
+        "title": "최종 미해석 후보 0",
+        "status": "PASS",
+        "detail": "0"
+      },
+      {
+        "check_id": "R42",
+        "title": "데이터 자동수정 없음",
+        "status": "PASS",
+        "detail": "{'input_technical_review_count': 184, 'input_unique_code_count': 16, 'input_adrg_count': 35, 'input_logical_table_count': 17, 'resolution_pattern_counts': {'main_pdf_source_only_diagnosis_code': 9, 'negated_or_procedure_allowed_exception': 154, 'with_or_without_optional_companion': 21}, 'resolved_count': 184, 'unresolved_technical_review_count': 0, 'data_repair_required': False, 'user_decision_required_count': 0, 'manual_excel_review': False, 'source_data_modified': False}"
+      },
+      {
+        "check_id": "R43",
+        "title": "사용자 판단 0건",
+        "status": "PASS",
+        "detail": "0"
+      }
+    ],
+    "issues": []
+  }
+}

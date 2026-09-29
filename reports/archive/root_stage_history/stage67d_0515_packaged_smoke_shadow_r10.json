@@ -1,0 +1,126 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_FINAL_SHADOW_AUDIT",
+  "started_at": "2026-09-22 05:08:43",
+  "preflight": {
+    "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "branch": "main",
+    "base_tag": "electron-v0.5.14",
+    "package_version": "0.5.14",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "stage67c": {
+      "status": "PASS",
+      "readiness": "READY_FOR_0515_PACKAGED_SMOKE_MIGRATION",
+      "full_npm_run_check": "DEFERRED_TO_STAGE67D"
+    }
+  },
+  "shadow": {
+    "source_shadow": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+    "shadow_root": "/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10",
+    "required_files": [
+      "electron/src/packaged-runtime-smoke.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+      "electron/package.json",
+      "50B_validate_kdrg_electron_search_service.py",
+      "50C_validate_kdrg_electron_renderer_ui.py",
+      "50D_validate_kdrg_electron_windows_packaging.py"
+    ]
+  },
+  "migration": {
+    "source_summary": {
+      "public_type_checks_migrated": 3,
+      "selected_aadrg_assignments_hidden": 1,
+      "inline_table_adrg_label_preserved": 1,
+      "relation_validator_contract": "ADRG_NATIVE",
+      "relation_fixture_contract": "ADRG_NATIVE_AADRG_NULL"
+    },
+    "stage60c_summary": {
+      "wrapper_source_old_assertion_count": 6,
+      "wrapper_source_new_assertion_count": 8,
+      "legacy_wrapper_assertions": [
+        "assert.match(wrapperSource, /KdrgSearchService/);",
+        "assert.match(wrapperSource, /findLegacyRelationSmokeFixture/);",
+        "assert.match(wrapperSource, /recordMaps\\.CODE/);",
+        "assert.match(wrapperSource, /recordMaps\\.AADRG/);",
+        "assert.match(wrapperSource, /non-AADRG public result/);",
+        "assert.match(wrapperSource, /parent_adrg/);"
+      ],
+      "source_old_assertion_count": 5,
+      "source_new_assertion_count": 9,
+      "legacy_source_assertions": [
+        "assert.match(source, /function validateLegacyRelationResponse/);",
+        "assert.match(source, /function validateRelationResponse\\(\\.\\.\\.args\\)/);",
+        "assert.match(source, /packaged AADRG relation response contract mismatch/);",
+        "assert.match(source, /parent projection results\\[/);",
+        "assert.match(source, /validateLegacyRelationResponse\\(\\.\\.\\.projectedArgs\\)/);"
+      ],
+      "legacy_variadic_assertions": [
+        "assert.match(source, /function validateRelationResponse\\(\\.\\.\\.args\\)/);"
+      ],
+      "source_contract_label_migration": "DONE_BY_FULL_SOURCE_CLUSTER",
+      "public_relation_contract": "ADRG",
+      "internal_aadrg_preservation": "recordMaps.AADRG"
+    },
+    "modified_files": [
+      "electron/src/packaged-runtime-smoke.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+      "electron/tests/validate-stage67d-packaged-adrg-contract.js"
+    ]
+  },
+  "sha_contract": {
+    "electron/src/packaged-runtime-smoke.js": {
+      "shadow_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+      "actual_sha256": "8ae6c023b866297394c7e7fea6769f79dc805e14455e4eeb5f7cc13db1e1fa2e"
+    },
+    "electron/tests/validate-packaged-runtime-smoke.js": {
+      "shadow_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+      "actual_sha256": "bc37b02d2145398c6aed0a013399b45a33f4604a254edabbdac2c99a309c214b"
+    },
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js": {
+      "shadow_sha256": "f2b3d49c6063224b9ba3f5eacd203602cc2aceb693789b9082981aab5f2aa339",
+      "actual_sha256": "0480d004e13b268b1cf87827847b9865bada191d3595c7cb3c25e62850bed6fa"
+    },
+    "electron/tests/validate-stage67d-packaged-adrg-contract.js": {
+      "shadow_sha256": "f25871c8f3d653aa777689fa4cac4db99f08e1b41108cac51cd320ab984ad815",
+      "actual_sha256": null
+    },
+    "electron/src/kdrg-search-service.js": {
+      "shadow_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+      "actual_sha256": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703"
+    },
+    "electron/src/search-result-contract.js": {
+      "shadow_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "actual_sha256": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f"
+    },
+    "electron/renderer/app.js": {
+      "shadow_sha256": "d81d159a4483d2b2a4977d9065eaea6e67a28a24bcc12c79534605a2fec752b8",
+      "actual_sha256": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491"
+    },
+    "electron/renderer/index.html": {
+      "shadow_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093",
+      "actual_sha256": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2"
+    },
+    "electron/renderer/ui-formatters.js": {
+      "shadow_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77",
+      "actual_sha256": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02"
+    },
+    "50B_validate_kdrg_electron_search_service.py": {
+      "shadow_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9",
+      "actual_sha256": "7a6861a57436352761fec0063408ac60c0a408485a038fc342a31fddfc132010"
+    },
+    "50C_validate_kdrg_electron_renderer_ui.py": {
+      "shadow_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f",
+      "actual_sha256": "77036caeafb3882b12cda91345fac547943bae4113dac83790fbd115647443a9"
+    },
+    "50D_validate_kdrg_electron_windows_packaging.py": {
+      "shadow_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd",
+      "actual_sha256": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843"
+    }
+  },
+  "validation": {},
+  "error": "StageError: validation failed: npm run check\n\n> kdrg-v47-relation-search-electron@0.5.14 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.14 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.14\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/electron\nnode=v20.20.0\nnode:fs:448\n    return binding.readFileUtf8(path, stringToFlags(options.flag));\n                   ^\n\nError: ENOENT: no such file or directory, open '/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/.github/workflows/build-electron-windows.yml'\n    at Object.readFileSync (node:fs:448:20)\n    at main (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/electron/tests/validate-packaging-config.js:267:23)\n    at Object.<anonymous> (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/electron/tests/validate-packaging-config.js:408:1)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49 {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/.github/workflows/build-electron-windows.yml'\n}\n\nNode.js v20.20.0\n\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R10.py\", line 1479, in main\n    payload[\"validation\"] = validate_shadow()\n                            ^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R10.py\", line 1326, in validate_shadow\n    check([\"npm\", \"run\", \"check\"], cwd=SHADOW_ELECTRON, timeout=1800)\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R10.py\", line 1294, in check\n    require(\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R10.py\", line 87, in require\n    raise StageError(message)\nStageError: validation failed: npm run check\n\n> kdrg-v47-relation-search-electron@0.5.14 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.14 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.14\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.14 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/electron\nnode=v20.20.0\nnode:fs:448\n    return binding.readFileUtf8(path, stringToFlags(options.flag));\n                   ^\n\nError: ENOENT: no such file or directory, open '/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/.github/workflows/build-electron-windows.yml'\n    at Object.readFileSync (node:fs:448:20)\n    at main (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/electron/tests/validate-packaging-config.js:267:23)\n    at Object.<anonymous> (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/electron/tests/validate-packaging-config.js:408:1)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49 {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r10/.github/workflows/build-electron-windows.yml'\n}\n\nNode.js v20.20.0\n\n",
+  "finished_at": "2026-09-22 05:08:59"
+}

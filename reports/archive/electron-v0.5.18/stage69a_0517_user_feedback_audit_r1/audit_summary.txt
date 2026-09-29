@@ -1,0 +1,14 @@
+[PASS] Stage69A / 0.5.17 사용자 피드백 전수감사
+base_commit=d1c1b126fee9f7bd3e226d4cfcee77e863baec0c
+F022_ALL=CODE:F022,ADRG:U602
+F022_extra=ADRG:U602
+shared_CODE_ADRG_ids=471
+shared_exact_pair_missing=471
+shared_exact_query_pollution=471
+relation_result_classification=PRESENT
+relation_detail_full_conditions=MISSING
+runtime_json=UNCHANGED
+tracked_files=UNCHANGED
+readiness=READY_FOR_0517_GENERALIZED_FIX
+report=reports/stage69a_0517_user_feedback_audit_r1/audit_summary.txt
+json=reports/stage69a_0517_user_feedback_audit_r1/audit.json

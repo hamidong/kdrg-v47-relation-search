@@ -1,0 +1,21 @@
+[PASS] Stage72C R1 / 0.5.19 복수검색 결과 레이아웃 Actual
+applied_files=4
+relation_card_top_right=DISEASE_CLASSIFICATION
+relation_card_relation_level_chip=REMOVED
+header_summary=COMMON_RELATED_ADRG
+header_summary_emphasis=SLIGHTLY_LARGER
+general_adrg_layout=PRESERVED
+stage72b_validator=PASS
+stage70b_validator=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.18=PASS
+runtime_json=UNCHANGED
+package_version=0.5.18
+staging=EMPTY
+rollback=NOT_NEEDED
+readiness=READY_FOR_72D_0519_RELEASE_PREP_SHADOW
+report=reports/stage72c_0519_relation_result_layout_actual_r1/actual_summary.txt
+json=reports/stage72c_0519_relation_result_layout_actual_r1/actual.json

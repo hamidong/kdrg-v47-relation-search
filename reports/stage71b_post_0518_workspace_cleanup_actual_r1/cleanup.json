@@ -1,0 +1,454 @@
+{
+  "stage": "71B_POST_0518_WORKSPACE_CLEANUP_ACTUAL_R1",
+  "status": "PASS",
+  "mutated": true,
+  "head": "1bd70d50c85305e2ff64ebb0a17ec619719e8a40",
+  "origin_main": "1bd70d50c85305e2ff64ebb0a17ec619719e8a40",
+  "tag": "electron-v0.5.18",
+  "package_version": "0.5.18",
+  "runtime_json": "UNCHANGED",
+  "tracked": "CLEAN",
+  "staging": "EMPTY",
+  "moved_stage_scripts": [
+    {
+      "from": "68B_CLEAN_KDRG_WORKSPACE_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68B_CLEAN_KDRG_WORKSPACE_R1.py"
+    },
+    {
+      "from": "68C_AUDIT_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_SHADOW_R2.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68C_AUDIT_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_SHADOW_R2.py"
+    },
+    {
+      "from": "68C_AUDIT_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_SHADOW_R3.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68C_AUDIT_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_SHADOW_R3.py"
+    },
+    {
+      "from": "68C_AUDIT_KDRG_0516_RELEASE_PARITY_FIXTURE_MATRIX_R5.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68C_AUDIT_KDRG_0516_RELEASE_PARITY_FIXTURE_MATRIX_R5.py"
+    },
+    {
+      "from": "68C_AUDIT_KDRG_0516_SERVICE_NATIVE_FULL_SHADOW_R4.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68C_AUDIT_KDRG_0516_SERVICE_NATIVE_FULL_SHADOW_R4.py"
+    },
+    {
+      "from": "68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R1.py"
+    },
+    {
+      "from": "68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R2.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R2.py"
+    },
+    {
+      "from": "68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R3.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R3.py"
+    },
+    {
+      "from": "68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R4_REUPLOAD.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R4_REUPLOAD.py"
+    },
+    {
+      "from": "68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R5.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R5.py"
+    },
+    {
+      "from": "68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R6_VERIFIED.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68D_APPLY_KDRG_0516_CLASSIFICATION_DERIVED_AADRG_ACTUAL_R6_VERIFIED.py"
+    },
+    {
+      "from": "68E_PREP_KDRG_0516_RELEASE_SHADOW_ACTUAL_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68E_PREP_KDRG_0516_RELEASE_SHADOW_ACTUAL_R1.py"
+    },
+    {
+      "from": "68E_PREP_KDRG_0516_RELEASE_SHADOW_ACTUAL_R2.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/68E_PREP_KDRG_0516_RELEASE_SHADOW_ACTUAL_R2.py"
+    },
+    {
+      "from": "69A_AUDIT_KDRG_0517_SEARCH_RELATION_UX_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69A_AUDIT_KDRG_0517_SEARCH_RELATION_UX_R1.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R1.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R10.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R10.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R11.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R11.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R12.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R12.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R2.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R2.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R3.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R3.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R4.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R4.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R5.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R5.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R6.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R6.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R7.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R7.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R8.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R8.py"
+    },
+    {
+      "from": "69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R9.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69B_SHADOW_KDRG_0517_SEARCH_RELATION_UX_R9.py"
+    },
+    {
+      "from": "69C_APPLY_KDRG_0517_SEARCH_RELATION_UX_ACTUAL_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69C_APPLY_KDRG_0517_SEARCH_RELATION_UX_ACTUAL_R1.py"
+    },
+    {
+      "from": "69D_PREP_KDRG_0517_RELEASE_SHADOW_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69D_PREP_KDRG_0517_RELEASE_SHADOW_R1.py"
+    },
+    {
+      "from": "69E_APPLY_KDRG_0517_RELEASE_PREP_ACTUAL_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/69E_APPLY_KDRG_0517_RELEASE_PREP_ACTUAL_R1.py"
+    },
+    {
+      "from": "70A_AUDIT_KDRG_0518_PHASE1_UI_COMPLETION_R2.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/70A_AUDIT_KDRG_0518_PHASE1_UI_COMPLETION_R2.py"
+    },
+    {
+      "from": "70A_AUDIT_KDRG_0518_PHASE1_UI_COMPLETION_R3.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/70A_AUDIT_KDRG_0518_PHASE1_UI_COMPLETION_R3.py"
+    },
+    {
+      "from": "70B_SHADOW_KDRG_0518_PHASE1_UI_R2.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/70B_SHADOW_KDRG_0518_PHASE1_UI_R2.py"
+    },
+    {
+      "from": "70C_APPLY_KDRG_0518_PHASE1_UI_ACTUAL_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/70C_APPLY_KDRG_0518_PHASE1_UI_ACTUAL_R1.py"
+    },
+    {
+      "from": "70C_APPLY_KDRG_0518_PHASE1_UI_ACTUAL_R2.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/70C_APPLY_KDRG_0518_PHASE1_UI_ACTUAL_R2.py"
+    },
+    {
+      "from": "70D_PREP_KDRG_0518_RELEASE_SHADOW_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/70D_PREP_KDRG_0518_RELEASE_SHADOW_R1.py"
+    },
+    {
+      "from": "70E_APPLY_KDRG_0518_RELEASE_PREP_ACTUAL_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/70E_APPLY_KDRG_0518_RELEASE_PREP_ACTUAL_R1.py"
+    },
+    {
+      "from": "71A_AUDIT_KDRG_POST_0518_WORKSPACE_CLEANUP_R1.py",
+      "to": "archive/completed_release_work/electron-v0.5.18/scripts/71A_AUDIT_KDRG_POST_0518_WORKSPACE_CLEANUP_R1.py"
+    }
+  ],
+  "moved_stage_report_dirs": [
+    {
+      "from": "reports/stage68d_0516_actual_r6",
+      "to": "reports/archive/electron-v0.5.18/stage68d_0516_actual_r6"
+    },
+    {
+      "from": "reports/stage68e_0516_release_prep_r2",
+      "to": "reports/archive/electron-v0.5.18/stage68e_0516_release_prep_r2"
+    },
+    {
+      "from": "reports/stage69a_0517_user_feedback_audit_r1",
+      "to": "reports/archive/electron-v0.5.18/stage69a_0517_user_feedback_audit_r1"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r1",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r1"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r10",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r10"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r11",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r11"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r12",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r12"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r2",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r2"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r3",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r3"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r4",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r4"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r5",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r5"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r6",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r6"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r7",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r7"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r8",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r8"
+    },
+    {
+      "from": "reports/stage69b_0517_search_relation_ux_shadow_r9",
+      "to": "reports/archive/electron-v0.5.18/stage69b_0517_search_relation_ux_shadow_r9"
+    },
+    {
+      "from": "reports/stage69c_0517_search_relation_ux_actual_r1",
+      "to": "reports/archive/electron-v0.5.18/stage69c_0517_search_relation_ux_actual_r1"
+    },
+    {
+      "from": "reports/stage69d_0517_release_prep_shadow_r1",
+      "to": "reports/archive/electron-v0.5.18/stage69d_0517_release_prep_shadow_r1"
+    },
+    {
+      "from": "reports/stage69e_0517_release_prep_actual_r1",
+      "to": "reports/archive/electron-v0.5.18/stage69e_0517_release_prep_actual_r1"
+    },
+    {
+      "from": "reports/stage70a_0518_phase1_ui_completion_audit_r2",
+      "to": "reports/archive/electron-v0.5.18/stage70a_0518_phase1_ui_completion_audit_r2"
+    },
+    {
+      "from": "reports/stage70a_0518_phase1_ui_completion_audit_r3",
+      "to": "reports/archive/electron-v0.5.18/stage70a_0518_phase1_ui_completion_audit_r3"
+    },
+    {
+      "from": "reports/stage70b_0518_phase1_ui_shadow_r2",
+      "to": "reports/archive/electron-v0.5.18/stage70b_0518_phase1_ui_shadow_r2"
+    },
+    {
+      "from": "reports/stage70c_0518_phase1_ui_actual_r1",
+      "to": "reports/archive/electron-v0.5.18/stage70c_0518_phase1_ui_actual_r1"
+    },
+    {
+      "from": "reports/stage70c_0518_phase1_ui_actual_r2",
+      "to": "reports/archive/electron-v0.5.18/stage70c_0518_phase1_ui_actual_r2"
+    },
+    {
+      "from": "reports/stage70d_0518_release_prep_shadow_r1",
+      "to": "reports/archive/electron-v0.5.18/stage70d_0518_release_prep_shadow_r1"
+    },
+    {
+      "from": "reports/stage70e_0518_release_prep_actual_r1",
+      "to": "reports/archive/electron-v0.5.18/stage70e_0518_release_prep_actual_r1"
+    },
+    {
+      "from": "reports/stage71a_post_0518_workspace_cleanup_audit_r1",
+      "to": "reports/archive/electron-v0.5.18/stage71a_post_0518_workspace_cleanup_audit_r1"
+    }
+  ],
+  "moved_validation_reports": [
+    {
+      "from": "reports/electron_stage50b_validation_report.json",
+      "to": "reports/archive/electron-v0.5.18/validation/electron_stage50b_validation_report.json"
+    },
+    {
+      "from": "reports/electron_stage50b_validation_report.txt",
+      "to": "reports/archive/electron-v0.5.18/validation/electron_stage50b_validation_report.txt"
+    },
+    {
+      "from": "reports/electron_stage50c_validation_report.json",
+      "to": "reports/archive/electron-v0.5.18/validation/electron_stage50c_validation_report.json"
+    },
+    {
+      "from": "reports/electron_stage50c_validation_report.txt",
+      "to": "reports/archive/electron-v0.5.18/validation/electron_stage50c_validation_report.txt"
+    },
+    {
+      "from": "reports/electron_stage50d_validation_report.json",
+      "to": "reports/archive/electron-v0.5.18/validation/electron_stage50d_validation_report.json"
+    },
+    {
+      "from": "reports/electron_stage50d_validation_report.txt",
+      "to": "reports/archive/electron-v0.5.18/validation/electron_stage50d_validation_report.txt"
+    }
+  ],
+  "moved_history_reports": [
+    {
+      "from": "reports/stage59a_v8_r3_integrated_impact_audit.json",
+      "to": "reports/archive/electron-v0.5.18/history/stage59a_v8_r3_integrated_impact_audit.json"
+    },
+    {
+      "from": "reports/stage59a_v8_r3_integrated_impact_audit.txt",
+      "to": "reports/archive/electron-v0.5.18/history/stage59a_v8_r3_integrated_impact_audit.txt"
+    }
+  ],
+  "pruned_reproducible_snapshots": [
+    {
+      "path": "reports/stage68e_0516_release_prep_r2/shadow",
+      "bytes": 102467089,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r1/shadow",
+      "bytes": 102517046,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r10/shadow",
+      "bytes": 102567717,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r11/shadow",
+      "bytes": 102529277,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r12/shadow",
+      "bytes": 102571140,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r2/shadow",
+      "bytes": 102517046,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r4/shadow",
+      "bytes": 102525628,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r5/shadow",
+      "bytes": 102531865,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r6/shadow",
+      "bytes": 102517046,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r7/shadow",
+      "bytes": 102517046,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r8/shadow",
+      "bytes": 102568372,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69b_0517_search_relation_ux_shadow_r9/shadow",
+      "bytes": 102567707,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69c_0517_search_relation_ux_actual_r1/backup",
+      "bytes": 144827,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69d_0517_release_prep_shadow_r1/shadow",
+      "bytes": 102561209,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage69e_0517_release_prep_actual_r1/backup",
+      "bytes": 139941,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage70b_0518_phase1_ui_shadow_r2/shadow",
+      "bytes": 102677599,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage70c_0518_phase1_ui_actual_r1/backup",
+      "bytes": 118452,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage70c_0518_phase1_ui_actual_r2/backup",
+      "bytes": 118452,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage70d_0518_release_prep_shadow_r1/shadow",
+      "bytes": 102677629,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    },
+    {
+      "path": "reports/stage70e_0518_release_prep_actual_r1/backup",
+      "bytes": 139941,
+      "reason": "immutable release 이후 재생성 가능한 shadow/backup snapshot"
+    }
+  ],
+  "deleted_items": [
+    {
+      "path": "r3_validator_fail.txt",
+      "bytes": 1019,
+      "reason": "임시 실패 로그"
+    },
+    {
+      "path": "releases/electron-v0.5.11",
+      "bytes": 90740520,
+      "reason": "GitHub Release에 존재하는 과거 로컬 배포 복사본"
+    },
+    {
+      "path": "releases/electron-v0.5.12",
+      "bytes": 90742022,
+      "reason": "GitHub Release에 존재하는 과거 로컬 배포 복사본"
+    },
+    {
+      "path": "releases/electron-v0.5.13",
+      "bytes": 91331122,
+      "reason": "GitHub Release에 존재하는 과거 로컬 배포 복사본"
+    },
+    {
+      "path": "releases/electron-v0.5.14",
+      "bytes": 91247320,
+      "reason": "GitHub Release에 존재하는 과거 로컬 배포 복사본"
+    },
+    {
+      "path": "releases/electron-v0.5.15",
+      "bytes": 91244977,
+      "reason": "GitHub Release에 존재하는 과거 로컬 배포 복사본"
+    },
+    {
+      "path": "releases/electron-v0.5.16",
+      "bytes": 91246309,
+      "reason": "GitHub Release에 존재하는 과거 로컬 배포 복사본"
+    },
+    {
+      "path": "releases/electron-v0.5.17",
+      "bytes": 91246188,
+      "reason": "GitHub Release에 존재하는 과거 로컬 배포 복사본"
+    }
+  ],
+  "deleted_bytes": 2176774506,
+  "deleted_mib": 2075.93,
+  "current_release_dir": "releases/electron-v0.5.18-final-check",
+  "current_release_exe": "KDRG_V47_Relation_Search_Electron_0.5.18_Portable.exe",
+  "current_release_exe_sha256": "bf4a7812645c3d73177567d02a3f0e5a886ad0260998e0ccfaf7073c438faad5",
+  "next": "Stage71 이후 신규 작업은 0.5.18 immutable 기준에서 진행"
+}

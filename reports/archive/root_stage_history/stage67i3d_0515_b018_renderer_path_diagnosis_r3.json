@@ -1,0 +1,740 @@
+{
+  "status": "PASS",
+  "started_at": "2026-09-23 01:15:04",
+  "gate": {
+    "run_id": 35803633211,
+    "fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "failed_step": "packaged_ui_validation",
+    "error_message": "B018 result ready timeout: 30000ms"
+  },
+  "source_paths": {
+    "main": "electron/main.js",
+    "preload": "electron/preload.js"
+  },
+  "fixture": {
+    "b018_aadrg_field": "B0180",
+    "b018_search_query": "B018",
+    "filter_adrg": true,
+    "result_selector_adrg": true,
+    "result_click_present": true,
+    "timeout_30000_present": true
+  },
+  "service": {
+    "total_count": 1,
+    "exact_b018": [
+      {
+        "entity_type": "ADRG",
+        "entity_id": "B018",
+        "match_type": "EXACT_ID",
+        "title": "B018 · 뇌동맥류 복합 색전술(뇌졸중 동반)"
+      }
+    ],
+    "first_results": [
+      "ADRG:B018:EXACT_ID"
+    ]
+  },
+  "contract": {
+    "exports": [
+      "ENTITY_TYPES",
+      "RELATION_CODE_TYPES",
+      "RELATION_OPERATORS",
+      "SEARCH_ENTITY_TYPES",
+      "SearchContractError",
+      "normalizeDetailRequest",
+      "normalizeRelationRequest",
+      "normalizeSearchRequest"
+    ],
+    "search_entity_types": [
+      "CODE",
+      "ADRG"
+    ],
+    "normalizeSearchRequest": {
+      "query": "B018",
+      "entityType": [
+        "ADRG"
+      ],
+      "limit": 100,
+      "offset": 0,
+      "mdc": null,
+      "classification": null
+    }
+  },
+  "path_audit": {
+    "renderer_calls_window_search": true,
+    "renderer_reads_search_type": false,
+    "renderer_result_dataset_entity_type": true,
+    "renderer_result_dataset_entity_id": true,
+    "renderer_has_adrg_detail": true,
+    "preload_invokes_search": true,
+    "main_has_search_ipc": true,
+    "main_normalizes_search_request": true,
+    "main_calls_service_search": false,
+    "contract_public_adrg": true
+  },
+  "classification": {
+    "signals": [
+      "DIRECT_SERVICE_AND_FIXTURE_QUERY_OK",
+      "NORMALIZE_REQUEST_DROPS_ADRG"
+    ],
+    "next_action": "Do not rerun RC. Inspect the captured CURRENT source contexts and repair the first mismatched renderer/preload/main/smoke contract through Shadow before another commit."
+  },
+  "contexts": {
+    "packaged_B018": [
+      {
+        "line": 18,
+        "text": "  conditionTableOccurrences: 939,"
+      },
+      {
+        "line": 19,
+        "text": "});"
+      },
+      {
+        "line": 20,
+        "text": ""
+      },
+      {
+        "line": 21,
+        "text": "const UI_FIXTURES = Object.freeze(["
+      },
+      {
+        "line": 22,
+        "text": "  Object.freeze({"
+      },
+      {
+        "line": 23,
+        "text": "    adrg: 'B013',"
+      },
+      {
+        "line": 24,
+        "text": "    aadrg: 'B0130',"
+      },
+      {
+        "line": 25,
+        "text": "    search_query: 'B013',"
+      },
+      {
+        "line": 26,
+        "text": "    expected_table_ids: Object.freeze(['LT_B018_002']),"
+      },
+      {
+        "line": 27,
+        "text": "    forbidden_table_ids: Object.freeze([]),"
+      },
+      {
+        "line": 28,
+        "text": "    required_table_labels: Object.freeze(['시술명 table2']),"
+      },
+      {
+        "line": 29,
+        "text": "  }),"
+      },
+      {
+        "line": 30,
+        "text": "  Object.freeze({"
+      },
+      {
+        "line": 31,
+        "text": "    adrg: 'B014',"
+      },
+      {
+        "line": 32,
+        "text": "    aadrg: 'B0140',"
+      },
+      {
+        "line": 33,
+        "text": "    search_query: 'B014',"
+      },
+      {
+        "line": 34,
+        "text": "    expected_table_ids: Object.freeze(['LT_B018_003']),"
+      }
+    ],
+    "packaged_filter": [
+      {
+        "line": 641,
+        "text": "          await sleep(100);"
+      },
+      {
+        "line": 642,
+        "text": "        }"
+      },
+      {
+        "line": 643,
+        "text": "        throw new Error(label + ' timeout: ' + timeoutMs + 'ms');"
+      },
+      {
+        "line": 644,
+        "text": "      };"
+      },
+      {
+        "line": 645,
+        "text": ""
+      },
+      {
+        "line": 646,
+        "text": "      const input = document.querySelector('#search-query');"
+      },
+      {
+        "line": 647,
+        "text": "      const filter = document.querySelector('#filter-type');"
+      },
+      {
+        "line": 648,
+        "text": "      const form = document.querySelector('#search-form');"
+      },
+      {
+        "line": 649,
+        "text": "      if (!input || !filter || !form) {"
+      },
+      {
+        "line": 650,
+        "text": "        throw new Error('search DOM contract mismatch');"
+      },
+      {
+        "line": 651,
+        "text": "      }"
+      },
+      {
+        "line": 652,
+        "text": ""
+      },
+      {
+        "line": 653,
+        "text": "      filter.value = 'ADRG';"
+      },
+      {
+        "line": 654,
+        "text": "      filter.dispatchEvent(new Event('change', { bubbles: true }));"
+      },
+      {
+        "line": 655,
+        "text": "      input.value = fixture.search_query;"
+      },
+      {
+        "line": 656,
+        "text": "      input.dispatchEvent(new Event('input', { bubbles: true }));"
+      },
+      {
+        "line": 657,
+        "text": "      input.dispatchEvent(new Event('change', { bubbles: true }));"
+      },
+      {
+        "line": 658,
+        "text": ""
+      },
+      {
+        "line": 659,
+        "text": "      if (typeof form.requestSubmit === 'function') {"
+      },
+      {
+        "line": 660,
+        "text": "        form.requestSubmit();"
+      },
+      {
+        "line": 661,
+        "text": "      } else {"
+      },
+      {
+        "line": 662,
+        "text": "        form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));"
+      },
+      {
+        "line": 663,
+        "text": "      }"
+      },
+      {
+        "line": 664,
+        "text": ""
+      },
+      {
+        "line": 665,
+        "text": "      const selectedResult = await waitFor("
+      }
+    ],
+    "packaged_result_ready": [
+      {
+        "line": 655,
+        "text": "      input.value = fixture.search_query;"
+      },
+      {
+        "line": 656,
+        "text": "      input.dispatchEvent(new Event('input', { bubbles: true }));"
+      },
+      {
+        "line": 657,
+        "text": "      input.dispatchEvent(new Event('change', { bubbles: true }));"
+      },
+      {
+        "line": 658,
+        "text": ""
+      },
+      {
+        "line": 659,
+        "text": "      if (typeof form.requestSubmit === 'function') {"
+      },
+      {
+        "line": 660,
+        "text": "        form.requestSubmit();"
+      },
+      {
+        "line": 661,
+        "text": "      } else {"
+      },
+      {
+        "line": 662,
+        "text": "        form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));"
+      },
+      {
+        "line": 663,
+        "text": "      }"
+      },
+      {
+        "line": 664,
+        "text": ""
+      },
+      {
+        "line": 665,
+        "text": "      const selectedResult = await waitFor("
+      },
+      {
+        "line": 666,
+        "text": "        () => document.querySelector("
+      },
+      {
+        "line": 667,
+        "text": "          '#result-list [data-entity-type=\"ADRG\"][data-entity-id=\"' + fixture.adrg + '\"]'"
+      },
+      {
+        "line": 668,
+        "text": "        ),"
+      },
+      {
+        "line": 669,
+        "text": "        fixture.adrg + ' result ready',"
+      },
+      {
+        "line": 670,
+        "text": "      );"
+      },
+      {
+        "line": 671,
+        "text": "      selectedResult.click();"
+      },
+      {
+        "line": 672,
+        "text": ""
+      },
+      {
+        "line": 673,
+        "text": "      await waitFor(() => {"
+      },
+      {
+        "line": 674,
+        "text": "        const detail = document.querySelector('#detail-content');"
+      },
+      {
+        "line": 675,
+        "text": "        const detailCaption = document.querySelector('#detail-caption')?.textContent?.trim() || '';"
+      },
+      {
+        "line": 676,
+        "text": "        return Boolean("
+      },
+      {
+        "line": 677,
+        "text": "          detail"
+      },
+      {
+        "line": 678,
+        "text": "          && detailCaption === fixture.adrg"
+      },
+      {
+        "line": 679,
+        "text": "          && detail.textContent.includes(fixture.adrg)"
+      },
+      {
+        "line": 680,
+        "text": "          && !document.querySelector('#search-submit')?.disabled"
+      },
+      {
+        "line": 681,
+        "text": "        );"
+      },
+      {
+        "line": 682,
+        "text": "      }, fixture.adrg + ' detail ready');"
+      },
+      {
+        "line": 683,
+        "text": ""
+      }
+    ],
+    "renderer_window_search": [
+      {
+        "line": 1613,
+        "text": "    query: byId('search-query').value,"
+      },
+      {
+        "line": 1614,
+        "text": "    entityType: byId('filter-type').value,"
+      },
+      {
+        "line": 1615,
+        "text": "    mdc: byId('filter-mdc').value,"
+      },
+      {
+        "line": 1616,
+        "text": "    classification: byId('filter-classification').value,"
+      },
+      {
+        "line": 1617,
+        "text": "    limit: 50,"
+      },
+      {
+        "line": 1618,
+        "text": "    offset,"
+      },
+      {
+        "line": 1619,
+        "text": "  };"
+      },
+      {
+        "line": 1620,
+        "text": "}"
+      },
+      {
+        "line": 1621,
+        "text": ""
+      },
+      {
+        "line": 1622,
+        "text": "async function runSearch(request, options = {}) {"
+      },
+      {
+        "line": 1623,
+        "text": "  const query = String(request.query ?? '').trim(); if (!query) { byId('search-query').focus(); setStatus('error', '검색어를 입력해야 합니다.', '코드·ADRG 또는 질병군명을 입력하세요.'); return; }"
+      },
+      {
+        "line": 1624,
+        "text": "  const sequence = ++state.searchSequence; state.activeMode = 'search'; state.request = { ...request, query }; state.currentDetail = null; state.currentRelationIndex = null; setBusy(true, '검색 중'); setStatus('loading', '검색 중입니다.', `${query} · 검색 서비스에서 결과를 확인하고 있습니다.`);"
+      },
+      {
+        "line": 1625,
+        "text": "  try { const response = await window.KDRG.search(state.request); if (sequence !== state.searchSequence) return; state.selectedKey = null; renderResults(response); setStatus('ready', `${Ui.formatNumber(response.total_count)}건`, response.total_count ? Ui.typeCountText(response.type_counts) : '필터를 조정하거나 다른 검색어를 입력하세요.'); clearDetail(response.results.length ? '검색 결과를 선택하면 상세 정보가 표시됩니다.' : '검색 결과가 없어 상세 항목을 표시할 수 없습니다.'); if (Number.isFinite(Number(options.restoreScroll))) requestAnimationFrame(() => { const list = byId('result-list'); if (list) list.scrollTop = Number(options.restoreScroll); if (Number.isFinite(Number(options.restoreWindowScroll))) window.scrollTo(0, Number(options.restoreWindowScroll)); }); }"
+      },
+      {
+        "line": 1626,
+        "text": "  catch (error) { if (sequence !== state.searchSequence) return; setStatus('error', '검색을 완료하지 못했습니다.', error?.message || '알 수 없는 오류'); byId('result-list').replaceChildren(create('p', 'error-message', error?.message || '검색 오류')); } finally { if (sequence === state.searchSequence) setBusy(false); }"
+      },
+      {
+        "line": 1627,
+        "text": "}"
+      },
+      {
+        "line": 1628,
+        "text": ""
+      },
+      {
+        "line": 1629,
+        "text": "function resetSearch() {"
+      },
+      {
+        "line": 1630,
+        "text": "  byId('search-form').reset(); populateMdcFilter(); state.response = null; state.request = null; state.selectedKey = null; state.relationResponse = null; state.currentDetail = null; state.currentRelationIndex = null; state.activeMode = 'search'; state.historyStack = []; byId('result-list').replaceChildren(); byId('type-counts').replaceChildren(); setText('result-count', '0건'); setText('result-caption', '검색어를 입력하면 결과가 표시됩니다.'); setText('page-label', '0–0 / 0'); byId('page-previous').disabled = true; byId('page-next').disabled = true; clearDetail(); setStatus('ready', '검색 준비', '코드·ADRG·질병군명 검색'); updateBackButton(); byId('search-query').focus();"
+      },
+      {
+        "line": 1631,
+        "text": "}"
+      },
+      {
+        "line": 1632,
+        "text": ""
+      },
+      {
+        "line": 1633,
+        "text": "function bindEvents() {"
+      },
+      {
+        "line": 1634,
+        "text": "  byId('search-form').addEventListener('submit', (event) => {"
+      },
+      {
+        "line": 1635,
+        "text": "    event.preventDefault();"
+      },
+      {
+        "line": 1636,
+        "text": "    state.historyStack = []; state.currentDetail = null; state.currentRelationIndex = null;"
+      },
+      {
+        "line": 1637,
+        "text": "    runSearch(currentRequest(0));"
+      }
+    ],
+    "renderer_dataset_entity_type": [
+      {
+        "line": 77,
+        "text": "  reset.disabled = isBusy;"
+      },
+      {
+        "line": 78,
+        "text": "  input.setAttribute('aria-busy', String(isBusy));"
+      },
+      {
+        "line": 79,
+        "text": "  submit.textContent = isBusy ? label : '검색';"
+      },
+      {
+        "line": 80,
+        "text": "  const relationSubmit = byId('relation-submit');"
+      },
+      {
+        "line": 81,
+        "text": "  if (relationSubmit) relationSubmit.disabled = isBusy;"
+      },
+      {
+        "line": 82,
+        "text": "}"
+      },
+      {
+        "line": 83,
+        "text": ""
+      },
+      {
+        "line": 84,
+        "text": "function makeBadge(entityType) {"
+      },
+      {
+        "line": 85,
+        "text": "  const type = String(entityType ?? '').toUpperCase();"
+      },
+      {
+        "line": 86,
+        "text": "  const badge = create('span', `entity-badge ${TYPE_BADGE_CLASS[type] ?? ''}`, Ui.entityLabel(type));"
+      },
+      {
+        "line": 87,
+        "text": "  badge.dataset.entityType = type;"
+      },
+      {
+        "line": 88,
+        "text": "  return badge;"
+      },
+      {
+        "line": 89,
+        "text": "}"
+      },
+      {
+        "line": 90,
+        "text": ""
+      },
+      {
+        "line": 91,
+        "text": "function makeChip(textValue, className = '') {"
+      },
+      {
+        "line": 92,
+        "text": "  return create('span', `chip ${className}`.trim(), textValue);"
+      },
+      {
+        "line": 93,
+        "text": "}"
+      },
+      {
+        "line": 94,
+        "text": "function classificationCode(value) {"
+      },
+      {
+        "line": 95,
+        "text": "  const raw = String(value ?? '').replace(/\\s+/g, ' ').trim();"
+      },
+      {
+        "line": 96,
+        "text": "  const upper = raw.toUpperCase();"
+      },
+      {
+        "line": 97,
+        "text": "  if (CLASSIFICATION_BADGE_META[upper]) return upper;"
+      }
+    ],
+    "preload_invoke": [
+      {
+        "line": 4,
+        "text": ""
+      },
+      {
+        "line": 5,
+        "text": "const CHANNELS = Object.freeze({"
+      },
+      {
+        "line": 6,
+        "text": "  getBootstrapSnapshot: 'kdrg:get-bootstrap-snapshot',"
+      },
+      {
+        "line": 7,
+        "text": "  getSearchStatus: 'kdrg:get-search-status',"
+      },
+      {
+        "line": 8,
+        "text": "  search: 'kdrg:search',"
+      },
+      {
+        "line": 9,
+        "text": "  relationSearch: 'kdrg:relation-search',"
+      },
+      {
+        "line": 10,
+        "text": "  getDetail: 'kdrg:get-detail',"
+      },
+      {
+        "line": 11,
+        "text": "});"
+      },
+      {
+        "line": 12,
+        "text": ""
+      },
+      {
+        "line": 13,
+        "text": "const api = Object.freeze({"
+      },
+      {
+        "line": 14,
+        "text": "  getBootstrapSnapshot: () => ipcRenderer.invoke(CHANNELS.getBootstrapSnapshot),"
+      },
+      {
+        "line": 15,
+        "text": "  getSearchStatus: () => ipcRenderer.invoke(CHANNELS.getSearchStatus),"
+      },
+      {
+        "line": 16,
+        "text": "  search: (request) => ipcRenderer.invoke(CHANNELS.search, request),"
+      },
+      {
+        "line": 17,
+        "text": "  relationSearch: (request) => ipcRenderer.invoke(CHANNELS.relationSearch, request),"
+      },
+      {
+        "line": 18,
+        "text": "  getDetail: (request) => ipcRenderer.invoke(CHANNELS.getDetail, request),"
+      },
+      {
+        "line": 19,
+        "text": "});"
+      },
+      {
+        "line": 20,
+        "text": ""
+      },
+      {
+        "line": 21,
+        "text": "contextBridge.exposeInMainWorld('KDRG', api);"
+      }
+    ],
+    "main_normalize": [
+      {
+        "line": 1,
+        "text": "'use strict';"
+      },
+      {
+        "line": 2,
+        "text": ""
+      },
+      {
+        "line": 3,
+        "text": "const path = require('node:path');"
+      },
+      {
+        "line": 4,
+        "text": "const { app, BrowserWindow, ipcMain, Menu } = require('electron');"
+      },
+      {
+        "line": 5,
+        "text": "const { buildBootstrapSnapshot } = require('./src/bootstrap-data');"
+      },
+      {
+        "line": 6,
+        "text": "const { resolveDataFiles } = require('./src/data-paths');"
+      },
+      {
+        "line": 7,
+        "text": "const { KdrgSearchService } = require('./src/kdrg-search-service');"
+      },
+      {
+        "line": 8,
+        "text": "const {"
+      },
+      {
+        "line": 9,
+        "text": "  shouldRunPackagedSmoke,"
+      },
+      {
+        "line": 10,
+        "text": "  runPackagedRuntimeSmoke,"
+      },
+      {
+        "line": 11,
+        "text": "} = require('./src/packaged-runtime-smoke');"
+      },
+      {
+        "line": 12,
+        "text": "const {"
+      },
+      {
+        "line": 13,
+        "text": "  normalizeSearchRequest,"
+      },
+      {
+        "line": 14,
+        "text": "  normalizeRelationRequest,"
+      },
+      {
+        "line": 15,
+        "text": "  normalizeDetailRequest,"
+      },
+      {
+        "line": 16,
+        "text": "} = require('./src/search-result-contract');"
+      },
+      {
+        "line": 17,
+        "text": ""
+      },
+      {
+        "line": 18,
+        "text": "const IPC_CHANNELS = Object.freeze({"
+      },
+      {
+        "line": 19,
+        "text": "  bootstrap: 'kdrg:get-bootstrap-snapshot',"
+      },
+      {
+        "line": 20,
+        "text": "  searchStatus: 'kdrg:get-search-status',"
+      },
+      {
+        "line": 21,
+        "text": "  search: 'kdrg:search',"
+      },
+      {
+        "line": 22,
+        "text": "  relationSearch: 'kdrg:relation-search',"
+      },
+      {
+        "line": 23,
+        "text": "  detail: 'kdrg:get-detail',"
+      },
+      {
+        "line": 24,
+        "text": "});"
+      },
+      {
+        "line": 25,
+        "text": ""
+      }
+    ],
+    "main_service_search": []
+  },
+  "error": null,
+  "finished_at": "2026-09-23 01:15:07"
+}

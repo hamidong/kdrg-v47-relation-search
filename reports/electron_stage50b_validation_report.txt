@@ -1,0 +1,60 @@
+KDRG V4.7 Stage 50B Electron 검색 service 독립검증 - 0.5.17 exact public-ID
+==========================================================================================
+스크립트 버전: 2026-09-08_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V9_AADRG_PUBLIC
+
+- [PASS] 운영 JSON 존재 | actual=True | expected=True
+- [PASS] 운영 JSON SHA256 | actual=1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58 | expected=1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58
+- [PASS] ADRG count | actual=1132 | expected=1132
+- [PASS] AADRG count | actual=1233 | expected=1233
+- [PASS] CODE count | actual=16571 | expected=16571
+- [PASS] MDC master count | actual=26 | expected=26
+- [PASS] dual-role contract | actual=60 | expected=60
+- [PASS] Node runtime | actual=True | expected=True
+- [PASS] tests/validate-stage59b-skeleton.js | actual=0 | expected=0
+- [PASS] tests/validate-stage59b-search.js | actual=0 | expected=0
+- [PASS] tests/validate-stage59b-smoke.js | actual=0 | expected=0
+- [PASS] tests/validate-electron-skeleton.js | actual=0 | expected=0
+- [PASS] tests/validate-search-service.js | actual=0 | expected=0
+- [PASS] 0.5.17 exact public-ID runtime probe | actual=0 | expected=0
+
+[tests/validate-stage59b-skeleton.js stdout]
+stage59_skeleton: PASS version=0.5.19
+
+[tests/validate-stage59b-skeleton.js stderr]
+
+
+[tests/validate-stage59b-search.js stdout]
+stage59_search: 29 PASS / 0 FAIL
+[PASS] Stage67I4B normalized request bridge
+
+[tests/validate-stage59b-search.js stderr]
+
+
+[tests/validate-stage59b-smoke.js stdout]
+stage59_smoke: PASS
+
+[tests/validate-stage59b-smoke.js stderr]
+
+
+[tests/validate-electron-skeleton.js stdout]
+stage59_skeleton: PASS version=0.5.19
+[PASS] Electron Stage 50C 보안 골격 검증: Stage59B/0.5.10 계약 호환
+
+[tests/validate-electron-skeleton.js stderr]
+
+
+[tests/validate-search-service.js stdout]
+stage59_search: 29 PASS / 0 FAIL
+[PASS] Stage67I4B normalized request bridge
+[PASS] Electron Stage 50C 검색 service 호환성 검증: Stage59B/0.5.10 사용자 계약
+
+[tests/validate-search-service.js stderr]
+
+
+[runtime_probe stdout]
+[PASS] Stage50B 0.5.17 exact public-ID runtime contract
+
+[runtime_probe stderr]
+
+
+전체 결과: PASS

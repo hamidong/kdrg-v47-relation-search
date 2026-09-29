@@ -1,0 +1,53 @@
+KDRG V4.7 Electron Stage67I6 / 0.5.15 Full Pipeline Fix Commit + Push + RC R1
+========================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_TAG_RELEASE
+
+[COMMIT]
+{
+  "commit": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+  "reused_existing_commit": false
+}
+
+[PUSH]
+{
+  "origin_before": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "origin_after": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+  "reused_existing_push": false
+}
+
+[DISPATCH]
+{}
+
+[RC]
+{
+  "databaseId": null,
+  "headSha": null,
+  "headBranch": null,
+  "event": null,
+  "status": null,
+  "conclusion": null,
+  "url": null,
+  "failed_steps": null,
+  "error_focus": null
+}
+
+[FINAL GUARD]
+{
+  "head": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+  "origin_main": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+  "worktree_clean": true,
+  "staging_empty": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[BLOCKER]
+StageError: command failed (1): gh workflow run build-electron-windows.yml --ref main
+
+[NEXT]
+- RC success이면 READY_FOR_0515_TAG_RELEASE.
+- RC failure이면 같은 commit을 자동 재실행하지 말고 failed_steps/error_focus 기준으로 수정.
+- 이 Stage는 tag/release를 생성하지 않음.
+
+report_json=/home/runner/workspace/stage67i6_0515_full_pipeline_commit_push_rc_r1.json

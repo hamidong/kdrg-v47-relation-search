@@ -1,0 +1,23 @@
+[PASS] Stage69C R1 / 0.5.17 Search + Relation UX Actual
+r12_shadow_binding=PASS
+candidate_regeneration_parity=PASS
+actual_product_files=5
+public_exact_ids_17232=PASS
+code_only_exact_16100=PASS
+adrg_only_exact_661=PASS
+shared_CODE_ADRG_471=PASS
+public_exact_pollution=0
+relation_result_classification=TITLE_ROW
+relation_full_conditions=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.16=PASS
+runtime_json=UNCHANGED
+package_version=0.5.16
+staging=EMPTY
+rollback=NOT_NEEDED
+readiness=READY_FOR_69D_0517_RELEASE_PREP
+report=reports/stage69c_0517_search_relation_ux_actual_r1/actual_summary.txt
+json=reports/stage69c_0517_search_relation_ux_actual_r1/actual.json

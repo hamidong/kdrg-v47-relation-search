@@ -1,0 +1,33 @@
+{
+  "stage": "68E",
+  "version": "0.5.16",
+  "preflight": {
+    "head": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+    "origin_main": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+    "branch": "main",
+    "base_tag": "electron-v0.5.15",
+    "next_tag_absent": true,
+    "tracked_before_release_prep": [
+      "electron/renderer/app.js"
+    ],
+    "stage68d_app_sha256": "715c0ccdfb083eb77e58609a6adfdc27c7e54b6f96307c9dd7e6e0e1b49768b0",
+    "stage68d_validator_sha256": "961e4337d1a5b576742da66c5fa7f299597e6ea274eafe05664c53ca73903138",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "package_version": "0.5.15",
+    "lock_version": "0.5.15"
+  },
+  "candidate_contract": {
+    "50d_old_version_literal_count": 3,
+    "50d_old_marker_count": 1,
+    "old_marker": "STAGE50D_VALIDATOR_V14_0515",
+    "new_marker": "STAGE50D_VALIDATOR_V15_0516"
+  },
+  "shadow": {
+    "shadow_root": "/home/runner/workspace/reports/stage68e_0516_release_prep_r1/shadow",
+    "package_sha256": "0a48e264968a04d077ac6cefdef3e80b186ce0f714b240fa6e34a61d3c99299e",
+    "lock_sha256": "07a31798cf422f408758139b2c300e51c171aa0538e8852be62b09c26083ab50",
+    "fiftyd_sha256": "5bf088895370c268b657a9c006fcf1f82cb3760ef97d3cbb0443a063b84f012a"
+  },
+  "status": "FAIL_BEFORE_ACTUAL",
+  "message": "SHADOW 검증 실패: npm run check\n\n> kdrg-v47-relation-search-electron@0.5.16 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.16 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.16 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.16\n\n> kdrg-v47-relation-search-electron@0.5.16 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n\n> kdrg-v47-relation-search-electron@0.5.16 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.16 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.16 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\n[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.16 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/reports/stage68e_0516_release_prep_r1/shadow/electron\nnode=v20.20.0\n[FAIL] Electron Stage 50D Windows packaging 검증: 140 PASS / 2 FAIL\n- 원본 데이터 존재 kdrg_v47_ui_semantic_profile.json | actual=false | expected=true\n- 원본 데이터 존재 kdrg_v47_ui_display_contract.json | actual=false | expected=true\n"
+}

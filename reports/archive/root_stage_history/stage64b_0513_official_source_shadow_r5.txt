@@ -1,0 +1,457 @@
+KDRG V4.7 Electron Stage64B / 0.5.13 Official Condition Source Shadow R5
+============================================================================================================
+status=PASS
+readiness=READY_FOR_0513_ACTUAL_APPLY_ONLY
+
+[PREFLIGHT]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "pdf_path": "/home/runner/workspace/sources/kdrg_v47/main/KDRG V4.7 분류집.pdf", "pdf_sha256": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4", "pdf_extractor": "PyMuPDF", "audit_case_count": 390, "audit_reworded_count": 121, "audit_matching_count": 269, "source_kind_counts": {"ROOT_SOURCE_FRAGMENT": 352, "SOURCE_BLOCK_TEXT": 38}, "override_source_kind_counts": {"ROOT_SOURCE_FRAGMENT": 89, "SOURCE_BLOCK_TEXT": 32}, "source_block_candidate_count": 38, "source_block_checks": {"C061": {"missing": [], "coverage_ratio": 0.6037735849056604, "prefix_extra": 0, "suffix_extra": 0, "line_count": 1, "candidate_length": 53, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "C062": {"missing": [], "coverage_ratio": 0.5609756097560976, "prefix_extra": 0, "suffix_extra": 0, "line_count": 1, "candidate_length": 41, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "C063": {"missing": [], "coverage_ratio": 0.6065573770491803, "prefix_extra": 0, "suffix_extra": 0, "line_count": 1, "candidate_length": 61, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 5, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "C064": {"missing": [], "coverage_ratio": 0.5714285714285714, "prefix_extra": 0, "suffix_extra": 0, "line_count": 1, "candidate_length": 49, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "C071": {"missing": [], "coverage_ratio": 0.6, "prefix_extra": 0, "suffix_extra": 1, "line_count": 1, "candidate_length": 45, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "C073": {"missing": [], "coverage_ratio": 0.55, "prefix_extra": 0, "suffix_extra": 0, "line_count": 1, "candidate_length": 40, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "F022": {"safe": true, "reason": "superseded_by_official_correction_20260731", "source_kind": "OFFICIAL_CORRECTION_20260731", "correction_sha256": "5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3", "display_text": "(시술명 table2 and 시술명 table 3) or 시술명 table6"}, "F061": {"missing": [], "coverage_ratio": 0.7551020408163265, "prefix_extra": 2, "suffix_extra": 0, "line_count": 1, "candidate_length": 49, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "F112": {"missing": [], "coverage_ratio": 0.5857142857142857, "prefix_extra": 0, "suffix_extra": 2, "line_count": 1, "candidate_length": 70, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 5, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "F122": {"missing": [], "coverage_ratio": 0.5517241379310345, "prefix_extra": 0, "suffix_extra": 2, "line_count": 1, "candidate_length": 58, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "F135": {"missing": [], "coverage_ratio": 0.5161290322580645, "prefix_extra": 2, "suffix_extra": 0, "line_count": 1, "candidate_length": 62, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "F136": {"missing": [], "coverage_ratio": 0.6981132075471698, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 53, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "F194": {"missing": [], "coverage_ratio": 0.3484848484848485, "prefix_extra": 0, "suffix_extra": 2, "line_count": 1, "candidate_length": 66, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I141": {"missing": [], "coverage_ratio": 0.4672897196261682, "prefix_extra": 21, "suffix_extra": 1, "line_count": 3, "candidate_length": 107, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "I142": {"missing": [], "coverage_ratio": 0.8679245283018868, "prefix_extra": 0, "suffix_extra": 1, "line_count": 1, "candidate_length": 53, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I160": {"missing": [], "coverage_ratio": 0.8607594936708861, "prefix_extra": 0, "suffix_extra": 1, "line_count": 2, "candidate_length": 79, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "I187": {"missing": [], "coverage_ratio": 0.87, "prefix_extra": 0, "suffix_extra": 1, "line_count": 2, "candidate_length": 100, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 5, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "I194": {"missing": [], "coverage_ratio": 0.8571428571428571, "prefix_extra": 0, "suffix_extra": 1, "line_count": 1, "candidate_length": 49, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I200": {"missing": [], "coverage_ratio": 0.890625, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 64, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I251": {"missing": [], "coverage_ratio": 0.8923076923076924, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 65, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I252": {"missing": [], "coverage_ratio": 0.8589743589743589, "prefix_extra": 0, "suffix_extra": 1, "line_count": 1, "candidate_length": 78, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I283": {"missing": [], "coverage_ratio": 0.8939393939393939, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 66, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I284": {"missing": [], "coverage_ratio": 0.8923076923076924, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 65, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I285": {"missing": [], "coverage_ratio": 0.8888888888888888, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 63, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I286": {"missing": [], "coverage_ratio": 0.890625, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 64, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "I287": {"missing": [], "coverage_ratio": 0.8923076923076924, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 65, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 3, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "N011": {"missing": [], "coverage_ratio": 0.7454545454545455, "prefix_extra": 0, "suffix_extra": 1, "line_count": 1, "candidate_length": 55, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 5, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "N041": {"missing": [], "coverage_ratio": 0.6172839506172839, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 81, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 6, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "N042": {"missing": [], "coverage_ratio": 0.7796610169491526, "prefix_extra": 0, "suffix_extra": 2, "line_count": 1, "candidate_length": 59, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 5, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "N071": {"missing": [], "coverage_ratio": 0.5694444444444444, "prefix_extra": 2, "suffix_extra": 1, "line_count": 1, "candidate_length": 72, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 5, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "N072": {"missing": [], "coverage_ratio": 0.7708333333333334, "prefix_extra": 0, "suffix_extra": 2, "line_count": 1, "candidate_length": 48, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "O110": {"missing": [], "coverage_ratio": 0.7777777777777778, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 54, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}, "P641": {"missing": [], "coverage_ratio": 0.7407407407407407, "prefix_extra": 0, "suffix_extra": 1, "line_count": 3, "candidate_length": 108, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 8, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "P642": {"missing": [], "coverage_ratio": 0.7207207207207207, "prefix_extra": 0, "suffix_extra": 1, "line_count": 3, "candidate_length": 111, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 8, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "P651": {"missing": [], "coverage_ratio": 0.7407407407407407, "prefix_extra": 0, "suffix_extra": 1, "line_count": 3, "candidate_length": 108, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 8, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "P661": {"missing": [], "coverage_ratio": 0.7407407407407407, "prefix_extra": 0, "suffix_extra": 1, "line_count": 3, "candidate_length": 108, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 8, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "P671": {"missing": [], "coverage_ratio": 0.7307692307692307, "prefix_extra": 0, "suffix_extra": 1, "line_count": 3, "candidate_length": 104, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 8, "source_key": "raw_text", "official_match_type": "EXACT_PAGE"}, "T011": {"missing": [], "coverage_ratio": 0.7777777777777778, "prefix_extra": 1, "suffix_extra": 0, "line_count": 1, "candidate_length": 54, "suspicious_heading": false, "safe": true, "reason": "PASS", "evidence_count": 4, "source_key": "source_lines[0].text", "official_match_type": "EXACT_PAGE"}}, "official_correction": {"path": "/home/runner/workspace/KDRG 일반용(V4.7)_교정표_20260731.hwpx", "sha256": "5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3", "display_text": "(시술명 table2 and 시술명 table 3) or 시술명 table6", "adrg": "F022", "title": "승모판 또는 삼첨판 수술(심도자술 사용)", "source_kind": "OFFICIAL_CORRECTION_20260731", "candidate_count": 1, "matching_count": 1, "evidence": {"/home/runner/workspace/KDRG 일반용(V4.7)_교정표_20260731.hwpx": {"F022": true, "승모판 또는 삼첨판 수술(심도자술 사용)": true, "(시술명 table2 and 시술명 table 3) or 시술명 table6": true, "시술명 table6": true}}, "content_canonical_contains_condition": true}, "baseline_target_sha256": {"electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660", "electron/renderer/index.html": "f07202e26759dc9f467c426b6cc4e4db89135a819456ac7a7b55ea7f710d6b09", "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}}
+
+[SHADOW DIFF]
+{"changed_files": ["electron/renderer/app.js", "electron/renderer/index.html", "electron/renderer/official-condition-text.js", "electron/tests/validate-stage59b-ui.js"], "sha256": {"electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491", "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2", "electron/tests/validate-stage59b-ui.js": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c", "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e"}}
+
+[SOURCE FIDELITY]
+{"override_map_count": 121, "base_pdf_override_count": 120, "official_correction_override_count": 1, "base_pdf_override_equivalent_count": 120, "ast_fallback_equivalent_count": 269, "official_current_source_equivalent_count": 390, "previous_reworded_covered_count": 121, "previous_matching_preserved_count": 269, "p651_final_display": "입원시 체중 1500 - 1999g\nand not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥ 96 hours)\nand { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }", "f022_final_display": "(시술명 table2 and 시술명 table 3) or 시술명 table6", "f022_correction_sha256": "5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3"}
+
+[VALIDATION SUPPORT]
+{"attachment": {"path": "/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron/node_modules", "target": "/home/runner/workspace/electron/node_modules", "is_symlink": true, "purpose": "validation_only_not_product_diff"}, "guard": {"tracked_product_changes": ["electron/renderer/app.js", "electron/renderer/index.html", "electron/tests/validate-stage59b-ui.js"], "untracked_product_changes": ["electron/renderer/official-condition-text.js"], "validation_only_support": ["electron/node_modules"]}}
+
+[VALIDATION]
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node --check renderer/official-condition-text.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node tests/validate-packaging-config.js
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node -e 
+'use strict';
+
+const path = require('node:path');
+const fs = require('node:fs');
+const official = require('./renderer/official-condition-text.js');
+const {
+  KdrgSearchService,
+} = require('./src/kdrg-search-service');
+
+const app = fs.readFileSync('renderer/app.js', 'utf8');
+const index = fs.readFileSync('renderer/index.html', 'utf8');
+
+if (Object.keys(official.byAdrg).length !== 121) {
+  throw new Error(
+    `official override map count ${Object.keys(official.byAdrg).length}`,
+  );
+}
+
+if (
+  official.meta.previous_renderer_reworded_count !== 121
+) {
+  throw new Error('previous reworded count mismatch');
+}
+
+const p651 = official.byAdrg.P651?.text || '';
+if (!p651.includes('시술명 table2을 제외한 OR procedure')) {
+  throw new Error('P651 official exclusion wording missing');
+}
+if (/OR procedure\s+and not\(시술명 table2\)/.test(p651)) {
+  throw new Error('P651 reconstructed wording leaked into official map');
+}
+
+const f022 = official.byAdrg.F022;
+if (!f022 || f022.source_kind !== 'OFFICIAL_CORRECTION_20260731') {
+  throw new Error('F022 official correction source marker missing');
+}
+if (
+  f022.text !==
+  '(시술명 table2 and 시술명 table 3) or 시술명 table6'
+) {
+  throw new Error(`F022 correction text mismatch: ${f022?.text}`);
+}
+
+if (!app.includes('officialConditionDisplayText(detail)')) {
+  throw new Error('source-first renderer call missing');
+}
+if (!app.includes("conditionSource = 'official-pdf'")) {
+  throw new Error('official-pdf renderer marker missing');
+}
+if (!app.includes("conditionSource = 'ast-fallback'")) {
+  throw new Error('AST fallback marker missing');
+}
+
+const sourcePos = index.indexOf('official-condition-text.js');
+const appPos = index.indexOf('app.js');
+if (sourcePos < 0 || appPos < 0 || sourcePos >= appPos) {
+  throw new Error('official source script load order invalid');
+}
+
+const service = new KdrgSearchService(
+  path.resolve(
+    '..',
+    'data',
+    'kdrg_v47_search_integrated_v3.json',
+  ),
+);
+
+const p6510 = service.getDetail('AADRG', 'P6510').detail;
+if (!p6510 || p6510.adrg !== 'P651' || !p6510.condition_ast) {
+  throw new Error('P6510 AST inheritance regression');
+}
+
+console.log(
+  '[PASS] Stage64B source-first probe',
+  JSON.stringify({
+    officialOverrideCount: Object.keys(official.byAdrg).length,
+    previousRewordedCount:
+      official.meta.previous_renderer_reworded_count,
+    p651Parent: p6510.adrg,
+  }),
+);
+
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node -e 
+'use strict';
+
+const path = require('node:path');
+const fs = require('node:fs');
+const {
+  KdrgSearchService,
+} = require('./src/kdrg-search-service');
+const Ui = require('./renderer/ui-formatters');
+
+const service = new KdrgSearchService(
+  path.resolve(
+    '..',
+    'data',
+    'kdrg_v47_search_integrated_v3.json',
+  ),
+);
+
+const app = fs.readFileSync(
+  'renderer/app.js',
+  'utf8',
+);
+
+if (
+  !app.includes('detail?.parent_adrg_detail')
+  || !app.includes(
+    'inheritedFromParent: sourceDetail !== detail',
+  )
+) {
+  throw new Error(
+    'generic renderer parent fallback missing',
+  );
+}
+
+if (
+  app.includes(
+    "if (detail?.aadrg === 'F2120'",
+  )
+) {
+  throw new Error('F2120 hardcode detected');
+}
+
+function uniqueStrings(values) {
+  return Ui.uniqueStrings(
+    Array.isArray(values) ? values : [],
+  );
+}
+
+function safeDetail(type, id) {
+  try {
+    return service.getDetail(type, id)?.detail || null;
+  } catch {
+    return null;
+  }
+}
+
+const adrgIds = [
+  ...service.recordMaps.ADRG.keys(),
+].sort();
+
+if (adrgIds.length !== 1132) {
+  throw new Error(
+    `ADRG record-map count ${adrgIds.length}`,
+  );
+}
+
+/*
+ * IMPORTANT:
+ * recordMaps.ADRG values are search/index records, not the complete
+ * user-condition detail objects. Stage63B R2 read those values directly,
+ * which made every source_logical_table_ids lookup empty and produced
+ * parent count 0. Always dereference with getDetail('ADRG', id).
+ */
+const parents = new Map();
+
+for (const id of adrgIds) {
+  const detail = safeDetail('ADRG', id);
+  if (!detail) {
+    throw new Error(`ADRG detail missing ${id}`);
+  }
+
+  const coverage = Ui.userConditionCoverage(detail);
+  const sourceIds = uniqueStrings(
+    detail.source_logical_table_ids ?? [],
+  );
+
+  if (
+    coverage.status !== 'NO_EXPLICIT_CONDITION'
+    || detail.condition_ast
+    || coverage.table_count
+    || sourceIds.length !== 1
+  ) {
+    continue;
+  }
+
+  const escaped = String(id).replace(
+    /[.*+?^${}()|[\]\\]/g,
+    '\\$&',
+  );
+  const localPattern = new RegExp(
+    `^LT_${escaped}_\\d{3}$`,
+    'i',
+  );
+
+  if (!localPattern.test(sourceIds[0])) {
+    continue;
+  }
+
+  const summary = Ui.tableSummaryMap(detail)
+    .get(sourceIds[0]);
+  const codeCount = Number(
+    summary?.summary?.code_count ?? 0,
+  );
+
+  if (codeCount <= 0) {
+    continue;
+  }
+
+  parents.set(id, {
+    tableId: sourceIds[0],
+    codeCount,
+  });
+}
+
+if (parents.size !== 479) {
+  throw new Error(
+    `parent count ${parents.size}`,
+  );
+}
+
+let candidateChildren = 0;
+let inheritedGapShapes = 0;
+let parentSummaryResolvable = 0;
+let parentIdentityMatched = 0;
+
+for (
+  const id
+  of [...service.recordMaps.AADRG.keys()].sort()
+) {
+  const child = safeDetail('AADRG', id);
+  if (!child) {
+    throw new Error(`AADRG detail missing ${id}`);
+  }
+
+  if (!parents.has(child.adrg)) {
+    continue;
+  }
+
+  candidateChildren += 1;
+
+  const ownSourceIds = uniqueStrings(
+    child.source_logical_table_ids ?? [],
+  );
+  const parent = child.parent_adrg_detail || null;
+  const parentSourceIds = uniqueStrings(
+    parent?.source_logical_table_ids ?? [],
+  );
+
+  if (
+    parent
+    && String(parent.adrg || '') === String(child.adrg)
+  ) {
+    parentIdentityMatched += 1;
+  }
+
+  if (
+    !child.condition_ast
+    && ownSourceIds.length === 0
+    && parentSourceIds.length === 1
+  ) {
+    inheritedGapShapes += 1;
+
+    const summary = Ui.tableSummaryMap(parent)
+      .get(parentSourceIds[0]);
+    const codeCount = Number(
+      summary?.summary?.code_count ?? 0,
+    );
+
+    if (codeCount > 0) {
+      parentSummaryResolvable += 1;
+    }
+  }
+}
+
+if (candidateChildren !== 521) {
+  throw new Error(
+    `candidate child count ${candidateChildren}`,
+  );
+}
+if (inheritedGapShapes !== 521) {
+  throw new Error(
+    `inherited gap shape ${inheritedGapShapes}`,
+  );
+}
+if (parentIdentityMatched !== 521) {
+  throw new Error(
+    `parent identity matched ${parentIdentityMatched}`,
+  );
+}
+if (parentSummaryResolvable !== 521) {
+  throw new Error(
+    `parent summary resolvable ${parentSummaryResolvable}`,
+  );
+}
+
+const f2120 = safeDetail('AADRG', 'F2120');
+if (!f2120) {
+  throw new Error('F2120 detail missing');
+}
+if (f2120.adrg !== 'F212') {
+  throw new Error(
+    `F2120 parent mismatch ${f2120.adrg}`,
+  );
+}
+if (
+  uniqueStrings(
+    f2120.source_logical_table_ids ?? [],
+  ).length !== 0
+) {
+  throw new Error(
+    'F2120 unexpectedly owns direct source table',
+  );
+}
+
+const f212ParentIds = uniqueStrings(
+  f2120.parent_adrg_detail
+    ?.source_logical_table_ids ?? [],
+);
+if (
+  JSON.stringify(f212ParentIds)
+  !== JSON.stringify(['LT_F212_001'])
+) {
+  throw new Error(
+    `F2120 parent source ${JSON.stringify(
+      f212ParentIds,
+    )}`,
+  );
+}
+
+const f212Table = safeDetail(
+  'TABLE',
+  'LT_F212_001',
+);
+if (!f212Table) {
+  throw new Error('LT_F212_001 detail missing');
+}
+const f212Codes = new Set(
+  (f212Table.code_records ?? [])
+    .map((row) => row.entity_id),
+);
+const expectedF212Codes = [
+  'O0205',
+  'O0206',
+  'O0241',
+  'O2223',
+];
+for (const code of expectedF212Codes) {
+  if (!f212Codes.has(code)) {
+    throw new Error(
+      `F212 source code missing ${code}`,
+    );
+  }
+}
+
+for (const code of expectedF212Codes) {
+  const response = service.search(
+    code,
+    'ALL',
+    { limit: 100 },
+  );
+  const types = new Set(
+    response.results.map(
+      (row) => row.entity_type,
+    ),
+  );
+
+  if (
+    !types.has('CODE')
+    || !types.has('AADRG')
+    || types.has('ADRG')
+    || types.has('TABLE')
+  ) {
+    throw new Error(
+      `${code} search contract ${[
+        ...types,
+      ].join(',')}`,
+    );
+  }
+}
+
+const p6510 = safeDetail('AADRG', 'P6510');
+if (
+  !p6510
+  || p6510.adrg !== 'P651'
+  || !p6510.condition_ast
+) {
+  throw new Error(
+    'P6510 inherited AST regression',
+  );
+}
+
+const pretty = Ui.buildPrettyConditionTree(
+  p6510.condition_ast,
+);
+if (!pretty) {
+  throw new Error(
+    'P6510 pretty condition tree missing',
+  );
+}
+
+console.log(
+  '[PASS] Stage63B full impact probe',
+  JSON.stringify({
+    adrgCount: adrgIds.length,
+    parents: parents.size,
+    candidateChildren,
+    inheritedGapShapes,
+    parentIdentityMatched,
+    parentSummaryResolvable,
+    f212Codes: expectedF212Codes,
+    p651TreeKind: pretty.kind,
+  }),
+);
+
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/tmp/kdrg_stage64b_0513_shadow_r5_7t3n7hra/workspace/electron cmd=node tests/validate-release-version.js 0.5.12
+
+[ARTIFACTS]
+{"electron/renderer/app.js": {"path": "/home/runner/workspace/reports/stage64b_0513_official_source_shadow_r5/app.js", "sha256": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491"}, "electron/renderer/index.html": {"path": "/home/runner/workspace/reports/stage64b_0513_official_source_shadow_r5/index.html", "sha256": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2"}, "electron/tests/validate-stage59b-ui.js": {"path": "/home/runner/workspace/reports/stage64b_0513_official_source_shadow_r5/validate-stage59b-ui.js", "sha256": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c"}, "electron/renderer/official-condition-text.js": {"path": "/home/runner/workspace/reports/stage64b_0513_official_source_shadow_r5/official-condition-text.js", "sha256": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e"}}
+
+[ACTUAL UNCHANGED]
+{"target_sha_after": {"electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660", "electron/renderer/index.html": "f07202e26759dc9f467c426b6cc4e4db89135a819456ac7a7b55ea7f710d6b09", "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}, "new_source_absent": true, "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "tracked_worktree_clean": true, "staging_empty": true}
+
+[NEXT]
+- PASS이면 121개 재표현 중 120개는 본문 PDF 원문, F022 1개는 공식 20260731 교정표를 우선 적용하고, 이미 같은 269개는 AST 표시를 유지하는 Shadow가 확정됨.
+- 기존 121개 재표현 사례만 현재 공식 원천 authority-overlay 경로로 전환되어야 함.
+- P651은 '시술명 table2을 제외한 OR procedure' 표현을 유지해야 함.
+- AST는 검색/TABLE 연결/논리검증 및 source 부재 fallback으로 그대로 유지.
+- Actual 적용 후 다시 390건 PDF 원문 대 최종 UI 계약을 재검증한 뒤 0.5.13 Release Prep 진행.
+- Shadow PASS 전 Actual/version/commit/push/tag/Release 금지. node_modules는 validation-only support이며 제품 변경파일에 포함하지 않음.
+- R5 validator는 v3 authority-overlay metadata 키(base_source_pdf_sha256/correction_source_sha256)를 검증함.
+
+report_txt=/home/runner/workspace/stage64b_0513_official_source_shadow_r5.txt
+report_json=/home/runner/workspace/stage64b_0513_official_source_shadow_r5.json

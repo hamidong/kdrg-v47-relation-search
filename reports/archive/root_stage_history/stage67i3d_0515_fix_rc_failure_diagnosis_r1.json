@@ -1,0 +1,401 @@
+{
+  "status": "PASS",
+  "started_at": "2026-09-23 00:56:14",
+  "stage67i3": {
+    "fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "run_id": 35803633211,
+    "dispatch_mode": "DISPATCHED",
+    "stage67i3_error": "StageError: RC conclusion is not success",
+    "dispatch_run": {
+      "conclusion": "",
+      "createdAt": "2026-09-23T00:48:17Z",
+      "databaseId": 35803633211,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+      "status": "queued",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35803633211"
+    }
+  },
+  "preflight": {
+    "fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "fix_parent": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "fix_files": [
+      "electron/src/kdrg-search-service.js",
+      "electron/src/packaged-runtime-smoke.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage59b-search.js"
+    ],
+    "head_origin_exact": true,
+    "worktree_clean": true,
+    "staging_empty": true,
+    "base_tag_immutable": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "run": {
+    "conclusion": "failure",
+    "createdAt": "2026-09-23T00:48:17Z",
+    "databaseId": 35803633211,
+    "event": "workflow_dispatch",
+    "headBranch": "main",
+    "headSha": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "jobs": [
+      {
+        "completedAt": "2026-09-23T00:52:37Z",
+        "conclusion": "failure",
+        "databaseId": 106999400344,
+        "name": "windows-electron-package",
+        "startedAt": "2026-09-23T00:48:22Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-09-23T00:48:24Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-09-23T00:48:23Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:33Z",
+            "conclusion": "success",
+            "name": "체크아웃",
+            "number": 2,
+            "startedAt": "2026-09-23T00:48:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:42Z",
+            "conclusion": "success",
+            "name": "Node.js 22.23.1 설치",
+            "number": 3,
+            "startedAt": "2026-09-23T00:48:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:42Z",
+            "conclusion": "success",
+            "name": "Python 3.11 설치",
+            "number": 4,
+            "startedAt": "2026-09-23T00:48:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:45Z",
+            "conclusion": "success",
+            "name": "checkout 바이트 무결성 검증",
+            "number": 5,
+            "startedAt": "2026-09-23T00:48:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:46Z",
+            "conclusion": "success",
+            "name": "Actions 런타임 임시경로 초기화",
+            "number": 6,
+            "startedAt": "2026-09-23T00:48:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:46Z",
+            "conclusion": "success",
+            "name": "package-lock 공식 registry 사전검증",
+            "number": 7,
+            "startedAt": "2026-09-23T00:48:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:49Z",
+            "conclusion": "success",
+            "name": "npm CLI 11.17.0 무결성 검증 준비",
+            "number": 8,
+            "startedAt": "2026-09-23T00:48:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:48:59Z",
+            "conclusion": "success",
+            "name": "npm 잠금 의존성 설치",
+            "number": 9,
+            "startedAt": "2026-09-23T00:48:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:49:09Z",
+            "conclusion": "success",
+            "name": "Electron source·검색·UI·packaging 검증",
+            "number": 10,
+            "startedAt": "2026-09-23T00:48:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:49:46Z",
+            "conclusion": "success",
+            "name": "Stage 50D Python 독립검증",
+            "number": 11,
+            "startedAt": "2026-09-23T00:49:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:51:47Z",
+            "conclusion": "success",
+            "name": "Windows x64 portable exe 빌드",
+            "number": 12,
+            "startedAt": "2026-09-23T00:49:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:51:47Z",
+            "conclusion": "success",
+            "name": "portable exe 경로 확인",
+            "number": 13,
+            "startedAt": "2026-09-23T00:51:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:31Z",
+            "conclusion": "success",
+            "name": "packaged exe 데이터·검색·renderer 기동검증",
+            "number": 14,
+            "startedAt": "2026-09-23T00:51:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "failure",
+            "name": "packaged 핵심검증 판정",
+            "number": 15,
+            "startedAt": "2026-09-23T00:52:31Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "SHA256 생성",
+            "number": 16,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "Electron 버전 정보 추출",
+            "number": 17,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "Electron 태그와 package 버전 일치 확인",
+            "number": 18,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "회귀검증 요약",
+            "number": 19,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "GitHub Release 생성 및 필수 Assets 업로드",
+            "number": 20,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "UI smoke evidence 선택 업로드",
+            "number": 21,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "Post Python 3.11 설치",
+            "number": 40,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:32Z",
+            "conclusion": "skipped",
+            "name": "Post Node.js 22.23.1 설치",
+            "number": 41,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:34Z",
+            "conclusion": "success",
+            "name": "Post 체크아웃",
+            "number": 42,
+            "startedAt": "2026-09-23T00:52:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-09-23T00:52:34Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 43,
+            "startedAt": "2026-09-23T00:52:34Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35803633211/job/106999400344"
+      }
+    ],
+    "name": "Build Electron Windows portable and publish Release",
+    "status": "completed",
+    "updatedAt": "2026-09-23T00:52:38Z",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35803633211",
+    "workflowName": "Build Electron Windows portable and publish Release"
+  },
+  "failed_steps": [
+    {
+      "job_name": "windows-electron-package",
+      "job_conclusion": "failure",
+      "step_number": 15,
+      "step_name": "packaged 핵심검증 판정",
+      "step_status": "completed",
+      "step_conclusion": "failure"
+    }
+  ],
+  "classification": {
+    "primary": "PACKAGED_UI_VALIDATION",
+    "automatic_rerun_allowed": false,
+    "reason": "실패 원인을 확정하기 전 동일 commit RC 자동 재실행 금지"
+  },
+  "compact_error_lines": [
+    {
+      "line_no": 3,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3547320Z \u001b[36;1m\u001b[0m"
+    },
+    {
+      "line_no": 4,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3547589Z \u001b[36;1mif (-not (Test-Path $reportPath -PathType Leaf)) {\u001b[0m"
+    },
+    {
+      "line_no": 5,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3547994Z \u001b[36;1m  Write-Error \"packaged smoke 보고서가 없습니다: $reportPath\"\u001b[0m"
+    },
+    {
+      "line_no": 6,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3548307Z \u001b[36;1m  exit 1\u001b[0m"
+    },
+    {
+      "line_no": 7,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3548482Z \u001b[36;1m}\u001b[0m"
+    },
+    {
+      "line_no": 30,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3554018Z \u001b[36;1m$completed = @($report.completed_steps | ForEach-Object { [string]$_ })\u001b[0m"
+    },
+    {
+      "line_no": 31,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3554527Z \u001b[36;1m$missing = @($requiredSteps | Where-Object { $completed -notcontains $_ })\u001b[0m"
+    },
+    {
+      "line_no": 32,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3554954Z \u001b[36;1m$message = [string]$report.error.message\u001b[0m"
+    },
+    {
+      "line_no": 33,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3555222Z \u001b[36;1m\u001b[0m"
+    },
+    {
+      "line_no": 34,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3555624Z \u001b[36;1m$uiWarningOnly = (\u001b[0m"
+    },
+    {
+      "line_no": 35,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3555948Z \u001b[36;1m  [string]$report.failed_step -eq \"packaged_ui_validation\" -and\u001b[0m"
+    },
+    {
+      "line_no": 36,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3556341Z \u001b[36;1m  $message -match \"console=0, gone=0, load=0\"\u001b[0m"
+    },
+    {
+      "line_no": 37,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3556610Z \u001b[36;1m)\u001b[0m"
+    },
+    {
+      "line_no": 39,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3556986Z \u001b[36;1mif ($uiWarningOnly -and $missing.Count -eq 0) {\u001b[0m"
+    },
+    {
+      "line_no": 40,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3557339Z \u001b[36;1m  Write-Warning \"packaged UI 세부 판정은 경고로 기록하고 진행합니다.\"\u001b[0m"
+    },
+    {
+      "line_no": 41,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3557723Z \u001b[36;1m  Write-Host \"failed_step=$($report.failed_step)\"\u001b[0m"
+    },
+    {
+      "line_no": 42,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3558050Z \u001b[36;1m  Write-Host \"message=$message\"\u001b[0m"
+    },
+    {
+      "line_no": 43,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3558432Z \u001b[36;1m  Write-Host \"[PASS_WITH_UI_WARNING] 데이터·검색·상세·관계검색·renderer 핵심검증 완료\"\u001b[0m"
+    },
+    {
+      "line_no": 45,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3558984Z \u001b[36;1m}\u001b[0m"
+    },
+    {
+      "line_no": 46,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559139Z \u001b[36;1m\u001b[0m"
+    },
+    {
+      "line_no": 47,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559318Z \u001b[36;1mWrite-Error \"packaged 핵심검증 실패\"\u001b[0m"
+    },
+    {
+      "line_no": 48,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559599Z \u001b[36;1mWrite-Host \"status=$($report.status)\"\u001b[0m"
+    },
+    {
+      "line_no": 49,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559943Z \u001b[36;1mWrite-Host \"failed_step=$($report.failed_step)\"\u001b[0m"
+    },
+    {
+      "line_no": 50,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3560296Z \u001b[36;1mWrite-Host \"missing_steps=$($missing -join ',')\"\u001b[0m"
+    },
+    {
+      "line_no": 51,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3560616Z \u001b[36;1mWrite-Host \"message=$message\"\u001b[0m"
+    },
+    {
+      "line_no": 67,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3640866Z   ELECTRON_BUILDER_CACHE: D:\\a\\_temp\\electron-builder-cache-35803633211-1"
+    },
+    {
+      "line_no": 68,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3641226Z ##[endgroup]"
+    },
+    {
+      "line_no": 69,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:32.4401867Z \u001b[31;1mWrite-Error: \u001b[31;1mpackaged 핵심검증 실패\u001b[0m"
+    },
+    {
+      "line_no": 70,
+      "text": "windows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:32.5001620Z ##[error]Process completed with exit code 1."
+    }
+  ],
+  "failed_log": {
+    "returncode": 0,
+    "output": "windows-electron-package\tpackaged 핵심검증 판정\t﻿2026-09-23T00:52:31.3545571Z ##[group]Run $reportPath = Join-Path $env:RUNNER_TEMP \"kdrg_electron_packaged_smoke_report.json\"\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3546649Z \u001b[36;1m$reportPath = Join-Path $env:RUNNER_TEMP \"kdrg_electron_packaged_smoke_report.json\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3547320Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3547589Z \u001b[36;1mif (-not (Test-Path $reportPath -PathType Leaf)) {\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3547994Z \u001b[36;1m  Write-Error \"packaged smoke 보고서가 없습니다: $reportPath\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3548307Z \u001b[36;1m  exit 1\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3548482Z \u001b[36;1m}\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3548641Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3548955Z \u001b[36;1m$report = Get-Content $reportPath -Raw -Encoding utf8 | ConvertFrom-Json\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3549347Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3549545Z \u001b[36;1mif ($report.status -eq \"PASS\") {\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3549851Z \u001b[36;1m  Write-Host \"[PASS] packaged 전체 smoke 검증\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3550129Z \u001b[36;1m  exit 0\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3550302Z \u001b[36;1m}\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3550464Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3550669Z \u001b[36;1m$requiredSteps = @(\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3550899Z \u001b[36;1m  \"dependencies_verified\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3551148Z \u001b[36;1m  \"data_paths_resolved\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3551384Z \u001b[36;1m  \"data_files_verified\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3551643Z \u001b[36;1m  \"bootstrap_counts_verified\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3551897Z \u001b[36;1m  \"search_service_ready\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3552137Z \u001b[36;1m  \"search_contract_verified\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3552393Z \u001b[36;1m  \"search_fixture_verified\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3552631Z \u001b[36;1m  \"detail_contract_verified\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3552880Z \u001b[36;1m  \"relation_contract_verified\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3553137Z \u001b[36;1m  \"browser_window_created\",\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3553372Z \u001b[36;1m  \"renderer_loaded\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3553573Z \u001b[36;1m)\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3553727Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3554018Z \u001b[36;1m$completed = @($report.completed_steps | ForEach-Object { [string]$_ })\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3554527Z \u001b[36;1m$missing = @($requiredSteps | Where-Object { $completed -notcontains $_ })\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3554954Z \u001b[36;1m$message = [string]$report.error.message\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3555222Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3555624Z \u001b[36;1m$uiWarningOnly = (\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3555948Z \u001b[36;1m  [string]$report.failed_step -eq \"packaged_ui_validation\" -and\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3556341Z \u001b[36;1m  $message -match \"console=0, gone=0, load=0\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3556610Z \u001b[36;1m)\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3556767Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3556986Z \u001b[36;1mif ($uiWarningOnly -and $missing.Count -eq 0) {\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3557339Z \u001b[36;1m  Write-Warning \"packaged UI 세부 판정은 경고로 기록하고 진행합니다.\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3557723Z \u001b[36;1m  Write-Host \"failed_step=$($report.failed_step)\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3558050Z \u001b[36;1m  Write-Host \"message=$message\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3558432Z \u001b[36;1m  Write-Host \"[PASS_WITH_UI_WARNING] 데이터·검색·상세·관계검색·renderer 핵심검증 완료\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3558808Z \u001b[36;1m  exit 0\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3558984Z \u001b[36;1m}\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559139Z \u001b[36;1m\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559318Z \u001b[36;1mWrite-Error \"packaged 핵심검증 실패\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559599Z \u001b[36;1mWrite-Host \"status=$($report.status)\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3559943Z \u001b[36;1mWrite-Host \"failed_step=$($report.failed_step)\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3560296Z \u001b[36;1mWrite-Host \"missing_steps=$($missing -join ',')\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3560616Z \u001b[36;1mWrite-Host \"message=$message\"\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3560853Z \u001b[36;1mexit 1\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3633665Z shell: C:\\Program Files\\PowerShell\\7\\pwsh.EXE -command \". '{0}'\"\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3634015Z env:\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3634191Z   PYTHONUTF8: 1\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3634398Z   PYTHONIOENCODING: utf-8\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3635024Z   CSC_IDENTITY_AUTO_DISCOVERY: false\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3635282Z   NPM_CLI_VERSION: 11.17.0\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3635560Z   NPM_CONFIG_REGISTRY: https://registry.npmjs.org\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3637960Z   pythonLocation: C:\\hostedtoolcache\\windows\\Python\\3.11.9\\x64\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3638423Z   PKG_CONFIG_PATH: C:\\hostedtoolcache\\windows\\Python\\3.11.9\\x64/lib/pkgconfig\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3638883Z   Python_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.11.9\\x64\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3639308Z   Python2_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.11.9\\x64\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3639720Z   Python3_ROOT_DIR: C:\\hostedtoolcache\\windows\\Python\\3.11.9\\x64\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3640096Z   NPM_CONFIG_CACHE: D:\\a\\_temp\\npm-cache-35803633211-1\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3640449Z   ELECTRON_CACHE: D:\\a\\_temp\\electron-cache-35803633211-1\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3640866Z   ELECTRON_BUILDER_CACHE: D:\\a\\_temp\\electron-builder-cache-35803633211-1\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:31.3641226Z ##[endgroup]\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:32.4401867Z \u001b[31;1mWrite-Error: \u001b[31;1mpackaged 핵심검증 실패\u001b[0m\nwindows-electron-package\tpackaged 핵심검증 판정\t2026-09-23T00:52:32.5001620Z ##[error]Process completed with exit code 1.\n"
+  },
+  "error": null,
+  "finished_at": "2026-09-23 00:56:21"
+}

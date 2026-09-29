@@ -1,0 +1,3 @@
+[FAIL] Stage72B 0.5.19 복수검색 결과 레이아웃 Shadow — Actual 미수행
+Stop: 관계카드 relation-level chip anchor 불일치: 0
+report=reports/stage72b_0519_relation_result_layout_shadow_r1/shadow_summary.txt

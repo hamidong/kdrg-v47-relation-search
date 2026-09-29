@@ -1,0 +1,22 @@
+[PASS] Stage72E R1 / 0.5.19 Release Prep Actual
+stage72c_actual_binding=PASS
+stage72d_shadow_binding=PASS
+release_prep_actual_files=3
+final_release_candidate_files=7
+package_version=0.5.19
+package_lock_version=0.5.19
+relation_layout_0519=PRESERVED
+general_adrg_layout=PRESERVED
+stage72b_validator=PASS
+stage70b_validator=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.19=PASS
+runtime_json=UNCHANGED
+staging=EMPTY
+rollback=NOT_NEEDED
+readiness=READY_FOR_72F_0519_COMMIT_PUSH_RC
+report=reports/stage72e_0519_release_prep_actual_r1/actual_summary.txt
+json=reports/stage72e_0519_release_prep_actual_r1/actual.json

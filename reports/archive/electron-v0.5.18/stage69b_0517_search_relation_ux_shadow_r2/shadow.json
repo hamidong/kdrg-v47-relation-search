@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R2",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 관계검색 결과 기존 분류 badge anchor 개수 불일치: 0"
+}

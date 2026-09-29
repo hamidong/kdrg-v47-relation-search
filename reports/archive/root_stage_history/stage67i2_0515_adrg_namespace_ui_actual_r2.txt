@@ -1,0 +1,107 @@
+KDRG V4.7 Electron Stage67I2 / 0.5.15 ADRG Namespace + Packaged UI Actual Apply R2
+================================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_FIX_COMMIT_PUSH_RC
+
+[PREFLIGHT]
+{
+  "gate": {
+    "report_status": "PASS",
+    "report_readiness": "READY_FOR_0515_ADRG_NAMESPACE_UI_ACTUAL_APPLY",
+    "manifest_schema": "kdrg-0515-adrg-namespace-ui-repair-v4",
+    "repair_contract": {
+      "explicit_adrg_exact_id_precedes_code_collision": true,
+      "all_1132_adrg_exact_ids_pass": true,
+      "all_code_behavior_unchanged": true,
+      "ui_fixture_search_query_uses_public_adrg_identity": true,
+      "product_hardcoding_B018_B022": false
+    }
+  },
+  "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "package_version": "0.5.15",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "base_tag_immutable": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[WHITESPACE CANDIDATE]
+{
+  "candidate_root": "/home/runner/workspace/reports/stage67i2_0515_adrg_namespace_ui_candidate_r2",
+  "cleanup": {
+    "electron/src/kdrg-search-service.js": {
+      "trailing_whitespace_lines_fixed": 0,
+      "space_before_tab_indent_lines_fixed": 0,
+      "eof_blank_lines_removed": 0,
+      "newline_style": "LF"
+    },
+    "electron/src/packaged-runtime-smoke.js": {
+      "trailing_whitespace_lines_fixed": 0,
+      "space_before_tab_indent_lines_fixed": 0,
+      "eof_blank_lines_removed": 0,
+      "newline_style": "LF"
+    },
+    "electron/tests/validate-packaged-runtime-smoke.js": {
+      "trailing_whitespace_lines_fixed": 0,
+      "space_before_tab_indent_lines_fixed": 0,
+      "eof_blank_lines_removed": 0,
+      "newline_style": "LF"
+    },
+    "electron/tests/validate-stage59b-search.js": {
+      "trailing_whitespace_lines_fixed": 0,
+      "space_before_tab_indent_lines_fixed": 0,
+      "eof_blank_lines_removed": 1,
+      "newline_style": "LF"
+    }
+  },
+  "candidate_sha256": {
+    "electron/src/kdrg-search-service.js": "017f6b2a3cdaaede0f14e77be5e06fc20b113f5d258c3271802beb07641b9d2c",
+    "electron/src/packaged-runtime-smoke.js": "ec3d8a53f136884e61bb2383e6f22c149c708501c00c02fb2703416f7504b7de",
+    "electron/tests/validate-packaged-runtime-smoke.js": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+    "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+  }
+}
+
+[SHADOW PRECHECK]
+{
+  "git_diff_check": null,
+  "tracked_diff_files": null,
+  "validation_summary": {}
+}
+
+[APPLY]
+{}
+
+[VALIDATION SUMMARY]
+{
+  "adrg_count": null,
+  "collision_count": null,
+  "failure_count": null,
+  "noncollision_failure_count": null,
+  "npm_run_check": null,
+  "root_50b": null,
+  "root_50c": null,
+  "root_50d": null,
+  "release_version": null,
+  "adrg_contract": null
+}
+
+[ROLLBACK]
+{
+  "performed": false
+}
+
+[FINAL GUARD]
+{}
+
+[BLOCKER]
+TypeError: git_lines() got an unexpected keyword argument 'cwd'
+
+[NEXT]
+- PASS이면 4개 Actual 수정이 전수검증된 상태.
+- 다음 Stage67I3에서 정확한 4개만 stage/commit/push 후 새 workflow_dispatch RC 실행.
+- 새 RC success 전에는 electron-v0.5.15 tag/release 금지.
+
+report_txt=/home/runner/workspace/stage67i2_0515_adrg_namespace_ui_actual_r2.txt
+report_json=/home/runner/workspace/stage67i2_0515_adrg_namespace_ui_actual_r2.json

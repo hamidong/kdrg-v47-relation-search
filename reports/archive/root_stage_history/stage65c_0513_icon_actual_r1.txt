@@ -1,0 +1,119 @@
+KDRG V4.7 Electron Stage65C / 0.5.13 Icon Actual R1
+============================================================================================
+status=PASS
+readiness=READY_FOR_0513_RELEASE_PREP
+
+[PREFLIGHT]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "stage64_status": [" M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/official-condition-text.js"], "reports": {"stage64d_status": "PASS", "stage64d_readiness": "READY_FOR_0513_ICON_SHADOW", "stage64d_source_pass": 390, "stage65b_status": "PASS", "stage65b_readiness": "READY_FOR_0513_ICON_ACTUAL_APPLY", "stage65b_builder_value": "renderer/assets/icon-kdrg-v47.ico"}, "artifact_sha256": {"50D_validate_kdrg_electron_windows_packaging.py": "47ed1e4ad1f645de9d1644e89fe0cb52aef0e27190ee00c9b6c2a7322af85197", "electron/package.json": "063fffcc4e5c298bdd8c6875ca7930c5d8703d827b61a1b01160e8c9ed96cc39", "electron/renderer/assets/icon-kdrg-v47.ico": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7", "electron/renderer/assets/icon-kdrg-v47.png": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "electron/tests/validate-packaging-config.js": "4838136e03a3856263c7702c2d024b8cea96ba26216613bd5d5c3c9a1d003c63"}, "staging_empty": true}
+
+[BACKUP]
+{"50D_validate_kdrg_electron_windows_packaging.py": {"path": "/tmp/kdrg_stage65c_0513_icon_backup_vzyt7sg3/targets/50D_validate_kdrg_electron_windows_packaging.py", "sha256": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373"}, "electron/package.json": {"path": "/tmp/kdrg_stage65c_0513_icon_backup_vzyt7sg3/targets/electron/package.json", "sha256": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b"}, "electron/tests/validate-packaging-config.js": {"path": "/tmp/kdrg_stage65c_0513_icon_backup_vzyt7sg3/targets/electron/tests/validate-packaging-config.js", "sha256": "823212d692df4fcc18fb168b5d7b94661faa9e05e60fe108905d845e1e5065ef"}}
+
+[APPLY]
+{"sha256": {"50D_validate_kdrg_electron_windows_packaging.py": "47ed1e4ad1f645de9d1644e89fe0cb52aef0e27190ee00c9b6c2a7322af85197", "electron/package.json": "063fffcc4e5c298bdd8c6875ca7930c5d8703d827b61a1b01160e8c9ed96cc39", "electron/renderer/assets/icon-kdrg-v47.ico": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7", "electron/renderer/assets/icon-kdrg-v47.png": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "electron/tests/validate-packaging-config.js": "4838136e03a3856263c7702c2d024b8cea96ba26216613bd5d5c3c9a1d003c63"}, "product_status": [" M 50D_validate_kdrg_electron_windows_packaging.py", " M electron/package.json", " M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-packaging-config.js", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/assets/icon-kdrg-v47.ico", "?? electron/renderer/assets/icon-kdrg-v47.png", "?? electron/renderer/official-condition-text.js"]}
+
+[ICON CONTRACT]
+{"builder_field": "build.win.icon", "builder_value": "renderer/assets/icon-kdrg-v47.ico", "png": {"width": 512, "height": 512, "size_bytes": 244101}, "ico": {"frame_count": 9, "sizes": [16, 20, 24, 32, 40, 48, 64, 128, 256], "entries": [{"width": 16, "height": 16, "bit_count": 32, "size_bytes": 749, "image_offset": 150}, {"width": 20, "height": 20, "bit_count": 32, "size_bytes": 998, "image_offset": 899}, {"width": 24, "height": 24, "bit_count": 32, "size_bytes": 1321, "image_offset": 1897}, {"width": 32, "height": 32, "bit_count": 32, "size_bytes": 2058, "image_offset": 3218}, {"width": 40, "height": 40, "bit_count": 32, "size_bytes": 2938, "image_offset": 5276}, {"width": 48, "height": 48, "bit_count": 32, "size_bytes": 3965, "image_offset": 8214}, {"width": 64, "height": 64, "bit_count": 32, "size_bytes": 6431, "image_offset": 12179}, {"width": 128, "height": 128, "bit_count": 32, "size_bytes": 20428, "image_offset": 18610}, {"width": 256, "height": 256, "bit_count": 32, "size_bytes": 73150, "image_offset": 39038}], "size_bytes": 112188}, "png_sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3", "ico_sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7", "js_contract": true, "python_contract": true, "version": "0.5.12"}
+
+[STAGE64 INTEGRITY]
+{"stage64_sha256": {"electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491", "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2", "electron/tests/validate-stage59b-ui.js": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c", "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e"}, "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "final_source_audit_preserved": {"current_official_source_pass": 390, "base_pdf_override_pass": 120, "official_correction_override_pass": 1, "ast_fallback_pass": 269}}
+
+[VALIDATION]
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check renderer/official-condition-text.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check tests/validate-packaging-config.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-packaging-config.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node -e 
+'use strict';
+
+const path = require('node:path');
+const fs = require('node:fs');
+const official = require('./renderer/official-condition-text.js');
+const {
+  KdrgSearchService,
+} = require('./src/kdrg-search-service');
+
+if (
+  official.meta.schema_version
+  !== 'kdrg-official-condition-text-v3-authority-overlay'
+) {
+  throw new Error('official overlay schema regression');
+}
+
+if (Object.keys(official.byAdrg).length !== 121) {
+  throw new Error('official override count regression');
+}
+
+const p651 = official.byAdrg.P651?.text || '';
+if (!p651.includes('시술명 table2을 제외한 OR procedure')) {
+  throw new Error('P651 official wording regression');
+}
+if (/OR procedure\s+and not\(시술명 table2\)/.test(p651)) {
+  throw new Error('P651 reconstructed wording leaked');
+}
+
+const f022 = official.byAdrg.F022;
+if (
+  !f022
+  || f022.source_kind !== 'OFFICIAL_CORRECTION_20260731'
+  || f022.text !==
+    '(시술명 table2 and 시술명 table 3) or 시술명 table6'
+) {
+  throw new Error('F022 correction regression');
+}
+
+const app = fs.readFileSync('renderer/app.js', 'utf8');
+const index = fs.readFileSync('renderer/index.html', 'utf8');
+
+if (!app.includes('officialConditionDisplayText(detail)')) {
+  throw new Error('source-first renderer regression');
+}
+if (
+  index.indexOf('official-condition-text.js') < 0
+  || index.indexOf('official-condition-text.js')
+    >= index.indexOf('app.js')
+) {
+  throw new Error('official condition module load-order regression');
+}
+
+const service = new KdrgSearchService(
+  path.resolve(
+    '..',
+    'data',
+    'kdrg_v47_search_integrated_v3.json',
+  ),
+);
+
+const p6510 = service.getDetail('AADRG', 'P6510').detail;
+if (!p6510 || p6510.adrg !== 'P651' || !p6510.condition_ast) {
+  throw new Error('P6510 inheritance regression');
+}
+
+console.log('[PASS] Stage65C Stage64 source preservation probe');
+
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-release-version.js 0.5.12
+
+[FINAL GUARD]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "product_status": [" M 50D_validate_kdrg_electron_windows_packaging.py", " M electron/package.json", " M electron/renderer/app.js", " M electron/renderer/index.html", " M electron/tests/validate-packaging-config.js", " M electron/tests/validate-stage59b-ui.js", "?? electron/renderer/assets/icon-kdrg-v47.ico", "?? electron/renderer/assets/icon-kdrg-v47.png", "?? electron/renderer/official-condition-text.js"], "staging_empty": true, "release_operations": false}
+
+[ROLLBACK]
+{}
+
+[NEXT]
+- PASS이면 조건표시 Stage64 4개 + 아이콘 Stage65 5개가 Actual에 검증 완료된 상태.
+- package version은 아직 0.5.12이며 staging/commit/push/tag/Release는 수행하지 않음.
+- 다음 단계는 0.5.13 Release Prep: package/package-lock/50D 버전 이관 및 정확한 최종 파일집합 검증.
+- Release Prep에서도 electron-v0.5.12 태그 불변, electron-v0.5.13 태그 부재를 먼저 확인.
+
+report_txt=/home/runner/workspace/stage65c_0513_icon_actual_r1.txt
+report_json=/home/runner/workspace/stage65c_0513_icon_actual_r1.json

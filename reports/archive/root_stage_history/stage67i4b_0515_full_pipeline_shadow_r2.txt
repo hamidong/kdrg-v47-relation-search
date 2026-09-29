@@ -1,0 +1,52 @@
+KDRG V4.7 Electron Stage67I4B / 0.5.15 Full Search Pipeline Repair Shadow R2
+==========================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_FULL_PIPELINE_ACTUAL_APPLY
+
+[CONFIRMED ROOT CAUSE]
+{
+  "before_ADRG_entityType": [
+    "ADRG"
+  ],
+  "before_ALL_entityType": [
+    "CODE",
+    "ADRG"
+  ],
+  "after_public_types": null,
+  "all_scalar_string": null
+}
+
+[FULL PIPELINE VALIDATION]
+{
+  "ADRG_count": null,
+  "collision_count": null,
+  "normalized_ADRG_failures": null,
+  "CODE_ALL_collision_changes": null,
+  "fixture_failures": null,
+  "static_wiring": null,
+  "workflow_diagnostics_before_error": null,
+  "npm_run_check": null,
+  "stage59b_stage60c_packaged": null,
+  "root_50b_50c_50d": null,
+  "release_version": null,
+  "official_regression": null,
+  "git_diff_check": null
+}
+
+[SHADOW DELTA]
+[]
+
+[ACTUAL GUARD]
+{}
+
+[BLOCKER]
+StageError: normalizer AADRG probe failed: {'ok': False, 'error': '사용자 검색에서 지원하지 않는 유형입니다: AADRG'}
+
+[NEXT]
+- PASS이면 단순 B018 보정이 아니라 normalizer→service→renderer/packaged 경로 전체가 Shadow에서 검증됨.
+- 다음 Stage67I5에서 manifest의 정확한 4개만 Actual 적용 후 동일 전수검증.
+- Actual PASS 후 새 fix commit/push + 새 workflow_dispatch RC.
+- 새 RC success 후에만 electron-v0.5.15 tag/release.
+
+manifest=/home/runner/workspace/stage67i4b_0515_full_pipeline_apply_manifest_r2.json
+report_json=/home/runner/workspace/stage67i4b_0515_full_pipeline_shadow_r2.json

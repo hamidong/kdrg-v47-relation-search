@@ -1,0 +1,24 @@
+KDRG V4.7 Electron Stage67I3D / 0.5.15 Packaged UI Failure Extract R2
+==============================================================================================
+status=PASS
+run_id=35803633211
+fix_commit=6ac11ec595258f8a24e68621f3520335e03ebff6
+packaged_status=FAIL
+failed_step=packaged_ui_validation
+error_message=B018 result ready timeout: 30000ms
+console_gone_load=null
+
+[FOCUS]
+"status": "FAIL",
+"failed_step": "packaged_ui_validation",
+"completed_steps": [
+"error": {
+"name": "Error",
+"message": "B018 result ready timeout: 30000ms",
+"stack": "Error: B018 result ready timeout: 30000ms"
+[31;1m[0m[36;1m[36;1m  91 | [0m     [36;1mthrow "Electron packaged smoke 종료코드가 0이 아닙니다: $($process.ExitCode[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mElectron packaged smoke 종료코드가 0이 아닙니다: 1[0m
+
+[STOP]
+read-only diagnosis; no rerun/commit/push/tag/release
+report_json=/home/runner/workspace/stage67i3d_0515_packaged_ui_failure_extract_r2.json

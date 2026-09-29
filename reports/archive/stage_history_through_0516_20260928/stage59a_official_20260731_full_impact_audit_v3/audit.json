@@ -1,0 +1,3429 @@
+{
+  "meta": {
+    "version": "2026-08-25_KDRG_V47_STAGE59A_OFFICIAL_20260731_FULL_IMPACT_AUDIT_V3",
+    "status": "FAIL",
+    "head": "73c40c164bd7eb103fea30ac22f5bd0c34a9d3bc",
+    "package_version": "0.5.9",
+    "operating_json_sha256": "75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0",
+    "new_correction": {
+      "path": "KDRG 일반용(V4.7)_교정표_20260731.hwpx",
+      "sha256": "5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3"
+    },
+    "new_procedure": {
+      "path": "KDRG 일반용(V4.7)_시술 등 목록_20260731.xlsx",
+      "sha256": "fde6dd9020eb0abf5f4f374fdd5f978054d1bd56f2b7c3567333c45f00064ab4"
+    }
+  },
+  "new_procedure_summary": {
+    "source_rows": 2791,
+    "unique_codes": 2791,
+    "unique_classifications": 2714,
+    "duplicate_rows": 0,
+    "M6536": {
+      "version": "4.7",
+      "classification_number": "자653-1",
+      "procedure_code": "M6536",
+      "korean_name": "클립을 사용한 경피적 경도관 승모판 재건술",
+      "excel_row": 325
+    },
+    "vs_current_20260501_master": {
+      "added": [
+        "M6536"
+      ],
+      "removed": [],
+      "changed": []
+    }
+  },
+  "new_correction_summary": {
+    "date_markers": {
+      "2. 1": true,
+      "3. 1": true,
+      "4. 1": true,
+      "5. 1": true,
+      "7. 31": true
+    },
+    "july": {
+      "F022": true,
+      "P020": true,
+      "code": true,
+      "classification": true,
+      "name": true
+    },
+    "earlier_tokens": {
+      "F6262": true,
+      "F6263": true,
+      "F6264": true,
+      "U1150": true,
+      "M6586": true,
+      "O0239": true,
+      "M6615_remove": true,
+      "M0670": true
+    },
+    "all_dates_present": true,
+    "july_delta_present": true,
+    "earlier_cumulative_present": true
+  },
+  "current_correction_patch": {
+    "operation_count": 0,
+    "contains_M6536": false,
+    "contains_2026_07_31": false,
+    "meta": {
+      "schema_version": "kdrg-v47-correction-patch-log-v1",
+      "data_version": "KDRG V4.7",
+      "script_version": "2026-07-21_KDRG_V47_CORRECTION_PATCH_LOG_V1",
+      "generated_at": "2026-07-21T07:35:17+00:00",
+      "patch_state": "parsed_and_mapped_not_applied",
+      "source_correction_effective_through": "2026-05-01",
+      "source_files": {
+        "correction_hwpx": {
+          "path": "/home/runner/workspace/sources/kdrg_v47/corrections/KDRG 일반용(V4.7)_교정표_20260501.hwpx",
+          "sha256": "6d389aa42806b491d90998112b5fede09f6b0b03cfd7191fc40c563691fcfbc5"
+        },
+        "logical_tables_json": {
+          "path": "/home/runner/workspace/data/kdrg_v47_logical_tables.json",
+          "sha256": "11be87465cdcdf424a018358ca1408476cc76c73733753a9387abe98cedf1b3a"
+        },
+        "condition_ast_json": {
+          "path": "/home/runner/workspace/data/kdrg_v47_condition_ast.json",
+          "sha256": "12209b0fbdd4881015c970ce5868a4578c47044c221091b26a64a30169b267de"
+        },
+        "procedure_master_json": {
+          "path": "/home/runner/workspace/data/kdrg_v47_procedure_master.json",
+          "sha256": "c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec"
+        },
+        "group_name_base_json": {
+          "path": "/home/runner/workspace/data/kdrg_v47_group_name_base.json",
+          "sha256": "24363a1d7b12d59c0506fa6c586cf1e692477742287301015ecd525c7db980d8"
+        },
+        "main_page_blocks_json": {
+          "path": "/home/runner/workspace/data/kdrg_v47_main_page_blocks.json",
+          "sha256": "8ac7c23e3573e286cc5adb669c2589ba7acc47c078f3bad962203fabde32c815"
+        }
+      }
+    }
+  },
+  "july_target_tables": {
+    "tables_with_M6586": [],
+    "tables_with_M6536_before_update": [],
+    "F022_table6_candidates": [],
+    "P020_candidates": []
+  },
+  "cross_domain_collision_summary": {
+    "count": 47,
+    "M6536_collision": {
+      "code": "M6536",
+      "latest_procedure": {
+        "version": "4.7",
+        "classification_number": "자653-1",
+        "procedure_code": "M6536",
+        "korean_name": "클립을 사용한 경피적 경도관 승모판 재건술",
+        "excel_row": 325
+      },
+      "operating_domains": [
+        "DIAGNOSIS"
+      ],
+      "operating_names": [
+        "Nodular tendinous disease, lower leg",
+        "결절성 힘줄병, 아래다리"
+      ],
+      "operating_roles": [],
+      "operating_table_ids": [
+        "LTGROUPMDC08DIAGNOSISTABLE09",
+        "LTI722001",
+        "LTI760032"
+      ]
+    },
+    "requires_schema_or_ui_design_review": true,
+    "collisions": [
+      {
+        "code": "M6511",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자651-2",
+          "procedure_code": "M6511",
+          "korean_name": "경피적 좌심방이폐색술",
+          "excel_row": 318
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적 좌심방이폐색술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF200001",
+          "LTGROUPMDC08DIAGNOSISTABLE06",
+          "LTI721001",
+          "LTI760026"
+        ]
+      },
+      {
+        "code": "M6513",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자651-3",
+          "procedure_code": "M6513",
+          "korean_name": "경피적 근성부 심실중격결손 폐쇄술",
+          "excel_row": 319
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적 근성부 심실중격결손 폐쇄술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTA080002",
+          "LTF051001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI721001",
+          "LTI760030",
+          "LTP020001"
+        ]
+      },
+      {
+        "code": "M6521",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자652가",
+          "procedure_code": "M6521",
+          "korean_name": "경피적심방중격절개술-풍선심방중격절개술",
+          "excel_row": 320
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적심방중격절개술-풍선심방중격절개술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF172003",
+          "LTF200001",
+          "LTGROUPMDC08DIAGNOSISTABLE06",
+          "LTI722001",
+          "LTI760026"
+        ]
+      },
+      {
+        "code": "M6522",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자652나",
+          "procedure_code": "M6522",
+          "korean_name": "경피적심방중격절개술-칼날심방중격절개술",
+          "excel_row": 321
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적심방중격절개술-칼날심방중격절개술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF172003",
+          "LTF200001",
+          "LTGROUPMDC08DIAGNOSISTABLE03",
+          "LTI722001",
+          "LTI760018"
+        ]
+      },
+      {
+        "code": "M6531",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자653가",
+          "procedure_code": "M6531",
+          "korean_name": "경피적심장판막성형술-승모판막",
+          "excel_row": 322
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적심장판막성형술-승모판막"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF161001",
+          "LTGROUPMDC08DIAGNOSISTABLE11",
+          "LTI722001",
+          "LTI760036",
+          "LTP020001"
+        ]
+      },
+      {
+        "code": "M6532",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자653나",
+          "procedure_code": "M6532",
+          "korean_name": "경피적심장판막성형술-대동맥판막",
+          "excel_row": 323
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적심장판막성형술-대동맥판막"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF162001",
+          "LTGROUPMDC08DIAGNOSISTABLE11",
+          "LTI722001",
+          "LTI760036",
+          "LTP020001"
+        ]
+      },
+      {
+        "code": "M6533",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자653다",
+          "procedure_code": "M6533",
+          "korean_name": "경피적심장판막성형술-폐동맥판막",
+          "excel_row": 324
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적심장판막성형술-폐동맥판막"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF162001",
+          "LTGROUPMDC08DIAGNOSISTABLE11",
+          "LTI722001",
+          "LTI760036",
+          "LTP020001"
+        ]
+      },
+      {
+        "code": "M6536",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자653-1",
+          "procedure_code": "M6536",
+          "korean_name": "클립을 사용한 경피적 경도관 승모판 재건술",
+          "excel_row": 325
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "Nodular tendinous disease, lower leg",
+          "결절성 힘줄병, 아래다리"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTGROUPMDC08DIAGNOSISTABLE09",
+          "LTI722001",
+          "LTI760032"
+        ]
+      },
+      {
+        "code": "M6581",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자658나",
+          "procedure_code": "M6581",
+          "korean_name": "경피적대동맥판삽입-상행대동맥 접근",
+          "excel_row": 347
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적대동맥판삽입-상행대동맥 접근"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF023001",
+          "LTF031001",
+          "LTGROUPMDC08DIAGNOSISTABLE06",
+          "LTI722001",
+          "LTI760026",
+          "LTP020001"
+        ]
+      },
+      {
+        "code": "M6582",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자658다",
+          "procedure_code": "M6582",
+          "korean_name": "경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근",
+          "excel_row": 348
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF023001",
+          "LTF031001",
+          "LTGROUPMDC08DIAGNOSISTABLE07",
+          "LTI722001",
+          "LTI760028",
+          "LTP020001"
+        ]
+      },
+      {
+        "code": "M6585",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자658-1",
+          "procedure_code": "M6585",
+          "korean_name": "경피적 폐동맥판 삽입술",
+          "excel_row": 349
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적 폐동맥판 삽입술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTF023005",
+          "LTGROUPMDC08DIAGNOSISTABLE02",
+          "LTI722001",
+          "LTI760015",
+          "LTP020001"
+        ]
+      },
+      {
+        "code": "M6586",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자658-2",
+          "procedure_code": "M6586",
+          "korean_name": "경피적 승모판막 재치환술[심방중격 접근]",
+          "excel_row": 350
+        },
+        "operating_domains": [
+          "DIAGNOSIS",
+          "PROCEDURE"
+        ],
+        "operating_names": [
+          "경피적 승모판막 재치환술[심방중격 접근"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTGROUPMDC08DIAGNOSISTABLE01",
+          "LTI722001",
+          "LTI760013",
+          "LTP020001",
+          "LTPATCHF022PROCEDURETABLE06"
+        ]
+      },
+      {
+        "code": "M6593",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자659가",
+          "procedure_code": "M6593",
+          "korean_name": "경피적풍선혈관성형술-뇌혈관",
+          "excel_row": 352
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적풍선혈관성형술-뇌혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB025002",
+          "LTB026001",
+          "LTGROUPMDC08DIAGNOSISTABLE10",
+          "LTI722001",
+          "LTI760034",
+          "LTJ043001",
+          "LTK490001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6594",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자659나",
+          "procedure_code": "M6594",
+          "korean_name": "경피적풍선혈관성형술-경동맥[추골동맥포함]",
+          "excel_row": 353
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적풍선혈관성형술-경동맥[추골동맥포함"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB025002",
+          "LTB043001",
+          "LTD200001",
+          "LTF173001",
+          "LTGROUPMDC08DIAGNOSISTABLE11",
+          "LTI722001",
+          "LTI760036",
+          "LTJ043001",
+          "LTK490001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6595",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자659다",
+          "procedure_code": "M6595",
+          "korean_name": "경피적풍선혈관성형술-대동맥",
+          "excel_row": 354
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적풍선혈관성형술-대동맥"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTE034001",
+          "LTF084002",
+          "LTF173001",
+          "LTGROUPMDC08DIAGNOSISTABLE02",
+          "LTI722001",
+          "LTI760015",
+          "LTJ043001",
+          "LTK490001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6596",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자659라",
+          "procedure_code": "M6596",
+          "korean_name": "경피적풍선혈관성형술-폐동맥",
+          "excel_row": 355
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적풍선혈관성형술-폐동맥"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTE034001",
+          "LTF173001",
+          "LTGROUPMDC08DIAGNOSISTABLE01",
+          "LTI722001",
+          "LTI760013",
+          "LTJ043001",
+          "LTK490001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6597",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자659마",
+          "procedure_code": "M6597",
+          "korean_name": "경피적풍선혈관성형술-기타혈관",
+          "excel_row": 356
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적풍선혈관성형술-기타혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB205001",
+          "LTD200001",
+          "LTE034001",
+          "LTF092003",
+          "LTF173001",
+          "LTF195002",
+          "LTG332001",
+          "LTGROUPMDC08DIAGNOSISTABLE09",
+          "LTH152003",
+          "LTI290001",
+          "LTI722001",
+          "LTI760023",
+          "LTI760032",
+          "LTJ043001",
+          "LTK490001",
+          "LTL133002",
+          "LTM102002",
+          "LTM102003",
+          "LTN162002",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6611",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자661가",
+          "procedure_code": "M6611",
+          "korean_name": "경피적혈관내스텐트-이식설치술[대동맥]",
+          "excel_row": 363
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈관내스텐트-이식설치술[대동맥"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTE034001",
+          "LTF082003",
+          "LTF083002",
+          "LTF084002",
+          "LTF171002",
+          "LTF200001",
+          "LTGROUPMDC08DIAGNOSISTABLE06",
+          "LTI722001",
+          "LTI760026",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6612",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자661나",
+          "procedure_code": "M6612",
+          "korean_name": "경피적혈관내스텐트-이식설치술[대동맥및장골동맥]",
+          "excel_row": 364
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈관내스텐트-이식설치술[대동맥및장골동맥"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTE034001",
+          "LTF082003",
+          "LTF171002",
+          "LTF200001",
+          "LTGROUPMDC08DIAGNOSISTABLE07",
+          "LTI722001",
+          "LTI760028",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6613",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자661다",
+          "procedure_code": "M6613",
+          "korean_name": "경피적혈관내스텐트-이식설치술[기타혈관]",
+          "excel_row": 365
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈관내스텐트-이식설치술[기타혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB205001",
+          "LTD200001",
+          "LTE034001",
+          "LTF092003",
+          "LTF171002",
+          "LTF193002",
+          "LTF195002",
+          "LTF200001",
+          "LTGROUPMDC08DIAGNOSISTABLE10",
+          "LTH152003",
+          "LTI722001",
+          "LTI760034",
+          "LTL120001",
+          "LTN162002",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6632",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자663가(4)",
+          "procedure_code": "M6632",
+          "korean_name": "경피적혈전제거술-혈전용해술[기타혈관]",
+          "excel_row": 368
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈전제거술-혈전용해술[기타혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB025001",
+          "LTB027001",
+          "LTD200001",
+          "LTE034001",
+          "LTF092004",
+          "LTF192002",
+          "LTF195002",
+          "LTF200001",
+          "LTG332001",
+          "LTGROUPMDC08DIAGNOSISTABLE03",
+          "LTI722001",
+          "LTI760018",
+          "LTK490001",
+          "LTL133003",
+          "LTL134001",
+          "LTM102002",
+          "LTM102003",
+          "LTN162002",
+          "LTP020001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6634",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자663가(3)",
+          "procedure_code": "M6634",
+          "korean_name": "경피적혈전제거술-혈전용해술[관상동맥]",
+          "excel_row": 369
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈전제거술-혈전용해술[관상동맥"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTD200001",
+          "LTE034001",
+          "LTF200001",
+          "LTG332001",
+          "LTGROUPMDC08DIAGNOSISTABLE11",
+          "LTI722001",
+          "LTI760036",
+          "LTK490001",
+          "LTL134001",
+          "LTP020001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6635",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자663가(2)",
+          "procedure_code": "M6635",
+          "korean_name": "경피적혈전제거술-혈전용해술-두개강외 경부혈관",
+          "excel_row": 370
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈전제거술-혈전용해술-두개강외 경부혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB025001",
+          "LTB027001",
+          "LTC150001",
+          "LTGROUPMDC08DIAGNOSISTABLE02",
+          "LTI722001",
+          "LTI760015",
+          "LTK490001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6636",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자663나(1)",
+          "procedure_code": "M6636",
+          "korean_name": "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관",
+          "excel_row": 371
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB025001",
+          "LTB027001",
+          "LTD200001",
+          "LTE034001",
+          "LTG332001",
+          "LTGROUPMDC08DIAGNOSISTABLE04",
+          "LTI290001",
+          "LTI722001",
+          "LTI760020",
+          "LTK490001",
+          "LTL133003",
+          "LTL134001",
+          "LTP020001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6637",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자663나(2)",
+          "procedure_code": "M6637",
+          "korean_name": "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관",
+          "excel_row": 372
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB025001",
+          "LTB027001",
+          "LTD200001",
+          "LTE034001",
+          "LTG332001",
+          "LTGROUPMDC08DIAGNOSISTABLE09",
+          "LTI290001",
+          "LTI722001",
+          "LTI760032",
+          "LTK490001",
+          "LTL133003",
+          "LTL134001",
+          "LTP020001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6644",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자664나",
+          "procedure_code": "M6644",
+          "korean_name": "혈관색전술-기타혈관",
+          "excel_row": 375
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "혈관색전술-기타혈관"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB024004",
+          "LTC150001",
+          "LTD200001",
+          "LTE034001",
+          "LTF103004",
+          "LTF182003",
+          "LTF193002",
+          "LTF200001",
+          "LTG340001",
+          "LTGROUPMDC08DIAGNOSISTABLE11",
+          "LTH152002",
+          "LTH157002",
+          "LTI290001",
+          "LTI722001",
+          "LTI760036",
+          "LTJ043001",
+          "LTK490001",
+          "LTL120001",
+          "LTM102002",
+          "LTM102003",
+          "LTN180001",
+          "LTO142003",
+          "LTW040001",
+          "LTW050002",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6652",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자661-2나",
+          "procedure_code": "M6652",
+          "korean_name": "대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정",
+          "excel_row": 377
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTE034001",
+          "LTF082003",
+          "LTF083002",
+          "LTF084002",
+          "LTF200001",
+          "LTGROUPMDC08DIAGNOSISTABLE03",
+          "LTI722001",
+          "LTI760018",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6721",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자672가(1)‡",
+          "procedure_code": "M6721",
+          "korean_name": "방사선하상부소화관협착확장술-풍선카테터에의한것",
+          "excel_row": 386
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "방사선하상부소화관협착확장술-풍선카테터에의한것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTG560001",
+          "LTGROUPMDC08DIAGNOSISTABLE06",
+          "LTI722001",
+          "LTI760026"
+        ]
+      },
+      {
+        "code": "M6722",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자672가(2)‡",
+          "procedure_code": "M6722",
+          "korean_name": "방사선하상부소화관협착확장술-스텐트에의한것",
+          "excel_row": 387
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "방사선하상부소화관협착확장술-스텐트에의한것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTG560001",
+          "LTGROUPMDC08DIAGNOSISTABLE07",
+          "LTI722001",
+          "LTI760028"
+        ]
+      },
+      {
+        "code": "M6723",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자672나(1)‡",
+          "procedure_code": "M6723",
+          "korean_name": "방사선하결장,직장협착확장술-풍선카테터에의한것",
+          "excel_row": 388
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "방사선하결장,직장협착확장술-풍선카테터에의한것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTG560001",
+          "LTGROUPMDC08DIAGNOSISTABLE10",
+          "LTI722001",
+          "LTI760034"
+        ]
+      },
+      {
+        "code": "M6724",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자672나(2)‡",
+          "procedure_code": "M6724",
+          "korean_name": "방사선하결장,직장협착확장술-스텐트에의한것",
+          "excel_row": 389
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "방사선하결장,직장협착확장술-스텐트에의한것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTG560001",
+          "LTGROUPMDC08DIAGNOSISTABLE11",
+          "LTI722001",
+          "LTI760036"
+        ]
+      },
+      {
+        "code": "M6741",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자674‡",
+          "procedure_code": "M6741",
+          "korean_name": "경피적튜브배액술[유도료별도산정]",
+          "excel_row": 391
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적튜브배액술[유도료별도산정"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTE520002",
+          "LTE530002",
+          "LTG570001",
+          "LTGROUPMDC08DIAGNOSISTABLE06",
+          "LTH520001",
+          "LTI500001",
+          "LTI722001",
+          "LTI760026",
+          "LTL520001"
+        ]
+      },
+      {
+        "code": "M6792",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자679가",
+          "procedure_code": "M6792",
+          "korean_name": "경피적비루관확장술-풍선카테터에의한것",
+          "excel_row": 394
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적비루관확장술-풍선카테터에의한것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC136001",
+          "LTD083001",
+          "LTGROUPMDC08DIAGNOSISTABLE07",
+          "LTI722001",
+          "LTI760028",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "M6793",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자679나",
+          "procedure_code": "M6793",
+          "korean_name": "경피적비루관확장술-스텐트에의한것",
+          "excel_row": 395
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경피적비루관확장술-스텐트에의한것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC136001",
+          "LTD083001",
+          "LTGROUPMDC08DIAGNOSISTABLE10",
+          "LTI722001",
+          "LTI760034",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S4638",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자463다(1)",
+          "procedure_code": "S4638",
+          "korean_name": "종양절제를위한개두술-경비적뇌하수체종양적출술-단순",
+          "excel_row": 2274
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "종양절제를위한개두술-경비적뇌하수체종양적출술-단순"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB066001",
+          "LTGROUPMDC08DIAGNOSISTABLE03",
+          "LTI290001",
+          "LTI750001",
+          "LTI760018",
+          "LTJ043001",
+          "LTK024001",
+          "LTR010002",
+          "LTR020001"
+        ]
+      },
+      {
+        "code": "S4670",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자467",
+          "procedure_code": "S4670",
+          "korean_name": "경동맥결찰술",
+          "excel_row": 2290
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "경동맥결찰술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTB205001",
+          "LTD200001",
+          "LTF220001",
+          "LTGROUPMDC08DIAGNOSISTABLE06",
+          "LTI750001",
+          "LTI760026",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5220",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자522",
+          "procedure_code": "S5220",
+          "korean_name": "안구적출 및 조직충전술",
+          "excel_row": 2447
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "안구적출 및 조직충전술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC011004",
+          "LTC030002",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760031",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5231",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자523가",
+          "procedure_code": "S5231",
+          "korean_name": "안와종양제거술-단순",
+          "excel_row": 2448
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "안와종양제거술-단순"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC023001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760031"
+        ]
+      },
+      {
+        "code": "S5260",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자526",
+          "procedure_code": "S5260",
+          "korean_name": "안검또는검판절제술",
+          "excel_row": 2452
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "안검또는검판절제술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC011004",
+          "LTC127001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760031",
+          "LTJ043001",
+          "LTK490001",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5271",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자527가",
+          "procedure_code": "S5271",
+          "korean_name": "안검외반증수술[점막또는피부의식피술료포함]-간단[피부에한하는것]",
+          "excel_row": 2453
+        },
+        "operating_domains": [
+          "DIAGNOSIS",
+          "PROCEDURE"
+        ],
+        "operating_names": [
+          "안검외반증수술[점막또는피부의식피술료포함]-간단[피부에한하는것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC011004",
+          "LTC126001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI750001",
+          "LTI760031",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5281",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자528가",
+          "procedure_code": "S5281",
+          "korean_name": "안검내반증수술-간단[피부에한하는것]",
+          "excel_row": 2455
+        },
+        "operating_domains": [
+          "DIAGNOSIS",
+          "PROCEDURE"
+        ],
+        "operating_names": [
+          "안검내반증수술-간단[피부에한하는것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC011004",
+          "LTC126001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760031",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5291",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자529가",
+          "procedure_code": "S5291",
+          "korean_name": "안검하수증수술-근막수술",
+          "excel_row": 2457
+        },
+        "operating_domains": [
+          "DIAGNOSIS",
+          "PROCEDURE"
+        ],
+        "operating_names": [
+          "안검하수증수술-근막수술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC011004",
+          "LTC123001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760031",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5341",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자534가",
+          "procedure_code": "S5341",
+          "korean_name": "익상편수술-판이식 등 복합수술",
+          "excel_row": 2466
+        },
+        "operating_domains": [
+          "DIAGNOSIS",
+          "PROCEDURE"
+        ],
+        "operating_names": [
+          "익상편수술-판이식 등 복합수술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC142001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI750001",
+          "LTI760030"
+        ]
+      },
+      {
+        "code": "S5342",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자534나",
+          "procedure_code": "S5342",
+          "korean_name": "익상편수술-기타의 것",
+          "excel_row": 2467
+        },
+        "operating_domains": [
+          "DIAGNOSIS",
+          "PROCEDURE"
+        ],
+        "operating_names": [
+          "익상편수술-기타의 것"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTC143001",
+          "LTGROUPMDC08DIAGNOSISTABLE07",
+          "LTI750001",
+          "LTI760028"
+        ]
+      },
+      {
+        "code": "S5620",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자562",
+          "procedure_code": "S5620",
+          "korean_name": "중이내튜브유치술",
+          "excel_row": 2501
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "중이내튜브유치술"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTD026001",
+          "LTE034001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760030",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5640",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자564",
+          "procedure_code": "S5640",
+          "korean_name": "고실성형술[점막또는피부의 식피술료 포함]",
+          "excel_row": 2504
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "고실성형술[점막또는피부의 식피술료 포함"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTD021001",
+          "LTD023001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760030",
+          "LTW040001",
+          "LTX060001"
+        ]
+      },
+      {
+        "code": "S5658",
+        "latest_procedure": {
+          "version": "4.7",
+          "classification_number": "자566-1",
+          "procedure_code": "S5658",
+          "korean_name": "이관 풍선 확장술 [내시경 또는 네비게이션 유도료 포함]",
+          "excel_row": 2510
+        },
+        "operating_domains": [
+          "DIAGNOSIS"
+        ],
+        "operating_names": [
+          "이관 풍선 확장술 [내시경 또는 네비게이션 유도료 포함"
+        ],
+        "operating_roles": [],
+        "operating_table_ids": [
+          "LTD032001",
+          "LTE034001",
+          "LTGROUPMDC08DIAGNOSISTABLE08",
+          "LTI740001",
+          "LTI760030",
+          "LTW040001",
+          "LTX060001"
+        ]
+      }
+    ]
+  },
+  "condition_residual_audit": {
+    "rows": [
+      {
+        "adrg": "9630",
+        "status": "RESOLVED_AST",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 204,
+        "source_table_ids": [],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=84 PRINTED_PAGE=58] 963 연령/체중과일치하지않는신생아진단 NEONATAL DIAGNOSIS NOT CONSISTENT WITH AGE/WEIGHT MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+      },
+      {
+        "adrg": "B027",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 421,
+        "source_table_ids": [
+          "LT_B027_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B027 경피적뇌혈관수술(혈전제거의경우) Percutaneous Cerebrovascualr Procedures for Thrombus Removal 시술명 자663가(1) 경피적혈전제거술-혈전용해술-두개강내 혈관 M6630 자663가(2) 경피적혈전제거술-혈전용해술-두개강외 경부혈관 M6635 자663가(4) 경피적혈전제거술-혈전용해술[기타혈관] M6632 자663나(1) 경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관 M6636 자663나(2) 경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관 M6637 자663나(4) 경피적혈전제거술-기계적혈전제거술[카테터법]-기타혈관 M6639 B03 혈종제거술및기타개두술(외상제외) EVACUATION OF HEMATOMA AND OTHER CRANIOTOMY EXCEPT TRAUMA"
+      },
+      {
+        "adrg": "B082",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER",
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 330,
+        "source_table_ids": [
+          "LT_B082_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B082 뇌전증수술(전극삽입술미시행) Epilepsy Procedures without Implantation of Electrodes 시술명 자473나(1) 뇌전증수술-뇌엽절제술-측두엽절제술 S4733 자473나(2) 뇌전증수술-뇌엽절제술-측두엽 외 절제술 S0433 자473다 뇌전증수술-뇌량체절단술 S4735 자473라 뇌전증수술-반구절제술 혹은 반구절개술 S4736 자473마 뇌전증수술-다발성대뇌피질연막하절단술 S4737 자473바 뇌전증수술-대뇌피질절제술 S0434 [PDF_PAGE=121 PRINTED_PAGE=95] B09 정위수술 STEREOTACTIC PROCEDURES"
+      },
+      {
+        "adrg": "B130",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_B130_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=127 PRINTED_PAGE=101] B13 기타개두술 OTHER CRANIOTOMY 시술명 자33가 개두술 또는 두개절제술(진단목적) N0331 자33다 개두술 또는 두개절제술(두개골 병소 제거) N0339 자34가(2) 두개골성형술-두개골뿐인것[복잡] N0347 자34나 두개골성형술-경뇌막성형을동반하는것 N0342 자34다(1) 두개골성형술-두개골조기봉합교정[단순] N0344 자34다(2) 두개골성형술-두개골조기봉합교정[복잡] N0345 자462-1 두개강내이물제거 S4625 자468가 중추신경계기형수술-대뇌류 S4681 자472가 뇌척수액루수술-두개강내 S4721 자472다 뇌척수액루수술-비강접근 S4723 자472라 뇌척수액루수술-이과적접근 S4724 자474가 뇌내시경수술-진단목적 S4741 자474나 뇌내시경수술-개창술 S4742 자474다 뇌내시경수술-종양또는낭종절제 S4743 자476 뇌엽절단술[대상회전절개포함] S4760 자477가 농양배농또는적출 …"
+      },
+      {
+        "adrg": "B182",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 244,
+        "source_table_ids": [
+          "LT_B182_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B182 척추중재시술(신경에시행한경우) (B) Interventional Procedures of Spine for Nerve 시술명 자482-1가 경피적척추고주파열응고술[척수포함]-단순 S4825 자482-1나 경피적척추고주파열응고술[척수포함]-복잡[3부위이상] S4826 B19 신경조절술및척수강내약물주입펌프이식술 NEUROMODULATION AND IMPLANTATION OF INTRASPINAL DRUG INFUSION PUMP"
+      },
+      {
+        "adrg": "B201",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER",
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_B201_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B201 주요말초및뇌신경수술 Major Peripheral and Cranial Nerve Procedures 시술명 자459가 신경성형술[감압,박리등]-두개강외뇌신경 S4593 자459나 신경성형술[감압,박리등]-상완및요,천추신경총 S4594 자459다 신경성형술[감압,박리등]-중요말초신경[사지부,구간등] S4595 자460-1가 신경봉합술-두개강외뇌신경 S4601 [PDF_PAGE=138 PRINTED_PAGE=112] 자460-1나 신경봉합술-상완및요,천추신경총 S4602 자460-1다 신경봉합술-중요말초신경[사지부,구간등] S4603 자460가(1) 신경이식술-자가신경 이용 [채취료 포함]-4cm 미만 S4605 자460가(2) 신경이식술-자가신경 이용 [채취료 포함]-4cm 이상 S4606 MDC 자460나 신경이식술-동종신경 이용 S4607 01 자461-1가 신경종양절제술-양성 S4615 (B) 자461-1나 신경종양절제술-악성 S4616 자483가 교감신경절절제술-경부 …"
+      },
+      {
+        "adrg": "B202",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 204,
+        "source_table_ids": [
+          "LT_B202_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B202 기타말초및뇌신경수술 Other Peripheral and Cranial Nerve Procedures 시술명 자459라 신경성형술[감압,박리등]-수족지부 S4596 자460-1라 신경봉합술-수족지부 S4604 자461가 신경절단술-두개강외뇌신경 S4611 자461나 신경절단술-중요말초신경[사지부,구간등] S4612 자461다 신경절단술-수족지부 S4613"
+      },
+      {
+        "adrg": "B204",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 434,
+        "source_table_ids": [
+          "LT_B204_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B204 기타근육, 건및인대이완술 Other Muscle, Tendon and Ligament Release 시술명 MDC 자91 건,인대피하단열수술 N0911 01 자91주 건,인대피하단열수술-간단한 건 봉합을 한 경우 N0912 (B) 자92-2가 근막절개술-단순 절개 N0922 자92-2나 근막절개술-복잡 절개[여러구획이나근육및신경의변연절제술을시행한경우] N0923 자93가 건및인대성형술-간단한것[절제,봉합,박리] N0931 자93가주 건및인대성형술-간단한것-근에 대한 봉합술,이식술,이행술,교환술을 실시한 경우 N0933 자93나 건및인대성형술-복잡한것[이식,이전,교환,인공건성형] N0932 자93나주 건및인대성형술-복잡한것-근에 대한 봉합술,이식술,이행술,교환술을 실시한 경우 N0934 자94 건박리술 N0941 자94주 간단한건박리술 N0942 기타신경계수술"
+      },
+      {
+        "adrg": "B530",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 354,
+        "source_table_ids": [
+          "LT_B530_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=145 PRINTED_PAGE=119] B53 진단적두경부동맥조영술 DIAGNOSTIC HEAD AND NECK ANGIOGRAPHY 시술명 다260가‡ 두경부 동맥조영-추골동맥 HA601 다260나‡ 두경부 동맥조영-총경동맥 HA602 다260다‡ 두경부 동맥조영-외경동맥 HA603 [PDF_PAGE=146 PRINTED_PAGE=120] 다260라‡ 두경부 동맥조영-내경동맥 HA604 다260라주‡ 두경부 동맥조영-내경동맥폐색검사 (조영술료 포함) HA606 다260마‡ 두경부 동맥조영-전뇌동맥 HA605 MDC 01 B60 척수질환및손상 (B) SPINAL CORD DISEASES AND INJURIES"
+      },
+      {
+        "adrg": "B657",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_B657_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B657 Other Degenerative Movement Disorders 주진단명 G230 Hallervorden-Spatz disease G3181 Leigh’s disease G258 Other specified extrapyramidal and movement G3184 White-matter degeneration disorders G3188 Other specified degenerative diseases of nervous G259 Extrapyramidal and movement disorder, unspecified system G26 Extrapyramidal and movement disorders in diseases G319 Degenerative disease of nervous system, unspecified classified elsewhere G328 Other specified degenerative disorders of nervous G31 …"
+      },
+      {
+        "adrg": "B662",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER",
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_B662_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B662 시신경척수염및기타탈수초질환 Neuromyelitis Optica and Other Demyelinating Diseases 주진단명 G360 Neuromyelitis optica[Devic] G370 Diffuse sclerosis G361 Acute and subacute haemorrhagic leukoencephalitis G371 Central demyelination of corpus callosum [Hurst] G372 Central pontine myelinolysis G368 Other specified acute disseminated demyelination G373 Acute transverse myelitis in demyelinating disease G369 Acute disseminated demyelination, unspecified of central nervous system [PDF_PAGE=153 PRINTED_PAGE=127] G37 …"
+      },
+      {
+        "adrg": "B670",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 362,
+        "source_table_ids": [
+          "LT_B670_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=153 PRINTED_PAGE=127] B67 일과성뇌허혈 (B) TRANSIENT CEREBRAL ISCHEMIC ATTACK 주진단명 G450 Vertebro-basilar artery syndrome G458 Other transient cerebral ischaemic attacks and G451 Carotid artery syndrome(hemispheric) related syndromes G452 Multiple and bilateral precerebral artery syndromes G459 Transient cerebral ischaemic attack, unspecified B68 뇌졸중 STROKE"
+      },
+      {
+        "adrg": "B693",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 101,
+        "source_table_ids": [
+          "LT_B693_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B693 Non-Ruptured Aneurysm of Cerebral and Cervical Arteries 주진단명 I671 Cerebral aneurysm, nonruptured"
+      },
+      {
+        "adrg": "B701",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 501,
+        "source_table_ids": [
+          "LT_B701_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B701 몸통의신경근, 신경총및신경손상 Injury of Root, Plexus and Nerves of Trunk 주진단명 S142 Injury of nerve root of cervical spine S246 Injury of unspecified nerve of thorax S143 Injury of brachial plexus S342 Injury of nerve root of lumbar and sacral spine S144 Injury of peripheral nerves of neck S344 Injury of lumbosacral plexus S145 Injury of cervical sympathetic nerves S345 Injury of lumbar, sacral and pelvic sympathetic S146 Injury of other and unspecified nerves of neck nerves S242 Injury of nerve root of …"
+      },
+      {
+        "adrg": "B713",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_B713_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B713 뇌신경손상및다발뇌신경질환 Injury of Cranial Nerve and Disease of Multiple Cranial Nerve 주진단명 G527 Disorders of multiple cranial nerves S040 Injury of optic nerve and pathways G531 Multiple cranial nerve palsies in infectious and S041 Injury of oculomotor nerve parasitic diseases classified elsewhere(A00-B99†) S042 Injury of trochlear nerve G532 Multiple cranial nerve palsies in S043 Injury of trigeminal nerve sarcoidosis(D86.8†) S044 Injury of abducent nerve G533 Multiple cranial nerve palsies in neopl …"
+      },
+      {
+        "adrg": "B714",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 219,
+        "source_table_ids": [
+          "LT_B714_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B714 Neoplastic Peripheral Nerve Diseases 주진단명 G130 Paraneoplastic neuromyopathy and neuropathy disease(C00-D48†) G550 Nerve root and plexus compressions in neoplastic G631 Polyneuropathy in neoplastic disease(C00-D48†)"
+      },
+      {
+        "adrg": "B732",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_B732_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B732 세균수막염(바이러스수막염제외) Bacterial Meningitis Except Viral Meningitis 주진단명 A170 Tuberculous meningitis(G01*) A390 Meningococcal meningitis(G01*) A171 Meningeal tuberculoma(G07*) G000 Haemophilus meningitis A1780 Tuberculoma of brain and spinal cord(G07*) G001 Pneumococcal meningitis A1781 Tuberculous meningoencephalitis(G05.0*) G002 Streptococcal meningitis A1782 Tuberculous neuritis G003 Staphylococcal meningitis A1788 Other tuberculosis of nervous system G008 Other bacterial meningitis A179 Tuber …"
+      },
+      {
+        "adrg": "B780",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_B780_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=165 PRINTED_PAGE=139] B78 두통 HEADACHE 주진단명 MDC 01 F072 Postconcussional syndrome G441 Vascular headache, NEC (B) G430 Migraine without aura [common migraine] G442 Tension-type headache G431 Migraine with aura [classical migraine] G443 Chronic post-traumatic headache G432 Status migrainosus G444 Drug-induced headache, NEC G433 Complicated migraine G448 Other specified headache syndromes G438 Other migraine G932 Benign intracranial hypertension G439 Migraine, unspecified G971 Other react …"
+      },
+      {
+        "adrg": "B800",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 195,
+        "source_table_ids": [
+          "LT_B800_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=166 PRINTED_PAGE=140] B80 뇌진탕 CONCUSSION 주진단명 S0600 Concussion, without open intracranial wound S0601 Concussion, with open intracranial wound B81 기타신경계장애 OTHER NERVOUS SYSTEM DISORDERS"
+      },
+      {
+        "adrg": "B811",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 436,
+        "source_table_ids": [
+          "LT_B811_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "B811 수두증 Hydrocephalus 주진단명 G910 Communicating hydrocephalus G940 Hydrocephalus in infectious and parasitic diseases G911 Obstructive hydrocephalus classified elsewhere(A00-B99†) G912 Normal-pressure hydrocephalus G941 Hydrocephalus in neoplastic disease(C00-D48†) G913 Post-traumatic hydrocephalus, unspecified G942 Hydrocephalus in other diseases classified G918 Other hydrocephalus elsewhere G919 Hydrocephalus, unspecified 신경계의선천성기형"
+      },
+      {
+        "adrg": "D014",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 316,
+        "source_table_ids": [
+          "LT_D014_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D014 Inner Ear Procedures 시술명 자571가 안면신경감압술-이과적접근[유양동,경미로] S5711 자571나 안면신경감압술-두개접근 S5712 자571다 안면신경감압술-복합접근 S5713 자573가 미로절제술-유양동경유 S5731 자573나 미로절제술-고실경유 S5732 자573다 미로절제술-약물주입이용한것 S5733 자575 추체돌기개방술 S5750 자577 반고리관미로개창술 S5770 자577-1 반고리관폐쇄술 S5775 자578 내임파낭감압술 S5780 D02 중이및유양돌기수술 MIDDLE EAR AND MASTOID PROCEDURES"
+      },
+      {
+        "adrg": "D031",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER",
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 140,
+        "source_table_ids": [
+          "LT_D031_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D031 주요외이및귀수술 Major External Ear or Other Ear Procedures [PDF_PAGE=240 PRINTED_PAGE=214] 시술명 자558가 외이도폐쇄증수술-완전 S5581 자558나 외이도폐쇄증수술-부분 S5582"
+      },
+      {
+        "adrg": "D032",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 352,
+        "source_table_ids": [
+          "LT_D032_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D032 단순외이및귀수술 Minor External Ear or Other Ear Procedures 시술명 자555 선천성이루관적출술 S5550 자556‡ 이용적출술 S5560 자557-2‡ 이개혈종절개배액 S5578 자557나‡ 외이도이물또는이구전색제거[간단한것은 기본진료료에 포함]-극히 복잡한것[진주종제거 포함] S5572 MDC 자559가 외이도종양적출술-양성 S5591 03 자565-1 현미경하고막팻치술 S5654 (D) 자565-2 현미경하중이청소술 S5657 자566-1 이관 풍선 확장술 [내시경 또는 네비게이션 유도료 포함] S5658 자572 이후루공폐쇄술 S5720 자576‡ 골막하농양절개배액술 S5761"
+      },
+      {
+        "adrg": "D041",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 161,
+        "source_table_ids": [
+          "LT_D041_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D041 귀및두개저악성종양수술 Procedures for Ear and Skull Base Malignancy 시술명 자559나 외이도종양적출술-악성 S5592 자574-1 중이암제거술[사구종포함] S5745 자96다 비강,부비동악성종양적출술(두개안면절제술) O0963 MDC 03 (D)"
+      },
+      {
+        "adrg": "D090",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_D090_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=234 PRINTED_PAGE=208] D09 구강및타액선악성종양수술 PROCEDURES FOR MOUTH AND SALIVARY GLAND MALIGNANCY 시술명 자215 구순암적출술[림프절청소포함] Q2150 자218가 설암수술[림프절청소포함]-설부분절제 Q2181 자218나 설암수술[림프절청소포함]-설반측절제 Q2182 자218다 설암수술[림프절청소포함]-설전절제 Q2183 자220다 구강내종양적출술(악성[림프절청소포함]) Q2203 자220다주 구강내종양적출술(악성[림프절청소포함])-구강저 병소제거 Q2206 자223나 이하선종양적출술(악성[림프절청소포함]) Q2232 자43나(1) 하악골악성종양절제술[림프절청소포함]-하악골변연절제 N0435 자43나(2) 하악골악성종양절제술[림프절청소포함]-하악골부분절제 N0436 자43나(3) 하악골악성종양절제술[림프절청소포함]-하악골반측절제 N0437 차88가 하악골악성종양절제술[림프절청소포함]-하악골변연절제 U48 …"
+      },
+      {
+        "adrg": "D101",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 417,
+        "source_table_ids": [
+          "LT_D101_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D101 주요후두및인두악성종양수술(경동맥소체포함) Major Procedures for Larynx and Pharynx Malignancy(Including Carotid Body) 시술명 자122-1나(1) 수직후두부분,성문상부후두부분악성종양적출술 O1225 자122-1나(2) 윤상연골상후두부분악성종양적출술 O1226 자122-1다 후두악성종양적출술-후두전적출술 O1227 자125 후두및하인두전적출술 O1251 자125-1 후두전적출및하인두부분적출술 O1252 자229-1가(2) 구인두악성종양수술(복합절제[하악골등포함]) Q2293 자229-1나 인두악성종양수술-하인두 부분절제 Q2294 자458가 경동맥소체종양적출술-종양절제만 한 경우 P4581 자458나 경동맥소체종양적출술-경동맥 절제를 동반한 경우 P4582 MDC 03 (D)"
+      },
+      {
+        "adrg": "D102",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 192,
+        "source_table_ids": [
+          "LT_D102_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D102 단순후두및인두악성종양수술 Minor Procedures for Larynx and Pharynx Malignancy 시술명 자122-1가 후두악성종양적출술-성대절제술 O1224 자229-1가(1) 구인두악성종양수술(단순절제) Q2292 D60 이비인후, 구강악성종양 EAR, NOSE, MOUTH AND THROAT MALIGNANCY"
+      },
+      {
+        "adrg": "D142",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 92,
+        "source_table_ids": [
+          "LT_D142_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D142 악하선및설하선수술 Submandibular and Sublingual Gland Procedures 시술명 자223-1 악하선 또는 설하선 적출술 Q2236"
+      },
+      {
+        "adrg": "D150",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 446,
+        "source_table_ids": [
+          "LT_D150_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=255 PRINTED_PAGE=229] D15 경부수술 NECK PROCEDURES 시술명 자210-1가 결핵성림프선종절제술(표재성) P2106 자210-1나 결핵성림프선종절제술(심재성) P2107 자210가 경부림프절절제술(표재성) P2102 자210나 경부림프절절제술(심재성) P2103 자213가‡ 림프관종경화요법[낭성림프관종포함] P2131 자213나(1)(가) 림프관종절제술[낭성림프관종포함]-경부(국소) P2133 자213나(1)(나) 림프관종절제술[낭성림프관종포함]-경부(광범위) P2134 자213나(2) 림프관종절제술[낭성림프관종포함]-기타 P2135 자455-1 갑상선설관낭종절제술 P4558 자456-1 설근갑상선절제또는분획성형술 P4565 자87 경부새열루새열낭적출술 N0870 D16 편도및아데노이드수술 TONSIL AND ADENOID PROCEDURES"
+      },
+      {
+        "adrg": "D161",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 302,
+        "source_table_ids": [
+          "LT_D161_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=255 PRINTED_PAGE=229] D1611 주요편도및아데노이드수술, 연령≤18세 Major Tonsil and Adenoid Procedures, Age ≤18 D1612 주요편도및아데노이드수술, 연령>18세 Major Tonsil and Adenoid Procedures, Age >18 시술명 자228 아데노이드절제술 Q2280 자228주 아데노이드절제술-내시경하에서 실시한 경우 Q2281 [PDF_PAGE=256 PRINTED_PAGE=230] 자230 편도전적출술 Q2300 자231 설편도절제술 Q2310"
+      },
+      {
+        "adrg": "D162",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 289,
+        "source_table_ids": [
+          "LT_D162_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=256 PRINTED_PAGE=230] D1621 단순편도및아데노이드수술, 연령≤18세 Minor Tonsil and Adenoid Procedures, Age ≤18 D1622 단순편도및아데노이드수술, 연령>18세 Minor Tonsil and Adenoid Procedures, Age >18 시술명 자232 편도주위농양절개술또는흡인술 Q2320 차52 치성편도주위농양절개술 U4520 MDC 03 D17 구강, 인후두수술 (D) MOUTH, PHARYNX AND LARYNX PROCEDURES"
+      },
+      {
+        "adrg": "D171",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_D171_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "D171 주요구강및인두, 후두수술 Major Mouth and Pharynx, Larynx Procedures 시술명 자120가 인공성대 삽입술-초회 시술시 O1200 자122나 후두 양성종양적출술-후두절개하 O1223 자126가(2) 후두마비수술(양측마비)-피열연골절제술 O1262 자126가(3) 후두마비수술(양측마비)-피열연골외전술,갑상연골음성성형술제2형 O1263 자126나(2) 후두마비수술(일측마비)-갑상연골음성성형술제1형 O1265 자126나(3) 후두마비수술(일측마비)-피열연골내전술 O1266 자127가(2) 단순후두협착증수술(내시경하킬,스텐트삽입등) OA272 자127나(1) 복잡후두협착증수술(갑상,윤상연골 절개술) OA274 자127나(2) 복잡후두협착증수술(연골이식술) OA275 자127나(3) 복잡후두협착증수술(성문하부절제술후갑상-기관단단문합술) OA276 자128 설골현수법 O1281 자216-2 구강비강누공폐쇄술 Q2166 자218-2나 설단순절제술[거설증등]- …"
+      },
+      {
+        "adrg": "D180",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 446,
+        "source_table_ids": [
+          "LT_D180_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=257 PRINTED_PAGE=231] D18 구순열및구개열수술 CLEFT LIP AND CLEFT PALATE PROCEDURES 시술명 자216-3가(1) 구순열비교정술-비내접근법-연골에 달하는 것 Q2167 자216-3가(2) 구순열비교정술-비내접근법-비중격에 달하는 것 Q2168 자216-3나 구순열비교정술-개방접근법 Q2169 자216가 순열수술-일측성 Q2161 자216나 순열수술-양측성 Q2162 자219-2가 치조열수술(편측) Q2198 자219-2나 치조열수술(양측) Q2199 자219가 구개열수술-연구개열수술 [점막하구개열수술] Q2191 자219나(1) 구개열수술-경구개열수술-편측 Q2193 자219나(2) 구개열수술-경구개열수술-양측 Q2194 자219다 구개열수술-구개인두부전증교정술 Q2192 D19 구강내수술 INTRAORAL PROCEDURES"
+      },
+      {
+        "adrg": "D610",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 169,
+        "source_table_ids": [
+          "LT_D610_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=240 PRINTED_PAGE=214] D61 악성외이도염 MALIGNANT EXTERNAL OTITIS 주진단명 H602 Malignant otitis externa D62 내이및중이의감염및염증 INNER AND MIDDLE EAR INFECTIONS AND INFLAMMATIONS"
+      },
+      {
+        "adrg": "D640",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 434,
+        "source_table_ids": [
+          "LT_D640_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=242 PRINTED_PAGE=216] D64 평형장애 BALANCE DISORDERS 주진단명 H810 Ménière’s disease H818 Other disorders of vestibular function H811 Benign paroxysmal vertigo H819 Disorder of vestibular function, unspecified H812 Vestibular neuronitis H82 Vertiginous syndromes in diseases classified H8130 Other aural vertigo elsewhere H8138 Other peripheral vertigo R42 Dizziness and giddiness H814 Vertigo of central origin T753 Motion sickness"
+      },
+      {
+        "adrg": "D700",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 182,
+        "source_table_ids": [
+          "LT_D700_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=249 PRINTED_PAGE=223] D70 비중격및비갑개질환 NASAL SEPTUM AND TURBINATE DISEASES 주진단명 J342 Deviated nasal septum M950 Acquired deformity of nose J343 Hypertrophy of nasal turbinates"
+      },
+      {
+        "adrg": "D720",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 431,
+        "source_table_ids": [
+          "LT_D720_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=250 PRINTED_PAGE=224] D72 코외상 NASAL TRAUMA 주진단명 S0120 Open wound of nose, external skin S0220 Fracture of nasal bone, closed S0121 Open wound of nares S0221 Fracture of nasal bone, open S0122 Open wound of nasal septum S031 Dislocation of septal cartilage of nose S0128 Open wound of other and multiple parts of nose T170 Foreign body in nasal sinus S0129 Open wound of nose, part unspecified T171 Foreign body in nostril"
+      },
+      {
+        "adrg": "D730",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_D730_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=250 PRINTED_PAGE=224] D73 기타코질환 MDC OTHER NOSE DISEASES 03 (D) 주진단명 D106 Benign neoplasm of nasopharynx Q300 Choanal atresia D140 Benign neoplasm of middle ear, nasal cavity and Q301 Agenesis and underdevelopment of nose accessory sinuses Q302 Fissured, notched and cleft nose D1804 Hemangioma of ear, nose, mouth and throat Q303 Congenital perforated nasal septum J340 Abscess, furuncle and carbuncle of nose Q308 Other congenital malformations of nose J341 Cyst and mucocele of nose and n …"
+      },
+      {
+        "adrg": "D740",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 160,
+        "source_table_ids": [
+          "LT_D740_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=267 PRINTED_PAGE=241] D74 심부경부감염증 DEEP NECK INFECTIONS MDC 주진단명 03 (D) A691 Other Vincent’s infections J390 Retropharyngeal and parapharyngeal abscess"
+      },
+      {
+        "adrg": "D750",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 501,
+        "source_table_ids": [
+          "LT_D750_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=267 PRINTED_PAGE=241] D75 후두기관염및후두개염 LARYNGOTRACHEITIS AND EPIGLOTTITIS D7501 후두기관염및후두개염, 연령≤18세 Laryngotracheitis and Epiglottitis, Age ≤18 D7502 후두기관염및후두개염, 연령>18세 Laryngotracheitis and Epiglottitis, Age >18 주진단명 A362 Laryngeal diphtheria J069 Acute upper respiratory infection, unspecified J040 Acute laryngitis J101 Seasonal influenza virus identified influenza with J042 Acute laryngotracheitis other respiratory manifestations J050 Acute obstructive laryngitis [croup] J111 Influenza …"
+      },
+      {
+        "adrg": "D760",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 441,
+        "source_table_ids": [
+          "LT_D760_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=267 PRINTED_PAGE=241] D76 음성장애 VOICE DISORDERS 주진단명 J3800 Paralysis of vocal cords and larynx, unilateral J382 Nodules of vocal cords J3809 Paralysis of vocal cords and larynx, unspecified side R490 Dysphonia J3810 Polyp of vocal cord R491 Aphonia J3811 Polyp of larynx R498 Other and unspecified voice disturbances [PDF_PAGE=268 PRINTED_PAGE=242] D77 치아및구강질환(발치및보존치료제외) DENTAL AND ORAL DISEASES EXCEPT EXTRACTIONS AND RESTORATIONS"
+      },
+      {
+        "adrg": "D800",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 325,
+        "source_table_ids": [
+          "LT_D800_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=272 PRINTED_PAGE=246] D80 인두질환 PHARYNX DISEASES 주진단명 A665 Gangosa R070 Pain in throat Q387 Pharyngeal pouch T172 Foreign body in pharynx Q3880 Velopharyngeal insufficiency T280 Burn of mouth and pharynx Q3888 Other congenital malformations of pharynx T285 Corrosion of mouth and pharynx R041 Haemorrhage from throat"
+      },
+      {
+        "adrg": "E020",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_E020_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=295 PRINTED_PAGE=269] E02 기관지경및방사선하수술 BRONCHOSCOPIC AND FLUOROSCOPIC PROCEDURES 시술명 자131-1가 내시경적기관또는기관지종양제거술[육아조직포함]-연성기관지경 O1315 MDC 자131-1나 내시경적기관또는기관지종양제거술[육아조직포함]-경성기관지경 O1316 자131-2 내시경적냉동치료[기관(지)및폐종양] O1318 04 자131-3 내시경적 기관지 열성형술 O1319 (E) 자133가 내시경적기관또는기관지이물제거술(연성기관지경) O1332 자133나 내시경적기관또는기관지이물제거술(경성기관지경) O1333 자134-1가 내시경적기관또는기관지협착확장술-풍선카테터에의한것 O1346 자134-1나 내시경적기관또는기관지협착확장술-스텐트삽입술에의한것 O1347 자134-1다 내시경적기관또는기관지협착확장술-기타[레이저치료등] O1348 자147-1 기관지경이용 폐용적축소-일방향기관지밸브삽입 OZ201 자666가 방 …"
+      },
+      {
+        "adrg": "E550",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 161,
+        "source_table_ids": [
+          "LT_E550_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=303 PRINTED_PAGE=277] E55 폐흉부질환의침흡인생검 NEEDLE ASPIRATION BIOPSY FOR CHEST AND LUNG DISEASE 시술명 나850나(2)‡ 침생검(심부)-흉막 C8512 나850나(3)‡ 침생검(심부)-장기[편측] C8513"
+      },
+      {
+        "adrg": "E600",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 323,
+        "source_table_ids": [
+          "LT_E600_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=303 PRINTED_PAGE=277] E60 폐색전증 PULMONARY EMBOLISM 주진단명 I260 Pulmonary embolism with mention of acute cor T790 Air embolism (traumatic) pulmonale T791 Fat embolism (traumatic) I269 Pulmonary embolism without mention of acute cor T800 Air embolism following infusion, transfusion and pulmonale therapeutic injection"
+      },
+      {
+        "adrg": "E630",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 193,
+        "source_table_ids": [
+          "LT_E630_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=306 PRINTED_PAGE=280] E63 폐농양 LUNG ABSCESS 주진단명 A065 Amoebic lung abscess J851 Abscess of lung with pneumonia J850 Gangrene and necrosis of lung J852 Abscess of lung without pneumonia"
+      },
+      {
+        "adrg": "E640",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_E640_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=306 PRINTED_PAGE=280] E64 백일해및급성세기관지염 WHOOPING COUGH AND ACUTE BRONCHIOLITIS 주진단명 A370 Whooping cough due to bordetella pertussis J211 Acute bronchiolitis due to human metapneumovirus A371 Whooping cough due to bordetella para- pertussis J2180 Acute bronchiolitis due to human bocavirus A378 Whooping cough due to other bordetella species J2181 Acute bronchiolitis due to parainfluenza virus A379 Whooping cough, unspecified J2188 Acute bronchiolitis due to other specified organisms J210 A …"
+      },
+      {
+        "adrg": "E650",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_E650_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=307 PRINTED_PAGE=281] E65 기타호흡기감염및염증 OTHER RESPIRATORY INFECTION AND INFLAMMATION E6501 기타호흡기감염및염증, 연령≤18세 Other Respiratory Infection and Inflammation, Age ≤18 E6502 기타호흡기감염및염증, 연령>18세 Other Respiratory Infection and Inflammation, Age >18 주진단명 A202 Pneumonic plague B671 Echinococcus granulosus infection of lung A212 Pulmonary tularaemia J173 Pneumonia in parasitic diseases A221 Pulmonary anthrax J178 Pneumonia in other diseases classified elsewhere A420 Pulmonary actinomycosis J188 Ot …"
+      },
+      {
+        "adrg": "E660",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 226,
+        "source_table_ids": [
+          "LT_E660_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=307 PRINTED_PAGE=281] E66 수면무호흡증후군 SLEEP APNEA SYNDROME 주진단명 G4730 Obstructive sleep apnoea G4732 Mixed sleep apnoea G4731 Central sleep apnoea G4738 Other and unspecified sleep apnoea E67 호흡기신생물 RESPIRATORY NEOPLASM"
+      },
+      {
+        "adrg": "E702",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 115,
+        "source_table_ids": [
+          "LT_E702_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "E702 폐부종 Pulmonary Edema 주진단명 J681 Pulmonary oedema due to chemicals, gases, fumes J81 Pulmonary oedema and vapours"
+      },
+      {
+        "adrg": "E730",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_E730_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=313 PRINTED_PAGE=287] E73 기관지염 BRONCHITIS E7301 기관지염, 연령≤18세 Bronchitis, Age ≤18 E7302 기관지염, 연령>18세 Bronchitis, Age >18 주진단명 J041 Acute tracheitis J207 Acute bronchitis due to echovirus J200 Acute bronchitis due to Mycoplasma pneumoniae J2080 Acute bronchitis due to human bocavirus J201 Acute bronchitis due to Haemophilus influenzae J2088 Acute bronchitis due to other specified organisms J202 Acute bronchitis due to streptococcus J209 Acute bronchitis, unspecified J203 Acute bronchitis …"
+      },
+      {
+        "adrg": "E742",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 443,
+        "source_table_ids": [
+          "LT_E742_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=313 PRINTED_PAGE=287] E7421 알레르기천식, 연령≤18세 Allergic Asthma, Age ≤18 E7422 알레르기천식, 18세<연령<65세 Allergic Asthma, 18<Age<65 E7423 알레르기천식, 연령≥65세 Allergic Asthma, Age ≥65 주진단명 J4501 Other allergic asthma, intermittent and mild persistent J4509 Unspecified predominantly allergic asthma J4502 Other allergic asthma, moderate persistent J4580 Occupational asthma J4503 Other allergic asthma, severe persistent J4581 Aspirin-sensitive asthma"
+      },
+      {
+        "adrg": "E743",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_E743_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=314 PRINTED_PAGE=288] E7431 비알레르기및기타상세불명천식, 연령≤18세 Non-allergic and Unspecified Asthma, Age ≤18 E7432 비알레르기및기타상세불명천식, 18세<연령<65세 Non-allergic and Unspecified Asthma, 18<Age<65 E7433 비알레르기및기타상세불명천식, 연령≥65세 Non-allergic and Unspecified Asthma, Age ≥65 주진단명 J4500 Cough variant asthma J4513 Other nonallergic asthma, severe persistent J4510 Exercise-induced asthma, bronchospasm J4519 Unspecified nonallergic asthma J4511 Other nonallergic asthma, intermittent and mild J4588 Other mixed asthm …"
+      },
+      {
+        "adrg": "E752",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 217,
+        "source_table_ids": [
+          "LT_E752_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "E752 사르코이드증 Sarcoidosis 주진단명 D860 Sarcoidosis of lung D868 Sarcoidosis of other and combined sites D861 Sarcoidosis of lymph nodes D869 Sarcoidosis, unspecified D862 Sarcoidosis of lung with sarcoidosis of lymph nodes"
+      },
+      {
+        "adrg": "E753",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 501,
+        "source_table_ids": [
+          "LT_E753_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "E753 기타간질성폐질환 Other Interstitial Lung Diseases 주진단명 J701 Chronic and other pulmonary manifestations due to J8219 Eosinophilic asthma, unspecified persistent radiation J828 Other pulmonary eosinophilia J702 Acute drug-induced interstitial lung disorders J840 Alveolar and parietoalveolar conditions J703 Chronic drug-induced interstitial lung disorders J848 Other specified interstitial pulmonary diseases J704 Drug-induced interstitial lung disorder, unspecified J849 Interstitial pulmonary disease, …"
+      },
+      {
+        "adrg": "E760",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_E760_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=315 PRINTED_PAGE=289] E76 선천성폐기형 CONGENITAL LUNG ANOMALY 주진단명 Q330 Congenital cystic lung respiratory system Q331 Accessory lobe of lung Q349 Congenital malformation of respiratory system, Q332 Sequestration of lung unspecified Q333 Agenesis of lung Q676 Pectus excavatum Q335 Ectopic tissue in lung Q677 Pectus carinatum Q336 Hypoplasia and dysplasia of lung Q766 Other congenital malformations of ribs Q338 Other congenital malformations of lung Q767 Congenital malformation of sternum Q3 …"
+      },
+      {
+        "adrg": "F011",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_F011_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F011 자동체내제세동기설치술또는제거술 Automatic Implantable Cardioverter Defibrillator Implantation or Removal 시술명 자200-2가(1) 심율동 전환 제세동기 거치술-경정맥 접근-삽입술 O0211 자200-2가(5)(가) 심율동 전환 제세동기 거치술-경정맥 접근-제거술-심실제세동기 O0219 자200-2가(5)(나) 심율동 전환 제세동기 거치술-경정맥 접근-제거술-심실 전극 O0220 자200-2가(5)(다) 심율동 전환 제세동기 거치술-경정맥 접근-제거술-심방 및 심실 전극 O0221 자200-2나(1) 심율동 전환 제세동기 거치술-피하 접근-삽입술 O2211 자200-2나(4)(가) 심율동 전환 제세동기 거치술-피하 접근-제거술-제세동기 O2214 자200-2나(4)(나) 심율동 전환 제세동기 거치술-피하 접근-제거술-전극 O2215 자200-4가(2) 심장 재동기화 치료기 거치술-삽입술(CRT-D) O2222 자200- …"
+      },
+      {
+        "adrg": "F012",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_F012_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F012 MDC Automatic Implantable Cardioverter Defibrillator Revision 05 시술명 (F) 자200-2가(2) 심율동 전환 제세동기 거치술-경정맥 접근-교환술 O0212 자200-2가(3)(가) O0228 심율동 전환 제세동기 거치술-경정맥 접근-거치된 제세동기 기능 향상(기존 단방형심실제세동기를 양방형 심실제세동기로 전환하는 경우) 자200-2가(3)(나) O0229 심율동 전환 제세동기 거치술-경정맥 접근-거치된 제세동기 기능 향상(기존 심실제세동기를 심장재동기화 치료기-제세동기로 전환하는 경우) 자200-2가(6) 심율동 전환 제세동기 거치술-경정맥 접근-전극재배치 O0222 자200-2나(2) 심율동 전환 제세동기 거치술-피하 접근-교환술 O2212 자200-2나(5) 심율동 전환 제세동기 거치술-피하 접근-전극재배치 O2216 자200-4나(2) 심장 재동기화 치료기 거치술-교환술(CRT-D) O2224 자200-4마(1) 심 …"
+      },
+      {
+        "adrg": "F033",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER",
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 341,
+        "source_table_ids": [
+          "LT_F033_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F033 폐동맥판수술(심도자술미사용) Pulmonary Valve Procedures without Cardiac Catheterization 시술명 자175 폐동맥판협착증수술 O1750 자177 심방중격결손증겸 폐동맥판협착증 수술 O1770 [PDF_PAGE=341 PRINTED_PAGE=315] 자179-1라 인공판막재치환술(폐동맥판) O1798 자179라 인공판막치환술(폐동맥판) O1797 자181 심실중격결손증겸 폐동맥판협착증 수술 O1810 자182-3 좌심실유출로성형술 O1825 자182-4 우심실유출로성형술[폐동맥판성형술포함] O1826 F04 관상동맥우회로조성술 CORONARY BYPASS"
+      },
+      {
+        "adrg": "F143",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 299,
+        "source_table_ids": [
+          "LT_F143_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F143 발작성심실상빈맥및심방조동전극도자절제술(3차원지도화기능포함) Electrode Catheter Ablation of Paroxysmal Supraventricular Tachycardia and Atrial Flutter with 3D Mapping System 시술명 자654나(1) 삼차원 빈맥 지도화를 이용한 부정맥의 고주파절제술(상심실성 부정맥) M6546 F15 부정맥의경피적수술(3차원지도화기능미포함) PERCUTANEOUS PROCEDURES FOR ARRHYTHMIA WITHOUT 3D MAPPING SYSTEM"
+      },
+      {
+        "adrg": "F151",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 183,
+        "source_table_ids": [
+          "LT_F151_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F151 심실빈맥전극도자절제술(3차원지도화기능미포함) Electrode Catheter Ablation of Ventricular Tachycardia without 3D Mapping System 시술명 자654-1다 부정맥의 냉각절제술-심실성 부정맥 M0661 자654가(3) 부정맥의 고주파절제술(심실성 부정맥) M6543"
+      },
+      {
+        "adrg": "F152",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 212,
+        "source_table_ids": [
+          "LT_F152_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F152 심방세동전극도자절제술(3차원지도화기능미포함) Electrode Catheter Ablation of Atrial Fibrillation without 3D Mapping System 시술명 자654-1나 부정맥의 냉각절제술-심방세동 M0658 자654-1나주2 부정맥의 냉각절제술-심방세동-냉각풍선절제술 M0651 자654가(2) 부정맥의 고주파절제술-심방세동 M6542"
+      },
+      {
+        "adrg": "F153",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 369,
+        "source_table_ids": [
+          "LT_F153_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F153 발작성심실상빈맥및심방조동전극도자절제술(3차원지도화기능미포함) Electrode Catheter Ablation of Paroxysmal Supraventricular Tachycardia and Atrial Flutter without 3D Mapping System 시술명 자654-1가 부정맥의 냉각절제술-상심실성 부정맥 M0657 자654-1라 부정맥의 냉각절제술-방실결절 절제술, 히스속 절제술 M0662 자654가(1) 부정맥의 고주파절제술(상심실성 부정맥) M6541 자654다 부정맥의 고주파절제술(방실결절 절제술, 히스속 절제술) M6550 F16 경피적풍선판막성형술 PERCUTANEOUS BALLOON VALVULOPLASTY MDC"
+      },
+      {
+        "adrg": "F162",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 233,
+        "source_table_ids": [
+          "LT_F162_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F162 경피적대동맥또는폐동맥풍선판막성형술 Percutaneous Aortic or Pulmonary Balloon Valvuloplasty 시술명 자653나 경피적심장판막성형술-대동맥판막 M6532 자653다 경피적심장판막성형술-폐동맥판막 M6533 F17 선천성심장병협착질환의경피적수술 PERCUTANEOUS PROCEDURES FOR STENOTIC LESION OF CONGENITAL HEART DISEASE"
+      },
+      {
+        "adrg": "F240",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 242,
+        "source_table_ids": [
+          "LT_F240_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=363 PRINTED_PAGE=337] F24 순환장애수족부절단술 AMPUTATION OF CIRCULATORY DISORDERS FOR HAND AND FOOT 시술명 자56바 사지관절이단술[지관절] N0566 자57라 사지절단술[수족] N0574 자57마 사지절단술[지] N0575 [PDF_PAGE=364 PRINTED_PAGE=338] F25 정맥결찰및스트리핑 VEIN LIGATION AND TRIPPING"
+      },
+      {
+        "adrg": "F502",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_F502_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F502 심장질환을위한심도자술및혈관조영술 Cardiac Catheterization and Angiography for Heart Disease 시술명 나721가(1)‡ 심도자에의한순환기능검사-우심도자술(선천성심장병) E0720 나721가(2)‡ 심도자에의한순환기능검사-우심도자술(기타) E0721 나721나(1)‡ 심도자에의한순환기능검사-좌심도자술(선천성심장병) E0722 나721나(2)‡ 심도자에의한순환기능검사-좌심도자술(기타) E0723 나721다(1)‡ 심도자에의한순환기능검사-심방중격천자를통한좌심도자술[우심도자술포함](선천성심장병) E0724 나721다(2)‡ 심도자에의한순환기능검사-심방중격천자를통한좌심도자술[우심도자술포함](기타) E0725 나721라(1)‡ 심도자에의한순환기능검사-난원공을통한좌심도자술[우심도자술포함](선천성심장병) E0726 나721라(2)‡ 심도자에의한순환기능검사-난원공을통한좌심도자술[우심도자술포함](기타) E0727 나721마‡ 심도자에의한순환기능검사-폐 …"
+      },
+      {
+        "adrg": "F610",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_F610_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F61 주요합병증이없는급성심근경색증을동반한순환기질환 CIRCULATORY DISEASES WITH ACUTE MYOCARDIAL INFARCTION WITHOUT MAJOR COMPLICATION 주진단명 I210 Acute transmural myocardial infarction of anterior wall I219 Acute myocardial infarction, unspecified I211 Acute transmural myocardial infarction of inferior wall I220 Subsequent myocardial infarction of anterior wall I212 Acute transmural myocardial infarction of other sites I221 Subsequent myocardial infarction of inferior wall I213 Acute trans …"
+      },
+      {
+        "adrg": "F620",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 462,
+        "source_table_ids": [
+          "LT_F620_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F62 급성및아급성심내막염 ACUTE AND SUBACUTE ENDOCARDITIS 주진단명 I330 Acute and subacute infective endocarditis T826 Infection and inflammatory reaction due to cardiac I339 Acute endocarditis, unspecified valve prosthesis I38 Endocarditis, valve unspecified T827 Infection and inflammatory reaction due to other I398 Endocarditis, valve unspecified, in diseases cardiac and vascular devices, implants and grafts MDC classified elsewhere 05 (F)"
+      },
+      {
+        "adrg": "F630",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_F630_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F63 심부전및쇼크 HEART FAILURE AND SHOCK 주진단명 I110 Hypertensive heart disease with (congestive) heart I5010 Left ventricular failure with preserved ejection fraction failure I5011 Left ventricular failure with mid range ejection fraction I130 Hypertensive heart and renal disease with I5012 Left ventricular failure with reduced ejection fraction (congestive) heart failure I5019 Left ventricular failure, unspecified I132 Hypertensive heart and renal disease with both I509 …"
+      },
+      {
+        "adrg": "F640",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 481,
+        "source_table_ids": [
+          "LT_F640_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=371 PRINTED_PAGE=345] F64 혈전정맥염 THROMBOPHLEBITIS 주진단명 I801 Phlebitis and thrombophlebitis of femoral vein unspecified I802 Phlebitis and thrombophlebitis of other deep vessels I822 Embolism and thrombosis of vena cava of lower extremities I828 Embolism and thrombosis of other specified veins I803 Phlebitis and thrombophlebitis of lower extremities, I829 Embolism and thrombosis of unspecified vein [PDF_PAGE=372 PRINTED_PAGE=346] F65 상세불명심장정지 CARDIAC ARREST UNSPECIFIED"
+      },
+      {
+        "adrg": "F662",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER",
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_F662_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F662 기타대동맥박리 Other Aortic Dissection [PDF_PAGE=373 PRINTED_PAGE=347] 주진단명 I7000 Atherosclerosis of aorta, without gangrene mention of rupture I7101 Dissection of abdominal aorta I7121 Descending thoracic aortic aneurysm, without I7102 Dissection of thoracoabdominal aorta mention of rupture I7103 Dissection of thoracic aorta, ascending I7129 Unspecified thoracic aortic aneurysm, without I7104 Dissection of thoracic aorta, descending mention of rupture I7105 Dissection of unspecified thoracic aort …"
+      },
+      {
+        "adrg": "F680",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_F680_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=374 PRINTED_PAGE=348] F68 색전증 EMBOLISM 주진단명 I740 Embolism and thrombosis of abdominal aorta I7439 Other and unspecified embolism and thrombosis I741 Embolism and thrombosis of other and unspecified I744 Embolism and thrombosis of arteries of extremities, parts of aorta unspecified I742 Embolism and thrombosis of arteries of upper extremities I745 Embolism and thrombosis of iliac artery I7430 Embolism and thrombosis of below knee I748 Embolism and thrombosis of other arteries I7431 Embo …"
+      },
+      {
+        "adrg": "F711",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 188,
+        "source_table_ids": [
+          "LT_F711_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "F711 악성고혈압 Malignant Hypertension 주진단명 I101 Malignant hypertension heart failure I119 Hypertensive heart disease without (congestive) I139 Hypertensive heart and renal disease, unspecified"
+      },
+      {
+        "adrg": "F770",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 162,
+        "source_table_ids": [
+          "LT_F770_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=379 PRINTED_PAGE=353] F77 실신및허탈 SYNCOPE AND COLLAPSE 주진단명 MDC I951 Orthostatic hypotension R558 Other syncope and collapse 05 R550 Vasovagal syncope (F)"
+      },
+      {
+        "adrg": "G190",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 345,
+        "source_table_ids": [
+          "LT_G190_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=416 PRINTED_PAGE=390] G19 횡격막탈장수술 DIAPHRAGMATIC HERNIA PROCEDURES G1901 횡격막탈장수술, 연령≤18세 Diaphragmatic Hernia Procedures, Age ≤18 G1902 횡격막탈장수술, 연령>18세 Diaphragmatic Hernia Procedures, Age >18 시술명 자160 횡격막봉합술 O1600 자161 횡격막탈장정복술 O1610 [PDF_PAGE=417 PRINTED_PAGE=391] G20 탈장수술, 서혜및대퇴부제외 HERNIA PROCEDURES EXCEPT INGUINAL AND FEMORAL AREA"
+      },
+      {
+        "adrg": "G230",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_G230_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=419 PRINTED_PAGE=393] G23 서혜및대퇴부탈장수술(장절제동반) INGUINAL AND FEMORAL HERNIA PROCEDURES WITH RESECTION OF INTESTINE G2301 서혜및대퇴부탈장수술(장절제동반), 연령≤18세 Inguinal and Femoral Hernia Procedures with Resection of Intestine, Age ≤18 G2302 서혜및대퇴부탈장수술(장절제동반), 연령>18세 Inguinal and Femoral Hernia Procedures with Resection of Intestine, Age >18 시술명 자275가(1) 서혜부허니아근본수술(장관절제를동반하는것,고위결찰만하는경우) Q2753 자275가(2) 서혜부허니아근본수술(장관절제를동반하는것,고위결찰및후벽보강-인공막이용포함) Q2754 G24 복강경을이용한서혜및대퇴부탈장수술(장절제미동반) LAPAROSCOPIC INGUINAL AND …"
+      },
+      {
+        "adrg": "G300",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 257,
+        "source_table_ids": [
+          "LT_G300_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=422 PRINTED_PAGE=396] G30 치열수술및항문협착증수술 ANAL FISSURE AND ANAL STENOSIS PROCEDURES 시술명 자295 치열수술 Q2950 자299가 항문협착증교정술-항문협착부위절단술 Q2991 자299나 항문협착증교정술-피부판, 피부편 이용 Q2992 [PDF_PAGE=423 PRINTED_PAGE=397] G31 경항문및질접근수술 TRANSANAL OR TRANSVAGINAL PROCEDURES"
+      },
+      {
+        "adrg": "G312",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 314,
+        "source_table_ids": [
+          "LT_G312_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "G312 직장탈출증수술및괄약근성형술(직장류교정술포함) Procedures for Rectal Prolapse and Sphincteroplasty(Including Rectocele Repair) 시술명 자293가(1) 직장탈교정술(회음부수술)-경화요법 Q2933 자293가(2) 직장탈교정술(회음부수술)-직장및결장점막절제후장봉축술[델롬씨수술] Q2934 자293가(4) 직장탈교정술(회음부수술)-기타 Q2936 자300-1가 항문괄약근성형술(괄약근만성형) Q3002 자300-1나 항문괄약근성형술(괄약근및거상근성형) Q3003 자302 직장류교정수술 Q3020"
+      },
+      {
+        "adrg": "G611",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 218,
+        "source_table_ids": [
+          "LT_G611_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "G611 정맥류출혈 Variceal Bleeding 주진단명 I850 Esophageal varices with bleeding I983 Oesophageal varices with bleeding in diseases I8640 Gastric varices with bleeding classified elsewhere I8649 Gastric varices without bleeding"
+      },
+      {
+        "adrg": "G650",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 426,
+        "source_table_ids": [
+          "LT_G650_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=447 PRINTED_PAGE=421] G65 위장관폐색 GASTROINTESTINAL OBSTRUCTION G6501 위장관폐색, 연령≤18세 Gastrointestinal Obstruction, Age ≤18 G6502 위장관폐색, 연령>18세 Gastrointestinal Obstruction, Age >18 주진단명 K560 Paralytic ileus K564 Other impaction of intestine K561 Intussusception K565 Intestine adhesions [bands] with obstruction K562 Volvulus K566 Other and unspecified intestinal obstruction K563 Gallstone ileus K567 Ileus, unspecified"
+      },
+      {
+        "adrg": "G660",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_G660_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=447 PRINTED_PAGE=421] G66 복통또는장간막선염 ABDOMINAL PAIN OR MESENTERIC ADENITIS 주진단명 I880 Nonspecific mesenteric lymphadenitis R1031 Left lower quadrant abdominal pain R100 Acute abdomen R1032 Periumbilical pain R1010 Right upper quadrant abdominal pain R1039 Lower abdominal pain, unspecified R1011 Left upper quadrant abdominal pain R1042 Colic R1012 Epigastric pain R1044 Flank pain MDC R1019 Upper abdominal pain, unspecified R1049 Unspecified abdominal pain R1030 Right lower quadrant abdomi …"
+      },
+      {
+        "adrg": "G672",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_G672_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=449 PRINTED_PAGE=423] G6721 식도염및위십이지장염, 연령≤18세 Esophagitis and Gastroduodenitis, Age ≤18 G6722 식도염및위십이지장염, 연령>18세 Esophagitis and Gastroduodenitis, Age >18 주진단명 B3780 Candidal esophagitis K292 Alcoholic gastritis K200 Eosinophilic esophagitis K293 Chronic superficial gastritis K208 Other and unspecified oesophagitis K294 Chronic atrophic gastritis K210 Gastro-oesophageal reflux disease with K295 Chronic gastritis, unspecified oesophagitis K2960 Gastric intestinal metaplasia K219 Gastro …"
+      },
+      {
+        "adrg": "H520",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 148,
+        "source_table_ids": [
+          "LT_H520_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=483 PRINTED_PAGE=457] H52 간담도및췌장질환의경피적배액술 PERCUTANEOUS DRAINAGE OF HEPATOBILIARY AND PANCREATIC DISEASES 시술명 자674‡ 경피적튜브배액술[유도료별도산정] M6741"
+      },
+      {
+        "adrg": "I050",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 478,
+        "source_table_ids": [
+          "LT_I050_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=570 PRINTED_PAGE=544] I05 혈관부착골피부판이식및사지재접합술 VASCULARIZED OSTEOCUTANEOUS FREE FLAP AND LIMB REATTACHMENT PROCEDURES 시술명 자58-1가 사지접합수술[사지] N0587 자58-1나 사지접합수술[수,족지] N0588 MDC 자58-2 수지의 무지화성형술 N1581 08 자58-3 족지를 이용한 수지재건술(공여부절단술 포함) N1582 (I) 자58-4가 생골 및 생피부판 이식술(혈관부착 골이식술) N1583 자58-4나 생골 및 생피부판 이식술(혈관부착 골피부판 이식술) N1584 자58-4나주 생골 및 생피부판 이식술(혈관부착 골피부판 이식술)-천공지를 이용하여 피부판을 이식한 경우 N2584 자58-4다 생골 및 생피부판 이식술(유경혈관화 골이식술) N1585 I06 척추강내병소절제술 EXCISION OF INTRASPINAL LESION"
+      },
+      {
+        "adrg": "I092",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 234,
+        "source_table_ids": [
+          "LT_I092_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I092 Interventional Procedures of Spine for Nerve 시술명 자482-1가 경피적척추고주파열응고술[척수포함]-단순 S4825 자482-1나 경피적척추고주파열응고술[척수포함]-복잡[3부위이상] S4826 MDC 08 I10 신경조절술및척수강내약물주입펌프이식술 (I) NEUROMODULATION AND IMPLANTATION OF INTRASPINAL DRUG INFUSION PUMP"
+      },
+      {
+        "adrg": "I101",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 349,
+        "source_table_ids": [
+          "LT_I101_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I101 척수신경자극기및약물주입펌프의설치술또는교환술 Implantation or Change of Spinal Neurostimulator Electrodes and Drug Infusion Pump 시술명 자484나 척수강내 약물주입펌프이식술 S4843 자484마 척수강내 약물주입펌프이식술-카테터 교환술 S4846 자484바 척수강내 약물주입펌프이식술-펌프 교환술 S4847 저621나(1) 척수신경자극기설치,교환및제거술-영구자극기설치술[경피적]-자극기설치술 SY633 저621나(3) 척수신경자극기설치,교환및제거술-영구자극기설치술[경피적]-자극발생기교환술 SY635 저622나 천수신경조절술(영구자극기삽입술) SY626"
+      },
+      {
+        "adrg": "I131",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 265,
+        "source_table_ids": [
+          "LT_I131_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I131 골수염및농양수술(골반골, 대퇴골, 하퇴골, 상완골, 전완골, 쇄골) Operation of Osteomyelitis and Abscess(Pelvis, Femur, Crus, Humerus, Forearm Bone, Clavicle) 시술명 자29가 골수염또는골농양수술[골천공술,골개창술,배형성형술,골부분절제술포함]-골반골,대퇴골,하퇴골 N0021 자29나 골수염또는골농양수술[골천공술,골개창술,배형성형술,골부분절제술포함]-상완골,전완골,쇄골 N0022 MDC 08"
+      },
+      {
+        "adrg": "I132",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 123,
+        "source_table_ids": [
+          "LT_I132_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I132 골수염및농양수술(기타) (I) Operation of Osteomyelitis and Abscess(Others) 시술명 자29다 골수염또는골농양수술[골천공술,골개창술,배형성형술,골부분절제술포함]-기타 N0023"
+      },
+      {
+        "adrg": "I240",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 325,
+        "source_table_ids": [
+          "LT_I240_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=589 PRINTED_PAGE=563] I24 생검을포함한골과관절의진단적수술 BONE AND JOINT DIAGNOSTIC PROCEDURES INCLUDING BIOPSY 시술명 나858나(2) 골생검(절개생검)-기타부위 C8583 나860가 관절절개생검술-견관절,고관절,천장관절 C8601 나860나 관절절개생검술-주관절,슬관절 C8602 나860다 관절절개생검술-완관절및족관절 C8603 나860라 관절절개생검술-기타부위 C8604 [PDF_PAGE=590 PRINTED_PAGE=564] I25 완관절및수부수술 WRIST AND HAND PROCEDURES"
+      },
+      {
+        "adrg": "I600",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 176,
+        "source_table_ids": [
+          "LT_I600_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=607 PRINTED_PAGE=581] I60 대퇴골간및대퇴골융기골절 FEMORAL SHAFT AND FEMORAL CONDYLE FRACTURE 주진단명 S7230 Fracture of shaft of femur, closed S7231 Fracture of shaft of femur, open"
+      },
+      {
+        "adrg": "I610",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 478,
+        "source_table_ids": [
+          "LT_I610_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=607 PRINTED_PAGE=581] I61 기타대퇴골골절 OTHER FEMORAL FRACTURES 주진단명 S7240 Fracture of lower end of femur, closed S7280 Fracture of other parts of femur, closed S7241 Fracture of lower end of femur, open S7281 Fracture of other parts of femur, open S7270 Multiple fractures of femur, closed S7290 Fracture of femur,part unspecified, closed S7271 Multiple fractures of femur, open S7291 Fracture of femur,part unspecified, open I62 골반부및대퇴경부골절 PELVIS AND FEMORAL NECK FRACTURE"
+      },
+      {
+        "adrg": "I621",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_I621_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I621 골반부골절 Pelvis Fracture 주진단명 S3230 Fracture of ilium, closed S32820 Fracture of ischium, closed S3231 Fracture of ilium, open S32821 Fracture of ischium, open S3240 Fracture of acetabulum, closed S32830 Fracture of lumbosacral spine, part unspecified, closed S3241 Fracture of acetabulum, open S32831 Fracture of lumbosacral spine, part unspecified, open S3250 Fracture of pubis, closed S32880 Other pelvic fracture, closed S3251 Fracture of pubis, open S32881 Other pelvic fracture, open S3270 Mu …"
+      },
+      {
+        "adrg": "I664",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 256,
+        "source_table_ids": [
+          "LT_I664_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I664 전신홍반루푸스 Systemic Lupus Erythematosus 주진단명 M320 Drug-induced systemic lupus erythematosus M328 Other forms of systemic lupus erythematosus M321 Systemic lupus erythematosus with organ or system M329 Systemic lupus erythematosus, unspecified involvement"
+      },
+      {
+        "adrg": "I668",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_I668_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I668 강직성척추염 Ankylosing Spondylitis 주진단명 M450 Ankylosing spondylitis, multiple sites in spine M456 Ankylosing spondylitis, lumbar region MDC M451 Ankylosing spondylitis, occipito-atlanto-axial region M457 Ankylosing spondylitis, lumbosacral region 08 M452 Ankylosing spondylitis, cervical region M458 Ankylosing spondylitis, sacral and sacrococcygeal (I) M453 Ankylosing spondylitis, cervicothoracic region region M454 Ankylosing spondylitis, thoracic region M459 Ankylosing spondylitis, site unspecif …"
+      },
+      {
+        "adrg": "I692",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_I692_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "I692 성인발병스틸병 Adult-onset Still’s disease 주진단명 M0610 Adult-onset Still’s disease, multiple sites M0615 Adult-onset Still’s disease, pelvic region and thigh M0611 Adult-onset Still’s disease, shoulder region M0616 Adult-onset Still’s disease, lower leg M0612 Adult-onset Still’s disease, upper arm M0617 Adult-onset Still’s disease, ankle and foot M0613 Adult-onset Still’s disease, forearm M0618 Adult-onset Still’s disease, other M0614 Adult-onset Still’s disease, hand M0619 Adult-onset Still’s dise …"
+      },
+      {
+        "adrg": "J041",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 312,
+        "source_table_ids": [
+          "LT_J041_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "J041 피부및연조직악성종양절제술 (J) Excision of Malignant Tumor in Skin and Soft Tissue 시술명 자15-1가 피부 국소 광역동 치료-50㎠미만의 피부병변 N1511 자15-1나 피부 국소 광역동 치료-50㎠이상의 피부병변 N1512 자15가 피부악성종양적출술(광역수술) N0151 자15나 피부악성종양적출술(모즈미세도식수술) N0153 자15다 피부악성종양적출술(광역수술및림프절수술) N0152 자23나 연부조직종양적출술(지방종,혈관종,섬유종,거대세포종,화골성근염,근육육종,혈관육종,활액막육종)-악성종양 N0232"
+      },
+      {
+        "adrg": "J042",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 248,
+        "source_table_ids": [
+          "LT_J042_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "J042 피부및연조직수술 Skin and Soft Tissue Procedures 시술명 자14나 피부양성종양적출술(기타근육층에달하는것) N0142 자19 액취수술 N0190 자23가(1) 연부조직종양적출술(지방종,혈관종,섬유종,거대세포종,화골성근염,근육육종,혈관육종,활액막육종)-피하양성종양 N0233 자23가(2) 연부조직종양적출술(지방종,혈관종,섬유종,거대세포종,화골성근염,근육육종,혈관육종,활액막육종)-근막하또는근육내 N0234 양성종양"
+      },
+      {
+        "adrg": "J100",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_J100_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=738 PRINTED_PAGE=712] J10 항문주위및모소수술 (J) PERIANAL AND PILONIDAL PROCEDURES 시술명 자288가(1) 직장항문주위농양수술(표재성-절개배농) Q2881 자288가(2) 직장항문주위농양수술(표재성-괄약근절개동반) Q2882 자288나 직장항문주위농양수술(심부) Q2883 자295 치열수술 Q2950 자297가 저위관통형치루절개술및절제술 Q2974 [PDF_PAGE=739 PRINTED_PAGE=713] 자297나(1) 고위혹은복잡형치루수술(한리수술및기타괄약근보존술식) Q2975 자297나(2) 고위혹은복잡형치루수술(근충전술혹은점막근육편이동) Q2976 자297나(3)(가) 고위혹은복잡형치루수술(시톤수술-설치술) Q2977 자297나(3)(나) 고위혹은복잡형치루수술(시톤수술-절단술) Q2978 자299가 항문협착증교정술-항문협착부위절단술 Q2991 자299나 항문협착증교정술-피부판, 피부편 이용 Q2992 자300-1 …"
+      },
+      {
+        "adrg": "J600",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_J600_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=741 PRINTED_PAGE=715] J60 피부궤양 SKIN ULCERS J6001 피부궤양, 연령<65세 Skin Ulcers, Age <65 J6002 피부궤양, 연령≥65세 MDC Skin Ulcers, Age ≥65 09 주진단명 (J) L890 Stage I decubitus ulcer and pressure area L899 Decubitus ulcer and pressure area, unspecified L891 Stage II decubitus ulcer and pressure area L97 Ulcer of lower limb, NEC L892 Stage III decubitus ulcer and pressure area L984 Chronic ulcer of skin, NEC L893 Stage IV decubitus ulcer and pressure area [PDF_PAGE=742 PRINTED_PAGE=716] J61 악성피부질환 MAL …"
+      },
+      {
+        "adrg": "J670",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 118,
+        "source_table_ids": [
+          "LT_J670_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=749 PRINTED_PAGE=723] J67 합병증없는대상포진 HERPES ZOSTER WITHOUT COMPLICATION 주진단명 B029 Zoster without complication"
+      },
+      {
+        "adrg": "K042",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_K042_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "K042 내분비, 영양및대사장애기타피판술 Other Flap for Endocrine, Nutritional and Metabolic Disorders 시술명 자16가(1)(가) 피판작성술-피부-국소(안면부) SB161 자16가(1)(나) 피판작성술-피부-국소(기타) S0161 자16가(2)(가)1) 피판작성술-피부-원거리-수부이외[서혜부,복부,둔부,교차상지,교차하지등](안면부) SB162 자16가(2)(가)2) 피판작성술-피부-원거리-수부이외[서혜부,복부,둔부,교차상지,교차하지등](기타) S0162 자16가(2)(나)1) 피판작성술-피부-원거리-수부내[교차수지피판,무지구피판등](안면부) SB163 자16가(2)(나)2) 피판작성술-피부-원거리-수부내[교차수지피판,무지구피판등](기타) S0163 자16나(1) 피판작성술-도서형(안면부) SB164 자16나(2) 피판작성술-도서형(기타) S0164 자16다(1) 피판작성술-근(안면부) SB165 자16다(2) 피판작성술-근(기타) S0 …"
+      },
+      {
+        "adrg": "K080",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 355,
+        "source_table_ids": [
+          "LT_K080_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=772 PRINTED_PAGE=746] K08 기타갑상선수술 OTHER THYROID PROCEDURES K0801 기타갑상선수술, 연령≤18세 Other Thyroid Procedures, Age ≤18 K0802 기타갑상선수술, 연령>18세 Other Thyroid Procedures, Age >18 시술명 나859나 갑상선생검-관혈적생검 C8592 자455-1 갑상선설관낭종절제술 P4558 자456-1 설근갑상선절제또는분획성형술 P4565 자690라 경피적 고주파열치료술 [유도료 별도 산정]-갑상선암 M6991 MDC 10 (K) K09 비만대사수술 BARIATRIC AND METABOLIC SURGERY"
+      },
+      {
+        "adrg": "K613",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 124,
+        "source_table_ids": [
+          "LT_K613_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "K613 1형당뇨병(합병증미동반) MDC Type 1 Diabetes without Complication 10 주진단명 (K) E109 Type 1 diabetes mellitus, without complications"
+      },
+      {
+        "adrg": "K614",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 309,
+        "source_table_ids": [
+          "LT_K614_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "K614 1형제외당뇨병(합병증미동반) Diabetes except Type 1 without Complication 주진단명 E119 Type 2 diabetes mellitus, without complications E139 Other specified diabetes mellitus, without complications E129 Malnutrition-related diabetes mellitus, without E149 Unspecified diabetes mellitus, without complications complications"
+      },
+      {
+        "adrg": "K641",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_K641_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "K641 Ⅰ형선천성대사장애 Inborn Errors of Metabolism, Type Ⅰ 주진단명 D761 Haemophagocytic lymphohistiocytosis E761 Mucopolysaccharidosis, type Ⅱ D762 Haemophagocytic syndrome, infection-associated E762 Other mucopolysaccharidoses D763 Other histiocytosis syndromes E763 Mucopolysaccharidosis, unspecified E740 Glycogen storage disease E768 Other disorders of glucosaminoglycan metabolism E753 Sphingolipidosis, unspecified E769 Disorders of glucosaminoglycan metabolism, unspecified E755 Other lipid storage disor …"
+      },
+      {
+        "adrg": "K642",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 362,
+        "source_table_ids": [
+          "LT_K642_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "K642 Ⅱ형선천성대사장애 Inborn Errors of Metabolism, Type Ⅱ 주진단명 E703 Albinism E833 Disorders of phosphorus metabolism and phosphatases E720 Disorders of amino-acid transport E880 Disorders of plasma-protein metabolism, NEC E830 Disorders of copper metabolism E888 Other specified metabolic disorders E831 Disorders of iron metabolism E889 Metabolic disorder, unspecified"
+      },
+      {
+        "adrg": "K661",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 211,
+        "source_table_ids": [
+          "LT_K661_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "K661 갑상선의양성종양 Benign Thyroid Tumor 주진단명 D34 Benign neoplasm of thyroid gland E041 Nontoxic single thyroid nodule D440 Neoplasm of uncertain or unknown behaviour of E042 Nontoxic multinodular goitre thyroid gland"
+      },
+      {
+        "adrg": "K662",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 406,
+        "source_table_ids": [
+          "LT_K662_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "K662 갑상선중독증 Thyrotoxicosis 주진단명 E050 Thyrotoxicosis with diffuse goitre E055 Thyrotoxic crisis or storm E051 Thyrotoxicosis with toxic single thyroid nodule E058 Other thyrotoxicosis E052 Thyrotoxicosis with toxic multinodular goitre E059 Thyrotoxicosis, unspecified E053 Thyrotoxicosis from ectopic thyroid tissue E062 Chronic thyroiditis with transient thyrotoxicosis E054 Thyrotoxicosis factitia 기타갑상선질환"
+      },
+      {
+        "adrg": "K670",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_K670_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=789 PRINTED_PAGE=763] K67 부갑상선장애 PARATHYROID DISORDERS 주진단명 C750 Malignant neoplasm of parathyroid gland E210 Primary hyperparathyroidism D351 Benign neoplasm of parathyroid gland E211 Secondary hyperparathyroidism, NEC D442 Neoplasm of uncertain or unknown behaviour of E212 Other hyperparathyroidism parathyroid gland E213 Hyperparathyroidism, unspecified E200 Idiopathic hypoparathyroidism E214 Other specified disorders of parathyroid gland E201 Pseudohypoparathyroidism E215 Disorder o …"
+      },
+      {
+        "adrg": "K720",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_K720_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=791 PRINTED_PAGE=765] K72 수분, 전해질및산-염기균형의장애 DISORDERS OF FLUID, ELECTROLYTE AND ACID-BASE BALANCE K7201 수분, 전해질및산-염기균형의장애, 연령≤18세 Disorders of Fluid, Electrolyte and Acid-Base Balance, Age ≤18 K7202 수분, 전해질및산-염기균형의장애, 연령>18세 Disorders of Fluid, Electrolyte and Acid-Base Balance, Age >18 주진단명 E860 Dehydration E873 Alkalosis E861 Hypovolaemia E874 Mixed disorder of acid-base balance E868 Other or unspecified volume depletion E875 Hyperkalaemia E870 Hyperosmolality and hypernatraemia E876 …"
+      },
+      {
+        "adrg": "L010",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 234,
+        "source_table_ids": [
+          "LT_L010_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=810 PRINTED_PAGE=784] L01 복막투석도관삽입술 CATHETER INSERTION FOR PERITONEAL DIALYSIS 시술명 자707가(1) 계속적복막관류술-도관삽입술(대망절제를동반한경우) O7071 자707가(2) 계속적복막관류술-도관삽입술(기타) O7072 L02 신장및비뇨기계신생물수술 PROCEDURES FOR KIDNEY AND URINARY TRACT NEOPLASM"
+      },
+      {
+        "adrg": "L025",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 187,
+        "source_table_ids": [
+          "LT_L025_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "L025 Transurethral Procedures for Ureter and Bladder Neoplasm 시술명 자345 요관경하 요관종양절제술 R3451 자351다(1) 경요도적방광내수술(종양)-단순 R3541 자351다(2) 경요도적방광내수술(종양)-복잡 R3542 자351다(3) 경요도적방광내수술(종양)-고도복잡 R3543"
+      },
+      {
+        "adrg": "L101",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 289,
+        "source_table_ids": [
+          "LT_L101_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "L101 신장및비뇨기질환의신경자극기설치술 Neurostimulator Implantation for Kidney and Urinary Tract Diseases 시술명 저621나(1) 척수신경자극기설치,교환및제거술-영구자극기설치술[경피적]-자극기설치술 SY633 저621나(3) 척수신경자극기설치,교환및제거술-영구자극기설치술[경피적]-자극발생기교환술 SY635 저621나(4) 척수신경자극기설치,교환및제거술-영구자극기설치술[경피적]-전극및자극발생기제거술 SY636 저622나 천수신경조절술(영구자극기삽입술) SY626"
+      },
+      {
+        "adrg": "L102",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 215,
+        "source_table_ids": [
+          "LT_L102_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "L102 신장및비뇨기질환의시험적거치술 Trial Implantation for Kidney and Urinary Tract Diseases 시술명 저621다(1) 척수신경자극기설치,교환및제거술-시험적거치술[경피적]-전극설치술및시험적자극술 SY637 저622가 천수신경조절술(시험적거치술) SY625 L11 요로질환수술 PROCEDURES FOR URINARY TRACT DISEASES"
+      },
+      {
+        "adrg": "L120",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 286,
+        "source_table_ids": [
+          "LT_L120_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=818 PRINTED_PAGE=792] L12 기타신장및비뇨기질환의경피적시술 OTHER PERCUTANEOUS PROCEDURES OF KIDNEY AND URINARY TRACT DISEASES 시술명 자661다 경피적혈관내스텐트-이식설치술[기타혈관] M6613 MDC 자664나 혈관색전술-기타혈관 M6644 11 (L) [PDF_PAGE=819 PRINTED_PAGE=793] L13 기타신장및비뇨기계시술 OTHER PROCEDURES FOR KIDNEY AND URINARY SYSTEM"
+      },
+      {
+        "adrg": "L131",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 359,
+        "source_table_ids": [
+          "LT_L131_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "L131 혈액투석을위한단락또는동정맥루조성술 Arterio-Venous Shunt or Fistula Formation for Hemodialysis 시술명 자201-1 인공신장투석을위한동정맥루의교정술 O2083 자201가 인공신장투석을위한단락또는동정맥루조성술-외동정맥단락조성술 O2011 자201나 인공신장투석을위한단락또는동정맥루조성술-내동정맥단락조성술 O2012 자201다 인공신장투석을위한단락또는동정맥루조성술-자가혈관을이용한동정맥루조성술 O2081 자201라 인공신장투석을위한단락또는동정맥루조성술-인조혈관을이용한동정맥루조성술 O2082 자201마 인공신장투석을위한단락또는동정맥루조성술-인조혈관-중심정맥도관결합혈액투석접근통로조성술 O2084"
+      },
+      {
+        "adrg": "L520",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 144,
+        "source_table_ids": [
+          "LT_L520_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=823 PRINTED_PAGE=797] L52 신장및비뇨기질환의경피적배액술 PERCUTANEOUS DRAINAGE OF KIDNEY AND URINARY TRACT DISEASES 시술명 자674‡ 경피적튜브배액술[유도료별도산정] M6741"
+      },
+      {
+        "adrg": "L530",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 285,
+        "source_table_ids": [
+          "LT_L530_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=823 PRINTED_PAGE=797] L53 신장및비뇨기질환의경피적경화술 PERCUTANEOUS SCLEROTHERAPY OF KIDNEY AND URINARY TRACT DISEASES 시술명 MDC 자677가(2)(가)‡ 경피적경화술-단순천자법에의한것[두경부이외-낭종] M1773 자677나(2)(가)‡ 경피적경화술-카테터천자법에의한것[두경부이외-낭종] M1777 11 (L) [PDF_PAGE=824 PRINTED_PAGE=798] L60 급성신부전 ACUTE RENAL FAILURE"
+      },
+      {
+        "adrg": "M083",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 183,
+        "source_table_ids": [
+          "LT_M083_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "M083 단순고환수술 Simple Testis Procedures 시술명 나856나 고환,부고환생검-관혈적 C8562 자385-1 고환파열교정술 R3856 자385가 고환적출술-단순고환 R3851 자389 부고환적출술 R3891 M09 기타고환수술및생식기적출술 OTHER TESTIS AND GENITALIA PROCEDURES"
+      },
+      {
+        "adrg": "M610",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 359,
+        "source_table_ids": [
+          "LT_M610_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=859 PRINTED_PAGE=833] M61 양성전립선비대증 BENIGN PROSTATIC HYPERTROPHY 주진단명 N400 Hyperplasia of prostate without complication N403 Hyperplasia of prostate with urinary tract obstruction N401 Hyperplasia of prostate with urinary tract obstruction and hematuria N402 Hyperplasia of prostate with hematuria N408 Hyperplasia of prostate with other complication"
+      },
+      {
+        "adrg": "N110",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 492,
+        "source_table_ids": [
+          "LT_N110_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=882 PRINTED_PAGE=856] N11 기타여성생식기계복원술 OTHER FEMALE REPRODUCTIVE SYSTEM RECONSTRUCTIVE PROCEDURES 시술명 자408가(1) 질벽봉합술[분만시제외,치료목적]-전질벽 성형-방광류동반 R0408 자408가(2) 질벽봉합술[분만시제외,치료목적]-전질벽 성형-방광류동반치않는경우 R0409 자408나(1) 질벽봉합술[분만시제외,치료목적]-후질벽및회음성형-직장류동반 R0410 자408나(2) 질벽봉합술[분만시제외,치료목적]-후질벽및회음성형-직장류동반치않는경우 R0411 자408다(1) 질벽봉합술[분만시제외,치료목적]-전질벽,후질벽및회음성형-방광류및직장류동반 R0412 자408다(2) 질벽봉합술[분만시제외,치료목적]-전질벽,후질벽및회음성형-방광류및직장류동반치않는경우 R0413 N12 복강경수술및기타난관결찰술 LAPAROSCOPIC PROCEDURES AND OTHER TUBAL LIGATION"
+      },
+      {
+        "adrg": "N130",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 308,
+        "source_table_ids": [
+          "LT_N130_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=883 PRINTED_PAGE=857] N13 자궁경수술 HYSTEROSCOPIC PROCEDURES 시술명 나771‡ 자궁경검사 E7710 자402-3‡ 자궁내풍선카테터충전술[자궁용적측정포함] R4028 자423 자궁경하 자궁내막소작박리술 R4230 자423-1 자궁경하 자궁강내유착박리술 R4235 자424-1 자궁경하 자궁내막폴립절제술 R4241 자424-1주 자궁경하 자궁내막폴립절제술-전동식세절기 이용 R4242 자429-1 자궁경하 자궁강내격막절제술 R4295 자궁소파술 N14 DILATATION AND CURETTAGE"
+      },
+      {
+        "adrg": "N141",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 102,
+        "source_table_ids": [
+          "LT_N141_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "N141 치료적자궁소파술 Therapeutic Dilatation and Curettage 시술명 자448가 포상기태제거술-흡인소파술에의한것 R4481 자452 자궁소파수술 R4521"
+      },
+      {
+        "adrg": "N142",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER",
+          "SELF_ADRG_TOKEN"
+        ],
+        "text_length": 260,
+        "source_table_ids": [
+          "LT_N142_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "N142 진단적자궁소파술 Diagnostic Dilatation and Curettage 시술명 나857나 자궁내막조직생검-단순소파생검 C8574 나857다 자궁내막조직생검-자궁경내소파술 C8575 나857라 자궁내막조직생검-구획소파생검 C8572 [PDF_PAGE=884 PRINTED_PAGE=858] 13 N15 여성생식기계질환을위한진단적수술 (N) DIAGNOSTIC PROCEDURES FOR FEMALE REPRODUCTIVE SYSTEM DISEASES"
+      },
+      {
+        "adrg": "O120",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 316,
+        "source_table_ids": [
+          "LT_O120_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=927 PRINTED_PAGE=901] O12 자궁소파술및흡인소파술 D&C AND ASPIRATION CURETTAGE 시술명 자444가 계류유산소파술-12주미만 R4441 자444나 계류유산소파술-12주이상 R4442 자445가 인공임신중절수술[임신8주이내] R4452 자445나 인공임신중절수술[임신8주초과-12주미만] R4456 자445다 인공임신중절수술[임신12주이상-16주미만] R4457 자445라 인공임신중절수술[임신16주이상-20주미만] R4458 자445마 인공임신중절수술[임신20주이상] R4459 자452 자궁소파수술 R4521"
+      },
+      {
+        "adrg": "O630",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 256,
+        "source_table_ids": [
+          "LT_O630_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=933 PRINTED_PAGE=907] O63 가성분만 FALSE LABOUR 주진단명 MDC 14 O470 False labour before 37 completed weeks of gestation gestation (O) O471 False labour at or after 37 completed weeks of O479 False labour, unspecified O64 기타산전질환 OTHER ANTEPARTUM DISEASES"
+      },
+      {
+        "adrg": "R640",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_R640_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1055 PRINTED_PAGE=1029] R64 악성종양의병력 HISTORY OF MALIGNANT NEOPLASMS 주진단명 Z850 Personal history of malignant neoplasm of digestive respiratory and intrathoracic organs organs Z853 Personal history of malignant neoplasm of breast Z851 Personal history of malignant neoplasm of trachea, Z854 Personal history of malignant neoplasm of genital bronchus and lung organs Z852 Personal history of malignant neoplasm of other Z855 Personal history of malignant neoplasm of urinary tract [PDF_PAGE=105 …"
+      },
+      {
+        "adrg": "T610",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 178,
+        "source_table_ids": [
+          "LT_T610_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1098 PRINTED_PAGE=1072] T61 수술및외상후감염 POSTOPERATIVE AND POST TRAUMATIC INFECTIONS 주진단명 T793 Post-traumatic wound infection, NEC T814 Infection following a procedure, NEC"
+      },
+      {
+        "adrg": "T632",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 375,
+        "source_table_ids": [
+          "LT_T632_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1099 PRINTED_PAGE=1073] T6321 헤르페스바이러스질환, 연령≤18세 Herpesviral Diseases, Age ≤18 T6322 헤르페스바이러스질환, 연령>18세 Herpesviral Diseases, Age >18 주진단명 B007 Disseminated herpesviral disease B019 Varicella without complication B008 Other forms of herpesviral infection B027 Disseminated zoster B018 Varicella with other complications B028 Zoster with other complications MDC 18-2"
+      },
+      {
+        "adrg": "T633",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 330,
+        "source_table_ids": [
+          "LT_T633_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1099 PRINTED_PAGE=1073] T6331 인플루엔자, 연령≤18세 (T) Influenza, Age ≤18 T6332 인플루엔자, 연령>18세 Influenza, Age >18 주진단명 J09 Influenza due to identified zoonotic or pandemic influenza virus identified influenza virus J118 Influenza with other manifestations, virus not J108 Influenza with other manifestations, seasonal identified"
+      },
+      {
+        "adrg": "U010",
+        "status": "RESOLVED_AST",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 153,
+        "source_table_ids": [],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1114 PRINTED_PAGE=1088] U01 정신장애치료목적의수술 OR PROCEDURES FOR MENTAL DISORDERS OR Procedure U60 기질성장애및정신지연 ORGANIC DISORDERS AND MENTAL RETARDATION"
+      },
+      {
+        "adrg": "U602",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_U602_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1115 PRINTED_PAGE=1089] U6021 치매, 연령<65세 Dementia, Age <65 U6022 치매, 연령≥65세 Dementia, Age ≥65 주진단명 F000 Dementia in Alzheimer’s disease with early F018 Other vascular dementia onset(G30.0†) F019 Vascular dementia, unspecified F001 Dementia in Alzheimer’s disease with late F020 Dementia in Pick’s disease(G31.00†) onset(G30.1†) F021 Dementia in Creutzfeldt-Jakob disease(A81.0†) F002 Dementia in Alzheimer’s disease, atypical or mixed F022 Dementia in Huntington’s disease(G10†) type(G30.8† …"
+      },
+      {
+        "adrg": "U610",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_U610_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1116 PRINTED_PAGE=1090] U61 조현병및망상장애 SCHIZOPHRENIA AND DELUSIONAL DISORDERS U6101 조현병및망상장애, 연령<65세 Schizophrenia and Delusional Disorders, Age <65 U6102 조현병및망상장애, 연령≥65세 Schizophrenia and Delusional Disorders, Age ≥65 주진단명 F200 Paranoid schizophrenia F220 Delusional disorder F201 Hebephrenic schizophrenia F228 Other persistent delusional disorders F202 Catatonic schizophrenia F229 Persistent delusional disorder, unspecified F203 Undifferentiated schizophrenia F24 Induced delusional dis …"
+      },
+      {
+        "adrg": "U660",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_U660_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1118 PRINTED_PAGE=1092] U66 섭식장애및강박장애 (U) EATING AND OBSESSIVE-COMPULSIVE DISORDERS U6601 섭식장애및강박장애, 연령≤18세 Eating and Obsessive-Compulsive Disorders, Age ≤18 U6602 섭식장애및강박장애, 연령>18세 Eating and Obsessive-Compulsive Disorders, Age >18 주진단명 F420 Predominantly obsessional thoughts or ruminations F503 Atypical bulimia nervosa F421 Predominantly compulsive acts [obsessional rituals] F504 Overeating associated with other psychological F422 Mixed obsessional thoughts and acts disturbances F42 …"
+      },
+      {
+        "adrg": "U680",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_U680_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1119 PRINTED_PAGE=1093] U68 스트레스반응및기타정신장애 STRESS REACTION AND OTHER PSYCHIATRIC DISORDERS 주진단명 F430 Acute stress reaction R442 Other hallucinations F431 Post-traumatic stress disorder R443 Hallucinations, unspecified F432 Adjustment disorders R448 Other and unspecified symptoms and signs involving F438 Other reactions to severe stress general sensations and perceptions F439 Reaction to severe stress, unspecified R450 Nervousness F54 Psychological and behavioural factors associated R451 …"
+      },
+      {
+        "adrg": "V600",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 149,
+        "source_table_ids": [
+          "LT_V600_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1126 PRINTED_PAGE=1100] V60 알콜및약물남용과의존, 자의퇴원 ALCOHOL/DRUG ABUSE AND DEPENDENCE, DISCHARGE AGAINST MEDICAL ADVICE 부가코드 부가코드 부가코드 ADC6A 자의 퇴원"
+      },
+      {
+        "adrg": "W600",
+        "status": "RESOLVED_AST",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 176,
+        "source_table_ids": [],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1176 PRINTED_PAGE=1150] W60 다발성외상, 다른의료기관으로이송된경우(재원기간5일미만) MULTIPLE TRAUMA, TRANSFERRED TO ANOTHER ACUTE CARE FACILITY, LOS<5 DAYS 재원기간 < 5일 and (퇴원유형 = 다른 의료기관으로 이송)"
+      },
+      {
+        "adrg": "W610",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 85,
+        "source_table_ids": [],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1176 PRINTED_PAGE=1150] W61 수술을받지않은다발성외상 MULTIPLE TRAUMA WITHOUT PROCEDURES"
+      },
+      {
+        "adrg": "Y600",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 446,
+        "source_table_ids": [
+          "LT_Y600_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1252 PRINTED_PAGE=1226] Y60 중증화상(피부이식미동반) SEVERE BURNS WITHOUT SKIN GRAFT 주진단명 또는 기타진단명 T312 Burns involving 20-29％of body surface T316 Burns involving 60-69％of body surface T313 Burns involving 30-39％of body surface T317 Burns involving 70-79％of body surface T314 Burns involving 40-49％of body surface T318 Burns involving 80-89％of body surface T315 Burns involving 50-59％of body surface T319 Burns involving 90％or more of body surface"
+      },
+      {
+        "adrg": "Z010",
+        "status": "RESOLVED_AST",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 133,
+        "source_table_ids": [],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1270 PRINTED_PAGE=1244] Z01 기타보건의료서비스에관한수술 OR PROCEDURES WITH DIAGNOSES OF OTHER CONTACTS WITH HEALTH SERVICES OR procedure"
+      },
+      {
+        "adrg": "Z650",
+        "status": "TEXT_ONLY",
+        "flags": [
+          "PAGE_MARKER"
+        ],
+        "text_length": 502,
+        "source_table_ids": [
+          "LT_Z650_001"
+        ],
+        "user_table_ids": [],
+        "text_sample": "[PDF_PAGE=1279 PRINTED_PAGE=1253] Z65 기타및상세불명의선천적이상 OTHER AND UNSPECIFIED CONGENITAL ANOMALIES 주진단명 P350 Congenital rubella syndrome Q875 Other congenital malformation syndromes with other Q861 Fetal hydantoin syndrome skeletal changes Q862 Dysmorphism due to warfarin Q878 Other specified congenital malformation syndromes, Q868 Other congenital malformation syndromes due to NEC known exogenous causes Q894 Conjoined twins Q871 Congenital malformation syndromes predominantly Q897 Multiple congenit …"
+      }
+    ],
+    "count": 141,
+    "page_marker_ids": [
+      "9630",
+      "B082",
+      "B130",
+      "B201",
+      "B530",
+      "B662",
+      "B670",
+      "B780",
+      "B800",
+      "D031",
+      "D090",
+      "D150",
+      "D161",
+      "D162",
+      "D180",
+      "D610",
+      "D640",
+      "D700",
+      "D720",
+      "D730",
+      "D740",
+      "D750",
+      "D760",
+      "D800",
+      "E020",
+      "E550",
+      "E600",
+      "E630",
+      "E640",
+      "E650",
+      "E660",
+      "E730",
+      "E742",
+      "E743",
+      "E760",
+      "F033",
+      "F240",
+      "F610",
+      "F620",
+      "F630",
+      "F640",
+      "F662",
+      "F680",
+      "F770",
+      "G190",
+      "G230",
+      "G300",
+      "G650",
+      "G660",
+      "G672",
+      "H520",
+      "I050",
+      "I240",
+      "I600",
+      "I610",
+      "J100",
+      "J600",
+      "J670",
+      "K080",
+      "K670",
+      "K720",
+      "L010",
+      "L120",
+      "L520",
+      "L530",
+      "M610",
+      "N110",
+      "N130",
+      "N142",
+      "O120",
+      "O630",
+      "R640",
+      "T610",
+      "T632",
+      "T633",
+      "U010",
+      "U602",
+      "U610",
+      "U660",
+      "U680",
+      "V600",
+      "W600",
+      "W610",
+      "Y600",
+      "Z010",
+      "Z650"
+    ],
+    "long_raw_ids": [],
+    "J600": {
+      "adrg": "J600",
+      "status": "TEXT_ONLY",
+      "flags": [
+        "PAGE_MARKER"
+      ],
+      "text_length": 502,
+      "source_table_ids": [
+        "LT_J600_001"
+      ],
+      "user_table_ids": [],
+      "text_sample": "[PDF_PAGE=741 PRINTED_PAGE=715] J60 피부궤양 SKIN ULCERS J6001 피부궤양, 연령<65세 Skin Ulcers, Age <65 J6002 피부궤양, 연령≥65세 MDC Skin Ulcers, Age ≥65 09 주진단명 (J) L890 Stage I decubitus ulcer and pressure area L899 Decubitus ulcer and pressure area, unspecified L891 Stage II decubitus ulcer and pressure area L97 Ulcer of lower limb, NEC L892 Stage III decubitus ulcer and pressure area L984 Chronic ulcer of skin, NEC L893 Stage IV decubitus ulcer and pressure area [PDF_PAGE=742 PRINTED_PAGE=716] J61 악성피부질환 MAL …"
+    }
+  },
+  "stage58_ambiguous_count": 0,
+  "stage58_ambiguous_still_residual": [],
+  "mdc_principal_condition_cases": [
+    {
+      "adrg": "9630",
+      "matches": [
+        {
+          "mdc": "15",
+          "text": "[PDF_PAGE=84 PRINTED_PAGE=58] 963 연령/체중과일치하지않는신생아진단 NEONATAL DIAGNOSIS NOT CONSISTENT WITH AGE/WEIGHT MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        },
+        {
+          "mdc": "15",
+          "text": "[PDF_PAGE=84 PRINTED_PAGE=58] 963 연령/체중과일치하지않는신생아진단 NEONATAL DIAGNOSIS NOT CONSISTENT WITH AGE/WEIGHT MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year"
+        }
+      ]
+    }
+  ],
+  "ui_table_exposure": {
+    "search_result_TABLE_count": true,
+    "code_detail_linked_TABLE": true,
+    "code_detail_included_TABLE": true,
+    "TABLE_technical_detail_button": true,
+    "standalone_TABLE_detail_renderer": true
+  },
+  "downstream_contract_scan": {
+    "old_procedure_filename": [],
+    "old_correction_filename": [],
+    "old_procedure_sha": [],
+    "old_correction_sha": [],
+    "expected_2790": [
+      {
+        "path": "data/kdrg_v47_search_integrated.json",
+        "occurrences": 9
+      },
+      {
+        "path": "data/kdrg_v47_search_integrated_v3.json",
+        "occurrences": 26
+      }
+    ],
+    "expected_2713": [
+      {
+        "path": "data/kdrg_v47_search_integrated.json",
+        "occurrences": 15
+      },
+      {
+        "path": "data/kdrg_v47_search_integrated_v3.json",
+        "occurrences": 18
+      }
+    ],
+    "expected_patch_24": [],
+    "expected_source_change_18": [],
+    "old_expected_current_only_set": []
+  },
+  "blockers": [
+    "현재 F022 table6(M6586 보유) 대상 TABLE 식별 실패",
+    "현재 P020(M6586 보유) 대상 TABLE 식별 실패"
+  ],
+  "safety": {
+    "head_unchanged": true,
+    "operating_json_unchanged": true,
+    "tracked_diff_after": "",
+    "staged_after": ""
+  }
+}

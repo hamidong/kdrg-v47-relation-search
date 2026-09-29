@@ -1,0 +1,122 @@
+{
+  "script_version": "2026-09-08_KDRG_V47_ELECTRON_STAGE50B_VALIDATOR_V9_AADRG_PUBLIC",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "운영 JSON 존재",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "운영 JSON SHA256",
+      "actual": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+      "expected": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+      "passed": true
+    },
+    {
+      "name": "ADRG count",
+      "actual": 1132,
+      "expected": 1132,
+      "passed": true
+    },
+    {
+      "name": "AADRG count",
+      "actual": 1233,
+      "expected": 1233,
+      "passed": true
+    },
+    {
+      "name": "CODE count",
+      "actual": 16571,
+      "expected": 16571,
+      "passed": true
+    },
+    {
+      "name": "MDC master count",
+      "actual": 26,
+      "expected": 26,
+      "passed": true
+    },
+    {
+      "name": "dual-role contract",
+      "actual": 60,
+      "expected": 60,
+      "passed": true
+    },
+    {
+      "name": "Node runtime",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-skeleton.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-search.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-smoke.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-electron-skeleton.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-search-service.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "0.5.17 exact public-ID runtime probe",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "outputs": {
+    "tests/validate-stage59b-skeleton.js": {
+      "returncode": 0,
+      "stdout": "stage59_skeleton: PASS version=0.5.18\n",
+      "stderr": ""
+    },
+    "tests/validate-stage59b-search.js": {
+      "returncode": 0,
+      "stdout": "stage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n",
+      "stderr": ""
+    },
+    "tests/validate-stage59b-smoke.js": {
+      "returncode": 0,
+      "stdout": "stage59_smoke: PASS\n",
+      "stderr": ""
+    },
+    "tests/validate-electron-skeleton.js": {
+      "returncode": 0,
+      "stdout": "stage59_skeleton: PASS version=0.5.18\n[PASS] Electron Stage 50C 보안 골격 검증: Stage59B/0.5.10 계약 호환\n",
+      "stderr": ""
+    },
+    "tests/validate-search-service.js": {
+      "returncode": 0,
+      "stdout": "stage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n[PASS] Electron Stage 50C 검색 service 호환성 검증: Stage59B/0.5.10 사용자 계약\n",
+      "stderr": ""
+    },
+    "runtime_probe": {
+      "returncode": 0,
+      "stdout": "[PASS] Stage50B 0.5.17 exact public-ID runtime contract\n",
+      "stderr": ""
+    }
+  }
+}

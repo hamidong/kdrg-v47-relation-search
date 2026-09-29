@@ -1,0 +1,40 @@
+[AUDIT] Stage70A R3 / 0.5.18 1차 UI 완료 전수감사
+base_commit=08b51f4fa487a3ae05c1e279aa1c533f9f3aed52
+base_version=0.5.17
+next_version=0.5.18
+gate_fail_count=3
+warning_count=0
+
+[PASS] A01 공개 검색유형 전체·코드·ADRG | AADRG/RDRG/TABLE은 독립 공개 검색유형으로 되돌리지 않음
+[PASS] A02 0.5.17 exact public-ID 계약 유지 | CODE-only/ADRG-only/shared exact ID의 불필요 관계결과 차단
+[PASS] B01 일반 ADRG 검색결과 카드 질병군 분류 표시 | adrg_branch=True, abc_display_labels=True, badge_renderer=True
+[PASS] B02 CODE 검색결과에 단일 질병군 분류 오표시 없음 | CODE는 여러 ADRG와 연결될 수 있어 A/B/C 단일 라벨을 강제로 붙이지 않음
+[PASS] C01 복수코드 관계검색 카드 질병군 분류 존재 | 0.5.17에서 추가한 A/B/C label 유지
+[FAIL] C02 검색결과 질병군 분류 라벨 우측 정렬 CSS | 목표: 공통 result-card-classification을 우측 정렬. current_rule='.result-card-classification{\n  justify-self: end;\n  flex-wrap: nowrap;\n  margin-left: 4px;\n}\n.result-card-classification .classification-badge{\n  min-height: 26px;\n  gap: 4px;\n  padding: 3px 9px 3px 3px;\n  font-size: 10px;\n}\n.result-card-classification .classification-code{\n  min-width: 20px;\n  height: 20px;\n  font-size: 9px;\n}'
+[PASS] C03 일반검색·복수검색 공통 분류 라벨 class 사용 가능 | 70B에서는 두 경로 모두 동일한 우측 정렬 class로 통일
+[PASS] C04 복수검색 관계단계 라벨 유지 | 우측 이동 시 '같은 조건 선택지' 등 관계 chip은 제거하지 않음
+[PASS] D01 복수검색 상세 분류 조건·조건 상세 | canonical ADRG detail renderer 재사용 유지
+[PASS] D02 ADRG 상세 파생 AADRG 섹션 | 0.5.16에서 복원한 파생 AADRG 유지
+[PASS] D03 파생 AADRG 행별 질병군 분류 | display label 우선 + legacy fallback 유지
+[PASS] D04 ADRG 상세 순서 | 파생 AADRG → 분류 조건 → 조건 상세
+[PASS] D05 ADRG 상세 질병군 분류 표시 | 검색카드뿐 아니라 상세 분류도 유지
+[PASS] E01 검색결과 TABLE 개수/기술 노출 제거 | 검색카드는 사용자용 CODE/ADRG 정보만 표시
+[PASS] E02 CODE 상세 연결/포함 TABLE 상단 노출 제거 | TABLE 데이터 자체는 삭제하지 않고 조건 상세에서 필요 시 사용
+[PASS] E03 분류조건 실제 코드집합 펼침 유지 | table1/table2/table3 코드집합 개념은 사용자 검증용으로 유지
+[PASS] E04 ADRG 기본 UI 내부 기술 metadata 숨김 | LT_* / parser / AST family metadata 기본노출 금지
+[FAIL] F01 MDC 번호+명칭 표시 | helper=True, result=False, detail=False
+[PASS] F02 분류조건 요약과 조건상세 분리 | 상단 이해용 / 하단 검증용
+[PASS] F03 뒤로가기 검색·스크롤 상태 복원 | required=('historyStack', 'restoreScroll', 'restoreWindowScroll')
+[PASS] F04 질병군 분류 필터 유지 | 일반 ADRG 카드 표시 추가 후 필터 계약도 회귀하지 않아야 함
+[FAIL] G01 ADRG 1,132건 검색카드용 질병군 분류 데이터 가용성 | total=1132, displayArray=1117, fallbackOnly=0, noDisplay=15, multiLabel=7, missing=['9900', '9990', 'D014', 'G241', 'G242', 'G650', 'K630', 'K720', 'K730', 'R634', 'R635', 'R636', 'R637', 'R671', 'R672']
+[PASS] G02 기존 질병군 badge CSS 재사용 가능 | 새 badge 디자인을 만들지 않고 기존 A/B/C 디자인 재사용
+
+target_general_adrg_classification=RIGHT_ALIGNED
+target_relation_classification=RIGHT_ALIGNED
+relation_level_chip=PRESERVE
+runtime_json=UNCHANGED
+tracked_files=UNCHANGED
+staging=EMPTY
+readiness=READY_FOR_70B_GENERALIZED_UI_FIX_SHADOW
+report=reports/stage70a_0518_phase1_ui_completion_audit_r3/audit_summary.txt
+json=reports/stage70a_0518_phase1_ui_completion_audit_r3/audit.json

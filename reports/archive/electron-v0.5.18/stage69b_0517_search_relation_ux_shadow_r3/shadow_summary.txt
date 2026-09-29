@@ -1,0 +1,2 @@
+[FAIL] Stage69B R3 / 0.5.17 Search + Relation UX Shadow
+Stop: 0.5.16 search-service SHA 불일치

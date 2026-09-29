@@ -1,0 +1,49 @@
+{
+  "stage": "72A_0519_RELATION_RESULT_LAYOUT_AUDIT_R1",
+  "status": "PASS",
+  "mutated": false,
+  "head": "1bd70d50c85305e2ff64ebb0a17ec619719e8a40",
+  "origin_main": "1bd70d50c85305e2ff64ebb0a17ec619719e8a40",
+  "tag": "electron-v0.5.18",
+  "package_version": "0.5.18",
+  "runtime_json": "UNCHANGED",
+  "tracked": "CLEAN",
+  "staging": "EMPTY",
+  "findings": {
+    "card_has_relation_level_chip_top_right": true,
+    "card_appends_classification_in_chip_row": false,
+    "card_top_right_classification_group": true,
+    "header_same_choice_exists": false,
+    "header_same_choice_emphasis_rule": false,
+    "general_result_top_right_classification": true
+  },
+  "targets": {
+    "T01_relation_card_top_right_should_show_classification_not_relation_level": false,
+    "T02_relation_card_lower_old_classification_slot_should_be_removed": true,
+    "T03_relation_context_should_move_to_header_summary": false,
+    "T04_header_same_choice_summary_should_be_more_prominent": false,
+    "T05_runtime_json_must_remain_unchanged": true,
+    "T06_public_search_types_policy_must_remain_preserved": true
+  },
+  "pass_count": 3,
+  "fail_count": 3,
+  "fail_targets": [
+    "T01_relation_card_top_right_should_show_classification_not_relation_level",
+    "T03_relation_context_should_move_to_header_summary",
+    "T04_header_same_choice_summary_should_be_more_prominent"
+  ],
+  "requested_scope": [
+    "복수검색 결과 카드 우상단의 '같은 조건 선택지' chip을 제거하고 질병군 분류 badge로 대체",
+    "복수검색 결과 카드 하단/좌측에 별도로 보이던 분류 badge 중복 노출 제거",
+    "검색결과 4건 우측 summary 영역의 '같은 선택지 4'를 더 크게 하고 공통 관련 ADRG 의미가 드러나게 강화",
+    "운영 JSON 및 공개 검색정책은 변경하지 않음"
+  ],
+  "candidate_product_files": [
+    "electron/renderer/app.js",
+    "electron/renderer/styles.css"
+  ],
+  "candidate_validator_files": [
+    "electron/tests/validate-stage72b-0519-relation-result-layout.js"
+  ],
+  "readiness": "READY_FOR_72B_GENERALIZED_SHADOW_FIX"
+}

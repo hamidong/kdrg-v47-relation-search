@@ -1,0 +1,111 @@
+KDRG V4.7 Electron Stage67I1 / 0.5.15 Packaged UI ADRG Fixture Repair Shadow R2
+====================================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_PACKAGED_UI_FIXTURE_ACTUAL_APPLY
+
+[PREFLIGHT]
+{
+  "diagnosis": {
+    "run_id": 35695541913,
+    "head_sha": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "failure": "packaged_ui_validation",
+    "message": "B018 result ready timeout: 30000ms",
+    "core_runtime_steps_completed": true,
+    "diagnostic_gate": "SEMANTIC_MULTI_SOURCE",
+    "live_log_used": false
+  },
+  "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "branch": "main",
+  "package_version": "0.5.15",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "source_before_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+  "validator_before_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+  "base_tag_immutable": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[SEARCH CONTRACT DIAGNOSTIC]
+{}
+
+[SHADOW BUILD]
+{}
+
+[SOURCE REPAIR]
+{}
+
+[VALIDATOR REPAIR]
+{}
+
+[DELTA AUDIT]
+{}
+
+[VALIDATION]
+
+[VALIDATION SUMMARY]
+{}
+
+[FINAL ACTUAL GUARD]
+{}
+
+[APPLY MANIFEST]
+{
+  "path": "/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_apply_manifest_r2.json",
+  "apply_file_count": null,
+  "repair_contract": null
+}
+
+[BLOCKER]
+StageError: public ADRG query diagnostic failed:
+[eval]:28
+    throw new Error(`public ADRG exact query failed: ${item.adrg}`);
+    ^
+
+Error: public ADRG exact query failed: B018
+    at [eval]:28:11
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at evalScript (node:internal/process/execution:133:3)
+    at node:internal/main/eval_string:51:3
+
+Node.js v20.20.0
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R2.py", line 873, in main
+    payload["search_contract"] = confirm_search_contract()
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R2.py", line 377, in confirm_search_contract
+    require(result["returncode"] == 0,
+  File "/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R2.py", line 119, in require
+    raise StageError(message)
+StageError: public ADRG query diagnostic failed:
+[eval]:28
+    throw new Error(`public ADRG exact query failed: ${item.adrg}`);
+    ^
+
+Error: public ADRG exact query failed: B018
+    at [eval]:28:11
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at evalScript (node:internal/process/execution:133:3)
+    at node:internal/main/eval_string:51:3
+
+Node.js v20.20.0
+
+
+
+[NEXT]
+- PASS이면 RC 실패원인인 packaged UI fixture의 ADRG query 계약이 Shadow에서 수정·전수검증된 상태.
+- 다음 Stage67I2에서 manifest의 2개 파일만 Actual에 적용하고 전체 Actual 검증.
+- 그 다음 별도 fix commit/push 후 새 workflow_dispatch RC 실행.
+- 새 RC success 전에는 electron-v0.5.15 tag/release 금지.
+
+shadow_root=/home/runner/workspace/reports/stage67i1_0515_packaged_ui_adrg_fixture_shadow_r2
+report_txt=/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_shadow_r2.txt
+report_json=/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_shadow_r2.json
+apply_manifest=/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_apply_manifest_r2.json

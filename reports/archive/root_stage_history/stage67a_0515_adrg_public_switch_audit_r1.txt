@@ -1,0 +1,1115 @@
+KDRG V4.7 Electron Stage67A / 0.5.15 ADRG Public-Switch Full Audit R1
+============================================================================================================
+status=PASS
+readiness=READY_FOR_0515_ADRG_SHADOW_DESIGN
+
+[FIXED POLICY]
+- Public primary entity: ADRG
+- Public search types: ALL / CODE / ADRG
+- AADRG public primary presentation: HIDDEN
+- AADRG data and relations: PRESERVE (do not delete)
+- Real ADRG relations only; no AADRG-code truncation shortcut
+
+[PREFLIGHT]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "base_tag": "electron-v0.5.14",
+  "base_tag_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "package_version": "0.5.14",
+  "next_version": "0.5.15",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "staging_empty": true,
+  "tracked_worktree_clean": true
+}
+
+[SOURCE SUMMARY]
+{
+  "tracked_text_files_scanned": 102,
+  "files_with_adrg_or_aadrg": 66,
+  "total_aadrg_token_count": 29521,
+  "total_adrg_token_count": 26432,
+  "category_token_counts": {
+    "DATA": 54185,
+    "OTHER": 328,
+    "PUBLIC_RUNTIME_UI": 352,
+    "SEARCH_SERVICE": 791,
+    "TEST_VALIDATOR": 297
+  },
+  "public_aadrg_candidate_count": 145,
+  "relation_candidate_count": 450,
+  "test_candidate_count": 270
+}
+
+[TOP FILES]
+- DATA              AADRG=14351 ADRG=11336 data/kdrg_v47_search_integrated_v3.json
+- DATA              AADRG=14349 ADRG=10974 data/kdrg_v47_search_integrated.json
+- SEARCH_SERVICE    AADRG= 343 ADRG= 181 legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json
+- PUBLIC_RUNTIME_UI AADRG=  49 ADRG=  46 electron/renderer/app.js
+- PUBLIC_RUNTIME_UI AADRG=  43 ADRG=  93 electron/src/kdrg-search-service.js
+- PUBLIC_RUNTIME_UI AADRG=  40 ADRG=  37 electron/src/packaged-runtime-smoke.js
+- SEARCH_SERVICE    AADRG=  31 ADRG=  88 legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py
+- SEARCH_SERVICE    AADRG=  31 ADRG=  61 app/kdrg_search_service.py
+- DATA              AADRG=  27 ADRG=  10 data/kdrg_v47_ui_fixture.json
+- TEST_VALIDATOR    AADRG=  25 ADRG=   4 electron/tests/validate-stage59b-ui.js
+- DATA              AADRG=  20 ADRG=  21 data/kdrg_v47_pilot_schema_v2.json
+- OTHER             AADRG=  19 ADRG=  54 app/runtime_data_store.py
+- TEST_VALIDATOR    AADRG=  16 ADRG=  21 electron/tests/validate-packaged-runtime-smoke.js
+- TEST_VALIDATOR    AADRG=  14 ADRG=  20 tests/smoke_test_kdrg_search_service.py
+- OTHER             AADRG=  13 ADRG=  62 app/main_window.py
+- OTHER             AADRG=  12 ADRG=  33 app/data_store.py
+- PUBLIC_RUNTIME_UI AADRG=  12 ADRG=   2 electron/renderer/styles.css
+- TEST_VALIDATOR    AADRG=  11 ADRG=   3 50C_validate_kdrg_electron_renderer_ui.py
+- PUBLIC_RUNTIME_UI AADRG=   9 ADRG=   7 electron/renderer/ui-formatters.js
+- TEST_VALIDATOR    AADRG=   9 ADRG=   3 electron/tests/validate-stage60c-packaged-relation-smoke.js
+- TEST_VALIDATOR    AADRG=   8 ADRG=  24 tests/windows_runtime_source_smoke.py
+- PUBLIC_RUNTIME_UI AADRG=   8 ADRG=   1 electron/renderer/index.html
+- TEST_VALIDATOR    AADRG=   7 ADRG=   2 50D_validate_kdrg_electron_windows_packaging.py
+- TEST_VALIDATOR    AADRG=   6 ADRG=  44 tests/test_schema_v2_semantics.py
+- SEARCH_SERVICE    AADRG=   6 ADRG=   2 legacy_reference/special_case_registry_v16_mdc_advanced_search_1784091673826.txt
+- OTHER             AADRG=   5 ADRG=  16 scripts/build_kdrg_v47_stage59_0510.py
+- OTHER             AADRG=   5 ADRG=  15 tools/convert_pilot_v1_to_v2.py
+- TEST_VALIDATOR    AADRG=   5 ADRG=   7 tests/validate_fixture.py
+- SEARCH_SERVICE    AADRG=   5 ADRG=   2 50B_validate_kdrg_electron_search_service.py
+- OTHER             AADRG=   5 ADRG=   2 app/models.py
+- OTHER             AADRG=   5 ADRG=   2 app/schema_v2_adapter.py
+- TEST_VALIDATOR    AADRG=   4 ADRG=   9 electron/tests/validate-stage59b-search.js
+- OTHER             AADRG=   2 ADRG=  25 electron/scripts/verify-windows-portable.ps1
+- SEARCH_SERVICE    AADRG=   2 ADRG=  20 legacy_reference/validate_kdrg_v16_mdc_advanced_search_1784091673827.py
+- SEARCH_SERVICE    AADRG=   2 ADRG=   9 legacy_reference/TEST_GUIDE_v16_mdc_advanced_search_1784091673826.md
+- OTHER             AADRG=   2 ADRG=   5 sources/SOURCE_MANIFEST.md
+- OTHER             AADRG=   2 ADRG=   3 docs/SOURCE_PRECEDENCE_V2.md
+- OTHER             AADRG=   2 ADRG=   2 docs/DATA_SCHEMA_V2.md
+- SEARCH_SERVICE    AADRG=   2 ADRG=   2 schemas/kdrg_relation_schema_v2.json
+- PUBLIC_RUNTIME_UI AADRG=   2 ADRG=   1 electron/src/search-result-contract.js
+- TEST_VALIDATOR    AADRG=   2 ADRG=   0 electron/tests/validate-stage59b-smoke.js
+- TEST_VALIDATOR    AADRG=   1 ADRG=  15 tests/test_schema_v2_source_integrity.py
+- TEST_VALIDATOR    AADRG=   1 ADRG=  10 tests/validate_schema_v2.py
+- OTHER             AADRG=   1 ADRG=   6 README.md
+- TEST_VALIDATOR    AADRG=   1 ADRG=   5 tests/smoke_test_runtime_ui_bridge.py
+- OTHER             AADRG=   1 ADRG=   3 docs/SCHEMA_V2_MIGRATION_NOTES.md
+- OTHER             AADRG=   1 ADRG=   3 electron/README_STAGE50C.md
+- SEARCH_SERVICE    AADRG=   1 ADRG=   3 legacy_reference/README_kdrg_v16_mdc_advanced_search_1784091673825.txt
+- OTHER             AADRG=   1 ADRG=   2 app/dialogs.py
+- OTHER             AADRG=   1 ADRG=   1 electron/README_STAGE50B.md
+- PUBLIC_RUNTIME_UI AADRG=   1 ADRG=   1 electron/src/bootstrap-data.js
+- DATA              AADRG=   0 ADRG=2081 data/kdrg_v47_ui_display_contract.json
+- DATA              AADRG=   0 ADRG=1005 data/kdrg_v47_ui_semantic_profile.json
+- DATA              AADRG=   0 ADRG=  11 data/special_case_registry_v47_v2.json
+- TEST_VALIDATOR    AADRG=   0 ADRG=  10 electron/tests/run-search-parity.js
+- OTHER             AADRG=   0 ADRG=   5 electron/README_STAGE51C.md
+- TEST_VALIDATOR    AADRG=   0 ADRG=   5 tests/verify_release_readiness.py
+- OTHER             AADRG=   0 ADRG=   4 legacy_reference/smoke_test_kdrg_v16_gui_1784091673826.py
+- TEST_VALIDATOR    AADRG=   0 ADRG=   4 tests/smoke_test_ui.py
+- OTHER             AADRG=   0 ADRG=   2 BUILD_AND_RELEASE.md
+- OTHER             AADRG=   0 ADRG=   2 main.py
+- OTHER             AADRG=   0 ADRG=   1 app/styles.py
+- OTHER             AADRG=   0 ADRG=   1 electron/README_STAGE51D_WINDOWS_UI.md
+- TEST_VALIDATOR    AADRG=   0 ADRG=   1 electron/tests/validate-packaging-config.js
+- OTHER             AADRG=   0 ADRG=   1 legacy_reference/NOTE.md
+- OTHER             AADRG=   0 ADRG=   1 schemas/condition_expression_schema_v2.json
+
+[PUBLIC AADRG CANDIDATES]
+50B_validate_kdrg_electron_search_service.py:54 | if(JSON.stringify(s.status().public_search_types)!==JSON.stringify(['CODE','AADRG'])) throw new Error('public types');
+50B_validate_kdrg_electron_search_service.py:62 | const p=s.getDetail('AADRG','P6510').detail;
+50B_validate_kdrg_electron_search_service.py:63 | if(p.adrg!=='P651'||!p.parent_adrg_detail||!('condition_ast' in p)) throw new Error('AADRG inherited condition');
+50C_validate_kdrg_electron_renderer_ui.py:42 |     check("공개 AADRG 검색옵션",'<option value="AADRG">AADRG</option>' in html,True)
+50C_validate_kdrg_electron_renderer_ui.py:48 |     check("CODE 상세 AADRG 중심","function renderCodeDetail" in app and "'관련 AADRG'" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:51 |     check("AADRG 상세 조건상속","renderAadrgDetail" in app and "renderUserConditionSummary(detail)" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:52 |     check("formatter public type","const ordered = ['CODE', 'AADRG'];" in fmt,True)
+50C_validate_kdrg_electron_renderer_ui.py:53 |     check("relation AADRG 중심","makeBadge('AADRG')" in app,True)
+50D_validate_kdrg_electron_windows_packaging.py:149 |     check("사용자 검색 유형 CODE·AADRG",'<option value="CODE">코드</option>' in html and '<option value="AADRG">AADRG</option>' in html and '<option value="ADRG">ADRG</option>' not in html,True)
+50D_validate_kdrg_electron_windows_packaging.py:151 |     check("AADRG 사용자 결과","makeBadge('AADRG')" in app and "renderAadrgDetail" in app,True)
+50D_validate_kdrg_electron_windows_packaging.py:152 |     check("CODE 상세 관련 AADRG","'관련 AADRG'" in app,True)
+app/kdrg_search_service.py:13 | ENTITY_TYPES = ("CODE", "ADRG", "AADRG", "RDRG", "TABLE")
+app/kdrg_search_service.py:166 |                 elif entity_type == "AADRG":
+app/kdrg_search_service.py:372 |             subtitle = f"MDC {row.get('mdc', '-')} · AADRG {row.get('aadrg_count', 0)}개"
+app/kdrg_search_service.py:373 |         elif entity_type == "AADRG":
+app/kdrg_search_service.py:374 |             title = f"{row.get('aadrg', '')} · {row.get('group_name', '')}".strip(" ·")
+app/kdrg_search_service.py:379 |             subtitle = f"AADRG {row.get('aadrg', '-')} · {row.get('severity_name') or '중증도 명칭 없음'}"
+app/kdrg_search_service.py:513 |         if entity_type in {"ADRG", "AADRG"}:
+app/kdrg_search_service.py:528 |         if entity_type == "AADRG":
+app/kdrg_search_service.py:598 |         if entity_type == "AADRG":
+electron/renderer/app.js:24 |   AADRG: 'badge-aadrg',
+electron/renderer/app.js:234 |   for (const type of ['CODE', 'AADRG']) { const count = Number(typeCounts[type] ?? 0); if (!count) continue; const chip = makeChip(`${Ui.entityLabel(type)} ${Ui.formatNumber(count)}`, 'type-count-chip'); chip.dataset.entityType = type; container.append(chip); }
+electron/renderer/app.js:279 |     if (String(result.entity_type ?? '').toUpperCase() === 'AADRG') {
+electron/renderer/app.js:328 |   setText('result-caption', response.total_count ? `${response.operator} 관계검색 · AADRG 사용자 단위` : '입력 코드가 연결되는 AADRG 조건식을 찾지 못했습니다.');
+electron/renderer/app.js:332 |     const key = `RELATION:${result.entity_id}:${index}`; const button = create('button', `result-card relation-result-card relation-${result.relation_level}`); button.type = 'button'; button.dataset.relationIndex = String(index); button.dataset.resultKey = key; button.setAttribute('aria-label', `관계검색 AADRG ${result.entity_id} ${result.relation_level_label}`); button.setAttribute('aria-pressed', String(state.selectedKey === key));
+electron/renderer/app.js:333 |     const main = create('div', 'result-card-main'); main.append(makeBadge('AADRG'), create('strong', 'result-title', result.title), makeChip(result.relation_level_label, `relation-${result.relation_level}-chip result-match-chip`));
+electron/renderer/app.js:349 |   const header = create('div', 'detail-primary detail-hero relation-detail-primary'); header.append(makeBadge('AADRG')); const copy = create('div'); copy.append(create('h2', '', candidate.title), create('p', '', `${candidate.relation_level_label} · ${candidate.matched_count}/${candidate.total_count} 코드 연결`)); header.append(copy);
+electron/renderer/app.js:350 |   const openAadrg = create('button', 'secondary-button relation-open-aadrg', 'AADRG 상세 보기'); openAadrg.type = 'button'; openAadrg.dataset.entityType = 'AADRG'; openAadrg.dataset.entityId = candidate.entity_id; header.append(openAadrg); panel.append(header);
+electron/renderer/app.js:352 |   panel.append(makeMetaGrid([['AADRG', candidate.entity_id], ['상위 ADRG', candidate.parent_adrg || '-'], ['MDC', candidate.summary?.mdc ? mdcDisplayText(candidate.summary.mdc, candidate.summary?.mdc_name) : '-'], ['질병군 분류', makeClassificationBadgeGroup([candidate.summary?.classification_code || candidate.summary?.classification_display_label])], ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`]], 'detail-overview-grid'));
+electron/renderer/app.js:354 |   setText('detail-heading', '복수 코드 관계 상세'); setText('detail-caption', `AADRG ${candidate.entity_id}`); setDetailFoldActions(true); updateBackButton();
+electron/renderer/app.js:1062 |     clearDetail('AADRG 관계검색 결과를 선택하면 상세 연결이 표시됩니다.');
+electron/renderer/app.js:1168 |     const row = create('button', 'derived-aadrg-row');
+electron/renderer/app.js:1170 |     row.dataset.entityType = 'AADRG';
+electron/renderer/app.js:1174 |       `AADRG ${record.entity_id || ''} ${String(record.title || '')}`.trim(),
+electron/renderer/app.js:1178 |       makeBadge('AADRG'),
+electron/renderer/app.js:1225 |       ['AADRG', `${Ui.formatNumber(detail.aadrg_count ?? 0)}개`],
+electron/renderer/app.js:1245 |   const aadrgSection = makeSection('파생 AADRG', 'ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.', { open: false, count: (detail.aadrg_records ?? []).length });
+electron/renderer/app.js:1259 |   const detail = payload.detail; const fragment = document.createDocumentFragment(); fragment.append(makeMetaGrid([['AADRG', detail.aadrg], ['질병군명', detail.group_name], ['상위 ADRG', detail.adrg], ['MDC', mdcDisplayText(detail.mdc, detail.mdc_name)], ['질병군 분류', makeClassificationBadgeGroup([detail.classification_code || detail.classification_display_label])]], 'detail-overview-grid'));
+electron/renderer/app.js:1271 |       ['상위 AADRG', detail.aadrg],
+electron/renderer/app.js:1282 |   const detail = payload.detail; const fragment = document.createDocumentFragment(); fragment.append(makeMetaGrid([['코드', detail.code], ['코드명', Ui.summarizeList(detail.names)], ['코드 역할', Ui.summarizeList((detail.roles ?? []).map(Ui.roleLabel))], ['관련 AADRG', `${Ui.formatNumber((detail.related_aadrg_summaries ?? []).length)}개`]], 'detail-overview-grid'));
+electron/renderer/app.js:1283 |   const aadrgs = makeSection('관련 AADRG', '이 코드와 직접 연결되는 사용자 질병군입니다.', { open: true, count: (detail.related_aadrg_summaries ?? []).length }); aadrgs.classList.add('related-aadrg-section'); aadrgs.append(renderDerivedAadrgList(detail.related_aadrg_summaries)); fragment.append(aadrgs); return fragment;
+electron/renderer/app.js:1356 |         ? `AADRG ${Ui.formatNumber(detail.aadrg_count)}개`
+electron/renderer/app.js:1360 |   if (payload.entity_type === 'AADRG') {
+electron/renderer/app.js:1373 |       detail.aadrg ? `상위 AADRG ${detail.aadrg}` : '',
+electron/renderer/app.js:1393 |   if (payload.entity_type === 'AADRG') return `${detail.aadrg} · ${detail.group_name}`;
+electron/renderer/app.js:1424 |   else if (payload.entity_type === 'AADRG') content = renderAadrgDetail(payload);
+electron/renderer/app.js:1545 |   byId('relation-submit').textContent = isBusy ? '관계 검색 중' : '공통 관련 AADRG 검색';
+electron/renderer/app.js:1551 |   try { const response = await window.KDRG.relationSearch(request); if (sequence !== state.relationSequence) return; state.selectedKey = null; state.currentDetail = null; state.currentRelationIndex = null; renderRelationResults(response); setStatus('ready', `${Ui.formatNumber(response.total_count)}개 AADRG`, response.total_count ? response.disclaimer : '코드 유형·MDC·질병군 분류 또는 AND/OR 조건을 조정하세요.'); clearDetail(response.results.length ? 'AADRG 관계검색 결과를 선택하면 상세 연결이 표시됩니다.' : '복수 코드가 연결되는 AADRG 조건식을 찾지 못했습니다.'); }
+electron/renderer/app.js:1567 |   const query = String(request.query ?? '').trim(); if (!query) { byId('search-query').focus(); setStatus('error', '검색어를 입력해야 합니다.', '코드·AADRG 또는 질병군명을 입력하세요.'); return; }
+electron/renderer/app.js:1574 |   byId('search-form').reset(); populateMdcFilter(); state.response = null; state.request = null; state.selectedKey = null; state.relationResponse = null; state.currentDetail = null; state.currentRelationIndex = null; state.activeMode = 'search'; state.historyStack = []; byId('result-list').replaceChildren(); byId('type-counts').replaceChildren(); setText('result-count', '0건'); setText('result-caption', '검색어를 입력하면 결과가 표시됩니다.'); setText('page-label', '0–0 / 0'); byId('page-previous').disabled = true; byId('page-next').disabled = true; clearDetail(); setStatus('ready', '검색 준비', '코드·AADRG·질병군명 검색'); updateBackButton(); byId('search-query').focus();
+electron/renderer/index.html:41 |               placeholder="코드·AADRG·질병군명 입력"
+electron/renderer/index.html:51 |               <option value="AADRG">AADRG</option>
+electron/renderer/index.html:101 |           <summary>복수 코드 관계검색 <span>같은 분류조건의 AADRG 확인</span></summary>
+electron/renderer/index.html:120 |                   <button id="relation-submit" class="relation-primary-button" type="submit">공통 관련 AADRG 검색</button>
+electron/renderer/styles.css:195 | .badge-aadrg { color: #325f9f; background: #e9f1fc; }
+electron/renderer/styles.css:1200 | .derived-aadrg-list { display: grid; gap: 6px; }
+electron/renderer/styles.css:1313 | .related-aadrg-section > summary .section-title-row h3 { font-size:1.12rem; font-weight:800; }
+electron/src/kdrg-search-service.js:18 | const ENTITY_TYPES = Object.freeze(['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']);
+electron/src/kdrg-search-service.js:220 |       return [title, `MDC ${pythonFString(row.mdc, '-')} · AADRG ${pythonFString(row.aadrg_count, 0)}개`];
+electron/src/kdrg-search-service.js:222 |     if (entityType === 'AADRG') {
+electron/src/kdrg-search-service.js:223 |       const title = `${pythonFString(row.aadrg)} · ${pythonFString(row.group_name)}`.replace(/^[ ·]+|[ ·]+$/g, '');
+electron/src/kdrg-search-service.js:229 |       return [title, `AADRG ${pythonFString(row.aadrg, '-')} · ${row.severity_name || '중증도 명칭 없음'}`];
+electron/src/kdrg-search-service.js:258 |         } else if (entityType === 'AADRG') {
+electron/src/kdrg-search-service.js:887 |     if (entityType === 'ADRG' || entityType === 'AADRG') {
+electron/src/kdrg-search-service.js:903 |     if (entityType === 'AADRG') {
+electron/src/kdrg-search-service.js:977 |     if (entityType === 'AADRG') {
+electron/src/kdrg-search-service.js:1019 |     else if (typeName === 'AADRG') detail = this.aadrgDetail(row);
+electron/src/kdrg-search-service.js:1062 |       .filter((aadrg) => this.recordMaps.AADRG.has(normalizeEntityId(aadrg, 'AADRG')))
+electron/src/kdrg-search-service.js:1210 | const STAGE59B_PUBLIC_TYPES = Object.freeze(['CODE', 'AADRG']);
+electron/src/kdrg-search-service.js:1230 |       else if (entityType === 'AADRG') {
+electron/src/kdrg-search-service.js:1283 |     if (entityTypes.includes('AADRG')) for (const aadrg of uniqueStrings(exactCode.related_aadrgs ?? [])) add('AADRG', aadrg, 990, 'DIRECT_CODE_RELATION');
+electron/src/kdrg-search-service.js:1310 |   if (entityType === 'AADRG') {
+electron/src/kdrg-search-service.js:1332 |     for (const child of parent.aadrg_records ?? []) results.push({ ...clone(parent), entity_type: 'AADRG', entity_id: child.entity_id, title: child.title, subtitle: child.subtitle, parent_adrg: parent.entity_id, aadrg_records: undefined, summary: { ...(child.summary ?? {}), parent_adrg: parent.entity_id } });
+electron/src/kdrg-search-service.js:1336 |   return { ...raw, total_count: results.length, level_counts: levelCounts, results, disclaimer: '입력 코드가 같은 ADRG 조건식에 연결되는지를 내부 판정한 뒤 AADRG 사용자 단위로 표시합니다. 최종 DRG 판정을 의미하지 않습니다.' };
+electron/src/packaged-runtime-smoke.js:197 |     (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
+electron/src/packaged-runtime-smoke.js:206 |       'packaged AADRG relation response contract mismatch: empty results',
+electron/src/packaged-runtime-smoke.js:211 |     (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
+electron/src/packaged-runtime-smoke.js:225 |         `packaged AADRG relation response contract mismatch: invalid results[${index}]`,
+electron/src/packaged-runtime-smoke.js:231 |         `packaged AADRG relation response contract mismatch: parent projection results[${index}]`,
+electron/src/packaged-runtime-smoke.js:240 |         `packaged AADRG relation response contract mismatch: relation fields results[${index}]`,
+electron/src/packaged-runtime-smoke.js:402 |           (item) => String(item?.entity_type ?? '').toUpperCase() === 'AADRG',
+electron/src/packaged-runtime-smoke.js:405 |             'packaged runtime relation smoke exposed non-AADRG public result',
+electron/src/packaged-runtime-smoke.js:432 |           public_entity_type: 'AADRG',
+electron/src/packaged-runtime-smoke.js:624 |   add('detail_caption', snapshot.detail_caption === fixture.aadrg, snapshot.detail_caption, fixture.aadrg);
+electron/src/packaged-runtime-smoke.js:721 |       filter.value = 'AADRG';
+electron/src/packaged-runtime-smoke.js:735 |           '#result-list [data-entity-type="AADRG"][data-entity-id="' + fixture.aadrg + '"]'
+electron/src/packaged-runtime-smoke.js:737 |         fixture.aadrg + ' result ready',
+electron/src/packaged-runtime-smoke.js:746 |           && detailCaption === fixture.aadrg
+electron/src/packaged-runtime-smoke.js:750 |       }, fixture.aadrg + ' detail ready');
+electron/src/search-result-contract.js:5 | const ENTITY_TYPES = Object.freeze(['CODE', 'ADRG', 'AADRG', 'RDRG', 'TABLE']);
+electron/src/search-result-contract.js:7 | const SEARCH_ENTITY_TYPES = Object.freeze(['CODE', 'AADRG']);
+electron/tests/validate-packaged-runtime-smoke.js:170 |   'packaged smoke AADRG filter',
+electron/tests/validate-packaged-runtime-smoke.js:171 |   executeFixtureSource.includes("filter.value = 'AADRG';"),
+electron/tests/validate-packaged-runtime-smoke.js:180 |   'packaged smoke AADRG result selector',
+electron/tests/validate-packaged-runtime-smoke.js:191 |   'packaged smoke AADRG detail caption',
+electron/tests/validate-packaged-runtime-smoke.js:192 |   executeFixtureSource.includes('detailCaption === fixture.aadrg'),
+electron/tests/validate-packaged-runtime-smoke.js:227 |     detail_caption: fixture.aadrg,
+electron/tests/validate-packaged-runtime-smoke.js:309 |     detail_caption: fixture.aadrg,
+electron/tests/validate-stage59b-search.js:9 | check('public types', () => assert.deepEqual(SEARCH_ENTITY_TYPES, ['CODE','AADRG']));
+electron/tests/validate-stage59b-search.js:17 | check('AADRG condition inheritance', () => { const d=service.getDetail('AADRG','P6510').detail; assert.equal(d.adrg,'P651'); assert.ok(d.parent_adrg_detail); assert.ok('condition_ast' in d); assert.ok(Array.isArray(d.user_condition_tables)); });
+electron/tests/validate-stage59b-smoke.js:3 | const r=s.search('T601','ALL',{limit:500});assert.ok(r.results.length>=2);assert.ok(r.results.every(x=>['CODE','AADRG'].includes(x.entity_type)));const d=s.getDetail('AADRG','P6510').detail;assert.ok(d.parent_adrg_detail);assert.ok(d.mdc_name);console.log('stage59_smoke: PASS');
+electron/tests/validate-stage59b-ui.js:29 | check('public type AADRG', () => {
+electron/tests/validate-stage59b-ui.js:48 | check('AADRG detail', () => {
+electron/tests/validate-stage59b-ui.js:57 |   assert.match(body, /create\('button', 'derived-aadrg-row'\)/);
+electron/tests/validate-stage59b-ui.js:58 |   assert.match(body, /row\.dataset\.entityType = 'AADRG'/);
+electron/tests/validate-stage59b-ui.js:69 | check('CODE detail hero is AADRG centered', () => {
+electron/tests/validate-stage59b-ui.js:80 | check('CODE detail section is AADRG centered', () => {
+electron/tests/validate-stage59b-ui.js:88 | check('AADRG overview metric uses AADRG count', () => {
+electron/tests/validate-stage59b-ui.js:166 |   assert.match(app, /관계검색 AADRG/);
+electron/tests/validate-stage59b-ui.js:167 |   assert.match(app, /makeBadge\('AADRG'\)/);
+electron/tests/validate-stage59b-ui.js:168 |   assert.match(app, /AADRG 상세 보기/);
+electron/tests/validate-stage59b-ui.js:190 |   const d = s63.getDetail('AADRG', 'F2120').detail; assert.equal(d.adrg, 'F212'); assert.deepEqual(d.source_logical_table_ids ?? [], []); assert.deepEqual(d.parent_adrg_detail.source_logical_table_ids ?? [], ['LT_F212_001']);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:40 | assert.match(wrapperSource, /non-AADRG public result/);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:69 | assert.equal(fixture.public_entity_type, 'AADRG');
+electron/tests/validate-stage60c-packaged-relation-smoke.js:81 | assert.ok(response.results.every((item) => item.entity_type === 'AADRG'));
+legacy_reference/TEST_GUIDE_v16_mdc_advanced_search_1784091673826.md:21 |   - 상세에 ADRG 57개, AADRG 수, A/B/C 분포 표시
+legacy_reference/TEST_GUIDE_v16_mdc_advanced_search_1784091673826.md:150 | - `F051` 검색 → F0511/F0512 복수 AADRG
+legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json:7 |     "notice": "KDRG V4.6 MDC 04·05 ADRG/AADRG, 공식 조건 TABLE, MDC 검색과 복수 코드 관계검색을 제공합니다."
+legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json:26401 |         "AADRG 2개 모두 표시",
+legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json:26402 |         "각 AADRG 명칭과 A군 표시",
+legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json:26403 |         "AADRG 검색 연결"
+legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json:26512 |         "복수 AADRG 동시 표시",
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:166 |         return "\n".join(f"{m.aadrg} · {m.group_display} · {m.aadrg_name}" for m in self.aadrg_mappings)
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:660 |                 add(SearchResult("aadrg", rule.adrg, exact_mapping.aadrg, f"{exact_mapping.aadrg_name} · ADRG {rule.adrg}", 0, exact_mapping.group_code, exact_mapping.group_name, rule.mdc))
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:709 |         if result.kind in {"adrg", "aadrg", "relation_adrg"} and result.mdc:
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:715 |         if result.kind in {"adrg", "aadrg", "relation_adrg"} and result.group_code:
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:753 |             "aadrg": "BadgePurple",
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:1230 |         elif result.kind in {"adrg", "aadrg"}:
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:1415 |                     ("AADRG", rule.aadrg_display),
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:1497 |                 ("AADRG", rule.aadrg_display),
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:1779 |         aadrg = QLabel(f"AADRG {rule.aadrg_display}")
+legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py:1781 |         header.addWidget(aadrg)
+legacy_reference/special_case_registry_v16_mdc_advanced_search_1784091673826.txt:52 |   · AADRG 2개 모두 표시
+legacy_reference/special_case_registry_v16_mdc_advanced_search_1784091673826.txt:53 |   · 각 AADRG 명칭과 A군 표시
+legacy_reference/special_case_registry_v16_mdc_advanced_search_1784091673826.txt:54 |   · AADRG 검색 연결
+legacy_reference/special_case_registry_v16_mdc_advanced_search_1784091673826.txt:133 |   · 복수 AADRG 동시 표시
+tests/smoke_test_kdrg_search_service.py:75 |     aadrg = service.search("96000", "AADRG")
+tests/smoke_test_kdrg_search_service.py:76 |     checker.check("S13", "AADRG exact search", ids(aadrg) == ["96000"], str(ids(aadrg)))
+tests/smoke_test_kdrg_search_service.py:77 |     checker.check("S14", "AADRG B classification", aadrg["results"][0]["summary"]["classification_code"] == "B", str(aadrg["results"][0]["summary"]))
+tests/smoke_test_kdrg_search_service.py:97 |     checker.check("S22", "MDC filter", all((row["summary"].get("mdc") == "PRE") for row in mdc_filter["results"] if row["entity_type"] in {"ADRG", "AADRG"}), str(mdc_filter["results"][:5]))
+tests/smoke_test_kdrg_search_service.py:128 |     unclassified = service.get_detail("AADRG", "99000")["detail"]
+tests/smoke_test_kdrg_search_service.py:168 |     aadrg_detail = service.get_detail("AADRG", "96000")["detail"]
+tests/smoke_test_kdrg_search_service.py:169 |     checker.check("S48", "AADRG parent ADRG connected", (aadrg_detail.get("parent_adrg") or {}).get("entity_id") == "9600", str(aadrg_detail.get("parent_adrg")))
+tests/smoke_test_kdrg_search_service.py:171 |     checker.check("S49", "RDRG parent AADRG connected", (rdrg_detail.get("parent_aadrg") or {}).get("entity_id") == "96000", str(rdrg_detail.get("parent_aadrg")))
+tests/windows_runtime_source_smoke.py:371 |         "상태표시줄 AADRG count",
+
+[RELATION CANDIDATES]
+50B_validate_kdrg_electron_search_service.py:40 |     check("ADRG count",len(data.get("adrg_records",[])),1132)
+50B_validate_kdrg_electron_search_service.py:41 |     check("AADRG count",len(data.get("aadrg_records",[])),1233)
+50B_validate_kdrg_electron_search_service.py:54 | if(JSON.stringify(s.status().public_search_types)!==JSON.stringify(['CODE','AADRG'])) throw new Error('public types');
+50B_validate_kdrg_electron_search_service.py:58 |  const expected=new Set(['CODE:'+code,...(row.related_aadrgs||[]).map(x=>'AADRG:'+x)]);
+50B_validate_kdrg_electron_search_service.py:62 | const p=s.getDetail('AADRG','P6510').detail;
+50B_validate_kdrg_electron_search_service.py:63 | if(p.adrg!=='P651'||!p.parent_adrg_detail||!('condition_ast' in p)) throw new Error('AADRG inherited condition');
+50C_validate_kdrg_electron_renderer_ui.py:42 |     check("공개 AADRG 검색옵션",'<option value="AADRG">AADRG</option>' in html,True)
+50C_validate_kdrg_electron_renderer_ui.py:43 |     check("공개 ADRG 검색옵션 제거",'<option value="ADRG">ADRG</option>' not in html,True)
+50C_validate_kdrg_electron_renderer_ui.py:48 |     check("CODE 상세 AADRG 중심","function renderCodeDetail" in app and "'관련 AADRG'" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:51 |     check("AADRG 상세 조건상속","renderAadrgDetail" in app and "renderUserConditionSummary(detail)" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:52 |     check("formatter public type","const ordered = ['CODE', 'AADRG'];" in fmt,True)
+50C_validate_kdrg_electron_renderer_ui.py:53 |     check("relation AADRG 중심","makeBadge('AADRG')" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:54 |     check("관련 AADRG 강조","related-aadrg-section" in css,True)
+50D_validate_kdrg_electron_windows_packaging.py:149 |     check("사용자 검색 유형 CODE·AADRG",'<option value="CODE">코드</option>' in html and '<option value="AADRG">AADRG</option>' in html and '<option value="ADRG">ADRG</option>' not in html,True)
+50D_validate_kdrg_electron_windows_packaging.py:151 |     check("AADRG 사용자 결과","makeBadge('AADRG')" in app and "renderAadrgDetail" in app,True)
+50D_validate_kdrg_electron_windows_packaging.py:152 |     check("CODE 상세 관련 AADRG","'관련 AADRG'" in app,True)
+BUILD_AND_RELEASE.md:9 | - ADRG: 1,132개
+BUILD_AND_RELEASE.md:83 | 5. ADRG 검색이 되는지
+README.md:3 | 코드/ADRG/TABLE/MDC를 검색하고, 여러 개의 코드가 같은 ADRG·같은 조건식 안에서
+README.md:40 |     kdrg_v47_ui_fixture.json 파일럿 9개 ADRG UI 데이터 (기존 V4.7 파일럿 JSON 기반)
+README.md:80 | - 현재 `data/kdrg_v47_ui_fixture.json`에는 KDRG V4.7 파일럿 9개 ADRG
+README.md:82 |   분류집 전체(1,282쪽) 파싱과 전체 ADRG 확장은 다음 단계 작업입니다.
+README.md:92 | 1. 분류집 본문(1,282쪽)·부록(776쪽) 전체 파싱으로 511개(추정) 전체 ADRG/AADRG 확장
+app/data_store.py:155 |                 "aadrg": rule_raw.get("aadrg", ""),
+app/data_store.py:162 |                     aadrg=str(item.get("aadrg", "")).strip(),
+app/data_store.py:168 |                 if str(item.get("aadrg", "")).strip()
+app/data_store.py:172 |                 adrg=str(rule_raw.get("adrg", "")).strip(),
+app/data_store.py:173 |                 aadrg=str(rule_raw.get("aadrg", "")).strip(),
+app/data_store.py:185 |             if not rule.adrg:
+app/data_store.py:187 |             if rule.adrg in rules:
+app/data_store.py:188 |                 raise ValueError(f"중복 ADRG가 있습니다: {rule.adrg}")
+app/data_store.py:189 |             rules[rule.adrg] = rule
+app/data_store.py:271 |             candidates.append(RelationCandidate(rule.adrg, level, matched_count, total_count, tuple(rule_matches), tuple(group_matches)))
+app/data_store.py:274 |         return sorted(candidates, key=lambda c: (rank.get(c.relation_level, 9), -c.matched_count, c.adrg))
+app/data_store.py:281 |                     missing.append(f"{rule.adrg} -> {comp.table_id}")
+app/data_store.py:298 |                 if rule.adrg not in adrg_list:
+app/data_store.py:299 |                     adrg_list.append(rule.adrg)
+app/data_store.py:307 |                 if rule.adrg not in adrg_list:
+app/data_store.py:308 |                     adrg_list.append(rule.adrg)
+app/data_store.py:316 |         return [self.rules[adrg] for adrg in sorted(adrg_set)]
+app/data_store.py:323 |         return [self.rules[adrg] for adrg in sorted(adrg_set)]
+app/data_store.py:360 |             if category == "ADRG":
+app/data_store.py:361 |                 return kind in {"adrg", "aadrg"}
+app/data_store.py:378 |                     add(SearchResult("mdc", mdc.mdc, f"MDC {mdc.mdc}", f"{mdc.name} · ADRG {count}개", 5, mdc=mdc.mdc))
+app/data_store.py:381 |                     add(SearchResult("adrg", rule.adrg, rule.adrg, rule.title_full, 20, rule.group_code, rule.group_name, rule.mdc))
+app/data_store.py:393 |                 add(SearchResult("mdc", mdc.mdc, f"MDC {mdc.mdc}", f"{mdc.name} · ADRG {count}개", 0, mdc=mdc.mdc))
+app/data_store.py:396 |                 SearchResult("mdc", mdc.mdc, f"MDC {mdc.mdc}", f"{mdc.name} · ADRG {len(self.rules_for_mdc(mdc.mdc))}개", 0, mdc=mdc.mdc)
+app/data_store.py:410 |             exact_mapping = next((m for m in rule.aadrg_mappings if q == normalize(m.aadrg)), None)
+app/data_store.py:412 |                 add(SearchResult("aadrg", rule.adrg, exact_mapping.aadrg, f"{exact_mapping.aadrg_name} · ADRG {rule.adrg}", 0, exact_mapping.group_code, exact_mapping.group_name, rule.mdc))
+app/data_store.py:416 |                 mapping_fields.extend([mapping.aadrg, mapping.group_code, mapping.group_name, mapping.aadrg_name])
+app/data_store.py:417 |             fields = [rule.adrg, *mapping_fields, rule.title, rule.subtitle, rule.title_full, rule.condition_text, rule.group_code, rule.group_name, rule.group_display]
+app/data_store.py:419 |                 add(SearchResult("adrg", rule.adrg, rule.adrg, rule.title_full, 0 if q == normalize(rule.adrg) else 20, rule.group_code, rule.group_name, rule.mdc))
+app/dialogs.py:80 |                 ("ADRG", f"{len(store.rules):,}개"),
+app/dialogs.py:81 |                 ("AADRG", f"{sum(len(rule.aadrg_mappings) for rule in store.rules.values()):,}개"),
+app/dialogs.py:88 |             ("기능", "코드·ADRG·TABLE·MDC 관계 조회 및 복수 코드의 조건구조 연결 확인"),
+app/kdrg_search_service.py:13 | ENTITY_TYPES = ("CODE", "ADRG", "AADRG", "RDRG", "TABLE")
+app/kdrg_search_service.py:84 |             "ADRG": self.data["adrg_records"],
+app/kdrg_search_service.py:85 |             "AADRG": self.data["aadrg_records"],
+app/kdrg_search_service.py:91 |             "ADRG": "adrg",
+app/kdrg_search_service.py:92 |             "AADRG": "aadrg",
+app/kdrg_search_service.py:161 |                     fields["adrg"] = [str(x) for x in row.get("related_adrgs") or []]
+app/kdrg_search_service.py:162 |                 elif entity_type == "ADRG":
+app/kdrg_search_service.py:164 |                     fields["aadrg"] = [str(x) for x in row.get("aadrg_codes") or []]
+app/kdrg_search_service.py:166 |                 elif entity_type == "AADRG":
+app/kdrg_search_service.py:168 |                     fields["adrg"] = [str(row.get("adrg") or "")]
+app/kdrg_search_service.py:173 |                     fields["aadrg"] = [str(row.get("aadrg") or "")]
+app/kdrg_search_service.py:174 |                     fields["adrg"] = [str(row.get("adrg") or "")]
+app/kdrg_search_service.py:179 |                     fields["adrg"] = [str(x) for x in row.get("related_adrgs") or []]
+app/kdrg_search_service.py:235 |             adrg = str(ast.get("adrg") or "")
+app/kdrg_search_service.py:282 |                     output[(adrg, table_id)].append({
+app/kdrg_search_service.py:370 |         elif entity_type == "ADRG":
+app/kdrg_search_service.py:371 |             title = f"{row.get('adrg', '')} · {row.get('adrg_name', '')}".strip(" ·")
+app/kdrg_search_service.py:372 |             subtitle = f"MDC {row.get('mdc', '-')} · AADRG {row.get('aadrg_count', 0)}개"
+app/kdrg_search_service.py:373 |         elif entity_type == "AADRG":
+app/kdrg_search_service.py:374 |             title = f"{row.get('aadrg', '')} · {row.get('group_name', '')}".strip(" ·")
+app/kdrg_search_service.py:376 |             subtitle = f"ADRG {row.get('adrg', '-')} · {label}"
+app/kdrg_search_service.py:379 |             subtitle = f"AADRG {row.get('aadrg', '-')} · {row.get('severity_name') or '중증도 명칭 없음'}"
+app/kdrg_search_service.py:382 |             subtitle = f"코드 {row.get('code_count', 0)}개 · 관련 ADRG {len(row.get('related_adrgs') or [])}개"
+app/kdrg_search_service.py:513 |         if entity_type in {"ADRG", "AADRG"}:
+app/kdrg_search_service.py:516 |             parent = self._record_maps["ADRG"].get(normalize_entity_id(record.get("adrg"), "ADRG"))
+app/kdrg_search_service.py:528 |         if entity_type == "AADRG":
+app/kdrg_search_service.py:530 |         if entity_type == "ADRG":
+app/kdrg_search_service.py:534 |             aadrgs = [str(record.get("aadrg") or "")]
+app/kdrg_search_service.py:536 |             aadrgs = [a for adrg in record.get("related_adrgs") or [] for a in self._adrg_aadrgs(str(adrg))]
+app/kdrg_search_service.py:540 |             str((self._record_maps["AADRG"].get(normalize_entity_id(code, "AADRG")) or {}).get("classification_code") or "").upper()
+app/kdrg_search_service.py:545 |     def _adrg_mdc(self, adrg: str) -> str:
+app/kdrg_search_service.py:546 |         record = self._record_maps["ADRG"].get(normalize_entity_id(adrg, "ADRG"))
+app/kdrg_search_service.py:549 |     def _adrg_aadrgs(self, adrg: str) -> list[str]:
+app/kdrg_search_service.py:550 |         record = self._record_maps["ADRG"].get(normalize_entity_id(adrg, "ADRG"))
+app/kdrg_search_service.py:587 |         if entity_type == "ADRG":
+app/kdrg_search_service.py:598 |         if entity_type == "AADRG":
+app/kdrg_search_service.py:600 |                 "adrg": row.get("adrg"),
+app/kdrg_search_service.py:609 |                 "adrg": row.get("adrg"),
+app/kdrg_search_service.py:610 |                 "aadrg": row.get("aadrg"),
+app/kdrg_search_service.py:634 |         elif type_name == "ADRG":
+app/kdrg_search_service.py:636 |         elif type_name == "AADRG":
+app/kdrg_search_service.py:656 |             for adrg in table.get("condition_adrgs") or []:
+app/kdrg_search_service.py:658 |                     {"adrg": adrg, **item}
+app/kdrg_search_service.py:659 |                     for item in self._semantic_context_index.get((str(adrg), str(table_id)), [])
+app/kdrg_search_service.py:673 |             self._summary_entity("ADRG", adrg)
+app/kdrg_search_service.py:674 |             for adrg in row.get("related_adrgs") or []
+app/kdrg_search_service.py:675 |             if self._record_maps["ADRG"].get(normalize_entity_id(adrg, "ADRG"))
+app/kdrg_search_service.py:678 |             self._summary_entity("AADRG", aadrg)
+app/kdrg_search_service.py:679 |             for aadrg in row.get("related_aadrgs") or []
+app/kdrg_search_service.py:680 |             if self._record_maps["AADRG"].get(normalize_entity_id(aadrg, "AADRG"))
+app/kdrg_search_service.py:708 |         aadrgs = [self._summary_entity("AADRG", code) for code in row.get("aadrg_codes") or []]
+app/kdrg_search_service.py:722 |             "parent_adrg": self._summary_entity("ADRG", str(row.get("adrg") or "")),
+app/kdrg_search_service.py:729 |             "parent_aadrg": self._summary_entity("AADRG", str(row.get("aadrg") or "")),
+app/kdrg_search_service.py:730 |             "parent_adrg": self._summary_entity("ADRG", str(row.get("adrg") or "")),
+app/kdrg_search_service.py:735 |         for adrg in row.get("condition_adrgs") or []:
+app/kdrg_search_service.py:737 |                 {"adrg": adrg, **item}
+app/kdrg_search_service.py:738 |                 for item in self._semantic_context_index.get((str(adrg), str(row.get("logical_table_id") or "")), [])
+app/kdrg_search_service.py:743 |             "source_adrg_summaries": [self._summary_entity("ADRG", code) for code in row.get("source_adrgs") or []],
+app/kdrg_search_service.py:744 |             "condition_adrg_summaries": [self._summary_entity("ADRG", code) for code in row.get("condition_adrgs") or []],
+app/kdrg_search_service.py:745 |             "related_adrg_summaries": [self._summary_entity("ADRG", code) for code in row.get("related_adrgs") or []],
+app/main_window.py:104 |         if result.kind in {"adrg", "aadrg", "relation_adrg"} and result.mdc:
+app/main_window.py:110 |         if result.kind in {"adrg", "aadrg", "relation_adrg"} and result.group_code:
+app/main_window.py:133 |             "adrg": "ADRG",
+app/main_window.py:134 |             "aadrg": "AADRG",
+app/main_window.py:137 |             "relation_adrg": "관계 ADRG",
+app/main_window.py:149 |             "adrg": "BadgePurple",
+app/main_window.py:150 |             "aadrg": "BadgePurple",
+app/main_window.py:393 |         subtitle_lbl = QLabel("코드·ADRG·TABLE·MDC 및 공식 조건구조 관계 조회")
+app/main_window.py:429 |         self.category_combo.addItems(["전체", "상병코드", "기타진단코드", "수술·처치코드", "검사·처치코드", "부가코드", "ADRG", "RDRG", "MDC", "TABLE"])
+app/main_window.py:482 |             "입력코드가 같은 ADRG·같은 조건식에 연결되는지 확인하는 관계검색입니다. "
+app/main_window.py:515 |         relation_btn = QPushButton("공통 관련 ADRG 검색")
+app/main_window.py:605 |         self.back_button.setToolTip("ADRG 상세를 열기 전의 코드 또는 TABLE 상세 화면으로 돌아갑니다.")
+app/main_window.py:662 |             f"ADRG {n_adrg}개 · TABLE {n_table}개  │  "
+app/main_window.py:758 |         self.relation_candidates = {candidate.adrg: candidate for candidate in candidates}
+app/main_window.py:762 |             rule = self.store.rules[candidate.adrg]
+app/main_window.py:765 |             self.current_results.append(SearchResult("relation_adrg", rule.adrg, rule.adrg, sublabel, 0, rule.group_code, rule.group_name, rule.mdc))
+app/main_window.py:818 |         elif result.kind in {"adrg", "aadrg"}:
+app/main_window.py:883 |     def open_rule_detail(self, adrg: str) -> None:
+app/main_window.py:884 |         if self.current_detail_kind == "rule" and normalize(self.current_detail_key) == normalize(adrg):
+app/main_window.py:887 |         self.current_type_label.setText("ADRG")
+app/main_window.py:888 |         self.render_rule_detail(adrg)
+app/main_window.py:969 |                     ("원문 TABLE 정의 ADRG", relation_summary.get("physical_source", "-")),
+app/main_window.py:970 |                     ("조건 AST 사용 ADRG", relation_summary.get("condition_usage", "-")),
+app/main_window.py:971 |                     ("검색용 관련 ADRG", relation_summary.get("runtime_related", "-")),
+app/main_window.py:981 |                 title=f"관련 ADRG / 질병군 · {len(related_rules)}건",
+app/main_window.py:989 |                     title=f"미포함·제외조건으로 연결된 ADRG · {len(exclusion_rules)}건",
+app/main_window.py:997 |         tabs.addTab(self._scroll_wrap(self._build_rule_cards(related_rules, highlight_code=code)), "관련 ADRG")
+app/main_window.py:1005 |     # 상세: ADRG
+app/main_window.py:1008 |     def render_rule_detail(self, adrg: str) -> None:
+app/main_window.py:1009 |         self._set_current_detail("rule", adrg)
+app/main_window.py:1011 |         rule = self.store.rules.get(adrg)
+app/main_window.py:1013 |             self._render_empty_detail("ADRG 상세 정보를 찾을 수 없습니다.")
+app/main_window.py:1016 |         coverage = self.store.condition_coverage_for_adrg(rule.adrg)
+app/main_window.py:1019 |                 badge_text="ADRG",
+app/main_window.py:1021 |                 title=rule.adrg,
+app/main_window.py:1024 |                     ("AADRG", rule.aadrg_display),
+app/main_window.py:1037 |                 title="관련 ADRG / 질병군 · 1건",
+app/main_window.py:1045 |         tabs.addTab(self._scroll_wrap(self._build_rule_cards([rule], highlight_code=self.current_query)), "관련 ADRG")
+app/main_window.py:1068 |                 ("포함 ADRG", f"{len(rules)}개"),
+app/main_window.py:1069 |                 ("포함 AADRG", f"{len(mappings)}개"),
+app/main_window.py:1076 |         tabs.addTab(self._scroll_wrap(self._build_related_summary(f"MDC {code} 전체 ADRG · {len(rules)}건", rules, clickable=True)), "전체")
+app/main_window.py:1079 |             tabs.addTab(self._scroll_wrap(self._build_related_summary(f"{label} ADRG · {len(grouped)}건", grouped, clickable=True)), label)
+app/main_window.py:1087 |     def render_relation_detail(self, adrg: str) -> None:
+app/main_window.py:1088 |         self._set_current_detail("relation", adrg)
+app/main_window.py:1090 |         candidate = self.relation_candidates.get(adrg)
+app/main_window.py:1091 |         rule = self.store.rules.get(adrg)
+app/main_window.py:1102 |             badge_text="관계검색", badge_name="BadgeRelation", title=rule.adrg, subtitle=rule.title_full,
+app/main_window.py:1108 |                 ("AADRG", rule.aadrg_display),
+app/main_window.py:1116 |         tabs.addTab(self._scroll_wrap(self._build_rule_cards([rule])), "ADRG 전체 조건")
+app/main_window.py:1189 |         detail_button.clicked.connect(lambda checked=False, a=rule.adrg: self.open_rule_detail(a))
+app/main_window.py:1219 |                     ("원문 정의 ADRG", relation_summary.get("physical_source", "-")),
+app/main_window.py:1220 |                     ("조건 AST 사용 ADRG", relation_summary.get("condition_usage", "-")),
+app/main_window.py:1221 |                     ("검색용 관련 ADRG", relation_summary.get("runtime_related", "-")),
+app/main_window.py:1231 |                 title=f"이 TABLE을 사용하는 ADRG · {len(related_rules)}건",
+app/main_window.py:1240 |         tabs.addTab(self._scroll_wrap(self._build_rule_cards(related_rules, highlight_code=self.current_query)), "관련 ADRG")
+app/main_window.py:1328 |             adrg_label = QLabel(rule.adrg)
+app/main_window.py:1352 |                 button = QPushButton("ADRG 상세")
+app/main_window.py:1354 |                 button.clicked.connect(lambda checked=False, a=rule.adrg: self.open_rule_detail(a))
+app/main_window.py:1387 |         adrg = QLabel(rule.adrg)
+app/main_window.py:1388 |         adrg.setObjectName("RuleADRG")
+app/main_window.py:1389 |         header.addWidget(adrg)
+app/main_window.py:1396 |         aadrg = QLabel(f"AADRG {rule.aadrg_display}")
+app/main_window.py:1397 |         aadrg.setObjectName("RuleAADRG")
+app/main_window.py:1398 |         header.addWidget(aadrg)
+app/main_window.py:1418 |         coverage = self.store.condition_coverage_for_adrg(rule.adrg)
+app/main_window.py:1433 |         basic_tables = self.store.basic_tables_for_adrg(rule.adrg)
+app/main_window.py:1666 |             title = QLabel(f"{rule.adrg} · {rule.aadrg_display} · {rule.group_display}")
+app/models.py:58 |     aadrg: str
+app/models.py:88 |     adrg: str
+app/models.py:89 |     aadrg: str
+app/models.py:123 |         return " / ".join(m.aadrg for m in self.aadrg_mappings) or self.aadrg
+app/models.py:127 |         return "\n".join(f"{m.aadrg} · {m.group_display} · {m.aadrg_name}" for m in self.aadrg_mappings)
+app/models.py:180 |     adrg: str
+app/runtime_data_store.py:56 |     "ADRG": ["ADRG", "AADRG"],
+app/runtime_data_store.py:57 |     "AADRG": "AADRG",
+app/runtime_data_store.py:135 |             f"전체 ADRG {self.runtime_counts.get('adrg_records', 0):,}개 · "
+app/runtime_data_store.py:136 |             f"AADRG {self.runtime_counts.get('aadrg_records', 0):,}개 · "
+app/runtime_data_store.py:143 |         self.abc_basis = "공식 별표 PDF의 AADRG exact code match만 적용"
+app/runtime_data_store.py:145 |         self._adrg_rows = {str(row.get("adrg") or ""): row for row in self.raw.get("adrg_records") or []}
+app/runtime_data_store.py:146 |         self._aadrg_rows = {str(row.get("aadrg") or ""): row for row in self.raw.get("aadrg_records") or []}
+app/runtime_data_store.py:150 |         self._ast_rows = {str(row.get("adrg") or ""): row for row in self.raw.get("condition_ast_records") or []}
+app/runtime_data_store.py:236 |             parts.append(f"원문 정의 ADRG {_short_list(source_adrgs, 10)}")
+app/runtime_data_store.py:303 |     def _condition_groups(self, adrg: str, ast: Optional[dict[str, Any]]) -> Tuple[ConditionGroup, ...]:
+app/runtime_data_store.py:337 |             if str(ctx_adrg) != adrg:
+app/runtime_data_store.py:390 |             aadrg_by_adrg[str(row.get("adrg") or "")].append(row)
+app/runtime_data_store.py:394 |             adrg = str(row.get("adrg") or "")
+app/runtime_data_store.py:395 |             children = sorted(aadrg_by_adrg.get(adrg, []), key=lambda item: str(item.get("aadrg") or ""))
+app/runtime_data_store.py:398 |                     aadrg=str(child.get("aadrg") or ""),
+app/runtime_data_store.py:409 |             ast = self._ast_rows.get(adrg)
+app/runtime_data_store.py:412 |             output[adrg] = RuleDef(
+app/runtime_data_store.py:413 |                 adrg=adrg,
+app/runtime_data_store.py:414 |                 aadrg=str(children[0].get("aadrg") or "") if children else "",
+app/runtime_data_store.py:418 |                 title=str(row.get("adrg_name") or adrg),
+app/runtime_data_store.py:423 |                 condition_groups=self._condition_groups(adrg, ast),
+app/runtime_data_store.py:430 |         for adrg, rule in self.rules.items():
+app/runtime_data_store.py:433 |                 if adrg not in output[component.table_id]:
+app/runtime_data_store.py:434 |                     output[component.table_id].append(adrg)
+app/runtime_data_store.py:441 |     def basic_table_ids_for_adrg(self, adrg: str) -> List[str]:
+app/runtime_data_store.py:442 |         row = self._adrg_rows.get(str(adrg)) or {}
+app/runtime_data_store.py:445 |     def basic_tables_for_adrg(self, adrg: str) -> List[TableDef]:
+app/runtime_data_store.py:446 |         return [self.tables[table_id] for table_id in self.basic_table_ids_for_adrg(adrg)]
+app/runtime_data_store.py:448 |     def condition_coverage_for_adrg(self, adrg: str) -> dict[str, Any]:
+app/runtime_data_store.py:449 |         source_ids = self.basic_table_ids_for_adrg(adrg)
+app/runtime_data_store.py:450 |         ast = self._ast_rows.get(str(adrg))
+app/runtime_data_store.py:504 |         return [self.rules[adrg] for adrg in sorted(adrg_ids) if adrg in self.rules]
+
+[VALIDATOR/TEST CANDIDATES]
+50B_validate_kdrg_electron_search_service.py:58 |  const expected=new Set(['CODE:'+code,...(row.related_aadrgs||[]).map(x=>'AADRG:'+x)]);
+50C_validate_kdrg_electron_renderer_ui.py:42 |     check("공개 AADRG 검색옵션",'<option value="AADRG">AADRG</option>' in html,True)
+50C_validate_kdrg_electron_renderer_ui.py:43 |     check("공개 ADRG 검색옵션 제거",'<option value="ADRG">ADRG</option>' not in html,True)
+50C_validate_kdrg_electron_renderer_ui.py:48 |     check("CODE 상세 AADRG 중심","function renderCodeDetail" in app and "'관련 AADRG'" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:51 |     check("AADRG 상세 조건상속","renderAadrgDetail" in app and "renderUserConditionSummary(detail)" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:52 |     check("formatter public type","const ordered = ['CODE', 'AADRG'];" in fmt,True)
+50C_validate_kdrg_electron_renderer_ui.py:53 |     check("relation AADRG 중심","makeBadge('AADRG')" in app,True)
+50C_validate_kdrg_electron_renderer_ui.py:54 |     check("관련 AADRG 강조","related-aadrg-section" in css,True)
+50D_validate_kdrg_electron_windows_packaging.py:149 |     check("사용자 검색 유형 CODE·AADRG",'<option value="CODE">코드</option>' in html and '<option value="AADRG">AADRG</option>' in html and '<option value="ADRG">ADRG</option>' not in html,True)
+50D_validate_kdrg_electron_windows_packaging.py:151 |     check("AADRG 사용자 결과","makeBadge('AADRG')" in app and "renderAadrgDetail" in app,True)
+50D_validate_kdrg_electron_windows_packaging.py:152 |     check("CODE 상세 관련 AADRG","'관련 AADRG'" in app,True)
+README.md:40 |     kdrg_v47_ui_fixture.json 파일럿 9개 ADRG UI 데이터 (기존 V4.7 파일럿 JSON 기반)
+README.md:80 | - 현재 `data/kdrg_v47_ui_fixture.json`에는 KDRG V4.7 파일럿 9개 ADRG
+data/kdrg_v47_search_integrated_v3.json:1522707 |         "expected": "kdrg-v47-adrg-user-condition-audit-v2",
+data/kdrg_v47_search_integrated_v3.json:1523010 |         "expected": "kdrg-v47-adrg-user-condition-projection-unresolved-v4",
+electron/renderer/app.js:824 |   if (!directConditionLocalTablePattern(adrg).test(tableId)) return [];
+electron/scripts/verify-windows-portable.ps1:110 | Assert-Equal "ADRG count" $report.counts.adrg 1132
+electron/scripts/verify-windows-portable.ps1:111 | Assert-Equal "AADRG count" $report.counts.aadrg 1233
+electron/scripts/verify-windows-portable.ps1:148 | Assert-StringSet "UI ADRG fixture 집합" @($caseMap.Keys) @($expected.Keys)
+electron/scripts/verify-windows-portable.ps1:154 |         throw "UI fixture가 없습니다: $adrg"
+electron/scripts/verify-windows-portable.ps1:157 |     Assert-Equal "$adrg case PASS" $case.passed $true
+electron/scripts/verify-windows-portable.ps1:158 |     Assert-StringSet "$adrg TABLE" @($case.table_ids) @($expected[$adrg])
+electron/scripts/verify-windows-portable.ps1:159 |     Assert-Equal "$adrg inline TABLE count" $case.inline_table_count @($expected[$adrg]).Count
+electron/scripts/verify-windows-portable.ps1:160 |     Assert-Equal "$adrg loaded TABLE count" $case.loaded_table_count @($expected[$adrg]).Count
+electron/scripts/verify-windows-portable.ps1:161 |     Assert-Equal "$adrg inline error count" @($case.error_messages).Count 0
+electron/scripts/verify-windows-portable.ps1:162 |     Assert-Equal "$adrg screenshot nonblank" $case.screenshot.non_blank $true
+electron/scripts/verify-windows-portable.ps1:164 |     if (@($expected[$adrg]).Count -gt 0 -and [int]$case.code_row_total -le 0) {
+electron/scripts/verify-windows-portable.ps1:180 |     Assert-Equal "$adrg screenshot SHA256" $actualHash $expectedHash
+electron/src/packaged-runtime-smoke.js:185 |     throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);
+electron/src/packaged-runtime-smoke.js:405 |             'packaged runtime relation smoke exposed non-AADRG public result',
+electron/src/packaged-runtime-smoke.js:416 |           throw new Error('packaged runtime relation smoke AADRG id is empty');
+electron/src/packaged-runtime-smoke.js:430 |           expected_aadrg: aadrg,
+electron/src/packaged-runtime-smoke.js:431 |           expectedAadrg: aadrg,
+electron/src/packaged-runtime-smoke.js:448 |     `packaged AADRG relation smoke fixture discovery failed after ${attempts} attempts`,
+electron/src/packaged-runtime-smoke.js:609 |   requirePlainObject(snapshot, `${fixture.adrg} UI snapshot`);
+electron/src/packaged-runtime-smoke.js:622 |   add('selected_adrg', snapshot.selected_adrg === fixture.adrg, snapshot.selected_adrg, fixture.adrg);
+electron/src/packaged-runtime-smoke.js:623 |   add('selected_aadrg', snapshot.selected_aadrg === fixture.aadrg, snapshot.selected_aadrg, fixture.aadrg);
+electron/src/packaged-runtime-smoke.js:624 |   add('detail_caption', snapshot.detail_caption === fixture.aadrg, snapshot.detail_caption, fixture.aadrg);
+electron/src/packaged-runtime-smoke.js:625 |   add('parent_adrg_visible', detailText.includes(fixture.adrg), detailText.includes(fixture.adrg), true);
+electron/src/packaged-runtime-smoke.js:735 |           '#result-list [data-entity-type="AADRG"][data-entity-id="' + fixture.aadrg + '"]'
+electron/src/packaged-runtime-smoke.js:737 |         fixture.aadrg + ' result ready',
+electron/src/packaged-runtime-smoke.js:746 |           && detailCaption === fixture.aadrg
+electron/src/packaged-runtime-smoke.js:747 |           && detail.textContent.includes(fixture.adrg)
+electron/src/packaged-runtime-smoke.js:750 |       }, fixture.aadrg + ' detail ready');
+electron/src/packaged-runtime-smoke.js:765 |           fixture.adrg + ' inline TABLE load',
+electron/src/packaged-runtime-smoke.js:798 |         selected_adrg: fixture.adrg,
+electron/src/packaged-runtime-smoke.js:799 |         selected_aadrg: fixture.aadrg,
+electron/src/packaged-runtime-smoke.js:906 |       const filename = `${String(index + 1).padStart(2, '0')}_${fixture.adrg}.png`;
+electron/src/packaged-runtime-smoke.js:915 |         adrg: fixture.adrg,
+electron/src/packaged-runtime-smoke.js:916 |         aadrg: fixture.aadrg,
+electron/src/packaged-runtime-smoke.js:1072 |     const detail = validateDetailResponse(service.getDetail('ADRG', 'E011'));
+electron/src/packaged-runtime-smoke.js:1077 |     const relationResults = validateRelationResponse(relationFixture.response, relationFixture.adrg);
+electron/src/packaged-runtime-smoke.js:1136 |         expected_adrg: relationFixture.adrg,
+electron/tests/run-search-parity.js:752 |       entity_types: ['CODE', 'ADRG'],
+electron/tests/run-search-parity.js:760 |       ADRG: 1,
+electron/tests/run-search-parity.js:765 |         entity_type: 'ADRG',
+electron/tests/run-search-parity.js:795 |       ADRG: 1,
+electron/tests/run-search-parity.js:819 |       ADRG: 1,
+electron/tests/run-search-parity.js:858 |           ADRG: 2,
+electron/tests/run-search-parity.js:866 |           ADRG: 2,
+electron/tests/run-search-parity.js:872 |             entity_type: 'ADRG',
+electron/tests/run-search-parity.js:888 |           ADRG: 1,
+electron/tests/run-search-parity.js:896 |           ADRG: 1,
+electron/tests/validate-packaged-runtime-smoke.js:67 | check('ADRG count', EXPECTED_COUNTS.adrg, 1132);
+electron/tests/validate-packaged-runtime-smoke.js:89 |     entity_type: 'ADRG',
+electron/tests/validate-packaged-runtime-smoke.js:104 |   entity_type: 'ADRG',
+electron/tests/validate-packaged-runtime-smoke.js:112 | check('bootstrap valid', validateBootstrapCounts(bootstrap).adrg, 1132);
+electron/tests/validate-packaged-runtime-smoke.js:115 |   () => validateBootstrapCounts({ counts: { ...EXPECTED_COUNTS, adrg: 1 } }),
+electron/tests/validate-packaged-runtime-smoke.js:159 |   'UI fixture aadrg fields x6',
+electron/tests/validate-packaged-runtime-smoke.js:170 |   'packaged smoke AADRG filter',
+electron/tests/validate-packaged-runtime-smoke.js:171 |   executeFixtureSource.includes("filter.value = 'AADRG';"),
+electron/tests/validate-packaged-runtime-smoke.js:180 |   'packaged smoke AADRG result selector',
+electron/tests/validate-packaged-runtime-smoke.js:181 |   executeFixtureSource.includes('data-entity-type="AADRG"')
+electron/tests/validate-packaged-runtime-smoke.js:182 |     && executeFixtureSource.includes('fixture.aadrg'),
+electron/tests/validate-packaged-runtime-smoke.js:191 |   'packaged smoke AADRG detail caption',
+electron/tests/validate-packaged-runtime-smoke.js:192 |   executeFixtureSource.includes('detailCaption === fixture.aadrg'),
+electron/tests/validate-packaged-runtime-smoke.js:197 |   executeFixtureSource.includes('selected_aadrg: fixture.aadrg'),
+electron/tests/validate-packaged-runtime-smoke.js:201 |   'packaged smoke legacy ADRG filter absent',
+electron/tests/validate-packaged-runtime-smoke.js:202 |   executeFixtureSource.includes("filter.value = 'ADRG';"),
+electron/tests/validate-packaged-runtime-smoke.js:216 |   check(`fixture ${expected[0]} parent`, fixture.adrg, expected[0]);
+electron/tests/validate-packaged-runtime-smoke.js:217 |   check(`fixture ${expected[0]} child`, fixture.aadrg, expected[1]);
+electron/tests/validate-packaged-runtime-smoke.js:225 |     selected_adrg: fixture.adrg,
+electron/tests/validate-packaged-runtime-smoke.js:226 |     selected_aadrg: fixture.aadrg,
+electron/tests/validate-packaged-runtime-smoke.js:227 |     detail_caption: fixture.aadrg,
+electron/tests/validate-packaged-runtime-smoke.js:229 |       fixture.adrg,
+electron/tests/validate-packaged-runtime-smoke.js:243 |   check(`${fixture.adrg} aadrg present`, /^[A-Z0-9-]+$/.test(String(fixture.aadrg || '')), true);
+electron/tests/validate-packaged-runtime-smoke.js:244 |   check(`${fixture.adrg} search_query present`, String(fixture.search_query || '').trim().length > 0, true);
+electron/tests/validate-packaged-runtime-smoke.js:246 |   check(`${fixture.adrg} valid snapshot`, result.passed, true);
+electron/tests/validate-packaged-runtime-smoke.js:247 |   check(`${fixture.adrg} failed checks zero`, result.failed_checks.length, 0);
+electron/tests/validate-packaged-runtime-smoke.js:305 |     selected_adrg: fixture.adrg,
+electron/tests/validate-packaged-runtime-smoke.js:306 |     selected_aadrg: fixture.aadrg,
+electron/tests/validate-packaged-runtime-smoke.js:309 |     detail_caption: fixture.aadrg,
+electron/tests/validate-packaged-runtime-smoke.js:311 |       fixture.adrg,
+electron/tests/validate-packaged-runtime-smoke.js:361 |         (item) => item.adrg === fixture.adrg,
+electron/tests/validate-packaged-runtime-smoke.js:419 |           entity_type: 'ADRG',
+electron/tests/validate-packaged-runtime-smoke.js:432 |       entity_type: 'ADRG',
+electron/tests/validate-packaging-config.js:330 |   check('PowerShell count 검사', verifySource.includes('$report.counts.adrg -ne 1132'), true);
+electron/tests/validate-stage59b-search.js:9 | check('public types', () => assert.deepEqual(SEARCH_ENTITY_TYPES, ['CODE','AADRG']));
+electron/tests/validate-stage59b-search.js:13 |   const expected = new Set([`CODE:${code}`, ...(row.related_aadrgs||[]).map(x=>`AADRG:${x}`)]);
+electron/tests/validate-stage59b-search.js:17 | check('AADRG condition inheritance', () => { const d=service.getDetail('AADRG','P6510').detail; assert.equal(d.adrg,'P651'); assert.ok(d.parent_adrg_detail); assert.ok('condition_ast' in d); assert.ok(Array.isArray(d.user_condition_tables)); });
+electron/tests/validate-stage59b-search.js:23 | for (const [adrg,count] of Object.entries({'9630':3376,'E013':427,'G504':610,'G524':610,'G534':610,'J031':738,'J032':738,'R020':161,'R040':161})) check(`MDC virtual ${adrg}`,()=>assert.equal(service.recordMaps.ADRG.get(adrg)?.mdc_virtual_principal_diagnosis?.code_count,count));
+electron/tests/validate-stage59b-search.js:24 | for (const adrg of ['B024','B092','H612','L632','O024','O062','S630']) check(`MDC HOLD ${adrg}`,()=>assert.equal(service.recordMaps.ADRG.get(adrg)?.mdc_virtual_review_status,'HOLD'));
+electron/tests/validate-stage59b-smoke.js:3 | const r=s.search('T601','ALL',{limit:500});assert.ok(r.results.length>=2);assert.ok(r.results.every(x=>['CODE','AADRG'].includes(x.entity_type)));const d=s.getDetail('AADRG','P6510').detail;assert.ok(d.parent_adrg_detail);assert.ok(d.mdc_name);console.log('stage59_smoke: PASS');
+electron/tests/validate-stage59b-ui.js:29 | check('public type AADRG', () => {
+electron/tests/validate-stage59b-ui.js:30 |   assert.match(html, /value="AADRG">AADRG/);
+electron/tests/validate-stage59b-ui.js:31 |   assert.doesNotMatch(html, /<option value="ADRG">/);
+electron/tests/validate-stage59b-ui.js:48 | check('AADRG detail', () => {
+electron/tests/validate-stage59b-ui.js:55 | check('related AADRG is clickable', () => {
+electron/tests/validate-stage59b-ui.js:57 |   assert.match(body, /create\('button', 'derived-aadrg-row'\)/);
+electron/tests/validate-stage59b-ui.js:58 |   assert.match(body, /row\.dataset\.entityType = 'AADRG'/);
+electron/tests/validate-stage59b-ui.js:64 | check('related AADRG names wrap', () => {
+electron/tests/validate-stage59b-ui.js:65 |   assert.match(css, /\.derived-aadrg-main \.derived-aadrg-name[\s\S]*white-space:\s*normal/);
+electron/tests/validate-stage59b-ui.js:66 |   assert.match(css, /\.derived-aadrg-row[\s\S]*cursor:\s*pointer/);
+electron/tests/validate-stage59b-ui.js:69 | check('CODE detail hero is AADRG centered', () => {
+electron/tests/validate-stage59b-ui.js:74 |   assert.match(codeBody, /관련 AADRG/);
+electron/tests/validate-stage59b-ui.js:80 | check('CODE detail section is AADRG centered', () => {
+electron/tests/validate-stage59b-ui.js:82 |   assert.match(body, /'관련 AADRG'/);
+electron/tests/validate-stage59b-ui.js:83 |   assert.doesNotMatch(body, /'관련 ADRG'/);
+electron/tests/validate-stage59b-ui.js:88 | check('AADRG overview metric uses AADRG count', () => {
+electron/tests/validate-stage59b-ui.js:92 |     /setText\('metric-aadrg', Ui\.formatNumber\(snapshot\.counts\.aadrg\)\)/,
+electron/tests/validate-stage59b-ui.js:165 | check('relation AADRG', () => {
+electron/tests/validate-stage59b-ui.js:166 |   assert.match(app, /관계검색 AADRG/);
+electron/tests/validate-stage59b-ui.js:167 |   assert.match(app, /makeBadge\('AADRG'\)/);
+electron/tests/validate-stage59b-ui.js:168 |   assert.match(app, /AADRG 상세 보기/);
+electron/tests/validate-stage59b-ui.js:169 |   assert.doesNotMatch(app, /ADRG 전체 상세/);
+electron/tests/validate-stage59b-ui.js:173 |   assert.match(fmt, /const ordered = \['CODE', 'AADRG'\]/);
+electron/tests/validate-stage59b-ui.js:190 |   const d = s63.getDetail('AADRG', 'F2120').detail; assert.equal(d.adrg, 'F212'); assert.deepEqual(d.source_logical_table_ids ?? [], []); assert.deepEqual(d.parent_adrg_detail.source_logical_table_ids ?? [], ['LT_F212_001']);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:39 | assert.match(wrapperSource, /recordMaps\.AADRG/);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:40 | assert.match(wrapperSource, /non-AADRG public result/);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:44 | assert.match(source, /packaged AADRG relation response contract mismatch/);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:69 | assert.equal(fixture.public_entity_type, 'AADRG');
+electron/tests/validate-stage60c-packaged-relation-smoke.js:72 | assert.match(String(fixture.adrg || ''), /^[A-Z0-9-]+$/);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:73 | assert.match(String(fixture.aadrg || ''), /^[A-Z0-9-]+$/);
+electron/tests/validate-stage60c-packaged-relation-smoke.js:81 | assert.ok(response.results.every((item) => item.entity_type === 'AADRG'));
+electron/tests/validate-stage60c-packaged-relation-smoke.js:85 |     String(item.entity_id) === String(fixture.aadrg)
+electron/tests/validate-stage60c-packaged-relation-smoke.js:86 |     && String(item.parent_adrg) === String(fixture.adrg)
+electron/tests/validate-stage60c-packaged-relation-smoke.js:89 | assert.ok(projected, 'runtime AADRG projection fixture not found');
+electron/tests/validate-stage60c-packaged-relation-smoke.js:98 |   `[PASS] Stage60C runtime relation fixture: ${fixture.adrg} -> ${fixture.aadrg} | ${fixture.codes.join(',')}`,
+legacy_reference/validate_kdrg_v16_mdc_advanced_search_1784091673827.py:97 |         errors.append(f"ADRG 수: {len(rules)} != {EXPECTED_RULE_COUNT}")
+legacy_reference/validate_kdrg_v16_mdc_advanced_search_1784091673827.py:113 |         errors.append(f"AADRG 수: {mapping_count} != {EXPECTED_AADRG_COUNT}")
+scripts/build_kdrg_v47_stage59_0510.py:161 |              f"{adrg} MDC {mdc} code_count={len(codeset)} expected={expected}")
+sources/SOURCE_MANIFEST.md:16 | | 6 | `[별표_1]_입원환자의_질병군별_질병의_종류(제3조제1항_관련)(상급종합병원의_지정_및_평가_규정)_(2)_1784091626701.pdf` (31쪽) | A/B/C 질병군(전문진료질병군·일반진료질병군·단순진료질병군) 분류의 **유일한** 근거. 구 HWP/HWPX 기반 A/B/C 자료는 사용하지 않음. | **반영**. 파일럿 9개 ADRG의 AADRG 코드(E0110, E5010, E5020, E5110, E5120, F0220, F1360, F1940, F1950)를 이 PDF에서 직접 검색하여 A/B/C 소속을 확인했고, 기존 파일럿 JSON의 `group_code` 값과 전부 일치함을 확인했습니다(`tests/validate_fixture.py` 참고). |
+tests/smoke_test_kdrg_search_service.py:64 |     checker.check("S05", "ADRG 1132", counts.get("adrg_records") == 1132, str(counts.get("adrg_records")))
+tests/smoke_test_kdrg_search_service.py:65 |     checker.check("S06", "AADRG 1233", counts.get("aadrg_records") == 1233, str(counts.get("aadrg_records")))
+tests/smoke_test_kdrg_search_service.py:71 |     adrg = service.search("9600", "ADRG")
+tests/smoke_test_kdrg_search_service.py:72 |     checker.check("S11", "ADRG exact search", ids(adrg) == ["9600"], str(ids(adrg)))
+tests/smoke_test_kdrg_search_service.py:73 |     checker.check("S12", "ADRG exact match type", adrg["results"][0]["match_type"] == "EXACT_ID", str(adrg["results"][0]["match_type"]))
+tests/smoke_test_kdrg_search_service.py:75 |     aadrg = service.search("96000", "AADRG")
+tests/smoke_test_kdrg_search_service.py:76 |     checker.check("S13", "AADRG exact search", ids(aadrg) == ["96000"], str(ids(aadrg)))
+tests/smoke_test_kdrg_search_service.py:77 |     checker.check("S14", "AADRG B classification", aadrg["results"][0]["summary"]["classification_code"] == "B", str(aadrg["results"][0]["summary"]))
+tests/smoke_test_kdrg_search_service.py:91 |     checker.check("S19", "Korean name token search", "9600" in ids(name_search, "ADRG"), str(ids(name_search, "ADRG")))
+tests/smoke_test_kdrg_search_service.py:97 |     checker.check("S22", "MDC filter", all((row["summary"].get("mdc") == "PRE") for row in mdc_filter["results"] if row["entity_type"] in {"ADRG", "AADRG"}), str(mdc_filter["results"][:5]))
+tests/smoke_test_kdrg_search_service.py:98 |     class_filter = service.search("9600", "ADRG", classification="B")
+tests/smoke_test_kdrg_search_service.py:100 |     class_filter_empty = service.search("9600", "ADRG", classification="A")
+tests/smoke_test_kdrg_search_service.py:113 |     checker.check("S31", "X04 family not exposed as ADRG", "X04" not in relations["runtime_related"]["adrgs"], str(relations["runtime_related"]))
+tests/smoke_test_kdrg_search_service.py:128 |     unclassified = service.get_detail("AADRG", "99000")["detail"]
+tests/smoke_test_kdrg_search_service.py:130 |     mixed = service.get_detail("ADRG", "I760")["detail"]
+tests/smoke_test_kdrg_search_service.py:131 |     checker.check("S39", "mixed ADRG classification preserved", len(set(mixed.get("abc_classification_codes") or [])) >= 2, str(mixed.get("abc_classification_codes")))
+tests/smoke_test_kdrg_search_service.py:166 |     adrg_detail = service.get_detail("ADRG", "9600")["detail"]
+tests/smoke_test_kdrg_search_service.py:167 |     checker.check("S47", "ADRG condition AST connected", (adrg_detail.get("condition_ast") or {}).get("condition_ast_id") == "AST_9600", str((adrg_detail.get("condition_ast") or {}).get("condition_ast_id")))
+tests/smoke_test_kdrg_search_service.py:168 |     aadrg_detail = service.get_detail("AADRG", "96000")["detail"]
+tests/smoke_test_kdrg_search_service.py:169 |     checker.check("S48", "AADRG parent ADRG connected", (aadrg_detail.get("parent_adrg") or {}).get("entity_id") == "9600", str(aadrg_detail.get("parent_adrg")))
+tests/smoke_test_kdrg_search_service.py:171 |     checker.check("S49", "RDRG parent AADRG connected", (rdrg_detail.get("parent_aadrg") or {}).get("entity_id") == "96000", str(rdrg_detail.get("parent_aadrg")))
+tests/smoke_test_runtime_ui_bridge.py:27 |     check("ADRG 1132", len(store.rules) == 1132, str(len(store.rules)))
+tests/smoke_test_runtime_ui_bridge.py:33 |     adrg_rows = store.search("9600", "ADRG")
+tests/smoke_test_runtime_ui_bridge.py:34 |     check("ADRG exact", bool(adrg_rows) and adrg_rows[0].key == "9600", str(adrg_rows[:1]))
+tests/smoke_test_runtime_ui_bridge.py:36 |     aadrg_rows = store.search("96000", "ADRG")
+tests/smoke_test_runtime_ui_bridge.py:37 |     check("AADRG exact parent", bool(aadrg_rows) and aadrg_rows[0].key == "9600", str(aadrg_rows[:1]))
+tests/smoke_test_runtime_ui_bridge.py:71 |     check("MainWindow status full", "ADRG 1132개" in window.statusBar().currentMessage(), window.statusBar().currentMessage())
+tests/smoke_test_ui.py:9 | - 초기 화면에 파일럿 9개 ADRG 결과가 노출됨
+tests/smoke_test_ui.py:53 |     if window.current_type_label.text() != "ADRG":
+tests/smoke_test_ui.py:62 |     window.category_combo.setCurrentText("ADRG")
+tests/smoke_test_ui.py:66 |         fail(f"ADRG 카테고리 전체 검색 결과가 9건이 아닙니다: {len(window.current_results)}건")
+tests/test_schema_v2_semantics.py:96 |     adrg = v2_rule["adrg"]
+tests/test_schema_v2_semantics.py:113 |         fail(f"[{adrg}] v1 table_id가 v2 condition_expression에 없음: {sorted(missing)}")
+tests/test_schema_v2_semantics.py:115 |         ok(f"[{adrg}] table_id 커버리지 OK (v1={len(v1_tables)} v2_expr={len(v2_tables)})")
+tests/test_schema_v2_semantics.py:118 |     if v2_display_tables and (v2_display_tables - v2_tables) and adrg not in ("E501","E502","E511","E512"):
+tests/test_schema_v2_semantics.py:121 |         fail(f"[{adrg}] condition_groups_display에 있으나 condition_expression에 없는 table_id: {sorted(extra)}")
+tests/test_schema_v2_semantics.py:123 |         ok(f"[{adrg}] condition_groups_display ↔ condition_expression 테이블 일치 OK")
+tests/test_schema_v2_semantics.py:127 |     adrg = v2_rule["adrg"]
+
+[RUNTIME AUDIT]
+{
+  "sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "bytes": 31905311,
+  "top_level": [
+    "aadrg_records",
+    "adrg_records",
+    "code_namespace_contract",
+    "code_records",
+    "condition_ast_records",
+    "counts",
+    "indexes",
+    "logical_table_records",
+    "mdc_master",
+    "meta",
+    "rdrg_records",
+    "runtime_semantic_rules",
+    "stage59b_shadow_contract",
+    "user_condition_projection_validation",
+    "validation"
+  ],
+  "visited_nodes": 1276172,
+  "key_counts": {
+    "aadrg_key": 57148,
+    "adrg_key": 83782
+  },
+  "value_counts": {
+    "exact_AADRG": 2
+  },
+  "sample_paths": {
+    "aadrg_key": [
+      {
+        "path": "$.aadrg_records",
+        "value": "list"
+      },
+      {
+        "path": "$.rdrg_records[2698].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2697].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2696].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2695].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2694].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2693].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2692].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2691].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2690].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2689].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2688].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2687].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2686].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2685].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2684].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2683].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2682].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2681].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2680].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2679].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2678].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2677].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2676].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2675].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2674].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2673].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2672].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2671].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2670].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2669].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2668].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2667].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2666].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2665].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2664].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2663].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2662].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2661].aadrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2660].aadrg",
+        "value": "str"
+      }
+    ],
+    "adrg_key": [
+      {
+        "path": "$.adrg_records",
+        "value": "list"
+      },
+      {
+        "path": "$.rdrg_records[2698].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2697].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2696].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2695].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2694].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2693].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2692].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2691].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2690].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2689].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2688].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2687].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2686].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2685].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2684].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2683].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2682].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2681].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2680].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2679].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2678].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2677].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2676].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2675].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2674].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2673].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2672].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2671].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2670].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2669].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2668].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2667].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2666].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2665].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2664].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2663].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2662].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2661].adrg",
+        "value": "str"
+      },
+      {
+        "path": "$.rdrg_records[2660].adrg",
+        "value": "str"
+      }
+    ],
+    "exact_AADRG": [
+      {
+        "path": "$.stage59b_shadow_contract.primary_user_group",
+        "value": "AADRG"
+      },
+      {
+        "path": "$.stage59b_shadow_contract.public_search_types[1]",
+        "value": "AADRG"
+      }
+    ]
+  },
+  "policy": "Preserve AADRG runtime data/relations; change public exposure only."
+}
+
+[MIGRATION PLAN]
+{
+  "policy": {
+    "public_primary_entity": "ADRG",
+    "public_search_types": [
+      "ALL",
+      "CODE",
+      "ADRG"
+    ],
+    "aadrg_public_primary_visibility": "HIDDEN",
+    "aadrg_runtime_data": "PRESERVE",
+    "aadrg_relations": "PRESERVE",
+    "no_code_truncation_shortcut": true,
+    "deduplicate_by_real_adrg_relation": true
+  },
+  "shadow_targets": {
+    "public_runtime_files": [
+      "legacy_reference/kdrg_relation_data_v16_mdc_advanced_search_1784091673824.json",
+      "electron/renderer/app.js",
+      "electron/src/kdrg-search-service.js",
+      "electron/src/packaged-runtime-smoke.js",
+      "legacy_reference/kdrg_relation_search_v16_mdc_advanced_search_1784091673825.py",
+      "app/kdrg_search_service.py",
+      "electron/renderer/styles.css",
+      "electron/renderer/ui-formatters.js",
+      "electron/renderer/index.html",
+      "legacy_reference/special_case_registry_v16_mdc_advanced_search_1784091673826.txt",
+      "50B_validate_kdrg_electron_search_service.py",
+      "legacy_reference/validate_kdrg_v16_mdc_advanced_search_1784091673827.py",
+      "legacy_reference/TEST_GUIDE_v16_mdc_advanced_search_1784091673826.md",
+      "schemas/kdrg_relation_schema_v2.json",
+      "electron/src/search-result-contract.js",
+      "legacy_reference/README_kdrg_v16_mdc_advanced_search_1784091673825.txt",
+      "electron/src/bootstrap-data.js"
+    ],
+    "validator_files": [
+      "electron/tests/validate-stage59b-ui.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "tests/smoke_test_kdrg_search_service.py",
+      "50C_validate_kdrg_electron_renderer_ui.py",
+      "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+      "tests/windows_runtime_source_smoke.py",
+      "50D_validate_kdrg_electron_windows_packaging.py",
+      "tests/test_schema_v2_semantics.py",
+      "tests/validate_fixture.py",
+      "electron/tests/validate-stage59b-search.js",
+      "electron/tests/validate-stage59b-smoke.js",
+      "tests/test_schema_v2_source_integrity.py",
+      "tests/validate_schema_v2.py",
+      "tests/smoke_test_runtime_ui_bridge.py"
+    ],
+    "data_files_with_aadrg": [
+      "data/kdrg_v47_search_integrated_v3.json",
+      "data/kdrg_v47_search_integrated.json",
+      "data/kdrg_v47_ui_fixture.json",
+      "data/kdrg_v47_pilot_schema_v2.json"
+    ]
+  },
+  "runtime_contract": {
+    "aadrg_key_count": 57148,
+    "adrg_key_count": 83782,
+    "rule": "Do not delete/rename AADRG runtime fields in Stage67B."
+  },
+  "required_shadow_checks": [
+    "Public search selector exposes ALL/CODE/ADRG and hides AADRG.",
+    "Exact code search routes to real related ADRG entities.",
+    "Multiple AADRG children under one ADRG do not duplicate ADRG cards.",
+    "ADRG occupies the same primary UI position/style previously used by AADRG.",
+    "ADRG detail preserves name/MDC/classification/condition/TABLE/related-code flow.",
+    "AADRG runtime objects and ADRG↔AADRG relations remain preserved.",
+    "Official-source condition display/correction precedence remains unchanged.",
+    "P651/F022/F212 and existing relation smoke cases remain regression-tested.",
+    "No product hardcoding for B018/B022/L033/F212/P651."
+  ]
+}
+
+[NEXT]
+- Stage67B: 이 감사 결과를 기준으로 ADRG 중심 UI/검색/관계 Shadow 전면수정본 생성.
+- AADRG 데이터/관계는 삭제하지 않고 내부 유지.
+- Shadow에서 코드→ADRG, TABLE→ADRG, ADRG 상세, 중복제거, 기존 조건표시 회귀를 함께 검증.
+- Shadow PASS 전에는 Actual/버전증가/commit/push/tag/release 진행 금지.
+
+report_txt=/home/runner/workspace/stage67a_0515_adrg_public_switch_audit_r1.txt
+report_json=/home/runner/workspace/stage67a_0515_adrg_public_switch_audit_r1.json

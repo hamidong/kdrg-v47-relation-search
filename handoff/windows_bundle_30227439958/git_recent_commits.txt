@@ -1,0 +1,5 @@
+37f5e76 test: expose Windows bundle regression failures
+1b21ba0 fix: strengthen Windows runtime source regression
+6181300 feat: connect full KDRG runtime search and Windows regression
+7a28354 release: set version to 0.2.0
+5fdffb5 feat: improve PySide UI v0.2 structure and preview validation

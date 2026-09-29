@@ -1,0 +1,510 @@
+KDRG V4.7 Electron Stage67D / 0.5.15 Packaged Smoke ADRG Migration Shadow R3
+====================================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_FINAL_SHADOW_AUDIT
+
+[PREFLIGHT]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "base_tag": "electron-v0.5.14",
+  "package_version": "0.5.14",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "stage67c": {
+    "status": "PASS",
+    "readiness": "READY_FOR_0515_PACKAGED_SMOKE_MIGRATION",
+    "full_npm_run_check": "DEFERRED_TO_STAGE67D"
+  }
+}
+
+[SHADOW]
+{
+  "source_shadow": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+  "shadow_root": "/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r3",
+  "required_files": [
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+    "electron/package.json",
+    "50B_validate_kdrg_electron_search_service.py",
+    "50C_validate_kdrg_electron_renderer_ui.py",
+    "50D_validate_kdrg_electron_windows_packaging.py"
+  ]
+}
+
+[MIGRATION]
+{
+  "source_summary": {
+    "public_type_checks_migrated": 3,
+    "selected_aadrg_assignments_hidden": 1,
+    "inline_table_adrg_label_preserved": 1,
+    "relation_validator_contract": "ADRG_NATIVE",
+    "relation_fixture_contract": "ADRG_NATIVE_AADRG_NULL"
+  },
+  "modified_files": [
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+    "electron/tests/validate-stage67d-packaged-adrg-contract.js"
+  ]
+}
+
+[SHA CONTRACT]
+{
+  "electron/src/packaged-runtime-smoke.js": {
+    "shadow_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+    "actual_sha256": "8ae6c023b866297394c7e7fea6769f79dc805e14455e4eeb5f7cc13db1e1fa2e"
+  },
+  "electron/tests/validate-packaged-runtime-smoke.js": {
+    "shadow_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+    "actual_sha256": "bc37b02d2145398c6aed0a013399b45a33f4604a254edabbdac2c99a309c214b"
+  },
+  "electron/tests/validate-stage60c-packaged-relation-smoke.js": {
+    "shadow_sha256": "c03b76e86b32e0dcfd7fbcc43e3ef618d3941e32b3512946fbb960927040837f",
+    "actual_sha256": "0480d004e13b268b1cf87827847b9865bada191d3595c7cb3c25e62850bed6fa"
+  },
+  "electron/tests/validate-stage67d-packaged-adrg-contract.js": {
+    "shadow_sha256": "ca680f9d910f535ca843c7ee13ebb018fa83a6e963db2631bfa95df91f0a08f3",
+    "actual_sha256": null
+  },
+  "electron/src/kdrg-search-service.js": {
+    "shadow_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+    "actual_sha256": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703"
+  },
+  "electron/src/search-result-contract.js": {
+    "shadow_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+    "actual_sha256": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f"
+  },
+  "electron/renderer/app.js": {
+    "shadow_sha256": "d81d159a4483d2b2a4977d9065eaea6e67a28a24bcc12c79534605a2fec752b8",
+    "actual_sha256": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491"
+  },
+  "electron/renderer/index.html": {
+    "shadow_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093",
+    "actual_sha256": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2"
+  },
+  "electron/renderer/ui-formatters.js": {
+    "shadow_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77",
+    "actual_sha256": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02"
+  },
+  "50B_validate_kdrg_electron_search_service.py": {
+    "shadow_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9",
+    "actual_sha256": "7a6861a57436352761fec0063408ac60c0a408485a038fc342a31fddfc132010"
+  },
+  "50C_validate_kdrg_electron_renderer_ui.py": {
+    "shadow_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f",
+    "actual_sha256": "77036caeafb3882b12cda91345fac547943bae4113dac83790fbd115647443a9"
+  },
+  "50D_validate_kdrg_electron_windows_packaging.py": {
+    "shadow_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd",
+    "actual_sha256": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843"
+  }
+}
+
+[VALIDATION]
+
+[GUARDS]
+{
+  "npm_run_check": null,
+  "root_50b": null,
+  "root_50c": null,
+  "root_50d": null,
+  "runtime_unchanged": null,
+  "package_version_unchanged": null,
+  "actual_workspace_unchanged": null
+}
+
+[BLOCKER]
+StageError: validation failed: node electron/tests/validate-stage60c-packaged-relation-smoke.js
+node:assert:768
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /KdrgSearchService/. Input:
+
+'function findRelationSmokeFixture(service) {\n' +
+  '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+  '  const tableMap = service?.recordMaps?.TABLE;\n' +
+  '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+  "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+  '  }\n' +
+  '\n' +
+  '  let attempts = 0;\n' +
+  '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+  '    const exclusionIds = new Set(\n' +
+  '      (groups ?? []).flatMap((group) => group.exclude_table_ids ?? []),\n' +
+  '    );\n' +
+  '\n' +
+  '    for (const group of groups ?? []) {\n' +
+  '      const codes = [];\n' +
+  '      const seen = new Set();\n' +
+  '\n' +
+  '      for (const tableId of group.include_table_ids ?? []) {\n' +
+  '        if (exclusionIds.has(tableId)) continue;\n' +
+  '        const table = tableMap.get(String(tableId));\n' +
+  '\n' +
+  '        for (const code of table?.codes ?? []) {\n' +
+  "          const normalized = String(code ?? '')\n" +
+  "            .replace(/[^0-9A-Za-z]/g, '')\n" +
+  '            .toUpperCase();\n' +
+  '          if (!normalized || seen.has(normalized)) continue;\n' +
+  '          seen.add(normalized);\n' +
+  '          codes.push(String(code));\n' +
+  '          if (codes.length >= 2) break;\n' +
+  '        }\n' +
+  '\n' +
+  '        if (codes.length >= 2) break;\n' +
+  '      }\n' +
+  '\n' +
+  '      if (codes.length < 2) continue;\n' +
+  '      attempts += 1;\n' +
+  '\n' +
+  '      const conditions = codes.map((code) => ({\n' +
+  '        code,\n' +
+  "        codeType: 'AUTO',\n" +
+  '      }));\n' +
+  "      const operator = 'AND';\n" +
+  '      const options = { limit: 500 };\n' +
+  '      const response = service.relationSearch(\n' +
+  '        conditions,\n' +
+  '        operator,\n' +
+  '        options,\n' +
+  '      );\n' +
+  '\n' +
+  '      const projected = (response.results ?? []).find(\n' +
+  '        (item) => (\n' +
+  "          String(item?.entity_type ?? '').toUpperCase() === 'ADRG'\n" +
+  "          && String(item?.entity_id ?? '') === String(adrg)\n" +
+  '          && (\n' +
+  "            !String(item?.parent_adrg ?? '').trim()\n" +
+  '            || String(item.parent_adrg) === String(adrg)\n' +
+  '          )\n' +
+  '        ),\n' +
+  '      );\n' +
+  '      if (!projected) continue;\n' +
+  '\n' +
+  '      return {\n' +
+  '        runtime_fixture: true,\n' +
+  "        public_entity_type: 'ADRG',\n" +
+  '        adrg: String(adrg),\n' +
+  '        aadrg: null,\n' +
+  '        codes,\n' +
+  '        conditions,\n' +
+  '        operator,\n' +
+  '        options,\n' +
+  '        response,\n' +
+  '        expected_adrg: String(adrg),\n' +
+  '        expectedAdrg: String(adrg),\n' +
+  '      };\n' +
+  '    }\n' +
+  '  }\n' +
+  '\n' +
+  '  throw new Error(\n' +
+  '    `packaged ADRG relation smoke fixture discovery failed after ${attempts} attempts`,\n' +
+  '  );\n' +
+  '}'
+
+    at Object.<anonymous> (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r3/electron/tests/validate-stage60c-packaged-relation-smoke.js:36:8)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'function findRelationSmokeFixture(service) {\n' +
+    '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+    '  const tableMap = service?.recordMaps?.TABLE;\n' +
+    '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+    "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+    '  }\n' +
+    '\n' +
+    '  let attempts = 0;\n' +
+    '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+    '    const exclusionIds = new Set(\n' +
+    '      (groups ?? []).flatMap((group) => group.exclude_table_ids ?? []),\n' +
+    '    );\n' +
+    '\n' +
+    '    for (const group of groups ?? []) {\n' +
+    '      const codes = [];\n' +
+    '      const seen = new Set();\n' +
+    '\n' +
+    '      for (const tableId of group.include_table_ids ?? []) {\n' +
+    '        if (exclusionIds.has(tableId)) continue;\n' +
+    '        const table = tableMap.get(String(tableId));\n' +
+    '\n' +
+    '        for (const code of table?.codes ?? []) {\n' +
+    "          const normalized = String(code ?? '')\n" +
+    "            .replace(/[^0-9A-Za-z]/g, '')\n" +
+    '            .toUpperCase();\n' +
+    '          if (!normalized || seen.has(normalized)) continue;\n' +
+    '          seen.add(normalized);\n' +
+    '          codes.push(String(code));\n' +
+    '          if (codes.length >= 2) break;\n' +
+    '        }\n' +
+    '\n' +
+    '        if (codes.length >= 2) break;\n' +
+    '      }\n' +
+    '\n' +
+    '      if (codes.length < 2) continue;\n' +
+    '      attempts += 1;\n' +
+    '\n' +
+    '      const conditions = codes.map((code) => ({\n' +
+    '        code,\n' +
+    "        codeType: 'AUTO',\n" +
+    '      }));\n' +
+    "      const operator = 'AND';\n" +
+    '      const options = { limit: 500 };\n' +
+    '      const response = service.relationSearch(\n' +
+    '        conditions,\n' +
+    '        operator,\n' +
+    '        options,\n' +
+    '      );\n' +
+    '\n' +
+    '      const projected = (response.results ?? []).find(\n' +
+    '        (item) => (\n' +
+    "          String(item?.entity_type ?? '').toUpperCase() === 'ADRG'\n" +
+    "          && String(item?.entity_id ?? '') === String(adrg)\n" +
+    '          && (\n' +
+    "            !String(item?.parent_adrg ?? '').trim()\n" +
+    '            || String(item.parent_adrg) === String(adrg)\n' +
+    '          )\n' +
+    '        ),\n' +
+    '      );\n' +
+    '      if (!projected) continue;\n' +
+    '\n' +
+    '      return {\n' +
+    '        runtime_fixture: true,\n' +
+    "        public_entity_type: 'ADRG',\n" +
+    '        adrg: String(adrg),\n' +
+    '        aadrg: null,\n' +
+    '        codes,\n' +
+    '        conditions,\n' +
+    '        operator,\n' +
+    '        options,\n' +
+    '        response,\n' +
+    '        expected_adrg: String(adrg),\n' +
+    '        expectedAdrg: String(adrg),\n' +
+    '      };\n' +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  throw new Error(\n' +
+    '    `packaged ADRG relation smoke fixture discovery failed after ${attempts} attempts`,\n' +
+    '  );\n' +
+    '}',
+  expected: /KdrgSearchService/,
+  operator: 'match'
+}
+
+Node.js v20.20.0
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R3.py", line 1155, in main
+    payload["validation"] = validate_shadow()
+                            ^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R3.py", line 993, in validate_shadow
+    check(["node", STAGE60C_REL])
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R3.py", line 970, in check
+    require(
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R3.py", line 87, in require
+    raise StageError(message)
+StageError: validation failed: node electron/tests/validate-stage60c-packaged-relation-smoke.js
+node:assert:768
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /KdrgSearchService/. Input:
+
+'function findRelationSmokeFixture(service) {\n' +
+  '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+  '  const tableMap = service?.recordMaps?.TABLE;\n' +
+  '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+  "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+  '  }\n' +
+  '\n' +
+  '  let attempts = 0;\n' +
+  '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+  '    const exclusionIds = new Set(\n' +
+  '      (groups ?? []).flatMap((group) => group.exclude_table_ids ?? []),\n' +
+  '    );\n' +
+  '\n' +
+  '    for (const group of groups ?? []) {\n' +
+  '      const codes = [];\n' +
+  '      const seen = new Set();\n' +
+  '\n' +
+  '      for (const tableId of group.include_table_ids ?? []) {\n' +
+  '        if (exclusionIds.has(tableId)) continue;\n' +
+  '        const table = tableMap.get(String(tableId));\n' +
+  '\n' +
+  '        for (const code of table?.codes ?? []) {\n' +
+  "          const normalized = String(code ?? '')\n" +
+  "            .replace(/[^0-9A-Za-z]/g, '')\n" +
+  '            .toUpperCase();\n' +
+  '          if (!normalized || seen.has(normalized)) continue;\n' +
+  '          seen.add(normalized);\n' +
+  '          codes.push(String(code));\n' +
+  '          if (codes.length >= 2) break;\n' +
+  '        }\n' +
+  '\n' +
+  '        if (codes.length >= 2) break;\n' +
+  '      }\n' +
+  '\n' +
+  '      if (codes.length < 2) continue;\n' +
+  '      attempts += 1;\n' +
+  '\n' +
+  '      const conditions = codes.map((code) => ({\n' +
+  '        code,\n' +
+  "        codeType: 'AUTO',\n" +
+  '      }));\n' +
+  "      const operator = 'AND';\n" +
+  '      const options = { limit: 500 };\n' +
+  '      const response = service.relationSearch(\n' +
+  '        conditions,\n' +
+  '        operator,\n' +
+  '        options,\n' +
+  '      );\n' +
+  '\n' +
+  '      const projected = (response.results ?? []).find(\n' +
+  '        (item) => (\n' +
+  "          String(item?.entity_type ?? '').toUpperCase() === 'ADRG'\n" +
+  "          && String(item?.entity_id ?? '') === String(adrg)\n" +
+  '          && (\n' +
+  "            !String(item?.parent_adrg ?? '').trim()\n" +
+  '            || String(item.parent_adrg) === String(adrg)\n' +
+  '          )\n' +
+  '        ),\n' +
+  '      );\n' +
+  '      if (!projected) continue;\n' +
+  '\n' +
+  '      return {\n' +
+  '        runtime_fixture: true,\n' +
+  "        public_entity_type: 'ADRG',\n" +
+  '        adrg: String(adrg),\n' +
+  '        aadrg: null,\n' +
+  '        codes,\n' +
+  '        conditions,\n' +
+  '        operator,\n' +
+  '        options,\n' +
+  '        response,\n' +
+  '        expected_adrg: String(adrg),\n' +
+  '        expectedAdrg: String(adrg),\n' +
+  '      };\n' +
+  '    }\n' +
+  '  }\n' +
+  '\n' +
+  '  throw new Error(\n' +
+  '    `packaged ADRG relation smoke fixture discovery failed after ${attempts} attempts`,\n' +
+  '  );\n' +
+  '}'
+
+    at Object.<anonymous> (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r3/electron/tests/validate-stage60c-packaged-relation-smoke.js:36:8)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'function findRelationSmokeFixture(service) {\n' +
+    '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+    '  const tableMap = service?.recordMaps?.TABLE;\n' +
+    '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+    "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+    '  }\n' +
+    '\n' +
+    '  let attempts = 0;\n' +
+    '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+    '    const exclusionIds = new Set(\n' +
+    '      (groups ?? []).flatMap((group) => group.exclude_table_ids ?? []),\n' +
+    '    );\n' +
+    '\n' +
+    '    for (const group of groups ?? []) {\n' +
+    '      const codes = [];\n' +
+    '      const seen = new Set();\n' +
+    '\n' +
+    '      for (const tableId of group.include_table_ids ?? []) {\n' +
+    '        if (exclusionIds.has(tableId)) continue;\n' +
+    '        const table = tableMap.get(String(tableId));\n' +
+    '\n' +
+    '        for (const code of table?.codes ?? []) {\n' +
+    "          const normalized = String(code ?? '')\n" +
+    "            .replace(/[^0-9A-Za-z]/g, '')\n" +
+    '            .toUpperCase();\n' +
+    '          if (!normalized || seen.has(normalized)) continue;\n' +
+    '          seen.add(normalized);\n' +
+    '          codes.push(String(code));\n' +
+    '          if (codes.length >= 2) break;\n' +
+    '        }\n' +
+    '\n' +
+    '        if (codes.length >= 2) break;\n' +
+    '      }\n' +
+    '\n' +
+    '      if (codes.length < 2) continue;\n' +
+    '      attempts += 1;\n' +
+    '\n' +
+    '      const conditions = codes.map((code) => ({\n' +
+    '        code,\n' +
+    "        codeType: 'AUTO',\n" +
+    '      }));\n' +
+    "      const operator = 'AND';\n" +
+    '      const options = { limit: 500 };\n' +
+    '      const response = service.relationSearch(\n' +
+    '        conditions,\n' +
+    '        operator,\n' +
+    '        options,\n' +
+    '      );\n' +
+    '\n' +
+    '      const projected = (response.results ?? []).find(\n' +
+    '        (item) => (\n' +
+    "          String(item?.entity_type ?? '').toUpperCase() === 'ADRG'\n" +
+    "          && String(item?.entity_id ?? '') === String(adrg)\n" +
+    '          && (\n' +
+    "            !String(item?.parent_adrg ?? '').trim()\n" +
+    '            || String(item.parent_adrg) === String(adrg)\n' +
+    '          )\n' +
+    '        ),\n' +
+    '      );\n' +
+    '      if (!projected) continue;\n' +
+    '\n' +
+    '      return {\n' +
+    '        runtime_fixture: true,\n' +
+    "        public_entity_type: 'ADRG',\n" +
+    '        adrg: String(adrg),\n' +
+    '        aadrg: null,\n' +
+    '        codes,\n' +
+    '        conditions,\n' +
+    '        operator,\n' +
+    '        options,\n' +
+    '        response,\n' +
+    '        expected_adrg: String(adrg),\n' +
+    '        expectedAdrg: String(adrg),\n' +
+    '      };\n' +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  throw new Error(\n' +
+    '    `packaged ADRG relation smoke fixture discovery failed after ${attempts} attempts`,\n' +
+    '  );\n' +
+    '}',
+  expected: /KdrgSearchService/,
+  operator: 'match'
+}
+
+Node.js v20.20.0
+
+
+
+[NEXT]
+- Stage67D PASS이면 ADRG 공개전환 Shadow 전수검증 완료.
+- 다음 단계는 Actual 적용 전 최종 diff/영향범위 감사(Stage67E).
+- Stage67E PASS 후에만 Actual 파일 적용.
+- AADRG 내부 데이터/detail은 유지하고 공개 UI에서는 숨김 유지.
+- runtime JSON / package version / 0.5.14 tag·Release는 아직 불변.
+
+shadow_root=/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r3
+report_txt=/home/runner/workspace/stage67d_0515_packaged_smoke_shadow_r3.txt
+report_json=/home/runner/workspace/stage67d_0515_packaged_smoke_shadow_r3.json

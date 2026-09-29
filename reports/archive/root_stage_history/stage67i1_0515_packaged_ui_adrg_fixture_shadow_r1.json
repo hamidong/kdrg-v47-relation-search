@@ -1,0 +1,16 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_PACKAGED_UI_FIXTURE_ACTUAL_APPLY",
+  "started_at": "2026-09-22 07:02:00",
+  "preflight": {},
+  "search_contract": {},
+  "shadow_build": {},
+  "source_repair": {},
+  "validator_repair": {},
+  "delta": {},
+  "validation": {},
+  "final_actual_guard": {},
+  "manifest": {},
+  "error": "StageError: packaged_ui_validation signature missing\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py\", line 807, in main\n    payload[\"preflight\"] = preflight()\n                           ^^^^^^^^^^^\n  File \"/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py\", line 221, in preflight\n    diag = load_diag_gate()\n           ^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py\", line 191, in load_diag_gate\n    require('\"failed_step\": \"packaged_ui_validation\"' in failed_log,\n  File \"/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py\", line 106, in require\n    raise StageError(message)\nStageError: packaged_ui_validation signature missing\n",
+  "finished_at": "2026-09-22 07:02:00"
+}

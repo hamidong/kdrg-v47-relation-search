@@ -1,0 +1,50 @@
+KDRG V4.7 Electron Stage67I4 / 0.5.15 Search Normalizer Repair Shadow R1
+====================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_NORMALIZER_ACTUAL_APPLY
+
+[PREFLIGHT]
+{
+  "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "branch": "main",
+  "before_sha256": {
+    "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+    "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+  },
+  "release_tag_absent": true,
+  "release_absent": true,
+  "runtime_unchanged": true
+}
+
+[REPAIR]
+{}
+
+[VALIDATION SUMMARY]
+{
+  "normalized_entity_type": null,
+  "bridge_exact_count": null,
+  "normalizer_guards": null,
+  "adrg_count": null,
+  "collision_count": null,
+  "failure_count": null,
+  "npm_run_check": null,
+  "root_50b_50c_50d": null,
+  "release_version": null,
+  "git_diff_check": null
+}
+
+[ACTUAL GUARD]
+{}
+
+[BLOCKER]
+StageError: old normalizeSearchRequest allow-list expected 1, found 0
+
+[NEXT]
+- PASS이면 normalizeSearchRequest의 ADRG 전달 오류가 Shadow에서 일반화 수정됨.
+- 다음 Stage67I5에서 manifest의 정확한 2개만 Actual 적용 후 전체검증.
+- Actual PASS 후 새 fix commit을 추가하고 그 새 commit으로 RC를 다시 실행.
+- RC success 전 electron-v0.5.15 tag/release 금지.
+
+manifest=/home/runner/workspace/stage67i4_0515_search_normalizer_apply_manifest_r1.json
+report_json=/home/runner/workspace/stage67i4_0515_search_normalizer_shadow_r1.json

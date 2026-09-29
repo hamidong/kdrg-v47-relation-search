@@ -1,0 +1,95 @@
+{
+  "schema_version": "1",
+  "created_at": "2026-07-20T06:54:21",
+  "source_policy": {
+    "correction_baseline": "20260501",
+    "correction_20260301_included": false,
+    "reason": "20260501 교정표와 중복되어 최종 누적 교정본만 사용"
+  },
+  "overall_pass": true,
+  "files": {
+    "main_pdf": {
+      "path": "sources/kdrg_v47/main/KDRG V4.7 분류집.pdf",
+      "exists": true,
+      "size_bytes": 7163051,
+      "sha256": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4",
+      "format": "PDF",
+      "readable": true,
+      "page_count": 1282,
+      "header_ok": true,
+      "inspection_library": "pypdf"
+    },
+    "appendix_pdf": {
+      "path": "sources/kdrg_v47/appendix/KDRG V4.7 분류집_부록.pdf",
+      "exists": true,
+      "size_bytes": 5038106,
+      "sha256": "71ece742beee79e40e4296db7f25930ccd8bc79d3af4796999c9478298978d4b",
+      "format": "PDF",
+      "readable": true,
+      "page_count": 776,
+      "header_ok": true,
+      "inspection_library": "pypdf"
+    },
+    "correction_hwpx": {
+      "path": "sources/kdrg_v47/corrections/KDRG 일반용(V4.7)_교정표_20260501.hwpx",
+      "exists": true,
+      "size_bytes": 32852,
+      "sha256": "6d389aa42806b491d90998112b5fede09f6b0b03cfd7191fc40c563691fcfbc5",
+      "format": "HWPX",
+      "readable": true,
+      "section_files": [
+        "Contents/section0.xml"
+      ],
+      "has_content_hpf": true,
+      "has_mimetype": true,
+      "inspection_library": "zipfile"
+    },
+    "procedure_xlsx": {
+      "path": "sources/kdrg_v47/code_lists/KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+      "exists": true,
+      "size_bytes": 140115,
+      "sha256": "c6dc16cf0710036cace0b8156cc2a5b9eb6b9958435d0fc5ac4124a4f20fa0af",
+      "format": "XLSX",
+      "readable": true,
+      "sheet_names": [
+        "시술 등 목록_최종"
+      ],
+      "sheet_dimensions": {
+        "시술 등 목록_최종": {
+          "max_row": 2791,
+          "max_column": 4
+        }
+      },
+      "inspection_library": "openpyxl"
+    },
+    "group_name_xlsx": {
+      "path": "sources/kdrg_v47/code_lists/KDRG 일반용(V4.7)_질병군명칭(변동없음).xlsx",
+      "exists": true,
+      "size_bytes": 101725,
+      "sha256": "86f6dc888e4741bfa121c84744c993df589fecd975aa7708a6c78f36c1188a04",
+      "format": "XLSX",
+      "readable": true,
+      "sheet_names": [
+        "V4.7"
+      ],
+      "sheet_dimensions": {
+        "V4.7": {
+          "max_row": 2700,
+          "max_column": 5
+        }
+      },
+      "inspection_library": "openpyxl"
+    },
+    "abc_pdf": {
+      "path": "sources/kdrg_v47/abc/[별표 1] 입원환자의 질병군별 질병의 종류(제3조제1항 관련)(상급종합병원의 지정 및 평가 규정) (2).pdf",
+      "exists": true,
+      "size_bytes": 486263,
+      "sha256": "45ff96ba679cf9e2897302ce159cca80b91d489bc2b13f358ba553744c8e4bc7",
+      "format": "PDF",
+      "readable": true,
+      "page_count": 31,
+      "header_ok": true,
+      "inspection_library": "pypdf"
+    }
+  }
+}

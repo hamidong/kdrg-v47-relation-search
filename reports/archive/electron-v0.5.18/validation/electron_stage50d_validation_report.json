@@ -1,0 +1,209 @@
+{
+  "script_version": "2026-09-21_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V15_0518",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "운영 JSON SHA",
+      "actual": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+      "expected": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+      "passed": true
+    },
+    {
+      "name": "package version",
+      "actual": "0.5.18",
+      "expected": "0.5.18",
+      "passed": true
+    },
+    {
+      "name": "lock version",
+      "actual": "0.5.18",
+      "expected": "0.5.18",
+      "passed": true
+    },
+    {
+      "name": "validate skeleton current",
+      "actual": "node tests/validate-stage59b-skeleton.js",
+      "expected": "node tests/validate-stage59b-skeleton.js",
+      "passed": true
+    },
+    {
+      "name": "validate search current",
+      "actual": "node tests/validate-stage59b-search.js",
+      "expected": "node tests/validate-stage59b-search.js",
+      "passed": true
+    },
+    {
+      "name": "validate UI current",
+      "actual": "node tests/validate-stage59b-ui.js",
+      "expected": "node tests/validate-stage59b-ui.js",
+      "passed": true
+    },
+    {
+      "name": "Stage59B smoke",
+      "actual": "node tests/validate-stage59b-smoke.js",
+      "expected": "node tests/validate-stage59b-smoke.js",
+      "passed": true
+    },
+    {
+      "name": "packaged smoke preserved",
+      "actual": "node tests/validate-packaged-runtime-smoke.js",
+      "expected": "node tests/validate-packaged-runtime-smoke.js",
+      "passed": true
+    },
+    {
+      "name": "packaging preserved",
+      "actual": "node tests/validate-packaging-config.js",
+      "expected": "node tests/validate-packaging-config.js",
+      "passed": true
+    },
+    {
+      "name": "check packaging syntax",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "check packaged smoke syntax",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "Node runtime",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-packaging-config.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-packaged-runtime-smoke.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-skeleton.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-search.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-ui.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-smoke.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "npm run check",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "50B independent",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "50C independent",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "사용자 검색 유형 CODE·ADRG",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "TABLE 기술상세 비노출",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "ADRG 사용자 결과",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "CODE 상세 관련 ADRG",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "history back",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "outputs": {
+    "tests/validate-packaging-config.js": {
+      "returncode": 0,
+      "stdout": "validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n",
+      "stderr": ""
+    },
+    "tests/validate-packaged-runtime-smoke.js": {
+      "returncode": 0,
+      "stdout": "[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n",
+      "stderr": ""
+    },
+    "tests/validate-stage59b-skeleton.js": {
+      "returncode": 0,
+      "stdout": "stage59_skeleton: PASS version=0.5.18\n",
+      "stderr": ""
+    },
+    "tests/validate-stage59b-search.js": {
+      "returncode": 0,
+      "stdout": "stage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n",
+      "stderr": ""
+    },
+    "tests/validate-stage59b-ui.js": {
+      "returncode": 0,
+      "stdout": "stage59_ui: 21 PASS / 0 FAIL\n",
+      "stderr": ""
+    },
+    "tests/validate-stage59b-smoke.js": {
+      "returncode": 0,
+      "stdout": "stage59_smoke: PASS\n",
+      "stderr": ""
+    },
+    "npm run check": {
+      "returncode": 0,
+      "stdout": "\n> kdrg-v47-relation-search-electron@0.5.18 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.18 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.18\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\n[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n",
+      "stderr": ""
+    },
+    "50B": {
+      "returncode": 0,
+      "stdout": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt\n",
+      "stderr": ""
+    },
+    "50C": {
+      "returncode": 0,
+      "stdout": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt\n",
+      "stderr": ""
+    }
+  }
+}

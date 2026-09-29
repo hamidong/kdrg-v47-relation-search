@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0514_COMMIT_AND_RC",
+  "started_at": "2026-09-22 00:26:42",
+  "preflight": {},
+  "workflow_audit": {},
+  "final_guard": {},
+  "error": "AuditError: HEAD mismatch\nTraceback (most recent call last):\n  File \"/home/runner/workspace/66D0_AUDIT_KDRG_0514_ACTIONS_STORAGE_R1.py\", line 441, in main\n    payload[\"preflight\"] = preflight()\n                           ^^^^^^^^^^^\n  File \"/home/runner/workspace/66D0_AUDIT_KDRG_0514_ACTIONS_STORAGE_R1.py\", line 185, in preflight\n    require(git_text(\"rev-parse\", \"HEAD\") == BASE_HEAD, \"HEAD mismatch\")\n  File \"/home/runner/workspace/66D0_AUDIT_KDRG_0514_ACTIONS_STORAGE_R1.py\", line 86, in require\n    raise AuditError(message)\nAuditError: HEAD mismatch\n",
+  "finished_at": "2026-09-22 00:26:42"
+}

@@ -1,0 +1,368 @@
+KDRG V4.7 Electron Stage63E / 0.5.12 Release Prep R1
+====================================================================================================
+status=PASS
+readiness=READY_FOR_0512_COMMIT_AND_RC
+
+[PREFLIGHT]
+{"head": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "origin_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "version": "0.5.11", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "product_sha256": {"electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660", "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26", "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}, "prep_sha256_before": {"50D_validate_kdrg_electron_windows_packaging.py": "c1e3260730dc6b8126ebfcc8f3e5642300103f2b9da69b070d559d4c07fdb259", "electron/package.json": "c59913cac1110fe2f5d5063c73cb9fb70f06595a3231f68f6d2b9d68b92a3357", "electron/package-lock.json": "465229dd07c81e9e16c2bd08da8e3a244b54465d03f820a7608c26f418a2c7ec"}, "50d_old_version_literal_count": 3, "new_tag_absent": {"local": "", "remote": ""}}
+
+[MIGRATION]
+{"old_50d_literal_count": 3, "package_sha256": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b", "lock_sha256": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184", "50d_sha256": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373", "50d_script_version": "2026-09-18_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V11_0512"}
+
+[VALIDATION]
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-packaging-config.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node -e 
+'use strict';
+
+const path = require('node:path');
+const fs = require('node:fs');
+const {
+  KdrgSearchService,
+} = require('./src/kdrg-search-service');
+const Ui = require('./renderer/ui-formatters');
+
+const service = new KdrgSearchService(
+  path.resolve(
+    '..',
+    'data',
+    'kdrg_v47_search_integrated_v3.json',
+  ),
+);
+
+const app = fs.readFileSync(
+  'renderer/app.js',
+  'utf8',
+);
+
+if (
+  !app.includes('detail?.parent_adrg_detail')
+  || !app.includes(
+    'inheritedFromParent: sourceDetail !== detail',
+  )
+) {
+  throw new Error(
+    'generic renderer parent fallback missing',
+  );
+}
+
+if (
+  app.includes(
+    "if (detail?.aadrg === 'F2120'",
+  )
+) {
+  throw new Error('F2120 hardcode detected');
+}
+
+function uniqueStrings(values) {
+  return Ui.uniqueStrings(
+    Array.isArray(values) ? values : [],
+  );
+}
+
+function safeDetail(type, id) {
+  try {
+    return service.getDetail(type, id)?.detail || null;
+  } catch {
+    return null;
+  }
+}
+
+const adrgIds = [
+  ...service.recordMaps.ADRG.keys(),
+].sort();
+
+if (adrgIds.length !== 1132) {
+  throw new Error(
+    `ADRG record-map count ${adrgIds.length}`,
+  );
+}
+
+/*
+ * IMPORTANT:
+ * recordMaps.ADRG values are search/index records, not the complete
+ * user-condition detail objects. Stage63B R2 read those values directly,
+ * which made every source_logical_table_ids lookup empty and produced
+ * parent count 0. Always dereference with getDetail('ADRG', id).
+ */
+const parents = new Map();
+
+for (const id of adrgIds) {
+  const detail = safeDetail('ADRG', id);
+  if (!detail) {
+    throw new Error(`ADRG detail missing ${id}`);
+  }
+
+  const coverage = Ui.userConditionCoverage(detail);
+  const sourceIds = uniqueStrings(
+    detail.source_logical_table_ids ?? [],
+  );
+
+  if (
+    coverage.status !== 'NO_EXPLICIT_CONDITION'
+    || detail.condition_ast
+    || coverage.table_count
+    || sourceIds.length !== 1
+  ) {
+    continue;
+  }
+
+  const escaped = String(id).replace(
+    /[.*+?^${}()|[\]\\]/g,
+    '\\$&',
+  );
+  const localPattern = new RegExp(
+    `^LT_${escaped}_\\d{3}$`,
+    'i',
+  );
+
+  if (!localPattern.test(sourceIds[0])) {
+    continue;
+  }
+
+  const summary = Ui.tableSummaryMap(detail)
+    .get(sourceIds[0]);
+  const codeCount = Number(
+    summary?.summary?.code_count ?? 0,
+  );
+
+  if (codeCount <= 0) {
+    continue;
+  }
+
+  parents.set(id, {
+    tableId: sourceIds[0],
+    codeCount,
+  });
+}
+
+if (parents.size !== 479) {
+  throw new Error(
+    `parent count ${parents.size}`,
+  );
+}
+
+let candidateChildren = 0;
+let inheritedGapShapes = 0;
+let parentSummaryResolvable = 0;
+let parentIdentityMatched = 0;
+
+for (
+  const id
+  of [...service.recordMaps.AADRG.keys()].sort()
+) {
+  const child = safeDetail('AADRG', id);
+  if (!child) {
+    throw new Error(`AADRG detail missing ${id}`);
+  }
+
+  if (!parents.has(child.adrg)) {
+    continue;
+  }
+
+  candidateChildren += 1;
+
+  const ownSourceIds = uniqueStrings(
+    child.source_logical_table_ids ?? [],
+  );
+  const parent = child.parent_adrg_detail || null;
+  const parentSourceIds = uniqueStrings(
+    parent?.source_logical_table_ids ?? [],
+  );
+
+  if (
+    parent
+    && String(parent.adrg || '') === String(child.adrg)
+  ) {
+    parentIdentityMatched += 1;
+  }
+
+  if (
+    !child.condition_ast
+    && ownSourceIds.length === 0
+    && parentSourceIds.length === 1
+  ) {
+    inheritedGapShapes += 1;
+
+    const summary = Ui.tableSummaryMap(parent)
+      .get(parentSourceIds[0]);
+    const codeCount = Number(
+      summary?.summary?.code_count ?? 0,
+    );
+
+    if (codeCount > 0) {
+      parentSummaryResolvable += 1;
+    }
+  }
+}
+
+if (candidateChildren !== 521) {
+  throw new Error(
+    `candidate child count ${candidateChildren}`,
+  );
+}
+if (inheritedGapShapes !== 521) {
+  throw new Error(
+    `inherited gap shape ${inheritedGapShapes}`,
+  );
+}
+if (parentIdentityMatched !== 521) {
+  throw new Error(
+    `parent identity matched ${parentIdentityMatched}`,
+  );
+}
+if (parentSummaryResolvable !== 521) {
+  throw new Error(
+    `parent summary resolvable ${parentSummaryResolvable}`,
+  );
+}
+
+const f2120 = safeDetail('AADRG', 'F2120');
+if (!f2120) {
+  throw new Error('F2120 detail missing');
+}
+if (f2120.adrg !== 'F212') {
+  throw new Error(
+    `F2120 parent mismatch ${f2120.adrg}`,
+  );
+}
+if (
+  uniqueStrings(
+    f2120.source_logical_table_ids ?? [],
+  ).length !== 0
+) {
+  throw new Error(
+    'F2120 unexpectedly owns direct source table',
+  );
+}
+
+const f212ParentIds = uniqueStrings(
+  f2120.parent_adrg_detail
+    ?.source_logical_table_ids ?? [],
+);
+if (
+  JSON.stringify(f212ParentIds)
+  !== JSON.stringify(['LT_F212_001'])
+) {
+  throw new Error(
+    `F2120 parent source ${JSON.stringify(
+      f212ParentIds,
+    )}`,
+  );
+}
+
+const f212Table = safeDetail(
+  'TABLE',
+  'LT_F212_001',
+);
+if (!f212Table) {
+  throw new Error('LT_F212_001 detail missing');
+}
+const f212Codes = new Set(
+  (f212Table.code_records ?? [])
+    .map((row) => row.entity_id),
+);
+const expectedF212Codes = [
+  'O0205',
+  'O0206',
+  'O0241',
+  'O2223',
+];
+for (const code of expectedF212Codes) {
+  if (!f212Codes.has(code)) {
+    throw new Error(
+      `F212 source code missing ${code}`,
+    );
+  }
+}
+
+for (const code of expectedF212Codes) {
+  const response = service.search(
+    code,
+    'ALL',
+    { limit: 100 },
+  );
+  const types = new Set(
+    response.results.map(
+      (row) => row.entity_type,
+    ),
+  );
+
+  if (
+    !types.has('CODE')
+    || !types.has('AADRG')
+    || types.has('ADRG')
+    || types.has('TABLE')
+  ) {
+    throw new Error(
+      `${code} search contract ${[
+        ...types,
+      ].join(',')}`,
+    );
+  }
+}
+
+const p6510 = safeDetail('AADRG', 'P6510');
+if (
+  !p6510
+  || p6510.adrg !== 'P651'
+  || !p6510.condition_ast
+) {
+  throw new Error(
+    'P6510 inherited AST regression',
+  );
+}
+
+const pretty = Ui.buildPrettyConditionTree(
+  p6510.condition_ast,
+);
+if (!pretty) {
+  throw new Error(
+    'P6510 pretty condition tree missing',
+  );
+}
+
+console.log(
+  '[PASS] Stage63B full impact probe',
+  JSON.stringify({
+    adrgCount: adrgIds.length,
+    parents: parents.size,
+    candidateChildren,
+    inheritedGapShapes,
+    parentIdentityMatched,
+    parentSummaryResolvable,
+    f212Codes: expectedF212Codes,
+    p651TreeKind: pretty.kind,
+  }),
+);
+
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-release-version.js 0.5.12
+
+[STAGING]
+{"staged_files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/package-lock.json", "electron/package.json", "electron/renderer/app.js", "electron/renderer/styles.css", "electron/tests/validate-stage59b-ui.js"], "name_status": ["M\t50D_validate_kdrg_electron_windows_packaging.py", "M\telectron/package-lock.json", "M\telectron/package.json", "M\telectron/renderer/app.js", "M\telectron/renderer/styles.css", "M\telectron/tests/validate-stage59b-ui.js"], "stat": " 50D_validate_kdrg_electron_windows_packaging.py |   6 +-\n electron/package-lock.json                      |   4 +-\n electron/package.json                           |   2 +-\n electron/renderer/app.js                        | 231 ++++++------------------\n electron/renderer/styles.css                    |   7 +\n electron/tests/validate-stage59b-ui.js          |  44 ++++-\n 6 files changed, 104 insertions(+), 190 deletions(-)\n"}
+
+[FINAL GUARD]
+{"head": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "origin_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "version": "0.5.12", "immutable_0511_tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4", "new_0512_tag_absent": true, "staged_files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/package-lock.json", "electron/package.json", "electron/renderer/app.js", "electron/renderer/styles.css", "electron/tests/validate-stage59b-ui.js"], "sha256": {"50D_validate_kdrg_electron_windows_packaging.py": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373", "electron/package.json": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b", "electron/package-lock.json": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184", "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660", "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26", "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}}
+
+[ROLLBACK]
+{"attempted": false}
+
+[NEXT]
+- 0.5.12 release 대상 6개 파일만 정확히 staged.
+- 479 parent / 521 child 전수 probe와 전체 validator PASS.
+- runtime 및 electron-v0.5.11은 불변.
+- electron-v0.5.12 태그는 아직 local/remote 모두 없음.
+- 다음 단계: 6개 release commit/push 후 workflow_dispatch RC.
+
+report_txt=/home/runner/workspace/stage63e_0512_release_prep_r1.txt
+report_json=/home/runner/workspace/stage63e_0512_release_prep_r1.json

@@ -1,0 +1,31 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0513_SHADOW",
+  "started_at": "2026-09-21 00:32:39",
+  "preflight": {
+    "head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "version": "0.5.12",
+    "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "source_blocks_sha256": "98c594e91f6a7cd641f10c613659e4f0389e9ab454fd96b172723f08653b251c"
+  },
+  "pdf": {
+    "path": "/home/runner/workspace/sources/kdrg_v47/main/KDRG V4.7 분류집.pdf",
+    "sha256": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4",
+    "page_count": 1282,
+    "extractor": "PyMuPDF"
+  },
+  "summary": {},
+  "p651": {},
+  "immutability": {
+    "head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "tracked_worktree_clean": true,
+    "staging_empty": true,
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"
+  },
+  "error": "E: AST source fragments traceable only 352/390\nTraceback (most recent call last):\n  File \"/home/runner/workspace/64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R2.py\", line 342, in main\n    allfrag=sum(c['missing_fragment_count']==0 for c in cases); must(allfrag==AST_COUNT,f'AST source fragments traceable only {allfrag}/{AST_COUNT}')\n                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R2.py\", line 26, in must\n    if not v: raise E(m)\n              ^^^^^^^^^^\nE: AST source fragments traceable only 352/390\n",
+  "finished_at": "2026-09-21 00:32:52"
+}

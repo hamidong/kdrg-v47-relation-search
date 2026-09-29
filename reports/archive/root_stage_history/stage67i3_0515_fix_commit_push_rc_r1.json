@@ -1,0 +1,84 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_TAG_RELEASE",
+  "started_at": "2026-09-23 00:48:01",
+  "preflight": {
+    "stage67i2_gate": {
+      "validation": {
+        "adrg_count": 1132,
+        "collision_count": 471,
+        "failure_count": 0,
+        "npm_run_check": "PASS",
+        "root_50b": "PASS",
+        "root_50c": "PASS",
+        "root_50d": "PASS",
+        "release_version": "PASS",
+        "adrg_contract": "PASS"
+      },
+      "candidate_sha256": {
+        "electron/src/kdrg-search-service.js": "017f6b2a3cdaaede0f14e77be5e06fc20b113f5d258c3271802beb07641b9d2c",
+        "electron/src/packaged-runtime-smoke.js": "ec3d8a53f136884e61bb2383e6f22c149c708501c00c02fb2703416f7504b7de",
+        "electron/tests/validate-packaged-runtime-smoke.js": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+        "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+      }
+    },
+    "classification": "PRE_FIX_COMMIT",
+    "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "changed_files": [
+      "electron/src/kdrg-search-service.js",
+      "electron/src/packaged-runtime-smoke.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage59b-search.js"
+    ],
+    "staged_files": [],
+    "base_tag": "electron-v0.5.14",
+    "release_tag": "electron-v0.5.15",
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "commit": {
+    "commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "message": "fix: resolve ADRG exact-id namespace collisions",
+    "changed_files": [
+      "electron/src/kdrg-search-service.js",
+      "electron/src/packaged-runtime-smoke.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage59b-search.js"
+    ],
+    "commit_output": "[main 6ac11ec] fix: resolve ADRG exact-id namespace collisions\n 4 files changed, 21 insertions(+), 4 deletions(-)\n"
+  },
+  "push": {
+    "commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "push_output": "To https://github.com/hamidong/kdrg-v47-relation-search.git\n   b248da4..6ac11ec  main -> main\n",
+    "base_tag_immutable": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "dispatch": {
+    "mode": "DISPATCHED",
+    "run": {
+      "conclusion": "",
+      "createdAt": "2026-09-23T00:48:17Z",
+      "databaseId": 35803633211,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+      "status": "queued",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35803633211"
+    },
+    "dispatch_output": "",
+    "observations": [
+      {
+        "checked_at": "2026-09-23 00:48:22",
+        "candidate_count": 1,
+        "new_candidate_count": 1
+      }
+    ]
+  },
+  "rc": {},
+  "final_guard": {},
+  "error": "StageError: RC conclusion is not success\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I3_COMMIT_PUSH_RC_KDRG_0515_FIX_R1.py\", line 699, in main\n    payload[\"rc\"] = watch_rc(payload[\"dispatch\"], commit)\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I3_COMMIT_PUSH_RC_KDRG_0515_FIX_R1.py\", line 543, in watch_rc\n    require(data.get(\"conclusion\") == \"success\",\n  File \"/home/runner/workspace/67I3_COMMIT_PUSH_RC_KDRG_0515_FIX_R1.py\", line 78, in require\n    raise StageError(message)\nStageError: RC conclusion is not success\n",
+  "finished_at": "2026-09-23 00:52:44"
+}

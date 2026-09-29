@@ -1,0 +1,276 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_0514_RELEASE_PREP",
+  "preflight": {
+    "head": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "origin_main": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "branch": "main",
+    "base_tag_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "next_tag_absent": true,
+    "version": "0.5.13",
+    "old_icon": {
+      "png_sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3",
+      "ico_sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7"
+    },
+    "new_icon": {
+      "png_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+      "ico_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45"
+    },
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "stage66a": {
+      "status": "PASS",
+      "readiness": "READY_FOR_0514_ICON_ACTUAL_APPLY",
+      "png_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+      "ico_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+      "builder_path": "renderer/assets/icon-kdrg-v47.ico"
+    }
+  },
+  "backup": {
+    "electron/renderer/assets/icon-kdrg-v47.png": {
+      "path": "/tmp/kdrg_stage66b_0514_icon_actual_backup_r_sm2d7u/icons/icon-kdrg-v47.png",
+      "sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3"
+    },
+    "electron/renderer/assets/icon-kdrg-v47.ico": {
+      "path": "/tmp/kdrg_stage66b_0514_icon_actual_backup_r_sm2d7u/icons/icon-kdrg-v47.ico",
+      "sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7"
+    }
+  },
+  "apply": {
+    "electron/renderer/assets/icon-kdrg-v47.png": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "electron/renderer/assets/icon-kdrg-v47.ico": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45"
+  },
+  "changed_file_guard": {
+    "changed_files": [
+      "electron/renderer/assets/icon-kdrg-v47.ico",
+      "electron/renderer/assets/icon-kdrg-v47.png"
+    ],
+    "status": [
+      " M electron/renderer/assets/icon-kdrg-v47.ico",
+      " M electron/renderer/assets/icon-kdrg-v47.png"
+    ]
+  },
+  "icon_contract": {
+    "png": {
+      "width": 512,
+      "height": 512,
+      "size_bytes": 215823
+    },
+    "ico": {
+      "frame_count": 9,
+      "sizes": [
+        16,
+        20,
+        24,
+        32,
+        40,
+        48,
+        64,
+        128,
+        256
+      ],
+      "entries": [
+        {
+          "width": 16,
+          "height": 16,
+          "bit_count": 32,
+          "size_bytes": 749
+        },
+        {
+          "width": 20,
+          "height": 20,
+          "bit_count": 32,
+          "size_bytes": 1053
+        },
+        {
+          "width": 24,
+          "height": 24,
+          "bit_count": 32,
+          "size_bytes": 1402
+        },
+        {
+          "width": 32,
+          "height": 32,
+          "bit_count": 32,
+          "size_bytes": 2085
+        },
+        {
+          "width": 40,
+          "height": 40,
+          "bit_count": 32,
+          "size_bytes": 2879
+        },
+        {
+          "width": 48,
+          "height": 48,
+          "bit_count": 32,
+          "size_bytes": 3841
+        },
+        {
+          "width": 64,
+          "height": 64,
+          "bit_count": 32,
+          "size_bytes": 5860
+        },
+        {
+          "width": 128,
+          "height": 128,
+          "bit_count": 32,
+          "size_bytes": 18258
+        },
+        {
+          "width": 256,
+          "height": 256,
+          "bit_count": 32,
+          "size_bytes": 64513
+        }
+      ],
+      "size_bytes": 100790
+    },
+    "png_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "ico_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "builder_path": "renderer/assets/icon-kdrg-v47.ico",
+    "version": "0.5.13"
+  },
+  "validation": [
+    {
+      "cmd": [
+        "node",
+        "tests/validate-packaging-config.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "\n> kdrg-v47-relation-search-electron@0.5.13 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime relation fixture: 9620 -> 96200 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.13 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.13 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.13\n\n> kdrg-v47-relation-search-electron@0.5.13 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.13 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.13 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.13 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.13 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage59b-ui.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "stage59_ui: 21 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage59b-search.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "stage59_search: 29 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage59b-smoke.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "stage59_smoke: PASS\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-packaged-runtime-smoke.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage60c-packaged-relation-smoke.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "[PASS] Stage60C runtime relation fixture: 9620 -> 96200 | O6010,O6011\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-packaging-config.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "/home/runner/workspace/.pythonlibs/bin/python",
+        "50B_validate_kdrg_electron_search_service.py"
+      ],
+      "cwd": "/home/runner/workspace",
+      "returncode": 0,
+      "output": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt\n"
+    },
+    {
+      "cmd": [
+        "/home/runner/workspace/.pythonlibs/bin/python",
+        "50C_validate_kdrg_electron_renderer_ui.py"
+      ],
+      "cwd": "/home/runner/workspace",
+      "returncode": 0,
+      "output": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt\n"
+    },
+    {
+      "cmd": [
+        "/home/runner/workspace/.pythonlibs/bin/python",
+        "50D_validate_kdrg_electron_windows_packaging.py"
+      ],
+      "cwd": "/home/runner/workspace",
+      "returncode": 0,
+      "output": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50d_validation_report.txt\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-release-version.js",
+        "0.5.13"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "[PASS] expected version argument | actual=\"0.5.13\" | expected=\"stable semver\"\n[PASS] package.json exists | actual=true | expected=true\n[PASS] package-lock.json exists | actual=true | expected=true\n[PASS] package name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] package version | actual=\"0.5.13\" | expected=\"0.5.13\"\n[PASS] lock top version | actual=\"0.5.13\" | expected=\"0.5.13\"\n[PASS] lock root version | actual=\"0.5.13\" | expected=\"0.5.13\"\n[PASS] lock top name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lock root name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lockfileVersion | actual=3 | expected=3\n[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.13_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.13_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.13\" | expected=\"electron-v0.5.13\"\n[PASS] version has no prerelease | actual=\"0.5.13\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL\n"
+    }
+  ],
+  "protected_integrity": {
+    "protected_sha256": {
+      "50D_validate_kdrg_electron_windows_packaging.py": "00ebb7c539fa3b092f03d81df26738a3fa34ce3846d690f78fbf2452efab6d56",
+      "electron/package.json": "14bc937d6dcc50f3a6f5b0d0fca9b04c8f817fa1b34507599295e560b82ec949",
+      "electron/package-lock.json": "9cd8467052864391a5feef8d45595928d9aa604b83ddf7b2933d3d326ae2e8a5",
+      "electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491",
+      "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2",
+      "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+      "electron/tests/validate-packaging-config.js": "4838136e03a3856263c7702c2d024b8cea96ba26216613bd5d5c3c9a1d003c63",
+      "electron/tests/validate-stage59b-ui.js": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c"
+    },
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "base_tag_immutable": true,
+    "next_tag_absent": true
+  },
+  "final_guard": {
+    "head": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "origin_main": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "version": "0.5.13",
+    "changed_files": [
+      "electron/renderer/assets/icon-kdrg-v47.ico",
+      "electron/renderer/assets/icon-kdrg-v47.png"
+    ],
+    "new_png_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "new_ico_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "staging_empty": true,
+    "release_operations": false
+  },
+  "rollback": {},
+  "error": null
+}

@@ -1,0 +1,83 @@
+KDRG V4.7 Stage 52 Electron 실행화면 검증 결과 V1
+====================================================================================
+validator=2026-08-06_KDRG_V47_STAGE52_NIX_CLICK_RUNTIME_UI_VALIDATOR_V1
+runtime_electron_version=35.6.0
+runtime_node_version=22.15.1
+status=FAIL
+core_pass=32
+core_fail=24
+warning_pass=5
+warning_fail=0
+screenshots=3
+
+[9610] FAIL
+- tables=
+- exclusion_tables=
+- rows=
+- FAIL [core] expected_text
+- FAIL [core] forbidden_text_absent
+- FAIL [core] table_ids
+- PASS [core] expected_table_count_positive
+- PASS [core] exclude_table_ids
+- FAIL [core] direct_condition_rendered
+- PASS [core] 9610_exact_source_table
+- FAIL [core] all_tables_no_error_message
+- FAIL [core] all_tables_opened_by_summary_click
+- FAIL [core] all_tables_loaded
+- PASS [core] all_tables_have_code_rows
+- PASS [core] two_column_headers
+- PASS [core] search_inputs_present
+- PASS [core] search_filters_rows
+- PASS [core] search_clear_restores_all_rows
+- PASS [core] sticky_headers
+- PASS [core] internal_scroll
+- PASS [warning] screenshot_non_blank
+
+[9620] FAIL
+- tables=LT_9620_001,LT_9620_002
+- exclusion_tables=LT_9620_002
+- rows=LT_9620_001:120,LT_9620_002:43
+- PASS [core] expected_text
+- PASS [core] forbidden_text_absent
+- FAIL [core] table_ids
+- FAIL [core] expected_table_count_positive
+- FAIL [core] exclude_table_ids
+- FAIL [core] 9620_exact_include_table
+- FAIL [core] 9620_exact_exclude_table
+- PASS [core] include_block_rendered
+- PASS [core] exclude_block_rendered
+- FAIL [core] all_tables_no_error_message
+- FAIL [core] all_tables_opened_by_summary_click
+- FAIL [core] all_tables_loaded
+- PASS [core] all_tables_have_code_rows
+- PASS [core] two_column_headers
+- PASS [core] search_inputs_present
+- PASS [core] search_filters_rows
+- PASS [core] search_clear_restores_all_rows
+- PASS [core] sticky_headers
+- PASS [core] internal_scroll
+- PASS [warning] screenshot_non_blank
+
+[O602] FAIL
+- tables=LT_9620_001,LT_9620_002
+- exclusion_tables=LT_9620_002
+- rows=LT_O602_003:43
+- FAIL [core] expected_text
+- FAIL [core] forbidden_text_absent
+- FAIL [core] table_ids
+- FAIL [core] expected_table_count_positive
+- FAIL [core] exclude_table_ids
+- PASS [core] O602_not_direct_condition
+- FAIL [core] O602_not_without
+- FAIL [core] all_tables_no_error_message
+- FAIL [core] all_tables_opened_by_summary_click
+- FAIL [core] all_tables_loaded
+- PASS [core] all_tables_have_code_rows
+- PASS [core] two_column_headers
+- PASS [core] search_inputs_present
+- PASS [core] search_filters_rows
+- PASS [core] search_clear_restores_all_rows
+- PASS [core] sticky_headers
+- PASS [core] internal_scroll
+- PASS [warning] screenshot_non_blank
+

@@ -1,0 +1,576 @@
+{
+  "ok": true,
+  "service_status": {
+    "service_schema_version": "kdrg-runtime-search-service-v1",
+    "response_schema_version": "kdrg-runtime-search-response-v1",
+    "relation_response_schema_version": "kdrg-runtime-relation-response-v1",
+    "data_schema_version": "kdrg-v47-search-integrated-v3",
+    "data_version": "KDRG V4.7",
+    "data_state": "production_ready_with_review_required_exceptions",
+    "data_path": "/home/runner/workspace/data/kdrg_v47_search_integrated_v3.json",
+    "counts": {
+      "aadrg_records": 1233,
+      "abc_exact_mappings": 1212,
+      "abc_unclassified_aadrgs": 21,
+      "adrg_records": 1132,
+      "ast_node_count": 1727,
+      "code_related_aadrg_relation_count": 100321,
+      "code_related_adrg_relation_count": 90191,
+      "codes_with_runtime_relation_expansion": 9122,
+      "condition_ast_records": 390,
+      "exact_source_adrg_ref_count": 1307,
+      "family_source_adrg_ref_count": 1,
+      "logical_table_records": 1308,
+      "raw_table_owner_ref_count": 1308,
+      "rdrg_records": 2699,
+      "search_token_count": 19478,
+      "table_code_rows": 42882,
+      "table_related_adrg_relation_count": 1856,
+      "tables_with_condition_adrgs": 662,
+      "tables_with_runtime_relation_expansion": 417,
+      "unique_search_codes": 16571,
+      "unresolved_source_adrg_ref_count": 0
+    },
+    "policies": {
+      "abc_exact_match_only": true,
+      "abc_inference_mapping": false,
+      "ambiguous_table_link_never_inferred": true,
+      "ast_table_labels_may_use_verified_leaf_order": true,
+      "bilingual_table_role_normalized_without_id_inference": true,
+      "confirmed_ambiguous_cases_preserved_for_review": true,
+      "family_source_ref_never_exposed_as_adrg": true,
+      "family_table_offset_requires_two_or_more_ast_anchors": true,
+      "physical_source_and_condition_usage_separated": true,
+      "repaired_current_only": true,
+      "runtime_semantics_preserved": true,
+      "source_provenance_preserved": true,
+      "source_table_never_auto_promoted_without_condition_text": true,
+      "user_condition_display_separated_from_source_provenance": true
+    },
+    "semantic_context_counts": {
+      "exclude_occurrence": 65,
+      "exclusion_base_occurrence": 28,
+      "exclusion_excluded_final_include": 19,
+      "exclusion_excluded_occurrence": 65,
+      "include_occurrence": 874,
+      "legacy_misclassification_occurrence": 47,
+      "negative_or_exclusion_reference": 65,
+      "optional_companion_table": 7,
+      "positive_required_table": 840,
+      "relationship_key_count": 906,
+      "relationship_occurrence_count": 939,
+      "semantic_text_condition": 27
+    },
+    "ready": true,
+    "public_search_types": [
+      "CODE",
+      "ADRG"
+    ],
+    "mdc_master": {
+      "version": "KDRG_V47_OFFICIAL_MDC_MASTER_V1",
+      "source": "KDRG V4.7 분류집",
+      "aliases": {
+        "00": "PRE"
+      },
+      "internal_non_public": [
+        "ERROR"
+      ],
+      "items": [
+        {
+          "code": "PRE",
+          "title": "Pre MDC",
+          "public": true
+        },
+        {
+          "code": "01",
+          "title": "Diseases and Disorders of the Nervous System",
+          "public": true
+        },
+        {
+          "code": "02",
+          "title": "Diseases and Disorders of the Eye",
+          "public": true
+        },
+        {
+          "code": "03",
+          "title": "Diseases and Disorders of the Ear, Nose, Mouth and Throat",
+          "public": true
+        },
+        {
+          "code": "04",
+          "title": "Diseases and Disorders of the Respiratory System",
+          "public": true
+        },
+        {
+          "code": "05",
+          "title": "Diseases and Disorders of the Circulatory System",
+          "public": true
+        },
+        {
+          "code": "06",
+          "title": "Diseases and Disorders of the Digestive System",
+          "public": true
+        },
+        {
+          "code": "07",
+          "title": "Diseases and Disorders of the Hepatobiliary System and Pancreas",
+          "public": true
+        },
+        {
+          "code": "08",
+          "title": "Diseases and Disorders of the Musculoskeletal System and Connective Tissue",
+          "public": true
+        },
+        {
+          "code": "09",
+          "title": "Diseases and Disorders of the Skin, Subcutaneous Tissue and Breast",
+          "public": true
+        },
+        {
+          "code": "10",
+          "title": "Endocrine, Nutritional and Metabolic Diseases and Disorders",
+          "public": true
+        },
+        {
+          "code": "11",
+          "title": "Diseases and Disorders of the Kidney and Urinary Tract",
+          "public": true
+        },
+        {
+          "code": "12",
+          "title": "Diseases and Disorders of the Male Reproductive System",
+          "public": true
+        },
+        {
+          "code": "13",
+          "title": "Diseases and Disorders of the Female Reproductive System",
+          "public": true
+        },
+        {
+          "code": "14",
+          "title": "Pregnancy, Childbirth and Puerperium",
+          "public": true
+        },
+        {
+          "code": "15",
+          "title": "Newborns and Other Neonates",
+          "public": true
+        },
+        {
+          "code": "16",
+          "title": "Diseases and Disorders of the Blood and Blood-Forming Organs and Immunological Disorders",
+          "public": true
+        },
+        {
+          "code": "17",
+          "title": "Neoplastic Disorders (Haematological and Solid Neoplasms)",
+          "public": true
+        },
+        {
+          "code": "18-1",
+          "title": "Infectious and Parasitic Diseases: HIV",
+          "public": true
+        },
+        {
+          "code": "18-2",
+          "title": "Infectious and Parasitic Diseases",
+          "public": true
+        },
+        {
+          "code": "19",
+          "title": "Mental Diseases and Disorders",
+          "public": true
+        },
+        {
+          "code": "20",
+          "title": "Alcohol/Drug Use and Alcohol/Drug Induced Organic Mental Disorders",
+          "public": true
+        },
+        {
+          "code": "21-1",
+          "title": "Multiple Trauma",
+          "public": true
+        },
+        {
+          "code": "21-2",
+          "title": "Injuries, Poisoning and Toxic Effects of Drugs",
+          "public": true
+        },
+        {
+          "code": "22",
+          "title": "Burns",
+          "public": true
+        },
+        {
+          "code": "23",
+          "title": "Factors Influencing Health Status and Other Contacts with Health Services",
+          "public": true
+        }
+      ]
+    }
+  },
+  "public_types": [
+    "CODE",
+    "ADRG"
+  ],
+  "code_records": {
+    "I214": {
+      "names": [
+        "급성 심내막하심근경색증",
+        "Acute subendocardial myocardial infarction"
+      ],
+      "related_adrgs": [
+        "F111",
+        "F112",
+        "F121",
+        "F122",
+        "F133",
+        "F134",
+        "F135",
+        "F136",
+        "F600",
+        "F610"
+      ],
+      "related_aadrgs": [
+        "F1110",
+        "F1120",
+        "F1210",
+        "F1220",
+        "F1330",
+        "F1340",
+        "F1350",
+        "F1360",
+        "F6000",
+        "F6100"
+      ]
+    },
+    "M6569": null
+  },
+  "variants": {
+    "AUTO_lower": {
+      "ok": true,
+      "payload": {
+        "conditions": [
+          {
+            "codeType": "AUTO",
+            "code": "i214"
+          },
+          {
+            "codeType": "AUTO",
+            "code": "m6569"
+          }
+        ],
+        "operator": "AND",
+        "mdc": "",
+        "classification": ""
+      },
+      "normalized": {
+        "operator": "AND",
+        "conditions": [
+          {
+            "code": "i214",
+            "normalizedCode": "I214",
+            "codeType": "AUTO"
+          },
+          {
+            "code": "m6569",
+            "normalizedCode": "M6569",
+            "codeType": "AUTO"
+          }
+        ],
+        "mdc": null,
+        "classification": null
+      },
+      "total_count": 0,
+      "result_ids": [],
+      "fixture": {
+        "F111": null,
+        "F112": null,
+        "F121": null,
+        "F122": null
+      }
+    },
+    "AUTO_upper": {
+      "ok": true,
+      "payload": {
+        "conditions": [
+          {
+            "codeType": "AUTO",
+            "code": "I214"
+          },
+          {
+            "codeType": "AUTO",
+            "code": "M6569"
+          }
+        ],
+        "operator": "AND",
+        "mdc": "",
+        "classification": ""
+      },
+      "normalized": {
+        "operator": "AND",
+        "conditions": [
+          {
+            "code": "I214",
+            "normalizedCode": "I214",
+            "codeType": "AUTO"
+          },
+          {
+            "code": "M6569",
+            "normalizedCode": "M6569",
+            "codeType": "AUTO"
+          }
+        ],
+        "mdc": null,
+        "classification": null
+      },
+      "total_count": 0,
+      "result_ids": [],
+      "fixture": {
+        "F111": null,
+        "F112": null,
+        "F121": null,
+        "F122": null
+      }
+    },
+    "DIAGNOSIS_lower": {
+      "ok": true,
+      "payload": {
+        "conditions": [
+          {
+            "codeType": "DIAGNOSIS",
+            "code": "i214"
+          },
+          {
+            "codeType": "DIAGNOSIS",
+            "code": "m6569"
+          }
+        ],
+        "operator": "AND",
+        "mdc": "",
+        "classification": ""
+      },
+      "normalized": {
+        "operator": "AND",
+        "conditions": [
+          {
+            "code": "i214",
+            "normalizedCode": "I214",
+            "codeType": "DIAGNOSIS"
+          },
+          {
+            "code": "m6569",
+            "normalizedCode": "M6569",
+            "codeType": "DIAGNOSIS"
+          }
+        ],
+        "mdc": null,
+        "classification": null
+      },
+      "total_count": 0,
+      "result_ids": [],
+      "fixture": {
+        "F111": null,
+        "F112": null,
+        "F121": null,
+        "F122": null
+      }
+    },
+    "DIAGNOSIS_upper": {
+      "ok": true,
+      "payload": {
+        "conditions": [
+          {
+            "codeType": "DIAGNOSIS",
+            "code": "I214"
+          },
+          {
+            "codeType": "DIAGNOSIS",
+            "code": "M6569"
+          }
+        ],
+        "operator": "AND",
+        "mdc": "",
+        "classification": ""
+      },
+      "normalized": {
+        "operator": "AND",
+        "conditions": [
+          {
+            "code": "I214",
+            "normalizedCode": "I214",
+            "codeType": "DIAGNOSIS"
+          },
+          {
+            "code": "M6569",
+            "normalizedCode": "M6569",
+            "codeType": "DIAGNOSIS"
+          }
+        ],
+        "mdc": null,
+        "classification": null
+      },
+      "total_count": 0,
+      "result_ids": [],
+      "fixture": {
+        "F111": null,
+        "F112": null,
+        "F121": null,
+        "F122": null
+      }
+    }
+  },
+  "derived": {
+    "total": 1233,
+    "missing_code_count": 21,
+    "missing_code_records": [
+      {
+        "adrg": "9900",
+        "aadrg": "99000",
+        "label": "분류 미부여",
+        "title": "99000 · 주진단과 일치하지 않는 수술",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "9990",
+        "aadrg": "99900",
+        "label": "분류 미부여",
+        "title": "99900 · 분류 불가능",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "D014",
+        "aadrg": "D0140",
+        "label": "분류 미부여",
+        "title": "D0140 · 내이 수술",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G241",
+        "aadrg": "G2411",
+        "label": "분류 미부여",
+        "title": "G2411 · 복강경을 이용한 서혜 및 대퇴부 탈장 수술(장절제 미동반), 한쪽, 연령 ≤6세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G241",
+        "aadrg": "G2412",
+        "label": "분류 미부여",
+        "title": "G2412 · 복강경을 이용한 서혜 및 대퇴부 탈장 수술(장절제 미동반), 한쪽, 연령 6세＜연령＜65세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G241",
+        "aadrg": "G2413",
+        "label": "분류 미부여",
+        "title": "G2413 · 복강경을 이용한 서혜 및 대퇴부 탈장 수술(장절제 미동반), 한쪽, 연령 ≥65세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G242",
+        "aadrg": "G2421",
+        "label": "분류 미부여",
+        "title": "G2421 · 복강경을 이용한 서혜 및 대퇴부 탈장 수술(장절제 미동반), 양쪽, 연령 ≤6세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G242",
+        "aadrg": "G2422",
+        "label": "분류 미부여",
+        "title": "G2422 · 복강경을 이용한 서혜 및 대퇴부 탈장 수술(장절제 미동반), 양쪽, 연령 6세＜연령＜65세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G242",
+        "aadrg": "G2423",
+        "label": "분류 미부여",
+        "title": "G2423 · 복강경을 이용한 서혜 및 대퇴부 탈장 수술(장절제 미동반), 양쪽, 연령 ≥65세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G650",
+        "aadrg": "G6501",
+        "label": "분류 미부여",
+        "title": "G6501 · 위장관 폐색, 연령 ≤18세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "G650",
+        "aadrg": "G6502",
+        "label": "분류 미부여",
+        "title": "G6502 · 위장관 폐색, 연령 >18세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "K630",
+        "aadrg": "K6300",
+        "label": "분류 미부여",
+        "title": "K6300 · 기타 대사장애",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "K720",
+        "aadrg": "K7201",
+        "label": "분류 미부여",
+        "title": "K7201 · 수분, 전해질 및 산-염기균형의 장애, 연령 ≤18세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "K720",
+        "aadrg": "K7202",
+        "label": "분류 미부여",
+        "title": "K7202 · 수분, 전해질 및 산-염기균형의 장애, 연령 >18세",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "K730",
+        "aadrg": "K7300",
+        "label": "분류 미부여",
+        "title": "K7300 · 발달 지연",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "R634",
+        "aadrg": "R6340",
+        "label": "분류 미부여",
+        "title": "R6340 · 화학요법 관련 치료(속발 급성백혈병 동반, 화학요법을 받은 경우)",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "R635",
+        "aadrg": "R6350",
+        "label": "분류 미부여",
+        "title": "R6350 · 화학요법 관련 치료(속발 급성백혈병 미동반, 화학요법을 받은 경우)",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "R636",
+        "aadrg": "R6360",
+        "label": "분류 미부여",
+        "title": "R6360 · 화학요법 관련 치료(속발 급성백혈병 미동반, 화학요법을 받은 경우), 당일퇴원",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "R637",
+        "aadrg": "R6370",
+        "label": "분류 미부여",
+        "title": "R6370 · 기타 화학요법 관련 치료(화학요법을 받지 않은 경우)",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "R671",
+        "aadrg": "R6710",
+        "label": "분류 미부여",
+        "title": "R6710 · 방사선 관련 치료(방사선치료를 받은 경우)",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      },
+      {
+        "adrg": "R672",
+        "aadrg": "R6720",
+        "label": "분류 미부여",
+        "title": "R6720 · 방사선 관련 치료(방사선치료를 받지 않은 경우)",
+        "abc_status": "UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+[PASS] Stage72A R1 / 0.5.19 복수검색 결과 레이아웃 감사
+base_commit=1bd70d50c85305e2ff64ebb0a17ec619719e8a40
+base_version=0.5.18
+relation_top_right_relation_chip=True
+relation_lower_classification_slot=False
+relation_top_right_classification_group=True
+header_same_choice_exists=False
+header_same_choice_emphasis_rule=False
+target_pass=3
+target_fail=3
+fail_targets=T01_relation_card_top_right_should_show_classification_not_relation_level,T03_relation_context_should_move_to_header_summary,T04_header_same_choice_summary_should_be_more_prominent
+runtime_json=UNCHANGED
+tracked=CLEAN
+staging=EMPTY
+mutated=NO
+readiness=READY_FOR_72B_GENERALIZED_SHADOW_FIX
+report=reports/stage72a_0519_relation_result_layout_audit_r1/audit_summary.txt
+json=reports/stage72a_0519_relation_result_layout_audit_r1/audit.json

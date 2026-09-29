@@ -1,0 +1,313 @@
+{
+  "status": "PASS",
+  "readiness": "RELEASE_0513_FINAL",
+  "started_at": "2026-09-22 00:39:54",
+  "preflight": {
+    "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "branch": "main",
+    "base_tag_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "release_tag_absent": true,
+    "release_absent": true,
+    "version": "0.5.14",
+    "release_sha256": {
+      "50D_validate_kdrg_electron_windows_packaging.py": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843",
+      "electron/package.json": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+      "electron/package-lock.json": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+      "electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491",
+      "electron/renderer/assets/icon-kdrg-v47.ico": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+      "electron/renderer/assets/icon-kdrg-v47.png": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+      "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2",
+      "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+      "electron/tests/validate-packaging-config.js": "4838136e03a3856263c7702c2d024b8cea96ba26216613bd5d5c3c9a1d003c63",
+      "electron/tests/validate-stage59b-ui.js": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c"
+    },
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "approved_png_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "approved_ico_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "stage66d0": {
+      "status": "PASS",
+      "classification": "RELEASE_COMMIT_PUSHED_RC_SUCCESS",
+      "release_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "rc_run_id": 35578352878,
+      "workflow_storage_assessment": "NO_UPLOAD_ARTIFACT_REFERENCE_FOUND",
+      "upload_artifact_refs": 0
+    },
+    "rc_live": {
+      "conclusion": "success",
+      "databaseId": 35578352878,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "status": "completed",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35578352878"
+    }
+  },
+  "tag": {
+    "before_run_ids": [
+      30338825549,
+      30507501525,
+      30516137577,
+      30517822662,
+      30526788312,
+      30608175832,
+      30612575933,
+      30785439563,
+      30966970926,
+      30970293371,
+      30974370469,
+      30975099320,
+      31140463075,
+      31141617837,
+      31562862337,
+      31563254144,
+      31564856574,
+      31565342738,
+      31574005190,
+      31574387332,
+      31653281736,
+      31653877216,
+      31661359692,
+      31661900335,
+      31674442090,
+      31674717211,
+      33365990326,
+      33367518844,
+      34430354971,
+      34822427410,
+      35045209058,
+      35174895808,
+      35175324869,
+      35189412698,
+      35189761347,
+      35320275215,
+      35321329985,
+      35565918126,
+      35571088340,
+      35578352878
+    ],
+    "local_tag_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "remote_tag_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "push_output": "To https://github.com/hamidong/kdrg-v47-relation-search.git\n * [new tag]         electron-v0.5.14 -> electron-v0.5.14\n",
+    "tag_immutable_from_here": true
+  },
+  "tag_workflow_discovery": {
+    "run": {
+      "conclusion": "",
+      "createdAt": "2026-09-22T00:40:04Z",
+      "databaseId": 35672892802,
+      "event": "push",
+      "headBranch": "electron-v0.5.14",
+      "headSha": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "status": "queued",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35672892802"
+    },
+    "observations": []
+  },
+  "tag_workflow": {
+    "run_id": 35672892802,
+    "head_sha": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "head_branch": "electron-v0.5.14",
+    "event": "push",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35672892802",
+    "watch_returncode": 0,
+    "watch_output_tail": "  ✓ Post 체크아웃\n  ✓ Complete job\nRefreshing run status every 3 seconds. Press Ctrl+C to quit.\n\n* electron-v0.5.14 Build Electron Windows portable and publish Release · 35672892802\nTriggered via push about 3 minutes ago\n\nJOBS\n✓ windows-electron-package in 3m43s (ID 106573119179)\n  ✓ Set up job\n  ✓ 체크아웃\n  ✓ Node.js 22.23.1 설치\n  ✓ Python 3.11 설치\n  ✓ checkout 바이트 무결성 검증\n  ✓ Actions 런타임 임시경로 초기화\n  ✓ package-lock 공식 registry 사전검증\n  ✓ npm CLI 11.17.0 무결성 검증 준비\n  ✓ npm 잠금 의존성 설치\n  ✓ Electron source·검색·UI·packaging 검증\n  ✓ Stage 50D Python 독립검증\n  ✓ Windows x64 portable exe 빌드\n  ✓ portable exe 경로 확인\n  ✓ packaged exe 데이터·검색·renderer 기동검증\n  ✓ packaged 핵심검증 판정\n  ✓ SHA256 생성\n  ✓ Electron 버전 정보 추출\n  ✓ Electron 태그와 package 버전 일치 확인\n  ✓ 회귀검증 요약\n  ✓ GitHub Release 생성 및 필수 Assets 업로드\n  ✓ UI smoke evidence 선택 업로드\n  ✓ Post Python 3.11 설치\n  ✓ Post Node.js 22.23.1 설치\n  ✓ Post 체크아웃\n  ✓ Complete job\n\nANNOTATIONS\n! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: softprops/action-gh-release@v2. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/\nwindows-electron-package: .github#2\n\nX Process completed with exit code 1.\nwindows-electron-package: .github#80\n\n✓ electron-v0.5.14 Build Electron Windows portable and publish Release · 35672892802\nTriggered via push about 3 minutes ago\n\nJOBS\n✓ windows-electron-package in 3m43s (ID 106573119179)\n  ✓ Set up job\n  ✓ 체크아웃\n  ✓ Node.js 22.23.1 설치\n  ✓ Python 3.11 설치\n  ✓ checkout 바이트 무결성 검증\n  ✓ Actions 런타임 임시경로 초기화\n  ✓ package-lock 공식 registry 사전검증\n  ✓ npm CLI 11.17.0 무결성 검증 준비\n  ✓ npm 잠금 의존성 설치\n  ✓ Electron source·검색·UI·packaging 검증\n  ✓ Stage 50D Python 독립검증\n  ✓ Windows x64 portable exe 빌드\n  ✓ portable exe 경로 확인\n  ✓ packaged exe 데이터·검색·renderer 기동검증\n  ✓ packaged 핵심검증 판정\n  ✓ SHA256 생성\n  ✓ Electron 버전 정보 추출\n  ✓ Electron 태그와 package 버전 일치 확인\n  ✓ 회귀검증 요약\n  ✓ GitHub Release 생성 및 필수 Assets 업로드\n  ✓ UI smoke evidence 선택 업로드\n  ✓ Post Python 3.11 설치\n  ✓ Post Node.js 22.23.1 설치\n  ✓ Post 체크아웃\n  ✓ Complete job\n\nANNOTATIONS\n! Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: softprops/action-gh-release@v2. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/\nwindows-electron-package: .github#2\n\nX Process completed with exit code 1.\nwindows-electron-package: .github#80\n"
+  },
+  "release": {
+    "assets": [
+      {
+        "apiUrl": "https://api.github.com/repos/hamidong/kdrg-v47-relation-search/releases/assets/580184591",
+        "contentType": "application/x-msdos-program",
+        "createdAt": "2026-09-22T00:43:41Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOTY_ow84ilOoP",
+        "label": "",
+        "name": "KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe",
+        "size": 91247199,
+        "state": "uploaded",
+        "updatedAt": "2026-09-22T00:43:45Z",
+        "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/download/electron-v0.5.14/KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/hamidong/kdrg-v47-relation-search/releases/assets/580184592",
+        "contentType": "text/plain",
+        "createdAt": "2026-09-22T00:43:41Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOTY_ow84ilOoQ",
+        "label": "",
+        "name": "SHA256SUMS_ELECTRON.txt",
+        "size": 121,
+        "state": "uploaded",
+        "updatedAt": "2026-09-22T00:43:42Z",
+        "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/download/electron-v0.5.14/SHA256SUMS_ELECTRON.txt"
+      }
+    ],
+    "isDraft": false,
+    "isPrerelease": false,
+    "name": "KDRG V4.7 Electron 0.5.14",
+    "publishedAt": "2026-09-22T00:43:45Z",
+    "tagName": "electron-v0.5.14",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/tag/electron-v0.5.14"
+  },
+  "release_metadata_verify": {
+    "tag_name": "electron-v0.5.14",
+    "name": "KDRG V4.7 Electron 0.5.14",
+    "is_draft": false,
+    "is_prerelease": false,
+    "published_at": "2026-09-22T00:43:45Z",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/tag/electron-v0.5.14",
+    "assets": [
+      {
+        "name": "KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe",
+        "size": 91247199
+      },
+      {
+        "name": "SHA256SUMS_ELECTRON.txt",
+        "size": 121
+      }
+    ]
+  },
+  "download": {
+    "download_output": "",
+    "exe_path": "/home/runner/workspace/releases/electron-v0.5.14/KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe",
+    "sha_path": "/home/runner/workspace/releases/electron-v0.5.14/SHA256SUMS_ELECTRON.txt",
+    "exe_size": 91247199,
+    "sha_size": 121
+  },
+  "sha256_verify": {
+    "exe_name": "KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe",
+    "manifest_sha256": "a5a7470aa9b5508ab1ef7d88999de0df0eb451914165d2d8a9e8189c750155af",
+    "actual_sha256": "a5a7470aa9b5508ab1ef7d88999de0df0eb451914165d2d8a9e8189c750155af",
+    "match": true
+  },
+  "icon_verify": {
+    "status": "PASS",
+    "method": "PURE_PYTHON_PE_RT_GROUP_ICON_RT_ICON_FRAME_SHA256",
+    "pe_kind": "PE32",
+    "resource_rva": 1093632,
+    "group_id": 103,
+    "sizes": [
+      16,
+      20,
+      24,
+      32,
+      40,
+      48,
+      64,
+      128,
+      256
+    ],
+    "frame_count": 9,
+    "approved_ico_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "frame_matches": [
+      {
+        "size": 16,
+        "resource_id": 9,
+        "resource_size": 749,
+        "group_declared_size": 749,
+        "source_size": 749,
+        "resource_sha256": "49b1464b7964c2eec747a649015834e499788804648271c78711b52662ba4943",
+        "source_sha256": "49b1464b7964c2eec747a649015834e499788804648271c78711b52662ba4943",
+        "match": true
+      },
+      {
+        "size": 20,
+        "resource_id": 8,
+        "resource_size": 1053,
+        "group_declared_size": 1053,
+        "source_size": 1053,
+        "resource_sha256": "f73181647fc58f2c287fb3bc98f98f7c5ecb64716f4be1317dace1a69b002484",
+        "source_sha256": "f73181647fc58f2c287fb3bc98f98f7c5ecb64716f4be1317dace1a69b002484",
+        "match": true
+      },
+      {
+        "size": 24,
+        "resource_id": 7,
+        "resource_size": 1402,
+        "group_declared_size": 1402,
+        "source_size": 1402,
+        "resource_sha256": "178c2a85fd1b8c3308a9e50d5efe82c84c4e0fd1c8a52343b404efac913f5831",
+        "source_sha256": "178c2a85fd1b8c3308a9e50d5efe82c84c4e0fd1c8a52343b404efac913f5831",
+        "match": true
+      },
+      {
+        "size": 32,
+        "resource_id": 6,
+        "resource_size": 2085,
+        "group_declared_size": 2085,
+        "source_size": 2085,
+        "resource_sha256": "047044768de5ff4a33df42497a6a47c38b77dcf16c5b25b781a52e8698a93c98",
+        "source_sha256": "047044768de5ff4a33df42497a6a47c38b77dcf16c5b25b781a52e8698a93c98",
+        "match": true
+      },
+      {
+        "size": 40,
+        "resource_id": 5,
+        "resource_size": 2879,
+        "group_declared_size": 2879,
+        "source_size": 2879,
+        "resource_sha256": "5906dc490e18b416dac287be27200e8ce7044b87f295ec13fa2bbc595626d219",
+        "source_sha256": "5906dc490e18b416dac287be27200e8ce7044b87f295ec13fa2bbc595626d219",
+        "match": true
+      },
+      {
+        "size": 48,
+        "resource_id": 4,
+        "resource_size": 3841,
+        "group_declared_size": 3841,
+        "source_size": 3841,
+        "resource_sha256": "e00a032ce019111b6d5548cd17ad88da1bcce191273297a2467f9cfebec1142f",
+        "source_sha256": "e00a032ce019111b6d5548cd17ad88da1bcce191273297a2467f9cfebec1142f",
+        "match": true
+      },
+      {
+        "size": 64,
+        "resource_id": 3,
+        "resource_size": 5860,
+        "group_declared_size": 5860,
+        "source_size": 5860,
+        "resource_sha256": "6c80d742f20e2d5842e5e2830d147d3fcc4b3e733660dca2263ba115b60629e6",
+        "source_sha256": "6c80d742f20e2d5842e5e2830d147d3fcc4b3e733660dca2263ba115b60629e6",
+        "match": true
+      },
+      {
+        "size": 128,
+        "resource_id": 2,
+        "resource_size": 18258,
+        "group_declared_size": 18258,
+        "source_size": 18258,
+        "resource_sha256": "6ee42de3bb3bbf25d415e86dc404b73cd4e63926ab05851959bc37c98fa1679f",
+        "source_sha256": "6ee42de3bb3bbf25d415e86dc404b73cd4e63926ab05851959bc37c98fa1679f",
+        "match": true
+      },
+      {
+        "size": 256,
+        "resource_id": 1,
+        "resource_size": 64513,
+        "group_declared_size": 64513,
+        "source_size": 64513,
+        "resource_sha256": "9b66f29732b766cba7763b3041844b491846c4856a332f37066b5349d7515dc4",
+        "source_sha256": "9b66f29732b766cba7763b3041844b491846c4856a332f37066b5349d7515dc4",
+        "match": true
+      }
+    ]
+  },
+  "final_guard": {
+    "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "base_tag_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "release_tag_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "tag_run_id": 35672892802,
+    "tag_run_conclusion": "success",
+    "release_exists": true,
+    "release_exe_sha256": "a5a7470aa9b5508ab1ef7d88999de0df0eb451914165d2d8a9e8189c750155af",
+    "staging_empty": true,
+    "tracked_worktree_clean": true,
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"
+  },
+  "error": null,
+  "finished_at": "2026-09-22 00:44:28"
+}

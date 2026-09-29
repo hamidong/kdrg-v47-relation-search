@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R7",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 50B expected 계약 블록에 related_aadrgs가 없음"
+}

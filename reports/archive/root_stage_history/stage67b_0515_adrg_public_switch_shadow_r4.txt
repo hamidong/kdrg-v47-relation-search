@@ -1,0 +1,190 @@
+KDRG V4.7 Electron Stage67B / 0.5.15 ADRG Public-Switch Shadow R4
+============================================================================================================
+status=PASS
+readiness=READY_FOR_0515_ADRG_VALIDATOR_MIGRATION
+
+[PREFLIGHT]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "stage67a": {
+    "status": "PASS",
+    "readiness": "READY_FOR_0515_ADRG_SHADOW_DESIGN",
+    "policy": {
+      "public_primary_entity": "ADRG",
+      "public_search_types": [
+        "ALL",
+        "CODE",
+        "ADRG"
+      ],
+      "aadrg_public_primary_visibility": "HIDDEN",
+      "aadrg_runtime_data": "PRESERVE",
+      "aadrg_relations": "PRESERVE",
+      "no_code_truncation_shortcut": true,
+      "deduplicate_by_real_adrg_relation": true
+    }
+  },
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "source_sha256": {
+    "electron/src/kdrg-search-service.js": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703",
+    "electron/src/search-result-contract.js": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f",
+    "electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491",
+    "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2",
+    "electron/renderer/ui-formatters.js": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02",
+    "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+    "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+    "electron/tests/validate-stage59b-search.js": "b4839e910f721335f1ba88892202ab140046c94e3e1673fc305486a0eb091f45",
+    "electron/tests/validate-stage59b-smoke.js": "e6682f0aaa8bebb560713aa2cb796e2ab88107d52e2f0fbf0b39aaf767a41ddb",
+    "electron/package.json": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d"
+  }
+}
+
+[SHADOW BUILD]
+{
+  "shadow_root": "/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4",
+  "copy_mode": {
+    "mode": "FULL_ELECTRON_TREE",
+    "excluded": [
+      "node_modules",
+      "dist"
+    ],
+    "electron_file_count": 43,
+    "runtime_mode": "SYMLINK_READ_ONLY_SOURCE",
+    "node_modules_mode": "SYMLINK_ACTUAL"
+  },
+  "environment_files_before_patch": {
+    "required_files": [
+      "electron/src/kdrg-search-service.js",
+      "electron/src/search-result-contract.js",
+      "electron/src/search-normalizer.js",
+      "electron/renderer/app.js",
+      "electron/renderer/index.html",
+      "electron/tests/validate-stage59b-search.js",
+      "electron/tests/validate-stage59b-smoke.js"
+    ],
+    "missing_count": 0
+  },
+  "environment_files_after_patch": {
+    "required_files": [
+      "electron/src/kdrg-search-service.js",
+      "electron/src/search-result-contract.js",
+      "electron/src/search-normalizer.js",
+      "electron/renderer/app.js",
+      "electron/renderer/index.html",
+      "electron/tests/validate-stage59b-search.js",
+      "electron/tests/validate-stage59b-smoke.js"
+    ],
+    "missing_count": 0
+  },
+  "modified_files": [
+    "electron/src/kdrg-search-service.js",
+    "electron/src/search-result-contract.js",
+    "electron/renderer/app.js",
+    "electron/renderer/index.html",
+    "electron/renderer/ui-formatters.js",
+    "electron/tests/validate-stage59b-search.js",
+    "electron/tests/validate-stage59b-smoke.js"
+  ],
+  "preserved_files": [
+    "electron/renderer/styles.css",
+    "electron/renderer/official-condition-text.js",
+    "electron/package.json"
+  ],
+  "shadow_validator": "electron/tests/validate-stage67b-adrg-public-switch.js",
+  "policy": {
+    "public_search": [
+      "ALL",
+      "CODE",
+      "ADRG"
+    ],
+    "aadrg_public": "HIDDEN",
+    "aadrg_internal": "PRESERVED",
+    "runtime_json": "UNCHANGED"
+  }
+}
+
+[VALIDATION]
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node -e require.resolve('./src/search-normalizer.js'); require('./src/kdrg-search-service.js'); console.log('[PASS] search-normalizer resolve + service module load')
+[PASS] search-normalizer resolve + service module load
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node --check src/kdrg-search-service.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node --check src/search-result-contract.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node --check renderer/ui-formatters.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node --check tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node --check tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node --check tests/validate-stage67b-adrg-public-switch.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node tests/validate-stage59b-search.js
+stage59_search: 29 PASS / 0 FAIL
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node tests/validate-stage59b-smoke.js
+stage59_smoke: PASS
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4/electron cmd=node tests/validate-stage67b-adrg-public-switch.js
+[PASS] Stage67B ADRG public-switch static contract
+
+[SHADOW FILE CONTRACT]
+{
+  "changed_shadow_files": [
+    "electron/renderer/app.js",
+    "electron/renderer/index.html",
+    "electron/renderer/ui-formatters.js",
+    "electron/src/kdrg-search-service.js",
+    "electron/src/search-result-contract.js",
+    "electron/tests/validate-stage59b-search.js",
+    "electron/tests/validate-stage59b-smoke.js"
+  ],
+  "preserved_shadow_sha256": {
+    "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+    "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+    "electron/package.json": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d"
+  },
+  "modified_shadow_sha256": {
+    "electron/src/kdrg-search-service.js": {
+      "actual_sha256": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703",
+      "shadow_sha256": "82b761dc94d23e22b89c488c5d40e579d8997f8b5fadbcf5120470d1554cc2e5",
+      "changed": true
+    },
+    "electron/src/search-result-contract.js": {
+      "actual_sha256": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f",
+      "shadow_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "changed": true
+    },
+    "electron/renderer/app.js": {
+      "actual_sha256": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491",
+      "shadow_sha256": "1a9fb1878b8e1d4f0cea20c5d38c015fc513a0e98e96c00abd8b66c2385a3535",
+      "changed": true
+    },
+    "electron/renderer/index.html": {
+      "actual_sha256": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2",
+      "shadow_sha256": "107636c8d7cdfeb36e3b31bdc946d5a956dfff030b96d3b0d916ef15dd1e4170",
+      "changed": true
+    },
+    "electron/renderer/ui-formatters.js": {
+      "actual_sha256": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02",
+      "shadow_sha256": "7e2d7a3b98e3effcea265e5cc7ba17e675b8b10da69d6c2cb76064fecff44d61",
+      "changed": true
+    },
+    "electron/tests/validate-stage59b-search.js": {
+      "actual_sha256": "b4839e910f721335f1ba88892202ab140046c94e3e1673fc305486a0eb091f45",
+      "shadow_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65",
+      "changed": true
+    },
+    "electron/tests/validate-stage59b-smoke.js": {
+      "actual_sha256": "e6682f0aaa8bebb560713aa2cb796e2ab88107d52e2f0fbf0b39aaf767a41ddb",
+      "shadow_sha256": "6072be48968fc26915728bc3b29cbbdb0eda385eadbe2b97c6366f82c1aed4c6",
+      "changed": true
+    }
+  },
+  "actual_workspace_unchanged": true,
+  "runtime_unchanged": true
+}
+
+[NEXT]
+- Shadow PASS이면 Stage67C에서 기존 validator 전수계약을 ADRG 공개정책으로 이관하고 Actual 적용 후보를 생성.
+- AADRG 내부 ENTITY_TYPES/record map/detail 기능은 유지.
+- runtime JSON은 이번 전환에서 수정하지 않음.
+- Actual 적용 전 packaged relation smoke까지 ADRG 공개계약으로 바꿔 독립검증.
+- 0.5.14 태그/Release는 불변.
+
+shadow_root=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4
+report_txt=/home/runner/workspace/stage67b_0515_adrg_public_switch_shadow_r4.txt
+report_json=/home/runner/workspace/stage67b_0515_adrg_public_switch_shadow_r4.json

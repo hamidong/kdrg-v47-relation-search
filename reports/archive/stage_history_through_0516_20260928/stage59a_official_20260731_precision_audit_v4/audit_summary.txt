@@ -1,0 +1,164 @@
+KDRG V4.7 Electron Stage59A V4 — 20260731 정밀 전수감사
+====================================================================================================
+status=FAIL
+head=73c40c164bd7eb103fea30ac22f5bd0c34a9d3bc
+package_version=0.5.9
+operating_json_sha256=75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0
+logical_table_source=data/kdrg_v47_logical_tables_repaired_current.json
+
+[20260731 공식자료]
+procedure_added=M6536
+procedure_removed=-
+procedure_changed=0
+M6536=자653-1 | 클립을 사용한 경피적 경도관 승모판 재건술 | row=325
+correction_all_dates=True
+correction_july_complete=True
+correction_old_additions_preserved=True
+
+[현재 교정 파이프라인 — 실제 schema]
+source_changes=18
+patch_operations=24
+operation_counts={'code_add': 13, 'code_remove': 9, 'create_logical_table': 1, 'replace_condition_ast': 1}
+contains_M6536=False
+contains_2026_07_31=False
+
+[7/31 canonical target]
+F022=LT_PATCH_F022_PROCEDURE_TABLE06 | exists=True | role=procedure | codes=1 | M6586=True | M6536=False
+P020=LT_P020_001 | exists=True | role=procedure | codes=178 | M6586=True | M6536=False
+20260731 적용 후 예상=source_changes 20, patch_operations 26, code_add 15
+
+[코드 namespace 충돌 — logical TABLE role 기준]
+current_dual_role_count=59
+latest_literal_collision_count=60
+new_20260731_collision_codes=M6536
+- L0102 | current_proc=True | new_20260731=False | operating_name=['정맥마취(부위(국소)마취)'] | procedure_name=정맥마취(부위(국소)마취)
+- M6000 | current_proc=True | new_20260731=False | operating_name=['T모양 장비와 T형 소생기를 이용한 환기'] | procedure_name=T모양 장비와 T형 소생기를 이용한 환기
+- M6510 | current_proc=True | new_20260731=False | operating_name=['경피적동맥관개존폐쇄술[방사선,심전도 등 모든 검사 포함'] | procedure_name=경피적동맥관개존폐쇄술[방사선,심전도 등 모든 검사 포함]
+- M6511 | current_proc=True | new_20260731=False | operating_name=['경피적 좌심방이폐색술'] | procedure_name=경피적 좌심방이폐색술
+- M6513 | current_proc=True | new_20260731=False | operating_name=['경피적 근성부 심실중격결손 폐쇄술'] | procedure_name=경피적 근성부 심실중격결손 폐쇄술
+- M6521 | current_proc=True | new_20260731=False | operating_name=['경피적심방중격절개술-풍선심방중격절개술'] | procedure_name=경피적심방중격절개술-풍선심방중격절개술
+- M6522 | current_proc=True | new_20260731=False | operating_name=['경피적심방중격절개술-칼날심방중격절개술'] | procedure_name=경피적심방중격절개술-칼날심방중격절개술
+- M6531 | current_proc=True | new_20260731=False | operating_name=['경피적심장판막성형술-승모판막'] | procedure_name=경피적심장판막성형술-승모판막
+- M6532 | current_proc=True | new_20260731=False | operating_name=['경피적심장판막성형술-대동맥판막'] | procedure_name=경피적심장판막성형술-대동맥판막
+- M6533 | current_proc=True | new_20260731=False | operating_name=['경피적심장판막성형술-폐동맥판막'] | procedure_name=경피적심장판막성형술-폐동맥판막
+- M6536 | current_proc=False | new_20260731=True | operating_name=['Nodular tendinous disease, lower leg', '결절성 힘줄병, 아래다리'] | procedure_name=클립을 사용한 경피적 경도관 승모판 재건술
+- M6580 | current_proc=True | new_20260731=False | operating_name=['경피적대동맥판삽입-심첨하부 접근'] | procedure_name=경피적대동맥판삽입-심첨하부 접근
+- M6581 | current_proc=True | new_20260731=False | operating_name=['경피적대동맥판삽입-상행대동맥 접근'] | procedure_name=경피적대동맥판삽입-상행대동맥 접근
+- M6582 | current_proc=True | new_20260731=False | operating_name=['경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근'] | procedure_name=경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근
+- M6585 | current_proc=True | new_20260731=False | operating_name=['경피적 폐동맥판 삽입술'] | procedure_name=경피적 폐동맥판 삽입술
+- M6586 | current_proc=True | new_20260731=False | operating_name=['경피적 승모판막 재치환술[심방중격 접근'] | procedure_name=경피적 승모판막 재치환술[심방중격 접근]
+- M6590 | current_proc=True | new_20260731=False | operating_name=['대동맥의 소생적 혈관 내 풍선폐색술'] | procedure_name=대동맥의 소생적 혈관 내 풍선폐색술
+- M6593 | current_proc=True | new_20260731=False | operating_name=['경피적풍선혈관성형술-뇌혈관'] | procedure_name=경피적풍선혈관성형술-뇌혈관
+- M6594 | current_proc=True | new_20260731=False | operating_name=['경피적풍선혈관성형술-경동맥[추골동맥포함'] | procedure_name=경피적풍선혈관성형술-경동맥[추골동맥포함]
+- M6595 | current_proc=True | new_20260731=False | operating_name=['경피적풍선혈관성형술-대동맥'] | procedure_name=경피적풍선혈관성형술-대동맥
+- M6596 | current_proc=True | new_20260731=False | operating_name=['경피적풍선혈관성형술-폐동맥'] | procedure_name=경피적풍선혈관성형술-폐동맥
+- M6597 | current_proc=True | new_20260731=False | operating_name=['경피적풍선혈관성형술-기타혈관'] | procedure_name=경피적풍선혈관성형술-기타혈관
+- M6599 | current_proc=True | new_20260731=False | operating_name=['경피적뇌혈관약물성형술'] | procedure_name=경피적뇌혈관약물성형술
+- M6611 | current_proc=True | new_20260731=False | operating_name=['경피적혈관내스텐트-이식설치술[대동맥'] | procedure_name=경피적혈관내스텐트-이식설치술[대동맥]
+- M6612 | current_proc=True | new_20260731=False | operating_name=['경피적혈관내스텐트-이식설치술[대동맥및장골동맥'] | procedure_name=경피적혈관내스텐트-이식설치술[대동맥및장골동맥]
+- M6613 | current_proc=True | new_20260731=False | operating_name=['경피적혈관내스텐트-이식설치술[기타혈관'] | procedure_name=경피적혈관내스텐트-이식설치술[기타혈관]
+- M6620 | current_proc=True | new_20260731=False | operating_name=['경피적혈관내죽종제거술'] | procedure_name=경피적혈관내죽종제거술
+- M6630 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-혈전용해술-두개강내 혈관'] | procedure_name=경피적혈전제거술-혈전용해술-두개강내 혈관
+- M6632 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-혈전용해술[기타혈관'] | procedure_name=경피적혈전제거술-혈전용해술[기타혈관]
+- M6634 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-혈전용해술[관상동맥'] | procedure_name=경피적혈전제거술-혈전용해술[관상동맥]
+- M6635 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-혈전용해술-두개강외 경부혈관'] | procedure_name=경피적혈전제거술-혈전용해술-두개강외 경부혈관
+- M6636 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관'] | procedure_name=경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관
+- M6637 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관'] | procedure_name=경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관
+- M6638 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-기계적혈전제거술[카테터법]-관상동맥'] | procedure_name=경피적혈전제거술-기계적혈전제거술[카테터법]-관상동맥
+- M6639 | current_proc=True | new_20260731=False | operating_name=['경피적혈전제거술-기계적혈전제거술[카테터법]-기타혈관'] | procedure_name=경피적혈전제거술-기계적혈전제거술[카테터법]-기타혈관
+- M6644 | current_proc=True | new_20260731=False | operating_name=['혈관색전술-기타혈관'] | procedure_name=혈관색전술-기타혈관
+- M6650 | current_proc=True | new_20260731=False | operating_name=['경피적하대정맥여과기설치술'] | procedure_name=경피적하대정맥여과기설치술
+- M6652 | current_proc=True | new_20260731=False | operating_name=['대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정'] | procedure_name=대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정
+- M6710 | current_proc=True | new_20260731=False | operating_name=['경경정맥간내문맥정맥단락술[유도료별도산정'] | procedure_name=경경정맥간내문맥정맥단락술[유도료별도산정]
+- M6721 | current_proc=True | new_20260731=False | operating_name=['방사선하상부소화관협착확장술-풍선카테터에의한것'] | procedure_name=방사선하상부소화관협착확장술-풍선카테터에의한것
+- M6722 | current_proc=True | new_20260731=False | operating_name=['방사선하상부소화관협착확장술-스텐트에의한것'] | procedure_name=방사선하상부소화관협착확장술-스텐트에의한것
+- M6723 | current_proc=True | new_20260731=False | operating_name=['방사선하결장,직장협착확장술-풍선카테터에의한것'] | procedure_name=방사선하결장,직장협착확장술-풍선카테터에의한것
+- M6724 | current_proc=True | new_20260731=False | operating_name=['방사선하결장,직장협착확장술-스텐트에의한것'] | procedure_name=방사선하결장,직장협착확장술-스텐트에의한것
+- M6730 | current_proc=True | new_20260731=False | operating_name=['경피적위루술'] | procedure_name=경피적위루술
+- M6741 | current_proc=True | new_20260731=False | operating_name=['경피적튜브배액술[유도료별도산정'] | procedure_name=경피적튜브배액술[유도료별도산정]
+- M6792 | current_proc=True | new_20260731=False | operating_name=['경피적비루관확장술-풍선카테터에의한것'] | procedure_name=경피적비루관확장술-풍선카테터에의한것
+- M6793 | current_proc=True | new_20260731=False | operating_name=['경피적비루관확장술-스텐트에의한것'] | procedure_name=경피적비루관확장술-스텐트에의한것
+- S4638 | current_proc=True | new_20260731=False | operating_name=['종양절제를위한개두술-경비적뇌하수체종양적출술-단순'] | procedure_name=종양절제를위한개두술-경비적뇌하수체종양적출술-단순
+- S4670 | current_proc=True | new_20260731=False | operating_name=['경동맥결찰술'] | procedure_name=경동맥결찰술
+- S5220 | current_proc=True | new_20260731=False | operating_name=['안구적출 및 조직충전술'] | procedure_name=안구적출 및 조직충전술
+- S5231 | current_proc=True | new_20260731=False | operating_name=['안와종양제거술-단순'] | procedure_name=안와종양제거술-단순
+- S5260 | current_proc=True | new_20260731=False | operating_name=['안검또는검판절제술'] | procedure_name=안검또는검판절제술
+- S5271 | current_proc=True | new_20260731=False | operating_name=['안검외반증수술[점막또는피부의식피술료포함]-간단[피부에한하는것'] | procedure_name=안검외반증수술[점막또는피부의식피술료포함]-간단[피부에한하는것]
+- S5281 | current_proc=True | new_20260731=False | operating_name=['안검내반증수술-간단[피부에한하는것'] | procedure_name=안검내반증수술-간단[피부에한하는것]
+- S5291 | current_proc=True | new_20260731=False | operating_name=['안검하수증수술-근막수술'] | procedure_name=안검하수증수술-근막수술
+- S5341 | current_proc=True | new_20260731=False | operating_name=['익상편수술-판이식 등 복합수술'] | procedure_name=익상편수술-판이식 등 복합수술
+- S5342 | current_proc=True | new_20260731=False | operating_name=['익상편수술-기타의 것'] | procedure_name=익상편수술-기타의 것
+- S5620 | current_proc=True | new_20260731=False | operating_name=['중이내튜브유치술'] | procedure_name=중이내튜브유치술
+- S5640 | current_proc=True | new_20260731=False | operating_name=['고실성형술[점막또는피부의 식피술료 포함'] | procedure_name=고실성형술[점막또는피부의 식피술료 포함]
+- S5658 | current_proc=True | new_20260731=False | operating_name=['이관 풍선 확장술 [내시경 또는 네비게이션 유도료 포함'] | procedure_name=이관 풍선 확장술 [내시경 또는 네비게이션 유도료 포함]
+
+[J600형 PAGE block 오염]
+page_marker_count=86
+relations={'NO_SOURCE_CODES': 86}
+safe_exact_source_recovery=0
+J600_detected=True
+J600_source_matches_official_7=False
+J600 relation=NO_SOURCE_CODES | source=['LT_J600_001'] | source_codes=
+
+[MDCxx 전체 주진단 조건 — 구조화 원천 전수]
+case_count=16
+adrgs=9630,B024,B092,E013,G504,G524,G534,H612,J031,J032,L632,O024,O062,R020,R040,S630
+missing_expected_core=-
+- 9630 | MDC=15 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast
+- B024 | MDC=01 | sources=main_page_blocks
+- B092 | MDC=01 | sources=main_page_blocks
+- E013 | MDC=04 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- G504 | MDC=06 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- G524 | MDC=06 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- G534 | MDC=06 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- H612 | MDC=07 | sources=main_page_blocks
+- J031 | MDC=09 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- J032 | MDC=09 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- L632 | MDC=11 | sources=main_page_blocks
+- O024 | MDC=14 | sources=main_page_blocks
+- O062 | MDC=14 | sources=main_page_blocks
+- R020 | MDC=17 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- R040 | MDC=17 | sources=condition_source_blocks,current_ast,main_page_blocks,operating,repaired_ast,table_section_candidates
+- S630 | MDC=18-1 | sources=main_page_blocks
+
+[TABLE 사용자 UI 노출]
+- search_result_TABLE_count=True
+- code_detail_linked_TABLE=True
+- code_detail_included_TABLE=True
+- TABLE_technical_detail_button=True
+- standalone_TABLE_detail_renderer=True
+
+[후속 계약 영향]
+- 20260501_literal=2
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+- patch_24=2
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+- patch_ops_24=1
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+- source_changes_18=2
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+- M6586_add_set=2
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+- current_only_set=1
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+- procedure_2790=3
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+  · electron/node_modules/yargs/CHANGELOG.md
+- procedure_2785_formula=1
+  · 59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py
+
+[판정]
+- FAIL: J600 source TABLE 코드가 공식 7개와 일치하지 않음: []
+- Stage59B 자동수정 진행 금지
+
+[안전]
+HEAD 변경 없음=True
+운영 JSON 변경 없음=True
+tracked 변경 없음=True
+staged 변경 없음=True
+JSON=reports/stage59a_official_20260731_precision_audit_v4/audit.json

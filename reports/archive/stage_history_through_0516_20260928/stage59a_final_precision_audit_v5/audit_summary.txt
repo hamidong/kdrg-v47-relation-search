@@ -1,0 +1,129 @@
+KDRG V4.7 Electron Stage59A V5 — 최종 정밀감사
+================================================================================================
+status=FAIL
+head=73c40c164bd7eb103fea30ac22f5bd0c34a9d3bc
+package_version=0.5.9
+operating_json_sha256=75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0
+
+[20260731 공식 delta 계약]
+V4_contract_failed=-
+현재 source_changes=18
+현재 patch_operations=24
+적용 후 예상 source_changes=20
+적용 후 예상 patch_operations=26
+F022 target=LT_PATCH_F022_PROCEDURE_TABLE06
+P020 target=LT_P020_001
+
+[J600형 PAGE block 오염 — operating TABLE codes 기준]
+page_marker_count=86
+relations={'EXACT': 42, 'MIXED_OVERLAP': 9, 'NO_SOURCE_CODES': 5, 'RAW_SUBSET_OF_SOURCE': 18, 'RAW_SUPERSET_OF_SOURCE': 12}
+source_covered_count=54
+safe_source_recovery=54
+J600_detected=True
+J600_source_matches_official_7=False
+J600 relation=RAW_SUPERSET_OF_SOURCE
+J600 source_owner_exact=True
+J600 source_codes=J61,L890,L891,L892,L893,L899,L97,L984
+J600 raw_extra_count=1
+J600 safe_source_recovery=True
+
+[진단/시술 동일 코드 namespace — role별 source name 기준]
+current_dual_role_count=0
+distinct_semantic_count=0
+operating_preserves_both_role_names_count=0
+diagnosis_role_name_missing_count=0
+procedure_role_name_missing_count=0
+M6536_current_dual=False
+M6536_diagnosis_names=[]
+M6536_operating_names=['Nodular tendinous disease, lower leg', '결절성 힘줄병, 아래다리']
+M6536_after_20260731=new dual-role literal
+
+[MDCxx 전체 주진단]
+structured_case_count=9
+structured_adrgs=9630,E013,G504,G524,G534,J031,J032,R020,R040
+review_only_case_count=7
+review_only_adrgs=B024,B092,H612,L632,O024,O062,S630
+missing_expected_core=-
+appendix_coverage_failure=0
+- 9630 | MDC15:codes=3376,coverage=1.0
+- E013 | MDC04:codes=427,coverage=1.0
+- G504 | MDC06:codes=610,coverage=1.0
+- G524 | MDC06:codes=610,coverage=1.0
+- G534 | MDC06:codes=610,coverage=1.0
+- J031 | MDC09:codes=738,coverage=1.0
+- J032 | MDC09:codes=738,coverage=1.0
+- R020 | MDC17:codes=161,coverage=1.0
+- R040 | MDC17:codes=161,coverage=1.0
+
+[TABLE 사용자 UI 노출]
+- search_result_TABLE_count=True
+- code_detail_linked_TABLE=True
+- code_detail_included_TABLE=True
+- TABLE_technical_detail_button=True
+- standalone_TABLE_detail_renderer=True
+
+[2026-05-01 잔존 provenance/계약]
+- date_2026_05_01=8
+  · 41_build_kdrg_pyside_runtime_ui_bridge.py | occurrences=2
+  · README.md | occurrences=1
+  · app/runtime_data_store.py | occurrences=2
+  · data/kdrg_v47_pilot_schema_v2.json | occurrences=5
+  · data/kdrg_v47_ui_fixture.json | occurrences=3
+  · docs/SOURCE_PRECEDENCE_V2.md | occurrences=1
+  · sources/SOURCE_MANIFEST.md | occurrences=2
+  · tools/convert_pilot_v1_to_v2.py | occurrences=5
+- date_20260501=9
+  · data/kdrg_v47_pilot_schema_v2.json | occurrences=3
+  · data/kdrg_v47_search_integrated.json | occurrences=1
+  · data/kdrg_v47_search_integrated_v3.json | occurrences=1
+  · docs/SCHEMA_V2_MIGRATION_NOTES.md | occurrences=1
+  · docs/SOURCE_PRECEDENCE_V2.md | occurrences=2
+  · reports/schema_v2_migration_report.txt | occurrences=2
+  · reports/schema_v2_validation_report.txt | occurrences=1
+  · sources/SOURCE_MANIFEST.md | occurrences=2
+  · tools/convert_pilot_v1_to_v2.py | occurrences=3
+- procedure_count_2790=2
+  · data/kdrg_v47_search_integrated.json | occurrences=9
+  · data/kdrg_v47_search_integrated_v3.json | occurrences=26
+- patch_count_24=46
+  · 37_build_kdrg_search_integrated_json.py | occurrences=2
+  · 38_validate_kdrg_search_integrated_json.py | occurrences=2
+  · 39_build_kdrg_runtime_search_service.py | occurrences=3
+  · 40_validate_kdrg_runtime_search_service.py | occurrences=2
+  · 41_build_kdrg_pyside_runtime_ui_bridge.py | occurrences=7
+  · 42_validate_kdrg_runtime_ui_bridge.py | occurrences=4
+  · 43_build_kdrg_runtime_ui_preview.py | occurrences=10
+  · 44_build_kdrg_windows_runtime_regression.py | occurrences=11
+  · 44_fix_kdrg_windows_bundle_diagnostics.py | occurrences=3
+  · 44_fix_kdrg_windows_source_smoke.py | occurrences=4
+  · 45_validate_kdrg_windows_ci_utf8_output.py | occurrences=2
+  · 46_validate_kdrg_release_version_v021.py | occurrences=4
+  · 47A_build_kdrg_ui_semantic_audit.py | occurrences=2
+  · 47B_validate_kdrg_ui_semantic_audit.py | occurrences=2
+  · 48A_build_kdrg_ui_display_contract.py | occurrences=2
+  · 48B_validate_kdrg_ui_display_contract.py | occurrences=2
+  · 49_validate_kdrg_pyside_ui_semantics.py | occurrences=4
+  · 50A_validate_kdrg_electron_skeleton.py | occurrences=14
+  · 50B_validate_kdrg_electron_search_service.py | occurrences=13
+  · 50C_validate_kdrg_electron_renderer_ui.py | occurrences=10
+  · 50D_validate_kdrg_electron_windows_packaging.py | occurrences=13
+  · 51D_validate_kdrg_windows_packaged_ui.py | occurrences=4
+  · app/dialogs.py | occurrences=7
+  · app/styles.py | occurrences=8
+  · data/kdrg_v47_pilot_schema_v2.json | occurrences=10
+  · data/kdrg_v47_search_integrated.json | occurrences=11384
+  · data/kdrg_v47_search_integrated_v3.json | occurrences=16441
+  · data/kdrg_v47_ui_display_contract.json | occurrences=427
+  · data/kdrg_v47_ui_fixture.json | occurrences=3
+  · data/kdrg_v47_ui_semantic_profile.json | occurrences=116
+
+[판정]
+- FAIL: J600 source TABLE 7개 불일치: ['J61', 'L890', 'L891', 'L892', 'L893', 'L899', 'L97', 'L984']
+- Stage59B Shadow 수정 진행 금지
+
+[안전]
+HEAD 변경 없음=True
+운영 JSON 변경 없음=True
+tracked 변경 없음=True
+staged 변경 없음=True
+JSON=reports/stage59a_final_precision_audit_v5/audit.json

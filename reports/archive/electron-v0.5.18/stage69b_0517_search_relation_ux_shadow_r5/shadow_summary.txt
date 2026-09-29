@@ -1,0 +1,5 @@
+[FAIL] Stage69B R5 / 0.5.17 Search + Relation UX Shadow
+Stop: 50B FAIL
+[FAIL] KDRG Stage 50B Electron 검색 service 검증: 13 PASS / 1 FAIL
+- 0.5.10 runtime probe | actual=1 | expected=0
+

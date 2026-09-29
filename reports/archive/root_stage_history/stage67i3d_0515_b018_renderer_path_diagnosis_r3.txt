@@ -1,0 +1,268 @@
+KDRG V4.7 Electron Stage67I3D / 0.5.15 B018 Renderer Path Diagnosis R3
+==================================================================================================
+status=PASS
+
+[GATE]
+{
+  "run_id": 35803633211,
+  "fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "failed_step": "packaged_ui_validation",
+  "error_message": "B018 result ready timeout: 30000ms"
+}
+
+[SOURCE PATHS]
+{
+  "main": "electron/main.js",
+  "preload": "electron/preload.js"
+}
+
+[FIXTURE]
+{
+  "b018_aadrg_field": "B0180",
+  "b018_search_query": "B018",
+  "filter_adrg": true,
+  "result_selector_adrg": true,
+  "result_click_present": true,
+  "timeout_30000_present": true
+}
+
+[DIRECT SERVICE]
+{
+  "total_count": 1,
+  "exact_b018": [
+    {
+      "entity_type": "ADRG",
+      "entity_id": "B018",
+      "match_type": "EXACT_ID",
+      "title": "B018 · 뇌동맥류 복합 색전술(뇌졸중 동반)"
+    }
+  ],
+  "first_results": [
+    "ADRG:B018:EXACT_ID"
+  ]
+}
+
+[SEARCH CONTRACT]
+{
+  "exports": [
+    "ENTITY_TYPES",
+    "RELATION_CODE_TYPES",
+    "RELATION_OPERATORS",
+    "SEARCH_ENTITY_TYPES",
+    "SearchContractError",
+    "normalizeDetailRequest",
+    "normalizeRelationRequest",
+    "normalizeSearchRequest"
+  ],
+  "search_entity_types": [
+    "CODE",
+    "ADRG"
+  ],
+  "normalizeSearchRequest": {
+    "query": "B018",
+    "entityType": [
+      "ADRG"
+    ],
+    "limit": 100,
+    "offset": 0,
+    "mdc": null,
+    "classification": null
+  }
+}
+
+[PATH AUDIT]
+{
+  "renderer_calls_window_search": true,
+  "renderer_reads_search_type": false,
+  "renderer_result_dataset_entity_type": true,
+  "renderer_result_dataset_entity_id": true,
+  "renderer_has_adrg_detail": true,
+  "preload_invokes_search": true,
+  "main_has_search_ipc": true,
+  "main_normalizes_search_request": true,
+  "main_calls_service_search": false,
+  "contract_public_adrg": true
+}
+
+[CLASSIFICATION]
+{
+  "signals": [
+    "DIRECT_SERVICE_AND_FIXTURE_QUERY_OK",
+    "NORMALIZE_REQUEST_DROPS_ADRG"
+  ],
+  "next_action": "Do not rerun RC. Inspect the captured CURRENT source contexts and repair the first mismatched renderer/preload/main/smoke contract through Shadow before another commit."
+}
+
+[KEY CONTEXT]
+-- packaged_B018 --
+18:   conditionTableOccurrences: 939,
+19: });
+20: 
+21: const UI_FIXTURES = Object.freeze([
+22:   Object.freeze({
+23:     adrg: 'B013',
+24:     aadrg: 'B0130',
+25:     search_query: 'B013',
+26:     expected_table_ids: Object.freeze(['LT_B018_002']),
+27:     forbidden_table_ids: Object.freeze([]),
+28:     required_table_labels: Object.freeze(['시술명 table2']),
+29:   }),
+30:   Object.freeze({
+31:     adrg: 'B014',
+32:     aadrg: 'B0140',
+33:     search_query: 'B014',
+34:     expected_table_ids: Object.freeze(['LT_B018_003']),
+-- packaged_filter --
+641:           await sleep(100);
+642:         }
+643:         throw new Error(label + ' timeout: ' + timeoutMs + 'ms');
+644:       };
+645: 
+646:       const input = document.querySelector('#search-query');
+647:       const filter = document.querySelector('#filter-type');
+648:       const form = document.querySelector('#search-form');
+649:       if (!input || !filter || !form) {
+650:         throw new Error('search DOM contract mismatch');
+651:       }
+652: 
+653:       filter.value = 'ADRG';
+654:       filter.dispatchEvent(new Event('change', { bubbles: true }));
+655:       input.value = fixture.search_query;
+656:       input.dispatchEvent(new Event('input', { bubbles: true }));
+657:       input.dispatchEvent(new Event('change', { bubbles: true }));
+658: 
+659:       if (typeof form.requestSubmit === 'function') {
+660:         form.requestSubmit();
+661:       } else {
+662:         form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+663:       }
+664: 
+665:       const selectedResult = await waitFor(
+-- packaged_result_ready --
+655:       input.value = fixture.search_query;
+656:       input.dispatchEvent(new Event('input', { bubbles: true }));
+657:       input.dispatchEvent(new Event('change', { bubbles: true }));
+658: 
+659:       if (typeof form.requestSubmit === 'function') {
+660:         form.requestSubmit();
+661:       } else {
+662:         form.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+663:       }
+664: 
+665:       const selectedResult = await waitFor(
+666:         () => document.querySelector(
+667:           '#result-list [data-entity-type="ADRG"][data-entity-id="' + fixture.adrg + '"]'
+668:         ),
+669:         fixture.adrg + ' result ready',
+670:       );
+671:       selectedResult.click();
+672: 
+673:       await waitFor(() => {
+674:         const detail = document.querySelector('#detail-content');
+675:         const detailCaption = document.querySelector('#detail-caption')?.textContent?.trim() || '';
+676:         return Boolean(
+677:           detail
+678:           && detailCaption === fixture.adrg
+679:           && detail.textContent.includes(fixture.adrg)
+680:           && !document.querySelector('#search-submit')?.disabled
+681:         );
+682:       }, fixture.adrg + ' detail ready');
+683: 
+-- renderer_window_search --
+1613:     query: byId('search-query').value,
+1614:     entityType: byId('filter-type').value,
+1615:     mdc: byId('filter-mdc').value,
+1616:     classification: byId('filter-classification').value,
+1617:     limit: 50,
+1618:     offset,
+1619:   };
+1620: }
+1621: 
+1622: async function runSearch(request, options = {}) {
+1623:   const query = String(request.query ?? '').trim(); if (!query) { byId('search-query').focus(); setStatus('error', '검색어를 입력해야 합니다.', '코드·ADRG 또는 질병군명을 입력하세요.'); return; }
+1624:   const sequence = ++state.searchSequence; state.activeMode = 'search'; state.request = { ...request, query }; state.currentDetail = null; state.currentRelationIndex = null; setBusy(true, '검색 중'); setStatus('loading', '검색 중입니다.', `${query} · 검색 서비스에서 결과를 확인하고 있습니다.`);
+1625:   try { const response = await window.KDRG.search(state.request); if (sequence !== state.searchSequence) return; state.selectedKey = null; renderResults(response); setStatus('ready', `${Ui.formatNumber(response.total_count)}건`, response.total_count ? Ui.typeCountText(response.type_counts) : '필터를 조정하거나 다른 검색어를 입력하세요.'); clearDetail(response.results.length ? '검색 결과를 선택하면 상세 정보가 표시됩니다.' : '검색 결과가 없어 상세 항목을 표시할 수 없습니다.'); if (Number.isFinite(Number(options.restoreScroll))) requestAnimationFrame(() => { const list = byId('result-list'); if (list) list.scrollTop = Number(options.restoreScroll); if (Number.isFinite(Number(options.restoreWindowScroll))) window.scrollTo(0, Number(options.restoreWindowScroll)); }); }
+1626:   catch (error) { if (sequence !== state.searchSequence) return; setStatus('error', '검색을 완료하지 못했습니다.', error?.message || '알 수 없는 오류'); byId('result-list').replaceChildren(create('p', 'error-message', error?.message || '검색 오류')); } finally { if (sequence === state.searchSequence) setBusy(false); }
+1627: }
+1628: 
+1629: function resetSearch() {
+1630:   byId('search-form').reset(); populateMdcFilter(); state.response = null; state.request = null; state.selectedKey = null; state.relationResponse = null; state.currentDetail = null; state.currentRelationIndex = null; state.activeMode = 'search'; state.historyStack = []; byId('result-list').replaceChildren(); byId('type-counts').replaceChildren(); setText('result-count', '0건'); setText('result-caption', '검색어를 입력하면 결과가 표시됩니다.'); setText('page-label', '0–0 / 0'); byId('page-previous').disabled = true; byId('page-next').disabled = true; clearDetail(); setStatus('ready', '검색 준비', '코드·ADRG·질병군명 검색'); updateBackButton(); byId('search-query').focus();
+1631: }
+1632: 
+1633: function bindEvents() {
+1634:   byId('search-form').addEventListener('submit', (event) => {
+1635:     event.preventDefault();
+1636:     state.historyStack = []; state.currentDetail = null; state.currentRelationIndex = null;
+1637:     runSearch(currentRequest(0));
+-- renderer_dataset_entity_type --
+77:   reset.disabled = isBusy;
+78:   input.setAttribute('aria-busy', String(isBusy));
+79:   submit.textContent = isBusy ? label : '검색';
+80:   const relationSubmit = byId('relation-submit');
+81:   if (relationSubmit) relationSubmit.disabled = isBusy;
+82: }
+83: 
+84: function makeBadge(entityType) {
+85:   const type = String(entityType ?? '').toUpperCase();
+86:   const badge = create('span', `entity-badge ${TYPE_BADGE_CLASS[type] ?? ''}`, Ui.entityLabel(type));
+87:   badge.dataset.entityType = type;
+88:   return badge;
+89: }
+90: 
+91: function makeChip(textValue, className = '') {
+92:   return create('span', `chip ${className}`.trim(), textValue);
+93: }
+94: function classificationCode(value) {
+95:   const raw = String(value ?? '').replace(/\s+/g, ' ').trim();
+96:   const upper = raw.toUpperCase();
+97:   if (CLASSIFICATION_BADGE_META[upper]) return upper;
+-- preload_invoke --
+4: 
+5: const CHANNELS = Object.freeze({
+6:   getBootstrapSnapshot: 'kdrg:get-bootstrap-snapshot',
+7:   getSearchStatus: 'kdrg:get-search-status',
+8:   search: 'kdrg:search',
+9:   relationSearch: 'kdrg:relation-search',
+10:   getDetail: 'kdrg:get-detail',
+11: });
+12: 
+13: const api = Object.freeze({
+14:   getBootstrapSnapshot: () => ipcRenderer.invoke(CHANNELS.getBootstrapSnapshot),
+15:   getSearchStatus: () => ipcRenderer.invoke(CHANNELS.getSearchStatus),
+16:   search: (request) => ipcRenderer.invoke(CHANNELS.search, request),
+17:   relationSearch: (request) => ipcRenderer.invoke(CHANNELS.relationSearch, request),
+18:   getDetail: (request) => ipcRenderer.invoke(CHANNELS.getDetail, request),
+19: });
+20: 
+21: contextBridge.exposeInMainWorld('KDRG', api);
+-- main_normalize --
+1: 'use strict';
+2: 
+3: const path = require('node:path');
+4: const { app, BrowserWindow, ipcMain, Menu } = require('electron');
+5: const { buildBootstrapSnapshot } = require('./src/bootstrap-data');
+6: const { resolveDataFiles } = require('./src/data-paths');
+7: const { KdrgSearchService } = require('./src/kdrg-search-service');
+8: const {
+9:   shouldRunPackagedSmoke,
+10:   runPackagedRuntimeSmoke,
+11: } = require('./src/packaged-runtime-smoke');
+12: const {
+13:   normalizeSearchRequest,
+14:   normalizeRelationRequest,
+15:   normalizeDetailRequest,
+16: } = require('./src/search-result-contract');
+17: 
+18: const IPC_CHANNELS = Object.freeze({
+19:   bootstrap: 'kdrg:get-bootstrap-snapshot',
+20:   searchStatus: 'kdrg:get-search-status',
+21:   search: 'kdrg:search',
+22:   relationSearch: 'kdrg:relation-search',
+23:   detail: 'kdrg:get-detail',
+24: });
+25: 
+-- main_service_search --
+
+[STOP]
+read-only diagnosis; no source modification / RC rerun / tag / release
+report_json=/home/runner/workspace/stage67i3d_0515_b018_renderer_path_diagnosis_r3.json

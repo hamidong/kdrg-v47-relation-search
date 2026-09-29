@@ -1,0 +1,580 @@
+KDRG V4.7 Electron Stage67E / 0.5.15 Final Shadow Whitespace Fix & Re-Audit R2
+====================================================================================================================
+status=PASS
+readiness=READY_FOR_0515_ACTUAL_APPLY_R2
+
+[PREFLIGHT]
+{
+  "gates": {
+    "stage67e_r1": {
+      "status": "PASS",
+      "readiness": "READY_FOR_0515_ACTUAL_APPLY"
+    },
+    "stage67f_r1": {
+      "status": "FAIL",
+      "failure": "TRAILING_WHITESPACE_APP_JS_1270",
+      "rollback_clean": true
+    }
+  },
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "base_tag": "electron-v0.5.14",
+  "next_tag_absent": true,
+  "package_version": "0.5.14",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"
+}
+
+[WHITESPACE FIX]
+{
+  "source_shadow": "/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r11",
+  "candidate_root": "/home/runner/workspace/reports/stage67e_0515_final_shadow_r2",
+  "cleanup": {
+    "50B_validate_kdrg_electron_search_service.py": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9",
+      "candidate_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9"
+    },
+    "50C_validate_kdrg_electron_renderer_ui.py": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f",
+      "candidate_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f"
+    },
+    "50D_validate_kdrg_electron_windows_packaging.py": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd",
+      "candidate_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd"
+    },
+    "electron/renderer/app.js": {
+      "changed_line_count": 1,
+      "changed_lines": [
+        {
+          "line": 1270,
+          "removed_chars": 6
+        }
+      ],
+      "source_sha256": "d81d159a4483d2b2a4977d9065eaea6e67a28a24bcc12c79534605a2fec752b8",
+      "candidate_sha256": "7c02cf2c65e34ace5b5ec5ed1428fb6ecfc4e5aac18e8495a1bc8b8238ed9117"
+    },
+    "electron/renderer/index.html": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093",
+      "candidate_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093"
+    },
+    "electron/renderer/ui-formatters.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77",
+      "candidate_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77"
+    },
+    "electron/src/kdrg-search-service.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+      "candidate_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c"
+    },
+    "electron/src/packaged-runtime-smoke.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+      "candidate_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca"
+    },
+    "electron/src/search-result-contract.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "candidate_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309"
+    },
+    "electron/tests/validate-packaged-runtime-smoke.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+      "candidate_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9"
+    },
+    "electron/tests/validate-stage59b-search.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65",
+      "candidate_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65"
+    },
+    "electron/tests/validate-stage59b-smoke.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "6072be48968fc26915728bc3b29cbbdb0eda385eadbe2b97c6366f82c1aed4c6",
+      "candidate_sha256": "6072be48968fc26915728bc3b29cbbdb0eda385eadbe2b97c6366f82c1aed4c6"
+    },
+    "electron/tests/validate-stage59b-ui.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "2d3665fcf3d3890d12c9c72045a58d1a19833ab46f3af15a2e3991df77f7edf7",
+      "candidate_sha256": "2d3665fcf3d3890d12c9c72045a58d1a19833ab46f3af15a2e3991df77f7edf7"
+    },
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js": {
+      "changed_line_count": 0,
+      "changed_lines": [],
+      "source_sha256": "f2b3d49c6063224b9ba3f5eacd203602cc2aceb693789b9082981aab5f2aa339",
+      "candidate_sha256": "f2b3d49c6063224b9ba3f5eacd203602cc2aceb693789b9082981aab5f2aa339"
+    }
+  },
+  "changed_files": [
+    "electron/renderer/app.js"
+  ],
+  "changed_line_total": 1
+}
+
+[PROTECTED 0.5.14]
+{
+  "electron/renderer/official-condition-text.js": {
+    "expected_sha256": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+    "actual_sha256": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+    "candidate_sha256": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+    "unchanged": true
+  },
+  "electron/package.json": {
+    "expected_sha256": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+    "actual_sha256": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+    "candidate_sha256": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+    "unchanged": true
+  },
+  "electron/package-lock.json": {
+    "expected_sha256": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+    "actual_sha256": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+    "candidate_sha256": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+    "unchanged": true
+  },
+  "electron/renderer/assets/icon-kdrg-v47.png": {
+    "expected_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "actual_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "candidate_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "unchanged": true
+  },
+  "electron/renderer/assets/icon-kdrg-v47.ico": {
+    "expected_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "actual_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "candidate_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "unchanged": true
+  }
+}
+
+[TRACKED DELTA]
+{
+  "tracked_scope_count": 45,
+  "changed_tracked_files": [
+    "50B_validate_kdrg_electron_search_service.py",
+    "50C_validate_kdrg_electron_renderer_ui.py",
+    "50D_validate_kdrg_electron_windows_packaging.py",
+    "electron/renderer/app.js",
+    "electron/renderer/index.html",
+    "electron/renderer/ui-formatters.js",
+    "electron/src/kdrg-search-service.js",
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/src/search-result-contract.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage59b-search.js",
+    "electron/tests/validate-stage59b-smoke.js",
+    "electron/tests/validate-stage59b-ui.js",
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js"
+  ],
+  "changed_tracked_count": 14,
+  "expected_promotion_count": 14,
+  "promotion_manifest": {
+    "50B_validate_kdrg_electron_search_service.py": {
+      "actual_sha256": "7a6861a57436352761fec0063408ac60c0a408485a038fc342a31fddfc132010",
+      "candidate_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9",
+      "line_delta": {
+        "added_lines": 2,
+        "removed_lines": 2,
+        "actual_lines": 90,
+        "candidate_lines": 90
+      }
+    },
+    "50C_validate_kdrg_electron_renderer_ui.py": {
+      "actual_sha256": "77036caeafb3882b12cda91345fac547943bae4113dac83790fbd115647443a9",
+      "candidate_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f",
+      "line_delta": {
+        "added_lines": 5,
+        "removed_lines": 5,
+        "actual_lines": 77,
+        "candidate_lines": 77
+      }
+    },
+    "50D_validate_kdrg_electron_windows_packaging.py": {
+      "actual_sha256": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843",
+      "candidate_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd",
+      "line_delta": {
+        "added_lines": 3,
+        "removed_lines": 3,
+        "actual_lines": 171,
+        "candidate_lines": 171
+      }
+    },
+    "electron/renderer/app.js": {
+      "actual_sha256": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491",
+      "candidate_sha256": "7c02cf2c65e34ace5b5ec5ed1428fb6ecfc4e5aac18e8495a1bc8b8238ed9117",
+      "line_delta": {
+        "added_lines": 80,
+        "removed_lines": 24,
+        "actual_lines": 1662,
+        "candidate_lines": 1718
+      }
+    },
+    "electron/renderer/index.html": {
+      "actual_sha256": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2",
+      "candidate_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093",
+      "line_delta": {
+        "added_lines": 6,
+        "removed_lines": 6,
+        "actual_lines": 174,
+        "candidate_lines": 174
+      }
+    },
+    "electron/renderer/ui-formatters.js": {
+      "actual_sha256": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02",
+      "candidate_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77",
+      "line_delta": {
+        "added_lines": 3,
+        "removed_lines": 3,
+        "actual_lines": 383,
+        "candidate_lines": 383
+      }
+    },
+    "electron/src/kdrg-search-service.js": {
+      "actual_sha256": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703",
+      "candidate_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+      "line_delta": {
+        "added_lines": 5,
+        "removed_lines": 5,
+        "actual_lines": 1353,
+        "candidate_lines": 1353
+      }
+    },
+    "electron/src/packaged-runtime-smoke.js": {
+      "actual_sha256": "8ae6c023b866297394c7e7fea6769f79dc805e14455e4eeb5f7cc13db1e1fa2e",
+      "candidate_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+      "line_delta": {
+        "added_lines": 132,
+        "removed_lines": 200,
+        "actual_lines": 1191,
+        "candidate_lines": 1123
+      }
+    },
+    "electron/src/search-result-contract.js": {
+      "actual_sha256": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f",
+      "candidate_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "line_delta": {
+        "added_lines": 1,
+        "removed_lines": 1,
+        "actual_lines": 170,
+        "candidate_lines": 170
+      }
+    },
+    "electron/tests/validate-packaged-runtime-smoke.js": {
+      "actual_sha256": "bc37b02d2145398c6aed0a013399b45a33f4604a254edabbdac2c99a309c214b",
+      "candidate_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+      "line_delta": {
+        "added_lines": 14,
+        "removed_lines": 14,
+        "actual_lines": 578,
+        "candidate_lines": 578
+      }
+    },
+    "electron/tests/validate-stage59b-search.js": {
+      "actual_sha256": "b4839e910f721335f1ba88892202ab140046c94e3e1673fc305486a0eb091f45",
+      "candidate_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65",
+      "line_delta": {
+        "added_lines": 2,
+        "removed_lines": 2,
+        "actual_lines": 25,
+        "candidate_lines": 25
+      }
+    },
+    "electron/tests/validate-stage59b-smoke.js": {
+      "actual_sha256": "e6682f0aaa8bebb560713aa2cb796e2ab88107d52e2f0fbf0b39aaf767a41ddb",
+      "candidate_sha256": "6072be48968fc26915728bc3b29cbbdb0eda385eadbe2b97c6366f82c1aed4c6",
+      "line_delta": {
+        "added_lines": 1,
+        "removed_lines": 1,
+        "actual_lines": 3,
+        "candidate_lines": 3
+      }
+    },
+    "electron/tests/validate-stage59b-ui.js": {
+      "actual_sha256": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c",
+      "candidate_sha256": "2d3665fcf3d3890d12c9c72045a58d1a19833ab46f3af15a2e3991df77f7edf7",
+      "line_delta": {
+        "added_lines": 16,
+        "removed_lines": 16,
+        "actual_lines": 261,
+        "candidate_lines": 261
+      }
+    },
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js": {
+      "actual_sha256": "0480d004e13b268b1cf87827847b9865bada191d3595c7cb3c25e62850bed6fa",
+      "candidate_sha256": "f2b3d49c6063224b9ba3f5eacd203602cc2aceb693789b9082981aab5f2aa339",
+      "line_delta": {
+        "added_lines": 24,
+        "removed_lines": 17,
+        "actual_lines": 99,
+        "candidate_lines": 106
+      }
+    }
+  },
+  "shadow_only_helpers": [
+    "electron/tests/validate-stage67c-adrg-ui-contract.js",
+    "electron/tests/validate-stage67d-packaged-adrg-contract.js"
+  ]
+}
+
+[HARD CODE AUDIT]
+{
+  "electron/src/kdrg-search-service.js": {
+    "B018": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "B022": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "L033": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "F212": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "P651": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    }
+  },
+  "electron/src/search-result-contract.js": {
+    "B018": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "B022": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "L033": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "F212": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "P651": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    }
+  },
+  "electron/renderer/app.js": {
+    "B018": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "B022": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "L033": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "F212": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "P651": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    }
+  },
+  "electron/renderer/index.html": {
+    "B018": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "B022": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "L033": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "F212": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "P651": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    }
+  },
+  "electron/renderer/ui-formatters.js": {
+    "B018": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "B022": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "L033": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "F212": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    },
+    "P651": {
+      "actual_count": 0,
+      "candidate_count": 0,
+      "new_count": 0
+    }
+  }
+}
+
+[VALIDATION]
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2 cmd=node electron/tests/validate-stage67c-adrg-ui-contract.js
+[PASS] Stage67C ADRG public UI contract
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2 cmd=node electron/tests/validate-stage67d-packaged-adrg-contract.js
+[PASS] Stage67D packaged ADRG public contract
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2/electron cmd=npm run check
+stage59_smoke: PASS
+
+> kdrg-v47-relation-search-electron@0.5.14 validate:smoke-contract
+> node tests/validate-packaged-runtime-smoke.js
+
+validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2
+[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL
+
+> kdrg-v47-relation-search-electron@0.5.14 validate:packaging
+> node tests/validate-packaging-config.js
+
+validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI
+electron_root=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2/electron
+node=v20.20.0
+[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2 cmd=python 50B_validate_kdrg_electron_search_service.py
+[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2/reports/electron_stage50b_validation_report.txt
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2 cmd=python 50C_validate_kdrg_electron_renderer_ui.py
+[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2/reports/electron_stage50c_validation_report.txt
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2 cmd=python 50D_validate_kdrg_electron_windows_packaging.py
+[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2/reports/electron_stage50d_validation_report.txt
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67e_0515_final_shadow_r2/electron cmd=node -e 
+'use strict';
+const path = require('node:path');
+const official = require('./renderer/official-condition-text.js');
+const { KdrgSearchService } = require('./src/kdrg-search-service');
+
+function fail(message) { throw new Error(message); }
+
+const p651 = official.byAdrg?.P651?.text || '';
+if (!p651.includes('시술명 table2을 제외한 OR procedure')) {
+  fail('P651 official wording regression');
+}
+if (/OR procedure\s+and not\(시술명 table2\)/.test(p651)) {
+  fail('P651 reconstructed wording leaked');
+}
+
+const f022 = official.byAdrg?.F022;
+if (
+  !f022
+  || f022.source_kind !== 'OFFICIAL_CORRECTION_20260731'
+  || f022.text !== '(시술명 table2 and 시술명 table 3) or 시술명 table6'
+) {
+  fail('F022 correction regression');
+}
+
+const service = new KdrgSearchService(
+  path.resolve('..', 'data', 'kdrg_v47_search_integrated_v3.json'),
+);
+
+for (const adrg of ['F022', 'P651', 'F212']) {
+  if (!service.getDetail('ADRG', adrg)?.detail) {
+    fail(`ADRG detail regression ${adrg}`);
+  }
+}
+
+const f2120 = service.getDetail('AADRG', 'F2120')?.detail;
+if (!f2120 || f2120.adrg !== 'F212') {
+  fail('F2120 internal AADRG preservation regression');
+}
+
+console.log('[PASS] official-source regression F022/P651/F212 + internal AADRG');
+
+[PASS] official-source regression F022/P651/F212 + internal AADRG
+
+[FINAL ACTUAL GUARD]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "tracked_worktree_clean": true,
+  "staging_empty": true,
+  "runtime_unchanged": true,
+  "base_tag_immutable": true,
+  "next_tag_absent": true
+}
+
+[APPLY MANIFEST]
+{
+  "path": "/home/runner/workspace/stage67e_0515_actual_apply_manifest_r2.json",
+  "promotion_file_count": 14,
+  "whitespace_fix": {
+    "file": "electron/renderer/app.js",
+    "line": 1270,
+    "changed_line_count": 1
+  }
+}
+
+[NEXT]
+- PASS이면 trailing whitespace가 제거된 새 14-file candidate가 확정됨.
+- 다음 단계는 새 R2 manifest만 사용하는 Stage67F R2 Actual 적용.
+- package version은 계속 0.5.14 유지.
+- commit/push/tag/release는 아직 금지.
+
+report_txt=/home/runner/workspace/stage67e_0515_final_shadow_whitespace_r2.txt
+report_json=/home/runner/workspace/stage67e_0515_final_shadow_whitespace_r2.json
+apply_manifest=/home/runner/workspace/stage67e_0515_actual_apply_manifest_r2.json

@@ -1,0 +1,101 @@
+KDRG V4.7 Electron Stage63A / 0.5.12 Condition Presentation Full Audit R1
+========================================================================================================
+status=FAIL
+mode=READ_ONLY
+
+[PREFLIGHT]
+{"head": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4", "origin_main": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4", "branch": "main", "tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4", "version": "0.5.11", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "product_sha256": {"electron/renderer/app.js": "08f1b4dac93f7cb8f2bc1b07b611af09f1dfe695a56d50d7c95593be1edc30a1", "electron/renderer/ui-formatters.js": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02", "electron/renderer/styles.css": "f89331c45b46fd02c967b4282892ca9e94962a50f8789ddc6e4c82a012a8227c", "electron/tests/validate-stage59b-ui.js": "ac449291ba73d06f51446ef8990da94315b387035540f32e83e2ecf61e390bc7"}, "staged_files": ["37_build_kdrg_search_integrated_json.py", "38_validate_kdrg_search_integrated_json.py", "39_build_kdrg_runtime_search_service.py", "40_validate_kdrg_runtime_search_service.py", "41_build_kdrg_pyside_runtime_ui_bridge.py", "42_validate_kdrg_runtime_ui_bridge.py", "43_build_kdrg_runtime_ui_preview.py", "44_build_kdrg_windows_runtime_regression.py", "44_fix_kdrg_windows_bundle_diagnostics.py", "44_fix_kdrg_windows_source_smoke.py", "45_validate_kdrg_windows_ci_utf8_output.py", "46_validate_kdrg_release_version_v021.py", "47A_build_kdrg_ui_semantic_audit.py", "47B_validate_kdrg_ui_semantic_audit.py", "48A_build_kdrg_ui_display_contract.py", "48B_validate_kdrg_ui_display_contract.py", "49_validate_kdrg_pyside_ui_semantics.py", "50A_validate_kdrg_electron_skeleton.py", "51D_validate_kdrg_windows_packaged_ui.py"], "dirty_files": []}
+
+[SUMMARY]
+{}
+
+[RENDERER SOURCE AUDIT]
+{"direct_function_present": true, "direct_requires_no_explicit": true, "direct_requires_positive_code_count": true, "direct_role_pattern_gate": false, "direct_local_table_pattern": true, "direct_neutral_label": true, "presentation_has_direct_status": true, "summary_uses_pretty_renderer": true, "detail_supports_direct_tables": true, "pretty_group_per_compound_node": true, "pretty_independent_open_close_rows": true, "formatter_exports_pretty_tree": true}
+
+[RENDERER RISK]
+{}
+
+[F212]
+{}
+
+[SOURCE CODE-LIST UI GAP CANDIDATES]
+
+[AST / PDF-COMPACT SCOPE]
+ast_case_count=None
+ast_compound_case_count=None
+ast_depth_distribution={}
+P651=null
+block_per_node_renderer=None
+
+[EXACT CODE SEARCH CONTRACT]
+{}
+
+[NEXT]
+- READ-ONLY 전수감사 완료 후 제품파일은 변경되지 않는다.
+- SOURCE_CODELIST_* 후보 전체를 기준으로 0.5.12 일반화 UI 수정범위를 확정한다.
+- F212 단건 하드코딩은 금지한다.
+- 복합 AST 전체를 대상으로 PDF형 compact renderer를 Shadow에서 검증한다.
+- 검색 계약(CODE + 직접 관련 AADRG)은 별도 회귀가 있지 않으면 유지한다.
+
+report_txt=/home/runner/workspace/stage63a_0512_condition_presentation_full_audit_r1.txt
+report_json=/home/runner/workspace/stage63a_0512_condition_presentation_full_audit_r1.json
+
+[BLOCKER]
+AuditError: command failed (1): node /tmp/kdrg_stage63a_686i51g1/probe.js
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module './src/kdrg-search-service'
+Require stack:
+- /tmp/kdrg_stage63a_686i51g1/probe.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/tmp/kdrg_stage63a_686i51g1/probe.js:6:31)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/tmp/kdrg_stage63a_686i51g1/probe.js' ]
+}
+
+Node.js v20.20.0
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py", line 881, in main
+    payload["probe"] = run_node_probe()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py", line 618, in run_node_probe
+    result = run(
+             ^^^^
+  File "/home/runner/workspace/63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py", line 86, in run
+    raise AuditError(
+AuditError: command failed (1): node /tmp/kdrg_stage63a_686i51g1/probe.js
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module './src/kdrg-search-service'
+Require stack:
+- /tmp/kdrg_stage63a_686i51g1/probe.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/tmp/kdrg_stage63a_686i51g1/probe.js:6:31)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '/tmp/kdrg_stage63a_686i51g1/probe.js' ]
+}
+
+Node.js v20.20.0
+
+

@@ -1,0 +1,213 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_0512_COMMIT_AND_RC",
+  "started_at": "2026-09-18 07:26:23",
+  "preflight": {
+    "head": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "origin_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "version": "0.5.11",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "product_sha256": {
+      "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660",
+      "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+      "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"
+    },
+    "prep_sha256_before": {
+      "50D_validate_kdrg_electron_windows_packaging.py": "c1e3260730dc6b8126ebfcc8f3e5642300103f2b9da69b070d559d4c07fdb259",
+      "electron/package.json": "c59913cac1110fe2f5d5063c73cb9fb70f06595a3231f68f6d2b9d68b92a3357",
+      "electron/package-lock.json": "465229dd07c81e9e16c2bd08da8e3a244b54465d03f820a7608c26f418a2c7ec"
+    },
+    "50d_old_version_literal_count": 3,
+    "new_tag_absent": {
+      "local": "",
+      "remote": ""
+    }
+  },
+  "migration": {
+    "old_50d_literal_count": 3,
+    "package_sha256": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b",
+    "lock_sha256": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184",
+    "50d_sha256": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373",
+    "50d_script_version": "2026-09-18_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V11_0512"
+  },
+  "validation": [
+    {
+      "cmd": [
+        "node",
+        "--check",
+        "renderer/app.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": ""
+    },
+    {
+      "cmd": [
+        "node",
+        "--check",
+        "tests/validate-stage59b-ui.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": ""
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage59b-ui.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "stage59_ui: 19 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage59b-search.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "stage59_search: 29 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage59b-smoke.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "stage59_smoke: PASS\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-packaged-runtime-smoke.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-stage60c-packaged-relation-smoke.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "[PASS] Stage60C runtime relation fixture: 9620 -> 96200 | O6010,O6011\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-packaging-config.js"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "-e",
+        "\n'use strict';\n\nconst path = require('node:path');\nconst fs = require('node:fs');\nconst {\n  KdrgSearchService,\n} = require('./src/kdrg-search-service');\nconst Ui = require('./renderer/ui-formatters');\n\nconst service = new KdrgSearchService(\n  path.resolve(\n    '..',\n    'data',\n    'kdrg_v47_search_integrated_v3.json',\n  ),\n);\n\nconst app = fs.readFileSync(\n  'renderer/app.js',\n  'utf8',\n);\n\nif (\n  !app.includes('detail?.parent_adrg_detail')\n  || !app.includes(\n    'inheritedFromParent: sourceDetail !== detail',\n  )\n) {\n  throw new Error(\n    'generic renderer parent fallback missing',\n  );\n}\n\nif (\n  app.includes(\n    \"if (detail?.aadrg === 'F2120'\",\n  )\n) {\n  throw new Error('F2120 hardcode detected');\n}\n\nfunction uniqueStrings(values) {\n  return Ui.uniqueStrings(\n    Array.isArray(values) ? values : [],\n  );\n}\n\nfunction safeDetail(type, id) {\n  try {\n    return service.getDetail(type, id)?.detail || null;\n  } catch {\n    return null;\n  }\n}\n\nconst adrgIds = [\n  ...service.recordMaps.ADRG.keys(),\n].sort();\n\nif (adrgIds.length !== 1132) {\n  throw new Error(\n    `ADRG record-map count ${adrgIds.length}`,\n  );\n}\n\n/*\n * IMPORTANT:\n * recordMaps.ADRG values are search/index records, not the complete\n * user-condition detail objects. Stage63B R2 read those values directly,\n * which made every source_logical_table_ids lookup empty and produced\n * parent count 0. Always dereference with getDetail('ADRG', id).\n */\nconst parents = new Map();\n\nfor (const id of adrgIds) {\n  const detail = safeDetail('ADRG', id);\n  if (!detail) {\n    throw new Error(`ADRG detail missing ${id}`);\n  }\n\n  const coverage = Ui.userConditionCoverage(detail);\n  const sourceIds = uniqueStrings(\n    detail.source_logical_table_ids ?? [],\n  );\n\n  if (\n    coverage.status !== 'NO_EXPLICIT_CONDITION'\n    || detail.condition_ast\n    || coverage.table_count\n    || sourceIds.length !== 1\n  ) {\n    continue;\n  }\n\n  const escaped = String(id).replace(\n    /[.*+?^${}()|[\\]\\\\]/g,\n    '\\\\$&',\n  );\n  const localPattern = new RegExp(\n    `^LT_${escaped}_\\\\d{3}$`,\n    'i',\n  );\n\n  if (!localPattern.test(sourceIds[0])) {\n    continue;\n  }\n\n  const summary = Ui.tableSummaryMap(detail)\n    .get(sourceIds[0]);\n  const codeCount = Number(\n    summary?.summary?.code_count ?? 0,\n  );\n\n  if (codeCount <= 0) {\n    continue;\n  }\n\n  parents.set(id, {\n    tableId: sourceIds[0],\n    codeCount,\n  });\n}\n\nif (parents.size !== 479) {\n  throw new Error(\n    `parent count ${parents.size}`,\n  );\n}\n\nlet candidateChildren = 0;\nlet inheritedGapShapes = 0;\nlet parentSummaryResolvable = 0;\nlet parentIdentityMatched = 0;\n\nfor (\n  const id\n  of [...service.recordMaps.AADRG.keys()].sort()\n) {\n  const child = safeDetail('AADRG', id);\n  if (!child) {\n    throw new Error(`AADRG detail missing ${id}`);\n  }\n\n  if (!parents.has(child.adrg)) {\n    continue;\n  }\n\n  candidateChildren += 1;\n\n  const ownSourceIds = uniqueStrings(\n    child.source_logical_table_ids ?? [],\n  );\n  const parent = child.parent_adrg_detail || null;\n  const parentSourceIds = uniqueStrings(\n    parent?.source_logical_table_ids ?? [],\n  );\n\n  if (\n    parent\n    && String(parent.adrg || '') === String(child.adrg)\n  ) {\n    parentIdentityMatched += 1;\n  }\n\n  if (\n    !child.condition_ast\n    && ownSourceIds.length === 0\n    && parentSourceIds.length === 1\n  ) {\n    inheritedGapShapes += 1;\n\n    const summary = Ui.tableSummaryMap(parent)\n      .get(parentSourceIds[0]);\n    const codeCount = Number(\n      summary?.summary?.code_count ?? 0,\n    );\n\n    if (codeCount > 0) {\n      parentSummaryResolvable += 1;\n    }\n  }\n}\n\nif (candidateChildren !== 521) {\n  throw new Error(\n    `candidate child count ${candidateChildren}`,\n  );\n}\nif (inheritedGapShapes !== 521) {\n  throw new Error(\n    `inherited gap shape ${inheritedGapShapes}`,\n  );\n}\nif (parentIdentityMatched !== 521) {\n  throw new Error(\n    `parent identity matched ${parentIdentityMatched}`,\n  );\n}\nif (parentSummaryResolvable !== 521) {\n  throw new Error(\n    `parent summary resolvable ${parentSummaryResolvable}`,\n  );\n}\n\nconst f2120 = safeDetail('AADRG', 'F2120');\nif (!f2120) {\n  throw new Error('F2120 detail missing');\n}\nif (f2120.adrg !== 'F212') {\n  throw new Error(\n    `F2120 parent mismatch ${f2120.adrg}`,\n  );\n}\nif (\n  uniqueStrings(\n    f2120.source_logical_table_ids ?? [],\n  ).length !== 0\n) {\n  throw new Error(\n    'F2120 unexpectedly owns direct source table',\n  );\n}\n\nconst f212ParentIds = uniqueStrings(\n  f2120.parent_adrg_detail\n    ?.source_logical_table_ids ?? [],\n);\nif (\n  JSON.stringify(f212ParentIds)\n  !== JSON.stringify(['LT_F212_001'])\n) {\n  throw new Error(\n    `F2120 parent source ${JSON.stringify(\n      f212ParentIds,\n    )}`,\n  );\n}\n\nconst f212Table = safeDetail(\n  'TABLE',\n  'LT_F212_001',\n);\nif (!f212Table) {\n  throw new Error('LT_F212_001 detail missing');\n}\nconst f212Codes = new Set(\n  (f212Table.code_records ?? [])\n    .map((row) => row.entity_id),\n);\nconst expectedF212Codes = [\n  'O0205',\n  'O0206',\n  'O0241',\n  'O2223',\n];\nfor (const code of expectedF212Codes) {\n  if (!f212Codes.has(code)) {\n    throw new Error(\n      `F212 source code missing ${code}`,\n    );\n  }\n}\n\nfor (const code of expectedF212Codes) {\n  const response = service.search(\n    code,\n    'ALL',\n    { limit: 100 },\n  );\n  const types = new Set(\n    response.results.map(\n      (row) => row.entity_type,\n    ),\n  );\n\n  if (\n    !types.has('CODE')\n    || !types.has('AADRG')\n    || types.has('ADRG')\n    || types.has('TABLE')\n  ) {\n    throw new Error(\n      `${code} search contract ${[\n        ...types,\n      ].join(',')}`,\n    );\n  }\n}\n\nconst p6510 = safeDetail('AADRG', 'P6510');\nif (\n  !p6510\n  || p6510.adrg !== 'P651'\n  || !p6510.condition_ast\n) {\n  throw new Error(\n    'P6510 inherited AST regression',\n  );\n}\n\nconst pretty = Ui.buildPrettyConditionTree(\n  p6510.condition_ast,\n);\nif (!pretty) {\n  throw new Error(\n    'P6510 pretty condition tree missing',\n  );\n}\n\nconsole.log(\n  '[PASS] Stage63B full impact probe',\n  JSON.stringify({\n    adrgCount: adrgIds.length,\n    parents: parents.size,\n    candidateChildren,\n    inheritedGapShapes,\n    parentIdentityMatched,\n    parentSummaryResolvable,\n    f212Codes: expectedF212Codes,\n    p651TreeKind: pretty.kind,\n  }),\n);\n"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "[PASS] Stage63B full impact probe {\"adrgCount\":1132,\"parents\":479,\"candidateChildren\":521,\"inheritedGapShapes\":521,\"parentIdentityMatched\":521,\"parentSummaryResolvable\":521,\"f212Codes\":[\"O0205\",\"O0206\",\"O0241\",\"O2223\"],\"p651TreeKind\":\"group\"}\n"
+    },
+    {
+      "cmd": [
+        "npm",
+        "run",
+        "check"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "\n> kdrg-v47-relation-search-electron@0.5.12 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime relation fixture: 9620 -> 96200 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.12 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.12 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.12\n\n> kdrg-v47-relation-search-electron@0.5.12 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.12 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 19 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.12 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.12 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.12 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+    },
+    {
+      "cmd": [
+        "/home/runner/workspace/.pythonlibs/bin/python",
+        "50B_validate_kdrg_electron_search_service.py"
+      ],
+      "cwd": "/home/runner/workspace",
+      "returncode": 0,
+      "output": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt\n"
+    },
+    {
+      "cmd": [
+        "/home/runner/workspace/.pythonlibs/bin/python",
+        "50C_validate_kdrg_electron_renderer_ui.py"
+      ],
+      "cwd": "/home/runner/workspace",
+      "returncode": 0,
+      "output": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt\n"
+    },
+    {
+      "cmd": [
+        "/home/runner/workspace/.pythonlibs/bin/python",
+        "50D_validate_kdrg_electron_windows_packaging.py"
+      ],
+      "cwd": "/home/runner/workspace",
+      "returncode": 0,
+      "output": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50d_validation_report.txt\n"
+    },
+    {
+      "cmd": [
+        "node",
+        "tests/validate-release-version.js",
+        "0.5.12"
+      ],
+      "cwd": "/home/runner/workspace/electron",
+      "returncode": 0,
+      "output": "[PASS] expected version argument | actual=\"0.5.12\" | expected=\"stable semver\"\n[PASS] package.json exists | actual=true | expected=true\n[PASS] package-lock.json exists | actual=true | expected=true\n[PASS] package name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] package version | actual=\"0.5.12\" | expected=\"0.5.12\"\n[PASS] lock top version | actual=\"0.5.12\" | expected=\"0.5.12\"\n[PASS] lock root version | actual=\"0.5.12\" | expected=\"0.5.12\"\n[PASS] lock top name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lock root name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lockfileVersion | actual=3 | expected=3\n[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.12_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.12_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.12\" | expected=\"electron-v0.5.12\"\n[PASS] version has no prerelease | actual=\"0.5.12\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL\n"
+    }
+  ],
+  "staging": {
+    "staged_files": [
+      "50D_validate_kdrg_electron_windows_packaging.py",
+      "electron/package-lock.json",
+      "electron/package.json",
+      "electron/renderer/app.js",
+      "electron/renderer/styles.css",
+      "electron/tests/validate-stage59b-ui.js"
+    ],
+    "name_status": [
+      "M\t50D_validate_kdrg_electron_windows_packaging.py",
+      "M\telectron/package-lock.json",
+      "M\telectron/package.json",
+      "M\telectron/renderer/app.js",
+      "M\telectron/renderer/styles.css",
+      "M\telectron/tests/validate-stage59b-ui.js"
+    ],
+    "stat": " 50D_validate_kdrg_electron_windows_packaging.py |   6 +-\n electron/package-lock.json                      |   4 +-\n electron/package.json                           |   2 +-\n electron/renderer/app.js                        | 231 ++++++------------------\n electron/renderer/styles.css                    |   7 +\n electron/tests/validate-stage59b-ui.js          |  44 ++++-\n 6 files changed, 104 insertions(+), 190 deletions(-)\n"
+  },
+  "final_guard": {
+    "head": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "origin_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "version": "0.5.12",
+    "immutable_0511_tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "new_0512_tag_absent": true,
+    "staged_files": [
+      "50D_validate_kdrg_electron_windows_packaging.py",
+      "electron/package-lock.json",
+      "electron/package.json",
+      "electron/renderer/app.js",
+      "electron/renderer/styles.css",
+      "electron/tests/validate-stage59b-ui.js"
+    ],
+    "sha256": {
+      "50D_validate_kdrg_electron_windows_packaging.py": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373",
+      "electron/package.json": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b",
+      "electron/package-lock.json": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184",
+      "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660",
+      "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+      "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"
+    }
+  },
+  "rollback": {
+    "attempted": false
+  },
+  "error": null,
+  "finished_at": "2026-09-18 07:27:21"
+}

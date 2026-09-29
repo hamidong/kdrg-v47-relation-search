@@ -1,0 +1,756 @@
+{
+  "schema_version": "KDRG_V47_STAGE59_0510_SOURCE_CONTRACT_V1",
+  "release_target": "0.5.10",
+  "baseline": {
+    "commit": "73c40c164bd7eb103fea30ac22f5bd0c34a9d3bc",
+    "sha256": "75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0",
+    "path": "data/kdrg_v47_search_integrated_v3.json"
+  },
+  "output": {
+    "path": "data/kdrg_v47_search_integrated_v3.json",
+    "sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"
+  },
+  "official_20260731": {
+    "mode": "cumulative only",
+    "do_not_double_apply_20260501": true,
+    "counters": {
+      "source_changes": 20,
+      "patch_operations": 26,
+      "code_add": 15
+    },
+    "source_files": [
+      {
+        "name": "KDRG 일반용(V4.7)_교정표_20260731.hwpx",
+        "sha256": "5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3",
+        "tracked": false
+      },
+      {
+        "name": "KDRG 일반용(V4.7)_시술 등 목록_20260731.xlsx",
+        "sha256": "fde6dd9020eb0abf5f4f374fdd5f978054d1bd56f2b7c3567333c45f00064ab4",
+        "tracked": false
+      }
+    ]
+  },
+  "safe_boundary_repairs": [
+    {
+      "table_id": "LT_B780_001",
+      "removed": "B79"
+    },
+    {
+      "table_id": "LT_D610_001",
+      "removed": "D62"
+    },
+    {
+      "table_id": "LT_D760_001",
+      "removed": "D77"
+    },
+    {
+      "table_id": "LT_F680_001",
+      "removed": "F69"
+    },
+    {
+      "table_id": "LT_J600_001",
+      "removed": "J61"
+    }
+  ],
+  "m6536": {
+    "normalized_from": "M65.36",
+    "baseline_required_names": [
+      "결절성 힘줄병, 아래다리",
+      "Nodular tendinous disease, lower leg"
+    ],
+    "diagnosis_names": [
+      "Nodular tendinous disease, lower leg",
+      "결절성 힘줄병, 아래다리"
+    ],
+    "procedure_name": "클립을 사용한 경피적 경도관 승모판 재건술",
+    "classification": "자653-1",
+    "source_date": "2026-07-31",
+    "targets": [
+      {
+        "table_id": "LT_PATCH_F022_PROCEDURE_TABLE06",
+        "owner_adrg": "F022"
+      },
+      {
+        "table_id": "LT_P020_001",
+        "owner_adrg": "P020"
+      }
+    ]
+  },
+  "namespace": {
+    "source_audit": "reports/stage59a_boundary_namespace_final_audit_v6/audit.json",
+    "current_dual_role_count": 59,
+    "after_20260731_dual_role_count": 60,
+    "current_dual_role_codes": [
+      "L0102",
+      "M6000",
+      "M6510",
+      "M6511",
+      "M6513",
+      "M6521",
+      "M6522",
+      "M6531",
+      "M6532",
+      "M6533",
+      "M6580",
+      "M6581",
+      "M6582",
+      "M6585",
+      "M6586",
+      "M6590",
+      "M6593",
+      "M6594",
+      "M6595",
+      "M6596",
+      "M6597",
+      "M6599",
+      "M6611",
+      "M6612",
+      "M6613",
+      "M6620",
+      "M6630",
+      "M6632",
+      "M6634",
+      "M6635",
+      "M6636",
+      "M6637",
+      "M6638",
+      "M6639",
+      "M6644",
+      "M6650",
+      "M6652",
+      "M6710",
+      "M6721",
+      "M6722",
+      "M6723",
+      "M6724",
+      "M6730",
+      "M6741",
+      "M6792",
+      "M6793",
+      "S4638",
+      "S4670",
+      "S5220",
+      "S5231",
+      "S5260",
+      "S5271",
+      "S5281",
+      "S5291",
+      "S5341",
+      "S5342",
+      "S5620",
+      "S5640",
+      "S5658"
+    ],
+    "rows": [
+      {
+        "code": "L0102",
+        "operating_names": [
+          "정맥마취(부위(국소)마취)"
+        ],
+        "procedure_name": "정맥마취(부위(국소)마취)"
+      },
+      {
+        "code": "M6000",
+        "operating_names": [
+          "T모양 장비와 T형 소생기를 이용한 환기"
+        ],
+        "procedure_name": "T모양 장비와 T형 소생기를 이용한 환기"
+      },
+      {
+        "code": "M6510",
+        "operating_names": [
+          "경피적동맥관개존폐쇄술[방사선,심전도 등 모든 검사 포함"
+        ],
+        "procedure_name": "경피적동맥관개존폐쇄술[방사선,심전도 등 모든 검사 포함]"
+      },
+      {
+        "code": "M6511",
+        "operating_names": [
+          "경피적 좌심방이폐색술"
+        ],
+        "procedure_name": "경피적 좌심방이폐색술"
+      },
+      {
+        "code": "M6513",
+        "operating_names": [
+          "경피적 근성부 심실중격결손 폐쇄술"
+        ],
+        "procedure_name": "경피적 근성부 심실중격결손 폐쇄술"
+      },
+      {
+        "code": "M6521",
+        "operating_names": [
+          "경피적심방중격절개술-풍선심방중격절개술"
+        ],
+        "procedure_name": "경피적심방중격절개술-풍선심방중격절개술"
+      },
+      {
+        "code": "M6522",
+        "operating_names": [
+          "경피적심방중격절개술-칼날심방중격절개술"
+        ],
+        "procedure_name": "경피적심방중격절개술-칼날심방중격절개술"
+      },
+      {
+        "code": "M6531",
+        "operating_names": [
+          "경피적심장판막성형술-승모판막"
+        ],
+        "procedure_name": "경피적심장판막성형술-승모판막"
+      },
+      {
+        "code": "M6532",
+        "operating_names": [
+          "경피적심장판막성형술-대동맥판막"
+        ],
+        "procedure_name": "경피적심장판막성형술-대동맥판막"
+      },
+      {
+        "code": "M6533",
+        "operating_names": [
+          "경피적심장판막성형술-폐동맥판막"
+        ],
+        "procedure_name": "경피적심장판막성형술-폐동맥판막"
+      },
+      {
+        "code": "M6580",
+        "operating_names": [
+          "경피적대동맥판삽입-심첨하부 접근"
+        ],
+        "procedure_name": "경피적대동맥판삽입-심첨하부 접근"
+      },
+      {
+        "code": "M6581",
+        "operating_names": [
+          "경피적대동맥판삽입-상행대동맥 접근"
+        ],
+        "procedure_name": "경피적대동맥판삽입-상행대동맥 접근"
+      },
+      {
+        "code": "M6582",
+        "operating_names": [
+          "경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근"
+        ],
+        "procedure_name": "경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근"
+      },
+      {
+        "code": "M6585",
+        "operating_names": [
+          "경피적 폐동맥판 삽입술"
+        ],
+        "procedure_name": "경피적 폐동맥판 삽입술"
+      },
+      {
+        "code": "M6586",
+        "operating_names": [
+          "경피적 승모판막 재치환술[심방중격 접근"
+        ],
+        "procedure_name": "경피적 승모판막 재치환술[심방중격 접근]"
+      },
+      {
+        "code": "M6590",
+        "operating_names": [
+          "대동맥의 소생적 혈관 내 풍선폐색술"
+        ],
+        "procedure_name": "대동맥의 소생적 혈관 내 풍선폐색술"
+      },
+      {
+        "code": "M6593",
+        "operating_names": [
+          "경피적풍선혈관성형술-뇌혈관"
+        ],
+        "procedure_name": "경피적풍선혈관성형술-뇌혈관"
+      },
+      {
+        "code": "M6594",
+        "operating_names": [
+          "경피적풍선혈관성형술-경동맥[추골동맥포함"
+        ],
+        "procedure_name": "경피적풍선혈관성형술-경동맥[추골동맥포함]"
+      },
+      {
+        "code": "M6595",
+        "operating_names": [
+          "경피적풍선혈관성형술-대동맥"
+        ],
+        "procedure_name": "경피적풍선혈관성형술-대동맥"
+      },
+      {
+        "code": "M6596",
+        "operating_names": [
+          "경피적풍선혈관성형술-폐동맥"
+        ],
+        "procedure_name": "경피적풍선혈관성형술-폐동맥"
+      },
+      {
+        "code": "M6597",
+        "operating_names": [
+          "경피적풍선혈관성형술-기타혈관"
+        ],
+        "procedure_name": "경피적풍선혈관성형술-기타혈관"
+      },
+      {
+        "code": "M6599",
+        "operating_names": [
+          "경피적뇌혈관약물성형술"
+        ],
+        "procedure_name": "경피적뇌혈관약물성형술"
+      },
+      {
+        "code": "M6611",
+        "operating_names": [
+          "경피적혈관내스텐트-이식설치술[대동맥"
+        ],
+        "procedure_name": "경피적혈관내스텐트-이식설치술[대동맥]"
+      },
+      {
+        "code": "M6612",
+        "operating_names": [
+          "경피적혈관내스텐트-이식설치술[대동맥및장골동맥"
+        ],
+        "procedure_name": "경피적혈관내스텐트-이식설치술[대동맥및장골동맥]"
+      },
+      {
+        "code": "M6613",
+        "operating_names": [
+          "경피적혈관내스텐트-이식설치술[기타혈관"
+        ],
+        "procedure_name": "경피적혈관내스텐트-이식설치술[기타혈관]"
+      },
+      {
+        "code": "M6620",
+        "operating_names": [
+          "경피적혈관내죽종제거술"
+        ],
+        "procedure_name": "경피적혈관내죽종제거술"
+      },
+      {
+        "code": "M6630",
+        "operating_names": [
+          "경피적혈전제거술-혈전용해술-두개강내 혈관"
+        ],
+        "procedure_name": "경피적혈전제거술-혈전용해술-두개강내 혈관"
+      },
+      {
+        "code": "M6632",
+        "operating_names": [
+          "경피적혈전제거술-혈전용해술[기타혈관"
+        ],
+        "procedure_name": "경피적혈전제거술-혈전용해술[기타혈관]"
+      },
+      {
+        "code": "M6634",
+        "operating_names": [
+          "경피적혈전제거술-혈전용해술[관상동맥"
+        ],
+        "procedure_name": "경피적혈전제거술-혈전용해술[관상동맥]"
+      },
+      {
+        "code": "M6635",
+        "operating_names": [
+          "경피적혈전제거술-혈전용해술-두개강외 경부혈관"
+        ],
+        "procedure_name": "경피적혈전제거술-혈전용해술-두개강외 경부혈관"
+      },
+      {
+        "code": "M6636",
+        "operating_names": [
+          "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관"
+        ],
+        "procedure_name": "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관"
+      },
+      {
+        "code": "M6637",
+        "operating_names": [
+          "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관"
+        ],
+        "procedure_name": "경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관"
+      },
+      {
+        "code": "M6638",
+        "operating_names": [
+          "경피적혈전제거술-기계적혈전제거술[카테터법]-관상동맥"
+        ],
+        "procedure_name": "경피적혈전제거술-기계적혈전제거술[카테터법]-관상동맥"
+      },
+      {
+        "code": "M6639",
+        "operating_names": [
+          "경피적혈전제거술-기계적혈전제거술[카테터법]-기타혈관"
+        ],
+        "procedure_name": "경피적혈전제거술-기계적혈전제거술[카테터법]-기타혈관"
+      },
+      {
+        "code": "M6644",
+        "operating_names": [
+          "혈관색전술-기타혈관"
+        ],
+        "procedure_name": "혈관색전술-기타혈관"
+      },
+      {
+        "code": "M6650",
+        "operating_names": [
+          "경피적하대정맥여과기설치술"
+        ],
+        "procedure_name": "경피적하대정맥여과기설치술"
+      },
+      {
+        "code": "M6652",
+        "operating_names": [
+          "대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정"
+        ],
+        "procedure_name": "대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정"
+      },
+      {
+        "code": "M6710",
+        "operating_names": [
+          "경경정맥간내문맥정맥단락술[유도료별도산정"
+        ],
+        "procedure_name": "경경정맥간내문맥정맥단락술[유도료별도산정]"
+      },
+      {
+        "code": "M6721",
+        "operating_names": [
+          "방사선하상부소화관협착확장술-풍선카테터에의한것"
+        ],
+        "procedure_name": "방사선하상부소화관협착확장술-풍선카테터에의한것"
+      },
+      {
+        "code": "M6722",
+        "operating_names": [
+          "방사선하상부소화관협착확장술-스텐트에의한것"
+        ],
+        "procedure_name": "방사선하상부소화관협착확장술-스텐트에의한것"
+      },
+      {
+        "code": "M6723",
+        "operating_names": [
+          "방사선하결장,직장협착확장술-풍선카테터에의한것"
+        ],
+        "procedure_name": "방사선하결장,직장협착확장술-풍선카테터에의한것"
+      },
+      {
+        "code": "M6724",
+        "operating_names": [
+          "방사선하결장,직장협착확장술-스텐트에의한것"
+        ],
+        "procedure_name": "방사선하결장,직장협착확장술-스텐트에의한것"
+      },
+      {
+        "code": "M6730",
+        "operating_names": [
+          "경피적위루술"
+        ],
+        "procedure_name": "경피적위루술"
+      },
+      {
+        "code": "M6741",
+        "operating_names": [
+          "경피적튜브배액술[유도료별도산정"
+        ],
+        "procedure_name": "경피적튜브배액술[유도료별도산정]"
+      },
+      {
+        "code": "M6792",
+        "operating_names": [
+          "경피적비루관확장술-풍선카테터에의한것"
+        ],
+        "procedure_name": "경피적비루관확장술-풍선카테터에의한것"
+      },
+      {
+        "code": "M6793",
+        "operating_names": [
+          "경피적비루관확장술-스텐트에의한것"
+        ],
+        "procedure_name": "경피적비루관확장술-스텐트에의한것"
+      },
+      {
+        "code": "S4638",
+        "operating_names": [
+          "종양절제를위한개두술-경비적뇌하수체종양적출술-단순"
+        ],
+        "procedure_name": "종양절제를위한개두술-경비적뇌하수체종양적출술-단순"
+      },
+      {
+        "code": "S4670",
+        "operating_names": [
+          "경동맥결찰술"
+        ],
+        "procedure_name": "경동맥결찰술"
+      },
+      {
+        "code": "S5220",
+        "operating_names": [
+          "안구적출 및 조직충전술"
+        ],
+        "procedure_name": "안구적출 및 조직충전술"
+      },
+      {
+        "code": "S5231",
+        "operating_names": [
+          "안와종양제거술-단순"
+        ],
+        "procedure_name": "안와종양제거술-단순"
+      },
+      {
+        "code": "S5260",
+        "operating_names": [
+          "안검또는검판절제술"
+        ],
+        "procedure_name": "안검또는검판절제술"
+      },
+      {
+        "code": "S5271",
+        "operating_names": [
+          "안검외반증수술[점막또는피부의식피술료포함]-간단[피부에한하는것"
+        ],
+        "procedure_name": "안검외반증수술[점막또는피부의식피술료포함]-간단[피부에한하는것]"
+      },
+      {
+        "code": "S5281",
+        "operating_names": [
+          "안검내반증수술-간단[피부에한하는것"
+        ],
+        "procedure_name": "안검내반증수술-간단[피부에한하는것]"
+      },
+      {
+        "code": "S5291",
+        "operating_names": [
+          "안검하수증수술-근막수술"
+        ],
+        "procedure_name": "안검하수증수술-근막수술"
+      },
+      {
+        "code": "S5341",
+        "operating_names": [
+          "익상편수술-판이식 등 복합수술"
+        ],
+        "procedure_name": "익상편수술-판이식 등 복합수술"
+      },
+      {
+        "code": "S5342",
+        "operating_names": [
+          "익상편수술-기타의 것"
+        ],
+        "procedure_name": "익상편수술-기타의 것"
+      },
+      {
+        "code": "S5620",
+        "operating_names": [
+          "중이내튜브유치술"
+        ],
+        "procedure_name": "중이내튜브유치술"
+      },
+      {
+        "code": "S5640",
+        "operating_names": [
+          "고실성형술[점막또는피부의 식피술료 포함"
+        ],
+        "procedure_name": "고실성형술[점막또는피부의 식피술료 포함]"
+      },
+      {
+        "code": "S5658",
+        "operating_names": [
+          "이관 풍선 확장술 [내시경 또는 네비게이션 유도료 포함"
+        ],
+        "procedure_name": "이관 풍선 확장술 [내시경 또는 네비게이션 유도료 포함]"
+      }
+    ]
+  },
+  "mdc_structured_targets": {
+    "9630": {
+      "mdc": "15",
+      "code_count": 3376
+    },
+    "E013": {
+      "mdc": "04",
+      "code_count": 427
+    },
+    "G504": {
+      "mdc": "06",
+      "code_count": 610
+    },
+    "G524": {
+      "mdc": "06",
+      "code_count": 610
+    },
+    "G534": {
+      "mdc": "06",
+      "code_count": 610
+    },
+    "J031": {
+      "mdc": "09",
+      "code_count": 738
+    },
+    "J032": {
+      "mdc": "09",
+      "code_count": 738
+    },
+    "R020": {
+      "mdc": "17",
+      "code_count": 161
+    },
+    "R040": {
+      "mdc": "17",
+      "code_count": 161
+    }
+  },
+  "mdc_review_hold": [
+    "B024",
+    "B092",
+    "H612",
+    "L632",
+    "O024",
+    "O062",
+    "S630"
+  ],
+  "mdc_master": {
+    "version": "KDRG_V47_OFFICIAL_MDC_MASTER_V1",
+    "source": "KDRG V4.7 분류집",
+    "aliases": {
+      "00": "PRE"
+    },
+    "internal_non_public": [
+      "ERROR"
+    ],
+    "items": [
+      {
+        "code": "PRE",
+        "title": "Pre MDC",
+        "public": true
+      },
+      {
+        "code": "01",
+        "title": "Diseases and Disorders of the Nervous System",
+        "public": true
+      },
+      {
+        "code": "02",
+        "title": "Diseases and Disorders of the Eye",
+        "public": true
+      },
+      {
+        "code": "03",
+        "title": "Diseases and Disorders of the Ear, Nose, Mouth and Throat",
+        "public": true
+      },
+      {
+        "code": "04",
+        "title": "Diseases and Disorders of the Respiratory System",
+        "public": true
+      },
+      {
+        "code": "05",
+        "title": "Diseases and Disorders of the Circulatory System",
+        "public": true
+      },
+      {
+        "code": "06",
+        "title": "Diseases and Disorders of the Digestive System",
+        "public": true
+      },
+      {
+        "code": "07",
+        "title": "Diseases and Disorders of the Hepatobiliary System and Pancreas",
+        "public": true
+      },
+      {
+        "code": "08",
+        "title": "Diseases and Disorders of the Musculoskeletal System and Connective Tissue",
+        "public": true
+      },
+      {
+        "code": "09",
+        "title": "Diseases and Disorders of the Skin, Subcutaneous Tissue and Breast",
+        "public": true
+      },
+      {
+        "code": "10",
+        "title": "Endocrine, Nutritional and Metabolic Diseases and Disorders",
+        "public": true
+      },
+      {
+        "code": "11",
+        "title": "Diseases and Disorders of the Kidney and Urinary Tract",
+        "public": true
+      },
+      {
+        "code": "12",
+        "title": "Diseases and Disorders of the Male Reproductive System",
+        "public": true
+      },
+      {
+        "code": "13",
+        "title": "Diseases and Disorders of the Female Reproductive System",
+        "public": true
+      },
+      {
+        "code": "14",
+        "title": "Pregnancy, Childbirth and Puerperium",
+        "public": true
+      },
+      {
+        "code": "15",
+        "title": "Newborns and Other Neonates",
+        "public": true
+      },
+      {
+        "code": "16",
+        "title": "Diseases and Disorders of the Blood and Blood-Forming Organs and Immunological Disorders",
+        "public": true
+      },
+      {
+        "code": "17",
+        "title": "Neoplastic Disorders (Haematological and Solid Neoplasms)",
+        "public": true
+      },
+      {
+        "code": "18-1",
+        "title": "Infectious and Parasitic Diseases: HIV",
+        "public": true
+      },
+      {
+        "code": "18-2",
+        "title": "Infectious and Parasitic Diseases",
+        "public": true
+      },
+      {
+        "code": "19",
+        "title": "Mental Diseases and Disorders",
+        "public": true
+      },
+      {
+        "code": "20",
+        "title": "Alcohol/Drug Use and Alcohol/Drug Induced Organic Mental Disorders",
+        "public": true
+      },
+      {
+        "code": "21-1",
+        "title": "Multiple Trauma",
+        "public": true
+      },
+      {
+        "code": "21-2",
+        "title": "Injuries, Poisoning and Toxic Effects of Drugs",
+        "public": true
+      },
+      {
+        "code": "22",
+        "title": "Burns",
+        "public": true
+      },
+      {
+        "code": "23",
+        "title": "Factors Influencing Health Status and Other Contacts with Health Services",
+        "public": true
+      }
+    ]
+  },
+  "mdc_source": {
+    "canonical_file": "data/kdrg_v47_stage59_0510_mdc_source.json",
+    "source_path": "data/kdrg_v47_appendix_code_index.json",
+    "source_sha256": "5d8179e26cc2b3554a671b2fb3a2fd8fe746bee7e6c7069890c5d9948748adbc",
+    "source_json_path": "diagnosis_index.indexes.mdc_to_codes"
+  }
+}

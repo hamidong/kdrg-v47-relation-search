@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R6",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 50B legacy exact projection expected anchor 개수 불일치: 0"
+}

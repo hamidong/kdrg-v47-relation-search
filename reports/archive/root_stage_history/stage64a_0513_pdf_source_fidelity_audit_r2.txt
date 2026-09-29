@@ -1,0 +1,39 @@
+KDRG Stage64A / 0.5.13 PDF Source Fidelity Audit R2
+==========================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0513_SHADOW
+
+[PDF]
+{"path": "/home/runner/workspace/sources/kdrg_v47/main/KDRG V4.7 분류집.pdf", "sha256": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4", "page_count": 1282, "extractor": "PyMuPDF"}
+
+[SUMMARY]
+classification_counts={}
+sample_reworded=
+source_mismatch=
+
+[P651]
+{}
+
+[IMMUTABILITY]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tracked_worktree_clean": true, "staging_empty": true, "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"}
+
+[BLOCKER]
+E: AST source fragments traceable only 352/390
+Traceback (most recent call last):
+  File "/home/runner/workspace/64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R2.py", line 342, in main
+    allfrag=sum(c['missing_fragment_count']==0 for c in cases); must(allfrag==AST_COUNT,f'AST source fragments traceable only {allfrag}/{AST_COUNT}')
+                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R2.py", line 26, in must
+    if not v: raise E(m)
+              ^^^^^^^^^^
+E: AST source fragments traceable only 352/390
+
+
+[NEXT]
+- PASS: PDF 원문 검증이 완료된 범위만 0.5.13 Shadow 원문 우선표시 후보로 사용.
+- mismatch/review는 자동승격 금지.
+- 수정 후 동일 계약으로 PDF 원문 대 최종 UI 재검증.
+cases_tsv=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r2/cases.tsv
+mismatch_tsv=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r2/mismatch_cases.tsv
+p651_evidence=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r2/p651_evidence.txt
+report_json=/home/runner/workspace/stage64a_0513_pdf_source_fidelity_audit_r2.json

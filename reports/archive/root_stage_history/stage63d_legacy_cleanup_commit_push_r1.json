@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_0512_RELEASE_PREP",
+  "started_at": "2026-09-18 07:15:34",
+  "preflight": {
+    "version": "0.5.11",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "product_sha256": {
+      "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660",
+      "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+      "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"
+    },
+    "tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4"
+  },
+  "state": "READY_TO_COMMIT",
+  "commit": {
+    "commit_output": "[main 4c81a49] chore: clean legacy KDRG work artifacts\n 19 files changed, 12703 deletions(-)\n delete mode 100644 37_build_kdrg_search_integrated_json.py\n delete mode 100644 38_validate_kdrg_search_integrated_json.py\n delete mode 100644 39_build_kdrg_runtime_search_service.py\n delete mode 100644 40_validate_kdrg_runtime_search_service.py\n delete mode 100644 41_build_kdrg_pyside_runtime_ui_bridge.py\n delete mode 100644 42_validate_kdrg_runtime_ui_bridge.py\n delete mode 100644 43_build_kdrg_runtime_ui_preview.py\n delete mode 100644 44_build_kdrg_windows_runtime_regression.py\n delete mode 100644 44_fix_kdrg_windows_bundle_diagnostics.py\n delete mode 100644 44_fix_kdrg_windows_source_smoke.py\n delete mode 100644 45_validate_kdrg_windows_ci_utf8_output.py\n delete mode 100644 46_validate_kdrg_release_version_v021.py\n delete mode 100644 47A_build_kdrg_ui_semantic_audit.py\n delete mode 100644 47B_validate_kdrg_ui_semantic_audit.py\n delete mode 100644 48A_build_kdrg_ui_display_contract.py\n delete mode 100644 48B_validate_kdrg_ui_display_contract.py\n delete mode 100644 49_validate_kdrg_pyside_ui_semantics.py\n delete mode 100644 50A_validate_kdrg_electron_skeleton.py\n delete mode 100644 51D_validate_kdrg_windows_packaged_ui.py\n",
+    "cleanup_commit": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "parent": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "name_status": [
+      "D\t37_build_kdrg_search_integrated_json.py",
+      "D\t38_validate_kdrg_search_integrated_json.py",
+      "D\t39_build_kdrg_runtime_search_service.py",
+      "D\t40_validate_kdrg_runtime_search_service.py",
+      "D\t41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "D\t42_validate_kdrg_runtime_ui_bridge.py",
+      "D\t43_build_kdrg_runtime_ui_preview.py",
+      "D\t44_build_kdrg_windows_runtime_regression.py",
+      "D\t44_fix_kdrg_windows_bundle_diagnostics.py",
+      "D\t44_fix_kdrg_windows_source_smoke.py",
+      "D\t45_validate_kdrg_windows_ci_utf8_output.py",
+      "D\t46_validate_kdrg_release_version_v021.py",
+      "D\t47A_build_kdrg_ui_semantic_audit.py",
+      "D\t47B_validate_kdrg_ui_semantic_audit.py",
+      "D\t48A_build_kdrg_ui_display_contract.py",
+      "D\t48B_validate_kdrg_ui_display_contract.py",
+      "D\t49_validate_kdrg_pyside_ui_semantics.py",
+      "D\t50A_validate_kdrg_electron_skeleton.py",
+      "D\t51D_validate_kdrg_windows_packaged_ui.py"
+    ]
+  },
+  "push": {
+    "push_output": "To https://github.com/hamidong/kdrg-v47-relation-search.git\n   18ca3e4..4c81a49  HEAD -> main\n",
+    "cleanup_commit": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "remote_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2"
+  },
+  "final_guard": {
+    "cleanup_commit": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "origin_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "parent": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "commit_change_count": 19,
+    "commit_files": [
+      "37_build_kdrg_search_integrated_json.py",
+      "38_validate_kdrg_search_integrated_json.py",
+      "39_build_kdrg_runtime_search_service.py",
+      "40_validate_kdrg_runtime_search_service.py",
+      "41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "42_validate_kdrg_runtime_ui_bridge.py",
+      "43_build_kdrg_runtime_ui_preview.py",
+      "44_build_kdrg_windows_runtime_regression.py",
+      "44_fix_kdrg_windows_bundle_diagnostics.py",
+      "44_fix_kdrg_windows_source_smoke.py",
+      "45_validate_kdrg_windows_ci_utf8_output.py",
+      "46_validate_kdrg_release_version_v021.py",
+      "47A_build_kdrg_ui_semantic_audit.py",
+      "47B_validate_kdrg_ui_semantic_audit.py",
+      "48A_build_kdrg_ui_display_contract.py",
+      "48B_validate_kdrg_ui_display_contract.py",
+      "49_validate_kdrg_pyside_ui_semantics.py",
+      "50A_validate_kdrg_electron_skeleton.py",
+      "51D_validate_kdrg_windows_packaged_ui.py"
+    ],
+    "product_files_still_unstaged": [
+      "electron/renderer/app.js",
+      "electron/renderer/styles.css",
+      "electron/tests/validate-stage59b-ui.js"
+    ],
+    "version": "0.5.11",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "product_sha256": {
+      "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660",
+      "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+      "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"
+    },
+    "tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4"
+  },
+  "error": null,
+  "finished_at": "2026-09-18 07:15:40"
+}

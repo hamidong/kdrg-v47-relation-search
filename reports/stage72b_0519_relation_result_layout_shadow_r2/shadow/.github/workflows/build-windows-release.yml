@@ -1,0 +1,158 @@
+name: Build Windows exe and publish Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  windows-runtime-regression:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    env:
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: "utf-8"
+
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Python 3.11 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: 의존성 설치
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pyinstaller
+
+      - name: 핵심 파일 문법검증
+        shell: pwsh
+        run: >
+          python -m py_compile
+          main.py
+          version.py
+          app/__init__.py
+          app/kdrg_search_service.py
+          app/runtime_data_store.py
+          app/main_window.py
+          app/dialogs.py
+          tests/windows_runtime_source_smoke.py
+          tests/verify_windows_runtime_bundle.py
+
+      - name: Windows source runtime 회귀검증
+        shell: pwsh
+        env:
+          QT_QPA_PLATFORM: offscreen
+          QT_OPENGL: software
+          KDRG_DISABLE_SETTINGS: "1"
+        run: |
+          python -X utf8 tests/windows_runtime_source_smoke.py
+          $smokeExitCode = $LASTEXITCODE
+
+          if (Test-Path "reports/windows_runtime_source_smoke_report.txt") {
+            Write-Host ""
+            Write-Host "===== windows_runtime_source_smoke_report.txt ====="
+            Get-Content "reports/windows_runtime_source_smoke_report.txt" -Encoding utf8
+          }
+
+          exit $smokeExitCode
+
+      - name: PyInstaller onefile GUI 빌드
+        shell: pwsh
+        run: python -m PyInstaller --noconfirm --clean kdrg.spec
+
+      - name: exe bundle 정적·기동 검증
+        shell: pwsh
+        run: |
+          Write-Host "===== dist directory ====="
+          if (Test-Path "dist") {
+            Get-ChildItem "dist" | Format-Table Name, Length, LastWriteTime
+          } else {
+            Write-Host "dist directory missing"
+          }
+
+          python -X utf8 tests/verify_windows_runtime_bundle.py `
+            --require-exe `
+            --launch `
+            --launch-seconds 8
+          $bundleExitCode = $LASTEXITCODE
+
+          if (Test-Path "reports/windows_runtime_bundle_validation_report.txt") {
+            Write-Host ""
+            Write-Host "===== windows_runtime_bundle_validation_report.txt ====="
+            Get-Content "reports/windows_runtime_bundle_validation_report.txt" -Encoding utf8
+          } else {
+            Write-Host "bundle validation report missing"
+          }
+
+          exit $bundleExitCode
+
+      - name: 버전 정보 추출
+        id: version
+        shell: pwsh
+        run: |
+          "app_version=$(python version.py APP_VERSION)" >> $env:GITHUB_OUTPUT
+          "exe_name=$(python version.py EXE_NAME)" >> $env:GITHUB_OUTPUT
+          "git_tag=$(python version.py GIT_TAG)" >> $env:GITHUB_OUTPUT
+          "release_title=$(python version.py RELEASE_TITLE)" >> $env:GITHUB_OUTPUT
+
+      - name: 태그와 버전 일치 확인
+        if: startsWith(github.ref, 'refs/tags/')
+        shell: pwsh
+        run: |
+          $pushedTag = "${{ github.ref_name }}"
+          $expectedTag = "${{ steps.version.outputs.git_tag }}"
+
+          if ($pushedTag -ne $expectedTag) {
+            Write-Error "푸시된 태그($pushedTag)와 version.py의 태그($expectedTag)가 일치하지 않습니다."
+            exit 1
+          }
+
+          Write-Host "태그 일치 확인: $pushedTag"
+
+      - name: exe 경로와 크기 확인
+        shell: pwsh
+        run: |
+          $exePath = "dist/${{ steps.version.outputs.exe_name }}"
+
+          if (-not (Test-Path $exePath)) {
+            Write-Error "exe 파일이 존재하지 않습니다: $exePath"
+            exit 1
+          }
+
+          $exe = Get-Item $exePath
+          if ($exe.Length -lt 5MB) {
+            Write-Error "exe 파일 크기가 비정상적으로 작습니다: $($exe.Length) bytes"
+            exit 1
+          }
+
+          Write-Host "exe 확인 완료: $($exe.FullName)"
+          Write-Host "크기: $([math]::Round($exe.Length / 1MB, 2)) MB"
+
+      - name: 회귀검증 요약
+        shell: pwsh
+        run: |
+          "## KDRG Windows runtime regression" >> $env:GITHUB_STEP_SUMMARY
+          "- Source runtime smoke: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- PyInstaller onefile build: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Bundled exe startup: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Actions artifact upload: 사용하지 않음" >> $env:GITHUB_STEP_SUMMARY
+
+      - name: GitHub Release 생성 및 exe 업로드
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.git_tag }}
+          name: ${{ steps.version.outputs.release_title }}
+          files: dist/${{ steps.version.outputs.exe_name }}
+          fail_on_unmatched_files: true
+          generate_release_notes: true

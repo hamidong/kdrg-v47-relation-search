@@ -1,0 +1,2 @@
+[FAIL] Stage69B R6 / 0.5.17 Search + Relation UX Shadow
+Stop: 50B legacy exact projection expected anchor 개수 불일치: 0

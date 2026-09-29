@@ -1,0 +1,22 @@
+[PASS] Stage72B R4 / 0.5.19 복수검색 결과 레이아웃 Shadow
+relation_card_top_right=EXISTING_DISEASE_CLASSIFICATION
+relation_card_relation_level_chip=REMOVED
+classification_duplication=NONE_ADDED
+header_summary=COMMON_RELATED_ADRG
+header_relation_context=PRESERVED
+header_summary_emphasis=SLIGHTLY_LARGER
+general_adrg_layout=PRESERVED
+stage70b_validator_migrated=YES
+stage72b_validator=PASS
+stage70b_validator=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.18=PASS
+runtime_json=UNCHANGED
+shadow_product_files=4
+actual=NOT_PERFORMED
+readiness=READY_FOR_72C_0519_RELATION_RESULT_LAYOUT_ACTUAL
+report=reports/stage72b_0519_relation_result_layout_shadow_r4/shadow_summary.txt
+json=reports/stage72b_0519_relation_result_layout_shadow_r4/shadow.json

@@ -1,0 +1,272 @@
+adrg	adrg_name	condition_block_id	raw_evidence_count	raw_evidence_missing_count	raw_evidence_missing	structural_fragment_count	structural_fragment_nonliteral_count	structural_fragment_nonliteral	official_source_kind	official_match_type	official_pages	official_source_key	official_source_score	official_text_candidate	current_render_text	display_class	current_equals_official
+9600	조기 사망, 수술 미시행(신생아 제외)	CB_9600	3	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	84			Died within two days of admission without OR procedure(except neonate)	"Died within two days of admission
+and not(OR procedure)
+and not(neonate)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+9620	시술과 일치하지 않는 산과 주진단	CB_9620	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	937			주진단명 table1 without 시술명 table2	주진단명 table1 and not(시술명 table2)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+9630	연령/체중이 일치하지 않는 신생아 주진단	CB_9630	6	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	84			MDC 15의 주진단명 and (age > 27 days and age < 366 days) and 입원시 체중 ≥2500g or MDC 15의 주진단명 and age > 0 year	"{MDC 15의 주진단명 and {age > 27 days and age < 366 days} and 입원시 체중 ≥2500g}
+or {MDC 15의 주진단명 and age > 0 year}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+A080	체외순환막형산화요법(ECMO), 개심술 미동반	CB_A080	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	75			시술명 table1 without 시술명 table2	시술명 table1 and not(시술명 table2)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+B031	혈종제거술(외상 제외)	CB_B031	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	115			시술명 table2 without 주진단명 table1	시술명 table2 and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+B032	두개내 감압술(외상 제외)	CB_B032	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	115			시술명 table3 without 주진단명 table1	시술명 table3 and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+B033	두개골 성형술(외상 제외)	CB_B033	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	115			시술명 table4 without 주진단명 table1	시술명 table4 and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+B091	중추신경계 정위수술(뇌종양 및 기타 병소발생술)	CB_B091	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	121			(주진단명 table1 and 시술명 table2) or 시술명 table2	"{주진단명 table1 and 시술명 table2}
+or 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+C030	안구 수술(종양 수술 포함)	CB_C030	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	190			시술명 table2 or (주진단명 table1 and 시술명 table3)	"시술명 table2
+or {주진단명 table1 and 시술명 table3}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+C043	망막 및 유리체 수술(망막주위막 제거술 동반, 수정체 수술 동반)	CB_C043	5	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	190			(시술명 table1 and 시술명 table2 and 시술명 table3) or (시술명 table2 and 시술명 table3)	"{시술명 table1 and 시술명 table2 and 시술명 table3}
+or {시술명 table2 and 시술명 table3}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+C044	망막 및 유리체 수술(망막주위막 제거술 동반, 수정체 수술 미동반)	CB_C044	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	190			(시술명 table1 and 시술명 table2) or (시술명 table2)	"{시술명 table1 and 시술명 table2}
+or 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+D061	내시경을 이용한 부비동 수술(한 개, 한쪽)	CB_D061	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	246			시술명 table1 or (시술명 table2 and 부가코드1)	"시술명 table1
+or {시술명 table2 and 부가코드1}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+D062	내시경을 이용한 부비동 수술(한 개, 양쪽)	CB_D062	5	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	246			(시술명 table1 and 부가코드2) or (시술명 table2 and 부가코드1 and 부가코드2)	"{시술명 table1 and 부가코드2}
+or {시술명 table2 and 부가코드1 and 부가코드2}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+D502	치아 보존치료	CB_D502	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	262			(주진단명 table1 and 시술명 table3) or 시술명 table4	"{주진단명 table1 and 시술명 table3}
+or 시술명 table4"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+E011	기관 및 기관지 수술	CB_E011	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	290			시술명 table1 or (시술명 table2 without 부가코드)	"시술명 table1
+or 시술명 table2 and not(부가코드)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+E012	주요 폐 수술(악성종양의 경우)	CB_E012	5	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	290			(주진단명 table1 and 시술명 table2) or (주진단명 table1 and 시술명 table3 without 부가코드)	"{주진단명 table1 and 시술명 table2}
+or {주진단명 table1 and 시술명 table3 and not(부가코드)}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+E013	주요 폐 수술(악성종양 제외)	CB_E013	7	0		6	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	292			(E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table1) or (E012의 주진단명 table1을 제외한 MDC04의 주진단명 and 시술명 table2 without 부가코드)	"{MDC04의 주진단명 and not(주진단명 table1) and 시술명 table1}
+or {MDC04의 주진단명 and not(주진단명 table1) and 시술명 table2 and not(부가코드)}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+E014	기타 폐 수술	CB_E014	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	290			시술명 table1 or (시술명 table2 without 부가코드)	"시술명 table1
+or 시술명 table2 and not(부가코드)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+E015	종격동 수술	CB_E015	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	292			시술명 table1 or (시술명 table2 without 부가코드)	"시술명 table1
+or 시술명 table2 and not(부가코드)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+E019	흉강경을 이용한 기타 수술	CB_E019	3	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	294			시술명 table1 or (시술명 table2 with 부가코드)	"시술명 table1
+or 시술명 table2 with 부가코드"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F022	승모판 또는 삼첨판 수술(심도자술 사용)	CB_F022	3	0		2	1	(시술명 table2 and 시술명 table 3) or 시술명 table6	SOURCE_BLOCK_TEXT	EXACT_PAGE	339	source_lines[0].text	87	시술명 table2 and 시술명 table3	"{시술명 table2 and 시술명 table3}
+or 시술명 table6"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F023	폐동맥판 수술(심도자술 사용)	CB_F023	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	339			(시술명 table2 and 시술명 table4) or 시술명 table5	"{시술명 table2 and 시술명 table4}
+or 시술명 table5"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F061	파열 동맥류 또는 대동맥 축착 교정술(인공심장폐장치 사용)	CB_F061	4	0		3	1	((주진단명 table1 and 시술명 table2) or 시술명 table3) and 시술명 table4	SOURCE_BLOCK_TEXT	EXACT_PAGE	344	source_lines[0].text	137	[(주진단명 table1 and 시술명 table2) or 시술명 table3] and 시술명 table4	"({주진단명 table1 and 시술명 table2} or 시술명 table3)
+and 시술명 table4"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F071	파열 동맥류 또는 대동맥 축착 교정술(인공심장폐장치 미사용)	CB_F071	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	347			(주진단명 table1 and 시술명 table2) or 시술명 table3	"{주진단명 table1 and 시술명 table2}
+or 시술명 table3"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F091	심부정맥혈전증 경피적 수술	CB_F091	7	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	350			(주진단명 table1 and 시술명 table2 and 시술명 table3) or (주진단명 table1 and 시술명 table2 and 시술명 table3 and 시술명 table4)	"{주진단명 table1 and 시술명 table2 and 시술명 table3}
+or {주진단명 table1 and 시술명 table2 and 시술명 table3 and 시술명 table4}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F112	급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 다발혈관)	CB_F112	6	0		4	1	주진단명 table1 and 시술명 table2 and ((시술명 table3 and 시술명 table4) or (시술명 table3 and 부가코드))	SOURCE_BLOCK_TEXT	EXACT_PAGE	352	source_lines[0].text	187	주진단명 table1 and 시술명 table2 and [(시술명 table3 and 시술명 table4) or (시술명 table3 and 부가코드)]	"주진단명 table1
+and 시술명 table2
+and ({시술명 table3 and 시술명 table4} or {시술명 table3 and 부가코드})"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F122	급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 미동반, 다발혈관)	CB_F122	5	0		4	1	주진단명 table1 and ((시술명 table2 and 시술명 table3) or (시술명 table2 and 부가코드))	SOURCE_BLOCK_TEXT	EXACT_PAGE	353	source_lines[0].text	162	주진단명 table1 and [(시술명 table2 and 시술명 table3) or (시술명 table2 and 부가코드)]	"주진단명 table1
+and ({시술명 table2 and 시술명 table3} or {시술명 table2 and 부가코드})"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F133	급성 심근경색증이 아닌 기타 경피적 관상동맥 수술(단일혈관, 만성폐쇄성병변의 경우 제외)	CB_F133	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	354			시술명 table1 without 주진단명 table1	시술명 table1 and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F134	급성 심근경색증이 아닌 기타 경피적 관상동맥 수술(단일혈관, 만성폐쇄성병변의 경우 포함)	CB_F134	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	354			시술명 table3 without 주진단명 table1	시술명 table3 and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F135	급성 심근경색증이 아닌 기타 경피적 관상동맥 수술(다발혈관, 만성폐쇄성병변의 경우 제외)	CB_F135	5	0		4	1	((시술명 table1 and 시술명 table2) or (시술명 table1 and 부가코드)) without 주진단명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	354	source_lines[0].text	162	[(시술명 table1 and 시술명 table2) or (시술명 table1 and 부가코드)] without 주진단명 table1	{시술명 table1 and 시술명 table2} or {시술명 table1 and 부가코드} and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F136	급성 심근경색증이 아닌 기타 경피적 관상동맥 수술(다발혈관, 만성폐쇄성병변의 경우 포함)	CB_F136	4	0		3	1	(시술명 table3 and (시술명 table1 or 시술명 table2)) without 주진단명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	354	source_lines[0].text	137	[시술명 table3 and (시술명 table1 or 시술명 table2)] without 주진단명 table1	시술명 table3 and (시술명 table1 or 시술명 table2) and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F194	말초동맥 만성 폐쇄성 질환의 경피적 수술, 여러 개	CB_F194	4	0		3	1	주진단명 table1 and ((At least 2 procedures in 시술명 table2) or (시술명 table2 and 부가코드))	SOURCE_BLOCK_TEXT	EXACT_PAGE	360	source_lines[0].text	137	주진단명 table1 and [(At least 2 procedures in 시술명 table2) or (시술명 table2 and 부가코드)]	"주진단명 table1
+and (At least 2 procedures in 시술명 table2 or {시술명 table2 and 부가코드})"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F253	정맥류 광범위 절제술(여러 개)	CB_F253	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	364			(At least 2 procedures in 시술명 table1) or (시술명 table1 and 부가코드)	"At least 2 procedures in 시술명 table1
+or {시술명 table1 and 부가코드}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+F600	주요 합병증이 있는 급성 심근경색증을 동반한 순환기 질환	CB_F600	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	368			주진단명 table1 or (주진단명 table2 and 기타진단명 table3)	"주진단명 table1
+or {주진단명 table2 and 기타진단명 table3}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+G504	위내시경 시술(주요 소화기 질환이 아닌 경우)	CB_G504	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	429			주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2	"MDC06의 주진단명 and not(주진단명 table1)
+and 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+G524	결장경 시술(주요 소화기 질환이 아닌 경우)	CB_G524	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	433			주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2	"MDC06의 주진단명 and not(주진단명 table1)
+and 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+G534	구불결장경 시술(주요 소화기 질환이 아닌 경우)	CB_G534	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	437			주진단명 table1을 제외한 MDC06의 주진단명 and 시술명 table2	"MDC06의 주진단명 and not(주진단명 table1)
+and 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H010	간담도췌장 복합수술	CB_H010	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	469			(시술명 table1 and 시술명 table2) or 시술명 table3	"{시술명 table1 and 시술명 table2}
+or 시술명 table3"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H052	개복에 의한 간 수술	CB_H052	3	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	472			시술명 table2 or (시술명 table3 and not 부가코드)	"시술명 table2
+or {시술명 table3 and not(부가코드)}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H152	경피적 혈관 시술(간의 악성종양 제외)	CB_H152	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	481			(시술명 table1 without 주진단명 table1) or 시술명 table2	"시술명 table1 and not(주진단명 table1)
+or 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H601	주요 합병증을 동반한 간경변증	CB_H601	5	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	484			주진단명 table1 or (주진단명 table2 and 기타진단명 table4) or (주진단명 table3 and 기타진단명 table5)	"주진단명 table1
+or {주진단명 table2 and 기타진단명 table4}
+or {주진단명 table3 and 기타진단명 table5}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H602	중등도 합병증을 동반한 간경변증	CB_H602	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	485			주진단명 table1 or (주진단명 table2 and 기타진단명 table3)	"주진단명 table1
+or {주진단명 table2 and 기타진단명 table3}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H611	합병증을 동반한 알코올성 간질환(간경변증 제외)	CB_H611	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	485			주진단명 table1 or (주진단명 table2 and 기타진단명 table3)	"주진단명 table1
+or {주진단명 table2 and 기타진단명 table3}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H661	합병증을 동반한 급성 바이러스성 간염	CB_H661	5	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	492			주진단명 table1 or (주진단명 table2 and 기타진단명 table3) or (주진단명 table2 and 기타진단명 table4)	"주진단명 table1
+or {주진단명 table2 and 기타진단명 table3}
+or {주진단명 table2 and 기타진단명 table4}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+H671	합병증을 동반한 기타 간염	CB_H671	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	492			주진단명 table1 or (주진단명 table2 and 기타진단명 table3)	"주진단명 table1
+or {주진단명 table2 and 기타진단명 table3}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I011	양쪽 또는 복수 주요 관절 수술(치환술의 경우)	CB_I011	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	567			(At least 2 procedures in 시술명 table1) or (시술명 table1 and 부가코드)	"At least 2 procedures in 시술명 table1
+or {시술명 table1 and 부가코드}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I012	양쪽 또는 복수 주요 관절 수술(치환술 제외)	CB_I012	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	567			(At least 2 procedures in 시술명 table1) or (시술명 table1 and 부가코드)	"At least 2 procedures in 시술명 table1
+or {시술명 table1 and 부가코드}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I141	양쪽 또는 복수 고관절 및 대퇴부 수술	CB_I141	6	0		3	1	(At least 2 procedures in 시술명 table1) or (시술명 table1 and 부가코드) or (Diagnosis table2(고관절 및 대퇴부 질환)-A and 시술명 table1 and 시술명 table2)	SOURCE_BLOCK_TEXT	EXACT_PAGE	582	raw_text	191	"(At least 2 procedures in 시술명 table1)
+or (시술명 table1 and 부가코드)
+or [Diagnosis table2(고관절 및 대퇴부 질환)-A and 시술명 table1 and 시술명 table2]"	"At least 2 procedures in 시술명 table1
+or {시술명 table1 and 부가코드}
+or {Diagnosis table2(고관절 및 대퇴부 질환)-A and 시술명 table1 and 시술명 table2}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I142	한쪽 고관절 및 대퇴부 수술	CB_I142	3	0		2	1	시술명 table1 or (Diagnosis table2(고관절 및 대퇴부 질환-A) and 시술명 table2)	SOURCE_BLOCK_TEXT	EXACT_PAGE	582	source_lines[0].text	112	시술명 table1 or [Diagnosis table2(고관절 및 대퇴부 질환-A) and 시술명 table2]	"시술명 table1
+or {Diagnosis table2(고관절 및 대퇴부 질환-A) and 시술명 table2}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I160	상완골, 경골 및 비골 수술	CB_I160	4	0		3	1	시술명 table1 or ((Diagnosis table3(상완골 질환)-A or Diagnosis table4(경골 및 비골 질환)-A) and 시술명 table2)	SOURCE_BLOCK_TEXT	EXACT_PAGE	583	raw_text	141	"시술명 table1 or
+[(Diagnosis table3(상완골 질환)-A or Diagnosis table4(경골 및 비골 질환)-A) and 시술명 table2]"	"시술명 table1
+or {(Diagnosis table3(상완골 질환)-A or Diagnosis table4(경골 및 비골 질환)-A) and 시술명 table2}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I187	기타 견부 수술	CB_I187	5	0		3	2	시술명 table1 or ((Diagnosis table6(견부 질환)-A or Diagnosis table6(견부 질환)-B or Diagnosis table6(견부 질환)-C) and 시술명 table2) || (Diagnosis table6(견부 질환)-A or Diagnosis table6(견부 질환)-B or Diagnosis table6(견부 질환)-C) and 시술명 table2	SOURCE_BLOCK_TEXT	EXACT_PAGE	584	raw_text	166	"시술명 table1 or {[Diagnosis table6(견부 질환)-A or Diagnosis table6(견부 질환)-B or Diagnosis table6(견부 질환)-C]
+and 시술명 table2}"	"시술명 table1
+or {(Diagnosis table6(견부 질환)-A or Diagnosis table6(견부 질환)-B or Diagnosis table6(견부 질환)-C) and 시술명 table2}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I194	기타 슬관절 수술	CB_I194	3	0		2	1	시술명 table1 or (Diagnosis table1(슬관절 질환)-A and 시술명 table2)	SOURCE_BLOCK_TEXT	EXACT_PAGE	586	source_lines[0].text	112	시술명 table1 or [Diagnosis table1(슬관절 질환)-A and 시술명 table2]	"시술명 table1
+or {Diagnosis table1(슬관절 질환)-A and 시술명 table2}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I200	주관절 및 전완부 수술	CB_I200	3	0		2	1	(Diagnosis table7(주관절 질환)-A or Diagnosis table8(전완부 질환)-A) and 시술명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	586	source_lines[0].text	112	[Diagnosis table7(주관절 질환)-A or Diagnosis table8(전완부 질환)-A] and 시술명 table1	"(Diagnosis table7(주관절 질환)-A or Diagnosis table8(전완부 질환)-A)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I251	주요 완관절 및 수부 수술	CB_I251	3	0		2	1	(Diagnosis table10(완관절 질환)-A or Diagnosis table11(수부 질환)-A) and 시술명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	590	source_lines[0].text	112	[Diagnosis table10(완관절 질환)-A or Diagnosis table11(수부 질환)-A] and 시술명 table1	"(Diagnosis table10(완관절 질환)-A or Diagnosis table11(수부 질환)-A)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I252	단순 완관절 및 수부 수술	CB_I252	4	0		3	1	시술명 table1 or ((Diagnosis table10(완관절 질환)-A or Diagnosis table11(수부 질환)-A) and 시술명 table2)	SOURCE_BLOCK_TEXT	EXACT_PAGE	590	source_lines[0].text	137	시술명 table1 or [(Diagnosis table10(완관절 질환)-A or Diagnosis table11(수부 질환)-A) and 시술명 table2]	"시술명 table1
+or {(Diagnosis table10(완관절 질환)-A or Diagnosis table11(수부 질환)-A) and 시술명 table2}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I283	슬관절 및 하퇴골 골절 수술	CB_I283	3	0		2	1	(Diagnosis table1(슬관절 질환)-B or Diagnosis table4(경골 및 비골 질환)-B) and 시술명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	594	source_lines[0].text	112	[Diagnosis table1(슬관절 질환)-B or Diagnosis table4(경골 및 비골 질환)-B] and 시술명 table1	"(Diagnosis table1(슬관절 질환)-B or Diagnosis table4(경골 및 비골 질환)-B)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I284	족관절 및 족부 골절 수술	CB_I284	3	0		2	1	(Diagnosis table4(경골 및 비골 질환)-C or Diagnosis table9(족부 질환)-B) and 시술명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	595	source_lines[0].text	112	[Diagnosis table4(경골 및 비골 질환)-C or Diagnosis table9(족부 질환)-B] and 시술명 table1	"(Diagnosis table4(경골 및 비골 질환)-C or Diagnosis table9(족부 질환)-B)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I285	견부 및 상완골 골절 수술	CB_I285	3	0		2	1	(Diagnosis table3(상완골 질환)-B or Diagnosis table6(견부 질환)-D) and 시술명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	596	source_lines[0].text	112	[Diagnosis table3(상완골 질환)-B or Diagnosis table6(견부 질환)-D] and 시술명 table1	"(Diagnosis table3(상완골 질환)-B or Diagnosis table6(견부 질환)-D)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I286	전완부 골절 수술	CB_I286	3	0		2	1	(Diagnosis table7(주관절 질환)-B or Diagnosis table8(전완부 질환)-B) and 시술명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	596	source_lines[0].text	112	[Diagnosis table7(주관절 질환)-B or Diagnosis table8(전완부 질환)-B] and 시술명 table1	"(Diagnosis table7(주관절 질환)-B or Diagnosis table8(전완부 질환)-B)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I287	수부 골절 수술	CB_I287	3	0		2	1	(Diagnosis table10(완관절 질환)-B or Diagnosis table11(수부 질환)-B) and 시술명 table1	SOURCE_BLOCK_TEXT	EXACT_PAGE	597	source_lines[0].text	112	[Diagnosis table10(완관절 질환)-B or Diagnosis table11(수부 질환)-B] and 시술명 table1	"(Diagnosis table10(완관절 질환)-B or Diagnosis table11(수부 질환)-B)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+I301	복잡 양쪽 또는 복수 인공관절치환술	CB_I301	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	603			(At least 2 procedures in 시술명 table1) or (시술명 table1 and 부가코드)	"At least 2 procedures in 시술명 table1
+or {시술명 table1 and 부가코드}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+J031	피판술(피부궤양, 봉소염 제외)	CB_J031	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	724			J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1	"MDC09의 주진단명 and not(주진단명 table1)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+J032	피부 이식술(피부궤양, 봉소염 제외)	CB_J032	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	725			J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2	"MDC09의 주진단명 and not(주진단명 table1)
+and 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+M102	기타 남성생식기계 시술(악성종양 제외)	CB_M102	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	850			시술명 table3 without 주진단명 table1	시술명 table3 and not(주진단명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N011	복강경을 이용한 자궁 수술(악성종양의 경우)	CB_N011	5	0		3	1	주진단명 table1 and ((시술명 table2 and 부가코드) or 시술명 table3 or 시술명 table5)	SOURCE_BLOCK_TEXT	EXACT_PAGE	874	source_lines[0].text	162	주진단명 table1 and [(시술명 table2 and 부가코드) or 시술명 table3 or 시술명 table5]	"주진단명 table1
+and ({시술명 table2 and 부가코드} or 시술명 table3 or 시술명 table5)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N021	복강경을 이용한 주요 자궁절제술(악성종양 제외)	CB_N021	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	875			(시술명 table1 and 부가코드) or 시술명 table2	"{시술명 table1 and 부가코드}
+or 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N031	복강경을 이용한 단순 자궁 수술(악성종양 제외)	CB_N031	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	875			(시술명 table1 and 부가코드) or 시술명 table2	"{시술명 table1 and 부가코드}
+or 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N041	복강경을 이용한 난소 및 부속기 수술(악성종양의 경우)	CB_N041	7	0		5	2	(시술명 table2 or (주진단명 table1 and 시술명 table3)) and 부가코드or (주진단명 table1 and 시술명 table4) or 시술명 table5 || (시술명 table2 or (주진단명 table1 and 시술명 table3)) and 부가코드	SOURCE_BLOCK_TEXT	EXACT_PAGE	876	source_lines[0].text	212	[시술명 table2 or (주진단명 table1 and 시술명 table3)] and 부가코드or (주진단명 table1 and 시술명 table4) or 시술명 table5	"{(시술명 table2 or {주진단명 table1 and 시술명 table3}) and 부가코드}
+or {주진단명 table1 and 시술명 table4}
+or 시술명 table5"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N042	개복에 의한 난소 및 부속기 수술(악성종양의 경우)	CB_N042	5	0		3	1	시술명 table2 or 시술명 table6 or (주진단명 table1 and (시술명 table3 or 시술명 table7))	SOURCE_BLOCK_TEXT	EXACT_PAGE	876	source_lines[0].text	162	시술명 table2 or 시술명 table6 or [주진단명 table1 and (시술명 table3 or 시술명 table7)]	"시술명 table2
+or 시술명 table6
+or {주진단명 table1 and (시술명 table3 or 시술명 table7)}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N051	복강경을 이용한 난소 수술(악성종양 제외)	CB_N051	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	876			(시술명 table1 and 부가코드) or 시술명 table2	"{시술명 table1 and 부가코드}
+or 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N071	복강경을 이용한 자궁경부, 질 및 외음부 수술(악성종양의 경우)	CB_N071	6	0		5	2	((시술명 table2 or (주진단명 table1 and 시술명 table3)) and 부가코드)or (주진단명 table1 and 시술명 table4) || (시술명 table2 or (주진단명 table1 and 시술명 table3)) and 부가코드	SOURCE_BLOCK_TEXT	EXACT_PAGE	879	source_lines[0].text	187	{[시술명 table2 or (주진단명 table1 and 시술명 table3)] and 부가코드}or (주진단명 table1 and 시술명 table4)	"{(시술명 table2 or {주진단명 table1 and 시술명 table3}) and 부가코드}
+or {주진단명 table1 and 시술명 table4}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N072	개복에 의한 자궁경부, 질 및 외음부 수술(악성종양의 경우)	CB_N072	4	0		3	1	시술명 table2 or (주진단명 table1 and (시술명 table3 or 시술명 table5))	SOURCE_BLOCK_TEXT	EXACT_PAGE	879	source_lines[0].text	137	시술명 table2 or [주진단명 table1 and (시술명 table3 or 시술명 table5)]	"시술명 table2
+or {주진단명 table1 and (시술명 table3 or 시술명 table5)}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+N101	복강경을 이용한 주요 여성생식기계 복원술	CB_N101	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	881			(시술명 table1 and 부가코드) or 시술명 table2	"{시술명 table1 and 부가코드}
+or 시술명 table2"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+O011	일반 제왕절개분만(단태아)	CB_O011	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	912			시술명 table2 and 연령 ≤34세 without 주진단명 table1	"시술명 table2
+and 연령 ≤34세 and not(주진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+O023	일반 제왕절개분만(다태아)	CB_O023	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	912			시술명 table2 and 연령 ≤34세 without 주진단명 table1	"시술명 table2
+and 연령 ≤34세 and not(주진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+O041	일반 질식분만(초산)	CB_O041	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	913			시술명 table2 and 연령 ≤34세 without 주진단명 table1	"시술명 table2
+and 연령 ≤34세 and not(주진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+O051	일반 질식분만(경산)	CB_O051	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	915			시술명 table2 and 연령 ≤34세 without 주진단명 table1	"시술명 table2
+and 연령 ≤34세 and not(주진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+O061	제왕절개술 기왕력이 있는 일반 질식분만	CB_O061	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	917			시술명 table2 and 연령 ≤34세 without 주진단명 table1	"시술명 table2
+and 연령 ≤34세 and not(주진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+O110	분만및유산후관련장애(수술시행)	CB_O110	4	0		3	1	(주진단명 table1 or (주진단명 table2 and 기타진단명 table3)) and OR procedure	SOURCE_BLOCK_TEXT	EXACT_PAGE	923	source_lines[0].text	137	[주진단명 table1 or (주진단명 table2 and 기타진단명 table3)] and OR procedure	"(주진단명 table1 or {주진단명 table2 and 기타진단명 table3})
+and OR procedure"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+O130	분만 및 유산 관련 자궁적출술	CB_O130	4	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	927			(시술명 table1 and 시술명 table2) or 시술명 table2 or 시술명 table3	"{시술명 table1 and 시술명 table2}
+or 시술명 table2
+or 시술명 table3"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P010	입원후 5일 미만에, 사망하거나 전원된 신생아(중요 수술 시행)	CB_P010	5	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	951			재원기간 < 5일 and (퇴원경로 = 사망 혹은 전원) and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"재원기간 < 5일
+and 퇴원경로 = 사망 혹은 전원
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P030	신생아, 입원시 체중 <750g(중요 수술 시행)	CB_P030	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	955			입원시 체중 <750g and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 <750g
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P040	신생아, 입원시 체중 750-999g(중요 수술 시행)	CB_P040	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	955			입원시 체중 750-999g and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 750-999g
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P050	신생아, 입원시 체중 1000-1249g(중요 수술 시행)	CB_P050	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	955			입원시 체중 1000-1249g and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 1000-1249g
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P060	신생아, 입원시 체중 1250-1499g(중요 수술 시행)	CB_P060	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	956			입원시 체중 1250-1499g and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 1250-1499g
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P070	신생아, 입원시 체중 1500-1999g(중요 수술 시행)	CB_P070	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	956			입원시 체중 1500 - 1999g and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 1500 - 1999g
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P080	신생아, 입원시 체중 2000-2499g(중요 수술 시행)	CB_P080	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	956			입원시 체중 2000 - 2499g and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 2000 - 2499g
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P090	신생아, 입원시 체중 > 2499g(중요 수술 시행)	CB_P090	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	957			입원시 체중 > 2499g and (시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 > 2499g
+and (OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P601	입원후 5일 미만에, 사망하거나 전원된 신생아(중요 수술 미시행, 출생 후 첫 입원)	CB_P601	6	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	957			재원기간 < 5일 and (퇴원경로 = 사망 혹은 전원) and 주진단명 또는 기타진단명 table1 and not(시술명 table2를 제외한 OR procedure or 인공호흡 ≥96 hours)	"재원기간 < 5일
+and 퇴원경로 = 사망 혹은 전원
+and 주진단명 또는 기타진단명 table1
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P602	입원후 5일 미만에, 사망하거나 전원된 신생아(중요 수술 미시행, 출생 후 첫 입원이 아닌 경우)	CB_P602	5	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	957			재원기간 < 5일 and (퇴원경로 = 사망 혹은 전원) and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours )	"재원기간 < 5일
+and 퇴원경로 = 사망 혹은 전원
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P610	신생아, 입원시 체중 < 750g(중요 수술 미시행)	CB_P610	4	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	958			입원시 체중 < 750g and not(시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 < 750g
+and not(OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P620	신생아, 입원시 체중 750-999g(중요 수술 미시행)	CB_P620	4	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	958			입원시 체중 750 - 999g and not(시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 750 - 999g
+and not(OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P630	신생아, 입원시 체중 1000-1249g(중요 수술 미시행)	CB_P630	4	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	958			입원시 체중 1000 - 1249g and not(시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)	"입원시 체중 1000 - 1249g
+and not(OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P641	신생아, 입원시 체중 1250-1499g(중요 수술 미시행, 다발성 주요 문제 동반)	CB_P641	8	0		6	1	입원시 체중 1250 - 1499g and not(시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours) and ( (시술명 table2 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 )	SOURCE_BLOCK_TEXT	EXACT_PAGE	959	raw_text	241	"입원시 체중 1250 - 1499g
+and not(시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)
+and { (시술명 table2 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }"	"입원시 체중 1250 - 1499g
+and not(OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)
+and {(시술명 table2 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P642	신생아, 입원시 체중 1250-1499g(중요 수술 미시행, 다발성 주요 문제 미동반)	CB_P642	8	0		7	2	입원시 체중 1250 - 1499g and not(시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours) and not( (시술명 table2 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 ) || not( (시술명 table2 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 )	SOURCE_BLOCK_TEXT	EXACT_PAGE	959	raw_text	241	"입원시 체중 1250 - 1499g
+and not(시술명 table1을 제외한 OR procedure or 인공호흡 ≥96 hours)
+and not{ (시술명 table2 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }"	"입원시 체중 1250 - 1499g
+and not(OR procedure and not(시술명 table1) or 인공호흡 ≥96 hours)
+and not((시술명 table2 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P651	신생아, 입원시 체중 1500-1999g(중요 수술 미시행, 다발성 주요 문제 동반)	CB_P651	8	0		6	1	입원시 체중 1500 - 1999g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and ( (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 )	SOURCE_BLOCK_TEXT	EXACT_PAGE	959	raw_text	241	"입원시 체중 1500 - 1999g
+and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)
+and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }"	"입원시 체중 1500 - 1999g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and {(시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P652	신생아, 입원시 체중 1500-1999g(중요 수술 미시행, 주요 문제 동반)	CB_P652	7	0		5	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	960			입원시 체중 1500 - 1999g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and (시술명 table3 or 인공호흡 > 24 hours or 주요 문제)	"입원시 체중 1500 - 1999g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and (시술명 table3 or 인공호흡 > 24 hours or 주요 문제)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P653	신생아, 입원시 체중 1500-1999g(중요 수술 미시행, 기타 문제 동반)	CB_P653	6	0		5	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	960			입원시 체중 1500 - 1999g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and (시술명 table4 or 주진단명 또는 기타진단명 table1)	"입원시 체중 1500 - 1999g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and (시술명 table4 or 주진단명 또는 기타진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P654	신생아, 입원시 체중 1500-1999g(중요 수술 미시행, 문제 미동반)	CB_P654	10	0		6	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	960			입원시 체중 1500 - 1999g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and not(시술명 table3 or 시술명 table4 or 인공호흡 > 24 hours or 주요 문제 or 다발성 주요 문제 or 주진단명 또는 기타진단명 table1)	"입원시 체중 1500 - 1999g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and not(시술명 table3 or 시술명 table4 or 인공호흡 > 24 hours or 주요 문제 or 다발성 주요 문제 or 주진단명 또는 기타진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P661	신생아, 입원시 체중 2000-2499g(중요 수술 미시행, 다발성 주요 문제 동반)	CB_P661	8	0		6	1	입원시 체중 2000 - 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and ( (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 )	SOURCE_BLOCK_TEXT	EXACT_PAGE	963	raw_text	241	"입원시 체중 2000 - 2499g
+and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)
+and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }"	"입원시 체중 2000 - 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and {(시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P662	신생아, 입원시 체중 2000-2499g(중요 수술 미시행, 주요 문제 동반)	CB_P662	7	0		5	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	963			입원시 체중 2000 - 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and (시술명 table3 or 인공호흡 > 24 hours or 주요 문제)	"입원시 체중 2000 - 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and (시술명 table3 or 인공호흡 > 24 hours or 주요 문제)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P663	신생아, 입원시 체중 2000-2499g(중요 수술 미시행, 기타 문제 동반)	CB_P663	6	0		5	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	963			입원시 체중 2000 - 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and (시술명 table4 or 주진단명 또는 기타진단명 table1)	"입원시 체중 2000 - 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and (시술명 table4 or 주진단명 또는 기타진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P664	신생아, 입원시 체중 2000-2499g(중요 수술 미시행, 문제 미동반)	CB_P664	10	0		6	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	963			입원시 체중 2000 - 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and not(시술명 table3 or 시술명 table4 or 인공호흡 > 24 hours or 주요 문제 or 다발성 주요 문제 or 주진단명 또는 기타진단명 table1)	"입원시 체중 2000 - 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and not(시술명 table3 or 시술명 table4 or 인공호흡 > 24 hours or 주요 문제 or 다발성 주요 문제 or 주진단명 또는 기타진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P671	신생아, 입원시 체중 > 2499g(중요 수술 미시행, 다발성 주요 문제 동반)	CB_P671	8	0		6	1	입원시 체중 > 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and ( (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 )	SOURCE_BLOCK_TEXT	EXACT_PAGE	966	raw_text	241	"입원시 체중 > 2499g
+and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)
+and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }"	"입원시 체중 > 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and {(시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P672	신생아, 입원시 체중 > 2499g(중요 수술 미시행, 주요 문제 동반)	CB_P672	7	0		5	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	966			입원시 체중 > 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and (시술명 table3 or 인공호흡 > 24 hours or 주요 문제)	"입원시 체중 > 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and (시술명 table3 or 인공호흡 > 24 hours or 주요 문제)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P673	신생아, 입원시 체중 > 2499g(중요 수술 미시행, 기타 문제 동반)	CB_P673	6	0		5	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	966			입원시 체중 > 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and (시술명 table4 or 주진단명 또는 기타진단명 table1)	"입원시 체중 > 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and (시술명 table4 or 주진단명 또는 기타진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+P674	신생아, 입원시 체중 > 2499g(중요 수술 미시행, 문제 미동반)	CB_P674	10	0		6	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	966			입원시 체중 > 2499g and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours) and not(시술명 table3 or 시술명 table4 or 인공호흡 > 24 hours or 주요 문제 or 다발성 주요 문제 or 주진단명 또는 기타진단명 table1)	"입원시 체중 > 2499g
+and not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)
+and not(시술명 table3 or 시술명 table4 or 인공호흡 > 24 hours or 주요 문제 or 다발성 주요 문제 or 주진단명 또는 기타진단명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+Q020	기타 혈액 및 조혈기관 수술	CB_Q020	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1020			Q01의 시술명 table1을 제외한 OR procedure	OR procedure and not(시술명 table1)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+R020	기타 신생물 질환(주요 수술 시행)	CB_R020	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1042			R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1	"MDC17의 주진단명 and not(주진단명 table1)
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+R030	백혈병, 림프종, 다발 골수종 및 기타 악성 혈액질환(기타 수술 시행)	CB_R030	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1051			주진단명 table1 and R01의 시술명 table2를 제외한 OR procedure	"주진단명 table1
+and OR procedure and not(시술명 table2)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+R040	기타 신생물 질환(기타 수술 시행)	CB_R040	4	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1052			R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR procedure	"MDC17의 주진단명 and not(주진단명 table1)
+and OR procedure and not(시술명 table1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+R635	화학요법 관련 치료(속발 급성백혈병 미동반, 화학요법을 받은 경우)	CB_R635	5	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1055			주진단명 table1 and (시술명 table3 or 부가코드) without (기타진단명 table2 and 재원기간=1)	"주진단명 table1
+and 시술명 table3 or 부가코드 and not(기타진단명 table2 and 재원기간=1)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+R636	화학요법 관련 치료(속발 급성백혈병 미동반, 화학요법을 받은 경우), 당일퇴원	CB_R636	5	0		3	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1055			주진단명 table1 and 재원기간=1 and (시술명 table3 or 부가코드) without 기타진단명 table2	"주진단명 table1
+and 재원기간=1
+and 시술명 table3 or 부가코드 and not(기타진단명 table2)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+R637	기타 화학요법 관련 치료(화학요법을 받지 않은 경우)	CB_R637	5	0		4	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1055			주진단명 table1 or (주진단명 table1 and 기타진단명 table2) without (시술명 table3 and 부가코드)	"주진단명 table1
+or 주진단명 table1 and 기타진단명 table2 and not(시술명 table3 and 부가코드)"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+R672	방사선 관련 치료(방사선치료를 받지 않은 경우)	CB_R672	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1057			주진단명 table1 without 시술명 table2	주진단명 table1 and not(시술명 table2)	CURRENT_RENDER_REWORDS_OFFICIAL	False
+T011	패혈증 수술(합병증 동반)	CB_T011	4	0		3	1	(주진단명 table1 or (주진단명 table2 and 기타진단명 table3)) and OR procedure	SOURCE_BLOCK_TEXT	EXACT_PAGE	1092	source_lines[0].text	137	[주진단명 table1 or (주진단명 table2 and 기타진단명 table3)] and OR procedure	"(주진단명 table1 or {주진단명 table2 and 기타진단명 table3})
+and OR procedure"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+T601	합병증을 동반한 패혈증	CB_T601	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1097			주진단명 table1 or (주진단명 table2 and 기타진단명 table3)	"주진단명 table1
+or {주진단명 table2 and 기타진단명 table3}"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+V630	알콜 및 약물 의존, 재활 및 해독치료 동반	CB_V630	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1128			V62의 주진단명 table1 and 시술명 table1	"주진단명 table1
+and 시술명 table1"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+W600	다발성외상, 다른 의료기관으로 이송된경우(재원기간 5일 미만)	CB_W600	2	0		1	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1176			재원기간 < 5일 and (퇴원유형 = 다른 의료기관으로 이송)	"재원기간 < 5일
+and 퇴원유형 = 다른 의료기관으로 이송"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+X041	하지 손상의 골 및 관절 수술	CB_X041	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1196			(주진단명 table1 and 시술명 table2) or 시술명 table3	"{주진단명 table1 and 시술명 table2}
+or 시술명 table3"	CURRENT_RENDER_REWORDS_OFFICIAL	False
+X042	하지 손상의 기타 수술	CB_X042	3	0		2	0		ROOT_SOURCE_FRAGMENT	EXACT_PAGE	1199			(주진단명 table1 and 시술명 table4) or 시술명 table5	"{주진단명 table1 and 시술명 table4}
+or 시술명 table5"	CURRENT_RENDER_REWORDS_OFFICIAL	False

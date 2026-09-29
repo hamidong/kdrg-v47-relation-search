@@ -1,0 +1,1283 @@
+{
+  "meta": {
+    "schema_version": "kdrg-v47-correction-apply-log-v1",
+    "script_version": "2026-07-21_KDRG_V47_CORRECTION_APPLIER_V1",
+    "data_version": "KDRG V4.7",
+    "applied_at": "2026-07-21T08:15:19+00:00",
+    "correction_effective_through": "2026-05-01",
+    "source_hashes": {
+      "logical_tables_json": "11be87465cdcdf424a018358ca1408476cc76c73733753a9387abe98cedf1b3a",
+      "condition_ast_json": "12209b0fbdd4881015c970ce5868a4578c47044c221091b26a64a30169b267de",
+      "correction_patch_log_json": "8e454d02a9007eb81896dc28968e004cd035779f6b2ddb150b8f58d333519305",
+      "procedure_master_json": "c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec",
+      "patch_validation_report_json": "95c09b0cab6e5034ce6d5507122c4410a6067c6826fdc9d4d3bfde29283576f3"
+    }
+  },
+  "summary": {
+    "patch_operation_count": 24,
+    "applied_operation_count": 24,
+    "failed_operation_count": 0,
+    "operation_type_counts": {
+      "code_add": 15,
+      "code_remove": 9,
+      "create_logical_table": 1,
+      "replace_condition_ast": 1
+    },
+    "changed_or_created_logical_table_count": 15,
+    "base_logical_table_count": 1306,
+    "current_logical_table_count": 1307,
+    "base_condition_ast_count": 390,
+    "current_condition_ast_count": 390,
+    "current_unique_indexed_code_count": 16815,
+    "current_total_ast_node_count": 1727,
+    "user_decision_required_count": 0
+  },
+  "operation_log": [
+    {
+      "patch_operation_id": "PATCH_001",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "F6260",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_B510_001_CODE_0007"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 7,
+        "codes_sha256": "ca121c9f93ece9869ac90f4d1ffe89c197d1a4667dfdc1ac32b255ff258ee48a"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 6,
+        "codes_sha256": "966ed52bd2d8e3e7e1ba1184dd047ff70f12bdadc4b552f8a580a67515552427"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_002",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 6,
+        "codes_sha256": "966ed52bd2d8e3e7e1ba1184dd047ff70f12bdadc4b552f8a580a67515552427"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 7,
+        "codes_sha256": "1fdf885d043cb798cf08ee13275ccfe6645a874ed2f2c6d0f9b54c5db651b199"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_003",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 7,
+        "codes_sha256": "1fdf885d043cb798cf08ee13275ccfe6645a874ed2f2c6d0f9b54c5db651b199"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 8,
+        "codes_sha256": "b183790c6b59cc31914191630fac00c242c6816fc88446623712e69c668d1a1f"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_004",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 8,
+        "codes_sha256": "b183790c6b59cc31914191630fac00c242c6816fc88446623712e69c668d1a1f"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 9,
+        "codes_sha256": "15ed6fdbc82297a86fe79a3cf412ce9420fbdf20f8b282096da364d1442134c1"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_005",
+      "source_change_id": "CORR_SRC_002",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_D054_001",
+        "role": "procedure",
+        "table_number": 1,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "D051": [
+              "LT_D054_001"
+            ],
+            "D052": [
+              "LT_D054_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 10,
+        "codes_sha256": "2941c028a4f0e79d4b0e953f568f7681fbf5a2c61ca0620b2a04d9ff5199553e"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 11,
+        "codes_sha256": "15bea6b8bfb85a5f09049c7d8dafbb542716d5687862dc50db005cc071c4f1d6"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_006",
+      "source_change_id": "CORR_SRC_003",
+      "effective_date": "2026-03-01",
+      "operation_type": "create_logical_table",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_PATCH_F022_PROCEDURE_TABLE06",
+        "logical_key": "PATCH_ADRG:F022|procedure|TABLE:6"
+      },
+      "before": {
+        "logical_table_exists": false
+      },
+      "after": {
+        "logical_table_exists": true,
+        "logical_key": "PATCH_ADRG:F022|procedure|TABLE:6",
+        "code_count": 0
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_007",
+      "source_change_id": "CORR_SRC_003",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_PATCH_F022_PROCEDURE_TABLE06",
+        "role": "procedure",
+        "table_number": 6,
+        "resolution": {
+          "method": "new_table_created_by_preceding_patch_operation"
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 0,
+        "codes_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 1,
+        "codes_sha256": "4d6bc8924ac851fa375a2d9820f37f634d2ef23ac1ba34429d4fd2d4e139f737"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_008",
+      "source_change_id": "CORR_SRC_004",
+      "effective_date": "2026-03-01",
+      "operation_type": "replace_condition_ast",
+      "status": "applied",
+      "target": {
+        "condition_ast_id": "AST_F022",
+        "adrg": "F022"
+      },
+      "before": {
+        "canonical_expression": "(TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003])",
+        "canonical_expression_sha256": "a51165da451cb9e94a0a14e1bae5e96937285917ad6872bb2ca49718a36be38b",
+        "node_count": 3
+      },
+      "after": {
+        "canonical_expression": "((TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003]) OR TABLE_REF[LT_PATCH_F022_PROCEDURE_TABLE06])",
+        "canonical_expression_sha256": "e317a29a68613400e91cd9467e2efbab46cbe3622772d995310c993f78184c91",
+        "node_count": 5
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_009",
+      "source_change_id": "CORR_SRC_005",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_P020_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "P020": [
+              "LT_P020_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 177,
+        "codes_sha256": "eb7c26164668eb8483461caa080808a38d7cc2f62a80e2a7483f78ce054cf391"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 178,
+        "codes_sha256": "af0a0675f53d211e3e2a32c4ecd6f77699073f1afad9be68c9d82ed14093f376"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_010",
+      "source_change_id": "CORR_SRC_006",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "W040": [
+              "LT_W040_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 853,
+        "codes_sha256": "b1b0fbb83b2b37a56dd7b1de644a394511cc71676559646b345aa0a6b0ba249a"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 854,
+        "codes_sha256": "c19852b9b57f5e36e9a9fa2436f7f51417d5eb8cde290b7f066826997de7f4a1"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_011",
+      "source_change_id": "CORR_SRC_007",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "X060": [
+              "LT_X060_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 1227,
+        "codes_sha256": "c76983fb098b1cbca61c4296513f506ff18a70e64d37e99948ebe1a9c38a24cc"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 1228,
+        "codes_sha256": "b83b1590dfed67a92b0023c38781981956921c71f5501b80ea1c269f3593dca5"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_012",
+      "source_change_id": "CORR_SRC_008",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_B205_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B205": [
+              "LT_B205_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 272,
+        "codes_sha256": "aa9bd84ed4497b13f0e72b1d126481d1a4ef0e4eb8661e48bb8e6307009d85f8"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 273,
+        "codes_sha256": "2d6cac64ca1565d5bdc49ff30e4a7d8a7cf0c8e174c259f7b18aa9068f46767f"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_013",
+      "source_change_id": "CORR_SRC_009",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_E034_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "E034": [
+              "LT_E034_001"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_E034_001_CODE_0209"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 238,
+        "codes_sha256": "30052285179dcbc6184a060d88f836527b1a51ad52ac485d5a3aec357013fd3e"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 237,
+        "codes_sha256": "2327bd4a8057dc427f51ccd9b331668a8a39ae66786714f7f59b52aa157c65b6"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_014",
+      "source_change_id": "CORR_SRC_010",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_F082_003",
+        "role": "procedure",
+        "table_number": 3,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F081": [
+              "LT_F082_003"
+            ],
+            "F082": [
+              "LT_F082_003"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_F082_003_CODE_0002"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 5,
+        "codes_sha256": "0d8e7f6d15ef306a6cabbd0c0958bda400981a2fbace3e336bf727778e9146a8"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 4,
+        "codes_sha256": "d431dadbb077e670ec8be99e88e9bdb577427faef90507b50ce6fcd849af4796"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_015",
+      "source_change_id": "CORR_SRC_011",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_F083_002",
+        "role": "procedure",
+        "table_number": 2,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F083": [
+              "LT_F083_002"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_F083_002_CODE_0002"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 4,
+        "codes_sha256": "b47dfe1d0bb09f6b0606e046fb595a2567bba5d0ff028922425a286334c748ca"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 3,
+        "codes_sha256": "f47fa7cae63bc254e44ab5539927a89f838f4ad9e28070bd090fe9cd20de2c36"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_016",
+      "source_change_id": "CORR_SRC_012",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_F084_002",
+        "role": "procedure",
+        "table_number": 2,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F084": [
+              "LT_F084_002"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_F084_002_CODE_0004"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 7,
+        "codes_sha256": "7b82d22fcf2cf956bd6cb59b9a41ad5ab741af31b16879bb67f055a840f19642"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 6,
+        "codes_sha256": "a6a1c39e396f983b32d1f223065d6784153f4f5febf63ec30750ec0aad516731"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_017",
+      "source_change_id": "CORR_SRC_013",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_F171_002",
+        "role": "procedure",
+        "table_number": 2,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F171": [
+              "LT_F171_002"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_F171_002_CODE_0005"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 8,
+        "codes_sha256": "12625494a2194544c491176095185a2d1ba1cfef7c398e082029804463e3c526"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 7,
+        "codes_sha256": "119c0120c7682fa1b150221feaa1a4b16cb0f4eaafee2092208caa18733c94da"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_018",
+      "source_change_id": "CORR_SRC_014",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_F200_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F200": [
+              "LT_F200_001"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_F200_001_CODE_0009"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 22,
+        "codes_sha256": "25d8258db83cbea3020211181d3552f272c4bb4c5fdfcf8f3d233e8c29d41c78"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 21,
+        "codes_sha256": "ee3d5315b7f65c890236a44be5345a46706e3bc97ba0d18eb37a6ea8be184b68"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_019",
+      "source_change_id": "CORR_SRC_015",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_F211_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F211": [
+              "LT_F211_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 6,
+        "codes_sha256": "56868133825f092605f47e8c4e7f6a4cd9825da3c715dbe5e521e81658ab917a"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 7,
+        "codes_sha256": "a3506631842fbd78acbe76e82f8521369d1ef3fbb6a2ba4cd654b50daf18739e"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_020",
+      "source_change_id": "CORR_SRC_016",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "W040": [
+              "LT_W040_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 854,
+        "codes_sha256": "c19852b9b57f5e36e9a9fa2436f7f51417d5eb8cde290b7f066826997de7f4a1"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 855,
+        "codes_sha256": "e9dfcc10c0902cdbd055ce2e08355130850edb6e43c4d5d1b0e085779809f625"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_021",
+      "source_change_id": "CORR_SRC_016",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "W040": [
+              "LT_W040_001"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_W040_001_CODE_0645"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 855,
+        "codes_sha256": "e9dfcc10c0902cdbd055ce2e08355130850edb6e43c4d5d1b0e085779809f625"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 854,
+        "codes_sha256": "4e2e80360e7a82dd671051004003f333a1b3022e16abe6ba95d0f8c26071884e"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_022",
+      "source_change_id": "CORR_SRC_017",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "X060": [
+              "LT_X060_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 1228,
+        "codes_sha256": "b83b1590dfed67a92b0023c38781981956921c71f5501b80ea1c269f3593dca5"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 1229,
+        "codes_sha256": "4d9b399c0c6001a471c9b4ce94993cf0862fb9809a302b391a0bd616a7270c24"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_023",
+      "source_change_id": "CORR_SRC_017",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "X060": [
+              "LT_X060_001"
+            ]
+          }
+        }
+      },
+      "removed_code_rows": [
+        {
+          "code": "M6615",
+          "code_types": [
+            "diagnosis_like_code"
+          ],
+          "procedure_master_match": null,
+          "occurrence_count": 1,
+          "source_occurrence_ids": [
+            "SEC_X060_001_CODE_0942"
+          ]
+        }
+      ],
+      "before": {
+        "code_present": true,
+        "unique_code_count": 1229,
+        "codes_sha256": "4d9b399c0c6001a471c9b4ce94993cf0862fb9809a302b391a0bd616a7270c24"
+      },
+      "after": {
+        "code_present": false,
+        "unique_code_count": 1228,
+        "codes_sha256": "522e0c5435c991a3ff9d1ca1f706f8cf7fc5624467379a032fa8a3a23c429d86"
+      }
+    },
+    {
+      "patch_operation_id": "PATCH_024",
+      "source_change_id": "CORR_SRC_018",
+      "effective_date": "2026-05-01",
+      "operation_type": "code_add",
+      "status": "applied",
+      "target": {
+        "logical_table_id": "LT_F142_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F142": [
+              "LT_F142_001"
+            ]
+          }
+        }
+      },
+      "before": {
+        "code_present": false,
+        "unique_code_count": 1,
+        "codes_sha256": "e18d5861ef69ba8636110aabe4ae4c9d96f45ae4fcf354be4874c76dea8a1abc"
+      },
+      "after": {
+        "code_present": true,
+        "unique_code_count": 2,
+        "codes_sha256": "9d71d042cc05454c0dc22933b97e7f6c5de1b837b381423decafb84008b2d91a"
+      }
+    }
+  ],
+  "changed_or_created_logical_table_ids": [
+    "LT_B205_001",
+    "LT_B510_001",
+    "LT_D054_001",
+    "LT_E034_001",
+    "LT_F082_003",
+    "LT_F083_002",
+    "LT_F084_002",
+    "LT_F142_001",
+    "LT_F171_002",
+    "LT_F200_001",
+    "LT_F211_001",
+    "LT_P020_001",
+    "LT_PATCH_F022_PROCEDURE_TABLE06",
+    "LT_W040_001",
+    "LT_X060_001"
+  ],
+  "condition_ast_overrides": [
+    {
+      "adrg": "F022",
+      "condition_ast_id": "AST_F022",
+      "before_expression": "(TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003])",
+      "after_expression": "((TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003]) OR TABLE_REF[LT_PATCH_F022_PROCEDURE_TABLE06])",
+      "patch_operation_id": "PATCH_008"
+    }
+  ],
+  "output_files": {
+    "logical_tables_current": {
+      "path": "/home/runner/workspace/data/kdrg_v47_logical_tables_current.json",
+      "sha256": "ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635"
+    },
+    "condition_ast_current": {
+      "path": "/home/runner/workspace/data/kdrg_v47_condition_ast_current.json",
+      "sha256": "fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de"
+    }
+  },
+  "validation": {
+    "status": "PASS",
+    "pass_count": 64,
+    "fail_count": 0,
+    "checks": [
+      {
+        "check_id": "V001",
+        "title": "필수 입력 존재 kdrg_v47_logical_tables.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_logical_tables.json"
+      },
+      {
+        "check_id": "V002",
+        "title": "필수 입력 존재 kdrg_v47_condition_ast.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_condition_ast.json"
+      },
+      {
+        "check_id": "V003",
+        "title": "필수 입력 존재 kdrg_v47_correction_patch_log.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_correction_patch_log.json"
+      },
+      {
+        "check_id": "V004",
+        "title": "필수 입력 존재 kdrg_v47_procedure_master.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_procedure_master.json"
+      },
+      {
+        "check_id": "V005",
+        "title": "필수 입력 존재 correction_patch_log_validation_report.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/reports/correction_patch_log_validation_report.json"
+      },
+      {
+        "check_id": "V006",
+        "title": "base 논리 TABLE schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-logical-tables-v1"
+      },
+      {
+        "check_id": "V007",
+        "title": "base 조건 AST schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-condition-ast-v1"
+      },
+      {
+        "check_id": "V008",
+        "title": "patch log schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-correction-patch-log-v1"
+      },
+      {
+        "check_id": "V009",
+        "title": "시술 기준축 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-procedure-master-v2"
+      },
+      {
+        "check_id": "V010",
+        "title": "18번 검증 보고서 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-correction-patch-log-validation-v1"
+      },
+      {
+        "check_id": "V011",
+        "title": "18번 독립검증 PASS",
+        "status": "PASS",
+        "detail": "PASS"
+      },
+      {
+        "check_id": "V012",
+        "title": "18번 독립검증 62 PASS",
+        "status": "PASS",
+        "detail": "62"
+      },
+      {
+        "check_id": "V013",
+        "title": "18번 사용자 판단 0건",
+        "status": "PASS",
+        "detail": "0"
+      },
+      {
+        "check_id": "V014",
+        "title": "patch→base 논리 TABLE SHA",
+        "status": "PASS",
+        "detail": "patch=11be87465cdcdf424a018358ca1408476cc76c73733753a9387abe98cedf1b3a, actual=11be87465cdcdf424a018358ca1408476cc76c73733753a9387abe98cedf1b3a"
+      },
+      {
+        "check_id": "V015",
+        "title": "patch→base 조건 AST SHA",
+        "status": "PASS",
+        "detail": "patch=12209b0fbdd4881015c970ce5868a4578c47044c221091b26a64a30169b267de, actual=12209b0fbdd4881015c970ce5868a4578c47044c221091b26a64a30169b267de"
+      },
+      {
+        "check_id": "V016",
+        "title": "patch→시술 기준축 SHA",
+        "status": "PASS",
+        "detail": "patch=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec, actual=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec"
+      },
+      {
+        "check_id": "V017",
+        "title": "18번 보고서→patch SHA",
+        "status": "PASS",
+        "detail": "8e454d02a9007eb81896dc28968e004cd035779f6b2ddb150b8f58d333519305"
+      },
+      {
+        "check_id": "V018",
+        "title": "patch 미적용 상태",
+        "status": "PASS",
+        "detail": "parsed_and_mapped_not_applied"
+      },
+      {
+        "check_id": "V019",
+        "title": "17번 자체검증 PASS",
+        "status": "PASS",
+        "detail": "PASS"
+      },
+      {
+        "check_id": "V020",
+        "title": "patch operation 24건",
+        "status": "PASS",
+        "detail": "24"
+      },
+      {
+        "check_id": "V021",
+        "title": "operation 유형별 건수",
+        "status": "PASS",
+        "detail": "{'code_add': 13, 'code_remove': 9, 'create_logical_table': 1, 'replace_condition_ast': 1}"
+      },
+      {
+        "check_id": "V022",
+        "title": "적용일별 operation 건수",
+        "status": "PASS",
+        "detail": "{'2026-02-01': 4, '2026-03-01': 7, '2026-04-01': 12, '2026-05-01': 1}"
+      },
+      {
+        "check_id": "V023",
+        "title": "patch ID 순차성",
+        "status": "PASS",
+        "detail": "['PATCH_001', 'PATCH_002', 'PATCH_003', 'PATCH_004', 'PATCH_005', 'PATCH_006', 'PATCH_007', 'PATCH_008', 'PATCH_009', 'PATCH_010', 'PATCH_011', 'PATCH_012', 'PATCH_013', 'PATCH_014', 'PATCH_015', 'PATCH_016', 'PATCH_017', 'PATCH_018', 'PATCH_019', 'PATCH_020', 'PATCH_021', 'PATCH_022', 'PATCH_023', 'PATCH_024']"
+      },
+      {
+        "check_id": "V024",
+        "title": "모든 patch 적용 대기",
+        "status": "PASS",
+        "detail": "24 ready"
+      },
+      {
+        "check_id": "V025",
+        "title": "24개 patch 실제 메모리 적용",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "V026",
+        "title": "적용 operation 24건",
+        "status": "PASS",
+        "detail": "Counter({'applied': 24})"
+      },
+      {
+        "check_id": "V027",
+        "title": "적용 유형별 건수",
+        "status": "PASS",
+        "detail": "{'code_add': 13, 'code_remove': 9, 'create_logical_table': 1, 'replace_condition_ast': 1}"
+      },
+      {
+        "check_id": "V028",
+        "title": "적용 오류 0건",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "V029",
+        "title": "base 논리 TABLE 1306개",
+        "status": "PASS",
+        "detail": "1306"
+      },
+      {
+        "check_id": "V030",
+        "title": "교정 후 논리 TABLE 1307개",
+        "status": "PASS",
+        "detail": "1307"
+      },
+      {
+        "check_id": "V031",
+        "title": "F022 신규 table6 존재",
+        "status": "PASS",
+        "detail": "{'logical_table_id': 'LT_PATCH_F022_PROCEDURE_TABLE06', 'logical_key': 'PATCH_ADRG:F022|procedure|TABLE:6', 'logical_table_type': 'correction_patch_definition', 'scope_type': 'source_adrg_numbered_table_correction', 'role': 'procedure', 'role_korean': '시술명/Procedure', 'table_number': 6, 'descriptor': None, 'descriptor_normalized': None, 'variant': None, 'source_adrgs': ['F022'], 'adrg_families': ['F02'], 'mdcs': ['05'], 'physical_section_ids': [], 'recovered_definition_ids': [], 'child_logical_table_ids': [], 'unique_code_count': 1, 'codes': [{'code': 'M6586', 'code_types': ['procedure_master_code'], 'procedure_master_match': {'classification_number': '자658-2', 'korean_name': '경피적 승모판막 재치환술[심방중격 접근]', 'source_ref': {'file': 'KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx', 'sheet': '시술 등 목록_최종', 'excel_row': 349}}, 'occurrence_count': 1, 'source_occurrence_ids': ['PATCH_007'], 'code_origin': 'correction_patch', 'correction_provenance': {'patch_operation_id': 'PATCH_007', 'source_change_id': 'CORR_SRC_003', 'effective_date': '2026-03-01', 'source_adrgs': ['F022']}}], 'source_refs': [{'source_type': 'correction_hwpx', 'source_change_id': 'CORR_SRC_003', 'effective_date': '2026-03-01', 'printed_page_range': {'raw_text': '(본문) 313~314', 'start_printed_page': 313, 'end_printed_page': 314}}], 'correction_state': 'current_after_20260501_corrections', 'correction_history': [{'patch_operation_id': 'PATCH_006', 'source_change_id': 'CORR_SRC_003', 'effective_date': '2026-03-01', 'operation_type': 'create_logical_table'}, {'patch_operation_id': 'PATCH_007', 'source_change_id': 'CORR_SRC_003', 'effective_date': '2026-03-01', 'operation_type': 'code_add', 'procedure_code': 'M6586', 'source_adrgs': ['F022']}]}"
+      },
+      {
+        "check_id": "V032",
+        "title": "F022 신규 table6 logical key",
+        "status": "PASS",
+        "detail": "PATCH_ADRG:F022|procedure|TABLE:6"
+      },
+      {
+        "check_id": "V033",
+        "title": "F022 신규 table6 M6586 단독",
+        "status": "PASS",
+        "detail": "{'M6586'}"
+      },
+      {
+        "check_id": "V034",
+        "title": "변경·생성 TABLE 15개",
+        "status": "PASS",
+        "detail": "['LT_B205_001', 'LT_B510_001', 'LT_D054_001', 'LT_E034_001', 'LT_F082_003', 'LT_F083_002', 'LT_F084_002', 'LT_F142_001', 'LT_F171_002', 'LT_F200_001', 'LT_F211_001', 'LT_P020_001', 'LT_PATCH_F022_PROCEDURE_TABLE06', 'LT_W040_001', 'LT_X060_001']"
+      },
+      {
+        "check_id": "V035",
+        "title": "교정 후 고유 코드 16815개",
+        "status": "PASS",
+        "detail": "16815"
+      },
+      {
+        "check_id": "V036",
+        "title": "B510 F6260 삭제",
+        "status": "PASS",
+        "detail": "{'F6151', 'F6153', 'F6263', 'F6152', 'F6264', 'F6149', 'F6262', 'F6154', 'F6250'}"
+      },
+      {
+        "check_id": "V037",
+        "title": "B510 F6262·3·4 추가",
+        "status": "PASS",
+        "detail": "{'F6151', 'F6153', 'F6263', 'F6152', 'F6264', 'F6149', 'F6262', 'F6154', 'F6250'}"
+      },
+      {
+        "check_id": "V038",
+        "title": "D05 공용 TABLE U1150 추가",
+        "status": "PASS",
+        "detail": "{'O1092', 'O1100', 'O1093', 'O1091', 'O0965', 'O1120', 'U1150', 'O1070', 'O1055', 'O1050', 'O1110'}"
+      },
+      {
+        "check_id": "V039",
+        "title": "P020 M6586 추가",
+        "status": "PASS",
+        "detail": "{'M6533', 'O1798', 'O1710', 'O1781', 'O0173', 'O0281', 'OB631', 'OB642', 'O1875', 'O1671', 'O1826', 'O1704', 'O1791', 'O1950', 'OA637', 'O1635', 'M6634', 'Q2983', 'O0171', 'M6510', 'O1702', 'M6639', 'O1672', 'O1854', 'M6582', 'OA639', 'O1823', 'Q2411', 'OB632', 'O1649', 'O1821', 'S4653', 'O0277', 'O1721', 'O1645', 'O1935', 'M6532', 'O0172', 'M6581', 'O0166', 'O1861', 'O1711', 'O1882', 'O1931', 'Q2412', 'Q2413', 'O1853', 'O1810', 'O1760', 'Q2832', 'O0164', 'O0170', 'O1800', 'O1844', 'O1824', 'OB639', 'O1881', 'O0280', 'O1883', 'Q2841', 'O1644', 'O1841', 'Q2688', 'O0168', 'Q2984', 'Q2842', 'M6531', 'M6580', 'O1660', 'O1794', 'O1851', 'O1643', 'O1705', 'O0162', 'O1878', 'O2055', 'OB633', 'OA631', 'Q2982', 'O0161', 'O1932', 'O1740', 'O0163', 'M1663', 'O1647', 'O1799', 'O0169', 'OB634', 'S4658', 'O1895', 'O1730', 'O2073', 'O2058', 'S4656', 'OB637', 'O0279', 'M6585', 'O0282', 'O1648', 'O1843', 'O2053', 'O2072', 'Q7372', 'O1796', 'O1960', 'OA633', 'M6513', 'OB638', 'OA636', 'OA634', 'O1797', 'O0175', 'O1873', 'S4655', 'O1879', 'O1770', 'Q2676', 'Q2687', 'OA632', 'OA635', 'M6637', 'O1680', 'O1723', 'O2006', 'O1646', 'O1795', 'O1825', 'OB641', 'O1750', 'O0174', 'O0167', 'O1782', 'M6632', 'O0260', 'O2056', 'OB643', 'Q2831', 'O1640', 'O1783', 'M6586', 'O1822', 'O1874', 'OA638', 'Q2981', 'O0176', 'OB635', 'O1641', 'Q2985', 'O2059', 'O2074', 'O0218', 'O0235', 'O2057', 'O1793', 'OB636', 'S4654', 'M6638', 'M6636', 'O1940', 'O2007', 'S4657', 'O1690', 'Q7371', 'O1840', 'O1852', 'O0165', 'O1981', 'O1970', 'O2071', 'O1701', 'O1792', 'O2054', 'O1703', 'O1982', 'Q8070', 'O1830', 'O1842', 'O1784'}"
+      },
+      {
+        "check_id": "V040",
+        "title": "W040·X060 U1150 추가",
+        "status": "PASS",
+        "detail": "W040/X060"
+      },
+      {
+        "check_id": "V041",
+        "title": "O0239 네 TABLE 추가",
+        "status": "PASS",
+        "detail": "B205/F211/W040/X060"
+      },
+      {
+        "check_id": "V042",
+        "title": "F142 M0670 추가",
+        "status": "PASS",
+        "detail": "{'M0670', 'M6547'}"
+      },
+      {
+        "check_id": "V043",
+        "title": "M6615 대상 8개 TABLE에서 삭제",
+        "status": "PASS",
+        "detail": "['LT_E034_001', 'LT_F082_003', 'LT_F083_002', 'LT_F084_002', 'LT_F171_002', 'LT_F200_001', 'LT_W040_001', 'LT_X060_001']"
+      },
+      {
+        "check_id": "V044",
+        "title": "M6615 진단형 인덱스 보존",
+        "status": "PASS",
+        "detail": "['LT_GROUP_MDC08_DIAGNOSIS_TABLE02', 'LT_I722_001', 'LT_I760_015']"
+      },
+      {
+        "check_id": "V045",
+        "title": "추가 코드 canonical metadata",
+        "status": "PASS",
+        "detail": "rows=13"
+      },
+      {
+        "check_id": "V046",
+        "title": "TABLE 내부 코드 중복 없음",
+        "status": "PASS",
+        "detail": "all unique"
+      },
+      {
+        "check_id": "V047",
+        "title": "TABLE unique_code_count 일치",
+        "status": "PASS",
+        "detail": "all matched"
+      },
+      {
+        "check_id": "V048",
+        "title": "section 매핑 1293개 보존",
+        "status": "PASS",
+        "detail": "1293"
+      },
+      {
+        "check_id": "V049",
+        "title": "복구 정의 매핑 3개 보존",
+        "status": "PASS",
+        "detail": "3"
+      },
+      {
+        "check_id": "V050",
+        "title": "variant 그룹 10개 보존",
+        "status": "PASS",
+        "detail": "10"
+      },
+      {
+        "check_id": "V051",
+        "title": "F022 정의 TABLE에 table6 포함",
+        "status": "PASS",
+        "detail": "['LT_PATCH_F022_PROCEDURE_TABLE06']"
+      },
+      {
+        "check_id": "V052",
+        "title": "base 조건 AST 390개",
+        "status": "PASS",
+        "detail": "390"
+      },
+      {
+        "check_id": "V053",
+        "title": "교정 후 조건 AST 390개",
+        "status": "PASS",
+        "detail": "390"
+      },
+      {
+        "check_id": "V054",
+        "title": "F022 최종 조건식",
+        "status": "PASS",
+        "detail": "((TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003]) OR TABLE_REF[LT_PATCH_F022_PROCEDURE_TABLE06])"
+      },
+      {
+        "check_id": "V055",
+        "title": "F022 AST 5 node",
+        "status": "PASS",
+        "detail": "5"
+      },
+      {
+        "check_id": "V056",
+        "title": "교정 후 AST node 유형별 건수",
+        "status": "PASS",
+        "detail": "{'AND': 398, 'EXCLUSION': 64, 'NOT': 30, 'OR': 144, 'TABLE_REF': 897, 'TEXT_CONDITION': 194}"
+      },
+      {
+        "check_id": "V057",
+        "title": "교정 후 AST 전체 node 1727",
+        "status": "PASS",
+        "detail": "1727"
+      },
+      {
+        "check_id": "V058",
+        "title": "390개 AST 그래프 정상",
+        "status": "PASS",
+        "detail": "{}"
+      },
+      {
+        "check_id": "V059",
+        "title": "모든 AST TABLE 참조 대상 존재",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "V060",
+        "title": "F022 table6 AST 역색인",
+        "status": "PASS",
+        "detail": "['AST_F022']"
+      },
+      {
+        "check_id": "V061",
+        "title": "F022 참조 TABLE에 table6 포함",
+        "status": "PASS",
+        "detail": "['LT_F023_002', 'LT_F023_003', 'LT_PATCH_F022_PROCEDURE_TABLE06']"
+      },
+      {
+        "check_id": "V062",
+        "title": "current 논리 payload schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-logical-tables-current-v1"
+      },
+      {
+        "check_id": "V063",
+        "title": "current AST payload schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-condition-ast-current-v1"
+      },
+      {
+        "check_id": "V064",
+        "title": "apply log payload schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-correction-apply-log-v1"
+      }
+    ],
+    "issues": []
+  }
+}

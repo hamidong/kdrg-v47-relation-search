@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R4",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: stage69b_validator FAIL\nnode:internal/modules/cjs/loader:1210\n  throw err;\n  ^\n\nError: Cannot find module '/home/runner/workspace/reports/stage69b_0517_search_relation_ux_shadow_r4/shadow/electron/electron/tests/validate-stage69b-0517-search-relation-ux.js'\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)\n    at Module._load (node:internal/modules/cjs/loader:1038:27)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v20.20.0\n"
+}

@@ -1,0 +1,23 @@
+[PASS] Stage70D R1 / 0.5.18 Release Prep Shadow
+stage70c_actual_binding=PASS
+shadow_version_package_package_lock=0.5.18
+50D_version_occurrences_migrated=3
+50D_script_version=2026-09-21_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V15_0518
+release_prep_delta_files=3
+final_release_candidate_files=6
+phase1_ui=PRESERVED
+general_adrg_classification=RIGHT
+relation_classification=RIGHT
+stage70b_validator=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.18=PASS
+runtime_json=UNCHANGED
+actual_package_version=0.5.17
+actual_staging=EMPTY
+actual=NOT_PERFORMED
+readiness=READY_FOR_70E_0518_RELEASE_PREP_ACTUAL
+report=reports/stage70d_0518_release_prep_shadow_r1/shadow_summary.txt
+json=reports/stage70d_0518_release_prep_shadow_r1/shadow.json

@@ -1,0 +1,32 @@
+KDRG V4.7 Electron Stage63F / 0.5.12 Commit + Push + RC R1
+====================================================================================================
+status=PASS
+readiness=READY_FOR_0512_TAG_RELEASE
+
+[PREFLIGHT]
+{"head": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "origin_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "tag_guard": {"immutable_0511_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4", "local_0512": "", "remote_0512": ""}, "file_sha256": {"50D_validate_kdrg_electron_windows_packaging.py": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373", "electron/package.json": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b", "electron/package-lock.json": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184", "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660", "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26", "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}}
+
+[STATE]
+READY_TO_COMMIT
+
+[COMMIT]
+{"commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "commit_output": "[main 1ab52cf] fix: repair KDRG condition presentation for 0.5.12\n 6 files changed, 104 insertions(+), 190 deletions(-)\n", "shape": {"parent": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "name_status": ["M\t50D_validate_kdrg_electron_windows_packaging.py", "M\telectron/package-lock.json", "M\telectron/package.json", "M\telectron/renderer/app.js", "M\telectron/renderer/styles.css", "M\telectron/tests/validate-stage59b-ui.js"], "files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/package-lock.json", "electron/package.json", "electron/renderer/app.js", "electron/renderer/styles.css", "electron/tests/validate-stage59b-ui.js"]}}
+
+[PUSH]
+{"commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "remote_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "push_output": "To https://github.com/hamidong/kdrg-v47-relation-search.git\n   4c81a49..1ab52cf  HEAD -> main\n"}
+
+[RC]
+{"dispatched": true, "reused_successful_run": false, "run_id": 35320275215, "watch_returncode": 0, "run": {"conclusion": "success", "databaseId": 35320275215, "event": "workflow_dispatch", "headBranch": "main", "headSha": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "status": "completed", "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35320275215"}}
+
+[FINAL GUARD]
+{"release_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "release_commit_shape": {"parent": "4c81a49b64a86cc1490314b38cbbec4c898d56e2", "name_status": ["M\t50D_validate_kdrg_electron_windows_packaging.py", "M\telectron/package-lock.json", "M\telectron/package.json", "M\telectron/renderer/app.js", "M\telectron/renderer/styles.css", "M\telectron/tests/validate-stage59b-ui.js"], "files": ["50D_validate_kdrg_electron_windows_packaging.py", "electron/package-lock.json", "electron/package.json", "electron/renderer/app.js", "electron/renderer/styles.css", "electron/tests/validate-stage59b-ui.js"]}, "file_sha256": {"50D_validate_kdrg_electron_windows_packaging.py": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373", "electron/package.json": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b", "electron/package-lock.json": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184", "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660", "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26", "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"}, "rc": {"conclusion": "success", "databaseId": 35320275215, "event": "workflow_dispatch", "headBranch": "main", "headSha": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "status": "completed", "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35320275215"}, "tag_guard": {"immutable_0511_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4", "local_0512": "", "remote_0512": ""}, "version": "0.5.12", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "worktree_clean": true, "staging_empty": true}
+
+[NEXT]
+- 0.5.12 release commit/push 및 workflow_dispatch RC 성공.
+- electron-v0.5.12 tag는 아직 local/remote 모두 없음.
+- electron-v0.5.11 tag는 기존 release commit에 그대로 고정.
+- 다음 단계: RC commit에 electron-v0.5.12 immutable tag 생성/푸시.
+- tag workflow 성공 후 Release asset/SHA256 최종 검증.
+
+report_txt=/home/runner/workspace/stage63f_0512_commit_push_rc_r1.txt
+report_json=/home/runner/workspace/stage63f_0512_commit_push_rc_r1.json

@@ -1,0 +1,58 @@
+KDRG V4.7 Electron Stage67I6D / 0.5.15 Workflow Dispatch Failure Diagnosis R1
+==============================================================================================================
+status=PASS
+classification=LIKELY_INVALID_WORKFLOW_YAML_FROM_DIAGNOSTIC_MARKER_INDENTATION
+
+[GH ERROR]
+StageError: command failed (1): gh workflow run build-electron-windows.yml --ref main
+could not create workflow dispatch event: HTTP 422: Workflow does not have 'workflow_dispatch' trigger (https://api.github.com/repos/hamidong/kdrg-v47-relation-search/actions/workflows/321767547/dispatches)
+Traceback (most recent call last):
+File "/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py", line 566, in main
+payload["dispatch"] = dispatch_or_reuse(commit)
+^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py", line 349, in dispatch_or_reuse
+run(["gh", "workflow", "run", WORKFLOW, "--ref", "main"])
+File "/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py", line 81, in run
+raise StageError(
+StageError: command failed (1): gh workflow run build-electron-windows.yml --ref main
+could not create workflow dispatch event: HTTP 422: Workflow does not have 'workflow_dispatch' trigger (https://api.github.com/repos/hamidong/kdrg-v47-relation-search/actions/workflows/321767547/dispatches)
+
+[WORKFLOW]
+{
+  "registered": true,
+  "workflow": {
+    "id": 321767547,
+    "name": ".github/workflows/build-electron-windows.yml",
+    "path": ".github/workflows/build-electron-windows.yml",
+    "state": "active"
+  },
+  "local_workflow_dispatch_present": true,
+  "parent_workflow_dispatch_present": true,
+  "marker_indent": 8,
+  "write_error_indent": 10,
+  "marker_indent_unsafe": true
+}
+
+[RUN]
+{
+  "returncode": 0,
+  "error": null,
+  "matching": []
+}
+
+[CLASSIFICATION]
+{
+  "root_classification": "LIKELY_INVALID_WORKFLOW_YAML_FROM_DIAGNOSTIC_MARKER_INDENTATION",
+  "signals": [
+    "WORKFLOW_MARKER_INDENTATION_UNSAFE",
+    "GH_HTTP_422",
+    "GITHUB_SAYS_WORKFLOW_DISPATCH_UNAVAILABLE",
+    "NO_RC_RUN_CREATED"
+  ],
+  "automatic_rerun_allowed": false,
+  "repair_before_next_rc": true
+}
+
+[STOP]
+diagnosis only; no workflow dispatch/rerun/commit/push/tag/release
+report_json=/home/runner/workspace/stage67i6d_0515_workflow_dispatch_failure_r1.json

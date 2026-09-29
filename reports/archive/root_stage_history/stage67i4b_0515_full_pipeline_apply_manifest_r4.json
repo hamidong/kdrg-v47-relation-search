@@ -1,0 +1,45 @@
+{
+  "schema_version": "kdrg-0515-full-pipeline-repair-v4",
+  "status": "PASS",
+  "readiness": "READY_FOR_0515_FULL_PIPELINE_ACTUAL_APPLY",
+  "base_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "target_version": "0.5.15",
+  "apply_file_count": 4,
+  "repair_contract": {
+    "public_entityType_scalar": true,
+    "CODE_to_CODE": true,
+    "ADRG_to_ADRG": true,
+    "ALL_to_ALL": true,
+    "hidden_invalid_rejection_preserved": true,
+    "all_1132_normalized_ADRG_exact_ids_pass": true,
+    "all_471_collision_CODE_ALL_behavior_unchanged": true,
+    "all_6_packaged_fixture_bridges_pass": true,
+    "workflow_failure_diagnostics_visible_before_error": true
+  },
+  "apply_files": [
+    {
+      "path": "electron/src/search-result-contract.js",
+      "source": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron/src/search-result-contract.js",
+      "actual_before_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "shadow_apply_sha256": "2053b371fa9d519619ad4965f9ce4ee4f5570fdd3ffe7a4b6176493c2e669889"
+    },
+    {
+      "path": "electron/tests/validate-stage59b-search.js",
+      "source": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron/tests/validate-stage59b-search.js",
+      "actual_before_sha256": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154",
+      "shadow_apply_sha256": "3562002f3040b7396e82c00a6a3d6f47340efc26643685bd2dd477a3d9a895a2"
+    },
+    {
+      "path": "electron/tests/validate-packaged-runtime-smoke.js",
+      "source": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron/tests/validate-packaged-runtime-smoke.js",
+      "actual_before_sha256": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+      "shadow_apply_sha256": "2b569fc1531bddd4d520807f017050c3841f9b4ac09aae586b459c6e4181c5d0"
+    },
+    {
+      "path": ".github/workflows/build-electron-windows.yml",
+      "source": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/.github/workflows/build-electron-windows.yml",
+      "actual_before_sha256": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06",
+      "shadow_apply_sha256": "81926693847d0fb5e6844b7d448a76826fb4d45c89bfb9b4d548c14fe4f28d21"
+    }
+  ]
+}

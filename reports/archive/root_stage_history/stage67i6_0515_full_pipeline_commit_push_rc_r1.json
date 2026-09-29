@@ -1,0 +1,48 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_TAG_RELEASE",
+  "started_at": "2026-09-23 02:21:16",
+  "gate": {
+    "base_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "candidate_sha256": {
+      ".github/workflows/build-electron-windows.yml": "81926693847d0fb5e6844b7d448a76826fb4d45c89bfb9b4d548c14fe4f28d21",
+      "electron/src/search-result-contract.js": "2053b371fa9d519619ad4965f9ce4ee4f5570fdd3ffe7a4b6176493c2e669889",
+      "electron/tests/validate-packaged-runtime-smoke.js": "2b569fc1531bddd4d520807f017050c3841f9b4ac09aae586b459c6e4181c5d0",
+      "electron/tests/validate-stage59b-search.js": "3562002f3040b7396e82c00a6a3d6f47340efc26643685bd2dd477a3d9a895a2"
+    }
+  },
+  "preflight": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "tracked_delta": [
+      ".github/workflows/build-electron-windows.yml",
+      "electron/src/search-result-contract.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage59b-search.js"
+    ],
+    "staging_empty": true,
+    "candidate_sha_exact": true,
+    "tag_release_absent": true
+  },
+  "commit": {
+    "commit": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "reused_existing_commit": false
+  },
+  "push": {
+    "origin_before": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_after": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "reused_existing_push": false
+  },
+  "dispatch": {},
+  "rc": {},
+  "final_guard": {
+    "head": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "origin_main": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "worktree_clean": true,
+    "staging_empty": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "error": "StageError: command failed (1): gh workflow run build-electron-windows.yml --ref main\ncould not create workflow dispatch event: HTTP 422: Workflow does not have 'workflow_dispatch' trigger (https://api.github.com/repos/hamidong/kdrg-v47-relation-search/actions/workflows/321767547/dispatches)\n\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py\", line 566, in main\n    payload[\"dispatch\"] = dispatch_or_reuse(commit)\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py\", line 349, in dispatch_or_reuse\n    run([\"gh\", \"workflow\", \"run\", WORKFLOW, \"--ref\", \"main\"])\n  File \"/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py\", line 81, in run\n    raise StageError(\nStageError: command failed (1): gh workflow run build-electron-windows.yml --ref main\ncould not create workflow dispatch event: HTTP 422: Workflow does not have 'workflow_dispatch' trigger (https://api.github.com/repos/hamidong/kdrg-v47-relation-search/actions/workflows/321767547/dispatches)\n\n",
+  "finished_at": "2026-09-23 02:21:27"
+}

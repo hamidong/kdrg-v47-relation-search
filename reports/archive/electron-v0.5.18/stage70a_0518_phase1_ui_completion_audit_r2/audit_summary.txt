@@ -1,0 +1,3 @@
+[FAIL] Stage70A R2 1차 UI 완료 전수감사
+NameError: name 'hashlib' is not defined
+report=reports/stage70a_0518_phase1_ui_completion_audit_r2/audit_summary.txt

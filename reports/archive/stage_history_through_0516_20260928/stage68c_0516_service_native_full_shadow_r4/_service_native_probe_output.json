@@ -1,0 +1,249 @@
+{
+  "ok": true,
+  "status": {
+    "ready": true,
+    "counts": {
+      "aadrg_records": 1233,
+      "abc_exact_mappings": 1212,
+      "abc_unclassified_aadrgs": 21,
+      "adrg_records": 1132,
+      "ast_node_count": 1727,
+      "code_related_aadrg_relation_count": 100321,
+      "code_related_adrg_relation_count": 90191,
+      "codes_with_runtime_relation_expansion": 9122,
+      "condition_ast_records": 390,
+      "exact_source_adrg_ref_count": 1307,
+      "family_source_adrg_ref_count": 1,
+      "logical_table_records": 1308,
+      "raw_table_owner_ref_count": 1308,
+      "rdrg_records": 2699,
+      "search_token_count": 19478,
+      "table_code_rows": 42882,
+      "table_related_adrg_relation_count": 1856,
+      "tables_with_condition_adrgs": 662,
+      "tables_with_runtime_relation_expansion": 417,
+      "unique_search_codes": 16571,
+      "unresolved_source_adrg_ref_count": 0
+    },
+    "public_search_entity_types": [
+      "CODE",
+      "ADRG"
+    ]
+  },
+  "ui_contract": {
+    "relation_reads_candidate_summary_abc": false,
+    "render_derived_function_exists": true,
+    "derived_reads_classification_code": true,
+    "derived_reads_classification_label": true,
+    "adrg_detail_has_derived_header": false,
+    "adrg_detail_calls_derived_exact": false,
+    "derived_default_closed": false,
+    "relation_has_derived_header": false
+  },
+  "full_audit": {
+    "adrg_record_map_size": 1132,
+    "aadrg_record_map_size": 1233,
+    "adrg_scanned": 1132,
+    "derived_aadrg_total": 1233,
+    "relation_eligible": 371,
+    "relation_candidate_found": 370,
+    "relation_compared_with_classification": 363,
+    "anomaly_counts": {
+      "direct_missing": 0,
+      "detail_missing": 0,
+      "direct_detail_mismatch": 0,
+      "derived_missing_entity_id": 0,
+      "derived_missing_title": 0,
+      "derived_missing_code": 21,
+      "derived_missing_label": 0,
+      "relation_candidate_not_found": 1,
+      "relation_missing_labels": 0,
+      "relation_direct_mismatch": 0
+    },
+    "anomalies": {
+      "direct_missing": [],
+      "detail_missing": [],
+      "direct_detail_mismatch": [],
+      "derived_missing_entity_id": [],
+      "derived_missing_title": [],
+      "derived_missing_code": [
+        {
+          "adrg": "9900",
+          "aadrg": "99000"
+        },
+        {
+          "adrg": "9990",
+          "aadrg": "99900"
+        },
+        {
+          "adrg": "D014",
+          "aadrg": "D0140"
+        },
+        {
+          "adrg": "G241",
+          "aadrg": "G2411"
+        },
+        {
+          "adrg": "G241",
+          "aadrg": "G2412"
+        },
+        {
+          "adrg": "G241",
+          "aadrg": "G2413"
+        },
+        {
+          "adrg": "G242",
+          "aadrg": "G2421"
+        },
+        {
+          "adrg": "G242",
+          "aadrg": "G2422"
+        },
+        {
+          "adrg": "G242",
+          "aadrg": "G2423"
+        },
+        {
+          "adrg": "G650",
+          "aadrg": "G6501"
+        },
+        {
+          "adrg": "G650",
+          "aadrg": "G6502"
+        },
+        {
+          "adrg": "K630",
+          "aadrg": "K6300"
+        },
+        {
+          "adrg": "K720",
+          "aadrg": "K7201"
+        },
+        {
+          "adrg": "K720",
+          "aadrg": "K7202"
+        },
+        {
+          "adrg": "K730",
+          "aadrg": "K7300"
+        },
+        {
+          "adrg": "R634",
+          "aadrg": "R6340"
+        },
+        {
+          "adrg": "R635",
+          "aadrg": "R6350"
+        },
+        {
+          "adrg": "R636",
+          "aadrg": "R6360"
+        },
+        {
+          "adrg": "R637",
+          "aadrg": "R6370"
+        },
+        {
+          "adrg": "R671",
+          "aadrg": "R6710"
+        },
+        {
+          "adrg": "R672",
+          "aadrg": "R6720"
+        }
+      ],
+      "derived_missing_label": [],
+      "relation_candidate_not_found": [
+        {
+          "adrg": "P674",
+          "fixture": {
+            "codes": [
+              "Q2561",
+              "Q2753"
+            ],
+            "operator": "AND",
+            "source": "SAME_GROUP"
+          }
+        }
+      ],
+      "relation_missing_labels": [],
+      "relation_direct_mismatch": []
+    }
+  },
+  "actual_fixture": {
+    "request": [
+      {
+        "code": "i214",
+        "codeType": "AUTO"
+      },
+      {
+        "code": "m6569",
+        "codeType": "AUTO"
+      }
+    ],
+    "operator": "AND",
+    "error": null,
+    "total_count": 0,
+    "result_ids": [],
+    "candidates": {
+      "F111": null,
+      "F112": null,
+      "F121": null,
+      "F122": null
+    }
+  },
+  "f111": {
+    "direct": {
+      "entity_id": "F111",
+      "summary": {
+        "mdc": "05",
+        "aadrg_count": 1,
+        "abc_status": "SINGLE",
+        "abc_display_labels": [
+          "질병군 분류(전문)"
+        ],
+        "source_table_count": 0,
+        "condition_table_count": 3,
+        "related_table_count": 3,
+        "condition_ast_id": "AST_F111",
+        "user_condition_status": "RESOLVED_AST",
+        "user_condition_table_count": 3
+      }
+    },
+    "detail": {
+      "entity_id": "F111",
+      "abc_classification_codes": [
+        "A"
+      ],
+      "abc_display_labels": [
+        "질병군 분류(전문)"
+      ],
+      "aadrg_records": [
+        {
+          "entity_type": "AADRG",
+          "entity_id": "F1110",
+          "title": "F1110 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+          "subtitle": "ADRG F111 · 질병군 분류(전문)",
+          "summary": {
+            "adrg": "F111",
+            "mdc": "05",
+            "classification_code": "A",
+            "classification_display_label": "질병군 분류(전문)",
+            "abc_status": "EXACT_OFFICIAL",
+            "rdrg_count": 2,
+            "mdc_name": "Diseases and Disorders of the Circulatory System"
+          }
+        }
+      ]
+    },
+    "relation": null,
+    "direct_labels": [
+      "질병군 분류(전문)"
+    ],
+    "detail_labels": [
+      "질병군 분류(전문)"
+    ],
+    "relation_labels": []
+  },
+  "root_cause": "ACTUAL_FIXTURE_F111_NOT_RETURNED"
+}

@@ -1,0 +1,4 @@
+[FAIL] Stage70C 0.5.18 1차 UI 마감 Actual
+Stop: Actual 변경범위 불일치: ['electron/renderer/app.js', 'electron/renderer/styles.css']
+rollback=PASS
+report=reports/stage70c_0518_phase1_ui_actual_r1/actual_summary.txt

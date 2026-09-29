@@ -1,0 +1,2976 @@
+{
+  "meta": {
+    "schema_version": "kdrg-v47-correction-patch-log-v1",
+    "data_version": "KDRG V4.7",
+    "script_version": "2026-07-21_KDRG_V47_CORRECTION_PATCH_LOG_V1",
+    "generated_at": "2026-07-21T07:35:17+00:00",
+    "patch_state": "parsed_and_mapped_not_applied",
+    "source_correction_effective_through": "2026-05-01",
+    "source_files": {
+      "correction_hwpx": {
+        "path": "/home/runner/workspace/sources/kdrg_v47/corrections/KDRG 일반용(V4.7)_교정표_20260501.hwpx",
+        "sha256": "6d389aa42806b491d90998112b5fede09f6b0b03cfd7191fc40c563691fcfbc5"
+      },
+      "logical_tables_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_logical_tables.json",
+        "sha256": "11be87465cdcdf424a018358ca1408476cc76c73733753a9387abe98cedf1b3a"
+      },
+      "condition_ast_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_condition_ast.json",
+        "sha256": "12209b0fbdd4881015c970ce5868a4578c47044c221091b26a64a30169b267de"
+      },
+      "procedure_master_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_procedure_master.json",
+        "sha256": "c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec"
+      },
+      "group_name_base_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_group_name_base.json",
+        "sha256": "24363a1d7b12d59c0506fa6c586cf1e692477742287301015ecd525c7db980d8"
+      },
+      "main_page_blocks_json": {
+        "path": "/home/runner/workspace/data/kdrg_v47_main_page_blocks.json",
+        "sha256": "8ac7c23e3573e286cc5adb669c2589ba7acc47c078f3bad962203fabde32c815"
+      }
+    }
+  },
+  "source_changes": [
+    {
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 119",
+        "start_printed_page": 119,
+        "end_printed_page": 119
+      },
+      "mdc": "010",
+      "source_adrgs": [
+        "B510"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "F6260",
+          "source_name": "유발 뇌자기파 기능적지도화검사(시각, 청각, 감각)",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 삭제",
+            "나626‡",
+            "F6260",
+            "유발 뇌자기파 기능적지도화검사(시각, 청각, 감각)",
+            "시술 추가",
+            "나626주1‡",
+            "F6262",
+            "유발 뇌자기파 기능적지도화검사-체성감각",
+            "나626주1‡",
+            "F6263",
+            "유발 뇌자기파 기능적지도화검사-시각",
+            "나626주1‡",
+            "F6264",
+            "유발 뇌자기파 기능적지도화검사-청각"
+          ]
+        },
+        {
+          "operation_type": "code_add",
+          "procedure_code": "F6262",
+          "source_name": "유발 뇌자기파 기능적지도화검사-체성감각",
+          "source_token_index": 6,
+          "source_tokens": [
+            "시술 삭제",
+            "나626‡",
+            "F6260",
+            "유발 뇌자기파 기능적지도화검사(시각, 청각, 감각)",
+            "시술 추가",
+            "나626주1‡",
+            "F6262",
+            "유발 뇌자기파 기능적지도화검사-체성감각",
+            "나626주1‡",
+            "F6263",
+            "유발 뇌자기파 기능적지도화검사-시각",
+            "나626주1‡",
+            "F6264",
+            "유발 뇌자기파 기능적지도화검사-청각"
+          ]
+        },
+        {
+          "operation_type": "code_add",
+          "procedure_code": "F6263",
+          "source_name": "유발 뇌자기파 기능적지도화검사-시각",
+          "source_token_index": 9,
+          "source_tokens": [
+            "시술 삭제",
+            "나626‡",
+            "F6260",
+            "유발 뇌자기파 기능적지도화검사(시각, 청각, 감각)",
+            "시술 추가",
+            "나626주1‡",
+            "F6262",
+            "유발 뇌자기파 기능적지도화검사-체성감각",
+            "나626주1‡",
+            "F6263",
+            "유발 뇌자기파 기능적지도화검사-시각",
+            "나626주1‡",
+            "F6264",
+            "유발 뇌자기파 기능적지도화검사-청각"
+          ]
+        },
+        {
+          "operation_type": "code_add",
+          "procedure_code": "F6264",
+          "source_name": "유발 뇌자기파 기능적지도화검사-청각",
+          "source_token_index": 12,
+          "source_tokens": [
+            "시술 삭제",
+            "나626‡",
+            "F6260",
+            "유발 뇌자기파 기능적지도화검사(시각, 청각, 감각)",
+            "시술 추가",
+            "나626주1‡",
+            "F6262",
+            "유발 뇌자기파 기능적지도화검사-체성감각",
+            "나626주1‡",
+            "F6263",
+            "유발 뇌자기파 기능적지도화검사-시각",
+            "나626주1‡",
+            "F6264",
+            "유발 뇌자기파 기능적지도화검사-청각"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 1,
+        "hwpx_row_indices": [
+          1
+        ],
+        "cell_origin_ids": [
+          "T01_R01_C00",
+          "T01_R01_C01",
+          "T01_R01_C03",
+          "T01_R01_C04"
+        ]
+      },
+      "source_change_sha256": "bfa1243aecd397d1eaf2f1c2d2e8481fd82362435b9e2994e78c2aab8af592d8",
+      "resolved_target_adrgs": [
+        "B510"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "B510",
+          "resolved_adrg": "B510",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_002",
+      "effective_date": "2026-03-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 219",
+        "start_printed_page": 219,
+        "end_printed_page": 219
+      },
+      "mdc": "030",
+      "source_adrgs": [
+        "D051",
+        "D052"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": 1,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "U1150",
+          "source_name": "상악동내 이물제거술",
+          "source_token_index": 1,
+          "source_tokens": [
+            "차115",
+            "U1150",
+            "상악동내 이물제거술",
+            "시술 추가"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 2,
+        "hwpx_row_indices": [
+          1,
+          2
+        ],
+        "cell_origin_ids": [
+          "T02_R01_C00",
+          "T02_R01_C01",
+          "T02_R01_C03",
+          "T02_R01_C04"
+        ]
+      },
+      "source_change_sha256": "7f8fc6d58e15bad945581a448223326764c17c9dbc17d671bd36dba850f9b9a7",
+      "resolved_target_adrgs": [
+        "D051",
+        "D052"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "D051",
+          "resolved_adrg": "D051",
+          "method": "exact_catalog_match"
+        },
+        {
+          "source_adrg": "D052",
+          "resolved_adrg": "D052",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_003",
+      "effective_date": "2026-03-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 313~314",
+        "start_printed_page": 313,
+        "end_printed_page": 314
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F022"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": 6,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "M6586",
+          "source_name": "경피적 승모판막 재치환술 [심박중격 접근]",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 추가",
+            "자658-2",
+            "M6586",
+            "경피적 승모판막 재치환술 [심박중격 접근]"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 2,
+        "hwpx_row_indices": [
+          3
+        ],
+        "cell_origin_ids": [
+          "T02_R03_C00",
+          "T02_R03_C01",
+          "T02_R03_C03",
+          "T02_R03_C04"
+        ]
+      },
+      "source_change_sha256": "876311aeb7c7c40fd92b33f7fcc6cfb76e11b68258809d644340d155b28b6259",
+      "resolved_target_adrgs": [
+        "F022"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F022",
+          "resolved_adrg": "F022",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_004",
+      "effective_date": "2026-03-01",
+      "change_kind": "condition_replace",
+      "printed_page_range": {
+        "raw_text": "(본문) 313~314",
+        "start_printed_page": 313,
+        "end_printed_page": 314
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F022"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [],
+      "condition_change": {
+        "adrg": "F022",
+        "corrected_condition_text": "(시술명 table2 and 시술명 table 3) or 시술명 table6",
+        "note": "* 신설된 ‘경피적 승모판막 재치환술[심박중격 접근]’ 시술을 시술명 table6에 배정함",
+        "source_tokens": [
+          "조건 수정",
+          "F022",
+          "승모판 또는 삼첨판 수술(심도자술 사용)",
+          "Mitral Valve or Tricuspid Valve Procedures with Cardiac Catheterization",
+          "(시술명 table2 and 시술명 table 3) or",
+          "시술명 table6",
+          "* 신설된 ‘경피적 승모판막 재치환술[심박중격 접근]’ 시술을 시술명 table6에 배정함"
+        ]
+      },
+      "source_ref": {
+        "hwpx_table_index": 2,
+        "hwpx_row_indices": [
+          4
+        ],
+        "cell_origin_ids": [
+          "T02_R04_C02"
+        ]
+      },
+      "source_change_sha256": "5a5d28a82bd0c3220860a63ef314d4eade176355c307a861e23cd3485057bf0c",
+      "resolved_target_adrgs": [
+        "F022"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F022",
+          "resolved_adrg": "F022",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_005",
+      "effective_date": "2026-03-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 925~928",
+        "start_printed_page": 925,
+        "end_printed_page": 928
+      },
+      "mdc": "150",
+      "source_adrgs": [
+        "P020"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "M6586",
+          "source_name": "경피적 승모판막 재치환술 [심박중격 접근]",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 추가",
+            "자658-2",
+            "M6586",
+            "경피적 승모판막 재치환술 [심박중격 접근]"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 2,
+        "hwpx_row_indices": [
+          5
+        ],
+        "cell_origin_ids": [
+          "T02_R05_C00",
+          "T02_R05_C01",
+          "T02_R05_C03",
+          "T02_R05_C04"
+        ]
+      },
+      "source_change_sha256": "7f132088ed828d73be12b030e52427135654bbe2e1527f8b9be47e38cc597e91",
+      "resolved_target_adrgs": [
+        "P020"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "P020",
+          "resolved_adrg": "P020",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_006",
+      "effective_date": "2026-03-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 1133~1150",
+        "start_printed_page": 1133,
+        "end_printed_page": 1150
+      },
+      "mdc": "211",
+      "source_adrgs": [
+        "W040"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "U1150",
+          "source_name": "상악동내 이물제거술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 추가",
+            "차115",
+            "U1150",
+            "상악동내 이물제거술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 2,
+        "hwpx_row_indices": [
+          6
+        ],
+        "cell_origin_ids": [
+          "T02_R06_C00",
+          "T02_R06_C01",
+          "T02_R06_C03",
+          "T02_R06_C04"
+        ]
+      },
+      "source_change_sha256": "585508f9e37aa891c401b0f72dfb6a867b7ea2c29c40123c33c52cef87cfbb06",
+      "resolved_target_adrgs": [
+        "W040"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "W040",
+          "resolved_adrg": "W040",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_007",
+      "effective_date": "2026-03-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 1179~1202",
+        "start_printed_page": 1179,
+        "end_printed_page": 1202
+      },
+      "mdc": "212",
+      "source_adrgs": [
+        "X060"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "U1150",
+          "source_name": "상악동내 이물제거술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 추가",
+            "차115",
+            "U1150",
+            "상악동내 이물제거술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 2,
+        "hwpx_row_indices": [
+          7
+        ],
+        "cell_origin_ids": [
+          "T02_R07_C00",
+          "T02_R07_C01",
+          "T02_R07_C03",
+          "T02_R07_C04"
+        ]
+      },
+      "source_change_sha256": "4aa73e56279a00898064eeb1fd2d96d218df008bdc86ad94c630160797a963db",
+      "resolved_target_adrgs": [
+        "X060"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "X060",
+          "resolved_adrg": "X060",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_008",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 113~118",
+        "start_printed_page": 113,
+        "end_printed_page": 118
+      },
+      "mdc": "010",
+      "source_adrgs": [
+        "B205"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "O0239",
+          "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_token_index": 2,
+          "source_tokens": [
+            "자200",
+            "나(1)(가)4)",
+            "O0239",
+            "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+            "시술 추가"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          1
+        ],
+        "cell_origin_ids": [
+          "T03_R01_C00",
+          "T03_R01_C01",
+          "T03_R01_C03",
+          "T03_R01_C04"
+        ]
+      },
+      "source_change_sha256": "f95ba972e870d51f653c03066b0cc85b5add05ed31891d2324a4b2a8822b9daa",
+      "resolved_target_adrgs": [
+        "B205"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "B205",
+          "resolved_adrg": "B205",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_009",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 270~274",
+        "start_printed_page": 270,
+        "end_printed_page": 274
+      },
+      "mdc": "040",
+      "source_adrgs": [
+        "E043"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          2
+        ],
+        "cell_origin_ids": [
+          "T03_R02_C00",
+          "T03_R02_C01",
+          "T03_R02_C03",
+          "T03_R02_C04"
+        ]
+      },
+      "source_change_sha256": "26f999a5009d533f1d371457c6852c36668e2e6001236d51fe8d0b0cb4ad733c",
+      "resolved_target_adrgs": [
+        "E034"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "E043",
+          "resolved_adrg": "E034",
+          "method": "source_adrg_not_in_catalog_page_and_code_unique_resolution"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_010",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 323",
+        "start_printed_page": 323,
+        "end_printed_page": 323
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F081",
+        "F082"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": 3,
+      "code_changes": [
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          3,
+          4
+        ],
+        "cell_origin_ids": [
+          "T03_R03_C00",
+          "T03_R03_C01",
+          "T03_R03_C03",
+          "T03_R03_C04"
+        ]
+      },
+      "source_change_sha256": "5df7515c6472cec6e2e32e5d42b476814670b39d4020a77ba160584ffb5431bd",
+      "resolved_target_adrgs": [
+        "F081",
+        "F082"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F081",
+          "resolved_adrg": "F081",
+          "method": "exact_catalog_match"
+        },
+        {
+          "source_adrg": "F082",
+          "resolved_adrg": "F082",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_011",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 323",
+        "start_printed_page": 323,
+        "end_printed_page": 323
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F083"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": 2,
+      "code_changes": [
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          5
+        ],
+        "cell_origin_ids": [
+          "T03_R03_C00",
+          "T03_R03_C01",
+          "T03_R05_C03",
+          "T03_R05_C04"
+        ]
+      },
+      "source_change_sha256": "1b4cb8f70f12750d2361425b16a2d1c689b65fb9dd4e07f8419c899314cb48ea",
+      "resolved_target_adrgs": [
+        "F083"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F083",
+          "resolved_adrg": "F083",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_012",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 324",
+        "start_printed_page": 324,
+        "end_printed_page": 324
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F084"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": 2,
+      "code_changes": [
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          6
+        ],
+        "cell_origin_ids": [
+          "T03_R03_C01",
+          "T03_R06_C00",
+          "T03_R06_C03",
+          "T03_R06_C04"
+        ]
+      },
+      "source_change_sha256": "13a0f9448eaf11bd14b21612c2d48d5e42bd88a62ca77ca2090056b5be845277",
+      "resolved_target_adrgs": [
+        "F084"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F084",
+          "resolved_adrg": "F084",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_013",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 330~331",
+        "start_printed_page": 330,
+        "end_printed_page": 331
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F171"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": 2,
+      "code_changes": [
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          7
+        ],
+        "cell_origin_ids": [
+          "T03_R03_C01",
+          "T03_R07_C00",
+          "T03_R07_C03",
+          "T03_R07_C04"
+        ]
+      },
+      "source_change_sha256": "83051ce89d3669c70d11a52d7499ee1b575ba83bedf27dd8b5d91e416cef64a2",
+      "resolved_target_adrgs": [
+        "F171"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F171",
+          "resolved_adrg": "F171",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_014",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 335",
+        "start_printed_page": 335,
+        "end_printed_page": 335
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F200"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          8
+        ],
+        "cell_origin_ids": [
+          "T03_R03_C01",
+          "T03_R08_C00",
+          "T03_R08_C03",
+          "T03_R08_C04"
+        ]
+      },
+      "source_change_sha256": "6fb5a7afeadcc3fbdd49136b9479b3019128ad03d0de4f7870c0b93e44a8a254",
+      "resolved_target_adrgs": [
+        "F200"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F200",
+          "resolved_adrg": "F200",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_015",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 335",
+        "start_printed_page": 335,
+        "end_printed_page": 335
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F211"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "O0239",
+          "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_token_index": 3,
+          "source_tokens": [
+            "시술 추가",
+            "자200",
+            "나(1)(가)4)",
+            "O0239",
+            "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          9
+        ],
+        "cell_origin_ids": [
+          "T03_R03_C01",
+          "T03_R08_C00",
+          "T03_R09_C03",
+          "T03_R09_C04"
+        ]
+      },
+      "source_change_sha256": "839cd478660767b065b34f1ac01ff1a0b0d86b3fca52b25141b88061ceb0e492",
+      "resolved_target_adrgs": [
+        "F211"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F211",
+          "resolved_adrg": "F211",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_016",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 1133~1150",
+        "start_printed_page": 1133,
+        "end_printed_page": 1150
+      },
+      "mdc": "211",
+      "source_adrgs": [
+        "W040"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "O0239",
+          "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_token_index": 3,
+          "source_tokens": [
+            "시술 추가",
+            "자200",
+            "나(1)(가)4)",
+            "O0239",
+            "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        },
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 7,
+          "source_tokens": [
+            "시술 추가",
+            "자200",
+            "나(1)(가)4)",
+            "O0239",
+            "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          10
+        ],
+        "cell_origin_ids": [
+          "T03_R10_C00",
+          "T03_R10_C01",
+          "T03_R10_C03",
+          "T03_R10_C04"
+        ]
+      },
+      "source_change_sha256": "df633da5a9325123871c26741c798ced9e5263a9829002094f25f1102a8607ad",
+      "resolved_target_adrgs": [
+        "W040"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "W040",
+          "resolved_adrg": "W040",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_017",
+      "effective_date": "2026-04-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 1179~1202",
+        "start_printed_page": 1179,
+        "end_printed_page": 1202
+      },
+      "mdc": "212",
+      "source_adrgs": [
+        "X060"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "O0239",
+          "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_token_index": 3,
+          "source_tokens": [
+            "시술 추가",
+            "자200",
+            "나(1)(가)4)",
+            "O0239",
+            "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        },
+        {
+          "operation_type": "code_remove",
+          "procedure_code": "M6615",
+          "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+          "source_token_index": 7,
+          "source_tokens": [
+            "시술 추가",
+            "자200",
+            "나(1)(가)4)",
+            "O0239",
+            "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+            "시술 삭제",
+            "자661-1",
+            "M6615",
+            "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 3,
+        "hwpx_row_indices": [
+          11
+        ],
+        "cell_origin_ids": [
+          "T03_R11_C00",
+          "T03_R11_C01",
+          "T03_R11_C03",
+          "T03_R11_C04"
+        ]
+      },
+      "source_change_sha256": "270525f725229c7172b1e8ee45353f46c0ad3047647d7ee64032689713895582",
+      "resolved_target_adrgs": [
+        "X060"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "X060",
+          "resolved_adrg": "X060",
+          "method": "exact_catalog_match"
+        }
+      ]
+    },
+    {
+      "source_change_id": "CORR_SRC_018",
+      "effective_date": "2026-05-01",
+      "change_kind": "code_membership",
+      "printed_page_range": {
+        "raw_text": "(본문) 329",
+        "start_printed_page": 329,
+        "end_printed_page": 329
+      },
+      "mdc": "050",
+      "source_adrgs": [
+        "F142"
+      ],
+      "table_role": "procedure",
+      "table_role_korean": "시술명",
+      "table_number": null,
+      "code_changes": [
+        {
+          "operation_type": "code_add",
+          "procedure_code": "M0670",
+          "source_name": "심방세동의 펄스장절제술",
+          "source_token_index": 2,
+          "source_tokens": [
+            "시술 추가",
+            "자654-2",
+            "M0670",
+            "심방세동의 펄스장절제술"
+          ]
+        }
+      ],
+      "condition_change": null,
+      "source_ref": {
+        "hwpx_table_index": 4,
+        "hwpx_row_indices": [
+          1
+        ],
+        "cell_origin_ids": [
+          "T04_R01_C00",
+          "T04_R01_C01",
+          "T04_R01_C03",
+          "T04_R01_C04"
+        ]
+      },
+      "source_change_sha256": "12a99cf9dd1b1262d08e5301f09aed0e46ac48dc86fdccaf4f35c27be68ed934",
+      "resolved_target_adrgs": [
+        "F142"
+      ],
+      "adrg_resolution": [
+        {
+          "source_adrg": "F142",
+          "resolved_adrg": "F142",
+          "method": "exact_catalog_match"
+        }
+      ]
+    }
+  ],
+  "patch_operations": [
+    {
+      "patch_operation_id": "PATCH_001",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "B510"
+      ],
+      "resolved_target_adrgs": [
+        "B510"
+      ],
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "F6260",
+        "source_name": "유발 뇌자기파 기능적지도화검사(시각, 청각, 감각)",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "4803d95130535a2c6477a52f5e932d1a369c628c6ae5189479d4ca5c9c6219a5"
+    },
+    {
+      "patch_operation_id": "PATCH_002",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "B510"
+      ],
+      "resolved_target_adrgs": [
+        "B510"
+      ],
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "F6262",
+        "source_name": "유발 뇌자기파 기능적지도화검사-체성감각",
+        "canonical_20260501": {
+          "classification_number": "나626주1‡",
+          "korean_name": "유발 뇌자기파 기능적지도화검사-체성감각",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 115
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "9ece0b00039b082a165b4ca3729c74568a04aeaa2a6a433c0d703d0b393d65b3"
+    },
+    {
+      "patch_operation_id": "PATCH_003",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "B510"
+      ],
+      "resolved_target_adrgs": [
+        "B510"
+      ],
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "F6263",
+        "source_name": "유발 뇌자기파 기능적지도화검사-시각",
+        "canonical_20260501": {
+          "classification_number": "나626주1‡",
+          "korean_name": "유발 뇌자기파 기능적지도화검사-시각",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 116
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "fd42b0c3bd4288c29df905638b8faf65aef48928bfcc0dc95bb78731e0428717"
+    },
+    {
+      "patch_operation_id": "PATCH_004",
+      "source_change_id": "CORR_SRC_001",
+      "effective_date": "2026-02-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "B510"
+      ],
+      "resolved_target_adrgs": [
+        "B510"
+      ],
+      "target": {
+        "logical_table_id": "LT_B510_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B510": [
+              "LT_B510_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "F6264",
+        "source_name": "유발 뇌자기파 기능적지도화검사-청각",
+        "canonical_20260501": {
+          "classification_number": "나626주1‡",
+          "korean_name": "유발 뇌자기파 기능적지도화검사-청각",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 117
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "f3743228356c247575125d9a6099bab2345903e3e5a2991f692c7b5b7bb8d3b3"
+    },
+    {
+      "patch_operation_id": "PATCH_005",
+      "source_change_id": "CORR_SRC_002",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "D051",
+        "D052"
+      ],
+      "resolved_target_adrgs": [
+        "D051",
+        "D052"
+      ],
+      "target": {
+        "logical_table_id": "LT_D054_001",
+        "role": "procedure",
+        "table_number": 1,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "D051": [
+              "LT_D054_001"
+            ],
+            "D052": [
+              "LT_D054_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "U1150",
+        "source_name": "상악동내 이물제거술",
+        "canonical_20260501": {
+          "classification_number": "차115",
+          "korean_name": "상악동내 이물제거술",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 2649
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "29729d27d3dbb07a2584045b8332f839b7e570d34fbeb27e59bd0f3a6c7624a4"
+    },
+    {
+      "patch_operation_id": "PATCH_006",
+      "source_change_id": "CORR_SRC_003",
+      "effective_date": "2026-03-01",
+      "operation_type": "create_logical_table",
+      "source_adrgs": [
+        "F022"
+      ],
+      "resolved_target_adrgs": [
+        "F022"
+      ],
+      "target": {
+        "logical_table_id": "LT_PATCH_F022_PROCEDURE_TABLE06",
+        "logical_key": "PATCH_ADRG:F022|procedure|TABLE:6"
+      },
+      "before": {
+        "logical_table_exists": false
+      },
+      "after_plan": {
+        "logical_table_type": "correction_patch_definition",
+        "scope_type": "source_adrg_numbered_table_correction",
+        "role": "procedure",
+        "role_korean": "시술명/Procedure",
+        "table_number": 6,
+        "source_adrgs": [
+          "F022"
+        ],
+        "adrg_families": [
+          "F02"
+        ],
+        "mdcs": [
+          "05"
+        ],
+        "codes": [],
+        "source_ref": {
+          "correction_source_change_id": "CORR_SRC_003",
+          "printed_page_range": {
+            "raw_text": "(본문) 313~314",
+            "start_printed_page": 313,
+            "end_printed_page": 314
+          }
+        }
+      },
+      "preconditions": {
+        "planned_id_absent_in_base": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "f11474deddd9a551f805edb219f7554270266e01274b0a906b9a6af7c2c30b86"
+    },
+    {
+      "patch_operation_id": "PATCH_007",
+      "source_change_id": "CORR_SRC_003",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "F022"
+      ],
+      "resolved_target_adrgs": [
+        "F022"
+      ],
+      "target": {
+        "logical_table_id": "LT_PATCH_F022_PROCEDURE_TABLE06",
+        "role": "procedure",
+        "table_number": 6,
+        "resolution": {
+          "method": "new_table_created_by_preceding_patch_operation"
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6586",
+        "source_name": "경피적 승모판막 재치환술 [심박중격 접근]",
+        "canonical_20260501": {
+          "classification_number": "자658-2",
+          "korean_name": "경피적 승모판막 재치환술[심방중격 접근]",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 349
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": false
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "95c632896e75cd8ed749375d2de295d99cb1d4e703168f05755cfe3d96d3f8a6"
+    },
+    {
+      "patch_operation_id": "PATCH_008",
+      "source_change_id": "CORR_SRC_004",
+      "effective_date": "2026-03-01",
+      "operation_type": "replace_condition_ast",
+      "source_adrgs": [
+        "F022"
+      ],
+      "resolved_target_adrgs": [
+        "F022"
+      ],
+      "target": {
+        "condition_ast_id": "AST_F022",
+        "adrg": "F022"
+      },
+      "before": {
+        "source_normalized_text": "시술명 table2 and 시술명 table3",
+        "canonical_expression": "(TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003])",
+        "canonical_expression_sha256": "a51165da451cb9e94a0a14e1bae5e96937285917ad6872bb2ca49718a36be38b",
+        "logical_table_ids": [
+          "LT_F023_002",
+          "LT_F023_003"
+        ]
+      },
+      "after_plan": {
+        "source_normalized_text": "(시술명 table2 and 시술명 table 3) or 시술명 table6",
+        "canonical_expression": "((TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003]) OR TABLE_REF[LT_PATCH_F022_PROCEDURE_TABLE06])",
+        "logical_table_ids": [
+          "LT_F023_002",
+          "LT_F023_003",
+          "LT_PATCH_F022_PROCEDURE_TABLE06"
+        ],
+        "note": "* 신설된 ‘경피적 승모판막 재치환술[심박중격 접근]’ 시술을 시술명 table6에 배정함"
+      },
+      "preconditions": {
+        "base_ast_exists": true,
+        "base_text_matches": true,
+        "new_logical_table_planned": "LT_PATCH_F022_PROCEDURE_TABLE06"
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "40a2fb6f6d3406a5e48e2b0e3f6702f22da5a0b0c1d52b27ef89365390f35b22"
+    },
+    {
+      "patch_operation_id": "PATCH_009",
+      "source_change_id": "CORR_SRC_005",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "P020"
+      ],
+      "resolved_target_adrgs": [
+        "P020"
+      ],
+      "target": {
+        "logical_table_id": "LT_P020_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "P020": [
+              "LT_P020_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6586",
+        "source_name": "경피적 승모판막 재치환술 [심박중격 접근]",
+        "canonical_20260501": {
+          "classification_number": "자658-2",
+          "korean_name": "경피적 승모판막 재치환술[심방중격 접근]",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 349
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "d38da04c8fe871e1cf4b70acf7fcbbacca03bb980b84cd830bc4c80d584a8cf0"
+    },
+    {
+      "patch_operation_id": "PATCH_010",
+      "source_change_id": "CORR_SRC_006",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "W040"
+      ],
+      "resolved_target_adrgs": [
+        "W040"
+      ],
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "W040": [
+              "LT_W040_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "U1150",
+        "source_name": "상악동내 이물제거술",
+        "canonical_20260501": {
+          "classification_number": "차115",
+          "korean_name": "상악동내 이물제거술",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 2649
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "9c053a87bb7d8c98387ab2c15674a497b6dadd882a7abf1573128f8a77e9c84e"
+    },
+    {
+      "patch_operation_id": "PATCH_011",
+      "source_change_id": "CORR_SRC_007",
+      "effective_date": "2026-03-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "X060"
+      ],
+      "resolved_target_adrgs": [
+        "X060"
+      ],
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "X060": [
+              "LT_X060_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "U1150",
+        "source_name": "상악동내 이물제거술",
+        "canonical_20260501": {
+          "classification_number": "차115",
+          "korean_name": "상악동내 이물제거술",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 2649
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "51e5f4830df03ffefa27544029f4c16ff4cd34279f6a5f6aa85c543522568bc2"
+    },
+    {
+      "patch_operation_id": "PATCH_012",
+      "source_change_id": "CORR_SRC_008",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "B205"
+      ],
+      "resolved_target_adrgs": [
+        "B205"
+      ],
+      "target": {
+        "logical_table_id": "LT_B205_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "B205": [
+              "LT_B205_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "O0239",
+        "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+        "canonical_20260501": {
+          "classification_number": "자200나(1)(가)4)",
+          "korean_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 941
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "543b7347baebc627ce5e695511c30e118bc7d088c230c3e6663c572a1a38e965"
+    },
+    {
+      "patch_operation_id": "PATCH_013",
+      "source_change_id": "CORR_SRC_009",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "E043"
+      ],
+      "resolved_target_adrgs": [
+        "E034"
+      ],
+      "target": {
+        "logical_table_id": "LT_E034_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "E034": [
+              "LT_E034_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "f0338354856512274c511338fea40d756e961114644d69ae52ebd4ae9a9d7f8a"
+    },
+    {
+      "patch_operation_id": "PATCH_014",
+      "source_change_id": "CORR_SRC_010",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "F081",
+        "F082"
+      ],
+      "resolved_target_adrgs": [
+        "F081",
+        "F082"
+      ],
+      "target": {
+        "logical_table_id": "LT_F082_003",
+        "role": "procedure",
+        "table_number": 3,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F081": [
+              "LT_F082_003"
+            ],
+            "F082": [
+              "LT_F082_003"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "d29e76fe9ae632297a6309d483883d9d34c456eee8dd18d2816d36567e7496ba"
+    },
+    {
+      "patch_operation_id": "PATCH_015",
+      "source_change_id": "CORR_SRC_011",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "F083"
+      ],
+      "resolved_target_adrgs": [
+        "F083"
+      ],
+      "target": {
+        "logical_table_id": "LT_F083_002",
+        "role": "procedure",
+        "table_number": 2,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F083": [
+              "LT_F083_002"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "ddc9f17061f640a4c0c12a4e94181ad244ace920f521a9d268ebe25bdaec3d7e"
+    },
+    {
+      "patch_operation_id": "PATCH_016",
+      "source_change_id": "CORR_SRC_012",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "F084"
+      ],
+      "resolved_target_adrgs": [
+        "F084"
+      ],
+      "target": {
+        "logical_table_id": "LT_F084_002",
+        "role": "procedure",
+        "table_number": 2,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F084": [
+              "LT_F084_002"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "cfa91634e5d7ff03b46a7e49be02ef692ad14f5740957b87c6c1cb8c1e379a5f"
+    },
+    {
+      "patch_operation_id": "PATCH_017",
+      "source_change_id": "CORR_SRC_013",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "F171"
+      ],
+      "resolved_target_adrgs": [
+        "F171"
+      ],
+      "target": {
+        "logical_table_id": "LT_F171_002",
+        "role": "procedure",
+        "table_number": 2,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F171": [
+              "LT_F171_002"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "94f3927a718ea498989f4589b639a1a1b192af733a58f4cf45d6ca97ee8cd0c1"
+    },
+    {
+      "patch_operation_id": "PATCH_018",
+      "source_change_id": "CORR_SRC_014",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "F200"
+      ],
+      "resolved_target_adrgs": [
+        "F200"
+      ],
+      "target": {
+        "logical_table_id": "LT_F200_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F200": [
+              "LT_F200_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "24a2ef9b041bdafc815a40f12672f1bc6b31eb05ed4883836f0a80623efc90e8"
+    },
+    {
+      "patch_operation_id": "PATCH_019",
+      "source_change_id": "CORR_SRC_015",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "F211"
+      ],
+      "resolved_target_adrgs": [
+        "F211"
+      ],
+      "target": {
+        "logical_table_id": "LT_F211_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F211": [
+              "LT_F211_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "O0239",
+        "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+        "canonical_20260501": {
+          "classification_number": "자200나(1)(가)4)",
+          "korean_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 941
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "9e393b7e9d25b12dec53caf9aeccc091bc4d670be7ff26c82deda8febbe118c0"
+    },
+    {
+      "patch_operation_id": "PATCH_020",
+      "source_change_id": "CORR_SRC_016",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "W040"
+      ],
+      "resolved_target_adrgs": [
+        "W040"
+      ],
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "W040": [
+              "LT_W040_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "O0239",
+        "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+        "canonical_20260501": {
+          "classification_number": "자200나(1)(가)4)",
+          "korean_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 941
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "796f26c19c3d119d9488250282b5c5009959ed847958725220fb4790bd5b0099"
+    },
+    {
+      "patch_operation_id": "PATCH_021",
+      "source_change_id": "CORR_SRC_016",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "W040"
+      ],
+      "resolved_target_adrgs": [
+        "W040"
+      ],
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "W040": [
+              "LT_W040_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "e1eca54b7b639bb7ec2171b97159b4281e3ef2392530eae0e72288bd2204e282"
+    },
+    {
+      "patch_operation_id": "PATCH_022",
+      "source_change_id": "CORR_SRC_017",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "X060"
+      ],
+      "resolved_target_adrgs": [
+        "X060"
+      ],
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "X060": [
+              "LT_X060_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "O0239",
+        "source_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+        "canonical_20260501": {
+          "classification_number": "자200나(1)(가)4)",
+          "korean_name": "경정맥 체내용 심박기 거치술-삽입술(전극유도선이 없는 심박기 거치술-양방형)",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 941
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "e18212f857c1df7541c3a587f31ce1ebb3fd3b5e949c4f0dd4b4df2bdef6f346"
+    },
+    {
+      "patch_operation_id": "PATCH_023",
+      "source_change_id": "CORR_SRC_017",
+      "effective_date": "2026-04-01",
+      "operation_type": "code_remove",
+      "source_adrgs": [
+        "X060"
+      ],
+      "resolved_target_adrgs": [
+        "X060"
+      ],
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "X060": [
+              "LT_X060_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M6615",
+        "source_name": "경피적 대동맥류내 다층구조 혈류 모듈레이터 삽입술",
+        "canonical_20260501": null
+      },
+      "before": {
+        "code_present_in_base_target": true,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": false,
+        "use_canonical_master_metadata": false
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "4f6497104b99ef2357129405056f7ed4104fc56080baaa050773f2238c189670"
+    },
+    {
+      "patch_operation_id": "PATCH_024",
+      "source_change_id": "CORR_SRC_018",
+      "effective_date": "2026-05-01",
+      "operation_type": "code_add",
+      "source_adrgs": [
+        "F142"
+      ],
+      "resolved_target_adrgs": [
+        "F142"
+      ],
+      "target": {
+        "logical_table_id": "LT_F142_001",
+        "role": "procedure",
+        "table_number": null,
+        "resolution": {
+          "method": "adrg_defined_or_referenced_table_intersection",
+          "candidate_ids_by_adrg": {
+            "F142": [
+              "LT_F142_001"
+            ]
+          }
+        }
+      },
+      "procedure": {
+        "procedure_code": "M0670",
+        "source_name": "심방세동의 펄스장절제술",
+        "canonical_20260501": {
+          "classification_number": "자654-2",
+          "korean_name": "심방세동의 펄스장절제술",
+          "source_ref": {
+            "file": "KDRG 일반용(V4.7)_시술 등 목록_20260501.xlsx",
+            "sheet": "시술 등 목록_최종",
+            "excel_row": 278
+          }
+        }
+      },
+      "before": {
+        "code_present_in_base_target": false,
+        "base_target_exists": true
+      },
+      "after_plan": {
+        "code_present": true,
+        "use_canonical_master_metadata": true
+      },
+      "preconditions": {
+        "add_requires_absent": true,
+        "remove_requires_present": true
+      },
+      "apply_status": "ready_for_later_apply",
+      "patch_operation_sha256": "009c444afe1e0f69e3289c83dcf4287cab0e991e8c90762729e9ddc2859af53e"
+    }
+  ],
+  "resolution_log": [
+    {
+      "source_change_id": "CORR_SRC_001",
+      "source_adrg": "B510",
+      "resolved_adrg": "B510",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_002",
+      "source_adrg": "D051",
+      "resolved_adrg": "D051",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_002",
+      "source_adrg": "D052",
+      "resolved_adrg": "D052",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_003",
+      "source_adrg": "F022",
+      "resolved_adrg": "F022",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_004",
+      "source_adrg": "F022",
+      "resolved_adrg": "F022",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_005",
+      "source_adrg": "P020",
+      "resolved_adrg": "P020",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_006",
+      "source_adrg": "W040",
+      "resolved_adrg": "W040",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_007",
+      "source_adrg": "X060",
+      "resolved_adrg": "X060",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_008",
+      "source_adrg": "B205",
+      "resolved_adrg": "B205",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_009",
+      "source_adrg": "E043",
+      "resolved_adrg": "E034",
+      "method": "source_adrg_not_in_catalog_page_and_code_unique_resolution"
+    },
+    {
+      "source_change_id": "CORR_SRC_010",
+      "source_adrg": "F081",
+      "resolved_adrg": "F081",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_010",
+      "source_adrg": "F082",
+      "resolved_adrg": "F082",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_011",
+      "source_adrg": "F083",
+      "resolved_adrg": "F083",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_012",
+      "source_adrg": "F084",
+      "resolved_adrg": "F084",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_013",
+      "source_adrg": "F171",
+      "resolved_adrg": "F171",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_014",
+      "source_adrg": "F200",
+      "resolved_adrg": "F200",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_015",
+      "source_adrg": "F211",
+      "resolved_adrg": "F211",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_016",
+      "source_adrg": "W040",
+      "resolved_adrg": "W040",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_017",
+      "source_adrg": "X060",
+      "resolved_adrg": "X060",
+      "method": "exact_catalog_match"
+    },
+    {
+      "source_change_id": "CORR_SRC_018",
+      "source_adrg": "F142",
+      "resolved_adrg": "F142",
+      "method": "exact_catalog_match"
+    }
+  ],
+  "canonical_name_differences": [
+    {
+      "source_change_id": "CORR_SRC_003",
+      "procedure_code": "M6586",
+      "source_name": "경피적 승모판막 재치환술 [심박중격 접근]",
+      "canonical_name": "경피적 승모판막 재치환술[심방중격 접근]",
+      "resolution": "procedure_code_exact_match_use_20260501_master_name"
+    },
+    {
+      "source_change_id": "CORR_SRC_005",
+      "procedure_code": "M6586",
+      "source_name": "경피적 승모판막 재치환술 [심박중격 접근]",
+      "canonical_name": "경피적 승모판막 재치환술[심방중격 접근]",
+      "resolution": "procedure_code_exact_match_use_20260501_master_name"
+    }
+  ],
+  "indexes": {
+    "effective_date_to_patch_operation_ids": {
+      "2026-02-01": [
+        "PATCH_001",
+        "PATCH_002",
+        "PATCH_003",
+        "PATCH_004"
+      ],
+      "2026-03-01": [
+        "PATCH_005",
+        "PATCH_006",
+        "PATCH_007",
+        "PATCH_008",
+        "PATCH_009",
+        "PATCH_010",
+        "PATCH_011"
+      ],
+      "2026-04-01": [
+        "PATCH_012",
+        "PATCH_013",
+        "PATCH_014",
+        "PATCH_015",
+        "PATCH_016",
+        "PATCH_017",
+        "PATCH_018",
+        "PATCH_019",
+        "PATCH_020",
+        "PATCH_021",
+        "PATCH_022",
+        "PATCH_023"
+      ],
+      "2026-05-01": [
+        "PATCH_024"
+      ]
+    },
+    "source_adrg_to_patch_operation_ids": {
+      "B205": [
+        "PATCH_012"
+      ],
+      "B510": [
+        "PATCH_001",
+        "PATCH_002",
+        "PATCH_003",
+        "PATCH_004"
+      ],
+      "D051": [
+        "PATCH_005"
+      ],
+      "D052": [
+        "PATCH_005"
+      ],
+      "E043": [
+        "PATCH_013"
+      ],
+      "F022": [
+        "PATCH_006",
+        "PATCH_007",
+        "PATCH_008"
+      ],
+      "F081": [
+        "PATCH_014"
+      ],
+      "F082": [
+        "PATCH_014"
+      ],
+      "F083": [
+        "PATCH_015"
+      ],
+      "F084": [
+        "PATCH_016"
+      ],
+      "F142": [
+        "PATCH_024"
+      ],
+      "F171": [
+        "PATCH_017"
+      ],
+      "F200": [
+        "PATCH_018"
+      ],
+      "F211": [
+        "PATCH_019"
+      ],
+      "P020": [
+        "PATCH_009"
+      ],
+      "W040": [
+        "PATCH_010",
+        "PATCH_020",
+        "PATCH_021"
+      ],
+      "X060": [
+        "PATCH_011",
+        "PATCH_022",
+        "PATCH_023"
+      ]
+    },
+    "resolved_adrg_to_patch_operation_ids": {
+      "B205": [
+        "PATCH_012"
+      ],
+      "B510": [
+        "PATCH_001",
+        "PATCH_002",
+        "PATCH_003",
+        "PATCH_004"
+      ],
+      "D051": [
+        "PATCH_005"
+      ],
+      "D052": [
+        "PATCH_005"
+      ],
+      "E034": [
+        "PATCH_013"
+      ],
+      "F022": [
+        "PATCH_006",
+        "PATCH_007",
+        "PATCH_008"
+      ],
+      "F081": [
+        "PATCH_014"
+      ],
+      "F082": [
+        "PATCH_014"
+      ],
+      "F083": [
+        "PATCH_015"
+      ],
+      "F084": [
+        "PATCH_016"
+      ],
+      "F142": [
+        "PATCH_024"
+      ],
+      "F171": [
+        "PATCH_017"
+      ],
+      "F200": [
+        "PATCH_018"
+      ],
+      "F211": [
+        "PATCH_019"
+      ],
+      "P020": [
+        "PATCH_009"
+      ],
+      "W040": [
+        "PATCH_010",
+        "PATCH_020",
+        "PATCH_021"
+      ],
+      "X060": [
+        "PATCH_011",
+        "PATCH_022",
+        "PATCH_023"
+      ]
+    },
+    "logical_table_id_to_patch_operation_ids": {
+      "LT_B205_001": [
+        "PATCH_012"
+      ],
+      "LT_B510_001": [
+        "PATCH_001",
+        "PATCH_002",
+        "PATCH_003",
+        "PATCH_004"
+      ],
+      "LT_D054_001": [
+        "PATCH_005"
+      ],
+      "LT_E034_001": [
+        "PATCH_013"
+      ],
+      "LT_F082_003": [
+        "PATCH_014"
+      ],
+      "LT_F083_002": [
+        "PATCH_015"
+      ],
+      "LT_F084_002": [
+        "PATCH_016"
+      ],
+      "LT_F142_001": [
+        "PATCH_024"
+      ],
+      "LT_F171_002": [
+        "PATCH_017"
+      ],
+      "LT_F200_001": [
+        "PATCH_018"
+      ],
+      "LT_F211_001": [
+        "PATCH_019"
+      ],
+      "LT_P020_001": [
+        "PATCH_009"
+      ],
+      "LT_PATCH_F022_PROCEDURE_TABLE06": [
+        "PATCH_006",
+        "PATCH_007"
+      ],
+      "LT_W040_001": [
+        "PATCH_010",
+        "PATCH_020",
+        "PATCH_021"
+      ],
+      "LT_X060_001": [
+        "PATCH_011",
+        "PATCH_022",
+        "PATCH_023"
+      ]
+    },
+    "procedure_code_to_patch_operation_ids": {
+      "F6260": [
+        "PATCH_001"
+      ],
+      "F6262": [
+        "PATCH_002"
+      ],
+      "F6263": [
+        "PATCH_003"
+      ],
+      "F6264": [
+        "PATCH_004"
+      ],
+      "M0670": [
+        "PATCH_024"
+      ],
+      "M6586": [
+        "PATCH_007",
+        "PATCH_009"
+      ],
+      "M6615": [
+        "PATCH_013",
+        "PATCH_014",
+        "PATCH_015",
+        "PATCH_016",
+        "PATCH_017",
+        "PATCH_018",
+        "PATCH_021",
+        "PATCH_023"
+      ],
+      "O0239": [
+        "PATCH_012",
+        "PATCH_019",
+        "PATCH_020",
+        "PATCH_022"
+      ],
+      "U1150": [
+        "PATCH_005",
+        "PATCH_010",
+        "PATCH_011"
+      ]
+    }
+  },
+  "validation": {
+    "status": "PASS",
+    "pass_count": 40,
+    "fail_count": 0,
+    "checks": [
+      {
+        "check_id": "C001",
+        "title": "교정표 HWPX 존재",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/sources/kdrg_v47/corrections/KDRG 일반용(V4.7)_교정표_20260501.hwpx"
+      },
+      {
+        "check_id": "C002",
+        "title": "논리 TABLE schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-logical-tables-v1"
+      },
+      {
+        "check_id": "C003",
+        "title": "조건 AST schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-condition-ast-v1"
+      },
+      {
+        "check_id": "C004",
+        "title": "시술 기준축 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-procedure-master-v2"
+      },
+      {
+        "check_id": "C005",
+        "title": "질병군 기준축 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-group-name-base-v2"
+      },
+      {
+        "check_id": "C006",
+        "title": "본문 블록 schema",
+        "status": "PASS",
+        "detail": "kdrg-v47-main-page-blocks-v1"
+      },
+      {
+        "check_id": "C007",
+        "title": "데이터 버전 일치",
+        "status": "PASS",
+        "detail": "['4.7', 'KDRG V4.7', '4.7', '4.7', '4.7']"
+      },
+      {
+        "check_id": "C008",
+        "title": "교정표 적용일 4개",
+        "status": "PASS",
+        "detail": "['2026-02-01', '2026-03-01', '2026-04-01', '2026-05-01']"
+      },
+      {
+        "check_id": "C009",
+        "title": "원천 변경 entry 수",
+        "status": "PASS",
+        "detail": "18"
+      },
+      {
+        "check_id": "C010",
+        "title": "원천 ADRG 집합",
+        "status": "PASS",
+        "detail": "['B205', 'B510', 'D051', 'D052', 'E043', 'F022', 'F081', 'F082', 'F083', 'F084', 'F142', 'F171', 'F200', 'F211', 'P020', 'W040', 'X060']"
+      },
+      {
+        "check_id": "C011",
+        "title": "원자 patch 수",
+        "status": "PASS",
+        "detail": "24"
+      },
+      {
+        "check_id": "C012",
+        "title": "patch 유형별 수",
+        "status": "PASS",
+        "detail": "{'code_add': 13, 'code_remove': 9, 'create_logical_table': 1, 'replace_condition_ast': 1}"
+      },
+      {
+        "check_id": "C013",
+        "title": "적용일별 patch 수",
+        "status": "PASS",
+        "detail": "{'2026-02-01': 4, '2026-03-01': 7, '2026-04-01': 12, '2026-05-01': 1}"
+      },
+      {
+        "check_id": "C014",
+        "title": "추가 코드 집합",
+        "status": "PASS",
+        "detail": "['F6262', 'F6263', 'F6264', 'M0670', 'M6586', 'O0239', 'U1150']"
+      },
+      {
+        "check_id": "C015",
+        "title": "삭제 코드 집합",
+        "status": "PASS",
+        "detail": "['F6260', 'M6615']"
+      },
+      {
+        "check_id": "C016",
+        "title": "기존 TABLE 대상 집합",
+        "status": "PASS",
+        "detail": "['LT_B205_001', 'LT_B510_001', 'LT_D054_001', 'LT_E034_001', 'LT_F082_003', 'LT_F083_002', 'LT_F084_002', 'LT_F142_001', 'LT_F171_002', 'LT_F200_001', 'LT_F211_001', 'LT_P020_001', 'LT_W040_001', 'LT_X060_001']"
+      },
+      {
+        "check_id": "C017",
+        "title": "F022 신규 TABLE 1개",
+        "status": "PASS",
+        "detail": "{'code_add': 13, 'code_remove': 9, 'create_logical_table': 1, 'replace_condition_ast': 1}"
+      },
+      {
+        "check_id": "C018",
+        "title": "F022 조건 교체 1개",
+        "status": "PASS",
+        "detail": "{'code_add': 13, 'code_remove': 9, 'create_logical_table': 1, 'replace_condition_ast': 1}"
+      },
+      {
+        "check_id": "C019",
+        "title": "patch precondition 오류 없음",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "C020",
+        "title": "미해석 patch 없음",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "C021",
+        "title": "E043→E034 단일 자동해석",
+        "status": "PASS",
+        "detail": "[{'source_change_id': 'CORR_SRC_009', 'source_adrg': 'E043', 'resolved_adrg': 'E034', 'method': 'source_adrg_not_in_catalog_page_and_code_unique_resolution'}]"
+      },
+      {
+        "check_id": "C022",
+        "title": "교정표 이름·시술 기준축 차이 2 occurrence",
+        "status": "PASS",
+        "detail": "[{'source_change_id': 'CORR_SRC_003', 'procedure_code': 'M6586', 'source_name': '경피적 승모판막 재치환술 [심박중격 접근]', 'canonical_name': '경피적 승모판막 재치환술[심방중격 접근]', 'resolution': 'procedure_code_exact_match_use_20260501_master_name'}, {'source_change_id': 'CORR_SRC_005', 'procedure_code': 'M6586', 'source_name': '경피적 승모판막 재치환술 [심박중격 접근]', 'canonical_name': '경피적 승모판막 재치환술[심방중격 접근]', 'resolution': 'procedure_code_exact_match_use_20260501_master_name'}]"
+      },
+      {
+        "check_id": "C023",
+        "title": "이름 차이는 M6586 한정",
+        "status": "PASS",
+        "detail": "[{'source_change_id': 'CORR_SRC_003', 'procedure_code': 'M6586', 'source_name': '경피적 승모판막 재치환술 [심박중격 접근]', 'canonical_name': '경피적 승모판막 재치환술[심방중격 접근]', 'resolution': 'procedure_code_exact_match_use_20260501_master_name'}, {'source_change_id': 'CORR_SRC_005', 'procedure_code': 'M6586', 'source_name': '경피적 승모판막 재치환술 [심박중격 접근]', 'canonical_name': '경피적 승모판막 재치환술[심방중격 접근]', 'resolution': 'procedure_code_exact_match_use_20260501_master_name'}]"
+      },
+      {
+        "check_id": "C024",
+        "title": "B510 F6260 삭제",
+        "status": "PASS",
+        "detail": "[{'patch_operation_id': 'PATCH_001', 'source_change_id': 'CORR_SRC_001', 'effective_date': '2026-02-01', 'operation_type': 'code_remove', 'source_adrgs': ['B510'], 'resolved_target_adrgs': ['B510'], 'target': {'logical_table_id': 'LT_B510_001', 'role': 'procedure', 'table_number': None, 'resolution': {'method': 'adrg_defined_or_referenced_table_intersection', 'candidate_ids_by_adrg': {'B510': ['LT_B510_001']}}}, 'procedure': {'procedure_code': 'F6260', 'source_name': '유발 뇌자기파 기능적지도화검사(시각, 청각, 감각)', 'canonical_20260501': None}, 'before': {'code_present_in_base_target': True, 'base_target_exists': True}, 'after_plan': {'code_present': False, 'use_canonical_master_metadata': False}, 'preconditions': {'add_requires_absent': True, 'remove_requires_present': True}, 'apply_status': 'ready_for_later_apply', 'patch_operation_sha256': '4803d95130535a2c6477a52f5e932d1a369c628c6ae5189479d4ca5c9c6219a5'}]"
+      },
+      {
+        "check_id": "C025",
+        "title": "B510 신규 3코드 추가",
+        "status": "PASS",
+        "detail": "F6262/F6263/F6264"
+      },
+      {
+        "check_id": "C026",
+        "title": "D051·D052 공유 table1",
+        "status": "PASS",
+        "detail": "LT_D054_001"
+      },
+      {
+        "check_id": "C027",
+        "title": "F081·F082 공유 table3",
+        "status": "PASS",
+        "detail": "LT_F082_003"
+      },
+      {
+        "check_id": "C028",
+        "title": "W040 3개 누적 patch",
+        "status": "PASS",
+        "detail": "U1150/O0239/M6615"
+      },
+      {
+        "check_id": "C029",
+        "title": "X060 3개 누적 patch",
+        "status": "PASS",
+        "detail": "U1150/O0239/M6615"
+      },
+      {
+        "check_id": "C030",
+        "title": "F022 table6 M6586 추가",
+        "status": "PASS",
+        "detail": "LT_PATCH_F022_PROCEDURE_TABLE06"
+      },
+      {
+        "check_id": "C031",
+        "title": "F022 base 조건 일치",
+        "status": "PASS",
+        "detail": "[{'patch_operation_id': 'PATCH_008', 'source_change_id': 'CORR_SRC_004', 'effective_date': '2026-03-01', 'operation_type': 'replace_condition_ast', 'source_adrgs': ['F022'], 'resolved_target_adrgs': ['F022'], 'target': {'condition_ast_id': 'AST_F022', 'adrg': 'F022'}, 'before': {'source_normalized_text': '시술명 table2 and 시술명 table3', 'canonical_expression': '(TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003])', 'canonical_expression_sha256': 'a51165da451cb9e94a0a14e1bae5e96937285917ad6872bb2ca49718a36be38b', 'logical_table_ids': ['LT_F023_002', 'LT_F023_003']}, 'after_plan': {'source_normalized_text': '(시술명 table2 and 시술명 table 3) or 시술명 table6', 'canonical_expression': '((TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003]) OR TABLE_REF[LT_PATCH_F022_PROCEDURE_TABLE06])', 'logical_table_ids': ['LT_F023_002', 'LT_F023_003', 'LT_PATCH_F022_PROCEDURE_TABLE06'], 'note': '* 신설된 ‘경피적 승모판막 재치환술[심박중격 접근]’ 시술을 시술명 table6에 배정함'}, 'preconditions': {'base_ast_exists': True, 'base_text_matches': True, 'new_logical_table_planned': 'LT_PATCH_F022_PROCEDURE_TABLE06'}, 'apply_status': 'ready_for_later_apply', 'patch_operation_sha256': '40a2fb6f6d3406a5e48e2b0e3f6702f22da5a0b0c1d52b27ef89365390f35b22'}]"
+      },
+      {
+        "check_id": "C032",
+        "title": "F022 교정 조건에 table6 포함",
+        "status": "PASS",
+        "detail": "[{'patch_operation_id': 'PATCH_008', 'source_change_id': 'CORR_SRC_004', 'effective_date': '2026-03-01', 'operation_type': 'replace_condition_ast', 'source_adrgs': ['F022'], 'resolved_target_adrgs': ['F022'], 'target': {'condition_ast_id': 'AST_F022', 'adrg': 'F022'}, 'before': {'source_normalized_text': '시술명 table2 and 시술명 table3', 'canonical_expression': '(TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003])', 'canonical_expression_sha256': 'a51165da451cb9e94a0a14e1bae5e96937285917ad6872bb2ca49718a36be38b', 'logical_table_ids': ['LT_F023_002', 'LT_F023_003']}, 'after_plan': {'source_normalized_text': '(시술명 table2 and 시술명 table 3) or 시술명 table6', 'canonical_expression': '((TABLE_REF[LT_F023_002] AND TABLE_REF[LT_F023_003]) OR TABLE_REF[LT_PATCH_F022_PROCEDURE_TABLE06])', 'logical_table_ids': ['LT_F023_002', 'LT_F023_003', 'LT_PATCH_F022_PROCEDURE_TABLE06'], 'note': '* 신설된 ‘경피적 승모판막 재치환술[심박중격 접근]’ 시술을 시술명 table6에 배정함'}, 'preconditions': {'base_ast_exists': True, 'base_text_matches': True, 'new_logical_table_planned': 'LT_PATCH_F022_PROCEDURE_TABLE06'}, 'apply_status': 'ready_for_later_apply', 'patch_operation_sha256': '40a2fb6f6d3406a5e48e2b0e3f6702f22da5a0b0c1d52b27ef89365390f35b22'}]"
+      },
+      {
+        "check_id": "C033",
+        "title": "추가코드 20260501 master 전수 일치",
+        "status": "PASS",
+        "detail": "code_add canonical"
+      },
+      {
+        "check_id": "C034",
+        "title": "삭제코드 20260501 master 전수 제외",
+        "status": "PASS",
+        "detail": "code_remove absent"
+      },
+      {
+        "check_id": "C035",
+        "title": "base JSON 비수정 상태",
+        "status": "PASS",
+        "detail": "patch log only"
+      },
+      {
+        "check_id": "C036",
+        "title": "patch ID 연속성",
+        "status": "PASS",
+        "detail": "PATCH_001.."
+      },
+      {
+        "check_id": "C037",
+        "title": "source change ID 연속성",
+        "status": "PASS",
+        "detail": "CORR_SRC_001.."
+      },
+      {
+        "check_id": "C038",
+        "title": "source hash 전수 존재",
+        "status": "PASS",
+        "detail": "source hashes"
+      },
+      {
+        "check_id": "C039",
+        "title": "patch hash 전수 존재",
+        "status": "PASS",
+        "detail": "patch hashes"
+      },
+      {
+        "check_id": "C040",
+        "title": "사용자 판단 필요 없음",
+        "status": "PASS",
+        "detail": "자동해석·코드 exact match"
+      }
+    ],
+    "issues": []
+  }
+}

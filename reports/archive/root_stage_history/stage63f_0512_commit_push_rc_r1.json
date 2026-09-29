@@ -1,0 +1,117 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_0512_TAG_RELEASE",
+  "started_at": "2026-09-18 07:36:48",
+  "preflight": {
+    "head": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "origin_main": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+    "tag_guard": {
+      "immutable_0511_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+      "local_0512": "",
+      "remote_0512": ""
+    },
+    "file_sha256": {
+      "50D_validate_kdrg_electron_windows_packaging.py": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373",
+      "electron/package.json": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b",
+      "electron/package-lock.json": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184",
+      "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660",
+      "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+      "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"
+    }
+  },
+  "state": "READY_TO_COMMIT",
+  "commit": {
+    "commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "commit_output": "[main 1ab52cf] fix: repair KDRG condition presentation for 0.5.12\n 6 files changed, 104 insertions(+), 190 deletions(-)\n",
+    "shape": {
+      "parent": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+      "name_status": [
+        "M\t50D_validate_kdrg_electron_windows_packaging.py",
+        "M\telectron/package-lock.json",
+        "M\telectron/package.json",
+        "M\telectron/renderer/app.js",
+        "M\telectron/renderer/styles.css",
+        "M\telectron/tests/validate-stage59b-ui.js"
+      ],
+      "files": [
+        "50D_validate_kdrg_electron_windows_packaging.py",
+        "electron/package-lock.json",
+        "electron/package.json",
+        "electron/renderer/app.js",
+        "electron/renderer/styles.css",
+        "electron/tests/validate-stage59b-ui.js"
+      ]
+    }
+  },
+  "push": {
+    "commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "remote_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "push_output": "To https://github.com/hamidong/kdrg-v47-relation-search.git\n   4c81a49..1ab52cf  HEAD -> main\n"
+  },
+  "rc": {
+    "dispatched": true,
+    "reused_successful_run": false,
+    "run_id": 35320275215,
+    "watch_returncode": 0,
+    "run": {
+      "conclusion": "success",
+      "databaseId": 35320275215,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+      "status": "completed",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35320275215"
+    }
+  },
+  "final_guard": {
+    "release_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "release_commit_shape": {
+      "parent": "4c81a49b64a86cc1490314b38cbbec4c898d56e2",
+      "name_status": [
+        "M\t50D_validate_kdrg_electron_windows_packaging.py",
+        "M\telectron/package-lock.json",
+        "M\telectron/package.json",
+        "M\telectron/renderer/app.js",
+        "M\telectron/renderer/styles.css",
+        "M\telectron/tests/validate-stage59b-ui.js"
+      ],
+      "files": [
+        "50D_validate_kdrg_electron_windows_packaging.py",
+        "electron/package-lock.json",
+        "electron/package.json",
+        "electron/renderer/app.js",
+        "electron/renderer/styles.css",
+        "electron/tests/validate-stage59b-ui.js"
+      ]
+    },
+    "file_sha256": {
+      "50D_validate_kdrg_electron_windows_packaging.py": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373",
+      "electron/package.json": "791b3d89c17d36aa5118292303cc17a0044c471a0444d3df6d227dbe61341b4b",
+      "electron/package-lock.json": "2371a8cca54734cc34409afaba06d07b96e7bcf6c969dcd0331b6b48b3607184",
+      "electron/renderer/app.js": "f139b2fb67c6be50e817936a7f39fe737536cfd8b01cc7954e6951ca6bdd7660",
+      "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+      "electron/tests/validate-stage59b-ui.js": "36b43d26c08f170655bfd8f5e17be849fdb7a5ed38b3c99d95632d178237645f"
+    },
+    "rc": {
+      "conclusion": "success",
+      "databaseId": 35320275215,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+      "status": "completed",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35320275215"
+    },
+    "tag_guard": {
+      "immutable_0511_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+      "local_0512": "",
+      "remote_0512": ""
+    },
+    "version": "0.5.12",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "worktree_clean": true,
+    "staging_empty": true
+  },
+  "error": null,
+  "finished_at": "2026-09-18 07:40:55"
+}

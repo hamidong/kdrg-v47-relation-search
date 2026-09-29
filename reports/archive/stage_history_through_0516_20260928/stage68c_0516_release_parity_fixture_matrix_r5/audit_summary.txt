@@ -1,0 +1,55 @@
+Stage68C R5 — 0.5.15 Release Parity + Fixture Matrix
+==================================================================
+HEAD=6e0bc2857ebf6abb482428b90f452d5e07c486ac
+HEAD_matches_expected_0515=True
+TAG_commit=6e0bc2857ebf6abb482428b90f452d5e07c486ac
+TAG_matches_expected_0515=True
+git_status_entries=114
+changed_product_files_vs_0515=[]
+
+[app contract: current / tag]
+current={'relation_reads_candidate_summary_abc': False, 'render_derived_function_exists': True, 'adrg_detail_has_derived_header': False, 'adrg_detail_calls_derived': False, 'derived_reads_code': True, 'derived_reads_label': True}
+tag_0515={'relation_reads_candidate_summary_abc': False, 'render_derived_function_exists': True, 'adrg_detail_has_derived_header': False, 'adrg_detail_calls_derived': False, 'derived_reads_code': True, 'derived_reads_label': True}
+
+[fixture matrix]
+AUTO_lower: total=0 F111=False labels=[]
+  normalized={'operator': 'AND', 'conditions': [{'code': 'i214', 'normalizedCode': 'I214', 'codeType': 'AUTO'}, {'code': 'm6569', 'normalizedCode': 'M6569', 'codeType': 'AUTO'}], 'mdc': None, 'classification': None}
+AUTO_upper: total=0 F111=False labels=[]
+  normalized={'operator': 'AND', 'conditions': [{'code': 'I214', 'normalizedCode': 'I214', 'codeType': 'AUTO'}, {'code': 'M6569', 'normalizedCode': 'M6569', 'codeType': 'AUTO'}], 'mdc': None, 'classification': None}
+DIAGNOSIS_lower: total=0 F111=False labels=[]
+  normalized={'operator': 'AND', 'conditions': [{'code': 'i214', 'normalizedCode': 'I214', 'codeType': 'DIAGNOSIS'}, {'code': 'm6569', 'normalizedCode': 'M6569', 'codeType': 'DIAGNOSIS'}], 'mdc': None, 'classification': None}
+DIAGNOSIS_upper: total=0 F111=False labels=[]
+  normalized={'operator': 'AND', 'conditions': [{'code': 'I214', 'normalizedCode': 'I214', 'codeType': 'DIAGNOSIS'}, {'code': 'M6569', 'normalizedCode': 'M6569', 'codeType': 'DIAGNOSIS'}], 'mdc': None, 'classification': None}
+
+[code records]
+I214={'names': ['급성 심내막하심근경색증', 'Acute subendocardial myocardial infarction'], 'related_adrgs': ['F111', 'F112', 'F121', 'F122', 'F133', 'F134', 'F135', 'F136', 'F600', 'F610'], 'related_aadrgs': ['F1110', 'F1120', 'F1210', 'F1220', 'F1330', 'F1340', 'F1350', 'F1360', 'F6000', 'F6100']}
+M6569=None
+
+[derived AADRG missing classification_code]
+total_derived=1233
+missing_code_count=21
+- 9900 -> 99000 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- 9990 -> 99900 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- D014 -> D0140 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G241 -> G2411 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G241 -> G2412 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G241 -> G2413 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G242 -> G2421 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G242 -> G2422 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G242 -> G2423 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G650 -> G6501 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- G650 -> G6502 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- K630 -> K6300 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- K720 -> K7201 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- K720 -> K7202 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- K730 -> K7300 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- R634 -> R6340 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- R635 -> R6350 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- R636 -> R6360 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- R637 -> R6370 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- R671 -> R6710 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+- R672 -> R6720 / label=분류 미부여 / status=UNCLASSIFIED_EXACT_NOT_IN_OFFICIAL_PDF
+
+ROOT_CAUSE=FIXTURE_NOT_REPRODUCED_BY_CURRENT_SERVICE_ALL_VARIANTS
+
+제품/운영 JSON/tag 수정 없음.

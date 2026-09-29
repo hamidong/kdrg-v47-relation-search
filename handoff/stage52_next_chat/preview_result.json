@@ -1,0 +1,909 @@
+{
+  "validator": "2026-08-06_KDRG_V47_STAGE52_NIX_CLICK_RUNTIME_UI_VALIDATOR_V1",
+  "runtime_electron_version": "35.6.0",
+  "runtime_node_version": "22.15.1",
+  "status": "FAIL",
+  "cases": [
+    {
+      "adrg": "9610",
+      "status": "FAIL",
+      "fixture": {
+        "adrg": "9610",
+        "detail_status": "-",
+        "expected_text": [
+          "직접 코드 조건",
+          "주진단명 코드가 아래 목록에 포함",
+          "코드 목록",
+          "내부 ID LT_9610_001"
+        ],
+        "forbidden_text": [
+          "명시적 조건 없음",
+          "제외 조건 · WITHOUT"
+        ],
+        "expected_table_ids": [
+          "LT_9610_001"
+        ],
+        "expected_include_ids": [],
+        "expected_exclude_ids": [],
+        "direct_condition": true,
+        "expected_condition_text": ""
+      },
+      "initial": {
+        "panel_text": "ADRG9610 · 산과적 원인의 사망MDC 14 · AADRG 1개 · 질병군 분류(단순)ADRG9610질병군명산과적 원인의 사망MDCMDC 14AADRG1개질병군 분류질병군 분류(단순)조건 상태명시적 조건 없음파생 AADRG1개ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.AADRG96100산과적 원인의 사망질병군 분류(단순)RDRG 1개분류 조건1개별도의 명시적 분류 조건이 확인되지 않음명시적 조건 없음-조건 상세0개AND·OR·WITHOUT와 직접 코드조건을 구분해 표시합니다. 목록을 펼치면 코드·코드명 검색이 가능합니다.표시할 조건 TABLE 또는 직접 코드 목록이 없습니다.원문 근거1개사용자 표시 조건의 출처와 기술 근거를 확인합니다.조건 상태명시적 조건 없음조건 원문-근거 출처not_found근거 페이지-조건 AST별도 AST 없음기술식-",
+        "expected_text_presence": {
+          "직접 코드 조건": false,
+          "주진단명 코드가 아래 목록에 포함": false,
+          "코드 목록": true,
+          "내부 ID LT_9610_001": false
+        },
+        "forbidden_text_presence": {
+          "명시적 조건 없음": true,
+          "제외 조건 · WITHOUT": false
+        },
+        "table_ids": [],
+        "exclusion_table_ids": [],
+        "direct_text_count": 0,
+        "include_block_count": 0,
+        "exclude_block_count": 0,
+        "without_operator_count": 0
+      },
+      "tables": [],
+      "screenshot": {
+        "filename": "9610.png",
+        "path": "/home/runner/workspace/reports/electron_stage52_runtime_ui_preview_nix_click_v1/9610.png",
+        "width": 1600,
+        "height": 953,
+        "size_bytes": 29572,
+        "sha256": "7a718a1f40c7bc095d7cb5a0889d6f6651d01748ac7081cddd00b9bee47f01c6",
+        "non_blank": true
+      },
+      "checks": [
+        {
+          "name": "expected_text",
+          "passed": false,
+          "actual": {
+            "직접 코드 조건": false,
+            "주진단명 코드가 아래 목록에 포함": false,
+            "코드 목록": true,
+            "내부 ID LT_9610_001": false
+          },
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "forbidden_text_absent",
+          "passed": false,
+          "actual": {
+            "명시적 조건 없음": true,
+            "제외 조건 · WITHOUT": false
+          },
+          "expected": "all false",
+          "severity": "core"
+        },
+        {
+          "name": "table_ids",
+          "passed": false,
+          "actual": [],
+          "expected": [
+            "LT_9610_001"
+          ],
+          "severity": "core"
+        },
+        {
+          "name": "expected_table_count_positive",
+          "passed": true,
+          "actual": 1,
+          "expected": "> 0",
+          "severity": "core"
+        },
+        {
+          "name": "exclude_table_ids",
+          "passed": true,
+          "actual": [],
+          "expected": [],
+          "severity": "core"
+        },
+        {
+          "name": "direct_condition_rendered",
+          "passed": false,
+          "actual": 0,
+          "expected": ">= 1",
+          "severity": "core"
+        },
+        {
+          "name": "9610_exact_source_table",
+          "passed": true,
+          "actual": [
+            "LT_9610_001"
+          ],
+          "expected": [
+            "LT_9610_001"
+          ],
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_no_error_message",
+          "passed": false,
+          "actual": [],
+          "expected": "all error_text empty",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_opened_by_summary_click",
+          "passed": false,
+          "actual": [],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_loaded",
+          "passed": false,
+          "actual": [],
+          "expected": "1 loaded",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_have_code_rows",
+          "passed": true,
+          "actual": [],
+          "expected": "all > 0",
+          "severity": "core"
+        },
+        {
+          "name": "two_column_headers",
+          "passed": true,
+          "actual": [],
+          "expected": [
+            "코드",
+            "코드명"
+          ],
+          "severity": "core"
+        },
+        {
+          "name": "search_inputs_present",
+          "passed": true,
+          "actual": [],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "search_filters_rows",
+          "passed": true,
+          "actual": [],
+          "expected": "1 <= filtered <= before",
+          "severity": "core"
+        },
+        {
+          "name": "search_clear_restores_all_rows",
+          "passed": true,
+          "actual": [],
+          "expected": "restored === before",
+          "severity": "core"
+        },
+        {
+          "name": "sticky_headers",
+          "passed": true,
+          "actual": [],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "internal_scroll",
+          "passed": true,
+          "actual": [],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "screenshot_non_blank",
+          "passed": true,
+          "actual": {
+            "width": 1600,
+            "height": 953,
+            "size_bytes": 29572
+          },
+          "expected": "non-blank",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "adrg": "9620",
+      "status": "FAIL",
+      "fixture": {
+        "adrg": "9620",
+        "detail_status": "-",
+        "expected_text": [
+          "주진단명 table1",
+          "시술명 table2",
+          "제외 조건 · WITHOUT",
+          "아래 TABLE에 해당하면 이 ADRG에서 제외됩니다."
+        ],
+        "forbidden_text": [
+          "직접 코드 조건"
+        ],
+        "expected_table_ids": [],
+        "expected_include_ids": [],
+        "expected_exclude_ids": [],
+        "direct_condition": false,
+        "expected_condition_text": ""
+      },
+      "initial": {
+        "panel_text": "ADRG9620 · 시술과 일치하지 않는 산과 주진단MDC 14 · AADRG 1개 · 질병군 분류(단순)ADRG9620질병군명시술과 일치하지 않는 산과 주진단MDCMDC 14AADRG1개질병군 분류질병군 분류(단순)조건 상태조건 TABLE 연결 완료파생 AADRG1개ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.AADRG96200시술과 일치하지 않는 산과 주진단질병군 분류(단순)RDRG 1개분류 조건1개분류 조건 TABLE 2개 연결조건 TABLE 연결 완료주진단명 table1조건 상세1개AND·OR·WITHOUT와 직접 코드조건을 구분해 표시합니다. 목록을 펼치면 코드·코드명 검색이 가능합니다.조건 구조WITHOUT 조건포함 조건아래 TABLE 조건을 충족해야 합니다.TABLE주진단명 table1내부 ID LT_9620_001physical_section_definition코드 120개TABLE을 펼치면 코드가 이 자리에서 표시됩니다.제외 조건 · WITHOUT아래 TABLE에 해당하면 이 ADRG에서 제외됩니다.TABLE시술명 table2내부 ID LT_9620_002제외 대상코드 43개TABLE을 펼치면 코드가 이 자리에서 표시됩니다.원문 근거1개사용자 표시 조건의 출처와 기술 근거를 확인합니다.조건 상태조건 TABLE 연결 완료조건 원문주진단명 table1근거 출처main_page_blocks:raw_text근거 페이지911조건 ASTAST_9620기술식EXCLUSION(base=TABLE_REF[LT_9620_001], excluded=TABLE_REF[LT_9620_002])",
+        "expected_text_presence": {
+          "주진단명 table1": true,
+          "시술명 table2": true,
+          "제외 조건 · WITHOUT": true,
+          "아래 TABLE에 해당하면 이 ADRG에서 제외됩니다.": true
+        },
+        "forbidden_text_presence": {
+          "직접 코드 조건": false
+        },
+        "table_ids": [
+          "LT_9620_001",
+          "LT_9620_002"
+        ],
+        "exclusion_table_ids": [
+          "LT_9620_002"
+        ],
+        "direct_text_count": 0,
+        "include_block_count": 1,
+        "exclude_block_count": 1,
+        "without_operator_count": 0
+      },
+      "tables": [
+        {
+          "table_id": "LT_9620_001",
+          "open": true,
+          "loaded": true,
+          "loading": false,
+          "error_text": "",
+          "content_text": "전체 120개코드코드명O6010코드명 원천 미수록O6011코드명 원천 미수록O6012코드명 원천 미수록O6019코드명 원천 미수록O6020코드명 원천 미수록O6021코드명 원천 미수록O6022코드명 원천 미수록O6029코드명 원천 미수록O6030코드명 원천 미수록O6031코드명 원천 미수록O6032코드명 원천 미수록O6039코드명 원천 미수록O610코드명 원천 미수록O611코드명 원천 미수록O618코드명 원천 미수록O619코드명 원천 미수록O620코드명 원천 미수록O623코드명 원천 미수록O624코드명 원천 미수록O628코드명 원천 미수록O629코드명 원천 미수록O630코드명 원천 미수록O631코드명 원천 미수록O632코드명 원천 미수록O639코드명 원천 미수록O640코드명 원천 미수록O641코드명 원천 미수록O642코드명 원천 미수록O643코드명 원천 미수록O644코드명 원천 미수록O645코드명 원천 미수록O648코드명 원천 미수록O649코드명 원천 미수록O650코드명 원천 미수록O651코드명 원천 미수록O652코드명 원천 미수록O653코드명 원천 미수록O654코드명 원천 미수록O655코드명 원천 미수록O658코드명 원천 미수록O659코드명 원천 미수록O660코드명 원천 미수록O661코드명 원천 미수록O662코드명 원천 미수록O663코드명 원천 미수록O664코드명 원천 미수록O665코드명 원천 미수록O668코드명 원천 미수록O669코드명 원천 미수록O670코드명 원천 미수록O678코드명 원천 미수록O679코드명 원천 미수록O680코드명 원천 미수록O681코드명 원천 미수록O682코드명 원천 미수록O683코드명 원천 미수록O688코드명 원천 미수록O689코드명 원천 미수록O690코드명 원천 미수록O691코드명 원천 미수록O692코드명 원천 미수록O693코드명 원천 미수록O694코드명 원천 미수록O695코드명 원천 미수록O698코드명 원천 미수록O699코드명 원천 미수록O700코드명 원천 미수록O701코드명 원천 미수록O702코드명 원천 미수록O703코드명 원천 미수록O709코드명 원천 미수록O730코드명 원천 미수록O731코드명 원천 미수록O740코드명 원천 미수록O741코드명 원천 미수록O742코드명 원천 미수록O743코드명 원천 미수록O744코드명 원천 미수록O745코드명 원천 미수록O746코드명 원천 미수록O747코드명 원천 미수록O748코드명 원천 미수록O749코드명 원천 미수록O750코드명 원천 미수록O751코드명 원천 미수록O752코드명 원천 미수록O753코드명 원천 미수록O754코드명 원천 미수록O755코드명 원천 미수록O756코드명 원천 미수록O757코드명 원천 미수록O758코드명 원천 미수록O759코드명 원천 미수록O800코드명 원천 미수록O801코드명 원천 미수록O808코드명 원천 미수록O809코드명 원천 미수록O810코드명 원천 미수록O811코드명 원천 미수록O812코드명 원천 미수록O813코드명 원천 미수록O814코드명 원천 미수록O815코드명 원천 미수록O820코드명 원천 미수록O821코드명 원천 미수록O822코드명 원천 미수록O828코드명 원천 미수록O829코드명 원천 미수록O830코드명 원천 미수록O831코드명 원천 미수록O832코드명 원천 미수록O833코드명 원천 미수록O834코드명 원천 미수록O838코드명 원천 미수록O839코드명 원천 미수록O840코드명 원천 미수록O841코드명 원천 미수록O842코드명 원천 미수록O848코드명 원천 미수록O849코드명 원천 미수록TABLE 기술 상세",
+          "exclusion": false,
+          "search_present": true,
+          "table_present": true,
+          "headers": [
+            "코드",
+            "코드명"
+          ],
+          "rows_before": 120,
+          "first_code": "O6010",
+          "rows_filtered": 1,
+          "rows_restored": 120,
+          "result_before": "전체 120개",
+          "result_filtered": "1 / 120개",
+          "sticky_header": true,
+          "viewport_scroll": true
+        },
+        {
+          "table_id": "LT_9620_002",
+          "open": true,
+          "loaded": true,
+          "loading": false,
+          "error_text": "",
+          "content_text": "전체 43개코드코드명R3131코드명 원천 미수록R3133코드명 원천 미수록R3136코드명 원천 미수록R3138코드명 원천 미수록R3141코드명 원천 미수록R3143코드명 원천 미수록R3146코드명 원천 미수록R3148코드명 원천 미수록R4351코드명 원천 미수록R4353코드명 원천 미수록R4356코드명 원천 미수록R4358코드명 원천 미수록R4361코드명 원천 미수록R4362코드명 원천 미수록R4380코드명 원천 미수록R4460코드명 원천 미수록R4507코드명 원천 미수록R4508코드명 원천 미수록R4509코드명 원천 미수록R4510코드명 원천 미수록R4514코드명 원천 미수록R4516코드명 원천 미수록R4517코드명 원천 미수록R4518코드명 원천 미수록R4519코드명 원천 미수록R4520코드명 원천 미수록R5001코드명 원천 미수록R5002코드명 원천 미수록RA311코드명 원천 미수록RA312코드명 원천 미수록RA313코드명 원천 미수록RA314코드명 원천 미수록RA315코드명 원천 미수록RA316코드명 원천 미수록RA317코드명 원천 미수록RA318코드명 원천 미수록RA361코드명 원천 미수록RA362코드명 원천 미수록RA380코드명 원천 미수록RA431코드명 원천 미수록RA432코드명 원천 미수록RA433코드명 원천 미수록RA434코드명 원천 미수록TABLE 기술 상세",
+          "exclusion": true,
+          "search_present": true,
+          "table_present": true,
+          "headers": [
+            "코드",
+            "코드명"
+          ],
+          "rows_before": 43,
+          "first_code": "R3131",
+          "rows_filtered": 1,
+          "rows_restored": 43,
+          "result_before": "전체 43개",
+          "result_filtered": "1 / 43개",
+          "sticky_header": true,
+          "viewport_scroll": true
+        }
+      ],
+      "screenshot": {
+        "filename": "9620.png",
+        "path": "/home/runner/workspace/reports/electron_stage52_runtime_ui_preview_nix_click_v1/9620.png",
+        "width": 1600,
+        "height": 953,
+        "size_bytes": 70457,
+        "sha256": "2de3424b96797f5d7570dd124a83e39a23b02bb9aac1a25b2a804f697240baf1",
+        "non_blank": true
+      },
+      "checks": [
+        {
+          "name": "expected_text",
+          "passed": true,
+          "actual": {
+            "주진단명 table1": true,
+            "시술명 table2": true,
+            "제외 조건 · WITHOUT": true,
+            "아래 TABLE에 해당하면 이 ADRG에서 제외됩니다.": true
+          },
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "forbidden_text_absent",
+          "passed": true,
+          "actual": {
+            "직접 코드 조건": false
+          },
+          "expected": "all false",
+          "severity": "core"
+        },
+        {
+          "name": "table_ids",
+          "passed": false,
+          "actual": [
+            "LT_9620_001",
+            "LT_9620_002"
+          ],
+          "expected": [],
+          "severity": "core"
+        },
+        {
+          "name": "expected_table_count_positive",
+          "passed": false,
+          "actual": 0,
+          "expected": "> 0",
+          "severity": "core"
+        },
+        {
+          "name": "exclude_table_ids",
+          "passed": false,
+          "actual": [
+            "LT_9620_002"
+          ],
+          "expected": [],
+          "severity": "core"
+        },
+        {
+          "name": "9620_exact_include_table",
+          "passed": false,
+          "actual": [],
+          "expected": [
+            "LT_9620_001"
+          ],
+          "severity": "core"
+        },
+        {
+          "name": "9620_exact_exclude_table",
+          "passed": false,
+          "actual": [],
+          "expected": [
+            "LT_9620_002"
+          ],
+          "severity": "core"
+        },
+        {
+          "name": "include_block_rendered",
+          "passed": true,
+          "actual": 1,
+          "expected": ">= 1",
+          "severity": "core"
+        },
+        {
+          "name": "exclude_block_rendered",
+          "passed": true,
+          "actual": 1,
+          "expected": ">= 1",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_no_error_message",
+          "passed": false,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "error_text": "",
+              "content_text": "전체 120개코드코드명O6010코드명 원천 미수록O6011코드명 원천 미수록O6012코드명 원천 미수록O6019코드명 원천 미수록O6020코드명 원천 미수록O6021코드명 원천 미수록O6022코드명 원천 미수록O6029코드명 원천 미수록O6030코드명 원천 미수록O6031코드명 원천 미수록O6032코드명 원천 미수록O6039코드명 원천 미수록O610코드명 원천 미수록O611코드명 원천 미수록O618코드명 원천 미수록O619코드명 원천 미수록O620코드명 원천 미수록O623코드명 원천 미수록O624코드명 원천 미수록O628코드명 원천 미수록O629코드명 원천 미수록O630코드명 원천 미수록O631코드명 원천 미수록O632코드명 원천 미수록O639코드명 원천 미수록O640코드명 원천 미수록O641코드명 원천 미수록O642코드명 원천 미수록O643코드명 원천 미수록O644코드명 원천 미수록O645코드명 원천 미수록O648코드명 원천 미수록O649코드명 원천 미수록O650코드명 원천 미수록O651코드명 원천 미수록O652코드명 원천 미수록O653코드명 원천 미수록O654코드명 원천 미수록O655코드명 원천 미수록O658코드명 원천 미수록O659코드명 원천 미수록O660코드명 원천 미수록O661코드명 원천 미수록O662코드명 원천 미수록O663코드명 원천 미수록O664코드명 원천 미수록O665코드명 원천 미수록O668코드명 원천 미수록O669코드명 원천 미수록O670코드명 원천 미수록O678코드명 원천 미수록O679코드명 원천 미수록O680코드명 원천 미수록O681코드명 원천 미수록O682코드명 원천 미수록O683코드명 원천 미수록O688코드명 원천 미수록O689코드명 원천 미수록O690코드명 원천 미수록O691코드명 원천 미수록O692코드명 원천 미수록O693코드명 원천 미수록O694코드명 원천 미수록O695코드명 원천 미수록O698코드명 원천 미수록O699코드명 원천 미수록O700코드명 원천 미수록O701코드명 원천 미수록O702코드명 원천 미수록O703코드명 원천 미수록O709코드명 원천 미수록O730코드명 원천 미수록O731코드명 원천 미수록O740코드명 원천 미수록O741코드명 원천 미수록O742코드명 원천 미수록O743코드명 원천 미수록O744코드명 원천 미수록O745코드명 원천 미수록O746코드명 원천 미수록O747코드명 원천 미수록O748코드명 원천 미수록O749코드명 원천 미수록O750코드명 원천 미수록O751코드명 원천 미수록O752코드명 원천 미수록O753코드명 원천 미수록O754코드명 원천 미수록O755코드명 원천 미수록O756코드명 원천 미수록O757코드명 원천 미수록O758코드명 원천 미수록O759코드명 원천 미수록O800코드명 원천 미수록O801코드명 원천 미수록O808코드명 원천 미수록O809코드명 원천 미수록O810코드명 원천 미수록O811코드명 원천 미수록O812코드명 원천 미수록O813코드명 원천 미수록O814코드명 원천 미수록O815코드명 원천 미수록O820코드명 원천 미수록O821코드명 원천 미수록O822코드명 원천 미수록O828코드명 원천 미수록O829코드명 원천 미수록O830코드명 원천 미수록O831코드명 원천 미수록O832코드명 원천 미수록O833코드명 원천 미수록O834코드명 원천 미수록O838코드명 원천 미수록O839코드명 원천 미수록O840코드명 원천 미수록O841코드명 원천 미수록O842코드명 원천 미수록O848코드명 원천 미수록O849코드명 원천 미수록TABLE 기술 상세"
+            },
+            {
+              "table_id": "LT_9620_002",
+              "error_text": "",
+              "content_text": "전체 43개코드코드명R3131코드명 원천 미수록R3133코드명 원천 미수록R3136코드명 원천 미수록R3138코드명 원천 미수록R3141코드명 원천 미수록R3143코드명 원천 미수록R3146코드명 원천 미수록R3148코드명 원천 미수록R4351코드명 원천 미수록R4353코드명 원천 미수록R4356코드명 원천 미수록R4358코드명 원천 미수록R4361코드명 원천 미수록R4362코드명 원천 미수록R4380코드명 원천 미수록R4460코드명 원천 미수록R4507코드명 원천 미수록R4508코드명 원천 미수록R4509코드명 원천 미수록R4510코드명 원천 미수록R4514코드명 원천 미수록R4516코드명 원천 미수록R4517코드명 원천 미수록R4518코드명 원천 미수록R4519코드명 원천 미수록R4520코드명 원천 미수록R5001코드명 원천 미수록R5002코드명 원천 미수록RA311코드명 원천 미수록RA312코드명 원천 미수록RA313코드명 원천 미수록RA314코드명 원천 미수록RA315코드명 원천 미수록RA316코드명 원천 미수록RA317코드명 원천 미수록RA318코드명 원천 미수록RA361코드명 원천 미수록RA362코드명 원천 미수록RA380코드명 원천 미수록RA431코드명 원천 미수록RA432코드명 원천 미수록RA433코드명 원천 미수록RA434코드명 원천 미수록TABLE 기술 상세"
+            }
+          ],
+          "expected": "all error_text empty",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_opened_by_summary_click",
+          "passed": false,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "open": true
+            },
+            {
+              "table_id": "LT_9620_002",
+              "open": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_loaded",
+          "passed": false,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "loaded": true
+            },
+            {
+              "table_id": "LT_9620_002",
+              "loaded": true
+            }
+          ],
+          "expected": "0 loaded",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_have_code_rows",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "rows": 120
+            },
+            {
+              "table_id": "LT_9620_002",
+              "rows": 43
+            }
+          ],
+          "expected": "all > 0",
+          "severity": "core"
+        },
+        {
+          "name": "two_column_headers",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "headers": [
+                "코드",
+                "코드명"
+              ]
+            },
+            {
+              "table_id": "LT_9620_002",
+              "headers": [
+                "코드",
+                "코드명"
+              ]
+            }
+          ],
+          "expected": [
+            "코드",
+            "코드명"
+          ],
+          "severity": "core"
+        },
+        {
+          "name": "search_inputs_present",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "search_present": true
+            },
+            {
+              "table_id": "LT_9620_002",
+              "search_present": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "search_filters_rows",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "before": 120,
+              "filtered": 1,
+              "first_code": "O6010"
+            },
+            {
+              "table_id": "LT_9620_002",
+              "before": 43,
+              "filtered": 1,
+              "first_code": "R3131"
+            }
+          ],
+          "expected": "1 <= filtered <= before",
+          "severity": "core"
+        },
+        {
+          "name": "search_clear_restores_all_rows",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "before": 120,
+              "restored": 120
+            },
+            {
+              "table_id": "LT_9620_002",
+              "before": 43,
+              "restored": 43
+            }
+          ],
+          "expected": "restored === before",
+          "severity": "core"
+        },
+        {
+          "name": "sticky_headers",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "sticky": true
+            },
+            {
+              "table_id": "LT_9620_002",
+              "sticky": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "internal_scroll",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_9620_001",
+              "scroll": true
+            },
+            {
+              "table_id": "LT_9620_002",
+              "scroll": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "screenshot_non_blank",
+          "passed": true,
+          "actual": {
+            "width": 1600,
+            "height": 953,
+            "size_bytes": 70457
+          },
+          "expected": "non-blank",
+          "severity": "warning"
+        }
+      ]
+    },
+    {
+      "adrg": "O602",
+      "status": "FAIL",
+      "fixture": {
+        "adrg": "O602",
+        "detail_status": "-",
+        "expected_text": [
+          "주진단명 table2",
+          "조건 TABLE 연결 완료"
+        ],
+        "forbidden_text": [
+          "직접 코드 조건",
+          "제외 조건 · WITHOUT",
+          "명시적 조건 없음"
+        ],
+        "expected_table_ids": [],
+        "expected_include_ids": [],
+        "expected_exclude_ids": [],
+        "direct_condition": false,
+        "expected_condition_text": ""
+      },
+      "initial": {
+        "panel_text": "ADRG9620 · 시술과 일치하지 않는 산과 주진단MDC 14 · AADRG 1개 · 질병군 분류(단순)ADRG9620질병군명시술과 일치하지 않는 산과 주진단MDCMDC 14AADRG1개질병군 분류질병군 분류(단순)조건 상태조건 TABLE 연결 완료파생 AADRG1개ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.AADRG96200시술과 일치하지 않는 산과 주진단질병군 분류(단순)RDRG 1개분류 조건1개분류 조건 TABLE 2개 연결조건 TABLE 연결 완료주진단명 table1조건 상세1개AND·OR·WITHOUT와 직접 코드조건을 구분해 표시합니다. 목록을 펼치면 코드·코드명 검색이 가능합니다.조건 구조WITHOUT 조건포함 조건아래 TABLE 조건을 충족해야 합니다.TABLE주진단명 table1내부 ID LT_9620_001physical_section_definition코드 120개전체 120개코드코드명O6010코드명 원천 미수록O6011코드명 원천 미수록O6012코드명 원천 미수록O6019코드명 원천 미수록O6020코드명 원천 미수록O6021코드명 원천 미수록O6022코드명 원천 미수록O6029코드명 원천 미수록O6030코드명 원천 미수록O6031코드명 원천 미수록O6032코드명 원천 미수록O6039코드명 원천 미수록O610코드명 원천 미수록O611코드명 원천 미수록O618코드명 원천 미수록O619코드명 원천 미수록O620코드명 원천 미수록O623코드명 원천 미수록O624코드명 원천 미수록O628코드명 원천 미수록O629코드명 원천 미수록O630코드명 원천 미수록O631코드명 원천 미수록O632코드명 원천 미수록O639코드명 원천 미수록O640코드명 원천 미수록O641코드명 원천 미수록O642코드명 원천 미수록O643코드명 원천 미수록O644코드명 원천 미수록O645코드명 원천 미수록O648코드명 원천 미수록O649코드명 원천 미수록O650코드명 원천 미수록O651코드명 원천 미수록O652코드명 원천 미수록O653코드명 원천 미수록O654코드명 원천 미수록O655코드명 원천 미수록O658코드명 원천 미수록O659코드명 원천 미수록O660코드명 원천 미수록O661코드명 원천 미수록O662코드명 원천 미수록O663코드명 원천 미수록O664코드명 원천 미수록O665코드명 원천 미수록O668코드명 원천 미수록O669코드명 원천 미수록O670코드명 원천 미수록O678코드명 원천 미수록O679코드명 원천 미수록O680코드명 원천 미수록O681코드명 원천 미수록O682코드명 원천 미수록O683코드명 원천 미수록O688코드명 원천 미수록O689코드명 원천 미수록O690코드명 원천 미수록O691코드명 원천 미수록O692코드명 원천 미수록O693코드명 원천 미수록O694코드명 원천 미수록O695코드명 원천 미수록O698코드명 원천 미수록O699코드명 원천 미수록O700코드명 원천 미수록O701코드명 원천 미수록O702코드명 원천 미수록O703코드명 원천 미수록O709코드명 원천 미수록O730코드명 원천 미수록O731코드명 원천 미수록O740코드명 원천 미수록O741코드명 원천 미수록O742코드명 원천 미수록O743코드명 원천 미수록O744코드명 원천 미수록O745코드명 원천 미수록O746코드명 원천 미수록O747코드명 원천 미수록O748코드명 원천 미수록O749코드명 원천 미수록O750코드명 원천 미수록O751코드명 원천 미수록O752코드명 원천 미수록O753코드명 원천 미수록O754코드명 원천 미수록O755코드명 원천 미수록O756코드명 원천 미수록O757코드명 원천 미수록O758코드명 원천 미수록O759코드명 원천 미수록O800코드명 원천 미수록O801코드명 원천 미수록O808코드명 원천 미수록O809코드명 원천 미수록O810코드명 원천 미수록O811코드명 원천 미수록O812코드명 원천 미수록O813코드명 원천 미수록O814코드명 원천 미수록O815코드명 원천 미수록O820코드명 원천 미수록O821코드명 원천 미수록O822코드명 원천 미수록O828코드명 원천 미수록O829코드명 원천 미수록O830코드명 원천 미수록O831코드명 원천 미수록O832코드명 원천 미수록O833코드명 원천 미수록O834코드명 원천 미수록O838코드명 원천 미수록O839코드명 원천 미수록O840코드명 원천 미수록O841코드명 원천 미수록O842코드명 원천 미수록O848코드명 원천 미수록O849코드명 원천 미수록TABLE 기술 상세제외 조건 · WITHOUT아래 TABLE에 해당하면 이 ADRG에서 제외됩니다.TABLE시술명 table2내부 ID LT_9620_002제외 대상코드 43개전체 43개코드코드명R3131코드명 원천 미수록R3133코드명 원천 미수록R3136코드명 원천 미수록R3138코드명 원천 미수록R3141코드명 원천 미수록R3143코드명 원천 미수록R3146코드명 원천 미수록R3148코드명 원천 미수록R4351코드명 원천 미수록R4353코드명 원천 미수록R4356코드명 원천 미수록R4358코드명 원천 미수록R4361코드명 원천 미수록R4362코드명 원천 미수록R4380코드명 원천 미수록R4460코드명 원천 미수록R4507코드명 원천 미수록R4508코드명 원천 미수록R4509코드명 원천 미수록R4510코드명 원천 미수록R4514코드명 원천 미수록R4516코드명 원천 미수록R4517코드명 원천 미수록R4518코드명 원천 미수록R4519코드명 원천 미수록R4520코드명 원천 미수록R5001코드명 원천 미수록R5002코드명 원천 미수록RA311코드명 원천 미수록RA312코드명 원천 미수록RA313코드명 원천 미수록RA314코드명 원천 미수록RA315코드명 원천 미수록RA316코드명 원천 미수록RA317코드명 원천 미수록RA318코드명 원천 미수록RA361코드명 원천 미수록RA362코드명 원천 미수록RA380코드명 원천 미수록RA431코드명 원천 미수록RA432코드명 원천 미수록RA433코드명 원천 미수록RA434코드명 원천 미수록TABLE 기술 상세원문 근거1개사용자 표시 조건의 출처와 기술 근거를 확인합니다.조건 상태조건 TABLE 연결 완료조건 원문주진단명 table1근거 출처main_page_blocks:raw_text근거 페이지911조건 ASTAST_9620기술식EXCLUSION(base=TABLE_REF[LT_9620_001], excluded=TABLE_REF[LT_9620_002])",
+        "expected_text_presence": {
+          "주진단명 table2": false,
+          "조건 TABLE 연결 완료": true
+        },
+        "forbidden_text_presence": {
+          "직접 코드 조건": false,
+          "제외 조건 · WITHOUT": true,
+          "명시적 조건 없음": false
+        },
+        "table_ids": [
+          "LT_9620_001",
+          "LT_9620_002"
+        ],
+        "exclusion_table_ids": [
+          "LT_9620_002"
+        ],
+        "direct_text_count": 0,
+        "include_block_count": 1,
+        "exclude_block_count": 1,
+        "without_operator_count": 0
+      },
+      "tables": [
+        {
+          "table_id": "LT_O602_003",
+          "open": true,
+          "loaded": true,
+          "loading": false,
+          "error_text": "",
+          "content_text": "전체 43개코드코드명F530코드명 원천 미수록F538코드명 원천 미수록F539코드명 원천 미수록O080코드명 원천 미수록O088코드명 원천 미수록O089코드명 원천 미수록O621코드명 원천 미수록O622코드명 원천 미수록O718코드명 원천 미수록O719코드명 원천 미수록O860코드명 원천 미수록O861코드명 원천 미수록O862코드명 원천 미수록O863코드명 원천 미수록O864코드명 원천 미수록O868코드명 원천 미수록O872코드명 원천 미수록O878코드명 원천 미수록O879코드명 원천 미수록O894코드명 원천 미수록O895코드명 원천 미수록O896코드명 원천 미수록O898코드명 원천 미수록O899코드명 원천 미수록O900코드명 원천 미수록O901코드명 원천 미수록O902코드명 원천 미수록O905코드명 원천 미수록O908코드명 원천 미수록O909코드명 원천 미수록O910코드명 원천 미수록O912코드명 원천 미수록O920코드명 원천 미수록O921코드명 원천 미수록O922코드명 원천 미수록O923코드명 원천 미수록O924코드명 원천 미수록O925코드명 원천 미수록O926코드명 원천 미수록O927코드명 원천 미수록Z390코드명 원천 미수록Z391코드명 원천 미수록Z392코드명 원천 미수록TABLE 기술 상세",
+          "exclusion": false,
+          "search_present": true,
+          "table_present": true,
+          "headers": [
+            "코드",
+            "코드명"
+          ],
+          "rows_before": 43,
+          "first_code": "F530",
+          "rows_filtered": 1,
+          "rows_restored": 43,
+          "result_before": "전체 43개",
+          "result_filtered": "1 / 43개",
+          "sticky_header": true,
+          "viewport_scroll": true
+        }
+      ],
+      "screenshot": {
+        "filename": "O602.png",
+        "path": "/home/runner/workspace/reports/electron_stage52_runtime_ui_preview_nix_click_v1/O602.png",
+        "width": 1600,
+        "height": 953,
+        "size_bytes": 73013,
+        "sha256": "27eda8168869159e63e0b73160fd0b8e994539851bc6d0e4393835ce64804340",
+        "non_blank": true
+      },
+      "checks": [
+        {
+          "name": "expected_text",
+          "passed": false,
+          "actual": {
+            "주진단명 table2": false,
+            "조건 TABLE 연결 완료": true
+          },
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "forbidden_text_absent",
+          "passed": false,
+          "actual": {
+            "직접 코드 조건": false,
+            "제외 조건 · WITHOUT": true,
+            "명시적 조건 없음": false
+          },
+          "expected": "all false",
+          "severity": "core"
+        },
+        {
+          "name": "table_ids",
+          "passed": false,
+          "actual": [
+            "LT_9620_001",
+            "LT_9620_002"
+          ],
+          "expected": [],
+          "severity": "core"
+        },
+        {
+          "name": "expected_table_count_positive",
+          "passed": false,
+          "actual": 0,
+          "expected": "> 0",
+          "severity": "core"
+        },
+        {
+          "name": "exclude_table_ids",
+          "passed": false,
+          "actual": [
+            "LT_9620_002"
+          ],
+          "expected": [],
+          "severity": "core"
+        },
+        {
+          "name": "O602_not_direct_condition",
+          "passed": true,
+          "actual": 0,
+          "expected": 0,
+          "severity": "core"
+        },
+        {
+          "name": "O602_not_without",
+          "passed": false,
+          "actual": 1,
+          "expected": 0,
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_no_error_message",
+          "passed": false,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "error_text": "",
+              "content_text": "전체 43개코드코드명F530코드명 원천 미수록F538코드명 원천 미수록F539코드명 원천 미수록O080코드명 원천 미수록O088코드명 원천 미수록O089코드명 원천 미수록O621코드명 원천 미수록O622코드명 원천 미수록O718코드명 원천 미수록O719코드명 원천 미수록O860코드명 원천 미수록O861코드명 원천 미수록O862코드명 원천 미수록O863코드명 원천 미수록O864코드명 원천 미수록O868코드명 원천 미수록O872코드명 원천 미수록O878코드명 원천 미수록O879코드명 원천 미수록O894코드명 원천 미수록O895코드명 원천 미수록O896코드명 원천 미수록O898코드명 원천 미수록O899코드명 원천 미수록O900코드명 원천 미수록O901코드명 원천 미수록O902코드명 원천 미수록O905코드명 원천 미수록O908코드명 원천 미수록O909코드명 원천 미수록O910코드명 원천 미수록O912코드명 원천 미수록O920코드명 원천 미수록O921코드명 원천 미수록O922코드명 원천 미수록O923코드명 원천 미수록O924코드명 원천 미수록O925코드명 원천 미수록O926코드명 원천 미수록O927코드명 원천 미수록Z390코드명 원천 미수록Z391코드명 원천 미수록Z392코드명 원천 미수록TABLE 기술 상세"
+            }
+          ],
+          "expected": "all error_text empty",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_opened_by_summary_click",
+          "passed": false,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "open": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_loaded",
+          "passed": false,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "loaded": true
+            }
+          ],
+          "expected": "0 loaded",
+          "severity": "core"
+        },
+        {
+          "name": "all_tables_have_code_rows",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "rows": 43
+            }
+          ],
+          "expected": "all > 0",
+          "severity": "core"
+        },
+        {
+          "name": "two_column_headers",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "headers": [
+                "코드",
+                "코드명"
+              ]
+            }
+          ],
+          "expected": [
+            "코드",
+            "코드명"
+          ],
+          "severity": "core"
+        },
+        {
+          "name": "search_inputs_present",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "search_present": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "search_filters_rows",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "before": 43,
+              "filtered": 1,
+              "first_code": "F530"
+            }
+          ],
+          "expected": "1 <= filtered <= before",
+          "severity": "core"
+        },
+        {
+          "name": "search_clear_restores_all_rows",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "before": 43,
+              "restored": 43
+            }
+          ],
+          "expected": "restored === before",
+          "severity": "core"
+        },
+        {
+          "name": "sticky_headers",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "sticky": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "internal_scroll",
+          "passed": true,
+          "actual": [
+            {
+              "table_id": "LT_O602_003",
+              "scroll": true
+            }
+          ],
+          "expected": "all true",
+          "severity": "core"
+        },
+        {
+          "name": "screenshot_non_blank",
+          "passed": true,
+          "actual": {
+            "width": 1600,
+            "height": 953,
+            "size_bytes": 73013
+          },
+          "expected": "non-blank",
+          "severity": "warning"
+        }
+      ]
+    }
+  ],
+  "console_errors": [],
+  "renderer_gone": [],
+  "load_failures": [],
+  "global_checks": [
+    {
+      "name": "console_errors_absent",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "severity": "core"
+    },
+    {
+      "name": "renderer_crash_absent",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "severity": "core"
+    },
+    {
+      "name": "load_failures_absent",
+      "passed": true,
+      "actual": 0,
+      "expected": 0,
+      "severity": "core"
+    },
+    {
+      "name": "screenshots_distinct",
+      "passed": true,
+      "actual": 3,
+      "expected": 3,
+      "severity": "warning"
+    },
+    {
+      "name": "runtime_electron_version",
+      "passed": true,
+      "actual": "35.6.0",
+      "expected": "35.6.0",
+      "severity": "warning"
+    }
+  ],
+  "core_pass": 32,
+  "core_fail": 24,
+  "warning_pass": 5,
+  "warning_fail": 0
+}

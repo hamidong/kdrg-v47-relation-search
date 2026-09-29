@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# PyInstaller 빌드 산출물 (Actions/로컬 빌드 시 생성, 저장소에는 커밋하지 않음)
+build/
+dist/
+
+# 공식 원본 PDF/HWPX 원천자료 - 저장소·exe 번들 제외 대상 (SOURCE_MANIFEST.md만 포함)
+sources/raw/

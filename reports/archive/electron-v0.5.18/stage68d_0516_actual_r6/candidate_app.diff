@@ -1,0 +1,29 @@
+diff --git a/home/runner/workspace/electron/renderer/app.js b/home/runner/workspace/reports/stage68d_0516_actual_r6/candidate_app.js
+index 27e4544..b2bb0b1 100644
+--- a/home/runner/workspace/electron/renderer/app.js
++++ b/home/runner/workspace/reports/stage68d_0516_actual_r6/candidate_app.js
+@@ -349,7 +349,7 @@ function renderRelationDetail(candidate, response, options = {}) {
+   const header = create('div', 'detail-primary detail-hero relation-detail-primary'); header.append(makeBadge('ADRG')); const copy = create('div'); copy.append(create('h2', '', candidate.title), create('p', '', `${candidate.relation_level_label} · ${candidate.matched_count}/${candidate.total_count} 코드 연결`)); header.append(copy);
+   const openAadrg = create('button', 'secondary-button relation-open-aadrg', 'ADRG 상세 보기'); openAadrg.type = 'button'; openAadrg.dataset.entityType = 'ADRG'; openAadrg.dataset.entityId = candidate.entity_id; header.append(openAadrg); panel.append(header);
+   const notice = create('div', `relation-level-notice relation-${candidate.relation_level}`); notice.append(create('strong', '', candidate.relation_level_label), create('p', '', relationLevelDescription(candidate.relation_level)), create('small', '', response.disclaimer)); panel.append(notice);
+-  panel.append(makeMetaGrid([['ADRG', candidate.entity_id], ['MDC', candidate.summary?.mdc ? mdcDisplayText(candidate.summary.mdc, candidate.summary?.mdc_name) : '-'], ['질병군 분류', makeClassificationBadgeGroup([candidate.summary?.classification_code || candidate.summary?.classification_display_label])], ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`]], 'detail-overview-grid'));
++  panel.append(makeMetaGrid([['ADRG', candidate.entity_id], ['MDC', candidate.summary?.mdc ? mdcDisplayText(candidate.summary.mdc, candidate.summary?.mdc_name) : '-'], ['질병군 분류', makeClassificationBadgeGroup((candidate.summary?.abc_display_labels ?? []).length ? candidate.summary.abc_display_labels : [candidate.summary?.classification_code || candidate.summary?.classification_display_label])], ['연결 코드', `${candidate.matched_count}/${candidate.total_count}`]], 'detail-overview-grid'));
+   const matches = makeSection('입력 코드별 연결 조건', '입력 코드가 분류조건의 어떤 코드집합과 연결되는지 확인합니다.', { open: true, count: candidate.code_matches.length }); const stack = create('div', 'relation-match-stack'); for (const match of candidate.code_matches) stack.append(relationMatchCard(match)); matches.append(stack); panel.append(matches);
+   setText('detail-heading', '복수 코드 관계 상세'); setText('detail-caption', `ADRG ${candidate.entity_id}`); setDetailFoldActions(true); updateBackButton();
+ }
+@@ -1287,7 +1287,15 @@ function renderAdrgDetail(payload) {
+     ], 'detail-overview-grid'),
+   );
+ 
++  const aadrgSection = makeSection(
++    '파생 AADRG',
++    'ADRG에서 파생되는 AADRG와 질병군 분류를 함께 확인합니다.',
++    { open: false, count: (detail.aadrg_records ?? []).length },
++  );
++  aadrgSection.append(renderDerivedAadrgList(detail.aadrg_records));
++
+   fragment.append(
++    aadrgSection,
+     renderUserConditionSummary(detail),
+     renderUserConditionTables(detail),
+     ...(SHOW_DEVELOPER_METADATA

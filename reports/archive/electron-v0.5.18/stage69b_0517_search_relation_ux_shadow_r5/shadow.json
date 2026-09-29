@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R5",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 50B FAIL\n[FAIL] KDRG Stage 50B Electron 검색 service 검증: 13 PASS / 1 FAIL\n- 0.5.10 runtime probe | actual=1 | expected=0\n"
+}

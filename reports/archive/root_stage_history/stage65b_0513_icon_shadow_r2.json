@@ -1,0 +1,72 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0513_ICON_ACTUAL",
+  "preflight": {
+    "head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "version": "0.5.12",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "stage64_product_status": [
+      " M electron/renderer/app.js",
+      " M electron/renderer/index.html",
+      " M electron/tests/validate-stage59b-ui.js",
+      "?? electron/renderer/official-condition-text.js"
+    ],
+    "stage64d_status": "PASS",
+    "stage65a_status": "PASS",
+    "stage65a_icon_mode": "SOURCE_OR_WORKFLOW_ICON_REFERENCE_ONLY",
+    "stage65a_proposed_icon_files": [
+      "50D_validate_kdrg_electron_windows_packaging.py",
+      "electron/build/icon-kdrg-v47.ico",
+      "electron/build/icon-kdrg-v47.png",
+      "electron/package.json",
+      "electron/tests/validate-packaging-config.js"
+    ],
+    "approved_png_sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3",
+    "approved_ico_sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7"
+  },
+  "icon_source": {
+    "png": {
+      "path": "electron/build/icon-kdrg-v47.png",
+      "sha256": "2d645eab6029666d5ca5da46b173fe0834493f79320405d19e09e3912c1013a3",
+      "size_bytes": 244101
+    },
+    "ico": {
+      "path": "electron/build/icon-kdrg-v47.ico",
+      "sha256": "c990bf09288228723d69a07673ec24b3dcc44d6044f8860c127b5ebe4325f4c7",
+      "size_bytes": 112188
+    }
+  },
+  "patch_details": {
+    "package_sha256": "b3df541cc58e7f1c1c8a14165e797390e30e7ee20f10a20a25d4b4eca09e8705",
+    "packaging_js_sha256": "5bc6dfc9dc51c6207cda9bb8e605675581da8c25c02064e381b81d3bd0078711",
+    "packaging_py": {
+      "sha256": "b85209836186bdcfdbb56877989425ef439683fc90537fd935576d262938d849",
+      "patch_mode": "AST_INSERT_BEFORE_TOP_LEVEL_MAIN",
+      "main_lineno_before": 37,
+      "baseline_sha256": "fc3f485e7a18394341ffdda0a0ebfccdea78494dbcefc82c71d8f0508cc66373"
+    }
+  },
+  "shadow_diff": {},
+  "icon_contract": {},
+  "validation_support": {},
+  "validation": [],
+  "artifacts": {},
+  "actual_unchanged": {
+    "head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "version": "0.5.12",
+    "stage64_product_status": [
+      " M electron/renderer/app.js",
+      " M electron/renderer/index.html",
+      " M electron/tests/validate-stage59b-ui.js",
+      "?? electron/renderer/official-condition-text.js"
+    ],
+    "icon_pipeline_paths_clean": true,
+    "icon_assets_absent": true,
+    "staging_empty": true
+  },
+  "error": "ShadowError: Shadow changed-file mismatch: actual=['50D_validate_kdrg_electron_windows_packaging.py', 'electron/package.json', 'electron/renderer/app.js', 'electron/renderer/index.html', 'electron/renderer/official-condition-text.js', 'electron/tests/validate-packaging-config.js', 'electron/tests/validate-stage59b-ui.js'] expected=['50D_validate_kdrg_electron_windows_packaging.py', 'electron/build/icon-kdrg-v47.ico', 'electron/build/icon-kdrg-v47.png', 'electron/package.json', 'electron/renderer/app.js', 'electron/renderer/index.html', 'electron/renderer/official-condition-text.js', 'electron/tests/validate-packaging-config.js', 'electron/tests/validate-stage59b-ui.js']\nTraceback (most recent call last):\n  File \"/home/runner/workspace/65B_BUILD_KDRG_0513_ICON_SHADOW_R2.py\", line 998, in main\n    payload[\"shadow_diff\"] = shadow_changed_files(worktree)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/65B_BUILD_KDRG_0513_ICON_SHADOW_R2.py\", line 695, in shadow_changed_files\n    require(\n  File \"/home/runner/workspace/65B_BUILD_KDRG_0513_ICON_SHADOW_R2.py\", line 112, in require\n    raise ShadowError(message)\nShadowError: Shadow changed-file mismatch: actual=['50D_validate_kdrg_electron_windows_packaging.py', 'electron/package.json', 'electron/renderer/app.js', 'electron/renderer/index.html', 'electron/renderer/official-condition-text.js', 'electron/tests/validate-packaging-config.js', 'electron/tests/validate-stage59b-ui.js'] expected=['50D_validate_kdrg_electron_windows_packaging.py', 'electron/build/icon-kdrg-v47.ico', 'electron/build/icon-kdrg-v47.png', 'electron/package.json', 'electron/renderer/app.js', 'electron/renderer/index.html', 'electron/renderer/official-condition-text.js', 'electron/tests/validate-packaging-config.js', 'electron/tests/validate-stage59b-ui.js']\n"
+}

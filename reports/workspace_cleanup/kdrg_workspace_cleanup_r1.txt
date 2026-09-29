@@ -1,0 +1,23 @@
+KDRG workspace cleanup R1
+========================================================================
+status=PASS
+deleted_old_untracked_stage_py=83
+archived_current_0515_py=13
+archived_root_stage_reports=195
+release_duplicate_strays_deleted=1
+release_strays_moved_unclassified=0
+
+[FINAL GUARD]
+{
+  "core_validators_present": true,
+  "electron_data_github_present": true,
+  "release_0515_present": true,
+  "tracked_diff_clean": true,
+  "staging_empty": true,
+  "tracked_file_set_unchanged": true
+}
+
+archive_0515_py=/home/runner/workspace/archive/kdrg_workspace_cleanup_20260923/electron_0.5.15_stage_scripts
+archive_reports=/home/runner/workspace/reports/archive/root_stage_history
+unclassified_releases=/home/runner/workspace/releases/_unclassified
+report_json=/home/runner/workspace/reports/workspace_cleanup/kdrg_workspace_cleanup_r1.json

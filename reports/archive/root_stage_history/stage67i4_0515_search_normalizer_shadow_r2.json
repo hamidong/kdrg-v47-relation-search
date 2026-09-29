@@ -1,0 +1,29 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_NORMALIZER_ACTUAL_APPLY",
+  "started_at": "2026-09-23 01:25:37",
+  "gate": {
+    "fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "run_id": 35803633211,
+    "signals": [
+      "DIRECT_SERVICE_AND_FIXTURE_QUERY_OK",
+      "NORMALIZE_REQUEST_DROPS_ADRG"
+    ]
+  },
+  "preflight": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "before_sha256": {
+      "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+    },
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "normalizer_before": {},
+  "repair": {},
+  "validation": {},
+  "actual_guard": {},
+  "error": "StageError: normalizer probe failed:\n/tmp/kdrg_stage67i4_r2_shadow_iwuh8qfm/electron/src/search-result-contract.js:43\n      throw new SearchContractError(`사용자 검색에서 지원하지 않는 유형입니다: ${item}`);\n      ^\n\nSearchContractError: 사용자 검색에서 지원하지 않는 유형입니다: AADRG\n    at normalizeEntityTypes (/tmp/kdrg_stage67i4_r2_shadow_iwuh8qfm/electron/src/search-result-contract.js:43:13)\n    at normalizeSearchRequest (/tmp/kdrg_stage67i4_r2_shadow_iwuh8qfm/electron/src/search-result-contract.js:89:17)\n    at out ([eval]:9:13)\n    at [eval]:23:10\n    at runScriptInThisContext (node:internal/vm:209:10)\n    at node:internal/process/execution:118:14\n    at [eval]-wrapper:6:24\n    at runScript (node:internal/process/execution:101:62)\n    at evalScript (node:internal/process/execution:133:3)\n    at node:internal/main/eval_string:51:3\n\nNode.js v20.20.0\n\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R2.py\", line 757, in main\n    payload[\"normalizer_before\"] = normalizer_probe(shadow)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R2.py\", line 304, in normalizer_probe\n    require(r[\"returncode\"] == 0, \"normalizer probe failed:\\n\" + r[\"output\"])\n  File \"/home/runner/workspace/67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R2.py\", line 91, in require\n    raise StageError(message)\nStageError: normalizer probe failed:\n/tmp/kdrg_stage67i4_r2_shadow_iwuh8qfm/electron/src/search-result-contract.js:43\n      throw new SearchContractError(`사용자 검색에서 지원하지 않는 유형입니다: ${item}`);\n      ^\n\nSearchContractError: 사용자 검색에서 지원하지 않는 유형입니다: AADRG\n    at normalizeEntityTypes (/tmp/kdrg_stage67i4_r2_shadow_iwuh8qfm/electron/src/search-result-contract.js:43:13)\n    at normalizeSearchRequest (/tmp/kdrg_stage67i4_r2_shadow_iwuh8qfm/electron/src/search-result-contract.js:89:17)\n    at out ([eval]:9:13)\n    at [eval]:23:10\n    at runScriptInThisContext (node:internal/vm:209:10)\n    at node:internal/process/execution:118:14\n    at [eval]-wrapper:6:24\n    at runScript (node:internal/process/execution:101:62)\n    at evalScript (node:internal/process/execution:133:3)\n    at node:internal/main/eval_string:51:3\n\nNode.js v20.20.0\n\n",
+  "finished_at": "2026-09-23 01:25:45"
+}

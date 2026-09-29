@@ -1,0 +1,64 @@
+KDRG V4.7 Electron Stage67I1 / 0.5.15 Packaged UI ADRG Fixture Repair Shadow R1
+====================================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_PACKAGED_UI_FIXTURE_ACTUAL_APPLY
+
+[PREFLIGHT]
+{}
+
+[SEARCH CONTRACT DIAGNOSTIC]
+{}
+
+[SHADOW BUILD]
+{}
+
+[SOURCE REPAIR]
+{}
+
+[VALIDATOR REPAIR]
+{}
+
+[DELTA AUDIT]
+{}
+
+[VALIDATION]
+
+[VALIDATION SUMMARY]
+{}
+
+[FINAL ACTUAL GUARD]
+{}
+
+[APPLY MANIFEST]
+{
+  "path": "/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_apply_manifest_r1.json",
+  "apply_file_count": null,
+  "repair_contract": null
+}
+
+[BLOCKER]
+StageError: packaged_ui_validation signature missing
+Traceback (most recent call last):
+  File "/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py", line 807, in main
+    payload["preflight"] = preflight()
+                           ^^^^^^^^^^^
+  File "/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py", line 221, in preflight
+    diag = load_diag_gate()
+           ^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py", line 191, in load_diag_gate
+    require('"failed_step": "packaged_ui_validation"' in failed_log,
+  File "/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py", line 106, in require
+    raise StageError(message)
+StageError: packaged_ui_validation signature missing
+
+
+[NEXT]
+- PASS이면 RC 실패원인인 packaged UI fixture의 ADRG query 계약이 Shadow에서 수정·전수검증된 상태.
+- 다음 Stage67I2에서 manifest의 2개 파일만 Actual에 적용하고 전체 Actual 검증.
+- 그 다음 별도 fix commit/push 후 새 workflow_dispatch RC 실행.
+- 새 RC success 전에는 electron-v0.5.15 tag/release 금지.
+
+shadow_root=/home/runner/workspace/reports/stage67i1_0515_packaged_ui_adrg_fixture_shadow_r1
+report_txt=/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_shadow_r1.txt
+report_json=/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_shadow_r1.json
+apply_manifest=/home/runner/workspace/stage67i1_0515_packaged_ui_adrg_fixture_apply_manifest_r1.json

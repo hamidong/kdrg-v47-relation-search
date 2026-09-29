@@ -1,0 +1,14 @@
+[FAIL] Stage68D
+rollback=YES
+검증 실패: cwd=/home/runner/workspace/electron cmd=node --check renderer/app.js
+
+/home/runner/workspace/electron/renderer/app.js:354
+  const matches = makeSection('입력 코드별 연결 조건', '입력 코드가 분류조건의 어떤 코드집합과 연결되는지 확인합니다.', { open: true, count: candidate.code_matches.length }); const stack = create('div', 'relation-match-stack'); for (const match of candidate.code_matches) stack.append(relationMatchCard(match)); matches.append(stack); panel.append(matches);
+  ^^^^^
+
+SyntaxError: Unexpected token 'const'
+    at wrapSafe (node:internal/modules/cjs/loader:1464:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v20.20.0
+

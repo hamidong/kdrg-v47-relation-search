@@ -1,0 +1,11 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0513_ACTUAL",
+  "preflight": {},
+  "shadow_diff": {},
+  "source_fidelity": {},
+  "validation": [],
+  "artifacts": {},
+  "actual_unchanged": {},
+  "error": "ShadowError: not all official candidates are verified ROOT_SOURCE_FRAGMENT; count=38 sample=['C061', 'C062', 'C063', 'C064', 'C071', 'C073', 'F022', 'F061', 'F112', 'F122', 'F135', 'F136', 'F194', 'I141', 'I142', 'I160', 'I187', 'I194', 'I200', 'I251', 'I252', 'I283', 'I284', 'I285', 'I286', 'I287', 'N011', 'N041', 'N042', 'N071']\nTraceback (most recent call last):\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py\", line 1483, in main\n    pre, audit_rows, pdf_indexes = preflight()\n                                   ^^^^^^^^^^^\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py\", line 489, in preflight\n    audit_report, audit_rows = load_audit_contract()\n                               ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py\", line 442, in load_audit_contract\n    require(\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py\", line 111, in require\n    raise ShadowError(message)\nShadowError: not all official candidates are verified ROOT_SOURCE_FRAGMENT; count=38 sample=['C061', 'C062', 'C063', 'C064', 'C071', 'C073', 'F022', 'F061', 'F112', 'F122', 'F135', 'F136', 'F194', 'I141', 'I142', 'I160', 'I187', 'I194', 'I200', 'I251', 'I252', 'I283', 'I284', 'I285', 'I286', 'I287', 'N011', 'N041', 'N042', 'N071']\n"
+}

@@ -1,0 +1,309 @@
+KDRG V4.7 Electron Stage67I1 / 0.5.15 ADRG Namespace + Packaged UI Repair Shadow R4
+========================================================================================================================
+status=PASS
+readiness=READY_FOR_0515_ADRG_NAMESPACE_UI_ACTUAL_APPLY
+
+[PREFLIGHT]
+{
+  "diagnosis": {
+    "run_id": 35695541913,
+    "head_sha": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "failure": "packaged_ui_validation",
+    "message": "B018 result ready timeout: 30000ms",
+    "live_log_used": false
+  },
+  "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "branch": "main",
+  "package_version": "0.5.15",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "base_tag_immutable": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[BEFORE NAMESPACE AUDIT]
+{
+  "adrg_count": 1132,
+  "code_count": 16571,
+  "collision_count": 471,
+  "failure_count": 471,
+  "collision_failure_count": 471,
+  "noncollision_failure_count": 0,
+  "failure_sample": [
+    {
+      "adrg": "A010",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A020",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A030",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A040",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A050",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A061",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A062",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A070",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "A080",
+      "is_code_collision": true
+    },
+    {
+      "adrg": "B011",
+      "is_code_collision": true
+    }
+  ]
+}
+
+[SHADOW BUILD]
+{
+  "shadow_root": "/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4",
+  "tracked_file_count": 113,
+  "initial_byte_match": true
+}
+
+[SERVICE REPAIR]
+{
+  "strategy": "EXPLICIT_ADRG_FILTER_EXACT_ID_PRECEDENCE",
+  "source_before_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+  "source_after_sha256": "017f6b2a3cdaaede0f14e77be5e06fc20b113f5d258c3271802beb07641b9d2c"
+}
+
+[PACKAGED FIXTURE REPAIR]
+{
+  "before_rows": [
+    {
+      "adrg": "B013",
+      "aadrg": "B0130",
+      "search_query": "B013"
+    },
+    {
+      "adrg": "B014",
+      "aadrg": "B0140",
+      "search_query": "B014"
+    },
+    {
+      "adrg": "B018",
+      "aadrg": "B0180",
+      "search_query": "B0180"
+    },
+    {
+      "adrg": "B022",
+      "aadrg": "B0220",
+      "search_query": "B0220"
+    },
+    {
+      "adrg": "L033",
+      "aadrg": "L0330",
+      "search_query": "L033"
+    },
+    {
+      "adrg": "9610",
+      "aadrg": "96100",
+      "search_query": "9610"
+    }
+  ],
+  "after_rows": [
+    {
+      "adrg": "B013",
+      "aadrg": "B0130",
+      "search_query": "B013"
+    },
+    {
+      "adrg": "B014",
+      "aadrg": "B0140",
+      "search_query": "B014"
+    },
+    {
+      "adrg": "B018",
+      "aadrg": "B0180",
+      "search_query": "B018"
+    },
+    {
+      "adrg": "B022",
+      "aadrg": "B0220",
+      "search_query": "B022"
+    },
+    {
+      "adrg": "L033",
+      "aadrg": "L0330",
+      "search_query": "L033"
+    },
+    {
+      "adrg": "9610",
+      "aadrg": "96100",
+      "search_query": "9610"
+    }
+  ],
+  "legacy_query_mismatches": {
+    "B018": "B0180",
+    "B022": "B0220"
+  },
+  "normalized_fixture_records": 6,
+  "source_before_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+  "source_after_sha256": "ec3d8a53f136884e61bb2383e6f22c149c708501c00c02fb2703416f7504b7de"
+}
+
+[VALIDATOR REPAIRS]
+{
+  "packaged": {
+    "query_assertion_migrated": "expected[2] -> expected[0]",
+    "regression_guard": "fixture.search_query == fixture.adrg",
+    "validator_before_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+    "validator_after_sha256": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29"
+  },
+  "search": {
+    "guard": "ALL_1132_ADRG_EXACT_ID",
+    "validator_before_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65",
+    "validator_after_sha256": "072ddb7ad0b1216cbde808290a64edf497f9763a1a8ac8dc18395ddf63665cb1"
+  }
+}
+
+[DELTA AUDIT]
+{
+  "changed_files": [
+    "electron/src/kdrg-search-service.js",
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage59b-search.js"
+  ],
+  "changed_count": 4,
+  "manifest": {
+    "electron/src/kdrg-search-service.js": {
+      "actual_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+      "shadow_sha256": "017f6b2a3cdaaede0f14e77be5e06fc20b113f5d258c3271802beb07641b9d2c"
+    },
+    "electron/src/packaged-runtime-smoke.js": {
+      "actual_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+      "shadow_sha256": "ec3d8a53f136884e61bb2383e6f22c149c708501c00c02fb2703416f7504b7de"
+    },
+    "electron/tests/validate-packaged-runtime-smoke.js": {
+      "actual_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+      "shadow_sha256": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29"
+    },
+    "electron/tests/validate-stage59b-search.js": {
+      "actual_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65",
+      "shadow_sha256": "072ddb7ad0b1216cbde808290a64edf497f9763a1a8ac8dc18395ddf63665cb1"
+    }
+  }
+}
+
+[VALIDATION]
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node --check src/kdrg-search-service.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node --check src/packaged-runtime-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node --check tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node --check tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node tests/validate-stage59b-search.js
+stage59_search: 29 PASS / 0 FAIL
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node tests/validate-packaged-runtime-smoke.js
+validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2
+[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node tests/validate-stage59b-ui.js
+stage59_ui: 21 PASS / 0 FAIL
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node tests/validate-stage59b-smoke.js
+stage59_smoke: PASS
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=npm run check
+
+> kdrg-v47-relation-search-electron@0.5.15 validate:packaging
+> node tests/validate-packaging-config.js
+
+validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI
+electron_root=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron
+node=v20.20.0
+[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4 cmd=python 50B_validate_kdrg_electron_search_service.py
+[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/reports/electron_stage50b_validation_report.txt
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4 cmd=python 50C_validate_kdrg_electron_renderer_ui.py
+[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/reports/electron_stage50c_validation_report.txt
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4 cmd=python 50D_validate_kdrg_electron_windows_packaging.py
+[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/reports/electron_stage50d_validation_report.txt
+- PASS rc=0 cwd=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron cmd=node tests/validate-release-version.js 0.5.15
+[PASS] lock top name | actual="kdrg-v47-relation-search-electron" | expected="kdrg-v47-relation-search-electron"
+[PASS] lock root name | actual="kdrg-v47-relation-search-electron" | expected="kdrg-v47-relation-search-electron"
+[PASS] lockfileVersion | actual=3 | expected=3
+[PASS] artifact template uses version | actual=true | expected=true
+[PASS] portable artifact name | actual="KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe" | expected="KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe"
+[PASS] release tag | actual="electron-v0.5.15" | expected="electron-v0.5.15"
+[PASS] version has no prerelease | actual="0.5.15" | expected="stable semver"
+[PASS] Electron release version 검증: 14 PASS / 0 FAIL
+
+[VALIDATION SUMMARY]
+{
+  "after_namespace_audit": {
+    "adrg_count": 1132,
+    "code_count": 16571,
+    "collision_count": 471,
+    "failure_count": 0,
+    "collision_failure_count": 0,
+    "noncollision_failure_count": 0,
+    "failure_sample": []
+  },
+  "all_code_behavior_guard": {
+    "collision_count": 471,
+    "all_code_snapshots_unchanged": true
+  },
+  "runtime_unchanged": true,
+  "protected_files_unchanged": true,
+  "trailing_whitespace": "NONE"
+}
+
+[FINAL ACTUAL GUARD]
+{
+  "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "tracked_worktree_clean": true,
+  "staging_empty": true,
+  "actual_repair_targets_unchanged": true,
+  "runtime_unchanged": true,
+  "base_tag_immutable": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[APPLY MANIFEST]
+{
+  "path": "/home/runner/workspace/stage67i1_0515_adrg_namespace_ui_apply_manifest_r4.json",
+  "apply_file_count": 4,
+  "repair_contract": {
+    "explicit_adrg_exact_id_precedes_code_collision": true,
+    "all_1132_adrg_exact_ids_pass": true,
+    "all_code_behavior_unchanged": true,
+    "ui_fixture_search_query_uses_public_adrg_identity": true,
+    "product_hardcoding_B018_B022": false
+  }
+}
+
+[NEXT]
+- PASS이면 471개 ADRG/CODE namespace 충돌 일반화 수정 + packaged validator 회귀수정 Shadow 후보가 확정됨.
+- 다음 Stage67I2에서 manifest의 정확한 4개 파일만 Actual에 적용하고 전체 Actual 검증.
+- 그 뒤 별도 fix commit/push 후 새 workflow_dispatch RC 실행.
+- 새 RC success 전에는 electron-v0.5.15 tag/release 금지.
+
+shadow_root=/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4
+report_txt=/home/runner/workspace/stage67i1_0515_adrg_namespace_ui_shadow_r4.txt
+report_json=/home/runner/workspace/stage67i1_0515_adrg_namespace_ui_shadow_r4.json
+apply_manifest=/home/runner/workspace/stage67i1_0515_adrg_namespace_ui_apply_manifest_r4.json

@@ -1,0 +1,264 @@
+{
+  "stage": "70A_AUDIT_0518_PHASE1_UI_COMPLETION_R3",
+  "status": "GAPS_FOUND",
+  "base_commit": "08b51f4fa487a3ae05c1e279aa1c533f9f3aed52",
+  "base_version": "0.5.17",
+  "next_version": "0.5.18",
+  "runtime_json": "UNCHANGED",
+  "tracked_files": "UNCHANGED",
+  "staging": "EMPTY",
+  "checks": [
+    {
+      "id": "A01",
+      "title": "공개 검색유형 전체·코드·ADRG",
+      "status": "PASS",
+      "detail": "AADRG/RDRG/TABLE은 독립 공개 검색유형으로 되돌리지 않음",
+      "gate": true
+    },
+    {
+      "id": "A02",
+      "title": "0.5.17 exact public-ID 계약 유지",
+      "status": "PASS",
+      "detail": "CODE-only/ADRG-only/shared exact ID의 불필요 관계결과 차단",
+      "gate": true
+    },
+    {
+      "id": "B01",
+      "title": "일반 ADRG 검색결과 카드 질병군 분류 표시",
+      "status": "PASS",
+      "detail": "adrg_branch=True, abc_display_labels=True, badge_renderer=True",
+      "gate": true
+    },
+    {
+      "id": "B02",
+      "title": "CODE 검색결과에 단일 질병군 분류 오표시 없음",
+      "status": "PASS",
+      "detail": "CODE는 여러 ADRG와 연결될 수 있어 A/B/C 단일 라벨을 강제로 붙이지 않음",
+      "gate": true
+    },
+    {
+      "id": "C01",
+      "title": "복수코드 관계검색 카드 질병군 분류 존재",
+      "status": "PASS",
+      "detail": "0.5.17에서 추가한 A/B/C label 유지",
+      "gate": true
+    },
+    {
+      "id": "C02",
+      "title": "검색결과 질병군 분류 라벨 우측 정렬 CSS",
+      "status": "FAIL",
+      "detail": "목표: 공통 result-card-classification을 우측 정렬. current_rule='.result-card-classification{\\n  justify-self: end;\\n  flex-wrap: nowrap;\\n  margin-left: 4px;\\n}\\n.result-card-classification .classification-badge{\\n  min-height: 26px;\\n  gap: 4px;\\n  padding: 3px 9px 3px 3px;\\n  font-size: 10px;\\n}\\n.result-card-classification .classification-code{\\n  min-width: 20px;\\n  height: 20px;\\n  font-size: 9px;\\n}'",
+      "gate": true
+    },
+    {
+      "id": "C03",
+      "title": "일반검색·복수검색 공통 분류 라벨 class 사용 가능",
+      "status": "PASS",
+      "detail": "70B에서는 두 경로 모두 동일한 우측 정렬 class로 통일",
+      "gate": true
+    },
+    {
+      "id": "C04",
+      "title": "복수검색 관계단계 라벨 유지",
+      "status": "PASS",
+      "detail": "우측 이동 시 '같은 조건 선택지' 등 관계 chip은 제거하지 않음",
+      "gate": true
+    },
+    {
+      "id": "D01",
+      "title": "복수검색 상세 분류 조건·조건 상세",
+      "status": "PASS",
+      "detail": "canonical ADRG detail renderer 재사용 유지",
+      "gate": true
+    },
+    {
+      "id": "D02",
+      "title": "ADRG 상세 파생 AADRG 섹션",
+      "status": "PASS",
+      "detail": "0.5.16에서 복원한 파생 AADRG 유지",
+      "gate": true
+    },
+    {
+      "id": "D03",
+      "title": "파생 AADRG 행별 질병군 분류",
+      "status": "PASS",
+      "detail": "display label 우선 + legacy fallback 유지",
+      "gate": true
+    },
+    {
+      "id": "D04",
+      "title": "ADRG 상세 순서",
+      "status": "PASS",
+      "detail": "파생 AADRG → 분류 조건 → 조건 상세",
+      "gate": true
+    },
+    {
+      "id": "D05",
+      "title": "ADRG 상세 질병군 분류 표시",
+      "status": "PASS",
+      "detail": "검색카드뿐 아니라 상세 분류도 유지",
+      "gate": true
+    },
+    {
+      "id": "E01",
+      "title": "검색결과 TABLE 개수/기술 노출 제거",
+      "status": "PASS",
+      "detail": "검색카드는 사용자용 CODE/ADRG 정보만 표시",
+      "gate": true
+    },
+    {
+      "id": "E02",
+      "title": "CODE 상세 연결/포함 TABLE 상단 노출 제거",
+      "status": "PASS",
+      "detail": "TABLE 데이터 자체는 삭제하지 않고 조건 상세에서 필요 시 사용",
+      "gate": true
+    },
+    {
+      "id": "E03",
+      "title": "분류조건 실제 코드집합 펼침 유지",
+      "status": "PASS",
+      "detail": "table1/table2/table3 코드집합 개념은 사용자 검증용으로 유지",
+      "gate": true
+    },
+    {
+      "id": "E04",
+      "title": "ADRG 기본 UI 내부 기술 metadata 숨김",
+      "status": "PASS",
+      "detail": "LT_* / parser / AST family metadata 기본노출 금지",
+      "gate": true
+    },
+    {
+      "id": "F01",
+      "title": "MDC 번호+명칭 표시",
+      "status": "FAIL",
+      "detail": "helper=True, result=False, detail=False",
+      "gate": true
+    },
+    {
+      "id": "F02",
+      "title": "분류조건 요약과 조건상세 분리",
+      "status": "PASS",
+      "detail": "상단 이해용 / 하단 검증용",
+      "gate": true
+    },
+    {
+      "id": "F03",
+      "title": "뒤로가기 검색·스크롤 상태 복원",
+      "status": "PASS",
+      "detail": "required=('historyStack', 'restoreScroll', 'restoreWindowScroll')",
+      "gate": true
+    },
+    {
+      "id": "F04",
+      "title": "질병군 분류 필터 유지",
+      "status": "PASS",
+      "detail": "일반 ADRG 카드 표시 추가 후 필터 계약도 회귀하지 않아야 함",
+      "gate": true
+    },
+    {
+      "id": "G01",
+      "title": "ADRG 1,132건 검색카드용 질병군 분류 데이터 가용성",
+      "status": "FAIL",
+      "detail": "total=1132, displayArray=1117, fallbackOnly=0, noDisplay=15, multiLabel=7, missing=['9900', '9990', 'D014', 'G241', 'G242', 'G650', 'K630', 'K720', 'K730', 'R634', 'R635', 'R636', 'R637', 'R671', 'R672']",
+      "gate": true
+    },
+    {
+      "id": "G02",
+      "title": "기존 질병군 badge CSS 재사용 가능",
+      "status": "PASS",
+      "detail": "새 badge 디자인을 만들지 않고 기존 A/B/C 디자인 재사용",
+      "gate": false
+    }
+  ],
+  "gate_failure_ids": [
+    "C02",
+    "F01",
+    "G01"
+  ],
+  "gate_fail_count": 3,
+  "warning_count": 0,
+  "runtime_adrg_classification": {
+    "total": 1132,
+    "displayArray": 1117,
+    "fallbackOnly": 0,
+    "noDisplay": 15,
+    "multiLabel": 7,
+    "missing": [
+      "9900",
+      "9990",
+      "D014",
+      "G241",
+      "G242",
+      "G650",
+      "K630",
+      "K720",
+      "K730",
+      "R634",
+      "R635",
+      "R636",
+      "R637",
+      "R671",
+      "R672"
+    ],
+    "fallbackSamples": [],
+    "multiSamples": [
+      {
+        "id": "I142",
+        "labels": [
+          "질병군 분류(일반)",
+          "질병군 분류(전문)"
+        ]
+      },
+      {
+        "id": "I740",
+        "labels": [
+          "질병군 분류(단순)",
+          "질병군 분류(일반)"
+        ]
+      },
+      {
+        "id": "I750",
+        "labels": [
+          "질병군 분류(단순)",
+          "질병군 분류(일반)"
+        ]
+      },
+      {
+        "id": "I760",
+        "labels": [
+          "질병군 분류(단순)",
+          "질병군 분류(일반)"
+        ]
+      },
+      {
+        "id": "U610",
+        "labels": [
+          "질병군 분류(일반)",
+          "질병군 분류(전문)"
+        ]
+      },
+      {
+        "id": "U630",
+        "labels": [
+          "질병군 분류(일반)",
+          "질병군 분류(전문)"
+        ]
+      },
+      {
+        "id": "U660",
+        "labels": [
+          "질병군 분류(일반)",
+          "질병군 분류(전문)"
+        ]
+      }
+    ]
+  },
+  "requested_layout": {
+    "normal_adrg_result_classification": "RIGHT_ALIGNED",
+    "relation_result_classification": "RIGHT_ALIGNED",
+    "shared_css_class": "result-card-classification",
+    "responsive": "ALLOW_WRAP_BUT_KEEP_RIGHT_ALIGNMENT",
+    "relation_level_chip": "PRESERVE"
+  },
+  "readiness": "READY_FOR_70B_GENERALIZED_UI_FIX_SHADOW"
+}

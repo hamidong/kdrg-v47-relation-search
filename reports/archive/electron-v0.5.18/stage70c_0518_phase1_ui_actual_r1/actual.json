@@ -1,0 +1,7 @@
+{
+  "stage": "70C_ACTUAL_0518_PHASE1_UI_R1",
+  "status": "FAIL",
+  "rollback": "PASS",
+  "error": "Stop: Actual 변경범위 불일치: ['electron/renderer/app.js', 'electron/renderer/styles.css']",
+  "rollback_errors": []
+}

@@ -1,0 +1,30 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_NORMALIZER_ACTUAL_APPLY",
+  "started_at": "2026-09-23 01:20:20",
+  "gate": {
+    "fix_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "run_id": 35803633211,
+    "signals": [
+      "DIRECT_SERVICE_AND_FIXTURE_QUERY_OK",
+      "NORMALIZE_REQUEST_DROPS_ADRG"
+    ]
+  },
+  "preflight": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "branch": "main",
+    "before_sha256": {
+      "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+    },
+    "release_tag_absent": true,
+    "release_absent": true,
+    "runtime_unchanged": true
+  },
+  "repair": {},
+  "validation": {},
+  "actual_guard": {},
+  "error": "StageError: old normalizeSearchRequest allow-list expected 1, found 0\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R1.py\", line 750, in main\n    contract_repair = patch_contract(\n                      ^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R1.py\", line 313, in patch_contract\n    require(\n  File \"/home/runner/workspace/67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R1.py\", line 88, in require\n    raise StageError(message)\nStageError: old normalizeSearchRequest allow-list expected 1, found 0\n",
+  "finished_at": "2026-09-23 01:20:25"
+}

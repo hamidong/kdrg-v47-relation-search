@@ -1,0 +1,29 @@
+=== KDRG V4.7 Schema v2 구조적 유효성 검증 보고서 ===
+검증 파일: kdrg_v47_pilot_schema_v2.json
+검증 스키마: kdrg_relation_schema_v2.json, condition_expression_schema_v2.json
+
+PASS: 18건
+WARN: 0건
+FAIL: 0건
+
+--- PASS 목록 ---
+[PASS] 파일 로드 성공 (v2 JSON + 2개 스키마)
+[PASS] meta.schema_version == '2'
+[PASS] 최상위 JSON Schema 검증 통과
+[PASS] [E011] condition_expression 구조 검증 통과
+[PASS] [E501] condition_expression 구조 검증 통과
+[PASS] [E502] condition_expression 구조 검증 통과
+[PASS] [E511] condition_expression 구조 검증 통과
+[PASS] [E512] condition_expression 구조 검증 통과
+[PASS] [F022] condition_expression 구조 검증 통과
+[PASS] [F136] condition_expression 구조 검증 통과
+[PASS] [F194] condition_expression 구조 검증 통과
+[PASS] [F195] condition_expression 구조 검증 통과
+[PASS] 선언된 source_id: 7개 — ['V47_ABC_PDF', 'V47_APPENDIX_PDF', 'V47_CORR_20260301_HWPX', 'V47_CORR_20260501_HWPX', 'V47_GROUP_NAME_XLSX', 'V47_MAIN_PDF', 'V47_PROC_MASTER_XLSX']
+[PASS] source_id 일관성 검증 통과 (사용된 source_id 3개 모두 선언됨)
+[PASS] member_count 정합성 검증 통과 (15개 테이블)
+[PASS] abc_classification.status 값 검증 통과
+[PASS] derived_indexes.code_to_table_ids 항목 수: 133
+[PASS] derived_indexes.table_id_to_adrg_ids 항목 수: 13
+
+최종 결과: PASS

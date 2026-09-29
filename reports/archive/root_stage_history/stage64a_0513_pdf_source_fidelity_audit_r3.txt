@@ -1,0 +1,48 @@
+KDRG Stage64A / 0.5.13 PDF Source Fidelity Audit R3
+================================================================================================
+status=PASS
+readiness=READY_FOR_0513_SHADOW_DESIGN
+
+[PDF]
+{"path": "/home/runner/workspace/sources/kdrg_v47/main/KDRG V4.7 분류집.pdf", "sha256": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4", "page_count": 1282, "extractor": "PyMuPDF"}
+
+[SUMMARY]
+ast_adrg_count=390
+raw_evidence_item_count=1099
+raw_evidence_verified_count=1099
+raw_evidence_missing_count=0
+raw_evidence_full_match_adrg_count=390
+raw_evidence_mismatch_adrg_count=0
+structural_fragment_item_count=636
+structural_fragment_literal_match_count=594
+structural_fragment_nonliteral_count=42
+official_text_resolved_count=390
+current_render_matches_official_count=269
+current_render_rewords_official_count=121
+official_text_unresolved_count=0
+display_class_counts={"CURRENT_RENDER_REWORDS_OFFICIAL": 121, "CURRENT_RENDER_MATCHES_OFFICIAL": 269}
+sample_reworded=9600,9620,9630,A080,B031,B032,B033,B091,C030,C043,C044,D061,D062,D502,E011,E012,E013,E014,E015,E019,F022,F023,F061,F071,F091,F112,F122,F133,F134,F135,F136,F194,F253,F600,G504,G524,G534,H010,H052,H152,H601,H602,H611,H661,H671,I011,I012,I141,I142,I160
+raw_source_mismatch=
+
+[R2 352/390 EXPLANATION CHECK]
+R2의 352/390은 모든 node.source_fragment를 literal PDF 문자열로 강제한 결과다. R3는 raw/leaf source evidence와 structural fragment를 분리한다. structural nonliteral은 정보로 남기되 raw evidence가 PDF에서 확인되는 한 AST 원천 불일치로 판정하지 않는다.
+
+[P651]
+{"expected_lines": ["입원시 체중 1500 - 1999g", "and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥ 96 hours)", "and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }"], "line_match": {"입원시 체중 1500 - 1999g": {"match_type": "EXACT_PAGE", "pages": [63]}, "and not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥ 96 hours)": {"match_type": "EXACT_PAGE", "pages": [957]}, "and { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }": {"match_type": "EXACT_PAGE", "pages": [959]}}, "pdf_page": 63, "display_class": "CURRENT_RENDER_REWORDS_OFFICIAL", "current_render_text": "입원시 체중 1500 - 1999g\nand not(OR procedure and not(시술명 table2) or 인공호흡 ≥96 hours)\nand {(시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제}", "official_text_candidate": "입원시 체중 1500 - 1999g\nand not(시술명 table2을 제외한 OR procedure or 인공호흡 ≥96 hours)\nand { (시술명 table3 or 인공호흡 > 24 hours or 주요 문제) and 다발성 주요 문제 }"}
+
+[IMMUTABILITY]
+{"head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c", "tracked_worktree_clean": true, "staging_empty": true, "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"}
+
+[NEXT]
+- raw source evidence mismatch 0이면, PDF 검증된 official_text 대상만 64B Shadow에서 원문 우선 표시.
+- structural source_fragment 비문자열 일치만으로는 AST 오류로 판정하지 않음.
+- official_text 미확정 대상은 AST renderer fallback 유지.
+- 64B 수정 후 동일 PDF audit 계약으로 최종 UI 원문 일치 여부를 다시 검증.
+
+cases_tsv=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r3/cases.tsv
+node_fragment_audit=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r3/node_fragment_audit.tsv
+source_evidence_mismatch=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r3/source_evidence_mismatch.tsv
+display_reworded=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r3/display_reworded.tsv
+p651_evidence=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r3/p651_evidence.txt
+p651_source_objects=/home/runner/workspace/reports/stage64a_0513_pdf_source_fidelity_audit_r3/p651_source_objects.json
+report_json=/home/runner/workspace/stage64a_0513_pdf_source_fidelity_audit_r3.json

@@ -1,0 +1,64 @@
+KDRG V4.7 Electron Stage67I5 / 0.5.15 Full Search Pipeline Actual Apply R1
+========================================================================================================
+status=PASS
+readiness=READY_FOR_0515_FIX_COMMIT_PUSH_RC
+
+[APPLY]
+{
+  "applied_sha256": {
+    ".github/workflows/build-electron-windows.yml": "81926693847d0fb5e6844b7d448a76826fb4d45c89bfb9b4d548c14fe4f28d21",
+    "electron/src/search-result-contract.js": "2053b371fa9d519619ad4965f9ce4ee4f5570fdd3ffe7a4b6176493c2e669889",
+    "electron/tests/validate-packaged-runtime-smoke.js": "2b569fc1531bddd4d520807f017050c3841f9b4ac09aae586b459c6e4181c5d0",
+    "electron/tests/validate-stage59b-search.js": "3562002f3040b7396e82c00a6a3d6f47340efc26643685bd2dd477a3d9a895a2"
+  },
+  "tracked_diff_files": [
+    ".github/workflows/build-electron-windows.yml",
+    "electron/src/search-result-contract.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage59b-search.js"
+  ],
+  "git_diff_check": "PASS"
+}
+
+[VALIDATION SUMMARY]
+{
+  "ADRG_count": 1132,
+  "collision_count": 471,
+  "normalized_ADRG_failures": 0,
+  "CODE_ALL_collision_changes": 0,
+  "fixture_failures": 0,
+  "npm_run_check": "PASS",
+  "stage59b_stage60c_packaged": "PASS",
+  "root_50b_50c_50d": "PASS",
+  "release_version": "PASS",
+  "official_regression": "PASS",
+  "git_diff_check": "PASS"
+}
+
+[FINAL GUARD]
+{
+  "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "tracked_delta": [
+    ".github/workflows/build-electron-windows.yml",
+    "electron/src/search-result-contract.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage59b-search.js"
+  ],
+  "staging_empty": true,
+  "candidate_sha_exact": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[ROLLBACK]
+{
+  "performed": false
+}
+
+[NEXT]
+- PASS이면 정확한 4개 Actual 변경만 남고 아직 staging/commit/push 없음.
+- 다음 단계는 exact 4-file fix commit + push + 새 workflow_dispatch RC.
+- RC success 전 electron-v0.5.15 tag/release 금지.
+
+report_json=/home/runner/workspace/stage67i5_0515_full_pipeline_actual_r1.json

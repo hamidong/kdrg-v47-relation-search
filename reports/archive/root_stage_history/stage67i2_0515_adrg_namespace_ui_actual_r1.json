@@ -1,0 +1,48 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_FIX_COMMIT_PUSH_RC",
+  "started_at": "2026-09-23 00:18:19",
+  "preflight": {
+    "gate": {
+      "report_status": "PASS",
+      "report_readiness": "READY_FOR_0515_ADRG_NAMESPACE_UI_ACTUAL_APPLY",
+      "manifest_schema": "kdrg-0515-adrg-namespace-ui-repair-v4",
+      "repair_contract": {
+        "explicit_adrg_exact_id_precedes_code_collision": true,
+        "all_1132_adrg_exact_ids_pass": true,
+        "all_code_behavior_unchanged": true,
+        "ui_fixture_search_query_uses_public_adrg_identity": true,
+        "product_hardcoding_B018_B022": false
+      }
+    },
+    "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "package_version": "0.5.15",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "base_tag_immutable": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "backup": {
+    "backup_root": "/home/runner/workspace/reports/stage67i2_0515_adrg_namespace_ui_actual_r1_backup",
+    "file_count": 4,
+    "sha256": {
+      "electron/src/kdrg-search-service.js": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+      "electron/src/packaged-runtime-smoke.js": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+      "electron/tests/validate-packaged-runtime-smoke.js": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+      "electron/tests/validate-stage59b-search.js": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65"
+    }
+  },
+  "apply": {},
+  "validation": {},
+  "rollback": {
+    "performed": true,
+    "status": "PASS",
+    "restored_count": 4,
+    "tracked_worktree_clean": true,
+    "staging_empty": true
+  },
+  "final_guard": {},
+  "error": "StageError: git diff --check failed:\nelectron/tests/validate-stage59b-search.js:40: new blank line at EOF.\n\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R1.py\", line 691, in main\n    payload[\"apply\"] = apply_targets()\n                       ^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R1.py\", line 339, in apply_targets\n    require(diff_check[\"returncode\"] == 0,\n  File \"/home/runner/workspace/67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R1.py\", line 101, in require\n    raise StageError(message)\nStageError: git diff --check failed:\nelectron/tests/validate-stage59b-search.js:40: new blank line at EOF.\n\n",
+  "finished_at": "2026-09-23 00:18:23"
+}

@@ -1,0 +1,113 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_FULL_PIPELINE_ACTUAL_APPLY",
+  "started_at": "2026-09-23 01:38:22",
+  "gate": {
+    "commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "audit_readiness": "NEEDS_MULTI_LAYER_REPAIR_DESIGN",
+    "baseline_pass_count": 10,
+    "direct_service": {
+      "b018_exact_count": 1,
+      "adrg_count": 1132,
+      "collision_count": 471,
+      "failure_count": 0
+    }
+  },
+  "preflight": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "before_sha256": {
+      "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154",
+      "electron/tests/validate-packaged-runtime-smoke.js": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+      ".github/workflows/build-electron-windows.yml": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06"
+    },
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "contract_before": {
+    "exports": [
+      "ENTITY_TYPES",
+      "RELATION_CODE_TYPES",
+      "RELATION_OPERATORS",
+      "SEARCH_ENTITY_TYPES",
+      "SearchContractError",
+      "normalizeDetailRequest",
+      "normalizeRelationRequest",
+      "normalizeSearchRequest"
+    ],
+    "public_types": [
+      "CODE",
+      "ADRG"
+    ],
+    "fn_type": "function",
+    "fn_length": 1,
+    "fn_source": "function normalizeSearchRequest(payload) {\n  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {\n    throw new SearchContractError('검색 요청 형식이 올바르지 않습니다.');\n  }\n  const query = normalizeSpace(payload.query);\n  if (!query) {\n    throw new SearchContractError('검색어를 입력해야 합니다.');\n  }\n  if (query.length > 200) {\n    throw new SearchContractError('검색어는 200자 이하여야 합니다.');\n  }\n  const filters = normalizeSharedFilters(payload);\n  return Object.freeze({\n    query,\n    entityType: normalizeEntityTypes(payload.entityType),\n    limit: boundedInteger(payload.limit, 'limit', 50, 1, 500),\n    offset: boundedInteger(payload.offset, 'offset', 0, 0, 1000000),\n    ...filters,\n  });\n}",
+    "CODE": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "CODE"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "CODE"
+      ],
+      "entityTypeType": "array"
+    },
+    "ADRG": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "ADRG"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "ADRG"
+      ],
+      "entityTypeType": "array"
+    },
+    "ALL": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "CODE",
+          "ADRG"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "CODE",
+        "ADRG"
+      ],
+      "entityTypeType": "array"
+    },
+    "AADRG": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: AADRG"
+    },
+    "INVALID": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: INVALID"
+    }
+  },
+  "repair": {},
+  "validation": {},
+  "actual_guard": {},
+  "error": "StageError: workflow failed_step diagnostic count mismatch\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R1.py\", line 1134, in main\n    \"workflow_observability\": patch_workflow(\n                              ^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R1.py\", line 534, in patch_workflow\n    require(text.count(failed_line) == 1, \"workflow failed_step diagnostic count mismatch\")\n  File \"/home/runner/workspace/67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R1.py\", line 114, in require\n    raise StageError(message)\nStageError: workflow failed_step diagnostic count mismatch\n",
+  "finished_at": "2026-09-23 01:38:28"
+}

@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R9",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: Shadow 변경파일 불일치: actual=['50B_validate_kdrg_electron_search_service.py', 'electron/renderer/app.js', 'electron/src/kdrg-search-service.js', 'electron/tests/validate-stage59b-search.js', 'electron/tests/validate-stage69b-0517-search-relation-ux.js', 'reports/electron_stage50b_validation_report.json', 'reports/electron_stage50b_validation_report.txt', 'reports/electron_stage50c_validation_report.json', 'reports/electron_stage50c_validation_report.txt', 'reports/electron_stage50d_validation_report.json', 'reports/electron_stage50d_validation_report.txt'], expected=['50B_validate_kdrg_electron_search_service.py', 'electron/renderer/app.js', 'electron/src/kdrg-search-service.js', 'electron/tests/validate-stage59b-search.js', 'electron/tests/validate-stage69b-0517-search-relation-ux.js']"
+}

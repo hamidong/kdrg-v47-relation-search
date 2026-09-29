@@ -1,0 +1,2185 @@
+{
+  "root": "/home/runner/workspace",
+  "root_python_count": 101,
+  "root_python_category_counts": {
+    "KEEP_CORE_VALIDATOR": 3,
+    "KEEP_CURRENT_0515_AUDIT_TRAIL": 13,
+    "REVIEW_OTHER_TRACKED_ROOT_PY": 2,
+    "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY": 83
+  },
+  "root_python": [
+    {
+      "path": "50B_validate_kdrg_electron_search_service.py",
+      "tracked": true,
+      "git_status": "",
+      "size_bytes": 5199,
+      "category": "KEEP_CORE_VALIDATOR"
+    },
+    {
+      "path": "50C_validate_kdrg_electron_renderer_ui.py",
+      "tracked": true,
+      "git_status": "",
+      "size_bytes": 4830,
+      "category": "KEEP_CORE_VALIDATOR"
+    },
+    {
+      "path": "50D_validate_kdrg_electron_windows_packaging.py",
+      "tracked": true,
+      "git_status": "",
+      "size_bytes": 8604,
+      "category": "KEEP_CORE_VALIDATOR"
+    },
+    {
+      "path": "61A_UI_REPAIR_SHADOW_R5.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 43360,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 22851,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "61C_PREP_KDRG_0511_RELEASE_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 24682,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "62C_APPLY_KDRG_WORKSPACE_FULL_CLEANUP_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 24988,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63A_AUDIT_KDRG_0512_AADRG_PRESENTATION_FULL_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 30906,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 30846,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31754,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63B_BUILD_KDRG_0512_CONDITION_PRESENTATION_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 22475,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63B_BUILD_KDRG_0512_CONDITION_PRESENTATION_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 24571,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63B_BUILD_KDRG_0512_CONDITION_PRESENTATION_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 28608,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63C_APPLY_KDRG_0512_CONDITION_PRESENTATION_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 23301,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63D_COMMIT_PUSH_KDRG_LEGACY_CLEANUP_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15444,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63E_PREP_KDRG_0512_RELEASE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26121,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63F_COMMIT_PUSH_RC_KDRG_0512_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18069,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "63G_TAG_RELEASE_VERIFY_KDRG_0512_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 21614,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18956,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20699,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 37973,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 43787,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 52503,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 59918,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R4.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 62790,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R5.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 63058,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64C_APPLY_KDRG_0513_OFFICIAL_SOURCE_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 38323,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "64D_AUDIT_KDRG_0513_FINAL_SOURCE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26342,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65A_AUDIT_KDRG_0513_ICON_PIPELINE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 21267,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65B_BUILD_KDRG_0513_ICON_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 29324,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65B_BUILD_KDRG_0513_ICON_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32353,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65B_BUILD_KDRG_0513_ICON_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 34445,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65B_BUILD_KDRG_0513_ICON_SHADOW_R4.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 36557,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65C_APPLY_KDRG_0513_ICON_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 30256,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65D_PREP_KDRG_0513_RELEASE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 36454,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65E_COMMIT_PUSH_RC_KDRG_0513_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20982,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "65F_TAG_RELEASE_VERIFY_KDRG_0513_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 38667,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66A_BUILD_KDRG_0514_ICON_REPLACE_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20138,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66B_APPLY_KDRG_0514_ICON_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 23162,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66C_PREP_KDRG_0514_RELEASE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31206,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66C_PREP_KDRG_0514_RELEASE_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32919,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66D0_AUDIT_KDRG_0514_ACTIONS_STORAGE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15692,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66D0_DIAGNOSE_KDRG_0514_STATE_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18183,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66D_COMMIT_PUSH_RC_KDRG_0514_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20335,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66E_TAG_RELEASE_VERIFY_KDRG_0514_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 39755,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "66F_AUDIT_KDRG_0514_FINAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 17253,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67A_AUDIT_KDRG_0515_ADRG_PUBLIC_SWITCH_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 19793,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31390,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32816,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 36499,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R4.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 35787,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67C_MIGRATE_KDRG_0515_ADRG_UI_VALIDATORS_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 24368,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67C_MIGRATE_KDRG_0515_ADRG_UI_VALIDATORS_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 27000,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67C_MIGRATE_KDRG_0515_ADRG_UI_VALIDATORS_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 27774,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67C_MIGRATE_KDRG_0515_ADRG_UI_VALIDATORS_SHADOW_R4.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31507,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 28749,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R10.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 51593,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R11.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 54143,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 29591,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 40052,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R4.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 41619,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R5.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 43566,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R6.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 46158,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 50857,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R8.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 51136,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R9.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 51470,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67E_AUDIT_KDRG_0515_FINAL_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26506,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67E_FIX_KDRG_0515_FINAL_SHADOW_WHITESPACE_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26197,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67F_APPLY_KDRG_0515_ADRG_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26662,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67F_APPLY_KDRG_0515_ADRG_ACTUAL_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 28217,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67G_PREP_KDRG_0515_RELEASE_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 28725,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67H_APPLY_KDRG_0515_RELEASE_PREP_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 29711,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I0_DIAGNOSE_KDRG_0515_RC_FAILURE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 19526,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I1_REPAIR_KDRG_0515_ADRG_NAMESPACE_AND_UI_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 35015,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I1_REPAIR_KDRG_0515_ADRG_NAMESPACE_AND_UI_SHADOW_R4.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 38602,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 29875,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32179,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26836,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32319,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32701,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I3_COMMIT_PUSH_RC_KDRG_0515_FIX_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26564,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I3D_DIAGNOSE_KDRG_0515_B018_RENDERER_PATH_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15840,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I3D_DIAGNOSE_KDRG_0515_FIX_RC_FAILURE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 13358,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I3D_EXTRACT_KDRG_0515_PACKAGED_UI_FAILURE_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 8514,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 28009,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I4_REPAIR_KDRG_0515_SEARCH_NORMALIZER_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 27994,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I4A_AUDIT_KDRG_0515_NORMALIZER_FULL_PIPELINE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31230,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 42920,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 45839,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R3.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 48217,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R4.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 48945,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I5_APPLY_KDRG_0515_FULL_PIPELINE_ACTUAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 30933,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20193,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I6D_DIAGNOSE_KDRG_0515_WORKFLOW_DISPATCH_FAILURE_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15424,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I7_RECOVER_KDRG_0515_WORKFLOW_AND_RC_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 35857,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I7_RECOVER_KDRG_0515_WORKFLOW_AND_RC_R2.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 36914,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "67I_COMMIT_PUSH_RC_KDRG_0515_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 25852,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "67J_TAG_RELEASE_KDRG_0515_FINAL_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 27071,
+      "category": "KEEP_CURRENT_0515_AUDIT_TRAIL"
+    },
+    {
+      "path": "68A_AUDIT_KDRG_WORKSPACE_CLEANUP_R1.py",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7466,
+      "category": "SAFE_CANDIDATE_UNTRACKED_HISTORICAL_STAGE_PY"
+    },
+    {
+      "path": "main.py",
+      "tracked": true,
+      "git_status": "",
+      "size_bytes": 1691,
+      "category": "REVIEW_OTHER_TRACKED_ROOT_PY"
+    },
+    {
+      "path": "version.py",
+      "tracked": true,
+      "git_status": "",
+      "size_bytes": 1351,
+      "category": "REVIEW_OTHER_TRACKED_ROOT_PY"
+    }
+  ],
+  "root_stage_report_count": 195,
+  "root_stage_reports": [
+    {
+      "path": "stage61a_0511_ui_requirement_repair_shadow_r5.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 12896,
+      "current_0515": false
+    },
+    {
+      "path": "stage61a_0511_ui_requirement_repair_shadow_r5.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6857,
+      "current_0515": false
+    },
+    {
+      "path": "stage61b_0511_ui_requirement_repair_actual_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15901,
+      "current_0515": false
+    },
+    {
+      "path": "stage61b_0511_ui_requirement_repair_actual_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 8926,
+      "current_0515": false
+    },
+    {
+      "path": "stage61c_0511_release_prep_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 14317,
+      "current_0515": false
+    },
+    {
+      "path": "stage61c_0511_release_prep_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7141,
+      "current_0515": false
+    },
+    {
+      "path": "stage62c_workspace_full_cleanup_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 155703,
+      "current_0515": false
+    },
+    {
+      "path": "stage62c_workspace_full_cleanup_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32866,
+      "current_0515": false
+    },
+    {
+      "path": "stage63a_0512_aadrg_presentation_full_audit_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1205033,
+      "current_0515": false
+    },
+    {
+      "path": "stage63a_0512_aadrg_presentation_full_audit_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 63189,
+      "current_0515": false
+    },
+    {
+      "path": "stage63a_0512_condition_presentation_full_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7491,
+      "current_0515": false
+    },
+    {
+      "path": "stage63a_0512_condition_presentation_full_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5701,
+      "current_0515": false
+    },
+    {
+      "path": "stage63a_0512_condition_presentation_full_audit_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3748935,
+      "current_0515": false
+    },
+    {
+      "path": "stage63a_0512_condition_presentation_full_audit_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 84720,
+      "current_0515": false
+    },
+    {
+      "path": "stage63b_0512_condition_presentation_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31599,
+      "current_0515": false
+    },
+    {
+      "path": "stage63b_0512_condition_presentation_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 30301,
+      "current_0515": false
+    },
+    {
+      "path": "stage63b_0512_condition_presentation_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 14873,
+      "current_0515": false
+    },
+    {
+      "path": "stage63b_0512_condition_presentation_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15289,
+      "current_0515": false
+    },
+    {
+      "path": "stage63b_0512_condition_presentation_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 17510,
+      "current_0515": false
+    },
+    {
+      "path": "stage63b_0512_condition_presentation_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 10795,
+      "current_0515": false
+    },
+    {
+      "path": "stage63c_0512_condition_presentation_actual_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18024,
+      "current_0515": false
+    },
+    {
+      "path": "stage63c_0512_condition_presentation_actual_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 11349,
+      "current_0515": false
+    },
+    {
+      "path": "stage63d_legacy_cleanup_commit_push_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5348,
+      "current_0515": false
+    },
+    {
+      "path": "stage63d_legacy_cleanup_commit_push_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5429,
+      "current_0515": false
+    },
+    {
+      "path": "stage63e_0512_release_prep_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18411,
+      "current_0515": false
+    },
+    {
+      "path": "stage63e_0512_release_prep_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 11650,
+      "current_0515": false
+    },
+    {
+      "path": "stage63f_0512_commit_push_rc_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4929,
+      "current_0515": false
+    },
+    {
+      "path": "stage63f_0512_commit_push_rc_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4815,
+      "current_0515": false
+    },
+    {
+      "path": "stage63g_0512_tag_release_verify_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4512,
+      "current_0515": false
+    },
+    {
+      "path": "stage63g_0512_tag_release_verify_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4591,
+      "current_0515": false
+    },
+    {
+      "path": "stage64a_0513_pdf_source_fidelity_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2017,
+      "current_0515": false
+    },
+    {
+      "path": "stage64a_0513_pdf_source_fidelity_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2253,
+      "current_0515": false
+    },
+    {
+      "path": "stage64a_0513_pdf_source_fidelity_audit_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1881,
+      "current_0515": false
+    },
+    {
+      "path": "stage64a_0513_pdf_source_fidelity_audit_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2102,
+      "current_0515": false
+    },
+    {
+      "path": "stage64a_0513_pdf_source_fidelity_audit_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4346,
+      "current_0515": false
+    },
+    {
+      "path": "stage64a_0513_pdf_source_fidelity_audit_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4227,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1602,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2426,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1193,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2048,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 19184,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15689,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 21636,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r4.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 17957,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r5.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 39563,
+      "current_0515": false
+    },
+    {
+      "path": "stage64b_0513_official_source_shadow_r5.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 28273,
+      "current_0515": false
+    },
+    {
+      "path": "stage64c_0513_official_source_actual_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 23023,
+      "current_0515": false
+    },
+    {
+      "path": "stage64c_0513_official_source_actual_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15925,
+      "current_0515": false
+    },
+    {
+      "path": "stage64d_0513_final_source_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 12369,
+      "current_0515": false
+    },
+    {
+      "path": "stage64d_0513_final_source_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6367,
+      "current_0515": false
+    },
+    {
+      "path": "stage65a_0513_icon_pipeline_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7138,
+      "current_0515": false
+    },
+    {
+      "path": "stage65a_0513_icon_pipeline_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6554,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2804,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3220,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4633,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5131,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3695,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4174,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18082,
+      "current_0515": false
+    },
+    {
+      "path": "stage65b_0513_icon_shadow_r4.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 10931,
+      "current_0515": false
+    },
+    {
+      "path": "stage65c_0513_icon_actual_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 17246,
+      "current_0515": false
+    },
+    {
+      "path": "stage65c_0513_icon_actual_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 10002,
+      "current_0515": false
+    },
+    {
+      "path": "stage65d_0513_release_prep_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 19244,
+      "current_0515": false
+    },
+    {
+      "path": "stage65d_0513_release_prep_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 12076,
+      "current_0515": false
+    },
+    {
+      "path": "stage65e_0513_commit_push_rc_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 11037,
+      "current_0515": false
+    },
+    {
+      "path": "stage65e_0513_commit_push_rc_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 10638,
+      "current_0515": false
+    },
+    {
+      "path": "stage65f_0513_tag_release_verify_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 14513,
+      "current_0515": false
+    },
+    {
+      "path": "stage65f_0513_tag_release_verify_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 13368,
+      "current_0515": false
+    },
+    {
+      "path": "stage66a_0514_icon_replace_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15230,
+      "current_0515": false
+    },
+    {
+      "path": "stage66a_0514_icon_replace_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7502,
+      "current_0515": false
+    },
+    {
+      "path": "stage66b_0514_icon_actual_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 13126,
+      "current_0515": false
+    },
+    {
+      "path": "stage66b_0514_icon_actual_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6334,
+      "current_0515": false
+    },
+    {
+      "path": "stage66c_0514_release_prep_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32597,
+      "current_0515": false
+    },
+    {
+      "path": "stage66c_0514_release_prep_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31665,
+      "current_0515": false
+    },
+    {
+      "path": "stage66c_0514_release_prep_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15711,
+      "current_0515": false
+    },
+    {
+      "path": "stage66c_0514_release_prep_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 9050,
+      "current_0515": false
+    },
+    {
+      "path": "stage66d0_0514_actions_storage_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 813,
+      "current_0515": false
+    },
+    {
+      "path": "stage66d0_0514_actions_storage_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1489,
+      "current_0515": false
+    },
+    {
+      "path": "stage66d0_0514_state_actions_diagnosis_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18075,
+      "current_0515": false
+    },
+    {
+      "path": "stage66d0_0514_state_actions_diagnosis_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 17027,
+      "current_0515": false
+    },
+    {
+      "path": "stage66d_0514_commit_push_rc_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 8560,
+      "current_0515": false
+    },
+    {
+      "path": "stage66d_0514_commit_push_rc_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 8369,
+      "current_0515": false
+    },
+    {
+      "path": "stage66e_0514_tag_release_verify_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 14722,
+      "current_0515": false
+    },
+    {
+      "path": "stage66e_0514_tag_release_verify_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 13565,
+      "current_0515": false
+    },
+    {
+      "path": "stage66f_0514_final_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5855,
+      "current_0515": false
+    },
+    {
+      "path": "stage66f_0514_final_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6021,
+      "current_0515": false
+    },
+    {
+      "path": "stage67a_0515_adrg_public_switch_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 591533,
+      "current_0515": false
+    },
+    {
+      "path": "stage67a_0515_adrg_public_switch_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 85301,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3065,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3877,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7156,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7834,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3173,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3970,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 10082,
+      "current_0515": false
+    },
+    {
+      "path": "stage67b_0515_adrg_public_switch_shadow_r4.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 9111,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32832,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 31825,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5732,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6237,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5215,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5754,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 9282,
+      "current_0515": false
+    },
+    {
+      "path": "stage67c_0515_adrg_ui_validators_shadow_r4.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6874,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2403,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3200,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r10.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 14517,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r10.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15012,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r11.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15796,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r11.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 11861,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7325,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7974,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20215,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20132,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2385,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r4.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3183,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r5.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20269,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r5.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20186,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r6.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 61483,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r6.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 59272,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r7.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2463,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r7.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3262,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r8.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2392,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r8.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3189,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r9.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 62142,
+      "current_0515": false
+    },
+    {
+      "path": "stage67d_0515_packaged_smoke_shadow_r9.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 59901,
+      "current_0515": false
+    },
+    {
+      "path": "stage67e_0515_actual_apply_manifest_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 9026,
+      "current_0515": false
+    },
+    {
+      "path": "stage67e_0515_actual_apply_manifest_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 8513,
+      "current_0515": false
+    },
+    {
+      "path": "stage67e_0515_final_shadow_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32753,
+      "current_0515": false
+    },
+    {
+      "path": "stage67e_0515_final_shadow_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 17419,
+      "current_0515": false
+    },
+    {
+      "path": "stage67e_0515_final_shadow_whitespace_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 32874,
+      "current_0515": false
+    },
+    {
+      "path": "stage67e_0515_final_shadow_whitespace_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 20883,
+      "current_0515": false
+    },
+    {
+      "path": "stage67f_0515_actual_apply_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 8737,
+      "current_0515": false
+    },
+    {
+      "path": "stage67f_0515_actual_apply_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 9057,
+      "current_0515": false
+    },
+    {
+      "path": "stage67f_0515_actual_apply_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18094,
+      "current_0515": false
+    },
+    {
+      "path": "stage67f_0515_actual_apply_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15812,
+      "current_0515": false
+    },
+    {
+      "path": "stage67g_0515_release_prep_manifest_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5207,
+      "current_0515": false
+    },
+    {
+      "path": "stage67g_0515_release_prep_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 22462,
+      "current_0515": false
+    },
+    {
+      "path": "stage67g_0515_release_prep_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 14935,
+      "current_0515": false
+    },
+    {
+      "path": "stage67h_0515_release_prep_actual_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 17774,
+      "current_0515": false
+    },
+    {
+      "path": "stage67h_0515_release_prep_actual_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15396,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i0_0515_rc_failure_diagnosis_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 60421,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i0_0515_rc_failure_diagnosis_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 56507,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_adrg_namespace_ui_apply_manifest_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2495,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_adrg_namespace_ui_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 260187,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_adrg_namespace_ui_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 235165,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_adrg_namespace_ui_shadow_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 409989,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_adrg_namespace_ui_shadow_r4.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 11443,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_packaged_ui_adrg_fixture_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1246,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_packaged_ui_adrg_fixture_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2223,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_packaged_ui_adrg_fixture_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2913,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i1_0515_packaged_ui_adrg_fixture_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3827,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i2_0515_adrg_namespace_ui_actual_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2620,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i2_0515_adrg_namespace_ui_actual_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1948,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i2_0515_adrg_namespace_ui_actual_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3445,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i2_0515_adrg_namespace_ui_actual_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3478,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i2_0515_adrg_namespace_ui_actual_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 26579,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i2_0515_adrg_namespace_ui_actual_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5477,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3_0515_fix_commit_push_rc_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3693,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3_0515_fix_commit_push_rc_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2638,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3d_0515_b018_renderer_path_diagnosis_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 19100,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3d_0515_b018_renderer_path_diagnosis_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 10945,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3d_0515_fix_rc_failure_diagnosis_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 25037,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3d_0515_fix_rc_failure_diagnosis_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5798,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3d_0515_packaged_ui_failure_extract_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1209,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i3d_0515_packaged_ui_failure_extract_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1037,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i4_0515_search_normalizer_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1599,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4_0515_search_normalizer_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1650,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4_0515_search_normalizer_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3397,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4_0515_search_normalizer_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1540,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4a_0515_normalizer_full_pipeline_audit_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 45805,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4a_0515_normalizer_full_pipeline_audit_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2245,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_apply_manifest_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2166,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4386,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1494,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 5958,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1570,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r3.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6849,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r3.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1511,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r4.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 16748,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i4b_0515_full_pipeline_shadow_r4.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2525,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i5_0515_full_pipeline_actual_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 15212,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i5_0515_full_pipeline_actual_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2186,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i6_0515_full_pipeline_commit_push_rc_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2973,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i6_0515_full_pipeline_commit_push_rc_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1358,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i6d_0515_workflow_dispatch_failure_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 3112,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i6d_0515_workflow_dispatch_failure_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 2321,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i7_0515_workflow_recovery_rc_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 1712,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i7_0515_workflow_recovery_rc_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 959,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i7_0515_workflow_recovery_rc_r2.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 18192,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i7_0515_workflow_recovery_rc_r2.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 9809,
+      "current_0515": true
+    },
+    {
+      "path": "stage67i_0515_commit_push_rc_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 6821,
+      "current_0515": false
+    },
+    {
+      "path": "stage67i_0515_commit_push_rc_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 7079,
+      "current_0515": false
+    },
+    {
+      "path": "stage67j_0515_tag_release_final_r1.json",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 12858,
+      "current_0515": true
+    },
+    {
+      "path": "stage67j_0515_tag_release_final_r1.txt",
+      "tracked": false,
+      "git_status": "??",
+      "size_bytes": 4548,
+      "current_0515": true
+    }
+  ],
+  "releases": {
+    "exists": true,
+    "version_dirs": [
+      {
+        "name": "electron-v0.5.11",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "KDRG_V47_Relation_Search_Electron_0.5.11_Portable.exe",
+            "size_bytes": 90740399
+          },
+          {
+            "name": "SHA256SUMS_ELECTRON.txt",
+            "size_bytes": 121
+          }
+        ]
+      },
+      {
+        "name": "electron-v0.5.12",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "KDRG_V47_Relation_Search_Electron_0.5.12_Portable.exe",
+            "size_bytes": 90741901
+          },
+          {
+            "name": "SHA256SUMS_ELECTRON.txt",
+            "size_bytes": 121
+          }
+        ]
+      },
+      {
+        "name": "electron-v0.5.13",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "KDRG_V47_Relation_Search_Electron_0.5.13_Portable.exe",
+            "size_bytes": 91331001
+          },
+          {
+            "name": "SHA256SUMS_ELECTRON.txt",
+            "size_bytes": 121
+          }
+        ]
+      },
+      {
+        "name": "electron-v0.5.14",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe",
+            "size_bytes": 91247199
+          },
+          {
+            "name": "SHA256SUMS_ELECTRON.txt",
+            "size_bytes": 121
+          }
+        ]
+      },
+      {
+        "name": "electron-v0.5.15",
+        "file_count": 2,
+        "files": [
+          {
+            "name": "KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe",
+            "size_bytes": 91244856
+          },
+          {
+            "name": "SHA256SUMS_ELECTRON.txt",
+            "size_bytes": 121
+          }
+        ]
+      }
+    ],
+    "stray_files": [
+      {
+        "name": "KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe",
+        "size_bytes": 91244856
+      }
+    ]
+  },
+  "policy": {
+    "no_changes_performed": true,
+    "protect_core_validators": [
+      "50B_validate_kdrg_electron_search_service.py",
+      "50C_validate_kdrg_electron_renderer_ui.py",
+      "50D_validate_kdrg_electron_windows_packaging.py"
+    ],
+    "keep_current_0515_until_approved": [
+      "67I4",
+      "67I5",
+      "67I6",
+      "67I7",
+      "67J"
+    ],
+    "tracked_historical_files_require_review": true,
+    "untracked_historical_stage_py_are_first_delete_candidates": true
+  }
+}

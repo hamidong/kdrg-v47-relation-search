@@ -1,0 +1,26 @@
+[PASS] Stage70C R2 / 0.5.18 1차 UI 마감 Actual
+stage70b_shadow_binding=PASS
+candidate_regeneration_parity=PASS
+tracked_changed_files=2
+new_validator_untracked=PASS
+actual_product_files=3
+general_adrg_classification=RIGHT
+relation_classification=RIGHT
+unclassified_display=분류정보 없음
+classification_data_inference=NONE
+general_result_mdc_name=PASS
+adrg_detail_mdc_name=PASS
+relation_result_mdc_name=PASS
+stage70b_validator=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.17=PASS
+runtime_json=UNCHANGED
+package_version=0.5.17
+staging=EMPTY
+rollback=NOT_NEEDED
+readiness=READY_FOR_70D_0518_RELEASE_PREP_SHADOW
+report=reports/stage70c_0518_phase1_ui_actual_r2/actual_summary.txt
+json=reports/stage70c_0518_phase1_ui_actual_r2/actual.json

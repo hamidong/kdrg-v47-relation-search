@@ -1,0 +1,250 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_0515_PACKAGED_SMOKE_MIGRATION",
+  "started_at": "2026-09-22 02:50:03",
+  "preflight": {
+    "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "branch": "main",
+    "base_tag": "electron-v0.5.14",
+    "stage67b": {
+      "status": "PASS",
+      "readiness": "READY_FOR_0515_ADRG_VALIDATOR_MIGRATION",
+      "changed_shadow_files": [
+        "electron/renderer/app.js",
+        "electron/renderer/index.html",
+        "electron/renderer/ui-formatters.js",
+        "electron/src/kdrg-search-service.js",
+        "electron/src/search-result-contract.js",
+        "electron/tests/validate-stage59b-search.js",
+        "electron/tests/validate-stage59b-smoke.js"
+      ]
+    },
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"
+  },
+  "shadow": {
+    "source_shadow": "/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r4",
+    "shadow_root": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+    "root_validators_added": [
+      "50B_validate_kdrg_electron_search_service.py",
+      "50C_validate_kdrg_electron_renderer_ui.py",
+      "50D_validate_kdrg_electron_windows_packaging.py"
+    ]
+  },
+  "sha_contract": {
+    "electron/src/kdrg-search-service.js": {
+      "shadow_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+      "actual_sha256": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703"
+    },
+    "electron/src/search-result-contract.js": {
+      "shadow_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "actual_sha256": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f"
+    },
+    "electron/renderer/app.js": {
+      "shadow_sha256": "d81d159a4483d2b2a4977d9065eaea6e67a28a24bcc12c79534605a2fec752b8",
+      "actual_sha256": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491"
+    },
+    "electron/renderer/index.html": {
+      "shadow_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093",
+      "actual_sha256": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2"
+    },
+    "electron/renderer/ui-formatters.js": {
+      "shadow_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77",
+      "actual_sha256": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02"
+    },
+    "50B_validate_kdrg_electron_search_service.py": {
+      "shadow_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9",
+      "actual_sha256": "7a6861a57436352761fec0063408ac60c0a408485a038fc342a31fddfc132010"
+    },
+    "50C_validate_kdrg_electron_renderer_ui.py": {
+      "shadow_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f",
+      "actual_sha256": "77036caeafb3882b12cda91345fac547943bae4113dac83790fbd115647443a9"
+    },
+    "50D_validate_kdrg_electron_windows_packaging.py": {
+      "shadow_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd",
+      "actual_sha256": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843"
+    },
+    "electron/tests/validate-stage59b-search.js": {
+      "shadow_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65",
+      "actual_sha256": "b4839e910f721335f1ba88892202ab140046c94e3e1673fc305486a0eb091f45"
+    },
+    "electron/tests/validate-stage59b-smoke.js": {
+      "shadow_sha256": "6072be48968fc26915728bc3b29cbbdb0eda385eadbe2b97c6366f82c1aed4c6",
+      "actual_sha256": "e6682f0aaa8bebb560713aa2cb796e2ab88107d52e2f0fbf0b39aaf767a41ddb"
+    },
+    "electron/tests/validate-stage59b-ui.js": {
+      "shadow_sha256": "2d3665fcf3d3890d12c9c72045a58d1a19833ab46f3af15a2e3991df77f7edf7",
+      "actual_sha256": "25e6823749df396b06a5480f805c1fb9674a978bcc532bfe76877c076299937c"
+    },
+    "electron/tests/validate-stage67c-adrg-ui-contract.js": {
+      "shadow_sha256": "9405735431639fed3ab5f11ed917191bf5351d42d7fffe1dbc6b27f57d14df85",
+      "actual_sha256": null
+    }
+  },
+  "validation": {
+    "commands": [
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/src/kdrg-search-service.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/src/search-result-contract.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/renderer/app.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/renderer/ui-formatters.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/tests/validate-stage59b-search.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/tests/validate-stage59b-smoke.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/tests/validate-stage59b-ui.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "electron/tests/validate-stage67c-adrg-ui-contract.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "electron/tests/validate-stage59b-search.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": "stage59_search: 29 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "electron/tests/validate-stage59b-smoke.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": "stage59_smoke: PASS\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "electron/tests/validate-stage59b-ui.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": "stage59_ui: 21 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "electron/tests/validate-stage67c-adrg-ui-contract.js"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": "[PASS] Stage67C ADRG public UI contract\n"
+      },
+      {
+        "cmd": [
+          "python",
+          "50B_validate_kdrg_electron_search_service.py"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4/reports/electron_stage50b_validation_report.txt\n"
+      },
+      {
+        "cmd": [
+          "python",
+          "-m",
+          "py_compile",
+          "50C_validate_kdrg_electron_renderer_ui.py",
+          "50D_validate_kdrg_electron_windows_packaging.py"
+        ],
+        "cwd": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+        "returncode": 0,
+        "output": ""
+      }
+    ],
+    "deferred_root_contracts": {
+      "checks": {
+        "50C_public_adrg_option": true,
+        "50C_public_aadrg_hidden": true,
+        "50C_code_detail_adrg": true,
+        "50C_formatter_adrg": true,
+        "50C_relation_adrg": true,
+        "50C_internal_aadrg_preserved": true,
+        "50C_full_npm_gate_present": true,
+        "50D_public_adrg_option": true,
+        "50D_public_aadrg_hidden": true,
+        "50D_public_adrg_result": true,
+        "50D_code_detail_adrg": true
+      },
+      "full_execution": "DEFERRED_TO_STAGE67D",
+      "reason": "50C nested npm run check reaches packaged-runtime contracts scheduled for Stage67D."
+    },
+    "full_npm_run_check": "DEFERRED_TO_STAGE67D",
+    "root_50c_full_execution": "DEFERRED_TO_STAGE67D",
+    "root_50d_full_execution": "DEFERRED_TO_STAGE67D",
+    "runtime_unchanged": true,
+    "actual_workspace_unchanged": true,
+    "public_html_aadrg_hidden": true
+  },
+  "error": null,
+  "finished_at": "2026-09-22 02:50:15"
+}

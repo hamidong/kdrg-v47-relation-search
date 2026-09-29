@@ -1,0 +1,12 @@
+[FAIL] Stage69B R11 / 0.5.17 Search + Relation UX Shadow
+Stop: node --check FAIL: electron/tests/validate-stage59b-search.js
+/home/runner/workspace/reports/stage69b_0517_search_relation_ux_shadow_r11/shadow/electron/tests/validate-stage59b-search.js:13
+  const expected = new Set([\n    ...(service.recordMaps.CODE.has(code) ? [`CODE:${code}`] : []),\n    ...(service.recordMaps.ADRG.has(code) ? [`ADRG:${code}`] : []),\n  ]);
+                            ^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1464:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v20.20.0
+

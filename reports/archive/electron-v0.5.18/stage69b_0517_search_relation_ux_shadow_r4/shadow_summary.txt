@@ -1,0 +1,17 @@
+[FAIL] Stage69B R4 / 0.5.17 Search + Relation UX Shadow
+Stop: stage69b_validator FAIL
+node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/home/runner/workspace/reports/stage69b_0517_search_relation_ux_shadow_r4/shadow/electron/electron/tests/validate-stage69b-0517-search-relation-ux.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v20.20.0
+

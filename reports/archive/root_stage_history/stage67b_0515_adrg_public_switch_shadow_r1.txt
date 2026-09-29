@@ -1,0 +1,83 @@
+KDRG V4.7 Electron Stage67B / 0.5.15 ADRG Public-Switch Shadow R1
+============================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_ADRG_VALIDATOR_MIGRATION
+
+[PREFLIGHT]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "stage67a": {
+    "status": "PASS",
+    "readiness": "READY_FOR_0515_ADRG_SHADOW_DESIGN",
+    "policy": {
+      "public_primary_entity": "ADRG",
+      "public_search_types": [
+        "ALL",
+        "CODE",
+        "ADRG"
+      ],
+      "aadrg_public_primary_visibility": "HIDDEN",
+      "aadrg_runtime_data": "PRESERVE",
+      "aadrg_relations": "PRESERVE",
+      "no_code_truncation_shortcut": true,
+      "deduplicate_by_real_adrg_relation": true
+    }
+  },
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "source_sha256": {
+    "electron/src/kdrg-search-service.js": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703",
+    "electron/src/search-result-contract.js": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f",
+    "electron/renderer/app.js": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491",
+    "electron/renderer/index.html": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2",
+    "electron/renderer/ui-formatters.js": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02",
+    "electron/renderer/styles.css": "0785e63be32c7cd957178a2a528cec6e1221acf7c47950deb9fed38a34acfb26",
+    "electron/renderer/official-condition-text.js": "6f8dcef30a2eb54ce4b36d918bd5d7949712979fd0f880f1990ffc43e915581e",
+    "electron/tests/validate-stage59b-search.js": "b4839e910f721335f1ba88892202ab140046c94e3e1673fc305486a0eb091f45",
+    "electron/tests/validate-stage59b-smoke.js": "e6682f0aaa8bebb560713aa2cb796e2ab88107d52e2f0fbf0b39aaf767a41ddb",
+    "electron/package.json": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d"
+  }
+}
+
+[SHADOW BUILD]
+{}
+
+[VALIDATION]
+
+[SHADOW FILE CONTRACT]
+{
+  "changed_shadow_files": null,
+  "preserved_shadow_sha256": null,
+  "modified_shadow_sha256": null,
+  "actual_workspace_unchanged": null,
+  "runtime_unchanged": null
+}
+
+[BLOCKER]
+ShadowError: function transform made no change: renderRelationDetail
+Traceback (most recent call last):
+  File "/home/runner/workspace/67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R1.py", line 904, in main
+    patch_shadow()
+  File "/home/runner/workspace/67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R1.py", line 690, in patch_shadow
+    patch_renderer_app()
+  File "/home/runner/workspace/67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R1.py", line 431, in patch_renderer_app
+    text = transform_named_function(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R1.py", line 264, in transform_named_function
+    require(new_block != block, f"function transform made no change: {name}")
+  File "/home/runner/workspace/67B_BUILD_KDRG_0515_ADRG_PUBLIC_SHADOW_R1.py", line 135, in require
+    raise ShadowError(message)
+ShadowError: function transform made no change: renderRelationDetail
+
+
+[NEXT]
+- Shadow PASS이면 Stage67C에서 기존 validator 전수계약을 ADRG 공개정책으로 이관하고 Actual 적용 후보를 생성.
+- AADRG 내부 ENTITY_TYPES/record map/detail 기능은 유지.
+- runtime JSON은 이번 전환에서 수정하지 않음.
+- Actual 적용 전 packaged relation smoke까지 ADRG 공개계약으로 바꿔 독립검증.
+- 0.5.14 태그/Release는 불변.
+
+shadow_root=/home/runner/workspace/reports/stage67b_0515_adrg_public_switch_shadow_r1
+report_txt=/home/runner/workspace/stage67b_0515_adrg_public_switch_shadow_r1.txt
+report_json=/home/runner/workspace/stage67b_0515_adrg_public_switch_shadow_r1.json

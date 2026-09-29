@@ -1,0 +1,23 @@
+[PASS] Stage70B R2 / 0.5.18 1차 UI 마감 Shadow
+general_adrg_classification=RIGHT
+relation_classification=RIGHT
+relation_level_chip=PRESERVED
+classified_adrg=1117
+no_classification_value_adrg=15
+unclassified_display=분류정보 없음
+classification_data_inference=NONE
+general_result_mdc_name=PASS
+adrg_detail_mdc_name=PASS
+relation_result_mdc_name=PASS
+stage70b_validator=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.17=PASS
+runtime_json=UNCHANGED
+shadow_product_files=3
+actual=NOT_PERFORMED
+readiness=READY_FOR_70C_0518_PHASE1_UI_ACTUAL
+report=reports/stage70b_0518_phase1_ui_shadow_r2/shadow_summary.txt
+json=reports/stage70b_0518_phase1_ui_shadow_r2/shadow.json

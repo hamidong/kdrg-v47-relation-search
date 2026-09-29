@@ -1,0 +1,84 @@
+KDRG V4.7 Electron Stage67I4B / 0.5.15 Full Search Pipeline Repair Shadow R4
+==========================================================================================================
+status=PASS
+readiness=READY_FOR_0515_FULL_PIPELINE_ACTUAL_APPLY
+
+[CONFIRMED ROOT CAUSE]
+{
+  "before_ADRG_entityType": [
+    "ADRG"
+  ],
+  "before_ALL_entityType": [
+    "CODE",
+    "ADRG"
+  ],
+  "after_public_types": {
+    "CODE": "CODE",
+    "ADRG": "ADRG",
+    "ALL": "ALL"
+  },
+  "all_scalar_string": true
+}
+
+[FULL PIPELINE VALIDATION]
+{
+  "ADRG_count": 1132,
+  "collision_count": 471,
+  "normalized_ADRG_failures": 0,
+  "CODE_ALL_collision_changes": 0,
+  "fixture_failures": 0,
+  "static_wiring": {
+    "renderer_calls_window_search": true,
+    "renderer_carries_entity_type": true,
+    "preload_invokes_kdrg_search": true,
+    "main_handles_kdrg_search": true,
+    "main_uses_normalizeSearchRequest": true,
+    "packaged_filter_adrg": true,
+    "packaged_uses_fixture_query": true,
+    "packaged_selector_adrg": true
+  },
+  "static_wiring_observations": {
+    "dot_search_receivers": [],
+    "contains_request_query": true,
+    "contains_request_entity_type": true,
+    "contains_search_word": true
+  },
+  "workflow_diagnostics_before_error": true,
+  "npm_run_check": "PASS",
+  "stage59b_stage60c_packaged": "PASS",
+  "root_50b_50c_50d": "PASS",
+  "release_version": "PASS",
+  "official_regression": "PASS",
+  "git_diff_check": "PASS"
+}
+
+[SHADOW DELTA]
+[
+  ".github/workflows/build-electron-windows.yml",
+  "electron/src/search-result-contract.js",
+  "electron/tests/validate-packaged-runtime-smoke.js",
+  "electron/tests/validate-stage59b-search.js"
+]
+
+[ACTUAL GUARD]
+{
+  "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "worktree_clean": true,
+  "staging_empty": true,
+  "targets_unchanged": true,
+  "runtime_unchanged": true,
+  "official_condition_unchanged": true,
+  "icon_unchanged": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[NEXT]
+- PASS이면 단순 B018 보정이 아니라 normalizer→service→renderer/packaged 경로 전체가 Shadow에서 검증됨.
+- 다음 Stage67I5에서 manifest의 정확한 4개만 Actual 적용 후 동일 전수검증.
+- Actual PASS 후 새 fix commit/push + 새 workflow_dispatch RC.
+- 새 RC success 후에만 electron-v0.5.15 tag/release.
+
+manifest=/home/runner/workspace/stage67i4b_0515_full_pipeline_apply_manifest_r4.json
+report_json=/home/runner/workspace/stage67i4b_0515_full_pipeline_shadow_r4.json

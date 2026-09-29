@@ -1,0 +1,169 @@
+KDRG V4.7 Electron Stage66F / 0.5.14 Final Read-Only Audit R1
+====================================================================================================
+status=PASS
+readiness=RELEASE_0514_FINAL
+
+[CORRECTED FINAL CONTRACT]
+- electron-v0.5.13 immutable
+- electron-v0.5.14 final release
+- readiness=RELEASE_0514_FINAL
+
+[AUDIT]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "base_tag": {
+    "tag": "electron-v0.5.13",
+    "commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc"
+  },
+  "release_tag": {
+    "tag": "electron-v0.5.14",
+    "commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c"
+  },
+  "tag_workflow": {
+    "conclusion": "success",
+    "databaseId": 35672892802,
+    "event": "push",
+    "headBranch": "electron-v0.5.14",
+    "headSha": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "status": "completed",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35672892802"
+  },
+  "release": {
+    "assets": [
+      {
+        "apiUrl": "https://api.github.com/repos/hamidong/kdrg-v47-relation-search/releases/assets/580184591",
+        "contentType": "application/x-msdos-program",
+        "createdAt": "2026-09-22T00:43:41Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOTY_ow84ilOoP",
+        "label": "",
+        "name": "KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe",
+        "size": 91247199,
+        "state": "uploaded",
+        "updatedAt": "2026-09-22T00:43:45Z",
+        "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/download/electron-v0.5.14/KDRG_V47_Relation_Search_Electron_0.5.14_Portable.exe"
+      },
+      {
+        "apiUrl": "https://api.github.com/repos/hamidong/kdrg-v47-relation-search/releases/assets/580184592",
+        "contentType": "text/plain",
+        "createdAt": "2026-09-22T00:43:41Z",
+        "downloadCount": 0,
+        "id": "RA_kwDOTY_ow84ilOoQ",
+        "label": "",
+        "name": "SHA256SUMS_ELECTRON.txt",
+        "size": 121,
+        "state": "uploaded",
+        "updatedAt": "2026-09-22T00:43:42Z",
+        "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/download/electron-v0.5.14/SHA256SUMS_ELECTRON.txt"
+      }
+    ],
+    "isDraft": false,
+    "isPrerelease": false,
+    "name": "KDRG V4.7 Electron 0.5.14",
+    "publishedAt": "2026-09-22T00:43:45Z",
+    "tagName": "electron-v0.5.14",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/tag/electron-v0.5.14"
+  },
+  "sha256_verify": {
+    "manifest_sha256": "a5a7470aa9b5508ab1ef7d88999de0df0eb451914165d2d8a9e8189c750155af",
+    "actual_sha256": "a5a7470aa9b5508ab1ef7d88999de0df0eb451914165d2d8a9e8189c750155af",
+    "match": true,
+    "exe_size": 91247199
+  },
+  "icon_verify": {
+    "status": "PASS",
+    "pe_kind": "PE32",
+    "group_id": 103,
+    "sizes": [
+      16,
+      20,
+      24,
+      32,
+      40,
+      48,
+      64,
+      128,
+      256
+    ],
+    "frame_count": 9,
+    "approved_ico_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "frames": [
+      {
+        "size": 16,
+        "resource_id": 9,
+        "resource_sha256": "49b1464b7964c2eec747a649015834e499788804648271c78711b52662ba4943",
+        "source_sha256": "49b1464b7964c2eec747a649015834e499788804648271c78711b52662ba4943",
+        "match": true
+      },
+      {
+        "size": 20,
+        "resource_id": 8,
+        "resource_sha256": "f73181647fc58f2c287fb3bc98f98f7c5ecb64716f4be1317dace1a69b002484",
+        "source_sha256": "f73181647fc58f2c287fb3bc98f98f7c5ecb64716f4be1317dace1a69b002484",
+        "match": true
+      },
+      {
+        "size": 24,
+        "resource_id": 7,
+        "resource_sha256": "178c2a85fd1b8c3308a9e50d5efe82c84c4e0fd1c8a52343b404efac913f5831",
+        "source_sha256": "178c2a85fd1b8c3308a9e50d5efe82c84c4e0fd1c8a52343b404efac913f5831",
+        "match": true
+      },
+      {
+        "size": 32,
+        "resource_id": 6,
+        "resource_sha256": "047044768de5ff4a33df42497a6a47c38b77dcf16c5b25b781a52e8698a93c98",
+        "source_sha256": "047044768de5ff4a33df42497a6a47c38b77dcf16c5b25b781a52e8698a93c98",
+        "match": true
+      },
+      {
+        "size": 40,
+        "resource_id": 5,
+        "resource_sha256": "5906dc490e18b416dac287be27200e8ce7044b87f295ec13fa2bbc595626d219",
+        "source_sha256": "5906dc490e18b416dac287be27200e8ce7044b87f295ec13fa2bbc595626d219",
+        "match": true
+      },
+      {
+        "size": 48,
+        "resource_id": 4,
+        "resource_sha256": "e00a032ce019111b6d5548cd17ad88da1bcce191273297a2467f9cfebec1142f",
+        "source_sha256": "e00a032ce019111b6d5548cd17ad88da1bcce191273297a2467f9cfebec1142f",
+        "match": true
+      },
+      {
+        "size": 64,
+        "resource_id": 3,
+        "resource_sha256": "6c80d742f20e2d5842e5e2830d147d3fcc4b3e733660dca2263ba115b60629e6",
+        "source_sha256": "6c80d742f20e2d5842e5e2830d147d3fcc4b3e733660dca2263ba115b60629e6",
+        "match": true
+      },
+      {
+        "size": 128,
+        "resource_id": 2,
+        "resource_sha256": "6ee42de3bb3bbf25d415e86dc404b73cd4e63926ab05851959bc37c98fa1679f",
+        "source_sha256": "6ee42de3bb3bbf25d415e86dc404b73cd4e63926ab05851959bc37c98fa1679f",
+        "match": true
+      },
+      {
+        "size": 256,
+        "resource_id": 1,
+        "resource_sha256": "9b66f29732b766cba7763b3041844b491846c4856a332f37066b5349d7515dc4",
+        "source_sha256": "9b66f29732b766cba7763b3041844b491846c4856a332f37066b5349d7515dc4",
+        "match": true
+      }
+    ]
+  },
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "staging_empty": true,
+  "tracked_worktree_clean": true
+}
+
+[NEXT]
+- 0.5.14 최종 릴리즈 완료 상태로 고정.
+- 0.5.14 태그/Release는 이후 수정하지 않음.
+- 신규 수정은 다음 버전에서 진행.
+
+report_txt=/home/runner/workspace/stage66f_0514_final_audit_r1.txt
+report_json=/home/runner/workspace/stage66f_0514_final_audit_r1.json

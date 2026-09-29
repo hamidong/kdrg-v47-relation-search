@@ -1,0 +1,49 @@
+{
+  "schema_version": "kdrg-0515-adrg-namespace-ui-repair-v4",
+  "stage67i1_status": "PASS",
+  "stage67i1_readiness": "READY_FOR_0515_ADRG_NAMESPACE_UI_ACTUAL_APPLY",
+  "base_release_commit": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "target_version": "0.5.15",
+  "failed_rc_run_id": 35695541913,
+  "shadow_root": "/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4",
+  "apply_file_count": 4,
+  "apply_files": [
+    {
+      "path": "electron/src/kdrg-search-service.js",
+      "source": "/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron/src/kdrg-search-service.js",
+      "actual_before_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+      "shadow_apply_sha256": "017f6b2a3cdaaede0f14e77be5e06fc20b113f5d258c3271802beb07641b9d2c"
+    },
+    {
+      "path": "electron/src/packaged-runtime-smoke.js",
+      "source": "/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron/src/packaged-runtime-smoke.js",
+      "actual_before_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+      "shadow_apply_sha256": "ec3d8a53f136884e61bb2383e6f22c149c708501c00c02fb2703416f7504b7de"
+    },
+    {
+      "path": "electron/tests/validate-packaged-runtime-smoke.js",
+      "source": "/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron/tests/validate-packaged-runtime-smoke.js",
+      "actual_before_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+      "shadow_apply_sha256": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29"
+    },
+    {
+      "path": "electron/tests/validate-stage59b-search.js",
+      "source": "/home/runner/workspace/reports/stage67i1_0515_adrg_namespace_ui_shadow_r4/electron/tests/validate-stage59b-search.js",
+      "actual_before_sha256": "e5286b9beaea45c9decb58f1752e20ee343bcd1a77b19d794155d0e5f9f11c65",
+      "shadow_apply_sha256": "072ddb7ad0b1216cbde808290a64edf497f9763a1a8ac8dc18395ddf63665cb1"
+    }
+  ],
+  "repair_contract": {
+    "explicit_adrg_exact_id_precedes_code_collision": true,
+    "all_1132_adrg_exact_ids_pass": true,
+    "all_code_behavior_unchanged": true,
+    "ui_fixture_search_query_uses_public_adrg_identity": true,
+    "product_hardcoding_B018_B022": false
+  },
+  "next_policy": {
+    "actual_apply_then_full_validation": true,
+    "new_fix_commit_required": true,
+    "new_rc_required": true,
+    "rc_success_before_tag": true
+  }
+}

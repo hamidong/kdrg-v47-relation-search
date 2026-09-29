@@ -1,0 +1,51 @@
+KDRG V4.7 Electron Stage67I4 / 0.5.15 Search Normalizer Repair Shadow R2
+====================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_NORMALIZER_ACTUAL_APPLY
+
+[PREFLIGHT]
+{
+  "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "before_sha256": {
+    "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+    "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+  },
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[NORMALIZER BEFORE]
+{}
+
+[REPAIR]
+{}
+
+[VALIDATION SUMMARY]
+{
+  "normalizer_after": null,
+  "bridge_entity_type": null,
+  "bridge_exact_count": null,
+  "adrg_count": null,
+  "collision_count": null,
+  "failure_count": null,
+  "npm_run_check": null,
+  "root_50b_50c_50d": null,
+  "release_version": null,
+  "git_diff_check": null
+}
+
+[ACTUAL GUARD]
+{}
+
+[BLOCKER]
+StageError: normalizer probe failed:
+
+[NEXT]
+- PASS이면 실제 normalizer source shape 기준 ADRG 전달 수정이 Shadow에서 확정.
+- 다음 Stage67I5에서 manifest의 정확한 2개만 Actual 적용 후 전체검증.
+- 그 다음 새 fix commit/push 후 새 RC.
+- RC success 전 electron-v0.5.15 tag/release 금지.
+
+manifest=/home/runner/workspace/stage67i4_0515_search_normalizer_apply_manifest_r2.json
+report_json=/home/runner/workspace/stage67i4_0515_search_normalizer_shadow_r2.json

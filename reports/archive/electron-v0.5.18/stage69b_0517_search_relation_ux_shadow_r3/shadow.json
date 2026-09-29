@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R3",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 0.5.16 search-service SHA 불일치"
+}

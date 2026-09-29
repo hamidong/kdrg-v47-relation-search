@@ -1,0 +1,11 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0513_ACTUAL",
+  "preflight": {},
+  "shadow_diff": {},
+  "source_fidelity": {},
+  "validation": [],
+  "artifacts": {},
+  "actual_unchanged": {},
+  "error": "ShadowError: unsafe SOURCE_BLOCK_TEXT candidates: count=1 sample=['F022']\nTraceback (most recent call last):\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py\", line 1755, in main\n    pre, audit_rows, reworded_rows, matching_rows, pdf_indexes = preflight()\n                                                                 ^^^^^^^^^^^\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py\", line 708, in preflight\n    source_block_checks = validate_source_block_candidates(audit_rows)\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py\", line 661, in validate_source_block_candidates\n    require(\n  File \"/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py\", line 111, in require\n    raise ShadowError(message)\nShadowError: unsafe SOURCE_BLOCK_TEXT candidates: count=1 sample=['F022']\n"
+}

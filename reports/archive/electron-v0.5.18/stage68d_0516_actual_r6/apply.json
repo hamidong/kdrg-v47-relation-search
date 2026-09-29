@@ -1,0 +1,78 @@
+{
+  "head": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "tag": "electron-v0.5.15",
+  "candidate_node_check": "PASS",
+  "candidate_change_lines": 10,
+  "ui_order": {
+    "meta": 147,
+    "derived": 785,
+    "derived_call": 933,
+    "condition": 1022
+  },
+  "modified_files": [
+    "electron/renderer/app.js",
+    "electron/tests/validate-stage68d-0516-classification-derived-aadrg.js"
+  ],
+  "protected_files": {
+    "data/kdrg_v47_search_integrated_v3.json": "UNCHANGED",
+    "electron/src/kdrg-search-service.js": "UNCHANGED",
+    "electron/renderer/styles.css": "UNCHANGED"
+  },
+  "app_sha256": "715c0ccdfb083eb77e58609a6adfdc27c7e54b6f96307c9dd7e6e0e1b49768b0",
+  "validator_sha256": "961e4337d1a5b576742da66c5fa7f299597e6ea274eafe05664c53ca73903138",
+  "validations": [
+    {
+      "label": "app syntax",
+      "cmd": "node --check renderer/app.js",
+      "cwd": "/home/runner/workspace/electron",
+      "rc": 0,
+      "status": "PASS",
+      "tail": ""
+    },
+    {
+      "label": "validator syntax",
+      "cmd": "node --check tests/validate-stage68d-0516-classification-derived-aadrg.js",
+      "cwd": "/home/runner/workspace/electron",
+      "rc": 0,
+      "status": "PASS",
+      "tail": ""
+    },
+    {
+      "label": "stage68d exhaustive validator",
+      "cmd": "node tests/validate-stage68d-0516-classification-derived-aadrg.js",
+      "cwd": "/home/runner/workspace/electron",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "stage68d_0516_r6: 12 PASS / 0 FAIL\nF111_relation_fixture=I210 + I211 / AND\n"
+    },
+    {
+      "label": "release validation chain",
+      "cmd": "npm run check",
+      "cwd": "/home/runner/workspace/electron",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "\n> kdrg-v47-relation-search-electron@0.5.15 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.15 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.15\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\n[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n\nnpm notice\nnpm notice New major version of npm available! 10.8.2 -> 12.1.0\nnpm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0\nnpm notice To update run: npm install -g npm@12.1.0\nnpm notice\n"
+    },
+    {
+      "label": "50B_validate_kdrg_electron_search_service.py",
+      "cmd": "python 50B_validate_kdrg_electron_search_service.py",
+      "cwd": "/home/runner/workspace",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt\n"
+    },
+    {
+      "label": "50C_validate_kdrg_electron_renderer_ui.py",
+      "cmd": "python 50C_validate_kdrg_electron_renderer_ui.py",
+      "cwd": "/home/runner/workspace",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt\n"
+    }
+  ],
+  "git_status_targets": [
+    " M electron/renderer/app.js",
+    "?? electron/tests/validate-stage68d-0516-classification-derived-aadrg.js"
+  ],
+  "status": "PASS"
+}

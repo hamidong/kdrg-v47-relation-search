@@ -1,0 +1,681 @@
+{
+  "meta": {
+    "schema_version": "kdrg-v47-table-reference-resolution-queue-v1",
+    "script_version": "2026-07-21_KDRG_V47_TABLE_SECTION_VALIDATOR_V1",
+    "data_version": "4.7",
+    "generated_at": "2026-07-21T04:14:36+00:00",
+    "scope": "09번 unresolved/ambiguous TABLE 참조의 후속 자동 해석 입력",
+    "source_hashes": {
+      "source_pdf": "f88cc3810639b72fb4a28a2484ea6e4da7988b101ce2866c40c45ecd0d0e8ae4",
+      "main_blocks": "8ac7c23e3573e286cc5adb669c2589ba7acc47c078f3bad962203fabde32c815",
+      "procedure_master": "c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec",
+      "group_base": "24363a1d7b12d59c0506fa6c586cf1e692477742287301015ecd525c7db980d8",
+      "pattern_profile": "e15df98870a03f5d18a46cc979600eab2bfe5efbc15fd573f759ae5f57d023ad",
+      "candidate_json": "13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f"
+    },
+    "policy": {
+      "manual_excel_review": false,
+      "source_inference": "금지",
+      "resolution": "본문 원문 좌표와 명시적 ADRG/MDC 참조를 이용한 후속 자동 연결",
+      "section_preservation": "물리 section은 병합·삭제하지 않고 논리 그룹만 별도 생성"
+    },
+    "counts": {
+      "unresolved": 13,
+      "ambiguous": 10,
+      "total": 23,
+      "issue_classes": {
+        "explicit_cross_adrg_reference": 8,
+        "local_definition_not_resolved": 3,
+        "mdc_named_table_variant_group": 10,
+        "numbered_add_on_reference_without_local_definition": 2
+      }
+    }
+  },
+  "unresolved": [
+    {
+      "queue_id": "QUEUE_COND_D052_0006_02",
+      "status": "unresolved",
+      "issue_class": "numbered_add_on_reference_without_local_definition",
+      "adrg": "D052",
+      "adrg_family": "D05",
+      "mdc": "03",
+      "condition_id": "COND_D052_0006",
+      "raw_line_no": 6,
+      "raw_condition_text": "시술명 table1 and 부가코드1",
+      "atom": {
+        "atom_type": "add_on_code_reference",
+        "raw_text": "부가코드1",
+        "role": "add_on_code",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:D05|add_on_code|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "인접 ADRG와 직접 목록의 공유 범위를 원문 순서로 다시 판정한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_D054_0029_01",
+      "status": "unresolved",
+      "issue_class": "numbered_add_on_reference_without_local_definition",
+      "adrg": "D054",
+      "adrg_family": "D05",
+      "mdc": "03",
+      "condition_id": "COND_HEADER_D054_0029",
+      "raw_line_no": null,
+      "raw_condition_text": "부가코드1",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "부가코드1",
+        "role": "add_on_code",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:D05|add_on_code|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "인접 ADRG와 직접 목록의 공유 범위를 원문 순서로 다시 판정한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_J031_0005_01",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "J031",
+      "adrg_family": "J03",
+      "mdc": "09",
+      "condition_id": "COND_J031_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table1",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "주진단명 table1",
+        "role": "principal_diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:J03|principal_diagnosis|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_J032_0005_01",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "J032",
+      "adrg_family": "J03",
+      "mdc": "09",
+      "condition_id": "COND_J032_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "J02의 주진단명 table1을 제외한 MDC09의 주진단명 and 시술명 table2",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "주진단명 table1",
+        "role": "principal_diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:J03|principal_diagnosis|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_O130_0005_01",
+      "status": "unresolved",
+      "issue_class": "local_definition_not_resolved",
+      "adrg": "O130",
+      "adrg_family": "O13",
+      "mdc": "14",
+      "condition_id": "COND_O130_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "(시술명 table1 and 시술명 table2) or 시술명 table2 or 시술명 table3",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "시술명 table1",
+        "role": "procedure",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:O13|procedure|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "인접 ADRG와 직접 목록의 공유 범위를 원문 순서로 다시 판정한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_Q020_0011_01",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "Q020",
+      "adrg_family": "Q02",
+      "mdc": "16",
+      "condition_id": "COND_Q020_0011",
+      "raw_line_no": 11,
+      "raw_condition_text": "Q01의 시술명 table1을 제외한 OR Procedure",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "시술명 table1",
+        "role": "procedure",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:Q02|procedure|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_R020_0005_01",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "R020",
+      "adrg_family": "R02",
+      "mdc": "17",
+      "condition_id": "COND_R020_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "R01의 주진단명 table1을 제외한 MDC17의 주진단명 and 시술명 table1",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "주진단명 table1",
+        "role": "principal_diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:R02|principal_diagnosis|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_R030_0006_02",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "R030",
+      "adrg_family": "R03",
+      "mdc": "17",
+      "condition_id": "COND_R030_0006",
+      "raw_line_no": 6,
+      "raw_condition_text": "주진단명 table1 and R01의 시술명 table2를 제외한 OR Procedure",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "시술명 table2",
+        "role": "procedure",
+        "table_number": 2,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:R03|procedure|TABLE:2",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_R040_0005_01",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "R040",
+      "adrg_family": "R04",
+      "mdc": "17",
+      "condition_id": "COND_R040_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "주진단명 table1",
+        "role": "principal_diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:R04|principal_diagnosis|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_R040_0005_02",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "R040",
+      "adrg_family": "R04",
+      "mdc": "17",
+      "condition_id": "COND_R040_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "R03의 주진단명 table1을 제외한 MDC17의 주진단명 and R02의 시술명 table1을 제외한 OR Procedure",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "시술명 table1",
+        "role": "procedure",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:R04|procedure|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_V630_0005_01",
+      "status": "unresolved",
+      "issue_class": "explicit_cross_adrg_reference",
+      "adrg": "V630",
+      "adrg_family": "V63",
+      "mdc": "20",
+      "condition_id": "COND_V630_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "V62의 주진단명 table1 and 시술명 table1",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "주진단명 table1",
+        "role": "principal_diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:V63|principal_diagnosis|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "명시된 다른 ADRG·MDC 범위의 정의를 원문 좌표로 찾아 교차 연결 후보를 만든다."
+    },
+    {
+      "queue_id": "QUEUE_COND_X041_0005_01",
+      "status": "unresolved",
+      "issue_class": "local_definition_not_resolved",
+      "adrg": "X041",
+      "adrg_family": "X04",
+      "mdc": "21-2",
+      "condition_id": "COND_X041_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "(주진단명 table1 and 시술명 table2) or 시술명 table3",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "주진단명 table1",
+        "role": "principal_diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:X04|principal_diagnosis|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "인접 ADRG와 직접 목록의 공유 범위를 원문 순서로 다시 판정한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_X042_0005_01",
+      "status": "unresolved",
+      "issue_class": "local_definition_not_resolved",
+      "adrg": "X042",
+      "adrg_family": "X04",
+      "mdc": "21-2",
+      "condition_id": "COND_X042_0005",
+      "raw_line_no": 5,
+      "raw_condition_text": "(주진단명 table1 and 시술명 table4) or 시술명 table5",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "주진단명 table1",
+        "role": "principal_diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:X04|principal_diagnosis|TABLE:1",
+        "candidate_section_ids": [],
+        "resolved_section_ids": [],
+        "selected_section_id": null,
+        "resolution_status": "unresolved"
+      },
+      "next_step_policy": "인접 ADRG와 직접 목록의 공유 범위를 원문 순서로 다시 판정한다."
+    }
+  ],
+  "ambiguous": [
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0081_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0081",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 1",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 1",
+        "role": "diagnosis",
+        "table_number": 1,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:1",
+        "candidate_section_ids": [
+          "SEC_I760_013",
+          "SEC_I760_014"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_013",
+          "SEC_I760_014"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0082_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0082",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 2",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 2",
+        "role": "diagnosis",
+        "table_number": 2,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:2",
+        "candidate_section_ids": [
+          "SEC_I760_015",
+          "SEC_I760_016",
+          "SEC_I760_017"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_015",
+          "SEC_I760_016",
+          "SEC_I760_017"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0083_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0083",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 3",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 3",
+        "role": "diagnosis",
+        "table_number": 3,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:3",
+        "candidate_section_ids": [
+          "SEC_I760_018",
+          "SEC_I760_019"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_018",
+          "SEC_I760_019"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0084_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0084",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 4",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 4",
+        "role": "diagnosis",
+        "table_number": 4,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:4",
+        "candidate_section_ids": [
+          "SEC_I760_020",
+          "SEC_I760_021",
+          "SEC_I760_022"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_020",
+          "SEC_I760_021",
+          "SEC_I760_022"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0086_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0086",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 6",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 6",
+        "role": "diagnosis",
+        "table_number": 6,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:6",
+        "candidate_section_ids": [
+          "SEC_I760_024",
+          "SEC_I760_025",
+          "SEC_I760_026",
+          "SEC_I760_027"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_024",
+          "SEC_I760_025",
+          "SEC_I760_026",
+          "SEC_I760_027"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0087_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0087",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 7",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 7",
+        "role": "diagnosis",
+        "table_number": 7,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:7",
+        "candidate_section_ids": [
+          "SEC_I760_028",
+          "SEC_I760_029"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_028",
+          "SEC_I760_029"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0088_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0088",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 8",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 8",
+        "role": "diagnosis",
+        "table_number": 8,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:8",
+        "candidate_section_ids": [
+          "SEC_I760_030",
+          "SEC_I760_031"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_030",
+          "SEC_I760_031"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0089_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0089",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 9",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 9",
+        "role": "diagnosis",
+        "table_number": 9,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:9",
+        "candidate_section_ids": [
+          "SEC_I760_032",
+          "SEC_I760_033"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_032",
+          "SEC_I760_033"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0090_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0090",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 10",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 10",
+        "role": "diagnosis",
+        "table_number": 10,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:10",
+        "candidate_section_ids": [
+          "SEC_I760_034",
+          "SEC_I760_035"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_034",
+          "SEC_I760_035"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    },
+    {
+      "queue_id": "QUEUE_COND_HEADER_I760_0091_01",
+      "status": "ambiguous",
+      "issue_class": "mdc_named_table_variant_group",
+      "adrg": "I760",
+      "adrg_family": "I76",
+      "mdc": "08",
+      "condition_id": "COND_HEADER_I760_0091",
+      "raw_line_no": null,
+      "raw_condition_text": "Diagnosis table 11",
+      "atom": {
+        "atom_type": "family_numbered_table_reference",
+        "raw_text": "Diagnosis table 11",
+        "role": "diagnosis",
+        "table_number": 11,
+        "descriptor": null,
+        "variant": null,
+        "logical_key_candidate": "FAMILY:I76|diagnosis|TABLE:11",
+        "candidate_section_ids": [
+          "SEC_I760_036",
+          "SEC_I760_037"
+        ],
+        "resolved_section_ids": [
+          "SEC_I760_036",
+          "SEC_I760_037"
+        ],
+        "selected_section_id": null,
+        "resolution_status": "ambiguous"
+      },
+      "next_step_policy": "동일 번호의 variant/descriptor 정의를 하나의 논리 그룹으로 묶되 원본 section은 유지한다."
+    }
+  ]
+}

@@ -1,0 +1,4471 @@
+{
+  "meta": {
+    "schema_version": "kdrg-v47-parser-repair-apply-log-v1",
+    "script_version": "2026-07-22_KDRG_V47_PARSER_REPAIR_APPLIER_V1",
+    "data_version": "KDRG V4.7",
+    "applied_at": "2026-07-22T06:38:37+00:00",
+    "source_hashes": {
+      "parser_repair_patch_log_json": "1aa45428903a74bbdd236b041b0c08441e5273d7c38839950ddae296fce4d15f",
+      "parser_repair_patch_validation_report_json": "8bef2417fd94015092199c1caad89bc84a5b27472faf7b3a005e889d0d6dd08f",
+      "full_corpus_integrity_audit_json": "55ef6c589bd2f190bf7e9b92295d91692ba07226b5d28f75d6bd6fdf6e133ec5",
+      "table_section_candidates_json": "13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f",
+      "logical_tables_current_json": "ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635",
+      "condition_ast_current_json": "fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de",
+      "procedure_master_json": "c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec"
+    }
+  },
+  "summary": {
+    "operation_count": 317,
+    "applied_count": 317,
+    "failed_count": 0,
+    "operation_type_counts": {
+      "add_logical_table_code": 22,
+      "bind_text_condition_to_logical_table": 19,
+      "create_logical_table": 1,
+      "remove_logical_table_code": 273,
+      "replace_condition_table_reference": 1,
+      "replace_logical_table_codes": 1
+    },
+    "changed_table_count": 279,
+    "changed_ast_count": 12,
+    "table_count_before": 1307,
+    "table_count_after": 1308,
+    "code_row_count_before": 43133,
+    "code_row_count_after": 42882,
+    "unique_indexed_code_count": 16571,
+    "condition_ast_count": 390,
+    "ast_node_count": 1727,
+    "user_decision_required_count": 0
+  },
+  "operations": [
+    {
+      "operation_id": "REPAIR_OP_0001",
+      "operation_type": "replace_logical_table_codes",
+      "category": "p674_named_list_boundary_split",
+      "target": {
+        "logical_table_id": "LT_P674_004",
+        "physical_section_id": "SEC_P674_004"
+      },
+      "status": "APPLIED",
+      "before_sha256": "c8446a988a1b31f6c1cb5a9208577ed792e91102d70112458bd4243aae25c24a",
+      "after_sha256": "2100c780a1d07a6cafa2f52a2ca3b5e0f501de76ae8542d33e85430bb5838a65"
+    },
+    {
+      "operation_id": "REPAIR_OP_0002",
+      "operation_type": "create_logical_table",
+      "category": "p674_named_list_boundary_split",
+      "target": {
+        "logical_table_id": "LT_REPAIR_MDC15_NEONATE_MAJOR_PROBLEM_TABLE01"
+      },
+      "status": "APPLIED",
+      "after_sha256": "bf6f54f3cfacbd8a0d314597b1ed881094aa0ad0de0c31665927021a3e2f8727"
+    },
+    {
+      "operation_id": "REPAIR_OP_0003",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P641",
+        "adrg": "P641",
+        "node_id": "AST_P641_N013"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0004",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P641",
+        "adrg": "P641",
+        "node_id": "AST_P641_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0005",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P642",
+        "adrg": "P642",
+        "node_id": "AST_P642_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0006",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P642",
+        "adrg": "P642",
+        "node_id": "AST_P642_N015"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0007",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P651",
+        "adrg": "P651",
+        "node_id": "AST_P651_N013"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0008",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P651",
+        "adrg": "P651",
+        "node_id": "AST_P651_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0009",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P652",
+        "adrg": "P652",
+        "node_id": "AST_P652_N012"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0010",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P654",
+        "adrg": "P654",
+        "node_id": "AST_P654_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0011",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P654",
+        "adrg": "P654",
+        "node_id": "AST_P654_N015"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0012",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P661",
+        "adrg": "P661",
+        "node_id": "AST_P661_N013"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0013",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P661",
+        "adrg": "P661",
+        "node_id": "AST_P661_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0014",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P662",
+        "adrg": "P662",
+        "node_id": "AST_P662_N012"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0015",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P664",
+        "adrg": "P664",
+        "node_id": "AST_P664_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0016",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P664",
+        "adrg": "P664",
+        "node_id": "AST_P664_N015"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0017",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P671",
+        "adrg": "P671",
+        "node_id": "AST_P671_N013"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0018",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P671",
+        "adrg": "P671",
+        "node_id": "AST_P671_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0019",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P672",
+        "adrg": "P672",
+        "node_id": "AST_P672_N012"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0020",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P674",
+        "adrg": "P674",
+        "node_id": "AST_P674_N014"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0021",
+      "operation_type": "bind_text_condition_to_logical_table",
+      "category": "neonate_major_problem_semantic_binding",
+      "target": {
+        "condition_ast_id": "AST_P674",
+        "adrg": "P674",
+        "node_id": "AST_P674_N015"
+      },
+      "status": "APPLIED"
+    },
+    {
+      "operation_id": "REPAIR_OP_0022",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_A050_001",
+        "code": "A06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "aea93df40c4ac35a1aeb9020b941e990abaeca966d29c363c5eb9cb64e1dd091",
+      "after_sha256": "101a88f17beb495267caea66aa22d09ff461f9182bcf8d2d7a8a2acef453af81"
+    },
+    {
+      "operation_id": "REPAIR_OP_0023",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_A080_002",
+        "code": "A09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "643e4054fe135b51870694e17828c16b67b03a8b0c708a7d661d1d885f83148f",
+      "after_sha256": "e4a26fc4604d4abe3a7eef3e53a20cf0c8f8ae2a89ee12b6987e5a855c70c12d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0024",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B018_005",
+        "code": "B02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4e162dc810e082e9b08df85bbb6345dc685ea265b327b26fd8a5b81a27a5e82b",
+      "after_sha256": "d162f8755c653fa413e2d26a26cc849a3477b5db1b571706918595ee90b6fd26"
+    },
+    {
+      "operation_id": "REPAIR_OP_0025",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B027_001",
+        "code": "B03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4549f6ed4c8f5e7600695a5c5eb3d2f4f3825c57b5c01f4fe45c4dc3d43a1ba9",
+      "after_sha256": "985148ebed1916a4ee7d6a014bb827427baad0aa77bea6aabf5e3b044be68f4f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0026",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B033_004",
+        "code": "B04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f5735d858023af824d166ce1c1679b2aa575231e02b62f7f8f2ab44664927bb8",
+      "after_sha256": "9bf222a0e9a6ffbaa42cbf60a0b0e8b099bf95544ffa993f26451be9a971dcdf"
+    },
+    {
+      "operation_id": "REPAIR_OP_0027",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B050_001",
+        "code": "B06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a5bf5943a9ec19d70122d4a3914bed54b91b1a7d1606dafe4dd2c8a459b58905",
+      "after_sha256": "8bd42984cf35bbda7030c198cecfe7e26ea06db4bac4b670defb285da8fc1fac"
+    },
+    {
+      "operation_id": "REPAIR_OP_0028",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B070_001",
+        "code": "B08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f1ca6732cd4128060020247e1d0f5d7302c0146dce552bd46fdd836a69b8873a",
+      "after_sha256": "120577c5e9a0b461df948b8e95b5a506ed6a75ddd9477bd6f60ef1d27ec818e5"
+    },
+    {
+      "operation_id": "REPAIR_OP_0029",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B082_001",
+        "code": "B09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "c92e030a620933247b43d674c22052ce4ebaa577aad1e7fbdc8f0adac8a7b4d7",
+      "after_sha256": "856280e99e62eb13afddcc30cd37633d603310690c052fc0af296f6ff88601b9"
+    },
+    {
+      "operation_id": "REPAIR_OP_0030",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B110_001",
+        "code": "B12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6b5a1f719fa71a0e9cafb4f45abba364071f0a5da2e1a2abf1b19fe34a8e7358",
+      "after_sha256": "405fe1d9710d78e02dd4307288b08c89ee95df584003131b334d9eda1443f1f5"
+    },
+    {
+      "operation_id": "REPAIR_OP_0031",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B130_001",
+        "code": "B14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "dd68dd3dc22db49494af69fd691e9eda3c98bdb23b0d06183983c09e1ca48131",
+      "after_sha256": "dd708d923479d7c250fbf288cc1afbd97da9a23bb81c84c2ec4e98a607c7ed95"
+    },
+    {
+      "operation_id": "REPAIR_OP_0032",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B143_001",
+        "code": "B15"
+      },
+      "status": "APPLIED",
+      "before_sha256": "19629e756c2bb41366a264b0f018bddd0ca65162c6ebe0851e21bd4f6f08a062",
+      "after_sha256": "006b43c1777ff46dcfd52980fbee2c9b09171c8e32a7dcbcf01230460e4f0884"
+    },
+    {
+      "operation_id": "REPAIR_OP_0033",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B154_004",
+        "code": "B16"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9b0af00a6de8110d9a75e4d8aa1e6c02fa0e07411dd63f972f50de9f5b3faf33",
+      "after_sha256": "7d309493534ad02e2d856c309eaa63b34c830d3b48c5f29436dd12302f063404"
+    },
+    {
+      "operation_id": "REPAIR_OP_0034",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B163_002",
+        "code": "B17"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b2f00863ed82808890af1231745cbb139919cf7b639092402607a2a06fc0de99",
+      "after_sha256": "572b140c352cf16c46dd40974782bfe0400699580ad49e08deb93130345e1325"
+    },
+    {
+      "operation_id": "REPAIR_OP_0035",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B176_005",
+        "code": "B18"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8ed65a24e7a69ccdbc059e8f31de4103d54a51932c0d33994ecad65856b4963b",
+      "after_sha256": "b4e31d0f84efd70ed24b780f11cb6efa74a93592a7074874b57659bf46b107d6"
+    },
+    {
+      "operation_id": "REPAIR_OP_0036",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B182_001",
+        "code": "B19"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8fc886310aabe4b746b16e9bf30611a6f0f8e5c7cd202616da8a33ba4124e7ed",
+      "after_sha256": "5e163da37d307a981629e69c12474a36c8da28a595b8ad602d3ca2defd0f5447"
+    },
+    {
+      "operation_id": "REPAIR_OP_0037",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B192_001",
+        "code": "B20"
+      },
+      "status": "APPLIED",
+      "before_sha256": "dcbf9ffa3a77a09a8d3ebbc235fe76269325aba6d1e472e71aac49fd2f262fe4",
+      "after_sha256": "3018aa4ef9661ce1bfad163d84b6e9b06aa9c9f61ce1574cc9481c1beff83255"
+    },
+    {
+      "operation_id": "REPAIR_OP_0038",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B205_001",
+        "code": "B21"
+      },
+      "status": "APPLIED",
+      "before_sha256": "db37edefddf91504adb12199bd58a2ed591bcc5bd9ba2abca51353b4528d3e55",
+      "after_sha256": "3307f221dc42165f6c0ac237a2e846fced3ae5d426a5709213e9269811eaf3d0"
+    },
+    {
+      "operation_id": "REPAIR_OP_0039",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B212_001",
+        "code": "B50"
+      },
+      "status": "APPLIED",
+      "before_sha256": "dd8fb881ff48563667134c7bcce9d5bf9f66039b8bee5b32b9d1576021892b74",
+      "after_sha256": "962ebf102fab62790517952ee3f4e0a543d3adce754a5c96cdbd0706a33eb66e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0040",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B530_001",
+        "code": "B60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "0f0e54b17f200e8678ec1d214b80f579cb75ba8042a85d3f90816f8a20ac5264",
+      "after_sha256": "8712e50e69830586c2bb3b0b2a7ab87510b2cbb0855dd10f32127d204f9e950d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0041",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B620_001",
+        "code": "B63"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4b69b9849ddf463e2f65cd9ffa9c95aab027bfe3d8cd6536a29d4ed46f012929",
+      "after_sha256": "e44944dc57baef93e48f38b1f2bf562d8b98a8a501855b210d6da4c91000bf80"
+    },
+    {
+      "operation_id": "REPAIR_OP_0042",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B633_005",
+        "code": "B64"
+      },
+      "status": "APPLIED",
+      "before_sha256": "089719ad814baf373619ab70ce4241b246945d2fb1c95f2f1ff469e4a1fcdd52",
+      "after_sha256": "899c1d7304dfe4f166e84af6001663907e9e40274e057c05aca0a632b6020b17"
+    },
+    {
+      "operation_id": "REPAIR_OP_0043",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B646_001",
+        "code": "B65"
+      },
+      "status": "APPLIED",
+      "before_sha256": "842efb0b5eb799acad94943a4e7bdb75fb6111c039d635d99173ab0d81772189",
+      "after_sha256": "5eb84f1866a1ca8fd9a2b86345b63864ee8b79b783431dcb77e2a91c073956dc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0044",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B657_001",
+        "code": "B66"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5a5824a9999338a7f40ae8cbb83fc99694d04bd3f9a35b692a5a774c6d7b5eac",
+      "after_sha256": "dfc4804de5416ee8a61a05cb7e9bf46c2b50ce0f6146345979088c77a5fcf3b6"
+    },
+    {
+      "operation_id": "REPAIR_OP_0045",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B670_001",
+        "code": "B68"
+      },
+      "status": "APPLIED",
+      "before_sha256": "099ae598842c7dff94d84b4e59786a251709d8530c0c437cf9f97d43f986401c",
+      "after_sha256": "1d05243fd67f11f1f4f9a3b9b0c414bac9ddeb17de80cad744fdaa25882a966a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0046",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B686_005",
+        "code": "B69"
+      },
+      "status": "APPLIED",
+      "before_sha256": "98e1ec78cc5f12f073056f9d740d63636e04215f7c594ca0fcea55f5ec143cc7",
+      "after_sha256": "e2d49e8f1e0dc7475e8b4cc7d7bbe70aa920439fbc9d6d57860ce8e9bf7ee633"
+    },
+    {
+      "operation_id": "REPAIR_OP_0047",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B696_001",
+        "code": "B70"
+      },
+      "status": "APPLIED",
+      "before_sha256": "18c13429222a972d0ed67654c51b9e6869592e8e971d2dee33982aa6277b9973",
+      "after_sha256": "88f888ece3a4856ab17be4e373c39d49259dabce92929a6bd8c4867af040d954"
+    },
+    {
+      "operation_id": "REPAIR_OP_0048",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B702_001",
+        "code": "B71"
+      },
+      "status": "APPLIED",
+      "before_sha256": "04480ee5ff72d9189b63d0db617f05aae558736530e0039be29531d201fefb0b",
+      "after_sha256": "7e13fa52e1e19df6efe01e1f8f0f56259b9903266ad69faee700388ba6d7f255"
+    },
+    {
+      "operation_id": "REPAIR_OP_0049",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B750_001",
+        "code": "B76"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b2dec6b3adf2e2ab503fef5acbc9ddc81d6a0f8e678d8166066ed6ad07c7239c",
+      "after_sha256": "cbca1dac8f9603ab8a654a9728143164fd489d43e981b360911586c8f434fd44"
+    },
+    {
+      "operation_id": "REPAIR_OP_0050",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B763_001",
+        "code": "B77"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8bd335db560b99b7ded0e1e9fb133db0085faf861dda50fff6e2d3e035264448",
+      "after_sha256": "e92debd8b63b79d9c9d68601af66401fc767de254aea1287cf552ecc70651620"
+    },
+    {
+      "operation_id": "REPAIR_OP_0051",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_B800_001",
+        "code": "B81"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ca458ed16fa52d11cb7bb0456b982b57d119695a63856a377605672ed665940b",
+      "after_sha256": "48fec63819c27507337a7d3139416a13043acd4ebe5bc915c6952416c7094323"
+    },
+    {
+      "operation_id": "REPAIR_OP_0052",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C014_003",
+        "code": "C02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "0b042cc7438e9445aff52e8e6e88ca5184b73b1d6273ee2493ddc91c69b44460",
+      "after_sha256": "142635d863c3cfee4191a4a6be6202b41189f162f569846735ca1232b3b71223"
+    },
+    {
+      "operation_id": "REPAIR_OP_0053",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C030_003",
+        "code": "C04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8f5dcd8c547da6a8422024f77e9a3d6cc0e191128cf004ca41f8a7ae7c853c5d",
+      "after_sha256": "2b38a22776cce56fbb4e9ed7e68c1ad7a6bb89bf63c82103c25bc8844663d8be"
+    },
+    {
+      "operation_id": "REPAIR_OP_0054",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C046_004",
+        "code": "C05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6473964b9abd692da1f0f46c2e01316a0e3e3077a2a7d26c0c7f6d94279da7f8",
+      "after_sha256": "77da8677a416ca6e5ff7888d900c017304c4722d398c3cd081314c2bfdefd3d4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0055",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C053_001",
+        "code": "C06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "cc6c3f2ba51384677ef0cfbf79c781cb18feb1d5076d0476bb9b2c2400d80ff0",
+      "after_sha256": "9914361f3c05bb5fa882914f4bd5ea737d8afadd7d894ba0ed5618d90e8c4c8c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0056",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C064_005",
+        "code": "C07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "bc63cfcab4cf916895839896f28e71410773c023e73c760b17b962ba97ca39ce",
+      "after_sha256": "cfd9df5098f49d164040eec4801b49324377cb0c4c4b2435cb3987767cf937dc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0057",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C080_001",
+        "code": "C09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "eee5cf7f231cf2d55ecdbb43dd2b427953a750f6347bbada7f94531df9e376f3",
+      "after_sha256": "de9f1f11e3ba5f6223cd88087b256e2c349526b257ddda8f5f829c2fc765bf0b"
+    },
+    {
+      "operation_id": "REPAIR_OP_0058",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C095_002",
+        "code": "C10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a36c4ea5b3cb25bfb6d37347ede4db1817c5714d16ec00bb54f68a40d641eccc",
+      "after_sha256": "de857cc53016a8c75590f34fc2721e02be7c3ead2229326e4bf6c5063942f507"
+    },
+    {
+      "operation_id": "REPAIR_OP_0059",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C102_001",
+        "code": "C11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "62184d451e80cc5acecf6fe42640db58cdac32d648bbc368868b4736e42947af",
+      "after_sha256": "5e3a8c7e9f570c8cea4d931eec32f2a52af114805d568d36b18ce0af87fc1f32"
+    },
+    {
+      "operation_id": "REPAIR_OP_0060",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C112_001",
+        "code": "C12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "eaa3a2e4b5000e83ee76aa347d61059de1dc8350856e23db8adb96b54120e225",
+      "after_sha256": "589dd09e7cb2eb2cc449665dc22fb2fbe89ce724c12949de4ab30488b24f79d3"
+    },
+    {
+      "operation_id": "REPAIR_OP_0061",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C127_001",
+        "code": "C13"
+      },
+      "status": "APPLIED",
+      "before_sha256": "7688a8e057b11fb0c13125d6b1a95506b3f02b63a8aa12fb5dd68578e25c71a4",
+      "after_sha256": "a8a9e70422420d61560f9d31b4d3866049dfc7ef98b090583950e908880f5be1"
+    },
+    {
+      "operation_id": "REPAIR_OP_0062",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_C136_002",
+        "code": "C14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "1c8bdf5ead85c58287cb8033e7fb68ff917099234b674007397fdad1c7a09d07",
+      "after_sha256": "b96594cf3dd2cf3a44a76feb9c9ff49a66cc270d93d48717a27b4e84222bfb6c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0063",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D090_001",
+        "code": "D10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4010dec0401c6e09ac7e13cb285ff56f3237952b139f29281c1de2e8c859d269",
+      "after_sha256": "c761f929e37f67b10cf397ba10d936a42724ee1f86abb3391fe2afee8ce72a00"
+    },
+    {
+      "operation_id": "REPAIR_OP_0064",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D102_001",
+        "code": "D60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "974c6b252f1ad99afa9b486cb3337bf412cd8611c6f65629ee2179ddd20ac9e2",
+      "after_sha256": "59760f452762d16b237b21cafe066d2bddac8ac4b0aa1b1c7b51dce36f91719e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0065",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D603_005",
+        "code": "D01"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ca34cc3ab07fd94a742a000439cfb2a5a02b217bc88dc7603c15621f75c36d9d",
+      "after_sha256": "6203b5ea075f02899e6d8502646de0406a34f58d7d49592297f824f1ee27f98d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0066",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D014_001",
+        "code": "D02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6af8704f2a1646bd050d680b2ede668938ce33303e8ab2d954283bf585a489d2",
+      "after_sha256": "391f8728161d9fc346fc4141836e379ceb24bcdb44a03d2f2dc65326fa0beb2a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0067",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D026_001",
+        "code": "D03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4fa81852ee81eaf5013a0d66b2ef156a35e37f0d860ada04f074b4800573e71a",
+      "after_sha256": "789ea2ea33d8546cb749c9b8a269a952328028be8ee6cdecce1c81e02acc4d30"
+    },
+    {
+      "operation_id": "REPAIR_OP_0068",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D660_001",
+        "code": "D05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e8cc79a913cf825c321a6ebfca3b4b09136d6f84a259b6ad2e38ccd4664755fc",
+      "after_sha256": "c0d9a640be0289575d0bc6fe9a217dc59e1d82519e8c16368825b906649ba40f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0069",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D054_005",
+        "code": "D06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "251d175902f5a102c7e52a798cf65b7aa9151bc44c58ce41090b67ab3e2da5f9",
+      "after_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "operation_id": "REPAIR_OP_0070",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D070_001",
+        "code": "D08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "94f5af34456e5caeaa9f9ffa50402e9b4a0b0ab05071fadd5fdbf7dfa1ac95fb",
+      "after_sha256": "094e25119287899906c371012362cd04fed1b401738c8deef140e90f40a2c4bb"
+    },
+    {
+      "operation_id": "REPAIR_OP_0071",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D680_001",
+        "code": "D69"
+      },
+      "status": "APPLIED",
+      "before_sha256": "3d4a0b3734574183277356a5afb5c246d2ae385d3ce3fc2de2d0a26e9ec48d23",
+      "after_sha256": "c1dd65721fd717a11ec4dca4d6aa1604707933cdfe024190b995fe82fdeaaefc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0072",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D730_001",
+        "code": "D11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d9585934db10e049a59eb9edd2722430e5b9b5ef4ba5d42426716c095b0031b6",
+      "after_sha256": "86ee429568d188b43d04d9ee47f3c7f91a658bab6388999806a477bfc2611a1e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0073",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D112_001",
+        "code": "D12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8d54076e78b62512ab8ea79230ec04867f080c0ae9986b7ac0afbe9d57c5be85",
+      "after_sha256": "c37bfad9d51089ef01aa947ce3c3e61c2e9a7e553ad69ad4bbe557abb6b0e678"
+    },
+    {
+      "operation_id": "REPAIR_OP_0074",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D130_001",
+        "code": "D14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f8a9a56d7fed4e250cebfe5974fd1f5c31bcccc0d9729ebbbf7d76dd4a8fec1a",
+      "after_sha256": "2f3db27ee0f1852527f7abb8b5b9634c82b9c4fc53b33aeebceb3063ca6251de"
+    },
+    {
+      "operation_id": "REPAIR_OP_0075",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D150_001",
+        "code": "D16"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9e3050d01dca2c5df9385d305c50f28097d3172d56192c7626d794f6109c00ce",
+      "after_sha256": "3bb0f4ef88ad29ba067788af664880bb825117cbfe0bf92f157991be9ecc752f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0076",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D162_001",
+        "code": "D17"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f8941ecfceb13f55a54abfc4a8a817070fd329f24389ba436a61e7cba62d4c53",
+      "after_sha256": "c09bc9f178598ad96bf53225a6a0821cf3273e2de605bae1168d6c90cf334aba"
+    },
+    {
+      "operation_id": "REPAIR_OP_0077",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D180_001",
+        "code": "D19"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8cc197fa14f6aa359eabd2ebef8c36f5e2ca0583dc17b34d438fd52f08b16f54",
+      "after_sha256": "7f2f725b34e33e788db000167bc5889e788f7e1271f768583f2b6dab59923a7a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0078",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_D300_001",
+        "code": "D50"
+      },
+      "status": "APPLIED",
+      "before_sha256": "63cba44fcddb269430e0cb0362fe6c802a500969d87cb51ba012fa502bb2d106",
+      "after_sha256": "fca1373c6a2a5b80ed8b8c1fd35be8bf6a55aa15756b074ea63475b8c7df7180"
+    },
+    {
+      "operation_id": "REPAIR_OP_0079",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E020_001",
+        "code": "E03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ba8336cbcb726787d10b86b08ac109f12b7d1e9dbdd82139b852d010d21fb179",
+      "after_sha256": "82be30155afd7cb8a3263f1b5fe6d2114570340a3175782e5e9cad8d26ca5dcc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0080",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E034_001",
+        "code": "E50"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8d24dc87c2d20a2b87a60af3d7b30b42d5475de38da54e3be819d3a0d027c074",
+      "after_sha256": "41fe986e16236867fdb1dd6328ae98601f6989556d041ed83ad9abae9cbbd40a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0081",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E502_002",
+        "code": "E51"
+      },
+      "status": "APPLIED",
+      "before_sha256": "37300cb459458fbca174304d269a836ef57fc53470890ebb9432cda04c41900b",
+      "after_sha256": "18d50d7efc368c24fac089841137236260d38f6d2cabd601e4172b333a8fb731"
+    },
+    {
+      "operation_id": "REPAIR_OP_0082",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E610_001",
+        "code": "E62"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6945dbc14699b2975c425c10c1c333b662d642bef51c1d4f1c5973ed8b9e6582",
+      "after_sha256": "9b42ef4713340383d1810c696e92c247f83df1e31bfd45c51ba0fb9836dc5d9e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0083",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E660_001",
+        "code": "E67"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f03686018b998d455bec7d946ae23f14dd2f8650acda92dc6b5e349729357e52",
+      "after_sha256": "24c10e3dd6284ebd138a226cbe51aaeb3e204e1db17bef3e0b5d2a71b41f5058"
+    },
+    {
+      "operation_id": "REPAIR_OP_0084",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E673_005",
+        "code": "E68"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a72b55095b5dbdaa91c835eeec4c0e21285772c518bccedad7dc633ac95eec54",
+      "after_sha256": "d90fd0fc440089a8954936f75307107e6c23cb62addbe2eaf89e863248994555"
+    },
+    {
+      "operation_id": "REPAIR_OP_0085",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E682_001",
+        "code": "E69"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4738414ddce3d49b674d44525e6806bb87381b10914cbbb2d480e7f79764ebbf",
+      "after_sha256": "f1c345c1bba523a40fc9ea08ae59bf97cc332274765ce30bc8a0e03922629c94"
+    },
+    {
+      "operation_id": "REPAIR_OP_0086",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E693_001",
+        "code": "E70"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e5b3f901273b9c3e8bebdbe820ba7d67fe2ae8dce68dd056f8514d8df272f0e6",
+      "after_sha256": "66b57819fb507cae578f88fee7db4cd3bf54a979251d55ffb9ca00c6867e0fd4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0087",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E730_001",
+        "code": "E74"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e4e5c80f8c79153a0f719d7ed19d828e535166a9eaaf546279475294d6cd792b",
+      "after_sha256": "3732405f17a3068fd84ebba4ed9cef39736348794a9f799d6f2515b8afc79b95"
+    },
+    {
+      "operation_id": "REPAIR_OP_0088",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E743_001",
+        "code": "E75"
+      },
+      "status": "APPLIED",
+      "before_sha256": "1f306ddcab8521797a0b6f45e96a033e8c895ccaef72d755fb7dc3fb989094cf",
+      "after_sha256": "c448770b29bf35b591dcc72b237dbddc02d193ef32b32edaf51cf060aad48765"
+    },
+    {
+      "operation_id": "REPAIR_OP_0089",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_E760_001",
+        "code": "E77"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e3811eef3c2f821758c310b9839aeeadf11b4fed298005e5f3dd87bbadfb9958",
+      "after_sha256": "3c0f31ecfdb5292632378d127ab32b0803389f85085d854a3ab095895a1d5c1d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0090",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F012_001",
+        "code": "F02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6882d25ca269ac152f85fd52f5e78a1b159bb30de07052cc752c5efdbf7f185a",
+      "after_sha256": "ecc19307d6898c4cced86a43c71567d0e4c235ad70f987036942c43d6e9cf636"
+    },
+    {
+      "operation_id": "REPAIR_OP_0091",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F023_005",
+        "code": "F03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "1bb2afa85d2fb6f79deb168e7bb85d6e1859e1e31e40c4cdfed096476e81320d",
+      "after_sha256": "5be5d492351481d3b3ce6b80718f1ce1032ddc4c3c4a689fd54f6319e125cf6b"
+    },
+    {
+      "operation_id": "REPAIR_OP_0092",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F033_001",
+        "code": "F04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e9ec38c88ff0ddd2af13e58059bc77dc67f3a4c1654d395c936912bd327d80c6",
+      "after_sha256": "23e16420b5e7ce62d7f4d1ffd31de0de258fe57d441cdeebbd012f9475f2f238"
+    },
+    {
+      "operation_id": "REPAIR_OP_0093",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F044_005",
+        "code": "F05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4c851ea6a431c1f08debe47b20fea1d12dd5a6ece44b4628c095c958eed61579",
+      "after_sha256": "72f64203aa3b00cc139ac3eb1eb899798c7fde7046e87cfd9a9b743f585d8d2b"
+    },
+    {
+      "operation_id": "REPAIR_OP_0094",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F054_001",
+        "code": "F06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "46d6eacb7afea2f8ab649e80546a24a99488ccd728c38a7f0a1fa93cb8f95c0a",
+      "after_sha256": "de4217ded0be39c292d701091df681a7dbb112fb15006decf797a34229a95460"
+    },
+    {
+      "operation_id": "REPAIR_OP_0095",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F063_005",
+        "code": "F07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "1521ca20506319bc6fffbb6ed50ea459927e58ed9fa10e6420e176f310e95d73",
+      "after_sha256": "033635ca62ef378cac6c101569529e2a811c3f7624a54723749fc0cd9b2cd119"
+    },
+    {
+      "operation_id": "REPAIR_OP_0096",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F073_001",
+        "code": "F08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "96da2ac6bae22e2cbba2226710158bec462f3ab719c27b71053491ce9d5881f4",
+      "after_sha256": "0202669f76159362b03feffda588775636dc1d06bffcb88d96edbd7666b928fc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0097",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F084_002",
+        "code": "F09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d4e0c3c412594aaa74359b8b549113b3c11edb82d90d4f384d173b7a473c9e5e",
+      "after_sha256": "d8d26880533c46a918ac9d01981712a3a44dcca88536aa50620861104ca191f9"
+    },
+    {
+      "operation_id": "REPAIR_OP_0098",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F092_005",
+        "code": "F10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d5bf42a6d4a902220c4332449aaf3a5bd013cc5805ab4f76d6e025fd500a0445",
+      "after_sha256": "9e5ec93d904a8ca83fbf01b366ec0f213eaab8b111b94dec59fc3d8bb8f93275"
+    },
+    {
+      "operation_id": "REPAIR_OP_0099",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F103_004",
+        "code": "F11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d5fd2f3c224e4686a84e89049aed6382b9d8d1c7b8c5114a3e5b84ab709b3973",
+      "after_sha256": "b5120c82fc0f504db271064a04f81faaddd9c23adb0795b704ea73b566417199"
+    },
+    {
+      "operation_id": "REPAIR_OP_0100",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F112_005",
+        "code": "F12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "842586920981bf143ade487e7d1eb2f8c246ac441d9414b0be86f8cdf6e37fb5",
+      "after_sha256": "e33b43f9b292a3c3039d02931e645281fa10e72fa86741aa98678098f2829fea"
+    },
+    {
+      "operation_id": "REPAIR_OP_0101",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F122_004",
+        "code": "F13"
+      },
+      "status": "APPLIED",
+      "before_sha256": "884f63910ec87dba7ed5f201ca43c8b92f9fa83d594fce3fd7a16a987af98a62",
+      "after_sha256": "13896270d845bc3173cb66d9af4b07723492c9e166c2e29e21bf7a997cf77b96"
+    },
+    {
+      "operation_id": "REPAIR_OP_0102",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F136_005",
+        "code": "F14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6eb585586dde216272caaaf0d04de4d1932b00d5f8b2acfc48f2579e7140c942",
+      "after_sha256": "eec878ec0076e4e0f1caabc819b716bc0ad61910fd5e72a69a78a1e21aa78852"
+    },
+    {
+      "operation_id": "REPAIR_OP_0103",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F143_001",
+        "code": "F15"
+      },
+      "status": "APPLIED",
+      "before_sha256": "25bd8d9459aa8d3c9d4fc12ec0942656cefec212519a461b54c2eb0fb7b5c392",
+      "after_sha256": "6ae93e1e0e55918779b781a09a4428fab6bbfb81068a29993ae4a62128a92f80"
+    },
+    {
+      "operation_id": "REPAIR_OP_0104",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F153_001",
+        "code": "F16"
+      },
+      "status": "APPLIED",
+      "before_sha256": "04bad4ca2d03c89de09818a0ba89670e1759a1bc29840f34f7c2fcb654b32393",
+      "after_sha256": "50cf7e2cd8727f4cff665b0abad7dbddbd2de0c00689333f228ccf2f115f3abd"
+    },
+    {
+      "operation_id": "REPAIR_OP_0105",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F162_001",
+        "code": "F17"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a5c678576d423bb50f172b19dc62f8a528f8fafed4c27caef0bead15caef2d39",
+      "after_sha256": "7b73f1a83d226ff3c86cb3052bb6dad300e71b90bd697b7cd1176714991c33db"
+    },
+    {
+      "operation_id": "REPAIR_OP_0106",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F173_001",
+        "code": "F18"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b6f789df4eafe50aaa0f7445cfd22ef80b9059800323adb080d0514a23bf162e",
+      "after_sha256": "189604753cb2c037b89b81a8ed8df6107205314955ad5ddc67234a3fcbfe12a7"
+    },
+    {
+      "operation_id": "REPAIR_OP_0107",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F182_003",
+        "code": "F19"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8661c384bfdaa507ee3e0bdbbf480647a873b513e26fb9723b20cc9f78837126",
+      "after_sha256": "853be45422a327391551819392d31c1df6d1c66f4bf2b7c3eb27d8e0509868d3"
+    },
+    {
+      "operation_id": "REPAIR_OP_0108",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F200_001",
+        "code": "F21"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5cd9ef282b82f3970dfcf8a662d7baf804ea53991790d2e5f18cef6d2fb271b3",
+      "after_sha256": "5c205b4fad47a6f6a5a0cb7b4af716f9c9ff54a853449c2029bc8acff79fedea"
+    },
+    {
+      "operation_id": "REPAIR_OP_0109",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F240_001",
+        "code": "F25"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9416937fb56dfb0297f2947732d0010afca7ce418b85f2494a97b09b0355357e",
+      "after_sha256": "2e3511b10d6113d894470fdfc0e08975f62cbff6983699999eb6ecbd7a56a902"
+    },
+    {
+      "operation_id": "REPAIR_OP_0110",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F260_001",
+        "code": "F50"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d9bc28252b3a6b239ab1b6e645cb0a136d717fb2bafb7b20936db42fe9b0fc85",
+      "after_sha256": "0893becfad5cf42d43e9c48a70767ff56a59f347604ddffac9a3468be7de4bb4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0111",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F640_001",
+        "code": "F65"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8a70e1388caf9d7e0d44facd696f1e50e264efb6d49f0acbdcd0c04c21964558",
+      "after_sha256": "8a502d0df6e2a51c967c02f81cbe1dd1b42661c4292de09e7393165ea6561f1d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0112",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F652_001",
+        "code": "F66"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8a65440a131fbd67417e12c5ee7c0ce3a3e3e8dc83b4f8d4f7150bcce32b1bce",
+      "after_sha256": "2e2b99c91c8d7e70abdf1b148a8a07f5dad1cfcbde7a73100e69b05721e0625e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0113",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F662_001",
+        "code": "F67"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e9a7ef04bfb79fd549404e102b1a47ba3660bb232384f80a17690c05007b231f",
+      "after_sha256": "fe9f5da45cc9cd75777277ad16b9d3bdfd828210708df7f59fa4c1e929072ba8"
+    },
+    {
+      "operation_id": "REPAIR_OP_0114",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F692_001",
+        "code": "F70"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d6a50008f595d0c55a80f09a94c131103de0f2440447532f7fc6377fb46e4799",
+      "after_sha256": "47109fe923d9a2a56e2cd4cd9bbd20a63314116f6ace55922a07cc9f7aa3bcd4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0115",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F704_001",
+        "code": "F71"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f8d43dbaa3fbdf47981a7ef87688c070b1af585296e0f3b53717fd756d8d5ca5",
+      "after_sha256": "95c9edccc14003fbbbdc7ea48319b7e2f87517ec638399d68b53f8dc884a5165"
+    },
+    {
+      "operation_id": "REPAIR_OP_0116",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F730_001",
+        "code": "F74"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d5e97be717190dd57045c715fc213adbc772c221a4561c0624d215ad027018ca",
+      "after_sha256": "c70f5279da2697b4ece1504138b6eadc70c08ba63b26ad69da24105d689c802c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0117",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_F750_001",
+        "code": "F76"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4ad55a3b6cdc90f0228c7e33274275881bbff454229d763f2cc3310883dfb998",
+      "after_sha256": "2daa36f4c7f33cf4482b62caf93a49b84913c115750eebc999ab8b4e4da361b6"
+    },
+    {
+      "operation_id": "REPAIR_OP_0118",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G013_001",
+        "code": "G02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "7f97f6b1c5203304d7630e1a55d25a4530ee3182b20c7240445b73d7157efefb",
+      "after_sha256": "854e9cb4d4e8d36c506f9692bc381209f3861d6939d5cfc6a14b319f7096b97f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0119",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G022_003",
+        "code": "G03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e439416a45656d0fd3908742cb6691f10e718a220620d522565260c006ad8b8d",
+      "after_sha256": "3724b59a4bb8eb91b2ef189dc33f13705ab41bff3c7886156a37cd7925587583"
+    },
+    {
+      "operation_id": "REPAIR_OP_0120",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G032_003",
+        "code": "G04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "cf0fec92f33809f1b44f30a5cee804f74dec2ecbdae287c78d1ea8f1565ca15f",
+      "after_sha256": "55cc38d62a93bddce96a45de28dbafd6812c38863dd17fd9b0d55769bcf9fb93"
+    },
+    {
+      "operation_id": "REPAIR_OP_0121",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G060_001",
+        "code": "G07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b3d0e599b5c7b498b53f1909883294ed320f6fb795672bdc1f7cbfc8805ea67b",
+      "after_sha256": "87e9230cf5509f539b5b81368f44d0b0897ca448f815b14d96ae5d163b3d182e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0122",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G072_003",
+        "code": "G08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "84411ef593488fe7f2c3d0b8a0241915a9814bf8d1aa246dc3c81933511f3ea6",
+      "after_sha256": "0c97f7aa24e0320c52e8f1eaa0223bc75d3e608ad8e859720f05bd855603045e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0123",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G082_003",
+        "code": "G09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "99fd9dd6b4090bf6404c66bbf888edd109e447614ec1229f20ed7c49a32726e4",
+      "after_sha256": "e9b09785cdc62a28079616356597e5fe76c506191949173658b6f45179b8a249"
+    },
+    {
+      "operation_id": "REPAIR_OP_0124",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G094_004",
+        "code": "G10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "969dd500ba7d97bbdc5df75e3fa9d5332f4112887163fcb93edd366957672089",
+      "after_sha256": "d06db5e00db52f28f8ed1226d26a877af3ee7d4a523dd402cedfab52e482916f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0125",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G102_003",
+        "code": "G11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b8c3b5a2cd09cc22fc54f7074d536221953ad7b31ba09f6a9c955ebc26ad19c7",
+      "after_sha256": "ad8b53e2d19f71d09742dd5e77b30a5947c9aa727dd120439f5aa5c3250e8e3f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0126",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G112_003",
+        "code": "G12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4bb964918ad266aa2ed1cd706d329bfcd26712f998e69f3ec830b67019a0e49c",
+      "after_sha256": "8d8bfb84b5fdc4b8788d123cde410186169a0fddca111a84fb660170fd311a49"
+    },
+    {
+      "operation_id": "REPAIR_OP_0127",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G122_003",
+        "code": "G13"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b28b1fec2e4b89a55b6ca48cc36ad37abdfc1b01955ca4876e557c9362173487",
+      "after_sha256": "b281898fe3d4b74e864e1bde1c424135cb365be804aada455d198cd8ce3959e4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0128",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G132_003",
+        "code": "G14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2c0b0f849eef36d4d0f5768db44de797e72909da7d9917226c38d4bbda99cef8",
+      "after_sha256": "ef6e57dbf99aa983ae6e1c2b20b5cf23e27c71a24a61473666427aaaf7b11ea3"
+    },
+    {
+      "operation_id": "REPAIR_OP_0129",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G142_003",
+        "code": "G15"
+      },
+      "status": "APPLIED",
+      "before_sha256": "969057a54665075cbe6376b112986c909dd9f6b2fbc632f6d3be95515d86d169",
+      "after_sha256": "7d377a5a19d3a9e6bc98fc46fba869361df120c4db6c92c54ce7ecad1aa69776"
+    },
+    {
+      "operation_id": "REPAIR_OP_0130",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G152_003",
+        "code": "G16"
+      },
+      "status": "APPLIED",
+      "before_sha256": "802f0d634f7500091bdd30f4adcb6578237d20db6d64b054588dfea1a66028bc",
+      "after_sha256": "d14c98b31a50b919a9777b0494c3b39a869c5013ad4d07ccf59b8bfdd7bf8620"
+    },
+    {
+      "operation_id": "REPAIR_OP_0131",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G163_001",
+        "code": "G17"
+      },
+      "status": "APPLIED",
+      "before_sha256": "bfceea95d9ce2bfbc978966b23c8a20b031f8f8cf82a6932f59e03a32b6ff749",
+      "after_sha256": "9273c823bd57eb8906c7a80eb201f4296a5f196240757b0fa11d1064fa91f55c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0132",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G190_001",
+        "code": "G20"
+      },
+      "status": "APPLIED",
+      "before_sha256": "53005dc59e4863b90c9d0eae70b38483ab889fe986695c2d792a6b3630a43a84",
+      "after_sha256": "317ef7a2eae4ed2136ea91ce4b485628430f0b7b0ebb639b8b227ee669b83e73"
+    },
+    {
+      "operation_id": "REPAIR_OP_0133",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G204_004",
+        "code": "G21"
+      },
+      "status": "APPLIED",
+      "before_sha256": "da49a35465e65d82acc1697b66bdb9171a63924669a23bbfa10fc09c3a1c89e5",
+      "after_sha256": "5471144979c911b44c17d9cc188dc8bd490000866ecec5a881f9021b9e6152db"
+    },
+    {
+      "operation_id": "REPAIR_OP_0134",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G214_004",
+        "code": "G22"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6c9794eab5aea0af2ae3db04304f4a3f4276ad5062146557ec36175bc71f15e9",
+      "after_sha256": "549172c7d4487b29f01f5d04c1222cd0cf09b62c14fba69e2a552bb23283d6cb"
+    },
+    {
+      "operation_id": "REPAIR_OP_0135",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G230_001",
+        "code": "G24"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e6bf738d4196864e07bb16f52df455118315a3dd30f36de547e4f3ee1d970d36",
+      "after_sha256": "93a0e2372c90893dc196dec2f8c56bbcd4efd4ecc6ea5a608fdba08232f51015"
+    },
+    {
+      "operation_id": "REPAIR_OP_0136",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G242_003",
+        "code": "G25"
+      },
+      "status": "APPLIED",
+      "before_sha256": "3338e2afca394b831a51a0a68b0218db7d382d0dfea11a1ac57ee77c223c423c",
+      "after_sha256": "24bc9bf7b3e6d2af8b7c14e48499b946edbe2c2ee5aa77573ea115026b23493c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0137",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G260_001",
+        "code": "G27"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a80141279177f2362953ae38623c990296e5ab8a34203e6b6383d72511322b89",
+      "after_sha256": "cbcec82bfd3a2caef82f4f52b11ca8b7ed6b5fef6ea915699552113467511a89"
+    },
+    {
+      "operation_id": "REPAIR_OP_0138",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G272_001",
+        "code": "G28"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5b3f2ad4ba4c88965265e883862404d2d410acae79698c02f4ef031fc8e83af4",
+      "after_sha256": "8cd6f581a89a92f67674419d7fe17719465d9d0206e00663446d764f113048e2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0139",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G282_001",
+        "code": "G29"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4ac007ec81e1dc77a9f69c11cd38b0d2cd4f1fa906e286cc75f2c7ef46511f73",
+      "after_sha256": "eef13c9a23cf8d68a569fe8305452e87d7bc06a595621e3308577b02cdac91da"
+    },
+    {
+      "operation_id": "REPAIR_OP_0140",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G300_001",
+        "code": "G31"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2dcacc499d1560fa3e4a252c948c5171098255708f6a6f1e0ec783f7f30d888d",
+      "after_sha256": "b6c80026067ac3846ee7aceb7dfd4bef55099c753cc5043b8654dbbdf59a0eac"
+    },
+    {
+      "operation_id": "REPAIR_OP_0141",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G320_001",
+        "code": "G33"
+      },
+      "status": "APPLIED",
+      "before_sha256": "833c63fa39e930026fd6d4c4ea8ceedaab3735e457e2541bcc4b8717d997d58e",
+      "after_sha256": "aa8d6039034c854cdc03b6f7ee74830ef66c396c9bed1f7fafafcd6a9f9b6bd7"
+    },
+    {
+      "operation_id": "REPAIR_OP_0142",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G340_001",
+        "code": "G50"
+      },
+      "status": "APPLIED",
+      "before_sha256": "98bc40a06596f960b513417bc0ddd7db1c3819c605bba0a27ef5c603906abbad",
+      "after_sha256": "f589347037a60a0806f6d1698229b9079880dbe8c6b2cadf8462d763a5917b58"
+    },
+    {
+      "operation_id": "REPAIR_OP_0143",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G505_002",
+        "code": "G52"
+      },
+      "status": "APPLIED",
+      "before_sha256": "08918b03d6a1751b30423f2c8658c33abedb723cc436cbaf807afb99460c161c",
+      "after_sha256": "41548226da1f28c7632e2a24a1b8c83dffd54e9ee5c4f10d64f5f84f8d469dfa"
+    },
+    {
+      "operation_id": "REPAIR_OP_0144",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G525_002",
+        "code": "G53"
+      },
+      "status": "APPLIED",
+      "before_sha256": "bce13e30566d472928afb7d8de9beabae60c14d84dd83088de330cbb6cb61290",
+      "after_sha256": "95c248326ed1885e74eab179453c2213427d9c9c2ed8ffa26ee3ce27579e9b3e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0145",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G570_001",
+        "code": "G60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d60846186a633b1cc68139b5cbb759a6d93f2e772af3c1715c180f60021b1e52",
+      "after_sha256": "5734296af04519ec70316c5e53ea5706fac87fe6151ec58ac7e02e39889f5006"
+    },
+    {
+      "operation_id": "REPAIR_OP_0146",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G603_005",
+        "code": "G61"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2f95b7390418c7b1cee4090af76d2824c6631aa8b5bfa6c2ebccd8b53d565bc3",
+      "after_sha256": "3e461f2862882a3d7e1962270a1e5c2da2cdefea359183633b7b23c0740c46be"
+    },
+    {
+      "operation_id": "REPAIR_OP_0147",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G660_001",
+        "code": "G67"
+      },
+      "status": "APPLIED",
+      "before_sha256": "59282fac2e831790e483f711eeecbb88f626c5bd53568a38df2f6c459d00cc89",
+      "after_sha256": "694d66f4ef7e069f4baeb6837e9700abf2c6994534430267104382ed0fbc094e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0148",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_G673_001",
+        "code": "G68"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ecb2d9a3ca570807070495b28d5dadb812dc25f577f40d5c7cc168a5f735745d",
+      "after_sha256": "c4bdb285425cfb30b08652a8ffa73ac4c569acb9d54cb1abca7d8d46741e00d0"
+    },
+    {
+      "operation_id": "REPAIR_OP_0149",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H010_003",
+        "code": "H02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6035b212d130bd8b6750255c44d9c926c32931b15802d4709d9adc9a220b0df4",
+      "after_sha256": "bb0b2314b8cc5e6cc093900690c91f8739b5bf0c8f35e343238abbfa2a3b2d10"
+    },
+    {
+      "operation_id": "REPAIR_OP_0150",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H030_002",
+        "code": "H04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "cc5ccec08e406234f072554e4532e4e27a317dffafacc16610c68ec52bb3bb93",
+      "after_sha256": "bd6e36fcb0b2da8b88d8be97a4234fa1546bd5884e20dce52bdfd8bb8f38dedc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0151",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H044_004",
+        "code": "H05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5b054853a8411af41205247dfac6da1dca2590889005335c0adb9380afdff0f3",
+      "after_sha256": "d511bd5527020fb677c7e10eb3cf6fd1b0944cf51542f146aaccde3ba37d6991"
+    },
+    {
+      "operation_id": "REPAIR_OP_0152",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H060_001",
+        "code": "H07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b632bf26db56bb8678086170c5c60cda487dff2a7a627064a7900535d30ffcb0",
+      "after_sha256": "e09ac6ba6c8d88ab02f9d0c48d3ac6b373e2c06bbbe3ad44e32b238c12ccfe86"
+    },
+    {
+      "operation_id": "REPAIR_OP_0153",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H072_003",
+        "code": "H08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ce934de31909e600fca3385696187dc3e43c7f26cd4cfe1089d496dfde1f235c",
+      "after_sha256": "88c378f21c160de4f488a426b91c64e4750b06ca921d30c057b7d8f3ddd8b15e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0154",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H082_003",
+        "code": "H09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "917e1a2cf949e28d58f7282c0d41d1b76733d77e81a0c5db3eef2572e62585e4",
+      "after_sha256": "d04ed23f1998276b851b85c15f00b96c0ece00a1eefb9bbf314d59f145e917d2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0155",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H092_003",
+        "code": "H10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "305c5164f6ee4944e37bd3c14bf91f2763b3a1adc7d2ce866ed635b11cc1d051",
+      "after_sha256": "4abd2a58f18222938d988a3ebc86ce608292e46a88b339376fce9848f16f8f75"
+    },
+    {
+      "operation_id": "REPAIR_OP_0156",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H108_005",
+        "code": "H11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e0f53637e917bc942f97ee19867e5c077d01ed717cf98d672dbdbe82d7cf0527",
+      "after_sha256": "82e70a381059b044ff02a276f9d543627e4a4568bbaf624c67593347bd4b49f9"
+    },
+    {
+      "operation_id": "REPAIR_OP_0157",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H112_003",
+        "code": "H12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "29f22e8e5f09d5c599903d54ee7dc8c7fcd91e7a88d96fb770f8752ff0697a5f",
+      "after_sha256": "622d6858166e899cbb98a43c024f302133e33bb91dfd2b0018f97b98af8eea7a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0158",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H122_003",
+        "code": "H13"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f2ce4306ef4508a52d4969610b4dcc595d699ae627f2ad835f35407c9e77c51d",
+      "after_sha256": "af2bd81119e0b7f3f337ffb4da030da25c1b7d376120d4bf34f67a9eca1950ed"
+    },
+    {
+      "operation_id": "REPAIR_OP_0159",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H132_003",
+        "code": "H14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "559cd5634b6ea84523bcddad531070543dd814c0f43d1898348d0d41549c8f2f",
+      "after_sha256": "01efde9bb66d6013a63795cfad3357e39285a87c13fc72d5118fa81dcc283450"
+    },
+    {
+      "operation_id": "REPAIR_OP_0160",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H146_001",
+        "code": "H15"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b8f4a5225b4875ef9f7bc0d4a233f82b1b8e7438ddf898032e5313713c1ad4d3",
+      "after_sha256": "cd33c14ed23b3558ff509912481a875b6d4dbb757ab1c07ab8143f7ac855256f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0161",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H530_001",
+        "code": "H60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "3810d9b2d4a6c96c10ede0f374d6ce2574c438bafb62f3ddb641e94c78e6efc8",
+      "after_sha256": "b5f8927776ea22944230cfe2b8f8e41c8fcbe1f0571923fe4d5991eb3080f1b1"
+    },
+    {
+      "operation_id": "REPAIR_OP_0162",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H603_001",
+        "code": "H61"
+      },
+      "status": "APPLIED",
+      "before_sha256": "fbb36040906cc9103c6e54c1479f54026bb10ceea5c60896866b236d43f1bc26",
+      "after_sha256": "39e33767c0621b191f1d45e83b7aac5e897eb08a129827705587324e12632344"
+    },
+    {
+      "operation_id": "REPAIR_OP_0163",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H612_004",
+        "code": "H62"
+      },
+      "status": "APPLIED",
+      "before_sha256": "08f0598a1bc144d840b497f8a7e1adb13b88e50b3ec671f1502b2c853ff9c1bb",
+      "after_sha256": "81f69e7a05d927f10bc8bcc7f735f423dcbdb444f98d0bcd4277e5dc38ed74df"
+    },
+    {
+      "operation_id": "REPAIR_OP_0164",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H623_005",
+        "code": "H63"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6dcf3bce408851323756fcdc34aeefe5b319030cec79f3ac308cc0f34f374bf9",
+      "after_sha256": "4718491fc614bc08ecf1c18f1ac603adcb7cea3b711a3237af34e8a0acc6afab"
+    },
+    {
+      "operation_id": "REPAIR_OP_0165",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H633_005",
+        "code": "H64"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2ccddbc6b4eb59e49b288962bbd88202303e80fabff8b4c37cbb467ce78d62c2",
+      "after_sha256": "573906d8b5db40bcf3fd934adf266104b40fb506835f77172cc9ab5c023d3deb"
+    },
+    {
+      "operation_id": "REPAIR_OP_0166",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H642_003",
+        "code": "H65"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4a621af165b9e39c850d8ebf44bd06f284b547b6a8c64b5705010a7654e5d2b6",
+      "after_sha256": "a9b3f8d40cb52a9c8b164d8f31b89a3117818fa25c46b3758b07dfe7fbfd192e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0167",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H652_001",
+        "code": "H66"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2c48e224451ae5b73edaa7a14e62d39fbff5fd496b91583ab0b02fee1df0142d",
+      "after_sha256": "44c489f3faed0fd046c5f6a04704b4978f40fdbe8a1b66433071be6a12f0ae8a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0168",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H662_005",
+        "code": "H67"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d12372fb9030df4298fe68a76dbf5f94f591f0d327675c0da25be40019941ba0",
+      "after_sha256": "dcada1beb5dd4d7dbdb4949c29607eca92874c37d7e9b7287fafa2a8b678658d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0169",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H680_001",
+        "code": "H69"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4b365690632259a901dfc281d5cd7cdfd73e724bd2638b5f891cbe565d5f6fa8",
+      "after_sha256": "8fe47885fd5174a7e04b1c1d46520ee2464715f025f6a199c3344d31077a94bf"
+    },
+    {
+      "operation_id": "REPAIR_OP_0170",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_H692_001",
+        "code": "H70"
+      },
+      "status": "APPLIED",
+      "before_sha256": "649fd3eb34173c29660882dedad714334153bc0d0f615c170939383d4735f021",
+      "after_sha256": "5a3b2ef4b6a87f40cd055e4d6480258c05d4dc3f60327c020a01e10a3764ca86"
+    },
+    {
+      "operation_id": "REPAIR_OP_0171",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I012_002",
+        "code": "I02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "bb62f2c5347fc2beef286c1b580488dcf6e9adc4dc039b62c9d4b563ca206218",
+      "after_sha256": "d9968c529fbcb52be9969f623668ef3cc3b3482176ba09e5f070a4eefcfc33aa"
+    },
+    {
+      "operation_id": "REPAIR_OP_0172",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I023_001",
+        "code": "I03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b32ee0f96d4c46635fb7b3257faa731fe211ed2a6e5a7d77fa9b8d51aa2ecdaf",
+      "after_sha256": "642e01cbf02b7bf5ed1361e49d63f71429423ae56eb2a3fae052ef2e71ded6cb"
+    },
+    {
+      "operation_id": "REPAIR_OP_0173",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I033_001",
+        "code": "I04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "afcca3c3909e9ffa4e136aa4ec42abe5c726d4ab455dbdfb191e655ff6f932d5",
+      "after_sha256": "2a8fd48ad7f31c7932405572d31fbb7b65e50e3ee97ae3530dbf13ff77082a41"
+    },
+    {
+      "operation_id": "REPAIR_OP_0174",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I050_001",
+        "code": "I06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "92d535e1cb34fd15fe3a1041a7398fb1daa3756a36588a3096bdbd0d39b06e4c",
+      "after_sha256": "b1344d087270c2d00bab7ee5652e1e5ef8e44559ca0296077805e64fb98459c6"
+    },
+    {
+      "operation_id": "REPAIR_OP_0175",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I064_004",
+        "code": "I07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ba2cea6ddbc5331727c4905dcbbbf1ecd9233b158452f191a70583603fe22314",
+      "after_sha256": "fa8a86567a320c7cad34b2646ce6d25cc184ff14a23d5bfb494c4bfe5f7a2188"
+    },
+    {
+      "operation_id": "REPAIR_OP_0176",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I073_002",
+        "code": "I08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5f034f122914054fea9e1a86e9d5f51faef217fb70fd77e0fe94b086fd469542",
+      "after_sha256": "153786ab02068f276f8f0b23afd1f0ee28aed50920d4c172d5b0b39b9df5c5cf"
+    },
+    {
+      "operation_id": "REPAIR_OP_0177",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I086_005",
+        "code": "I09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "3fa71e18bd327e34fd75f81a68a5a07f2280310c99bd866c513796ba85a78655",
+      "after_sha256": "50fd4fb00660ac0f56e1213dd27477da351ea3f39866ec4aaf457ab15a9b6914"
+    },
+    {
+      "operation_id": "REPAIR_OP_0178",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I092_001",
+        "code": "I10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d528aa8b2ff98eff00deb33475f5f3471e99c0fa1f6074510c985af41b670e1a",
+      "after_sha256": "d5c24e0e3bd40a93f021e6d0a3e6fee79c3e0a5f0fe8e8566081591ff6758b16"
+    },
+    {
+      "operation_id": "REPAIR_OP_0179",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I102_001",
+        "code": "I11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "50c68adfc0dd9100911655d378bf2a7eefa6cb6af60b4ad638f7fd4797ac521e",
+      "after_sha256": "1296fbc9e827f51b839c8de332d3a30e60dba8cf78a29f0c0c09269c07b1eaf2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0180",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I112_001",
+        "code": "I12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "67d66307391813e741dd52b4df62bfbb2e1c4f29d444f3a18c395355f3c6b88a",
+      "after_sha256": "5cbc5ceb7fb2032551198a18719ae48d3e6097b29077ff5a644a97e5bdda371f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0181",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I124_001",
+        "code": "I13"
+      },
+      "status": "APPLIED",
+      "before_sha256": "93915d651c4de734bcfd1e02b25971b49714e4ce769cbeaf2c53c42cd73a40d1",
+      "after_sha256": "3f1957e374bde29a3e449f44401640191ebe13642a7e0c21086a649d28a7f71e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0182",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I133_001",
+        "code": "I14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e14f6fa4d1fe08dd1282cbb8402f9824c07cbc192fd147a597781906ae60d604",
+      "after_sha256": "d4a85f84b1dc61035f25d4d0f3c2a337c649180f7ae333e3a2396dddf0cdecc4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0183",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I160_002",
+        "code": "I17"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e474a5eb2f01d811bed40f6e4660c44142316bbe8240be8f89409b53cbc82f6c",
+      "after_sha256": "309fc601b120d644c3d7b1291ab9e51455c1e9cd7b30be66979a9f26b8e5186f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0184",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I172_001",
+        "code": "I18"
+      },
+      "status": "APPLIED",
+      "before_sha256": "593befbe45fb2a66fc1e8d4c9ced2ca6628dd07b8f0a33152ebe93c7fe8eb825",
+      "after_sha256": "07b0bc6d3882754c5819f3c958764183e6da98ed4b69d6b040d20a6609f382bd"
+    },
+    {
+      "operation_id": "REPAIR_OP_0185",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I187_002",
+        "code": "I19"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8f656f4e976c20363b20bc76281cf4c76a11b717df8de95e50457bfe2f06ac9b",
+      "after_sha256": "868bbec59d43265a0bc1e1259a3f28cd790a17cf85fb4df0b74f07a2b52d3aef"
+    },
+    {
+      "operation_id": "REPAIR_OP_0186",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I200_001",
+        "code": "I21"
+      },
+      "status": "APPLIED",
+      "before_sha256": "43a977a91be9f7b6268e97f1103b0803e7954a36b3b028a91dc2299594312c8f",
+      "after_sha256": "7ca3b3cfb06d893f1f7f36c06f9369be9a792fd78ac72bb2a7e4e32478aa8e70"
+    },
+    {
+      "operation_id": "REPAIR_OP_0187",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I240_001",
+        "code": "I25"
+      },
+      "status": "APPLIED",
+      "before_sha256": "28d402f6308e1acdc3257a12281a4f3c41ba73dca525801b5c4e665ac3614b50",
+      "after_sha256": "94dd462bbff1140d569482a18d24755bc4a9262686e95bf9db82080ec821898d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0188",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I252_002",
+        "code": "I26"
+      },
+      "status": "APPLIED",
+      "before_sha256": "0631cf42efc36553ed2bbd95ce16527c311be422b2c3dfc4f384989f0f20a6f7",
+      "after_sha256": "58e2722f8d56eb074b32f383877dcea9ade1fe02642b0be2ad4d27fc3436a725"
+    },
+    {
+      "operation_id": "REPAIR_OP_0189",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I263_001",
+        "code": "I27"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9a48aac85ccc9505ea27182835ccf83ab664cc447eec7a7db45b475b8ceb0311",
+      "after_sha256": "f17fbb3d89c66fba7004824d2e24895ea18feb7594b03292530cedd7e90e884d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0190",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I273_001",
+        "code": "I28"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9b9825540cce4ee4c15278ed64f39de5df2fda079d9a0f26dea3f01707c00463",
+      "after_sha256": "898e7d379f849842dd7e027c5c5e58379315efd27dace6736710e4fae76aeef2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0191",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I290_001",
+        "code": "I30"
+      },
+      "status": "APPLIED",
+      "before_sha256": "55fecb6fd14bd9f7d36eb32032e3fedb5f784af0f952655f28a04d331b346a6c",
+      "after_sha256": "46488f1a4c362dae0eb7852605568cd920b608f6971424e43afb480fbf909038"
+    },
+    {
+      "operation_id": "REPAIR_OP_0192",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I306_001",
+        "code": "I31"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8f8316940e13f44f41a21fe9ac747e88f6e727977a1d04dc89bacdf4b38ca157",
+      "after_sha256": "60c9627c6e9507fae357b4bf6b2c3b0df214426224bb941607c6355291c881dc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0193",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I312_001",
+        "code": "I32"
+      },
+      "status": "APPLIED",
+      "before_sha256": "458dc7f24704bdbe77f31de7416d63372002d55fc70f0d9bc3a1c118e22a8f45",
+      "after_sha256": "5d4b59412e7e5b8fe36a7d658be137ec77e46cad77f7a5ad93962bd40155acd2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0194",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I326_001",
+        "code": "I33"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f8a0378603c13dd50802fc9fee221c3bf06176e55f378c8e866be1f3fd2b95cd",
+      "after_sha256": "87c50ebb95b229330ff8193bf142532767c78c01cc5899bec831f4a7648c551d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0195",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I610_001",
+        "code": "I62"
+      },
+      "status": "APPLIED",
+      "before_sha256": "dc071c4e97698962a333bea42250b6f622d219868a9f5995818adf033e007c81",
+      "after_sha256": "bda2c59b74705adf1bd0a2b3e7cdf51852eba22a732000cd583797e13abfc836"
+    },
+    {
+      "operation_id": "REPAIR_OP_0196",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I623_001",
+        "code": "I63"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e77c03288657dee2944cbcefab9a74be75c90c4442dcdec5b4845ff17ed4c6bc",
+      "after_sha256": "60c00e1bd03c10b532c27e7bb8050e6496a418f59a3ff8d860f5dd58b1dfd639"
+    },
+    {
+      "operation_id": "REPAIR_OP_0197",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I640_001",
+        "code": "I65"
+      },
+      "status": "APPLIED",
+      "before_sha256": "79aaaa54932621f75b65dc25acb45735d9a329ecb3b3d8cc28581f6a7eb069a9",
+      "after_sha256": "8ecae919f268d12819b107426a46433870f4d3c36323ada57afa8f65aa33262f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0198",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I653_005",
+        "code": "I66"
+      },
+      "status": "APPLIED",
+      "before_sha256": "3d36ef93f5051e9b82a1aa04f69cbcb994934cab630333be8e6820ad517943b8",
+      "after_sha256": "2a7e927fa89ce5d0932d7ae77525cefd79d23c831e18cc766638ad2ff7a43a2c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0199",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I670_001",
+        "code": "I68"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d7f734e37e45ff6f21d8711f18dad80beb5193af136456357803d355ac6a786e",
+      "after_sha256": "5ed6d7ea238976e8be73679ea98209c847ed1f5723098ff5a571b3a236c40165"
+    },
+    {
+      "operation_id": "REPAIR_OP_0200",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I682_003",
+        "code": "I69"
+      },
+      "status": "APPLIED",
+      "before_sha256": "30f22786b3f56c6fd974dca6217d8f6d24ef3ea158abe9d5338527a47001761b",
+      "after_sha256": "71057fba3f877ccb75829c422a6be82f47d82f4b9b1594eb5216679cab6e5645"
+    },
+    {
+      "operation_id": "REPAIR_OP_0201",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_I710_001",
+        "code": "I72"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a304dd62ca6ec31f1ac52ef06f62ae4b961e6ff25da67fe51537c7c535b33480",
+      "after_sha256": "436d3306f8822281614774782524480d706614b372a83fc2dcf1712c1bd77b1e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0202",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J010_001",
+        "code": "J02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6b47420bad376aaf270f7424389292d9099e0ff5c798d997f38606e0463fd459",
+      "after_sha256": "1b6c96a6eb6c1e953bb9ff87f082c2a55b413691fd0362f5a6e1e658a27b8780"
+    },
+    {
+      "operation_id": "REPAIR_OP_0203",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J022_003",
+        "code": "J03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "56fe20c05a89230c13589b1f2695f8cc580ff80b6333d94b8f21bc560091f168",
+      "after_sha256": "0e8b5e5b1f24919be61c837c044633221c5e889e3ba47d97406bc588a6ad9d3c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0204",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J032_001",
+        "code": "J04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d204e3c5f28f1d88bafc050d4a83f7d0d14adebd99b1faa7e3e1099eb4756c0e",
+      "after_sha256": "056b9092c0e009c50dbc19ea40e07e7ed7700b22aba8c328fcb2360141f49656"
+    },
+    {
+      "operation_id": "REPAIR_OP_0205",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J043_001",
+        "code": "J05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "20982b00764e4e18a5bd5469797d8981b941c1032eafa1d96d151c4d293c445d",
+      "after_sha256": "13d967ea5d3d8b42af9a445435404c122ab4b9d3ff576b629d5d01f71e88aad6"
+    },
+    {
+      "operation_id": "REPAIR_OP_0206",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J053_001",
+        "code": "J06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ff35fc2202c7b8cbcd23f721b4086adcc5f8bbcc349c41124392b2d1cc8e850a",
+      "after_sha256": "2532203a0ce58de10e674e9fd9f5dbf071544ee69ae33de516c425f44ece6b49"
+    },
+    {
+      "operation_id": "REPAIR_OP_0207",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J063_002",
+        "code": "J07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a5e934659916fc8a19d572162549179a4333401f8a103c07f615e706da478b95",
+      "after_sha256": "1c068f29f7430a83f6b6ba27ec62bb133695f783b8fd049dba3173312c0e9d3d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0208",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J110_001",
+        "code": "J50"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6be31dc7eeb2d6e042f4a32f1d27d6c31cffba2d927de7486fddcc669da511d3",
+      "after_sha256": "d28c7339de1d695c12b706b762455e778edc1584ba2f1be30f06e1fe7f378ced"
+    },
+    {
+      "operation_id": "REPAIR_OP_0209",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J613_005",
+        "code": "J62"
+      },
+      "status": "APPLIED",
+      "before_sha256": "35ddc0e9ee58d840a6a2ef562559174c526c05ffaeda11da5d423c8f80984315",
+      "after_sha256": "fe5c27f88a304dc432d2298fa399fc106e39e7776cc94a4b77517add7bf34df1"
+    },
+    {
+      "operation_id": "REPAIR_OP_0210",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_J622_001",
+        "code": "J63"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2ef3e13ca266c2a7f577e84285245473cb4d471a6258cdbb2c447f30141b159d",
+      "after_sha256": "d8919c5b9c3b4bb22a2bc31d94751eac5cdc7ca7b097e346dd1da8b2af8e8d78"
+    },
+    {
+      "operation_id": "REPAIR_OP_0211",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K012_001",
+        "code": "K02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "96db4bdc1b5be9238d85d8a1f09ce99672125b2d25e62e61b5521e0ee8392955",
+      "after_sha256": "fdb5747154de0ae27c76ce532e106fa911fbd85edc7252259da2601624708f52"
+    },
+    {
+      "operation_id": "REPAIR_OP_0212",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K024_001",
+        "code": "K03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a63ce23471709f5bcd101bae44a6d49b423db751a1fe23621dc98e2f230a04cf",
+      "after_sha256": "45888acf86e46ff7843f130dd691419c06aec0a757befecc9751f8bde88c71fa"
+    },
+    {
+      "operation_id": "REPAIR_OP_0213",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K032_003",
+        "code": "K04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "3b6baa33c1325a29b81d0c6f31c91cf57ea545c89567977c3fca047ccfdaf785",
+      "after_sha256": "0d10d6f46f4ae245a296621ab456eff64635a917983f709e38adbab2c1109f6a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0214",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K043_001",
+        "code": "K05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ead5436568f37bfa16a413b06da14dac0bdaeaaf60436a55bd77f3b4c2d74933",
+      "after_sha256": "1834060ab3ecdbde6baaefe6d3e69840217542f13d222286546c9586e6ebb0cd"
+    },
+    {
+      "operation_id": "REPAIR_OP_0215",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K052_003",
+        "code": "K06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e5264bf605c3054a490ea2997e7d8b29e2ce7344b5a780e7f98b9a943ec7f606",
+      "after_sha256": "9809a0957a20dda980b0adea36d3d3927c19b5660894823d6c9e80ae2bc8db43"
+    },
+    {
+      "operation_id": "REPAIR_OP_0216",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K064_003",
+        "code": "K07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "1f0f24c580fe28b4f920247989e61d64acab1785029a8f2c60f3ee0cf7874710",
+      "after_sha256": "aad7380c75892c3da0bb4f3408084c45cfbc336b8337319d54b6802d580d1d86"
+    },
+    {
+      "operation_id": "REPAIR_OP_0217",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K080_001",
+        "code": "K09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "68c4e97bd55af4647ebecc3220a1ddc4ddd23cb4aca2bdb9d8a68f34ebed5310",
+      "after_sha256": "c868e277b1aa6fa4d2b98a9b3519f09a51894e3b7a57c0a5023988371a8bbaea"
+    },
+    {
+      "operation_id": "REPAIR_OP_0218",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K500_001",
+        "code": "K61"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9f7089a920104aaf56ef50be2aac5ecd1cd6adb92aee08c84c94a90a8a1cf189",
+      "after_sha256": "622d7b7d2746fa4565b56f5ce4693eb5eee2fe3b6c225b67ead7c673107339ba"
+    },
+    {
+      "operation_id": "REPAIR_OP_0219",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K630_001",
+        "code": "K64"
+      },
+      "status": "APPLIED",
+      "before_sha256": "488f11fa4eb9e387992aebbaefe09a898dfe221562ebb3688e9d2b7c3643e1cb",
+      "after_sha256": "d9faf9ef9d492cbe70fa23d57a389568bccfcf2e4109dbb605d835351491f7a7"
+    },
+    {
+      "operation_id": "REPAIR_OP_0220",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K650_001",
+        "code": "K66"
+      },
+      "status": "APPLIED",
+      "before_sha256": "029d0a5d9606fbeb1419e9d1ab068dedca893b410ba99e180cd9229353510677",
+      "after_sha256": "22bc64f46880435a83306734c30b32bba02bfecc3ec5b88094df780ea9f6ac09"
+    },
+    {
+      "operation_id": "REPAIR_OP_0221",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_K670_001",
+        "code": "K68"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4a0d46ca8a2f2e204559ed4b15549418a2961ca9b384293ac14ed83b8f7e2993",
+      "after_sha256": "30c20f797a5a687e8dbe29c62b38f34aebfcb7b7ce4455994b8b4ee9cfdc25b4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0222",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L010_001",
+        "code": "L02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "c237be19e9033831ecd76bd27017d19e80d239404dca2e47e00dc73b83763ce6",
+      "after_sha256": "d494ed1e7c9fcbf947050a80bdb86bfc413e31bcb586ca58c7e1d88d24649b38"
+    },
+    {
+      "operation_id": "REPAIR_OP_0223",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L027_002",
+        "code": "L03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f80c1da652a543bf0844ea4f16faaa6d1f65a3225494bf00cb9d7c8cf7087779",
+      "after_sha256": "5681ab1ac659235bc96509de5b1dacf2a569a9edb7924481df856e4152b1128c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0224",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L040_001",
+        "code": "L05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8ff2a1e7d1b8bd948d2abfbe95e1dc4d19aa7467149c0941d932be93dbf73571",
+      "after_sha256": "e2f91e8e253c078d7397527626118ceda309e879bcbe284fcb13c5b34a11c37b"
+    },
+    {
+      "operation_id": "REPAIR_OP_0225",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L060_001",
+        "code": "L07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b8e13462e26820e5b1d048212e5abc6695e88bd133b2f1bb644a587cf800e91e",
+      "after_sha256": "83d31084f0b8bed68344cc51a0e6233f3200b10ab59d88641a3c42b50bc261f5"
+    },
+    {
+      "operation_id": "REPAIR_OP_0226",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L075_001",
+        "code": "L08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e6ae3beab8c41f411c776a8a924c39c3b1543f9f17b317f13ec2aba1da00dfe3",
+      "after_sha256": "7b70cb3fc84a2bae8bc71224f08026e341ccbd19c4c5ea8a2e14eae179aee059"
+    },
+    {
+      "operation_id": "REPAIR_OP_0227",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L085_001",
+        "code": "L09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f2775d99afbe80d2e1f7f0d9b6405a67b8381fb41757fe91766adefde388bbe0",
+      "after_sha256": "6c4df820c7c2a19fd0a173e787067d930d7c8310bdeefe7f7983494eaaf719d5"
+    },
+    {
+      "operation_id": "REPAIR_OP_0228",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L092_002",
+        "code": "L10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d6fb13699b359870b66d6230258906893de8c2b131deef258d124eda26eccb54",
+      "after_sha256": "041c421305528195b505e2cc6d0451e89310361803481a592100addaa7a7a88f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0229",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L102_001",
+        "code": "L11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "91c585faeec220000bbe37ce01069f254ceb7c28eed3c07dbfdd95cbcada237b",
+      "after_sha256": "60490248fecb9cbe3231ee8ebb9ae64e9ed9077a2931fc44749dc1e1dc5e73ab"
+    },
+    {
+      "operation_id": "REPAIR_OP_0230",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L120_001",
+        "code": "L13"
+      },
+      "status": "APPLIED",
+      "before_sha256": "fe977b908827cbd08bce4f2b69069d84185a12e4b84d231cecb0b8caf0e52014",
+      "after_sha256": "0570ad3fd2d840e16e02af929e7bc7afd422079ffa494b19e3f3f2864b1726ec"
+    },
+    {
+      "operation_id": "REPAIR_OP_0231",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L530_001",
+        "code": "L60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b79e3a64d5c1db64c5785a87c159603c36ba3e46adb69c4f5cb9cc240003561c",
+      "after_sha256": "0b6565a44241d4f3998107f55d746f80ae4bb7b63e2a5abf189cc15fed4af141"
+    },
+    {
+      "operation_id": "REPAIR_OP_0232",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L604_005",
+        "code": "L61"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a98eec0e48efbe87b83e8db23f4e626e2f482834eff3d8a5700dc7650e14ddd7",
+      "after_sha256": "0552efddc7f1b0b3c7f21ff9c1a0220a870fad13280393f863243639339096d5"
+    },
+    {
+      "operation_id": "REPAIR_OP_0233",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L613_004",
+        "code": "L62"
+      },
+      "status": "APPLIED",
+      "before_sha256": "908067784b558d3036feac90cbe0219e272a8985a5f171b377fa3dfce8c68627",
+      "after_sha256": "4da9832dfd86f79bd01fcde62359f7d18623479d6975882405e0130afd0e44cf"
+    },
+    {
+      "operation_id": "REPAIR_OP_0234",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L622_003",
+        "code": "L63"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6b0bfef3f5cd3f06c6c4de5329c7f24cf918a2a102880bb456bd6eedd083a181",
+      "after_sha256": "49b5cc673d79932e7aed78babc3e4b8b18675e0eaa4303830600a371f4c441e9"
+    },
+    {
+      "operation_id": "REPAIR_OP_0235",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L633_005",
+        "code": "L64"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9ea0d7f1dcfdac351e7ff12882a02cf9a47d4fdd17968d00e584371be314a048",
+      "after_sha256": "4bdaec8e316f9e6c7e3b85c52a265e8873d6d4b1dd8da545316644a74fe461bd"
+    },
+    {
+      "operation_id": "REPAIR_OP_0236",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_L650_001",
+        "code": "L66"
+      },
+      "status": "APPLIED",
+      "before_sha256": "152422bd68491e90540c952f8b36e8c98d1d7ca3ca43636819046a96df5c95be",
+      "after_sha256": "9f798e741d84837a0d28e8a62ba519df0930bb184f40739dc0d6efb1504712a4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0237",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M010_001",
+        "code": "M02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "218a417d1fab589e35dc1ef5b15c28c259a722b71e306d7c6555fa2addce4344",
+      "after_sha256": "0f06972873d241d37ed9defd13f61eb41ef9478ac49e26aa3140ecd24f1be22f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0238",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M030_001",
+        "code": "M04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "533e85d39638f92aae34180340cfb5d8e0fbdaf331e8cb6a7cd22eb54d07fee3",
+      "after_sha256": "566ab6eca0aac59c44dfa8a63e5f055b244d19b5cd20b472ba9175479195bb9d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0239",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M050_001",
+        "code": "M06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f4456986264d6061f76edcff9d87508208e1458d19d977615c3708b806dbfb1f",
+      "after_sha256": "83b690132e0c17e233786e714bd8d55f3dff4cca024fcb7cb90db083290e5133"
+    },
+    {
+      "operation_id": "REPAIR_OP_0240",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M062_001",
+        "code": "M07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "cdfd2fd342c273a948fded836d2decb28f1002358f007fe1816df77d315fd24f",
+      "after_sha256": "ec435ac3497f89e5f811f81821d39c3a7b10b5a22d804e14ac592da355aadc59"
+    },
+    {
+      "operation_id": "REPAIR_OP_0241",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M072_001",
+        "code": "M08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "01d6e6646bedaacd2ad21d59e9447cd7ea44a92953f23206ef1e9b7317c18d5e",
+      "after_sha256": "d6ebfe56a13cb2e90b6950648df570a26a4ce66b162cedd7c98c79fe830f88bc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0242",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M083_001",
+        "code": "M09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "8681aeeffd48965e53a3d60d9bd4248e798ed27b54cdd25754fd88ed4ada3eb3",
+      "after_sha256": "a1279c9b5b489bb29d5178af5be4e84f2b3afc88a32337203fdda0ce335d7d96"
+    },
+    {
+      "operation_id": "REPAIR_OP_0243",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M094_001",
+        "code": "M10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "6c4bd570dfe0a222a9b06e7768e3a85c76c5d10a416f5fb7c9f64be5d84f3c46",
+      "after_sha256": "8b1d5a942c25686d81ebdcfdc4def9a86f0ad17b2f56daa3d1cd358de6903079"
+    },
+    {
+      "operation_id": "REPAIR_OP_0244",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_M510_001",
+        "code": "M60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f77d49e5e94646a4cb697b38567e82b39f90d847fab3029b9baf1d86d5530f22",
+      "after_sha256": "8954db14e9861c9593ed29ccf17fc6a67e23dbddc01113e7f495c2d92ac8d24b"
+    },
+    {
+      "operation_id": "REPAIR_OP_0245",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N012_007",
+        "code": "N02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ba2ab82df5cd474bd14be6fcd9fa1cf7e6de8a3c04ff52cdf6a09a34fc2e7047",
+      "after_sha256": "1d147fc61fcad7e46bc19a392239689b40644ff6673fe304621f7a5a14c6bfaf"
+    },
+    {
+      "operation_id": "REPAIR_OP_0246",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N022_004",
+        "code": "N03"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b086ee6e59110af3e60c7e02d5b5e6fc4c1449e94a5d89cc9cc9dcb7df305822",
+      "after_sha256": "05faec94569848db458eff24765d8a85b3433261e85dbd8c0c1e74e9e8b358e3"
+    },
+    {
+      "operation_id": "REPAIR_OP_0247",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N032_004",
+        "code": "N04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "07021caa643a06644a51c5aaafc3d6eb41b7807850d0908280746f4de5fedeeb",
+      "after_sha256": "d68dcf8a826a6f913d9d974ca483cce6b455ea690712b986e9d3da25387ecc7d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0248",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N042_008",
+        "code": "N05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "c660025ae08420c5f6a69b13405034ea50b7e1da70db18dfae90bd24cfce2210",
+      "after_sha256": "7e54cfe083514b2fd47df90f51351f1c865abefae900d09c6d34196501f84e44"
+    },
+    {
+      "operation_id": "REPAIR_OP_0249",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N052_004",
+        "code": "N06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4789bfb67a83f93a3dd3bcd511da31ecb8cebb5dff7c3cbdbf000ddcc6ae9760",
+      "after_sha256": "19fdf86c9ff69cc5c8a5ca97ee0b9db8054cf5142a9baedd92259dcd6b3f2db1"
+    },
+    {
+      "operation_id": "REPAIR_OP_0250",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N062_003",
+        "code": "N07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "29279519f80de682e3c011d650602388dcf0b876a95d4b9f6221807adb26156e",
+      "after_sha256": "663d2780c077548c70810503bdb134430afa7db7055dd9faf054cfb67678bdc9"
+    },
+    {
+      "operation_id": "REPAIR_OP_0251",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N072_006",
+        "code": "N08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4ecdbd5717392e36ee5060c2928e60341a3bd9fc4e7bbe592de1165f01fc18c7",
+      "after_sha256": "c52251e2db73b9b41598eabaf216470b61cae8e14c69d488b9267346c5449f0a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0252",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N082_003",
+        "code": "N09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a8725fb48b6f7311efc36dea8481541822bb927800cd8d19166051aadf58712d",
+      "after_sha256": "eeceb6e789ebfe586c8af42774d7d5203101567189ddc22fbb4b8683195148da"
+    },
+    {
+      "operation_id": "REPAIR_OP_0253",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N092_003",
+        "code": "N10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "ce5dd7a206f0e7809ad03236b68f8b568715b6ae4953c4f18310cb95647b9c15",
+      "after_sha256": "03b549c0dd9460e383554ab3f96ad888e3dbf442c72ab490e09e4839e4626675"
+    },
+    {
+      "operation_id": "REPAIR_OP_0254",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N110_001",
+        "code": "N12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "b1a68e2891a5a4c5b7ad7d3fb27940456f230fcaaf99386ce9b1cd38685e39be",
+      "after_sha256": "fb651999497c2087d5631980d87683a67b7b7e6081156f69d5923948403a5900"
+    },
+    {
+      "operation_id": "REPAIR_OP_0255",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N130_001",
+        "code": "N14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9ccbac9d9a652b5909fa8c6402b59de641c27444c1ed3e85e84ad7c33112b104",
+      "after_sha256": "391dd79b0729a76d0a9ee400433f431d53f5f7b9565842d9c58e20e292f3a253"
+    },
+    {
+      "operation_id": "REPAIR_OP_0256",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N142_001",
+        "code": "N15"
+      },
+      "status": "APPLIED",
+      "before_sha256": "1846fdd1cd758ef5776eb757aa3916ad98ac98e4cc2ef23dcc9a3c0b4e3fe5b0",
+      "after_sha256": "59674aff4040fdc6793307f963bfeed04cb7ebd4a9b917c0d8d116a198f72ed1"
+    },
+    {
+      "operation_id": "REPAIR_OP_0257",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N152_003",
+        "code": "N16"
+      },
+      "status": "APPLIED",
+      "before_sha256": "58282f1d1e48b1fa9c9033251667b457f757ed6b11646a8d5550dc292fae31cc",
+      "after_sha256": "8fc94d141ae07b78420690467c54948be3fdb1bbd741cd14095b43e98f8de8d4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0258",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_N180_001",
+        "code": "N60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2707bb5fb8062269adfa6c63a35a2fe652733010b2671433e1bd4bcb8ca27d26",
+      "after_sha256": "39a59b35963b333cf6dfa83144735e1f0c68e7c6d6678cab92f9f4d6f1f38f2f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0259",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O013_003",
+        "code": "O02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "172f54c7f9bbd82d47474050f8736546e8cbd18301d8c4f082193dba5f0d9bc2",
+      "after_sha256": "797a72c598c30cfcc3c6be3d3c8c800eeaaf2ceb7e6238ac2e60874e2a5c79d1"
+    },
+    {
+      "operation_id": "REPAIR_OP_0260",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O024_003",
+        "code": "O04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "03219895728e3a922d550226be37e378d732e7fd780c8848eb652228c64716c4",
+      "after_sha256": "85b936d1f42c1a6d122f2a455afdae632fcefa548e2fcc28c71b7146d1578bbd"
+    },
+    {
+      "operation_id": "REPAIR_OP_0261",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O042_002",
+        "code": "O05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d75fe3faf6f3f2e2240edd1346f2e43cb75381b608c6ee0ef37fd4276b6974a4",
+      "after_sha256": "83eebe9022109b073ec0767a6ab751df8305eddd7f8967429b173b9331a14824"
+    },
+    {
+      "operation_id": "REPAIR_OP_0262",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O052_002",
+        "code": "O06"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5bf06af25c4cd65708bd313c5a0f49f2afcb7a188d7fb8f8a7e8ee868fa77b81",
+      "after_sha256": "18a2b1da5c54ef841a1a801d348d13e136b90117029700d1bdceeb668e93f020"
+    },
+    {
+      "operation_id": "REPAIR_OP_0263",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O062_002",
+        "code": "O07"
+      },
+      "status": "APPLIED",
+      "before_sha256": "c4acae70dc15fd142a487c75995ddb6982c8ef685833b0d92738be23fcdbd7a3",
+      "after_sha256": "1f84d6056d7c184ca95c4a4dca10ae2459b737a71d6119345c9efb2934b62452"
+    },
+    {
+      "operation_id": "REPAIR_OP_0264",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O073_002",
+        "code": "O08"
+      },
+      "status": "APPLIED",
+      "before_sha256": "fb289da280ba3a9bda8a92d9d519ec8b056fc16e5ebe6c35566c835b88d549bd",
+      "after_sha256": "f9b961388c1bbe9f95890ee96d35e96a2029a56a55aa099cdfb092dfb7115f57"
+    },
+    {
+      "operation_id": "REPAIR_OP_0265",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O082_003",
+        "code": "O09"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4a4cd152299254e0f35f239ed3833506190a99b4adc48876e880285d4479b927",
+      "after_sha256": "1fe41a7f9ef5b22dccb0933dc72c4c8d39b086263afd3fccca0782f6293de64c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0266",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O092_003",
+        "code": "O10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5c68798d67c0cdd165bdefb6e8d21911294eb77ff332cf614e378417a3fcf297",
+      "after_sha256": "d37da0ca43922f2e2d9c46d03d6237691c8ceaa6b35dbe73f905e1400f8138f5"
+    },
+    {
+      "operation_id": "REPAIR_OP_0267",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O130_002",
+        "code": "O14"
+      },
+      "status": "APPLIED",
+      "before_sha256": "f6b325bb5c2b98a750605d5fa3220f02535568d48fc8383154d81d1781ce9e9a",
+      "after_sha256": "37b354b3a94427685adeb4150a918bf345ab283b6ff25865ecd9f7753be40a1c"
+    },
+    {
+      "operation_id": "REPAIR_OP_0268",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O142_003",
+        "code": "O60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "4aae500a60733110148ed1f718d54e117d3240f701d1fc2532ecfcba5ef730a3",
+      "after_sha256": "7a04e56a8e4964e4b0f3d84a065f6a410445a0b12c0c8b3a87e680c7cb6417ef"
+    },
+    {
+      "operation_id": "REPAIR_OP_0269",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_O630_001",
+        "code": "O64"
+      },
+      "status": "APPLIED",
+      "before_sha256": "03f6012d7fa24f828ddf8458daa2962a4f6e347e8c9e56fe1e056dff5e786d1e",
+      "after_sha256": "95d01eaa513e97951b187042acf0e271f9daabd36a70b3146e7ebb1f4e9b966a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0270",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_P090_001",
+        "code": "P60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "d4025baacea9858175795f0dfc07f3728e8609e0dff8c820e7e9996de472839a",
+      "after_sha256": "2ceadae7bb5dab61288489fbcbfe8253360f42d029f022a88fb986d440a55213"
+    },
+    {
+      "operation_id": "REPAIR_OP_0271",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_P630_001",
+        "code": "P64"
+      },
+      "status": "APPLIED",
+      "before_sha256": "81b74306137a5971507ab63d8dc014048f6bf64fa1429d2a6cd05f974dbc8e20",
+      "after_sha256": "3881fb57412e14ad0dfe394b9389fb174574d096de404b0954008eb16cb4c723"
+    },
+    {
+      "operation_id": "REPAIR_OP_0272",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_P642_002",
+        "code": "P65"
+      },
+      "status": "APPLIED",
+      "before_sha256": "5306bee6104652d22a6dc712b42787aec9ae7b8e066f1d67f95b80d846277661",
+      "after_sha256": "c584fb076749bd27fbcce68626457c264e282bd41000b09fa7d7a3b58d7c0564"
+    },
+    {
+      "operation_id": "REPAIR_OP_0273",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_P654_004",
+        "code": "P66"
+      },
+      "status": "APPLIED",
+      "before_sha256": "a5b23bf2b342138f86e98462643e14f62b1599eed814f7dd8373150aff70b07b",
+      "after_sha256": "01e453d569ad6223c55389fa9f9ed680f98b720c9e050cea27ec764aedb84c55"
+    },
+    {
+      "operation_id": "REPAIR_OP_0274",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_P664_004",
+        "code": "P67"
+      },
+      "status": "APPLIED",
+      "before_sha256": "36122a87945dcf9c46806383544bebe61d5c676454251b205e209cd02c37cb04",
+      "after_sha256": "51699282fc0c5457c0fd577f5b212fbc2dfeb9bcc0a61d2103390e33404cbd3e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0275",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_R500_001",
+        "code": "R60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "bfa2edf228e1d107eb2f012634e8e5f703e9a69f5a79e8e141465668d6936cc4",
+      "after_sha256": "08ae72306ed336c9e19a75a2d83804f7d38dd21f29174df7fdf709bcfb06ae5e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0276",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_R602_003",
+        "code": "R61"
+      },
+      "status": "APPLIED",
+      "before_sha256": "01399732b30d38e526f21c283b15d8ecf38e58178de72f7989830d99a556d9e4",
+      "after_sha256": "e9d3b317f055bfc2bc5f791f5fe451b04b18b932bce5683ca566eda73fdcad96"
+    },
+    {
+      "operation_id": "REPAIR_OP_0277",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_R612_001",
+        "code": "R63"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e8a0dcf397f6cdb9d608316c3766a4310210f61666c6176e486774a8b5c2f1e2",
+      "after_sha256": "e05435f73682aa6f638af483ced5890fee517040adabefa2a23d3d04279bc50d"
+    },
+    {
+      "operation_id": "REPAIR_OP_0278",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_R660_002",
+        "code": "R67"
+      },
+      "status": "APPLIED",
+      "before_sha256": "00c8f7f4ba2626ca60daed6ee7e90a24ddef1b69fb87ef567b5a60f0fd8cc595",
+      "after_sha256": "fa0dbb283ae3d927f0e352ae0b6b376c72a8b761bcaa5c7f9a3d9da61f1723b0"
+    },
+    {
+      "operation_id": "REPAIR_OP_0279",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_T015_001",
+        "code": "T60"
+      },
+      "status": "APPLIED",
+      "before_sha256": "df840cb76d4828c215f503e3df47ee4a0a26ee8acd8871a0cf0cb6a760a69a35",
+      "after_sha256": "408415601dbd00e2564ba69a457908a81d7794ffd0879ccb47c7685dd0708788"
+    },
+    {
+      "operation_id": "REPAIR_OP_0280",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_T620_001",
+        "code": "T63"
+      },
+      "status": "APPLIED",
+      "before_sha256": "7e8a30a731453a606a5468ad87186da182c85afab81ae345ebcd5863cd0be448",
+      "after_sha256": "8188750d5d955da509d13682aa106fc5941be4a88cbb3d9d5c3e827f2e5a290b"
+    },
+    {
+      "operation_id": "REPAIR_OP_0281",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_X012_003",
+        "code": "X02"
+      },
+      "status": "APPLIED",
+      "before_sha256": "76bd3630bfc6a302f87f5a626ff195af0c7bbfe3a2f08fe8338256abd2ffb23f",
+      "after_sha256": "d83ab648f45c02c098ea300be13adb2494ab0747be2220edddd5d43596af6923"
+    },
+    {
+      "operation_id": "REPAIR_OP_0282",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_X030_001",
+        "code": "X04"
+      },
+      "status": "APPLIED",
+      "before_sha256": "7aaf03dcf0af676b61f33e5c6f3d591aaa4e3886f530c778ef9a017c44da3ae8",
+      "after_sha256": "51a85de01a77a1d8b9d6386729c3392c97d94dd36295259324015bd0f85a7125"
+    },
+    {
+      "operation_id": "REPAIR_OP_0283",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_X042_002",
+        "code": "X05"
+      },
+      "status": "APPLIED",
+      "before_sha256": "16098e92f3056fa8c68c2e15ba3b9e2cd343a7db40ea68dcee970bbe5d8a3ac8",
+      "after_sha256": "015c480aac313ebecd3404384b6f476c3a328f540e1aef6841b6900ab2f34613"
+    },
+    {
+      "operation_id": "REPAIR_OP_0284",
+      "operation_type": "remove_logical_table_code",
+      "category": "next_adrg_heading_leak",
+      "target": {
+        "logical_table_id": "LT_X600_001",
+        "code": "X61"
+      },
+      "status": "APPLIED",
+      "before_sha256": "e3927e0ddb1ab7e350ef4326b1ff4dbb65feddf4833b66468f680ce108e5afa2",
+      "after_sha256": "454614800f6054a3b043599f403da0144b75b36e2e9a003146ff7d8db0eb91c2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0285",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_F800_001",
+        "code": "I98.1*"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9b4ca07b1e1adb0f26392cb74db76c21e3fd988e0d188d46b2ff84150fb494bd",
+      "after_sha256": "10ba7d9474a7760241a800f839f40e4391b0da7fc2a229577b4d9fe91e6fc80f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0286",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_I667_001",
+        "code": "M09.0*"
+      },
+      "status": "APPLIED",
+      "before_sha256": "50397d2f6587dbfb86ae99e64f8296070bc915cc8bf2d95b2ed973ce44935265",
+      "after_sha256": "c175569090b3485044ecf1e04424cd33cca55fe9d595455317618f2cbb6d3907"
+    },
+    {
+      "operation_id": "REPAIR_OP_0287",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_I682_002",
+        "code": "T10"
+      },
+      "status": "APPLIED",
+      "before_sha256": "c244cba49373c46a3807b4a35149a82d4d877088cf3f9b71cae5f698bf22d330",
+      "after_sha256": "df443e65d8ce5f451123b398ed35d02c0c9d1aa5eaaeefd8a2cb0bd41d1d232e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0288",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_I682_002",
+        "code": "T11"
+      },
+      "status": "APPLIED",
+      "before_sha256": "930f1e2e5c53c155ee81d30250da83d32662c6c2b3bf9efe5245867af8dc3862",
+      "after_sha256": "8b47b074c55a263f588b39da6564e73df7c5a216deb07cbc5b6000554ce67883"
+    },
+    {
+      "operation_id": "REPAIR_OP_0289",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_I682_002",
+        "code": "T12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "03d721484b95dbc22ab39f65f04e9e883a27014e3e4c3a947dd3dccad7b103cf",
+      "after_sha256": "1bf36e765d58a1dfe73a11ee0852d4b49a17bfe3e6aefb5e04ee17e7c83f1899"
+    },
+    {
+      "operation_id": "REPAIR_OP_0290",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_O610_001",
+        "code": "O08.0"
+      },
+      "status": "APPLIED",
+      "before_sha256": "9905a82fd1db6207518a3d217c6ecf3fde99973f4faac560ad2984991c43b6ef",
+      "after_sha256": "198c1a128ad620c3e3772818a845b73f1e063d31828949857e2af4d780a7dcf7"
+    },
+    {
+      "operation_id": "REPAIR_OP_0291",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_O610_001",
+        "code": "O08.1"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2abb20259d9e3d36e512cff1eb305d731f34f9e9963c5ed40d427fba1810fbf8",
+      "after_sha256": "ff4fba6c205d44079be0ad78bde429e6a786759c53b5a5fb954287200eb47cbc"
+    },
+    {
+      "operation_id": "REPAIR_OP_0292",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_O610_001",
+        "code": "O08.2"
+      },
+      "status": "APPLIED",
+      "before_sha256": "1c3adea0b8c73e178aaee24e123308ff526fd84f40fc0087548043ad8d78b5c2",
+      "after_sha256": "9c822757c5066e4fe3b124322d044a75f3dfe51f9534ebde3ccfea9e1c4320e4"
+    },
+    {
+      "operation_id": "REPAIR_OP_0293",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_Q610_001",
+        "code": "B12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "aa56a3b8c653ffd09936b3954f4f9a1c9dcdb7bf4c98b176fc7ed8a4c1ade0a0",
+      "after_sha256": "ce15a92367fab61f11c65f2ea731e151f80d7264d3f5db5f423775732e871951"
+    },
+    {
+      "operation_id": "REPAIR_OP_0294",
+      "operation_type": "remove_logical_table_code",
+      "category": "description_embedded_code_token",
+      "target": {
+        "logical_table_id": "LT_S640_001",
+        "code": "B12"
+      },
+      "status": "APPLIED",
+      "before_sha256": "2cc3dbdc9618ba35d22302b9237a8b011cfec87371b40bca3c5cca5c63058ae9",
+      "after_sha256": "4d8ed56bd7f71ecab076bd49b8a71734d4dce723300ca2eaf373b2bdfab138a2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0295",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_B205_001",
+        "section_id": "SEC_B205_001",
+        "code": "O0243"
+      },
+      "status": "APPLIED",
+      "after_sha256": "fe0a46f4dc070df112b61c509d384b50aa40c1e9468aa7bf29fdbf96109bcd4f"
+    },
+    {
+      "operation_id": "REPAIR_OP_0296",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_D021_002",
+        "section_id": "SEC_D021_002",
+        "code": "S5674"
+      },
+      "status": "APPLIED",
+      "after_sha256": "16f879cdd86c59b1eae24b75e7b34f358bd904cefaf81b3fed310b9f021c6634"
+    },
+    {
+      "operation_id": "REPAIR_OP_0297",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_D022_001",
+        "section_id": "SEC_D022_001",
+        "code": "S5674"
+      },
+      "status": "APPLIED",
+      "after_sha256": "fec8947a6604bdcc602d45497c87e0a9bea149d74f1dacfe58fa7946fa472b7e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0298",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_D054_005",
+        "section_id": "SEC_D054_005",
+        "code": "ADC4F"
+      },
+      "status": "APPLIED",
+      "after_sha256": "169e5a18708ef02352195287ee590f2ed25a6d3505afd9a0729fa88bbd6cbe59"
+    },
+    {
+      "operation_id": "REPAIR_OP_0299",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_I185_001",
+        "section_id": "SEC_I185_001",
+        "code": "N1013"
+      },
+      "status": "APPLIED",
+      "after_sha256": "dc043451f4df9ec217c02132c1f146efe476729c318bf61e0b8fc1b2d8948da3"
+    },
+    {
+      "operation_id": "REPAIR_OP_0300",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_I305_001",
+        "section_id": "SEC_I305_001",
+        "code": "N2081"
+      },
+      "status": "APPLIED",
+      "after_sha256": "d40c25c87adb411854e19e28cc08b73d79702958353337c7e9067d25341d3bd5"
+    },
+    {
+      "operation_id": "REPAIR_OP_0301",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_I305_001",
+        "section_id": "SEC_I305_001",
+        "code": "N2083"
+      },
+      "status": "APPLIED",
+      "after_sha256": "dd06484560d2cfd76ae38fdef1902ab392859b48ba0d5c7a4e3c2d27391ab2ef"
+    },
+    {
+      "operation_id": "REPAIR_OP_0302",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_I326_001",
+        "section_id": "SEC_I326_001",
+        "code": "N1015"
+      },
+      "status": "APPLIED",
+      "after_sha256": "8c4ccf515cd71befca3d28e13fbe26e8b183c4605395c01c1186a790ff91501a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0303",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_J010_001",
+        "section_id": "SEC_J010_001",
+        "code": "SC263"
+      },
+      "status": "APPLIED",
+      "after_sha256": "c73c73b6784f45511a4ceee1e1cffd9101fd4c21e79f9982e1eb38cf66427108"
+    },
+    {
+      "operation_id": "REPAIR_OP_0304",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_J010_001",
+        "section_id": "SEC_J010_001",
+        "code": "SA263"
+      },
+      "status": "APPLIED",
+      "after_sha256": "6f8735370cdf2c742e1966984c6309b067904e42c4964dcc29c3130121be78c7"
+    },
+    {
+      "operation_id": "REPAIR_OP_0305",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_J010_001",
+        "section_id": "SEC_J010_001",
+        "code": "SC264"
+      },
+      "status": "APPLIED",
+      "after_sha256": "aceb398c255dd7867dc7ef8aaf4bf8b5a0be7b457d38be2455868109194ebe7a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0306",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_J010_001",
+        "section_id": "SEC_J010_001",
+        "code": "SA264"
+      },
+      "status": "APPLIED",
+      "after_sha256": "b3d8501af309b4b3eebe180f6fd9c87f3f659c95077ead95180bd4623759d714"
+    },
+    {
+      "operation_id": "REPAIR_OP_0307",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_J043_001",
+        "section_id": "SEC_J043_001",
+        "code": "R4447"
+      },
+      "status": "APPLIED",
+      "after_sha256": "05aa3e49cc87331c93e5cfe87069b8c43f5ba3321c80379cdcf0ce998ad7d8d0"
+    },
+    {
+      "operation_id": "REPAIR_OP_0308",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_J043_001",
+        "section_id": "SEC_J043_001",
+        "code": "R4449"
+      },
+      "status": "APPLIED",
+      "after_sha256": "66ee65764d6595e49ecb1edeb3fb58900b56d7e48f1b72958a3b44065a7a3fb8"
+    },
+    {
+      "operation_id": "REPAIR_OP_0309",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_R010_002",
+        "section_id": "SEC_R010_002",
+        "code": "R4447"
+      },
+      "status": "APPLIED",
+      "after_sha256": "4b31cd1fa81412bd0d4ff5abf485c6580f78cd5c5c491a1bdd07e5cdd897c082"
+    },
+    {
+      "operation_id": "REPAIR_OP_0310",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_R010_002",
+        "section_id": "SEC_R010_002",
+        "code": "R4449"
+      },
+      "status": "APPLIED",
+      "after_sha256": "35eaf5a8df777bfeb0f56923da0b8829b04419788c34818bb4218f9736b0218e"
+    },
+    {
+      "operation_id": "REPAIR_OP_0311",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_R020_001",
+        "section_id": "SEC_R020_001",
+        "code": "R4447"
+      },
+      "status": "APPLIED",
+      "after_sha256": "5b5ea192f5d4ad8283e53265d0b492461d342c7dc7cce9bde7e13c1c56f5d042"
+    },
+    {
+      "operation_id": "REPAIR_OP_0312",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_R020_001",
+        "section_id": "SEC_R020_001",
+        "code": "R4449"
+      },
+      "status": "APPLIED",
+      "after_sha256": "9c78f36dd8a533173cf8d5b6f5fda63bad0587ec2b0034f632dfd0b375d79cf2"
+    },
+    {
+      "operation_id": "REPAIR_OP_0313",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "section_id": "SEC_W040_001",
+        "code": "N1013"
+      },
+      "status": "APPLIED",
+      "after_sha256": "8239145f1094547f9987cf925e4bf6e6d5b54b0dc28bb61fce31cc88077b0966"
+    },
+    {
+      "operation_id": "REPAIR_OP_0314",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_W040_001",
+        "section_id": "SEC_W040_001",
+        "code": "N1015"
+      },
+      "status": "APPLIED",
+      "after_sha256": "b87307afb7b9fdd8559cee7a4ed4fec1292666ddbf606d25116f9ed785ce4456"
+    },
+    {
+      "operation_id": "REPAIR_OP_0315",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "section_id": "SEC_X060_001",
+        "code": "N1013"
+      },
+      "status": "APPLIED",
+      "after_sha256": "e60b81462ca809fb8ccce9555bf83b50f1a1e5d4386773cd22ce21854ff08a8a"
+    },
+    {
+      "operation_id": "REPAIR_OP_0316",
+      "operation_type": "add_logical_table_code",
+      "category": "missed_known_procedure_code",
+      "target": {
+        "logical_table_id": "LT_X060_001",
+        "section_id": "SEC_X060_001",
+        "code": "N1015"
+      },
+      "status": "APPLIED",
+      "after_sha256": "9414cbc1b8874f1acde0945c68120ad8f9a15d8f979c411ff0095691d32ce114"
+    },
+    {
+      "operation_id": "REPAIR_OP_0317",
+      "operation_type": "replace_condition_table_reference",
+      "category": "numbered_table_variant_coherence",
+      "target": {
+        "condition_id": "COND_C124_0005",
+        "condition_ast_id": "AST_C124",
+        "ast_node_id": "AST_C124_N003",
+        "adrg": "C124",
+        "raw_atom_text": "부가코드1"
+      },
+      "status": "APPLIED"
+    }
+  ],
+  "changed_logical_table_ids": [
+    "LT_A050_001",
+    "LT_A080_002",
+    "LT_B018_005",
+    "LT_B027_001",
+    "LT_B033_004",
+    "LT_B050_001",
+    "LT_B070_001",
+    "LT_B082_001",
+    "LT_B110_001",
+    "LT_B130_001",
+    "LT_B143_001",
+    "LT_B154_004",
+    "LT_B163_002",
+    "LT_B176_005",
+    "LT_B182_001",
+    "LT_B192_001",
+    "LT_B205_001",
+    "LT_B212_001",
+    "LT_B530_001",
+    "LT_B620_001",
+    "LT_B633_005",
+    "LT_B646_001",
+    "LT_B657_001",
+    "LT_B670_001",
+    "LT_B686_005",
+    "LT_B696_001",
+    "LT_B702_001",
+    "LT_B750_001",
+    "LT_B763_001",
+    "LT_B800_001",
+    "LT_C014_003",
+    "LT_C030_003",
+    "LT_C046_004",
+    "LT_C053_001",
+    "LT_C064_005",
+    "LT_C080_001",
+    "LT_C095_002",
+    "LT_C102_001",
+    "LT_C112_001",
+    "LT_C127_001",
+    "LT_C136_002",
+    "LT_D014_001",
+    "LT_D021_002",
+    "LT_D022_001",
+    "LT_D026_001",
+    "LT_D054_005",
+    "LT_D070_001",
+    "LT_D090_001",
+    "LT_D102_001",
+    "LT_D112_001",
+    "LT_D130_001",
+    "LT_D150_001",
+    "LT_D162_001",
+    "LT_D180_001",
+    "LT_D300_001",
+    "LT_D603_005",
+    "LT_D660_001",
+    "LT_D680_001",
+    "LT_D730_001",
+    "LT_E020_001",
+    "LT_E034_001",
+    "LT_E502_002",
+    "LT_E610_001",
+    "LT_E660_001",
+    "LT_E673_005",
+    "LT_E682_001",
+    "LT_E693_001",
+    "LT_E730_001",
+    "LT_E743_001",
+    "LT_E760_001",
+    "LT_F012_001",
+    "LT_F023_005",
+    "LT_F033_001",
+    "LT_F044_005",
+    "LT_F054_001",
+    "LT_F063_005",
+    "LT_F073_001",
+    "LT_F084_002",
+    "LT_F092_005",
+    "LT_F103_004",
+    "LT_F112_005",
+    "LT_F122_004",
+    "LT_F136_005",
+    "LT_F143_001",
+    "LT_F153_001",
+    "LT_F162_001",
+    "LT_F173_001",
+    "LT_F182_003",
+    "LT_F200_001",
+    "LT_F240_001",
+    "LT_F260_001",
+    "LT_F640_001",
+    "LT_F652_001",
+    "LT_F662_001",
+    "LT_F692_001",
+    "LT_F704_001",
+    "LT_F730_001",
+    "LT_F750_001",
+    "LT_F800_001",
+    "LT_G013_001",
+    "LT_G022_003",
+    "LT_G032_003",
+    "LT_G060_001",
+    "LT_G072_003",
+    "LT_G082_003",
+    "LT_G094_004",
+    "LT_G102_003",
+    "LT_G112_003",
+    "LT_G122_003",
+    "LT_G132_003",
+    "LT_G142_003",
+    "LT_G152_003",
+    "LT_G163_001",
+    "LT_G190_001",
+    "LT_G204_004",
+    "LT_G214_004",
+    "LT_G230_001",
+    "LT_G242_003",
+    "LT_G260_001",
+    "LT_G272_001",
+    "LT_G282_001",
+    "LT_G300_001",
+    "LT_G320_001",
+    "LT_G340_001",
+    "LT_G505_002",
+    "LT_G525_002",
+    "LT_G570_001",
+    "LT_G603_005",
+    "LT_G660_001",
+    "LT_G673_001",
+    "LT_H010_003",
+    "LT_H030_002",
+    "LT_H044_004",
+    "LT_H060_001",
+    "LT_H072_003",
+    "LT_H082_003",
+    "LT_H092_003",
+    "LT_H108_005",
+    "LT_H112_003",
+    "LT_H122_003",
+    "LT_H132_003",
+    "LT_H146_001",
+    "LT_H530_001",
+    "LT_H603_001",
+    "LT_H612_004",
+    "LT_H623_005",
+    "LT_H633_005",
+    "LT_H642_003",
+    "LT_H652_001",
+    "LT_H662_005",
+    "LT_H680_001",
+    "LT_H692_001",
+    "LT_I012_002",
+    "LT_I023_001",
+    "LT_I033_001",
+    "LT_I050_001",
+    "LT_I064_004",
+    "LT_I073_002",
+    "LT_I086_005",
+    "LT_I092_001",
+    "LT_I102_001",
+    "LT_I112_001",
+    "LT_I124_001",
+    "LT_I133_001",
+    "LT_I160_002",
+    "LT_I172_001",
+    "LT_I185_001",
+    "LT_I187_002",
+    "LT_I200_001",
+    "LT_I240_001",
+    "LT_I252_002",
+    "LT_I263_001",
+    "LT_I273_001",
+    "LT_I290_001",
+    "LT_I305_001",
+    "LT_I306_001",
+    "LT_I312_001",
+    "LT_I326_001",
+    "LT_I610_001",
+    "LT_I623_001",
+    "LT_I640_001",
+    "LT_I653_005",
+    "LT_I667_001",
+    "LT_I670_001",
+    "LT_I682_002",
+    "LT_I682_003",
+    "LT_I710_001",
+    "LT_J010_001",
+    "LT_J022_003",
+    "LT_J032_001",
+    "LT_J043_001",
+    "LT_J053_001",
+    "LT_J063_002",
+    "LT_J110_001",
+    "LT_J613_005",
+    "LT_J622_001",
+    "LT_K012_001",
+    "LT_K024_001",
+    "LT_K032_003",
+    "LT_K043_001",
+    "LT_K052_003",
+    "LT_K064_003",
+    "LT_K080_001",
+    "LT_K500_001",
+    "LT_K630_001",
+    "LT_K650_001",
+    "LT_K670_001",
+    "LT_L010_001",
+    "LT_L027_002",
+    "LT_L040_001",
+    "LT_L060_001",
+    "LT_L075_001",
+    "LT_L085_001",
+    "LT_L092_002",
+    "LT_L102_001",
+    "LT_L120_001",
+    "LT_L530_001",
+    "LT_L604_005",
+    "LT_L613_004",
+    "LT_L622_003",
+    "LT_L633_005",
+    "LT_L650_001",
+    "LT_M010_001",
+    "LT_M030_001",
+    "LT_M050_001",
+    "LT_M062_001",
+    "LT_M072_001",
+    "LT_M083_001",
+    "LT_M094_001",
+    "LT_M510_001",
+    "LT_N012_007",
+    "LT_N022_004",
+    "LT_N032_004",
+    "LT_N042_008",
+    "LT_N052_004",
+    "LT_N062_003",
+    "LT_N072_006",
+    "LT_N082_003",
+    "LT_N092_003",
+    "LT_N110_001",
+    "LT_N130_001",
+    "LT_N142_001",
+    "LT_N152_003",
+    "LT_N180_001",
+    "LT_O013_003",
+    "LT_O024_003",
+    "LT_O042_002",
+    "LT_O052_002",
+    "LT_O062_002",
+    "LT_O073_002",
+    "LT_O082_003",
+    "LT_O092_003",
+    "LT_O130_002",
+    "LT_O142_003",
+    "LT_O610_001",
+    "LT_O630_001",
+    "LT_P090_001",
+    "LT_P630_001",
+    "LT_P642_002",
+    "LT_P654_004",
+    "LT_P664_004",
+    "LT_P674_004",
+    "LT_Q610_001",
+    "LT_R010_002",
+    "LT_R020_001",
+    "LT_R500_001",
+    "LT_R602_003",
+    "LT_R612_001",
+    "LT_R660_002",
+    "LT_REPAIR_MDC15_NEONATE_MAJOR_PROBLEM_TABLE01",
+    "LT_S640_001",
+    "LT_T015_001",
+    "LT_T620_001",
+    "LT_W040_001",
+    "LT_X012_003",
+    "LT_X030_001",
+    "LT_X042_002",
+    "LT_X060_001",
+    "LT_X600_001"
+  ],
+  "changed_condition_ast_ids": [
+    "AST_C124",
+    "AST_P641",
+    "AST_P642",
+    "AST_P651",
+    "AST_P652",
+    "AST_P654",
+    "AST_P661",
+    "AST_P662",
+    "AST_P664",
+    "AST_P671",
+    "AST_P672",
+    "AST_P674"
+  ],
+  "post_apply_audit": {
+    "p674_procedure_code_count": 47,
+    "neonate_diagnosis_code_count": 3239,
+    "remaining_heading_leak_count": 0,
+    "remaining_description_false_positive_count": 0,
+    "remaining_missed_procedure_count": 0,
+    "unknown_procedure_role_code_count": 0,
+    "duplicate_code_table_count": 0,
+    "unregistered_ast_table_reference_count": 0,
+    "ast_graph_issue_count": 0,
+    "preserved_source_only_diagnosis_row_count": 101,
+    "expected_source_only_diagnosis_row_count": 101,
+    "c124_final_logical_table_ids": [
+      "LT_C126_002"
+    ],
+    "neonate_semantic_bound_ast_count": 11,
+    "neonate_semantic_bound_ast_ids": [
+      "AST_P641",
+      "AST_P642",
+      "AST_P651",
+      "AST_P652",
+      "AST_P654",
+      "AST_P661",
+      "AST_P662",
+      "AST_P664",
+      "AST_P671",
+      "AST_P672",
+      "AST_P674"
+    ],
+    "examples": {
+      "remaining_heading": [],
+      "remaining_description": [],
+      "remaining_missed": [],
+      "unknown_procedure_role": [],
+      "unregistered_refs": [],
+      "graph_issues": []
+    }
+  },
+  "output_hashes": {
+    "logical_tables_repaired_current_json": "74378cb7b9b9fc27ead6ec0b11b873e889b6e034c0c003fec4ed76b823406a58",
+    "condition_ast_repaired_current_json": "c091dcb148968fd48fcc119268b712c211a217d8173c84975a7d996efe1c1878"
+  },
+  "validation": {
+    "status": "PASS",
+    "pass_count": 50,
+    "fail_count": 0,
+    "checks": [
+      {
+        "check_id": "AP001",
+        "title": "필수 파일 존재 kdrg_v47_parser_repair_patch_log.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_parser_repair_patch_log.json"
+      },
+      {
+        "check_id": "AP002",
+        "title": "필수 파일 존재 parser_repair_patch_log_validation_report.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/reports/parser_repair_patch_log_validation_report.json"
+      },
+      {
+        "check_id": "AP003",
+        "title": "필수 파일 존재 kdrg_v47_full_corpus_integrity_audit.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_full_corpus_integrity_audit.json"
+      },
+      {
+        "check_id": "AP004",
+        "title": "필수 파일 존재 kdrg_v47_table_section_candidates.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_table_section_candidates.json"
+      },
+      {
+        "check_id": "AP005",
+        "title": "필수 파일 존재 kdrg_v47_logical_tables_current.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_logical_tables_current.json"
+      },
+      {
+        "check_id": "AP006",
+        "title": "필수 파일 존재 kdrg_v47_condition_ast_current.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_condition_ast_current.json"
+      },
+      {
+        "check_id": "AP007",
+        "title": "필수 파일 존재 kdrg_v47_procedure_master.json",
+        "status": "PASS",
+        "detail": "/home/runner/workspace/data/kdrg_v47_procedure_master.json"
+      },
+      {
+        "check_id": "AP008",
+        "title": "patch schema",
+        "status": "PASS",
+        "detail": "actual=kdrg-v47-parser-repair-patch-log-v1 expected=kdrg-v47-parser-repair-patch-log-v1"
+      },
+      {
+        "check_id": "AP009",
+        "title": "patch validation schema",
+        "status": "PASS",
+        "detail": "actual=kdrg-v47-parser-repair-patch-log-validation-report-v1 expected=kdrg-v47-parser-repair-patch-log-validation-report-v1"
+      },
+      {
+        "check_id": "AP010",
+        "title": "audit schema",
+        "status": "PASS",
+        "detail": "actual=kdrg-v47-full-corpus-integrity-audit-v1 expected=kdrg-v47-full-corpus-integrity-audit-v1"
+      },
+      {
+        "check_id": "AP011",
+        "title": "sections schema",
+        "status": "PASS",
+        "detail": "actual=kdrg-v47-table-section-candidates-v1 expected=kdrg-v47-table-section-candidates-v1"
+      },
+      {
+        "check_id": "AP012",
+        "title": "logical current schema",
+        "status": "PASS",
+        "detail": "actual=kdrg-v47-logical-tables-current-v1 expected=kdrg-v47-logical-tables-current-v1"
+      },
+      {
+        "check_id": "AP013",
+        "title": "AST current schema",
+        "status": "PASS",
+        "detail": "actual=kdrg-v47-condition-ast-current-v1 expected=kdrg-v47-condition-ast-current-v1"
+      },
+      {
+        "check_id": "AP014",
+        "title": "procedure schema",
+        "status": "PASS",
+        "detail": "actual=kdrg-v47-procedure-master-v2 expected=kdrg-v47-procedure-master-v2"
+      },
+      {
+        "check_id": "AP015",
+        "title": "patch upstream PASS",
+        "status": "PASS",
+        "detail": "PASS"
+      },
+      {
+        "check_id": "AP016",
+        "title": "patch validation upstream PASS",
+        "status": "PASS",
+        "detail": "PASS"
+      },
+      {
+        "check_id": "AP017",
+        "title": "audit upstream PASS",
+        "status": "PASS",
+        "detail": "PASS"
+      },
+      {
+        "check_id": "AP018",
+        "title": "logical current upstream PASS",
+        "status": "PASS",
+        "detail": "PASS"
+      },
+      {
+        "check_id": "AP019",
+        "title": "AST current upstream PASS",
+        "status": "PASS",
+        "detail": "PASS"
+      },
+      {
+        "check_id": "AP020",
+        "title": "patch source SHA full_corpus_integrity_audit_json",
+        "status": "PASS",
+        "detail": "saved=55ef6c589bd2f190bf7e9b92295d91692ba07226b5d28f75d6bd6fdf6e133ec5 actual=55ef6c589bd2f190bf7e9b92295d91692ba07226b5d28f75d6bd6fdf6e133ec5"
+      },
+      {
+        "check_id": "AP021",
+        "title": "patch source SHA table_section_candidates_json",
+        "status": "PASS",
+        "detail": "saved=13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f actual=13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f"
+      },
+      {
+        "check_id": "AP022",
+        "title": "patch source SHA logical_tables_current_json",
+        "status": "PASS",
+        "detail": "saved=ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635 actual=ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635"
+      },
+      {
+        "check_id": "AP023",
+        "title": "patch source SHA condition_ast_current_json",
+        "status": "PASS",
+        "detail": "saved=fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de actual=fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de"
+      },
+      {
+        "check_id": "AP024",
+        "title": "patch source SHA procedure_master_json",
+        "status": "PASS",
+        "detail": "saved=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec actual=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec"
+      },
+      {
+        "check_id": "AP025",
+        "title": "27번이 동일 patch를 검증",
+        "status": "PASS",
+        "detail": "saved=1aa45428903a74bbdd236b041b0c08441e5273d7c38839950ddae296fce4d15f actual=1aa45428903a74bbdd236b041b0c08441e5273d7c38839950ddae296fce4d15f"
+      },
+      {
+        "check_id": "AP026",
+        "title": "27번 PASS 113/0",
+        "status": "PASS",
+        "detail": "{'status': 'PASS', 'pass_count': 113, 'fail_count': 0, 'checks': [{'check_id': 'RV001', 'title': '필수 파일 존재 kdrg_v47_parser_repair_patch_log.json', 'status': 'PASS', 'detail': '/home/runner/workspace/data/kdrg_v47_parser_repair_patch_log.json'}, {'check_id': 'RV002', 'title': '필수 파일 존재 kdrg_v47_full_corpus_integrity_audit.json', 'status': 'PASS', 'detail': '/home/runner/workspace/data/kdrg_v47_full_corpus_integrity_audit.json'}, {'check_id': 'RV003', 'title': '필수 파일 존재 full_corpus_integrity_audit_validation_report.json', 'status': 'PASS', 'detail': '/home/runner/workspace/reports/full_corpus_integrity_audit_validation_report.json'}, {'check_id': 'RV004', 'title': '필수 파일 존재 kdrg_v47_table_section_candidates.json', 'status': 'PASS', 'detail': '/home/runner/workspace/data/kdrg_v47_table_section_candidates.json'}, {'check_id': 'RV005', 'title': '필수 파일 존재 kdrg_v47_logical_tables_current.json', 'status': 'PASS', 'detail': '/home/runner/workspace/data/kdrg_v47_logical_tables_current.json'}, {'check_id': 'RV006', 'title': '필수 파일 존재 kdrg_v47_condition_ast_current.json', 'status': 'PASS', 'detail': '/home/runner/workspace/data/kdrg_v47_condition_ast_current.json'}, {'check_id': 'RV007', 'title': '필수 파일 존재 kdrg_v47_procedure_master.json', 'status': 'PASS', 'detail': '/home/runner/workspace/data/kdrg_v47_procedure_master.json'}, {'check_id': 'RV008', 'title': 'patch schema', 'status': 'PASS', 'detail': 'actual=kdrg-v47-parser-repair-patch-log-v1 expected=kdrg-v47-parser-repair-patch-log-v1'}, {'check_id': 'RV009', 'title': 'audit schema', 'status': 'PASS', 'detail': 'actual=kdrg-v47-full-corpus-integrity-audit-v1 expected=kdrg-v47-full-corpus-integrity-audit-v1'}, {'check_id': 'RV010', 'title': 'audit validation schema', 'status': 'PASS', 'detail': 'actual=kdrg-v47-full-corpus-integrity-audit-validation-report-v1 expected=kdrg-v47-full-corpus-integrity-audit-validation-report-v1'}, {'check_id': 'RV011', 'title': 'sections schema', 'status': 'PASS', 'detail': 'actual=kdrg-v47-table-section-candidates-v1 expected=kdrg-v47-table-section-candidates-v1'}, {'check_id': 'RV012', 'title': 'logical schema', 'status': 'PASS', 'detail': 'actual=kdrg-v47-logical-tables-current-v1 expected=kdrg-v47-logical-tables-current-v1'}, {'check_id': 'RV013', 'title': 'AST schema', 'status': 'PASS', 'detail': 'actual=kdrg-v47-condition-ast-current-v1 expected=kdrg-v47-condition-ast-current-v1'}, {'check_id': 'RV014', 'title': 'procedure schema', 'status': 'PASS', 'detail': 'actual=kdrg-v47-procedure-master-v2 expected=kdrg-v47-procedure-master-v2'}, {'check_id': 'RV015', 'title': '26 patch log upstream PASS', 'status': 'PASS', 'detail': 'PASS'}, {'check_id': 'RV016', 'title': '25A audit upstream PASS', 'status': 'PASS', 'detail': 'PASS'}, {'check_id': 'RV017', 'title': '25B validation upstream PASS', 'status': 'PASS', 'detail': 'PASS'}, {'check_id': 'RV018', 'title': 'current logical upstream PASS', 'status': 'PASS', 'detail': 'PASS'}, {'check_id': 'RV019', 'title': 'current AST upstream PASS', 'status': 'PASS', 'detail': 'PASS'}, {'check_id': 'RV020', 'title': 'patch source hash full_corpus_integrity_audit_json', 'status': 'PASS', 'detail': 'saved=55ef6c589bd2f190bf7e9b92295d91692ba07226b5d28f75d6bd6fdf6e133ec5 actual=55ef6c589bd2f190bf7e9b92295d91692ba07226b5d28f75d6bd6fdf6e133ec5'}, {'check_id': 'RV021', 'title': 'patch source hash full_corpus_integrity_validation_report_json', 'status': 'PASS', 'detail': 'saved=efd939e9e29b51020817c1caf36a97547a2fd0ebe36d085c671aec29569c3c11 actual=efd939e9e29b51020817c1caf36a97547a2fd0ebe36d085c671aec29569c3c11'}, {'check_id': 'RV022', 'title': 'patch source hash table_section_candidates_json', 'status': 'PASS', 'detail': 'saved=13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f actual=13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f'}, {'check_id': 'RV023', 'title': 'patch source hash logical_tables_current_json', 'status': 'PASS', 'detail': 'saved=ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635 actual=ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635'}, {'check_id': 'RV024', 'title': 'patch source hash condition_ast_current_json', 'status': 'PASS', 'detail': 'saved=fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de actual=fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de'}, {'check_id': 'RV025', 'title': 'patch source hash procedure_master_json', 'status': 'PASS', 'detail': 'saved=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec actual=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec'}, {'check_id': 'RV026', 'title': '25B source hash audit_json', 'status': 'PASS', 'detail': 'saved=55ef6c589bd2f190bf7e9b92295d91692ba07226b5d28f75d6bd6fdf6e133ec5 actual=55ef6c589bd2f190bf7e9b92295d91692ba07226b5d28f75d6bd6fdf6e133ec5'}, {'check_id': 'RV027', 'title': '25B source hash section_json', 'status': 'PASS', 'detail': 'saved=13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f actual=13a75a8d814ae404d7ec46e538fe1cd521ee64ca233969e1339081dcc3e4f88f'}, {'check_id': 'RV028', 'title': '25B source hash logical_current_json', 'status': 'PASS', 'detail': 'saved=ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635 actual=ebd05bb81016a739426da520c18a166ce161a31e5476c35a23b6fafbb6971635'}, {'check_id': 'RV029', 'title': '25B source hash ast_current_json', 'status': 'PASS', 'detail': 'saved=fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de actual=fbd5f3f8ec57ad3fde3984168cf2f267efc9caeeb6069621c54fccf6416549de'}, {'check_id': 'RV030', 'title': '25B source hash procedure_json', 'status': 'PASS', 'detail': 'saved=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec actual=c416603abee991b84af75ec697129e9b52498200858031932b082eb86026e8ec'}, {'check_id': 'RV031', 'title': 'operation 317개', 'status': 'PASS', 'detail': '317'}, {'check_id': 'RV032', 'title': 'operation ID 순차·누락 없음', 'status': 'PASS', 'detail': \"first=['REPAIR_OP_0001', 'REPAIR_OP_0002'] last=['REPAIR_OP_0316', 'REPAIR_OP_0317']\"}, {'check_id': 'RV033', 'title': 'operation ID 유일', 'status': 'PASS', 'detail': '317'}, {'check_id': 'RV034', 'title': '모든 operation planned', 'status': 'PASS', 'detail': 'all planned'}, {'check_id': 'RV035', 'title': 'operation SHA256 전수 일치', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV036', 'title': 'operation SHA256 유일', 'status': 'PASS', 'detail': '317'}, {'check_id': 'RV037', 'title': 'category 건수', 'status': 'PASS', 'detail': \"{'p674_named_list_boundary_split': 2, 'neonate_major_problem_semantic_binding': 19, 'next_adrg_heading_leak': 263, 'description_embedded_code_token': 10, 'missed_known_procedure_code': 22, 'numbered_table_variant_coherence': 1}\"}, {'check_id': 'RV038', 'title': 'operation type 건수', 'status': 'PASS', 'detail': \"{'replace_logical_table_codes': 1, 'create_logical_table': 1, 'bind_text_condition_to_logical_table': 19, 'remove_logical_table_code': 273, 'add_logical_table_code': 22, 'replace_condition_table_reference': 1}\"}, {'check_id': 'RV039', 'title': 'summary category counts', 'status': 'PASS', 'detail': \"{'description_embedded_code_token': 10, 'missed_known_procedure_code': 22, 'neonate_major_problem_semantic_binding': 19, 'next_adrg_heading_leak': 263, 'numbered_table_variant_coherence': 1, 'p674_named_list_boundary_split': 2}\"}, {'check_id': 'RV040', 'title': 'summary operation type counts', 'status': 'PASS', 'detail': \"{'add_logical_table_code': 22, 'bind_text_condition_to_logical_table': 19, 'create_logical_table': 1, 'remove_logical_table_code': 273, 'replace_condition_table_reference': 1, 'replace_logical_table_codes': 1}\"}, {'check_id': 'RV041', 'title': 'reference atom 1149', 'status': 'PASS', 'detail': \"{'reference_atom_count': 1149, 'resolved_atom_count': 1044, 'multi_candidate_atom_count': 106, 'numbered_add_on_multi_candidate_atom_count': 6, 'mismatch_count': 1}\"}, {'check_id': 'RV042', 'title': 'resolved reference atom 1044', 'status': 'PASS', 'detail': \"{'reference_atom_count': 1149, 'resolved_atom_count': 1044, 'multi_candidate_atom_count': 106, 'numbered_add_on_multi_candidate_atom_count': 6, 'mismatch_count': 1}\"}, {'check_id': 'RV043', 'title': '복수 후보 atom 106', 'status': 'PASS', 'detail': \"{'reference_atom_count': 1149, 'resolved_atom_count': 1044, 'multi_candidate_atom_count': 106, 'numbered_add_on_multi_candidate_atom_count': 6, 'mismatch_count': 1}\"}, {'check_id': 'RV044', 'title': '번호형 부가코드 복수 후보 6', 'status': 'PASS', 'detail': \"{'reference_atom_count': 1149, 'resolved_atom_count': 1044, 'multi_candidate_atom_count': 106, 'numbered_add_on_multi_candidate_atom_count': 6, 'mismatch_count': 1}\"}, {'check_id': 'RV045', 'title': 'variant mismatch 1', 'status': 'PASS', 'detail': \"[{'adrg': 'C124', 'condition_id': 'COND_C124_0005', 'raw_atom_text': '부가코드1', 'atom_index': 2, 'selected_table_ids': ['LT_C123_002'], 'selected_sources': ['C123'], 'coherent_sources': ['C126']}]\"}, {'check_id': 'RV046', 'title': 'variant mismatch C124', 'status': 'PASS', 'detail': \"[{'adrg': 'C124', 'condition_id': 'COND_C124_0005', 'raw_atom_text': '부가코드1', 'atom_index': 2, 'selected_table_ids': ['LT_C123_002'], 'selected_sources': ['C123'], 'coherent_sources': ['C126']}]\"}, {'check_id': 'RV047', 'title': 'variant old table', 'status': 'PASS', 'detail': \"{'adrg': 'C124', 'condition_id': 'COND_C124_0005', 'raw_atom_text': '부가코드1', 'atom_index': 2, 'selected_table_ids': ['LT_C123_002'], 'selected_sources': ['C123'], 'coherent_sources': ['C126']}\"}, {'check_id': 'RV048', 'title': 'variant coherent source C126', 'status': 'PASS', 'detail': \"{'adrg': 'C124', 'condition_id': 'COND_C124_0005', 'raw_atom_text': '부가코드1', 'atom_index': 2, 'selected_table_ids': ['LT_C123_002'], 'selected_sources': ['C123'], 'coherent_sources': ['C126']}\"}, {'check_id': 'RV049', 'title': '독립 expected signature 317', 'status': 'PASS', 'detail': '317'}, {'check_id': 'RV050', 'title': 'operation signature 누락 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV051', 'title': 'operation signature 과잉 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV052', 'title': 'P674 trim operation 존재', 'status': 'PASS', 'detail': 'True'}, {'check_id': 'RV053', 'title': 'P674 create operation 존재', 'status': 'PASS', 'detail': 'True'}, {'check_id': 'RV054', 'title': 'P674 before hash', 'status': 'PASS', 'detail': 'hash'}, {'check_id': 'RV055', 'title': 'P674 after 47개', 'status': 'PASS', 'detail': '47'}, {'check_id': 'RV056', 'title': 'P674 after code 집합', 'status': 'PASS', 'detail': 'after=47 expected=47'}, {'check_id': 'RV057', 'title': 'P674 after 모두 시술 기준축', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV058', 'title': '신규 neonate TABLE ID', 'status': 'PASS', 'detail': 'LT_REPAIR_MDC15_NEONATE_MAJOR_PROBLEM_TABLE01'}, {'check_id': 'RV059', 'title': '신규 neonate TABLE role diagnosis', 'status': 'PASS', 'detail': 'diagnosis'}, {'check_id': 'RV060', 'title': '신규 neonate TABLE 3239개', 'status': 'PASS', 'detail': '3239'}, {'check_id': 'RV061', 'title': '신규 neonate TABLE code 집합', 'status': 'PASS', 'detail': 'actual=3239 expected=3239'}, {'check_id': 'RV062', 'title': '신규 neonate TABLE 중복 없음', 'status': 'PASS', 'detail': '3239'}, {'check_id': 'RV063', 'title': '신규 neonate provenance', 'status': 'PASS', 'detail': 'all SEC_P674_004'}, {'check_id': 'RV064', 'title': 'major problem node 19', 'status': 'PASS', 'detail': '19'}, {'check_id': 'RV065', 'title': 'binding operation 19', 'status': 'PASS', 'detail': '19'}, {'check_id': 'RV066', 'title': 'binding 대상 전수 일치', 'status': 'PASS', 'detail': 'actual=19 expected=19'}, {'check_id': 'RV067', 'title': 'binding 최소 진단개수 의미', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV068', 'title': 'heading operation 263', 'status': 'PASS', 'detail': '263'}, {'check_id': 'RV069', 'title': 'heading finding 전수 일치', 'status': 'PASS', 'detail': 'actual=263 expected=263'}, {'check_id': 'RV070', 'title': 'heading before row 전수 일치', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV071', 'title': 'description operation 10', 'status': 'PASS', 'detail': '10'}, {'check_id': 'RV072', 'title': 'description finding 전수 일치', 'status': 'PASS', 'detail': 'actual=10 expected=10'}, {'check_id': 'RV073', 'title': 'description before row 전수 일치', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV074', 'title': 'missed procedure operation 22', 'status': 'PASS', 'detail': '22'}, {'check_id': 'RV075', 'title': 'missed procedure finding 전수 일치', 'status': 'PASS', 'detail': 'actual=22 expected=22'}, {'check_id': 'RV076', 'title': 'missed procedure before/after 정합', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV077', 'title': 'variant operation 1', 'status': 'PASS', 'detail': '1'}, {'check_id': 'RV078', 'title': 'variant before/after 정합', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV079', 'title': 'category index 전수 일치', 'status': 'PASS', 'detail': 'categories=6'}, {'check_id': 'RV080', 'title': '영향 TABLE 281', 'status': 'PASS', 'detail': '281'}, {'check_id': 'RV081', 'title': '영향 AST 150', 'status': 'PASS', 'detail': '150'}, {'check_id': 'RV082', 'title': 'summary 영향 TABLE 일치', 'status': 'PASS', 'detail': '281'}, {'check_id': 'RV083', 'title': 'summary 영향 AST 일치', 'status': 'PASS', 'detail': '150'}, {'check_id': 'RV084', 'title': 'TABLE operation index 전수 일치', 'status': 'PASS', 'detail': '281'}, {'check_id': 'RV085', 'title': 'AST operation index 전수 일치', 'status': 'PASS', 'detail': '150'}, {'check_id': 'RV086', 'title': '메모리 적용 오류 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV087', 'title': '메모리 적용 317', 'status': 'PASS', 'detail': \"{'replace_logical_table_codes': 1, 'create_logical_table': 1, 'bind_text_condition_to_logical_table': 19, 'remove_logical_table_code': 273, 'add_logical_table_code': 22, 'replace_condition_table_reference': 1}\"}, {'check_id': 'RV088', 'title': '메모리 적용 type 건수', 'status': 'PASS', 'detail': \"{'replace_logical_table_codes': 1, 'create_logical_table': 1, 'bind_text_condition_to_logical_table': 19, 'remove_logical_table_code': 273, 'add_logical_table_code': 22, 'replace_condition_table_reference': 1}\"}, {'check_id': 'RV089', 'title': '적용 전 TABLE 1307', 'status': 'PASS', 'detail': '1307'}, {'check_id': 'RV090', 'title': '적용 후 TABLE 1308', 'status': 'PASS', 'detail': '1308'}, {'check_id': 'RV091', 'title': '적용 전 code row 43133', 'status': 'PASS', 'detail': '43133'}, {'check_id': 'RV092', 'title': '적용 후 code row 42882', 'status': 'PASS', 'detail': '42882'}, {'check_id': 'RV093', 'title': '조건 AST 390 유지', 'status': 'PASS', 'detail': '390'}, {'check_id': 'RV094', 'title': 'AST node 1727 유지', 'status': 'PASS', 'detail': '1727'}, {'check_id': 'RV095', 'title': '수정 후 P674 47개', 'status': 'PASS', 'detail': '47'}, {'check_id': 'RV096', 'title': '수정 후 P674 시술 code 집합', 'status': 'PASS', 'detail': 'actual=47'}, {'check_id': 'RV097', 'title': '신규 neonate 3239개', 'status': 'PASS', 'detail': '3239'}, {'check_id': 'RV098', 'title': '신규 neonate 진단 code 집합', 'status': 'PASS', 'detail': 'actual=3239'}, {'check_id': 'RV099', 'title': '수정 후 제목 누입 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV100', 'title': '수정 후 설명 토큰 오인 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV101', 'title': '수정 후 시술 누락 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV102', 'title': '수정 후 시술·부가 role 미등록 코드 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV103', 'title': '수정 후 TABLE 내부 중복 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV104', 'title': '수정 후 unique_code_count 일치', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV105', 'title': '수정 후 major problem 19개 연결', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV106', 'title': '수정 후 C124 ADC7B TABLE 연결', 'status': 'PASS', 'detail': \"['LT_C126_002']\"}, {'check_id': 'RV107', 'title': '수정 후 미등록 AST TABLE 참조 0', 'status': 'PASS', 'detail': '[]'}, {'check_id': 'RV108', 'title': '본문 고유 진단 source-only 101 row 보존', 'status': 'PASS', 'detail': '101'}, {'check_id': 'RV109', 'title': 'source-only 진단 자동 삭제 없음', 'status': 'PASS', 'detail': 'preserved=101 expected=101'}, {'check_id': 'RV110', 'title': '독립검증 전 gate true', 'status': 'PASS', 'detail': \"{'ready_for_independent_validation': True, 'ready_for_application': False, 'required_next_step': '27_validate_kdrg_parser_repair_patch_log.py', 'current_data_modified': False, 'user_decision_required_count': 0}\"}, {'check_id': 'RV111', 'title': '적용 gate 아직 false', 'status': 'PASS', 'detail': \"{'ready_for_independent_validation': True, 'ready_for_application': False, 'required_next_step': '27_validate_kdrg_parser_repair_patch_log.py', 'current_data_modified': False, 'user_decision_required_count': 0}\"}, {'check_id': 'RV112', 'title': 'current data modified false', 'status': 'PASS', 'detail': \"{'ready_for_independent_validation': True, 'ready_for_application': False, 'required_next_step': '27_validate_kdrg_parser_repair_patch_log.py', 'current_data_modified': False, 'user_decision_required_count': 0}\"}, {'check_id': 'RV113', 'title': '사용자 판단 필요 0', 'status': 'PASS', 'detail': \"{'ready_for_independent_validation': True, 'ready_for_application': False, 'required_next_step': '27_validate_kdrg_parser_repair_patch_log.py', 'current_data_modified': False, 'user_decision_required_count': 0}\"}], 'issues': []}"
+      },
+      {
+        "check_id": "AP027",
+        "title": "operation 317개",
+        "status": "PASS",
+        "detail": "317"
+      },
+      {
+        "check_id": "AP028",
+        "title": "operation SHA 전수 일치",
+        "status": "PASS",
+        "detail": "317"
+      },
+      {
+        "check_id": "AP029",
+        "title": "적용 전 TABLE 1307개",
+        "status": "PASS",
+        "detail": "1307"
+      },
+      {
+        "check_id": "AP030",
+        "title": "적용 전 code row 43133개",
+        "status": "PASS",
+        "detail": "43133"
+      },
+      {
+        "check_id": "AP031",
+        "title": "적용 전 AST 390개",
+        "status": "PASS",
+        "detail": "390"
+      },
+      {
+        "check_id": "AP032",
+        "title": "317개 operation 적용 오류 없음",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "AP033",
+        "title": "317개 operation 전부 APPLIED",
+        "status": "PASS",
+        "detail": "Counter({'APPLIED': 317})"
+      },
+      {
+        "check_id": "AP034",
+        "title": "적용 후 TABLE 1308개",
+        "status": "PASS",
+        "detail": "1308"
+      },
+      {
+        "check_id": "AP035",
+        "title": "적용 후 code row 42882개",
+        "status": "PASS",
+        "detail": "42882"
+      },
+      {
+        "check_id": "AP036",
+        "title": "적용 후 고유 코드 16571개",
+        "status": "PASS",
+        "detail": "16571"
+      },
+      {
+        "check_id": "AP037",
+        "title": "조건 AST 390개 보존",
+        "status": "PASS",
+        "detail": "390"
+      },
+      {
+        "check_id": "AP038",
+        "title": "AST node 1727개 보존",
+        "status": "PASS",
+        "detail": "1727"
+      },
+      {
+        "check_id": "AP039",
+        "title": "P674 시술 table4 47개",
+        "status": "PASS",
+        "detail": "47"
+      },
+      {
+        "check_id": "AP040",
+        "title": "신생아 주요문제 TABLE 3239개",
+        "status": "PASS",
+        "detail": "3239"
+      },
+      {
+        "check_id": "AP041",
+        "title": "다음 ADRG 제목 누입 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "AP042",
+        "title": "설명문 코드 오인 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "AP043",
+        "title": "시술코드 누락 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "AP044",
+        "title": "시술 역할 미등록 코드 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "AP045",
+        "title": "TABLE 중복 코드 0",
+        "status": "PASS",
+        "detail": "0"
+      },
+      {
+        "check_id": "AP046",
+        "title": "미등록 AST TABLE 참조 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "AP047",
+        "title": "AST 그래프 오류 0",
+        "status": "PASS",
+        "detail": "[]"
+      },
+      {
+        "check_id": "AP048",
+        "title": "본문 고유 진단 101 row 보존",
+        "status": "PASS",
+        "detail": "preserved=101 expected=101"
+      },
+      {
+        "check_id": "AP049",
+        "title": "C124 부가코드1 C126 variant 연결",
+        "status": "PASS",
+        "detail": "['LT_C126_002']"
+      },
+      {
+        "check_id": "AP050",
+        "title": "신생아 의미 연결 AST 11개",
+        "status": "PASS",
+        "detail": "['AST_P641', 'AST_P642', 'AST_P651', 'AST_P652', 'AST_P654', 'AST_P661', 'AST_P662', 'AST_P664', 'AST_P671', 'AST_P672', 'AST_P674']"
+      }
+    ],
+    "issues": []
+  }
+}

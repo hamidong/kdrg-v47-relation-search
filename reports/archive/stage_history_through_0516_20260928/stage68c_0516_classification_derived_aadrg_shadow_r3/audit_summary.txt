@@ -1,0 +1,33 @@
+Stage68C R3 — Exact Relation Classification Shadow Audit
+================================================================
+audit_complete=PASS
+operating_json_sha256=PASS
+ADRG exact entity_type unique=0 expected=1132
+AADRG exact entity_type unique=0
+relation_fixture_results=None
+fixture F111/F112/F121/F122={'F111': False, 'F112': False, 'F121': False, 'F122': False}
+
+[F111 classification]
+direct={'codes': [], 'labels': []}
+detail={'codes': ['A'], 'labels': ['질병군 분류(전문)']}
+relation={'codes': [], 'labels': []}
+ROOT_CAUSE=FIXTURE_RELATION_RESULT_MISMATCH
+
+[renderer]
+currentRelationRequest_exact_shape=True
+relation_reads_candidate_summary_abc=False
+relation_has_derived_aadrg_section=False
+renderDerivedAadrgList_exists=True
+derived_reads_classification=True
+renderAdrgDetail_exists=True
+adrg_detail_has_derived_header=False
+adrg_detail_calls_derived=False
+adrg_detail_default_closed=False
+public_search_aadrg_leak=False
+
+[canonical classification quality]
+ADRG missing both=0 partial=0
+AADRG missing both=0 partial=0
+
+제품/운영 JSON 수정 없음.
+상세 payload와 validator coverage는 audit.json에 저장.

@@ -1,0 +1,80 @@
+KDRG V4.7 Electron Stage61B / 0.5.11 UI Requirement Repair Actual R3
+================================================================================================
+status=PASS
+readiness=READY_FOR_0511_VERSION_BUMP_AND_COMMIT_PREP
+
+[PREFLIGHT]
+{"head": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "remote_main": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "branch": "main", "version": "0.5.10", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "tag_commit": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "actual_sha_before": {"electron/renderer/app.js": "4f6a5634da3115a497b9c854d40b9650298b642dd9181791851c285efd0af21a", "electron/renderer/ui-formatters.js": "bca68aa8fd7d82d9d4cfa0f9a37c8900e9c2638e04aa279b0ba2c052c6b1baab", "electron/renderer/styles.css": "54a16cfecac8a0e1841ca8ee71efddbe53ff3c4abf2ab2f68df355cc803e6933", "electron/tests/validate-stage59b-ui.js": "a374a6c6d53eb8846a116bfd1c39de2da3e17580d4737ccfb1263f2bf954a044"}, "artifact_sha": {"electron/renderer/app.js": "08f1b4dac93f7cb8f2bc1b07b611af09f1dfe695a56d50d7c95593be1edc30a1", "electron/renderer/ui-formatters.js": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02", "electron/renderer/styles.css": "f89331c45b46fd02c967b4282892ca9e94962a50f8789ddc6e4c82a012a8227c", "electron/tests/validate-stage59b-ui.js": "ac449291ba73d06f51446ef8990da94315b387035540f32e83e2ecf61e390bc7"}, "allowed_unrelated_deletions": ["44_build_kdrg_windows_runtime_regression.py", "44_fix_kdrg_windows_bundle_diagnostics.py", "44_fix_kdrg_windows_source_smoke.py", "45_validate_kdrg_windows_ci_utf8_output.py", "46_validate_kdrg_release_version_v021.py", "49_validate_kdrg_pyside_ui_semantics.py", "50A_validate_kdrg_electron_skeleton.py", "51D_validate_kdrg_windows_packaged_ui.py"], "staged_before_auto_unstage": ["44_build_kdrg_windows_runtime_regression.py", "44_fix_kdrg_windows_bundle_diagnostics.py", "44_fix_kdrg_windows_source_smoke.py", "45_validate_kdrg_windows_ci_utf8_output.py", "46_validate_kdrg_release_version_v021.py", "49_validate_kdrg_pyside_ui_semantics.py", "50A_validate_kdrg_electron_skeleton.py", "51D_validate_kdrg_windows_packaged_ui.py"], "auto_unstaged_cleanup_deletions": ["44_build_kdrg_windows_runtime_regression.py", "44_fix_kdrg_windows_bundle_diagnostics.py", "44_fix_kdrg_windows_source_smoke.py", "45_validate_kdrg_windows_ci_utf8_output.py", "46_validate_kdrg_release_version_v021.py", "49_validate_kdrg_pyside_ui_semantics.py", "50A_validate_kdrg_electron_skeleton.py", "51D_validate_kdrg_windows_packaged_ui.py"], "staged_after_auto_unstage": []}
+
+[BACKUP]
+{"electron/renderer/app.js": {"path": "/home/runner/workspace/reports/stage61b_0511_ui_requirement_repair_actual_r3/backup/electron/renderer/app.js", "sha256": "4f6a5634da3115a497b9c854d40b9650298b642dd9181791851c285efd0af21a"}, "electron/renderer/ui-formatters.js": {"path": "/home/runner/workspace/reports/stage61b_0511_ui_requirement_repair_actual_r3/backup/electron/renderer/ui-formatters.js", "sha256": "bca68aa8fd7d82d9d4cfa0f9a37c8900e9c2638e04aa279b0ba2c052c6b1baab"}, "electron/renderer/styles.css": {"path": "/home/runner/workspace/reports/stage61b_0511_ui_requirement_repair_actual_r3/backup/electron/renderer/styles.css", "sha256": "54a16cfecac8a0e1841ca8ee71efddbe53ff3c4abf2ab2f68df355cc803e6933"}, "electron/tests/validate-stage59b-ui.js": {"path": "/home/runner/workspace/reports/stage61b_0511_ui_requirement_repair_actual_r3/backup/electron/tests/validate-stage59b-ui.js", "sha256": "a374a6c6d53eb8846a116bfd1c39de2da3e17580d4737ccfb1263f2bf954a044"}}
+
+[APPLY]
+{"actual_sha_after": {"electron/renderer/app.js": "08f1b4dac93f7cb8f2bc1b07b611af09f1dfe695a56d50d7c95593be1edc30a1", "electron/renderer/ui-formatters.js": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02", "electron/renderer/styles.css": "f89331c45b46fd02c967b4282892ca9e94962a50f8789ddc6e4c82a012a8227c", "electron/tests/validate-stage59b-ui.js": "ac449291ba73d06f51446ef8990da94315b387035540f32e83e2ecf61e390bc7"}, "changed_files": ["44_build_kdrg_windows_runtime_regression.py", "44_fix_kdrg_windows_bundle_diagnostics.py", "44_fix_kdrg_windows_source_smoke.py", "45_validate_kdrg_windows_ci_utf8_output.py", "46_validate_kdrg_release_version_v021.py", "49_validate_kdrg_pyside_ui_semantics.py", "50A_validate_kdrg_electron_skeleton.py", "51D_validate_kdrg_windows_packaged_ui.py", "electron/renderer/app.js", "electron/renderer/styles.css", "electron/renderer/ui-formatters.js", "electron/tests/validate-stage59b-ui.js"], "target_changed_files": ["electron/renderer/app.js", "electron/renderer/styles.css", "electron/renderer/ui-formatters.js", "electron/tests/validate-stage59b-ui.js"], "preserved_unrelated_deletions": ["44_build_kdrg_windows_runtime_regression.py", "44_fix_kdrg_windows_bundle_diagnostics.py", "44_fix_kdrg_windows_source_smoke.py", "45_validate_kdrg_windows_ci_utf8_output.py", "46_validate_kdrg_release_version_v021.py", "49_validate_kdrg_pyside_ui_semantics.py", "50A_validate_kdrg_electron_skeleton.py", "51D_validate_kdrg_windows_packaged_ui.py"], "diff_check": ""}
+
+[VALIDATION]
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check renderer/ui-formatters.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node -e 
+const path=require('node:path');
+const {KdrgSearchService}=require('./src/kdrg-search-service');
+const Ui=require('./renderer/ui-formatters');
+
+const service=new KdrgSearchService(
+  path.resolve('..','data','kdrg_v47_search_integrated_v3.json')
+);
+
+const d=service.getDetail('AADRG','P6510').detail;
+if(d.adrg!=='P651') throw new Error('P6510 parent mismatch');
+if(!d.condition_ast) throw new Error('P6510 inherited condition_ast missing');
+
+const tree=Ui.buildPrettyConditionTree(d.condition_ast);
+if(!tree) throw new Error('P651 pretty tree missing');
+
+function count(n){
+  if(!n) return 0;
+  if(n.kind==='group') {
+    return 1+(n.children||[]).reduce((a,c)=>a+count(c),0);
+  }
+  if(n.kind==='not') return 1+count(n.child);
+  if(n.kind==='without') return 1+count(n.left)+count(n.right);
+  return 1;
+}
+
+if(count(tree)<3) {
+  throw new Error('P651 pretty tree unexpectedly shallow');
+}
+
+console.log(
+  '[PASS] P6510 inherited AST -> pretty tree',
+  JSON.stringify({kind:tree.kind,nodes:count(tree)})
+);
+
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/home/runner/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/home/runner/workspace/electron cmd=node tests/validate-release-version.js 0.5.10
+
+[SEMANTIC GUARDS]
+{"related_aadrg_click_entity_type": true, "related_aadrg_click_entity_id": true, "legacy_pretty_removed": true, "pretty_tree_used": true, "formatter_pretty_tree_exported": true, "code_hero_related_aadrg": true, "long_name_wrap": true, "validator_click_guard": true, "validator_p651_nested_guard": true, "metric_aadrg_still_correct": true}
+
+[FINAL GUARDS]
+{"head": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "remote_main": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "tag_commit": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "package_version": "0.5.10", "lock_version": "0.5.10", "staged": "", "allowed_unrelated_deletions": ["44_build_kdrg_windows_runtime_regression.py", "44_fix_kdrg_windows_bundle_diagnostics.py", "44_fix_kdrg_windows_source_smoke.py", "45_validate_kdrg_windows_ci_utf8_output.py", "46_validate_kdrg_release_version_v021.py", "49_validate_kdrg_pyside_ui_semantics.py", "50A_validate_kdrg_electron_skeleton.py", "51D_validate_kdrg_windows_packaged_ui.py"]}
+
+[ROLLBACK]
+{"attempted": false}
+
+[NEXT]
+- Actual 4개 파일 적용 및 동일 전체검증 PASS.
+- 아직 package/package-lock은 0.5.10이며 commit/push/tag/release 미수행.
+- 다음 단계에서 0.5.11 버전 증가 + 전체 재검증 + 정확한 대상만 commit 준비.
+
+report_txt=/home/runner/workspace/stage61b_0511_ui_requirement_repair_actual_r3.txt
+report_json=/home/runner/workspace/stage61b_0511_ui_requirement_repair_actual_r3.json

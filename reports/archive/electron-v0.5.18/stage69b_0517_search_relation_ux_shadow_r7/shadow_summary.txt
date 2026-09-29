@@ -1,0 +1,2 @@
+[FAIL] Stage69B R7 / 0.5.17 Search + Relation UX Shadow
+Stop: 50B expected 계약 블록에 related_aadrgs가 없음

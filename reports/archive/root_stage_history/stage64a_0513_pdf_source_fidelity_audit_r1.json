@@ -1,0 +1,26 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0513_SHADOW",
+  "started_at": "2026-09-21 00:14:49",
+  "preflight": {
+    "head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "version": "0.5.12",
+    "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "source_blocks_sha256": "98c594e91f6a7cd641f10c613659e4f0389e9ab454fd96b172723f08653b251c"
+  },
+  "pdf": {},
+  "summary": {},
+  "p651": {},
+  "immutability": {
+    "head": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "origin_main": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "tag_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+    "tracked_worktree_clean": true,
+    "staging_empty": true,
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"
+  },
+  "error": "E: --pdf not found: /home/runner/workspace/KDRG V4.7 분류집.pdf\nTraceback (most recent call last):\n  File \"/home/runner/workspace/64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R1.py\", line 261, in main\n    p['preflight']=preflight(); pdf=find_pdf(a.pdf); ext,pages=extract_pdf(pdf); must(len(pages)-1>1000,f'unexpected PDF page count: {len(pages)-1}'); idx=['']+[nq(x) for x in pages[1:]]; p['pdf']={'path':str(pdf),'sha256':sha(pdf),'page_count':len(pages)-1,'extractor':ext}\n                                    ^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R1.py\", line 92, in find_pdf\n    p=Path(explicit).expanduser().resolve(); must(p.is_file(),f'--pdf not found: {p}'); return p\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R1.py\", line 26, in must\n    if not v: raise E(m)\n              ^^^^^^^^^^\nE: --pdf not found: /home/runner/workspace/KDRG V4.7 분류집.pdf\n",
+  "finished_at": "2026-09-21 00:14:51"
+}

@@ -1,0 +1,2 @@
+[FAIL] Stage69B R2 / 0.5.17 Search + Relation UX Shadow
+Stop: 관계검색 결과 기존 분류 badge anchor 개수 불일치: 0

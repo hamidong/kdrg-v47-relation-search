@@ -1,0 +1,48 @@
+Stage68C R4 — KDRG 0.5.16 Service-Native Shadow Audit
+====================================================================
+audit_complete=PASS
+operating_json_sha256=PASS
+service_ready=True
+ADRG=1132 / expected=1132
+AADRG=1233 / expected=1233
+recordMaps.ADRG=1132
+recordMaps.AADRG=1233
+public_search_types=['CODE', 'ADRG']
+
+[actual fixture i214 + m6569 / AND]
+total_count=0
+F111/F112/F121/F122_present=False
+F111_direct_labels=['질병군 분류(전문)']
+F111_detail_labels=['질병군 분류(전문)']
+F111_relation_labels=[]
+ROOT_CAUSE=ACTUAL_FIXTURE_F111_NOT_RETURNED
+
+[full ADRG audit]
+adrg_scanned=1132
+derived_aadrg_total=1233
+relation_eligible=371
+relation_candidate_found=370
+relation_compared_with_classification=363
+direct_missing=0
+detail_missing=0
+direct_detail_mismatch=0
+derived_missing_entity_id=0
+derived_missing_title=0
+derived_missing_code=21
+derived_missing_label=0
+relation_candidate_not_found=1
+relation_missing_labels=0
+relation_direct_mismatch=0
+
+[renderer current source]
+relation_reads_candidate_summary_abc=False
+render_derived_function_exists=True
+derived_reads_classification_code=True
+derived_reads_classification_label=True
+adrg_detail_has_derived_header=False
+adrg_detail_calls_derived_exact=False
+derived_default_closed=False
+relation_has_derived_header=False
+
+제품/운영 JSON 수정 없음.
+이 보고서의 ROOT_CAUSE와 anomaly_counts를 기준으로 68D Actual 범위를 결정한다.

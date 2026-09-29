@@ -1,0 +1,453 @@
+KDRG V4.7 Electron Stage66D0 / 0.5.14 State + Actions Storage Diagnosis R2
+============================================================================================================
+status=PASS
+classification=RELEASE_COMMIT_PUSHED_RC_SUCCESS
+
+[GIT STATE]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "head_commit": {
+    "exists": true,
+    "commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "parents": [
+      "2f00202a2fa9589bb5f05cf615b962537ad58fbc"
+    ],
+    "subject": "chore: update KDRG icon for Electron 0.5.14",
+    "author": "hamidong",
+    "date": "2026-09-21T08:31:26Z",
+    "changed_files": [
+      "50D_validate_kdrg_electron_windows_packaging.py",
+      "electron/package-lock.json",
+      "electron/package.json",
+      "electron/renderer/assets/icon-kdrg-v47.ico",
+      "electron/renderer/assets/icon-kdrg-v47.png"
+    ]
+  },
+  "base_commit": {
+    "exists": true,
+    "commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+    "parents": [
+      "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c"
+    ],
+    "subject": "feat: release Electron 0.5.13",
+    "author": "hamidong",
+    "date": "2026-09-21T05:48:04Z",
+    "changed_files": [
+      "50D_validate_kdrg_electron_windows_packaging.py",
+      "electron/package-lock.json",
+      "electron/package.json",
+      "electron/renderer/app.js",
+      "electron/renderer/assets/icon-kdrg-v47.ico",
+      "electron/renderer/assets/icon-kdrg-v47.png",
+      "electron/renderer/index.html",
+      "electron/renderer/official-condition-text.js",
+      "electron/tests/validate-packaging-config.js",
+      "electron/tests/validate-stage59b-ui.js"
+    ]
+  },
+  "old_tag_local": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+  "old_tag_remote": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+  "new_tag_local": "",
+  "new_tag_remote": "",
+  "staged_files": [],
+  "tracked_unstaged_files": [],
+  "unstaged_release_files": [],
+  "untracked_count": 259,
+  "untracked_sample": [
+    ".replit",
+    "61A_UI_REPAIR_SHADOW_R5.py",
+    "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R3.py",
+    "61C_PREP_KDRG_0511_RELEASE_R2.py",
+    "62C_APPLY_KDRG_WORKSPACE_FULL_CLEANUP_R1.py",
+    "63A_AUDIT_KDRG_0512_AADRG_PRESENTATION_FULL_R3.py",
+    "63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py",
+    "63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R2.py",
+    "63B_BUILD_KDRG_0512_CONDITION_PRESENTATION_SHADOW_R1.py",
+    "63B_BUILD_KDRG_0512_CONDITION_PRESENTATION_SHADOW_R2.py",
+    "63B_BUILD_KDRG_0512_CONDITION_PRESENTATION_SHADOW_R3.py",
+    "63C_APPLY_KDRG_0512_CONDITION_PRESENTATION_ACTUAL_R1.py",
+    "63D_COMMIT_PUSH_KDRG_LEGACY_CLEANUP_R1.py",
+    "63E_PREP_KDRG_0512_RELEASE_R1.py",
+    "63F_COMMIT_PUSH_RC_KDRG_0512_R1.py",
+    "63G_TAG_RELEASE_VERIFY_KDRG_0512_R1.py",
+    "64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R1.py",
+    "64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R2.py",
+    "64A_AUDIT_KDRG_0513_PDF_SOURCE_FIDELITY_R3.py",
+    "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py",
+    "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py",
+    "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R3.py",
+    "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R4.py",
+    "64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R5.py",
+    "64C_APPLY_KDRG_0513_OFFICIAL_SOURCE_ACTUAL_R1.py",
+    "64D_AUDIT_KDRG_0513_FINAL_SOURCE_R1.py",
+    "65A_AUDIT_KDRG_0513_ICON_PIPELINE_R1.py",
+    "65B_BUILD_KDRG_0513_ICON_SHADOW_R1.py",
+    "65B_BUILD_KDRG_0513_ICON_SHADOW_R2.py",
+    "65B_BUILD_KDRG_0513_ICON_SHADOW_R3.py"
+  ]
+}
+
+[STAGE66C REPORT]
+{
+  "exists": true,
+  "status": "PASS",
+  "readiness": "READY_FOR_0514_COMMIT_AND_RC",
+  "head": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+  "origin_main": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+  "version": "0.5.14",
+  "staged_files": [
+    "50D_validate_kdrg_electron_windows_packaging.py",
+    "electron/package-lock.json",
+    "electron/package.json",
+    "electron/renderer/assets/icon-kdrg-v47.ico",
+    "electron/renderer/assets/icon-kdrg-v47.png"
+  ],
+  "release_sha256": {
+    "50D_validate_kdrg_electron_windows_packaging.py": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843",
+    "electron/package.json": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+    "electron/package-lock.json": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+    "electron/renderer/assets/icon-kdrg-v47.ico": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "electron/renderer/assets/icon-kdrg-v47.png": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d"
+  }
+}
+
+[RELEASE FILE SHA]
+{
+  "50D_validate_kdrg_electron_windows_packaging.py": {
+    "exists": true,
+    "actual_sha256": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843",
+    "expected_sha256": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843",
+    "match": true
+  },
+  "electron/package.json": {
+    "exists": true,
+    "actual_sha256": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+    "expected_sha256": "6fe591d7d95e1bf0befbade10bb2c7bb633df8dbf6f1e77b4e8a1c3dbd42201d",
+    "match": true
+  },
+  "electron/package-lock.json": {
+    "exists": true,
+    "actual_sha256": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+    "expected_sha256": "f8e4c4f64b8a57f2350b536aa025cac99c98b5a3e579178fbaaaa0748ee3ae34",
+    "match": true
+  },
+  "electron/renderer/assets/icon-kdrg-v47.ico": {
+    "exists": true,
+    "actual_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "expected_sha256": "2321ec9bd820e50e8da73d6faf63f7b15d3a4ceb02da2ed54f4d9332a66a8c45",
+    "match": true
+  },
+  "electron/renderer/assets/icon-kdrg-v47.png": {
+    "exists": true,
+    "actual_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "expected_sha256": "6ddc9f093a82cf9c5f1cc910fce1a0b101352305c71fbc38ae578e11bf93a79d",
+    "match": true
+  }
+}
+
+[RUNTIME]
+{
+  "exists": true,
+  "actual_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "expected_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "match": true
+}
+
+[WORKFLOW RUNS FOR CURRENT HEAD]
+[
+  {
+    "conclusion": "success",
+    "createdAt": "2026-09-21T08:31:34Z",
+    "databaseId": 35578352878,
+    "event": "workflow_dispatch",
+    "headBranch": "main",
+    "headSha": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "status": "completed",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35578352878"
+  }
+]
+
+[0.5.14 RELEASE/TAG STATE]
+{
+  "exists": false,
+  "query_output": "release not found\n"
+}
+
+[WORKFLOW STORAGE SUMMARY]
+{
+  "workflow": ".github/workflows/build-electron-windows.yml",
+  "sha256": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06",
+  "line_count": 428,
+  "storage_assessment": "NO_UPLOAD_ARTIFACT_REFERENCE_FOUND",
+  "counts": {
+    "upload_artifact": 0,
+    "download_artifact": 0,
+    "retention_days": 0,
+    "release_action": 1,
+    "gh_release_cli": 1,
+    "workflow_dispatch": 1,
+    "smoke_evidence": 7,
+    "artifact_generic": 6
+  }
+}
+
+[WORKFLOW MATCHES]
+{
+  "upload_artifact": [],
+  "download_artifact": [],
+  "retention_days": [],
+  "release_action": [
+    {
+      "line": 395,
+      "text": "        uses: softprops/action-gh-release@v2"
+    }
+  ],
+  "gh_release_cli": [
+    {
+      "line": 420,
+      "text": "          gh release upload $tag $evidenceZip --clobber"
+    }
+  ],
+  "workflow_dispatch": [
+    {
+      "line": 7,
+      "text": "  workflow_dispatch: {}"
+    }
+  ],
+  "smoke_evidence": [
+    {
+      "line": 271,
+      "text": "          $evidenceZip = Join-Path $PWD \"electron\\dist\\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip\""
+    },
+    {
+      "line": 283,
+      "text": "          Write-Host \"===== UI smoke evidence =====\""
+    },
+    {
+      "line": 406,
+      "text": "      - name: UI smoke evidence 선택 업로드"
+    },
+    {
+      "line": 412,
+      "text": "          $evidenceZip = Join-Path $PWD \"electron\\dist\\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip\""
+    },
+    {
+      "line": 416,
+      "text": "            Write-Warning \"UI smoke evidence ZIP이 생성되지 않아 선택 업로드를 건너뜁니다.\""
+    },
+    {
+      "line": 424,
+      "text": "            Write-Warning \"UI smoke evidence 선택 업로드 실패: exit=$uploadExitCode\""
+    },
+    {
+      "line": 428,
+      "text": "          Write-Host \"[PASS] UI smoke evidence 선택 업로드 완료\""
+    }
+  ],
+  "artifact_generic": [
+    {
+      "line": 246,
+      "text": "        id: artifact"
+    },
+    {
+      "line": 274,
+      "text": "            -ExePath \"${{ steps.artifact.outputs.exe_path }}\" `"
+    },
+    {
+      "line": 346,
+      "text": "          $exePath = \"${{ steps.artifact.outputs.exe_path }}\""
+    },
+    {
+      "line": 348,
+      "text": "          \"$hash  ${{ steps.artifact.outputs.exe_name }}\" |"
+    },
+    {
+      "line": 389,
+      "text": "          \"- Actions artifact upload: 사용하지 않음\" >> $env:GITHUB_STEP_SUMMARY"
+    },
+    {
+      "line": 401,
+      "text": "            electron/dist/${{ steps.artifact.outputs.exe_name }}"
+    }
+  ]
+}
+
+[WORKFLOW CONTEXT EXCERPTS]
+--- EXCERPT 1 / lines 1-14 ---
+0001: name: Build Electron Windows portable and publish Release
+0002: 
+0003: "on":
+0004:   push:
+0005:     tags:
+0006:       - "electron-v*"
+0007:   workflow_dispatch: {}
+0008: 
+0009: permissions:
+0010:   contents: write
+0011: 
+0012: concurrency:
+0013:   group: kdrg-electron-windows-${{ github.ref }}
+0014:   cancel-in-progress: false
+
+--- EXCERPT 2 / lines 239-253 ---
+0239:         shell: pwsh
+0240:         run: |
+0241:           $npmCli = "${{ steps.npm_cli.outputs.npm_cli }}"
+0242:           & node $npmCli run dist:win
+0243:           exit $LASTEXITCODE
+0244: 
+0245:       - name: portable exe 경로 확인
+0246:         id: artifact
+0247:         shell: pwsh
+0248:         run: |
+0249:           $exe = Get-ChildItem "electron/dist" `
+0250:             -Filter "KDRG_V47_Relation_Search_Electron_*_Portable.exe" `
+0251:             -File |
+0252:             Sort-Object LastWriteTime -Descending |
+0253:             Select-Object -First 1
+
+--- EXCERPT 3 / lines 264-278 ---
+0264: 
+0265:       - name: packaged exe 데이터·검색·renderer 기동검증
+0266:         continue-on-error: true
+0267:         shell: pwsh
+0268:         run: |
+0269:           $reportPath = Join-Path $env:RUNNER_TEMP "kdrg_electron_packaged_smoke_report.json"
+0270:           $screenshotDirectory = Join-Path $env:RUNNER_TEMP "kdrg_electron_packaged_ui_smoke"
+0271:           $evidenceZip = Join-Path $PWD "electron\dist\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip"
+0272: 
+0273:           & "electron/scripts/verify-windows-portable.ps1" `
+0274:             -ExePath "${{ steps.artifact.outputs.exe_path }}" `
+0275:             -ReportPath $reportPath `
+0276:             -ScreenshotDirectory $screenshotDirectory `
+0277:             -EvidenceZipPath $evidenceZip
+0278: 
+
+--- EXCERPT 4 / lines 276-290 ---
+0276:             -ScreenshotDirectory $screenshotDirectory `
+0277:             -EvidenceZipPath $evidenceZip
+0278: 
+0279:           if ($LASTEXITCODE -ne 0) {
+0280:             exit $LASTEXITCODE
+0281:           }
+0282: 
+0283:           Write-Host "===== UI smoke evidence ====="
+0284:           Get-Item $evidenceZip | Format-List FullName,Length,LastWriteTime
+0285:           Get-FileHash $evidenceZip -Algorithm SHA256 | Format-List
+0286: 
+0287: 
+0288:       - name: packaged 핵심검증 판정
+0289:         shell: pwsh
+0290:         run: |
+
+--- EXCERPT 5 / lines 339-353 ---
+0339:           Write-Host "missing_steps=$($missing -join ',')"
+0340:           Write-Host "message=$message"
+0341:           exit 1
+0342: 
+0343:       - name: SHA256 생성
+0344:         shell: pwsh
+0345:         run: |
+0346:           $exePath = "${{ steps.artifact.outputs.exe_path }}"
+0347:           $hash = (Get-FileHash $exePath -Algorithm SHA256).Hash.ToLower()
+0348:           "$hash  ${{ steps.artifact.outputs.exe_name }}" |
+0349:             Set-Content "electron/dist/SHA256SUMS_ELECTRON.txt" -Encoding ascii
+0350:           Get-Content "electron/dist/SHA256SUMS_ELECTRON.txt"
+0351: 
+0352:       - name: Electron 버전 정보 추출
+0353:         id: version
+
+--- EXCERPT 6 / lines 382-396 ---
+0382:           "- npm CLI 11.17.0 SHA512 bootstrap: PASS" >> $env:GITHUB_STEP_SUMMARY
+0383:           "- Fresh npm cache + retry policy: PASS" >> $env:GITHUB_STEP_SUMMARY
+0384:           "- Search/UI/security regression: PASS" >> $env:GITHUB_STEP_SUMMARY
+0385:           "- electron-builder portable x64: PASS" >> $env:GITHUB_STEP_SUMMARY
+0386:           "- Packaged core smoke: PASS (UI 세부판정 WARNING 허용)" >> $env:GITHUB_STEP_SUMMARY
+0387:           "- Packaged UI 핵심 기능 B013·B014·B018·B022·L033·9610: PASS" >> $env:GITHUB_STEP_SUMMARY
+0388:           "- UI screenshot·문구·세부판정: WARNING 허용" >> $env:GITHUB_STEP_SUMMARY
+0389:           "- Actions artifact upload: 사용하지 않음" >> $env:GITHUB_STEP_SUMMARY
+0390:           "- GitHub Release 필수 Assets: exe·SHA256" >> $env:GITHUB_STEP_SUMMARY
+0391:           "- GitHub Release 선택 Asset: UI 증거 ZIP(생성된 경우)" >> $env:GITHUB_STEP_SUMMARY
+0392: 
+0393:       - name: GitHub Release 생성 및 필수 Assets 업로드
+0394:         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+0395:         uses: softprops/action-gh-release@v2
+0396:         with:
+
+--- EXCERPT 7 / lines 394-408 ---
+0394:         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+0395:         uses: softprops/action-gh-release@v2
+0396:         with:
+0397:           tag_name: ${{ steps.version.outputs.git_tag }}
+0398:           name: ${{ steps.version.outputs.release_title }}
+0399:           prerelease: ${{ contains(steps.version.outputs.app_version, '-') }}
+0400:           files: |
+0401:             electron/dist/${{ steps.artifact.outputs.exe_name }}
+0402:             electron/dist/SHA256SUMS_ELECTRON.txt
+0403:           fail_on_unmatched_files: true
+0404:           generate_release_notes: true
+0405: 
+0406:       - name: UI smoke evidence 선택 업로드
+0407:         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+0408:         shell: pwsh
+
+--- EXCERPT 8 / lines 405-419 ---
+0405: 
+0406:       - name: UI smoke evidence 선택 업로드
+0407:         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+0408:         shell: pwsh
+0409:         env:
+0410:           GH_TOKEN: ${{ github.token }}
+0411:         run: |
+0412:           $evidenceZip = Join-Path $PWD "electron\dist\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip"
+0413:           $tag = "${{ steps.version.outputs.git_tag }}"
+0414: 
+0415:           if (-not (Test-Path $evidenceZip -PathType Leaf)) {
+0416:             Write-Warning "UI smoke evidence ZIP이 생성되지 않아 선택 업로드를 건너뜁니다."
+0417:             exit 0
+0418:           }
+0419: 
+
+--- EXCERPT 9 / lines 413-427 ---
+0413:           $tag = "${{ steps.version.outputs.git_tag }}"
+0414: 
+0415:           if (-not (Test-Path $evidenceZip -PathType Leaf)) {
+0416:             Write-Warning "UI smoke evidence ZIP이 생성되지 않아 선택 업로드를 건너뜁니다."
+0417:             exit 0
+0418:           }
+0419: 
+0420:           gh release upload $tag $evidenceZip --clobber
+0421:           $uploadExitCode = $LASTEXITCODE
+0422: 
+0423:           if ($uploadExitCode -ne 0) {
+0424:             Write-Warning "UI smoke evidence 선택 업로드 실패: exit=$uploadExitCode"
+0425:             exit 0
+0426:           }
+0427: 
+
+--- EXCERPT 10 / lines 421-428 ---
+0421:           $uploadExitCode = $LASTEXITCODE
+0422: 
+0423:           if ($uploadExitCode -ne 0) {
+0424:             Write-Warning "UI smoke evidence 선택 업로드 실패: exit=$uploadExitCode"
+0425:             exit 0
+0426:           }
+0427: 
+0428:           Write-Host "[PASS] UI smoke evidence 선택 업로드 완료"
+
+[INTERPRETATION]
+- STAGE66C_READY_NOT_COMMITTED: Stage66C 상태 그대로. commit/push 전.
+- RELEASE_COMMIT_LOCAL_ONLY: 5개 파일 commit은 되었으나 push 전.
+- RELEASE_COMMIT_PUSHED_RC_NOT_CONFIRMED: push까지 되었고 RC 성공은 아직 확인 안 됨.
+- RELEASE_COMMIT_PUSHED_RC_SUCCESS: commit/push/RC까지 이미 완료.
+- TAG_ALREADY_EXISTS_REVIEW_REQUIRED: 0.5.14 태그가 이미 있으므로 추가 태그 작업 금지.
+- UNEXPECTED_STATE_REVIEW_REQUIRED: 예상 경로 외 상태이므로 수정 없이 원인부터 확인.
+
+[NEXT]
+- 이 보고서 결과로 실제 0.5.14 진행 위치와 Actions artifact 사용 지점을 확정.
+- 그 전까지 추가 commit/push/tag/release 작업은 하지 않음.
+
+report_txt=/home/runner/workspace/stage66d0_0514_state_actions_diagnosis_r2.txt
+report_json=/home/runner/workspace/stage66d0_0514_state_actions_diagnosis_r2.json

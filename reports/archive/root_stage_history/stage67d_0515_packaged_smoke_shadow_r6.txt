@@ -1,0 +1,1332 @@
+KDRG V4.7 Electron Stage67D / 0.5.15 Packaged Smoke ADRG Migration Shadow R6
+====================================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_FINAL_SHADOW_AUDIT
+
+[PREFLIGHT]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "base_tag": "electron-v0.5.14",
+  "package_version": "0.5.14",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "stage67c": {
+    "status": "PASS",
+    "readiness": "READY_FOR_0515_PACKAGED_SMOKE_MIGRATION",
+    "full_npm_run_check": "DEFERRED_TO_STAGE67D"
+  }
+}
+
+[SHADOW]
+{
+  "source_shadow": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+  "shadow_root": "/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r6",
+  "required_files": [
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+    "electron/package.json",
+    "50B_validate_kdrg_electron_search_service.py",
+    "50C_validate_kdrg_electron_renderer_ui.py",
+    "50D_validate_kdrg_electron_windows_packaging.py"
+  ]
+}
+
+[MIGRATION]
+{
+  "source_summary": {
+    "public_type_checks_migrated": 3,
+    "selected_aadrg_assignments_hidden": 1,
+    "inline_table_adrg_label_preserved": 1,
+    "relation_validator_contract": "ADRG_NATIVE",
+    "relation_fixture_contract": "ADRG_NATIVE_AADRG_NULL"
+  },
+  "stage60c_summary": {
+    "wrapper_source_old_assertion_count": 6,
+    "wrapper_source_new_assertion_count": 8,
+    "legacy_wrapper_assertions": [
+      "assert.match(wrapperSource, /KdrgSearchService/);",
+      "assert.match(wrapperSource, /findLegacyRelationSmokeFixture/);",
+      "assert.match(wrapperSource, /recordMaps\\.CODE/);",
+      "assert.match(wrapperSource, /recordMaps\\.AADRG/);",
+      "assert.match(wrapperSource, /non-AADRG public result/);",
+      "assert.match(wrapperSource, /parent_adrg/);"
+    ],
+    "public_relation_contract": "ADRG",
+    "internal_aadrg_preservation": "recordMaps.AADRG"
+  },
+  "modified_files": [
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+    "electron/tests/validate-stage67d-packaged-adrg-contract.js"
+  ]
+}
+
+[SHA CONTRACT]
+{
+  "electron/src/packaged-runtime-smoke.js": {
+    "shadow_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+    "actual_sha256": "8ae6c023b866297394c7e7fea6769f79dc805e14455e4eeb5f7cc13db1e1fa2e"
+  },
+  "electron/tests/validate-packaged-runtime-smoke.js": {
+    "shadow_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+    "actual_sha256": "bc37b02d2145398c6aed0a013399b45a33f4604a254edabbdac2c99a309c214b"
+  },
+  "electron/tests/validate-stage60c-packaged-relation-smoke.js": {
+    "shadow_sha256": "8f3e2f85bab1f4f45d7883035f8930efe33e31ee094ee3b59db5b554ea5a943e",
+    "actual_sha256": "0480d004e13b268b1cf87827847b9865bada191d3595c7cb3c25e62850bed6fa"
+  },
+  "electron/tests/validate-stage67d-packaged-adrg-contract.js": {
+    "shadow_sha256": "d880ba9af40f54971837fb02bc639c472654623e6b322116342c23daf499febb",
+    "actual_sha256": null
+  },
+  "electron/src/kdrg-search-service.js": {
+    "shadow_sha256": "e8ecc5c3d5f62c5c538217af72e02859ddf5f399d8c6c1499b7376064e937c1c",
+    "actual_sha256": "7503e01012bff87da6ab8a89a7089ff79fa84a53f4394a924caad0d9369c7703"
+  },
+  "electron/src/search-result-contract.js": {
+    "shadow_sha256": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+    "actual_sha256": "9bc40606a88c015fb917c8bdb57a5be56cc94ba61b40d9de1d9cff36020c150f"
+  },
+  "electron/renderer/app.js": {
+    "shadow_sha256": "d81d159a4483d2b2a4977d9065eaea6e67a28a24bcc12c79534605a2fec752b8",
+    "actual_sha256": "2c759e856d39e21437bd16cbfb15f3b68b410198f891a0ea3a280bcaf15e3491"
+  },
+  "electron/renderer/index.html": {
+    "shadow_sha256": "ec7fdd99dba3e7427811edc9e79fa0e91a1b659d0bc63697fb2f91bd2a096093",
+    "actual_sha256": "63019736d0fb2a40de79aa7ad0cac652bfb3561f28f291e0b8fdbd7d87ba9fe2"
+  },
+  "electron/renderer/ui-formatters.js": {
+    "shadow_sha256": "965663c798f71450d0a592429e3a3df28b74fcd0a410428695499a8066950e77",
+    "actual_sha256": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02"
+  },
+  "50B_validate_kdrg_electron_search_service.py": {
+    "shadow_sha256": "db7d6208ded0f3b6f049b13bda362abb43b31128b9aabe59a5a31d9890717ba9",
+    "actual_sha256": "7a6861a57436352761fec0063408ac60c0a408485a038fc342a31fddfc132010"
+  },
+  "50C_validate_kdrg_electron_renderer_ui.py": {
+    "shadow_sha256": "fc472f1d7b3a8551261a7a8e2839edb878cd922e57bf22f2190ff033a78b659f",
+    "actual_sha256": "77036caeafb3882b12cda91345fac547943bae4113dac83790fbd115647443a9"
+  },
+  "50D_validate_kdrg_electron_windows_packaging.py": {
+    "shadow_sha256": "249f27355eefb8ae211754a2eb88633536c202b309c1d097e2084dd586b509cd",
+    "actual_sha256": "a3914da7f343107aa708751919aa1e37eb80f3a06d3a2143168510d0f02f8843"
+  }
+}
+
+[VALIDATION]
+
+[GUARDS]
+{
+  "npm_run_check": null,
+  "root_50b": null,
+  "root_50c": null,
+  "root_50d": null,
+  "runtime_unchanged": null,
+  "package_version_unchanged": null,
+  "actual_workspace_unchanged": null
+}
+
+[BLOCKER]
+StageError: validation failed: node electron/tests/validate-stage60c-packaged-relation-smoke.js
+node:assert:768
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /function validateRelationResponse\(\.\.\.args\)/. Input:
+
+"'use strict';\n" +
+  '\n' +
+  "const crypto = require('node:crypto');\n" +
+  "const fs = require('node:fs');\n" +
+  "const path = require('node:path');\n" +
+  '\n' +
+  "const RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-search-response-v1';\n" +
+  "const RELATION_RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-relation-response-v1';\n" +
+  "const UI_SMOKE_SCHEMA_VERSION = 'kdrg-packaged-ui-smoke-v1';\n" +
+  '\n' +
+  'const EXPECTED_COUNTS = Object.freeze({\n' +
+  '  adrg: 1132,\n' +
+  '  aadrg: 1233,\n' +
+  '  rdrg: 2699,\n' +
+  '  tables: 1308,\n' +
+  '  codes: 16571,\n' +
+  '  conditionAst: 390,\n' +
+  '  conditionTableOccurrences: 939,\n' +
+  '});\n' +
+  '\n' +
+  'const UI_FIXTURES = Object.freeze([\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B013',\n" +
+  "    aadrg: 'B0130',\n" +
+  "    search_query: 'B013',\n" +
+  "    expected_table_ids: Object.freeze(['LT_B018_002']),\n" +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  "    required_table_labels: Object.freeze(['시술명 table2']),\n" +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B014',\n" +
+  "    aadrg: 'B0140',\n" +
+  "    search_query: 'B014',\n" +
+  "    expected_table_ids: Object.freeze(['LT_B018_003']),\n" +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  "    required_table_labels: Object.freeze(['시술명 table3']),\n" +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B018',\n" +
+  "    aadrg: 'B0180',\n" +
+  "    search_query: 'B0180',\n" +
+  '    expected_table_ids: Object.freeze([\n' +
+  "      'LT_B018_001',\n" +
+  "      'LT_B018_004',\n" +
+  "      'LT_B018_005',\n" +
+  '    ]),\n' +
+  '    forbidden_table_ids: Object.freeze([\n' +
+  "      'LT_B018_002',\n" +
+  "      'LT_B018_003',\n" +
+  '    ]),\n' +
+  '    required_table_labels: Object.freeze([\n' +
+  "      '주진단명 또는 기타진단명 table1',\n" +
+  "      '시술명 table4',\n" +
+  "      '시술명 table5',\n" +
+  '    ]),\n' +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B022',\n" +
+  "    aadrg: 'B0220',\n" +
+  "    search_query: 'B0220',\n" +
+  '    expected_table_ids: Object.freeze([]),\n' +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  '    required_table_labels: Object.freeze([]),\n' +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'L033',\n" +
+  "    aadrg: 'L0330',\n" +
+  "    search_query: 'L033',\n" +
+  '    expected_table_ids: Object.freeze([]),\n' +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  '    required_table_labels: Object.freeze([]),\n' +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: '9610',\n" +
+  "    aadrg: '96100',\n" +
+  "    search_query: '9610',\n" +
+  '    expected_table_ids: Object.freeze([]),\n' +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  '    required_table_labels: Object.freeze([]),\n' +
+  '  }),\n' +
+  ']);\n' +
+  '\n' +
+  'const REQUIRED_DETAIL_LABELS = Object.freeze([\n' +
+  "  '분류 조건',\n" +
+  "  '조건 상세',\n" +
+  "  '원문 근거',\n" +
+  ']);\n' +
+  '\n' +
+  'const FORBIDDEN_DETAIL_LABELS = Object.freeze([\n' +
+  "  '기본 분류 TABLE',\n" +
+  "  '추가 분기조건',\n" +
+  ']);\n' +
+  '\n' +
+  'function shouldRunPackagedSmoke(argv = process.argv, env = process.env) {\n' +
+  "  return env.KDRG_ELECTRON_SMOKE_TEST === '1'\n" +
+  "    || argv.includes('--kdrg-smoke-test');\n" +
+  '}\n' +
+  '\n' +
+  'function isPlainObject(value) {\n' +
+  "  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);\n" +
+  '}\n' +
+  '\n' +
+  'function requirePlainObject(value, label) {\n' +
+  '  if (!isPlainObject(value)) {\n' +
+  '    throw new Error(`${label} contract mismatch: expected object`);\n' +
+  '  }\n' +
+  '  return value;\n' +
+  '}\n' +
+  '\n' +
+  'function uniqueStrings(values) {\n' +
+  '  return [...new Set(\n' +
+  '    (Array.isArray(values) ? values : [])\n' +
+  "      .map((value) => String(value ?? '').trim())\n" +
+  '      .filter(Boolean),\n' +
+  '  )];\n' +
+  '}\n' +
+  '\n' +
+  'function sortedStrings(values) {\n' +
+  '  return uniqueStrings(values).sort((left, right) => left.localeCompare(right));\n' +
+  '}\n' +
+  '\n' +
+  'function sameStringSet(actual, expected) {\n' +
+  '  return JSON.stringify(sortedStrings(actual)) === JSON.stringify(sortedStrings(expected));\n' +
+  '}\n' +
+  '\n' +
+  'function validateSearchResponse(search) {\n' +
+  "  requirePlainObject(search, 'packaged search response');\n" +
+  '  if (search.schema_version !== RESPONSE_SCHEMA_VERSION) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged search response contract mismatch: schema_version=${search.schema_version}, expected=${RESPONSE_SCHEMA_VERSION}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Array.isArray(search.results)) {\n' +
+  '    const legacyItems = Array.isArray(search.items);\n' +
+  '    throw new Error(\n' +
+  "      `packaged search response contract mismatch: results must be an array${legacyItems ? '; obsolete items field detected' : ''}`,\n" +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Number.isInteger(search.total_count) || search.total_count < search.results.length) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged search response contract mismatch: total_count=${search.total_count}, results=${search.results.length}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  for (const [index, item] of search.results.entries()) {\n' +
+  "    if (!isPlainObject(item) || typeof item.entity_id !== 'string' || !item.entity_id) {\n" +
+  '      throw new Error(\n' +
+  '        `packaged search response contract mismatch: invalid results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '  }\n' +
+  '  return search.results;\n' +
+  '}\n' +
+  '\n' +
+  'function validateLegacyRelationResponse(response, expectedAdrg = null) {\n' +
+  "  requirePlainObject(response, 'packaged relation response');\n" +
+  '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+  "    throw new Error('packaged relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+  '  }\n' +
+  '  if (!Array.isArray(response.results)) {\n' +
+  "    throw new Error('packaged relation response contract mismatch: results must be an array');\n" +
+  '  }\n' +
+  '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  for (const [index, item] of response.results.entries()) {\n' +
+  '    if (!isPlainObject(item)\n' +
+  "      || item.entity_type !== 'ADRG'\n" +
+  "      || typeof item.entity_id !== 'string'\n" +
+  "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+  '      || !Array.isArray(item.code_matches)\n' +
+  '      || !Array.isArray(item.condition_groups)\n' +
+  '      || item.condition_groups.some((group) => !Array.isArray(group.exclude_table_ids)\n' +
+  '        || !Array.isArray(group.exclude_tables))) {\n' +
+  '      throw new Error(`packaged relation response contract mismatch: invalid results[${index}]`);\n' +
+  '    }\n' +
+  '  }\n' +
+  '  if (expectedAdrg && !response.results.some((item) => item.entity_id === expectedAdrg)) {\n' +
+  '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+  '  }\n' +
+  '  return response.results;\n' +
+  '}\n' +
+  '\n' +
+  'function validateRelationResponse(response, expectedAdrg = null) {\n' +
+  "  requirePlainObject(response, 'packaged relation response');\n" +
+  '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged ADRG relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+  "    throw new Error('packaged ADRG relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+  '  }\n' +
+  '  if (!Array.isArray(response.results)) {\n' +
+  "    throw new Error('packaged ADRG relation response contract mismatch: results must be an array');\n" +
+  '  }\n' +
+  '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged ADRG relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!response.results.length) {\n' +
+  "    throw new Error('packaged ADRG relation response contract mismatch: empty results');\n" +
+  '  }\n' +
+  '\n' +
+  '  const seen = new Set();\n' +
+  '  for (const [index, item] of response.results.entries()) {\n' +
+  '    if (!isPlainObject(item)\n' +
+  "      || String(item.entity_type ?? '').toUpperCase() !== 'ADRG'\n" +
+  "      || typeof item.entity_id !== 'string'\n" +
+  '      || !item.entity_id\n' +
+  "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+  '      || !Array.isArray(item.code_matches)\n' +
+  '      || !Array.isArray(item.condition_groups)\n' +
+  '      || item.condition_groups.some(\n' +
+  '        (group) => !Array.isArray(group.exclude_table_ids)\n' +
+  '          || !Array.isArray(group.exclude_tables),\n' +
+  '      )) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: invalid results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '\n' +
+  '    const entityId = String(item.entity_id);\n' +
+  '    if (seen.has(entityId)) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: duplicate ADRG results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '    seen.add(entityId);\n' +
+  '\n' +
+  "    const parentAdrg = String(item.parent_adrg ?? '').trim();\n" +
+  '    if (parentAdrg && parentAdrg !== entityId) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: parent projection results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '\n' +
+  "    const summaryParentAdrg = String(item.summary?.parent_adrg ?? '').trim();\n" +
+  '    if (summaryParentAdrg && summaryParentAdrg !== entityId) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: summary parent projection results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '\n' +
+  "    if (Object.prototype.hasOwnProperty.call(item, 'aadrg_records')\n" +
+  '      && item.aadrg_records !== undefined) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: public AADRG payload leak results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '  }\n' +
+  '\n' +
+  '  if (expectedAdrg\n' +
+  '    && !response.results.some((item) => String(item.entity_id) === String(expectedAdrg))) {\n' +
+  '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+  '  }\n' +
+  '\n' +
+  '  return response.results;\n' +
+  '}\n' +
+  '\n' +
+  'function findLegacyRelationSmokeFixture(service) {\n' +
+  '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+  '  const tableMap = service?.recordMaps?.TABLE;\n' +
+  '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+  "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+  '  }\n' +
+  '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+  '    const exclusionIds = new Set((groups ?? []).flatMap((group) => group.exclude_table_ids ?? []));\n' +
+  '    for (const group of groups ?? []) {\n' +
+  '      const codes = [];\n' +
+  '      const seen = new Set();\n' +
+  '      for (const tableId of group.include_table_ids ?? []) {\n' +
+  '        if (exclusionIds.has(tableId)) continue;\n' +
+  '        const table = tableMap.get(String(tableId));\n' +
+  '        for (const code of table?.codes ?? []) {\n' +
+  "          const normalized = String(code ?? '').replace(/[^0-9A-Za-z]/g, '').toUpperCase()"... 28844 more characters
+
+    at Object.<anonymous> (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r6/electron/tests/validate-stage60c-packaged-relation-smoke.js:45:8)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: "'use strict';\n" +
+    '\n' +
+    "const crypto = require('node:crypto');\n" +
+    "const fs = require('node:fs');\n" +
+    "const path = require('node:path');\n" +
+    '\n' +
+    "const RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-search-response-v1';\n" +
+    "const RELATION_RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-relation-response-v1';\n" +
+    "const UI_SMOKE_SCHEMA_VERSION = 'kdrg-packaged-ui-smoke-v1';\n" +
+    '\n' +
+    'const EXPECTED_COUNTS = Object.freeze({\n' +
+    '  adrg: 1132,\n' +
+    '  aadrg: 1233,\n' +
+    '  rdrg: 2699,\n' +
+    '  tables: 1308,\n' +
+    '  codes: 16571,\n' +
+    '  conditionAst: 390,\n' +
+    '  conditionTableOccurrences: 939,\n' +
+    '});\n' +
+    '\n' +
+    'const UI_FIXTURES = Object.freeze([\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B013',\n" +
+    "    aadrg: 'B0130',\n" +
+    "    search_query: 'B013',\n" +
+    "    expected_table_ids: Object.freeze(['LT_B018_002']),\n" +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    "    required_table_labels: Object.freeze(['시술명 table2']),\n" +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B014',\n" +
+    "    aadrg: 'B0140',\n" +
+    "    search_query: 'B014',\n" +
+    "    expected_table_ids: Object.freeze(['LT_B018_003']),\n" +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    "    required_table_labels: Object.freeze(['시술명 table3']),\n" +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B018',\n" +
+    "    aadrg: 'B0180',\n" +
+    "    search_query: 'B0180',\n" +
+    '    expected_table_ids: Object.freeze([\n' +
+    "      'LT_B018_001',\n" +
+    "      'LT_B018_004',\n" +
+    "      'LT_B018_005',\n" +
+    '    ]),\n' +
+    '    forbidden_table_ids: Object.freeze([\n' +
+    "      'LT_B018_002',\n" +
+    "      'LT_B018_003',\n" +
+    '    ]),\n' +
+    '    required_table_labels: Object.freeze([\n' +
+    "      '주진단명 또는 기타진단명 table1',\n" +
+    "      '시술명 table4',\n" +
+    "      '시술명 table5',\n" +
+    '    ]),\n' +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B022',\n" +
+    "    aadrg: 'B0220',\n" +
+    "    search_query: 'B0220',\n" +
+    '    expected_table_ids: Object.freeze([]),\n' +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    '    required_table_labels: Object.freeze([]),\n' +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'L033',\n" +
+    "    aadrg: 'L0330',\n" +
+    "    search_query: 'L033',\n" +
+    '    expected_table_ids: Object.freeze([]),\n' +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    '    required_table_labels: Object.freeze([]),\n' +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: '9610',\n" +
+    "    aadrg: '96100',\n" +
+    "    search_query: '9610',\n" +
+    '    expected_table_ids: Object.freeze([]),\n' +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    '    required_table_labels: Object.freeze([]),\n' +
+    '  }),\n' +
+    ']);\n' +
+    '\n' +
+    'const REQUIRED_DETAIL_LABELS = Object.freeze([\n' +
+    "  '분류 조건',\n" +
+    "  '조건 상세',\n" +
+    "  '원문 근거',\n" +
+    ']);\n' +
+    '\n' +
+    'const FORBIDDEN_DETAIL_LABELS = Object.freeze([\n' +
+    "  '기본 분류 TABLE',\n" +
+    "  '추가 분기조건',\n" +
+    ']);\n' +
+    '\n' +
+    'function shouldRunPackagedSmoke(argv = process.argv, env = process.env) {\n' +
+    "  return env.KDRG_ELECTRON_SMOKE_TEST === '1'\n" +
+    "    || argv.includes('--kdrg-smoke-test');\n" +
+    '}\n' +
+    '\n' +
+    'function isPlainObject(value) {\n' +
+    "  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);\n" +
+    '}\n' +
+    '\n' +
+    'function requirePlainObject(value, label) {\n' +
+    '  if (!isPlainObject(value)) {\n' +
+    '    throw new Error(`${label} contract mismatch: expected object`);\n' +
+    '  }\n' +
+    '  return value;\n' +
+    '}\n' +
+    '\n' +
+    'function uniqueStrings(values) {\n' +
+    '  return [...new Set(\n' +
+    '    (Array.isArray(values) ? values : [])\n' +
+    "      .map((value) => String(value ?? '').trim())\n" +
+    '      .filter(Boolean),\n' +
+    '  )];\n' +
+    '}\n' +
+    '\n' +
+    'function sortedStrings(values) {\n' +
+    '  return uniqueStrings(values).sort((left, right) => left.localeCompare(right));\n' +
+    '}\n' +
+    '\n' +
+    'function sameStringSet(actual, expected) {\n' +
+    '  return JSON.stringify(sortedStrings(actual)) === JSON.stringify(sortedStrings(expected));\n' +
+    '}\n' +
+    '\n' +
+    'function validateSearchResponse(search) {\n' +
+    "  requirePlainObject(search, 'packaged search response');\n" +
+    '  if (search.schema_version !== RESPONSE_SCHEMA_VERSION) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged search response contract mismatch: schema_version=${search.schema_version}, expected=${RESPONSE_SCHEMA_VERSION}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Array.isArray(search.results)) {\n' +
+    '    const legacyItems = Array.isArray(search.items);\n' +
+    '    throw new Error(\n' +
+    "      `packaged search response contract mismatch: results must be an array${legacyItems ? '; obsolete items field detected' : ''}`,\n" +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Number.isInteger(search.total_count) || search.total_count < search.results.length) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged search response contract mismatch: total_count=${search.total_count}, results=${search.results.length}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  for (const [index, item] of search.results.entries()) {\n' +
+    "    if (!isPlainObject(item) || typeof item.entity_id !== 'string' || !item.entity_id) {\n" +
+    '      throw new Error(\n' +
+    '        `packaged search response contract mismatch: invalid results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '  }\n' +
+    '  return search.results;\n' +
+    '}\n' +
+    '\n' +
+    'function validateLegacyRelationResponse(response, expectedAdrg = null) {\n' +
+    "  requirePlainObject(response, 'packaged relation response');\n" +
+    '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+    "    throw new Error('packaged relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+    '  }\n' +
+    '  if (!Array.isArray(response.results)) {\n' +
+    "    throw new Error('packaged relation response contract mismatch: results must be an array');\n" +
+    '  }\n' +
+    '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  for (const [index, item] of response.results.entries()) {\n' +
+    '    if (!isPlainObject(item)\n' +
+    "      || item.entity_type !== 'ADRG'\n" +
+    "      || typeof item.entity_id !== 'string'\n" +
+    "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+    '      || !Array.isArray(item.code_matches)\n' +
+    '      || !Array.isArray(item.condition_groups)\n' +
+    '      || item.condition_groups.some((group) => !Array.isArray(group.exclude_table_ids)\n' +
+    '        || !Array.isArray(group.exclude_tables))) {\n' +
+    '      throw new Error(`packaged relation response contract mismatch: invalid results[${index}]`);\n' +
+    '    }\n' +
+    '  }\n' +
+    '  if (expectedAdrg && !response.results.some((item) => item.entity_id === expectedAdrg)) {\n' +
+    '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+    '  }\n' +
+    '  return response.results;\n' +
+    '}\n' +
+    '\n' +
+    'function validateRelationResponse(response, expectedAdrg = null) {\n' +
+    "  requirePlainObject(response, 'packaged relation response');\n" +
+    '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged ADRG relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+    "    throw new Error('packaged ADRG relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+    '  }\n' +
+    '  if (!Array.isArray(response.results)) {\n' +
+    "    throw new Error('packaged ADRG relation response contract mismatch: results must be an array');\n" +
+    '  }\n' +
+    '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged ADRG relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!response.results.length) {\n' +
+    "    throw new Error('packaged ADRG relation response contract mismatch: empty results');\n" +
+    '  }\n' +
+    '\n' +
+    '  const seen = new Set();\n' +
+    '  for (const [index, item] of response.results.entries()) {\n' +
+    '    if (!isPlainObject(item)\n' +
+    "      || String(item.entity_type ?? '').toUpperCase() !== 'ADRG'\n" +
+    "      || typeof item.entity_id !== 'string'\n" +
+    '      || !item.entity_id\n' +
+    "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+    '      || !Array.isArray(item.code_matches)\n' +
+    '      || !Array.isArray(item.condition_groups)\n' +
+    '      || item.condition_groups.some(\n' +
+    '        (group) => !Array.isArray(group.exclude_table_ids)\n' +
+    '          || !Array.isArray(group.exclude_tables),\n' +
+    '      )) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: invalid results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '\n' +
+    '    const entityId = String(item.entity_id);\n' +
+    '    if (seen.has(entityId)) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: duplicate ADRG results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '    seen.add(entityId);\n' +
+    '\n' +
+    "    const parentAdrg = String(item.parent_adrg ?? '').trim();\n" +
+    '    if (parentAdrg && parentAdrg !== entityId) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: parent projection results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '\n' +
+    "    const summaryParentAdrg = String(item.summary?.parent_adrg ?? '').trim();\n" +
+    '    if (summaryParentAdrg && summaryParentAdrg !== entityId) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: summary parent projection results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '\n' +
+    "    if (Object.prototype.hasOwnProperty.call(item, 'aadrg_records')\n" +
+    '      && item.aadrg_records !== undefined) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: public AADRG payload leak results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  if (expectedAdrg\n' +
+    '    && !response.results.some((item) => String(item.entity_id) === String(expectedAdrg))) {\n' +
+    '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+    '  }\n' +
+    '\n' +
+    '  return response.results;\n' +
+    '}\n' +
+    '\n' +
+    'function findLegacyRelationSmokeFixture(service) {\n' +
+    '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+    '  const tableMap = service?.recordMaps?.TABLE;\n' +
+    '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+    "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+    '  }\n' +
+    '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+    '    const exclusionIds = new Set((groups ?? []).flatMap((group) => group.exclude_table_ids ?? []));\n' +
+    '    for (const group of groups ?? []) {\n' +
+    '      const codes = [];\n' +
+    '      const seen = new Set();\n' +
+    '      for (const tableId of group.include_table_ids ?? []) {\n' +
+    '        if (exclusionIds.has(tableId)) continue;\n' +
+    '        const table = tableMap.get(String(tableId));\n' +
+    '        for (const code of table?.codes ?? []) {\n' +
+    "          const normalized = String(code ?? '').replace(/[^0-9A-Za-z]/g, '').toUpperCase()"... 28844 more characters,
+  expected: /function validateRelationResponse\(\.\.\.args\)/,
+  operator: 'match'
+}
+
+Node.js v20.20.0
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R6.py", line 1327, in main
+    payload["validation"] = validate_shadow()
+                            ^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R6.py", line 1165, in validate_shadow
+    check(["node", STAGE60C_REL])
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R6.py", line 1142, in check
+    require(
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R6.py", line 87, in require
+    raise StageError(message)
+StageError: validation failed: node electron/tests/validate-stage60c-packaged-relation-smoke.js
+node:assert:768
+    throw err;
+    ^
+
+AssertionError [ERR_ASSERTION]: The input did not match the regular expression /function validateRelationResponse\(\.\.\.args\)/. Input:
+
+"'use strict';\n" +
+  '\n' +
+  "const crypto = require('node:crypto');\n" +
+  "const fs = require('node:fs');\n" +
+  "const path = require('node:path');\n" +
+  '\n' +
+  "const RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-search-response-v1';\n" +
+  "const RELATION_RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-relation-response-v1';\n" +
+  "const UI_SMOKE_SCHEMA_VERSION = 'kdrg-packaged-ui-smoke-v1';\n" +
+  '\n' +
+  'const EXPECTED_COUNTS = Object.freeze({\n' +
+  '  adrg: 1132,\n' +
+  '  aadrg: 1233,\n' +
+  '  rdrg: 2699,\n' +
+  '  tables: 1308,\n' +
+  '  codes: 16571,\n' +
+  '  conditionAst: 390,\n' +
+  '  conditionTableOccurrences: 939,\n' +
+  '});\n' +
+  '\n' +
+  'const UI_FIXTURES = Object.freeze([\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B013',\n" +
+  "    aadrg: 'B0130',\n" +
+  "    search_query: 'B013',\n" +
+  "    expected_table_ids: Object.freeze(['LT_B018_002']),\n" +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  "    required_table_labels: Object.freeze(['시술명 table2']),\n" +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B014',\n" +
+  "    aadrg: 'B0140',\n" +
+  "    search_query: 'B014',\n" +
+  "    expected_table_ids: Object.freeze(['LT_B018_003']),\n" +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  "    required_table_labels: Object.freeze(['시술명 table3']),\n" +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B018',\n" +
+  "    aadrg: 'B0180',\n" +
+  "    search_query: 'B0180',\n" +
+  '    expected_table_ids: Object.freeze([\n' +
+  "      'LT_B018_001',\n" +
+  "      'LT_B018_004',\n" +
+  "      'LT_B018_005',\n" +
+  '    ]),\n' +
+  '    forbidden_table_ids: Object.freeze([\n' +
+  "      'LT_B018_002',\n" +
+  "      'LT_B018_003',\n" +
+  '    ]),\n' +
+  '    required_table_labels: Object.freeze([\n' +
+  "      '주진단명 또는 기타진단명 table1',\n" +
+  "      '시술명 table4',\n" +
+  "      '시술명 table5',\n" +
+  '    ]),\n' +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'B022',\n" +
+  "    aadrg: 'B0220',\n" +
+  "    search_query: 'B0220',\n" +
+  '    expected_table_ids: Object.freeze([]),\n' +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  '    required_table_labels: Object.freeze([]),\n' +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: 'L033',\n" +
+  "    aadrg: 'L0330',\n" +
+  "    search_query: 'L033',\n" +
+  '    expected_table_ids: Object.freeze([]),\n' +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  '    required_table_labels: Object.freeze([]),\n' +
+  '  }),\n' +
+  '  Object.freeze({\n' +
+  "    adrg: '9610',\n" +
+  "    aadrg: '96100',\n" +
+  "    search_query: '9610',\n" +
+  '    expected_table_ids: Object.freeze([]),\n' +
+  '    forbidden_table_ids: Object.freeze([]),\n' +
+  '    required_table_labels: Object.freeze([]),\n' +
+  '  }),\n' +
+  ']);\n' +
+  '\n' +
+  'const REQUIRED_DETAIL_LABELS = Object.freeze([\n' +
+  "  '분류 조건',\n" +
+  "  '조건 상세',\n" +
+  "  '원문 근거',\n" +
+  ']);\n' +
+  '\n' +
+  'const FORBIDDEN_DETAIL_LABELS = Object.freeze([\n' +
+  "  '기본 분류 TABLE',\n" +
+  "  '추가 분기조건',\n" +
+  ']);\n' +
+  '\n' +
+  'function shouldRunPackagedSmoke(argv = process.argv, env = process.env) {\n' +
+  "  return env.KDRG_ELECTRON_SMOKE_TEST === '1'\n" +
+  "    || argv.includes('--kdrg-smoke-test');\n" +
+  '}\n' +
+  '\n' +
+  'function isPlainObject(value) {\n' +
+  "  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);\n" +
+  '}\n' +
+  '\n' +
+  'function requirePlainObject(value, label) {\n' +
+  '  if (!isPlainObject(value)) {\n' +
+  '    throw new Error(`${label} contract mismatch: expected object`);\n' +
+  '  }\n' +
+  '  return value;\n' +
+  '}\n' +
+  '\n' +
+  'function uniqueStrings(values) {\n' +
+  '  return [...new Set(\n' +
+  '    (Array.isArray(values) ? values : [])\n' +
+  "      .map((value) => String(value ?? '').trim())\n" +
+  '      .filter(Boolean),\n' +
+  '  )];\n' +
+  '}\n' +
+  '\n' +
+  'function sortedStrings(values) {\n' +
+  '  return uniqueStrings(values).sort((left, right) => left.localeCompare(right));\n' +
+  '}\n' +
+  '\n' +
+  'function sameStringSet(actual, expected) {\n' +
+  '  return JSON.stringify(sortedStrings(actual)) === JSON.stringify(sortedStrings(expected));\n' +
+  '}\n' +
+  '\n' +
+  'function validateSearchResponse(search) {\n' +
+  "  requirePlainObject(search, 'packaged search response');\n" +
+  '  if (search.schema_version !== RESPONSE_SCHEMA_VERSION) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged search response contract mismatch: schema_version=${search.schema_version}, expected=${RESPONSE_SCHEMA_VERSION}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Array.isArray(search.results)) {\n' +
+  '    const legacyItems = Array.isArray(search.items);\n' +
+  '    throw new Error(\n' +
+  "      `packaged search response contract mismatch: results must be an array${legacyItems ? '; obsolete items field detected' : ''}`,\n" +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Number.isInteger(search.total_count) || search.total_count < search.results.length) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged search response contract mismatch: total_count=${search.total_count}, results=${search.results.length}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  for (const [index, item] of search.results.entries()) {\n' +
+  "    if (!isPlainObject(item) || typeof item.entity_id !== 'string' || !item.entity_id) {\n" +
+  '      throw new Error(\n' +
+  '        `packaged search response contract mismatch: invalid results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '  }\n' +
+  '  return search.results;\n' +
+  '}\n' +
+  '\n' +
+  'function validateLegacyRelationResponse(response, expectedAdrg = null) {\n' +
+  "  requirePlainObject(response, 'packaged relation response');\n" +
+  '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+  "    throw new Error('packaged relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+  '  }\n' +
+  '  if (!Array.isArray(response.results)) {\n' +
+  "    throw new Error('packaged relation response contract mismatch: results must be an array');\n" +
+  '  }\n' +
+  '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  for (const [index, item] of response.results.entries()) {\n' +
+  '    if (!isPlainObject(item)\n' +
+  "      || item.entity_type !== 'ADRG'\n" +
+  "      || typeof item.entity_id !== 'string'\n" +
+  "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+  '      || !Array.isArray(item.code_matches)\n' +
+  '      || !Array.isArray(item.condition_groups)\n' +
+  '      || item.condition_groups.some((group) => !Array.isArray(group.exclude_table_ids)\n' +
+  '        || !Array.isArray(group.exclude_tables))) {\n' +
+  '      throw new Error(`packaged relation response contract mismatch: invalid results[${index}]`);\n' +
+  '    }\n' +
+  '  }\n' +
+  '  if (expectedAdrg && !response.results.some((item) => item.entity_id === expectedAdrg)) {\n' +
+  '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+  '  }\n' +
+  '  return response.results;\n' +
+  '}\n' +
+  '\n' +
+  'function validateRelationResponse(response, expectedAdrg = null) {\n' +
+  "  requirePlainObject(response, 'packaged relation response');\n" +
+  '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged ADRG relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+  "    throw new Error('packaged ADRG relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+  '  }\n' +
+  '  if (!Array.isArray(response.results)) {\n' +
+  "    throw new Error('packaged ADRG relation response contract mismatch: results must be an array');\n" +
+  '  }\n' +
+  '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+  '    throw new Error(\n' +
+  '      `packaged ADRG relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+  '    );\n' +
+  '  }\n' +
+  '  if (!response.results.length) {\n' +
+  "    throw new Error('packaged ADRG relation response contract mismatch: empty results');\n" +
+  '  }\n' +
+  '\n' +
+  '  const seen = new Set();\n' +
+  '  for (const [index, item] of response.results.entries()) {\n' +
+  '    if (!isPlainObject(item)\n' +
+  "      || String(item.entity_type ?? '').toUpperCase() !== 'ADRG'\n" +
+  "      || typeof item.entity_id !== 'string'\n" +
+  '      || !item.entity_id\n' +
+  "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+  '      || !Array.isArray(item.code_matches)\n' +
+  '      || !Array.isArray(item.condition_groups)\n' +
+  '      || item.condition_groups.some(\n' +
+  '        (group) => !Array.isArray(group.exclude_table_ids)\n' +
+  '          || !Array.isArray(group.exclude_tables),\n' +
+  '      )) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: invalid results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '\n' +
+  '    const entityId = String(item.entity_id);\n' +
+  '    if (seen.has(entityId)) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: duplicate ADRG results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '    seen.add(entityId);\n' +
+  '\n' +
+  "    const parentAdrg = String(item.parent_adrg ?? '').trim();\n" +
+  '    if (parentAdrg && parentAdrg !== entityId) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: parent projection results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '\n' +
+  "    const summaryParentAdrg = String(item.summary?.parent_adrg ?? '').trim();\n" +
+  '    if (summaryParentAdrg && summaryParentAdrg !== entityId) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: summary parent projection results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '\n' +
+  "    if (Object.prototype.hasOwnProperty.call(item, 'aadrg_records')\n" +
+  '      && item.aadrg_records !== undefined) {\n' +
+  '      throw new Error(\n' +
+  '        `packaged ADRG relation response contract mismatch: public AADRG payload leak results[${index}]`,\n' +
+  '      );\n' +
+  '    }\n' +
+  '  }\n' +
+  '\n' +
+  '  if (expectedAdrg\n' +
+  '    && !response.results.some((item) => String(item.entity_id) === String(expectedAdrg))) {\n' +
+  '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+  '  }\n' +
+  '\n' +
+  '  return response.results;\n' +
+  '}\n' +
+  '\n' +
+  'function findLegacyRelationSmokeFixture(service) {\n' +
+  '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+  '  const tableMap = service?.recordMaps?.TABLE;\n' +
+  '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+  "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+  '  }\n' +
+  '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+  '    const exclusionIds = new Set((groups ?? []).flatMap((group) => group.exclude_table_ids ?? []));\n' +
+  '    for (const group of groups ?? []) {\n' +
+  '      const codes = [];\n' +
+  '      const seen = new Set();\n' +
+  '      for (const tableId of group.include_table_ids ?? []) {\n' +
+  '        if (exclusionIds.has(tableId)) continue;\n' +
+  '        const table = tableMap.get(String(tableId));\n' +
+  '        for (const code of table?.codes ?? []) {\n' +
+  "          const normalized = String(code ?? '').replace(/[^0-9A-Za-z]/g, '').toUpperCase()"... 28844 more characters
+
+    at Object.<anonymous> (/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r6/electron/tests/validate-stage60c-packaged-relation-smoke.js:45:8)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)
+    at node:internal/main/run_main_module:28:49 {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: "'use strict';\n" +
+    '\n' +
+    "const crypto = require('node:crypto');\n" +
+    "const fs = require('node:fs');\n" +
+    "const path = require('node:path');\n" +
+    '\n' +
+    "const RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-search-response-v1';\n" +
+    "const RELATION_RESPONSE_SCHEMA_VERSION = 'kdrg-runtime-relation-response-v1';\n" +
+    "const UI_SMOKE_SCHEMA_VERSION = 'kdrg-packaged-ui-smoke-v1';\n" +
+    '\n' +
+    'const EXPECTED_COUNTS = Object.freeze({\n' +
+    '  adrg: 1132,\n' +
+    '  aadrg: 1233,\n' +
+    '  rdrg: 2699,\n' +
+    '  tables: 1308,\n' +
+    '  codes: 16571,\n' +
+    '  conditionAst: 390,\n' +
+    '  conditionTableOccurrences: 939,\n' +
+    '});\n' +
+    '\n' +
+    'const UI_FIXTURES = Object.freeze([\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B013',\n" +
+    "    aadrg: 'B0130',\n" +
+    "    search_query: 'B013',\n" +
+    "    expected_table_ids: Object.freeze(['LT_B018_002']),\n" +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    "    required_table_labels: Object.freeze(['시술명 table2']),\n" +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B014',\n" +
+    "    aadrg: 'B0140',\n" +
+    "    search_query: 'B014',\n" +
+    "    expected_table_ids: Object.freeze(['LT_B018_003']),\n" +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    "    required_table_labels: Object.freeze(['시술명 table3']),\n" +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B018',\n" +
+    "    aadrg: 'B0180',\n" +
+    "    search_query: 'B0180',\n" +
+    '    expected_table_ids: Object.freeze([\n' +
+    "      'LT_B018_001',\n" +
+    "      'LT_B018_004',\n" +
+    "      'LT_B018_005',\n" +
+    '    ]),\n' +
+    '    forbidden_table_ids: Object.freeze([\n' +
+    "      'LT_B018_002',\n" +
+    "      'LT_B018_003',\n" +
+    '    ]),\n' +
+    '    required_table_labels: Object.freeze([\n' +
+    "      '주진단명 또는 기타진단명 table1',\n" +
+    "      '시술명 table4',\n" +
+    "      '시술명 table5',\n" +
+    '    ]),\n' +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'B022',\n" +
+    "    aadrg: 'B0220',\n" +
+    "    search_query: 'B0220',\n" +
+    '    expected_table_ids: Object.freeze([]),\n' +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    '    required_table_labels: Object.freeze([]),\n' +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: 'L033',\n" +
+    "    aadrg: 'L0330',\n" +
+    "    search_query: 'L033',\n" +
+    '    expected_table_ids: Object.freeze([]),\n' +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    '    required_table_labels: Object.freeze([]),\n' +
+    '  }),\n' +
+    '  Object.freeze({\n' +
+    "    adrg: '9610',\n" +
+    "    aadrg: '96100',\n" +
+    "    search_query: '9610',\n" +
+    '    expected_table_ids: Object.freeze([]),\n' +
+    '    forbidden_table_ids: Object.freeze([]),\n' +
+    '    required_table_labels: Object.freeze([]),\n' +
+    '  }),\n' +
+    ']);\n' +
+    '\n' +
+    'const REQUIRED_DETAIL_LABELS = Object.freeze([\n' +
+    "  '분류 조건',\n" +
+    "  '조건 상세',\n" +
+    "  '원문 근거',\n" +
+    ']);\n' +
+    '\n' +
+    'const FORBIDDEN_DETAIL_LABELS = Object.freeze([\n' +
+    "  '기본 분류 TABLE',\n" +
+    "  '추가 분기조건',\n" +
+    ']);\n' +
+    '\n' +
+    'function shouldRunPackagedSmoke(argv = process.argv, env = process.env) {\n' +
+    "  return env.KDRG_ELECTRON_SMOKE_TEST === '1'\n" +
+    "    || argv.includes('--kdrg-smoke-test');\n" +
+    '}\n' +
+    '\n' +
+    'function isPlainObject(value) {\n' +
+    "  return Boolean(value) && typeof value === 'object' && !Array.isArray(value);\n" +
+    '}\n' +
+    '\n' +
+    'function requirePlainObject(value, label) {\n' +
+    '  if (!isPlainObject(value)) {\n' +
+    '    throw new Error(`${label} contract mismatch: expected object`);\n' +
+    '  }\n' +
+    '  return value;\n' +
+    '}\n' +
+    '\n' +
+    'function uniqueStrings(values) {\n' +
+    '  return [...new Set(\n' +
+    '    (Array.isArray(values) ? values : [])\n' +
+    "      .map((value) => String(value ?? '').trim())\n" +
+    '      .filter(Boolean),\n' +
+    '  )];\n' +
+    '}\n' +
+    '\n' +
+    'function sortedStrings(values) {\n' +
+    '  return uniqueStrings(values).sort((left, right) => left.localeCompare(right));\n' +
+    '}\n' +
+    '\n' +
+    'function sameStringSet(actual, expected) {\n' +
+    '  return JSON.stringify(sortedStrings(actual)) === JSON.stringify(sortedStrings(expected));\n' +
+    '}\n' +
+    '\n' +
+    'function validateSearchResponse(search) {\n' +
+    "  requirePlainObject(search, 'packaged search response');\n" +
+    '  if (search.schema_version !== RESPONSE_SCHEMA_VERSION) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged search response contract mismatch: schema_version=${search.schema_version}, expected=${RESPONSE_SCHEMA_VERSION}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Array.isArray(search.results)) {\n' +
+    '    const legacyItems = Array.isArray(search.items);\n' +
+    '    throw new Error(\n' +
+    "      `packaged search response contract mismatch: results must be an array${legacyItems ? '; obsolete items field detected' : ''}`,\n" +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Number.isInteger(search.total_count) || search.total_count < search.results.length) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged search response contract mismatch: total_count=${search.total_count}, results=${search.results.length}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  for (const [index, item] of search.results.entries()) {\n' +
+    "    if (!isPlainObject(item) || typeof item.entity_id !== 'string' || !item.entity_id) {\n" +
+    '      throw new Error(\n' +
+    '        `packaged search response contract mismatch: invalid results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '  }\n' +
+    '  return search.results;\n' +
+    '}\n' +
+    '\n' +
+    'function validateLegacyRelationResponse(response, expectedAdrg = null) {\n' +
+    "  requirePlainObject(response, 'packaged relation response');\n" +
+    '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+    "    throw new Error('packaged relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+    '  }\n' +
+    '  if (!Array.isArray(response.results)) {\n' +
+    "    throw new Error('packaged relation response contract mismatch: results must be an array');\n" +
+    '  }\n' +
+    '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  for (const [index, item] of response.results.entries()) {\n' +
+    '    if (!isPlainObject(item)\n' +
+    "      || item.entity_type !== 'ADRG'\n" +
+    "      || typeof item.entity_id !== 'string'\n" +
+    "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+    '      || !Array.isArray(item.code_matches)\n' +
+    '      || !Array.isArray(item.condition_groups)\n' +
+    '      || item.condition_groups.some((group) => !Array.isArray(group.exclude_table_ids)\n' +
+    '        || !Array.isArray(group.exclude_tables))) {\n' +
+    '      throw new Error(`packaged relation response contract mismatch: invalid results[${index}]`);\n' +
+    '    }\n' +
+    '  }\n' +
+    '  if (expectedAdrg && !response.results.some((item) => item.entity_id === expectedAdrg)) {\n' +
+    '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+    '  }\n' +
+    '  return response.results;\n' +
+    '}\n' +
+    '\n' +
+    'function validateRelationResponse(response, expectedAdrg = null) {\n' +
+    "  requirePlainObject(response, 'packaged relation response');\n" +
+    '  if (response.schema_version !== RELATION_RESPONSE_SCHEMA_VERSION) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged ADRG relation response contract mismatch: schema_version=${response.schema_version}, expected=${RELATION_RESPONSE_SCHEMA_VERSION}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!Array.isArray(response.conditions) || response.conditions.length < 2) {\n' +
+    "    throw new Error('packaged ADRG relation response contract mismatch: conditions must contain at least 2 rows');\n" +
+    '  }\n' +
+    '  if (!Array.isArray(response.results)) {\n' +
+    "    throw new Error('packaged ADRG relation response contract mismatch: results must be an array');\n" +
+    '  }\n' +
+    '  if (!Number.isInteger(response.total_count) || response.total_count !== response.results.length) {\n' +
+    '    throw new Error(\n' +
+    '      `packaged ADRG relation response contract mismatch: total_count=${response.total_count}, results=${response.results.length}`,\n' +
+    '    );\n' +
+    '  }\n' +
+    '  if (!response.results.length) {\n' +
+    "    throw new Error('packaged ADRG relation response contract mismatch: empty results');\n" +
+    '  }\n' +
+    '\n' +
+    '  const seen = new Set();\n' +
+    '  for (const [index, item] of response.results.entries()) {\n' +
+    '    if (!isPlainObject(item)\n' +
+    "      || String(item.entity_type ?? '').toUpperCase() !== 'ADRG'\n" +
+    "      || typeof item.entity_id !== 'string'\n" +
+    '      || !item.entity_id\n' +
+    "      || !['strict', 'split', 'partial'].includes(item.relation_level)\n" +
+    '      || !Array.isArray(item.code_matches)\n' +
+    '      || !Array.isArray(item.condition_groups)\n' +
+    '      || item.condition_groups.some(\n' +
+    '        (group) => !Array.isArray(group.exclude_table_ids)\n' +
+    '          || !Array.isArray(group.exclude_tables),\n' +
+    '      )) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: invalid results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '\n' +
+    '    const entityId = String(item.entity_id);\n' +
+    '    if (seen.has(entityId)) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: duplicate ADRG results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '    seen.add(entityId);\n' +
+    '\n' +
+    "    const parentAdrg = String(item.parent_adrg ?? '').trim();\n" +
+    '    if (parentAdrg && parentAdrg !== entityId) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: parent projection results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '\n' +
+    "    const summaryParentAdrg = String(item.summary?.parent_adrg ?? '').trim();\n" +
+    '    if (summaryParentAdrg && summaryParentAdrg !== entityId) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: summary parent projection results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '\n' +
+    "    if (Object.prototype.hasOwnProperty.call(item, 'aadrg_records')\n" +
+    '      && item.aadrg_records !== undefined) {\n' +
+    '      throw new Error(\n' +
+    '        `packaged ADRG relation response contract mismatch: public AADRG payload leak results[${index}]`,\n' +
+    '      );\n' +
+    '    }\n' +
+    '  }\n' +
+    '\n' +
+    '  if (expectedAdrg\n' +
+    '    && !response.results.some((item) => String(item.entity_id) === String(expectedAdrg))) {\n' +
+    '    throw new Error(`packaged relation fixture missing: ADRG ${expectedAdrg}`);\n' +
+    '  }\n' +
+    '\n' +
+    '  return response.results;\n' +
+    '}\n' +
+    '\n' +
+    'function findLegacyRelationSmokeFixture(service) {\n' +
+    '  const conditionGroups = service?.conditionGroupsByAdrg;\n' +
+    '  const tableMap = service?.recordMaps?.TABLE;\n' +
+    '  if (!(conditionGroups instanceof Map) || !(tableMap instanceof Map)) {\n' +
+    "    throw new Error('relation smoke discovery contract mismatch: condition/table indexes unavailable');\n" +
+    '  }\n' +
+    '  for (const [adrg, groups] of conditionGroups.entries()) {\n' +
+    '    const exclusionIds = new Set((groups ?? []).flatMap((group) => group.exclude_table_ids ?? []));\n' +
+    '    for (const group of groups ?? []) {\n' +
+    '      const codes = [];\n' +
+    '      const seen = new Set();\n' +
+    '      for (const tableId of group.include_table_ids ?? []) {\n' +
+    '        if (exclusionIds.has(tableId)) continue;\n' +
+    '        const table = tableMap.get(String(tableId));\n' +
+    '        for (const code of table?.codes ?? []) {\n' +
+    "          const normalized = String(code ?? '').replace(/[^0-9A-Za-z]/g, '').toUpperCase()"... 28844 more characters,
+  expected: /function validateRelationResponse\(\.\.\.args\)/,
+  operator: 'match'
+}
+
+Node.js v20.20.0
+
+
+
+[NEXT]
+- Stage67D PASS이면 ADRG 공개전환 Shadow 전수검증 완료.
+- 다음 단계는 Actual 적용 전 최종 diff/영향범위 감사(Stage67E).
+- Stage67E PASS 후에만 Actual 파일 적용.
+- AADRG 내부 데이터/detail은 유지하고 공개 UI에서는 숨김 유지.
+- runtime JSON / package version / 0.5.14 tag·Release는 아직 불변.
+
+shadow_root=/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r6
+report_txt=/home/runner/workspace/stage67d_0515_packaged_smoke_shadow_r6.txt
+report_json=/home/runner/workspace/stage67d_0515_packaged_smoke_shadow_r6.json

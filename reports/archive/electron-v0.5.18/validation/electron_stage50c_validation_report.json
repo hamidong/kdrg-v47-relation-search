@@ -1,0 +1,153 @@
+{
+  "script_version": "2026-09-08_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V9_AADRG_PUBLIC_UI",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "운영 JSON SHA",
+      "actual": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+      "expected": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+      "passed": true
+    },
+    {
+      "name": "공개 ADRG 검색옵션",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "공개 AADRG 검색옵션 숨김",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "MDC 24/25 제거",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "동적 MDC filter",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "뒤로가기",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "PDF형 multiline 조건",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "CODE 상세 ADRG 중심",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "TABLE 기술정보 제거",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "자동 첫상세 제거",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "AADRG 상세 조건상속",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "formatter public type",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "relation ADRG 중심",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "관련 AADRG 강조",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "Node runtime",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-ui.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage59b-skeleton.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-renderer-ui.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "tests/validate-stage51c-user-condition-ui.js",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "npm run check",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    }
+  ],
+  "outputs": {
+    "tests/validate-stage59b-ui.js": {
+      "returncode": 0,
+      "stdout": "stage59_ui: 21 PASS / 0 FAIL\n",
+      "stderr": ""
+    },
+    "tests/validate-stage59b-skeleton.js": {
+      "returncode": 0,
+      "stdout": "stage59_skeleton: PASS version=0.5.18\n",
+      "stderr": ""
+    },
+    "tests/validate-renderer-ui.js": {
+      "returncode": 0,
+      "stdout": "stage59_ui: 21 PASS / 0 FAIL\n[PASS] Electron Stage 50C renderer UI 검증: Stage59B/0.5.10 사용자 계약\n",
+      "stderr": ""
+    },
+    "tests/validate-stage51c-user-condition-ui.js": {
+      "returncode": 0,
+      "stdout": "stage59_ui: 21 PASS / 0 FAIL\n[PASS] Stage51C compatibility: current Stage59B condition UI contract\n",
+      "stderr": ""
+    },
+    "npm run check": {
+      "returncode": 0,
+      "stdout": "\n> kdrg-v47-relation-search-electron@0.5.18 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.18 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.18\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\n[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n",
+      "stderr": ""
+    }
+  }
+}

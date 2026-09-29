@@ -1,0 +1,6 @@
+{
+  "stage": "72B_0519_RELATION_RESULT_LAYOUT_SHADOW_R2",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 관계카드 title anchor 불일치: 0"
+}

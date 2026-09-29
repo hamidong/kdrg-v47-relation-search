@@ -1,0 +1,83 @@
+KDRG V4.7 Electron Stage67D / 0.5.15 Packaged Smoke ADRG Migration Shadow R7
+====================================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_FINAL_SHADOW_AUDIT
+
+[PREFLIGHT]
+{
+  "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+  "branch": "main",
+  "base_tag": "electron-v0.5.14",
+  "package_version": "0.5.14",
+  "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+  "stage67c": {
+    "status": "PASS",
+    "readiness": "READY_FOR_0515_PACKAGED_SMOKE_MIGRATION",
+    "full_npm_run_check": "DEFERRED_TO_STAGE67D"
+  }
+}
+
+[SHADOW]
+{
+  "source_shadow": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+  "shadow_root": "/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r7",
+  "required_files": [
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+    "electron/package.json",
+    "50B_validate_kdrg_electron_search_service.py",
+    "50C_validate_kdrg_electron_renderer_ui.py",
+    "50D_validate_kdrg_electron_windows_packaging.py"
+  ]
+}
+
+[MIGRATION]
+{}
+
+[SHA CONTRACT]
+{}
+
+[VALIDATION]
+
+[GUARDS]
+{
+  "npm_run_check": null,
+  "root_50b": null,
+  "root_50c": null,
+  "root_50d": null,
+  "runtime_unchanged": null,
+  "package_version_unchanged": null,
+  "actual_workspace_unchanged": null
+}
+
+[BLOCKER]
+StageError: Stage60C expected legacy ...args source assertion not found
+Traceback (most recent call last):
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py", line 1464, in main
+    payload["migration"] = migrate()
+                           ^^^^^^^^^
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py", line 1260, in migrate
+    stage60c_summary = patch_stage60c_validator()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py", line 962, in patch_stage60c_validator
+    text, source_audit = replace_relation_source_assertion_cluster(text)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py", line 287, in replace_relation_source_assertion_cluster
+    require(
+  File "/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py", line 87, in require
+    raise StageError(message)
+StageError: Stage60C expected legacy ...args source assertion not found
+
+
+[NEXT]
+- Stage67D PASS이면 ADRG 공개전환 Shadow 전수검증 완료.
+- 다음 단계는 Actual 적용 전 최종 diff/영향범위 감사(Stage67E).
+- Stage67E PASS 후에만 Actual 파일 적용.
+- AADRG 내부 데이터/detail은 유지하고 공개 UI에서는 숨김 유지.
+- runtime JSON / package version / 0.5.14 tag·Release는 아직 불변.
+
+shadow_root=/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r7
+report_txt=/home/runner/workspace/stage67d_0515_packaged_smoke_shadow_r7.txt
+report_json=/home/runner/workspace/stage67d_0515_packaged_smoke_shadow_r7.json

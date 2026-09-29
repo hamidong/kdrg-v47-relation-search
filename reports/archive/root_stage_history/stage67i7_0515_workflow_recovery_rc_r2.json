@@ -1,0 +1,454 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_0515_TAG_RELEASE",
+  "started_at": "2026-09-23 02:38:46",
+  "gate": {
+    "broken_commit": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "diagnosis": "workflow YAML block indentation"
+  },
+  "state": {
+    "mode": "BROKEN_BASE",
+    "head": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "origin_main": "f1025ca771a5efb36f843566ab6609f8f02c37d1"
+  },
+  "parent_proof": {
+    "parent_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "proof": "KNOWN_DISPATCHABLE_ON_GITHUB",
+    "historical_run": {
+      "conclusion": "failure",
+      "createdAt": "2026-09-23T00:48:17Z",
+      "databaseId": 35803633211,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+      "status": "completed",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35803633211"
+    },
+    "candidate_sha256": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06",
+    "workflow_contract": {
+      "workflow_dispatch_present": true,
+      "packaged_verification_present": true,
+      "unsafe_marker_absent": true
+    }
+  },
+  "shadow": {
+    "shadow_root": "/tmp/kdrg_stage67i7_r2_shadow_ryz3d8zg",
+    "candidate_sha256": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06",
+    "byte_identical_to_known_parent": true,
+    "tracked_delta": [
+      ".github/workflows/build-electron-windows.yml"
+    ],
+    "git_diff_check": "PASS",
+    "workflow_contract": {
+      "workflow_dispatch_present": true,
+      "packaged_verification_present": true,
+      "unsafe_marker_absent": true
+    },
+    "validation": {
+      "npm_stage_validators": "PASS",
+      "root_50b_50c_50d": "PASS",
+      "release_version": "PASS",
+      "immutable_assets": "PASS",
+      "commands": [
+        {
+          "cmd": "node tests/validate-stage59b-search.js",
+          "returncode": 0,
+          "tail": "stage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge"
+        },
+        {
+          "cmd": "node tests/validate-packaged-runtime-smoke.js",
+          "returncode": 0,
+          "tail": "[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL"
+        },
+        {
+          "cmd": "node tests/validate-stage60c-packaged-relation-smoke.js",
+          "returncode": 0,
+          "tail": "[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011"
+        },
+        {
+          "cmd": "node tests/validate-stage59b-ui.js",
+          "returncode": 0,
+          "tail": "stage59_ui: 21 PASS / 0 FAIL"
+        },
+        {
+          "cmd": "node tests/validate-stage59b-smoke.js",
+          "returncode": 0,
+          "tail": "stage59_smoke: PASS"
+        },
+        {
+          "cmd": "npm run check",
+          "returncode": 0,
+          "tail": "> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/tmp/kdrg_stage67i7_r2_shadow_ryz3d8zg/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL"
+        },
+        {
+          "cmd": "python 50B_validate_kdrg_electron_search_service.py",
+          "returncode": 0,
+          "tail": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/tmp/kdrg_stage67i7_r2_shadow_ryz3d8zg/reports/electron_stage50b_validation_report.txt"
+        },
+        {
+          "cmd": "python 50C_validate_kdrg_electron_renderer_ui.py",
+          "returncode": 0,
+          "tail": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/tmp/kdrg_stage67i7_r2_shadow_ryz3d8zg/reports/electron_stage50c_validation_report.txt"
+        },
+        {
+          "cmd": "python 50D_validate_kdrg_electron_windows_packaging.py",
+          "returncode": 0,
+          "tail": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/tmp/kdrg_stage67i7_r2_shadow_ryz3d8zg/reports/electron_stage50d_validation_report.txt"
+        },
+        {
+          "cmd": "node tests/validate-release-version.js 0.5.15",
+          "returncode": 0,
+          "tail": "[PASS] lockfileVersion | actual=3 | expected=3\n[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.15\" | expected=\"electron-v0.5.15\"\n[PASS] version has no prerelease | actual=\"0.5.15\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL"
+        }
+      ]
+    }
+  },
+  "actual": {
+    "before_sha256": "81926693847d0fb5e6844b7d448a76826fb4d45c89bfb9b4d548c14fe4f28d21",
+    "after_sha256": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06",
+    "byte_identical_to_known_parent": true,
+    "tracked_delta": [
+      ".github/workflows/build-electron-windows.yml"
+    ],
+    "git_diff_check": "PASS",
+    "workflow_contract": {
+      "workflow_dispatch_present": true,
+      "packaged_verification_present": true,
+      "unsafe_marker_absent": true
+    },
+    "validation": {
+      "npm_stage_validators": "PASS",
+      "root_50b_50c_50d": "PASS",
+      "release_version": "PASS",
+      "immutable_assets": "PASS",
+      "commands": [
+        {
+          "cmd": "node tests/validate-stage59b-search.js",
+          "returncode": 0,
+          "tail": "stage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge"
+        },
+        {
+          "cmd": "node tests/validate-packaged-runtime-smoke.js",
+          "returncode": 0,
+          "tail": "[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL"
+        },
+        {
+          "cmd": "node tests/validate-stage60c-packaged-relation-smoke.js",
+          "returncode": 0,
+          "tail": "[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011"
+        },
+        {
+          "cmd": "node tests/validate-stage59b-ui.js",
+          "returncode": 0,
+          "tail": "stage59_ui: 21 PASS / 0 FAIL"
+        },
+        {
+          "cmd": "node tests/validate-stage59b-smoke.js",
+          "returncode": 0,
+          "tail": "stage59_smoke: PASS"
+        },
+        {
+          "cmd": "npm run check",
+          "returncode": 0,
+          "tail": "> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL"
+        },
+        {
+          "cmd": "python 50B_validate_kdrg_electron_search_service.py",
+          "returncode": 0,
+          "tail": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt"
+        },
+        {
+          "cmd": "python 50C_validate_kdrg_electron_renderer_ui.py",
+          "returncode": 0,
+          "tail": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt"
+        },
+        {
+          "cmd": "python 50D_validate_kdrg_electron_windows_packaging.py",
+          "returncode": 0,
+          "tail": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50d_validation_report.txt"
+        },
+        {
+          "cmd": "node tests/validate-release-version.js 0.5.15",
+          "returncode": 0,
+          "tail": "[PASS] lockfileVersion | actual=3 | expected=3\n[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.15\" | expected=\"electron-v0.5.15\"\n[PASS] version has no prerelease | actual=\"0.5.15\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL"
+        }
+      ]
+    }
+  },
+  "commit_push": {
+    "commit": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+    "parent": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "subject": "fix: restore dispatchable workflow",
+    "files": [
+      ".github/workflows/build-electron-windows.yml"
+    ],
+    "origin_before": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "origin_after": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+    "push_action": "PUSHED"
+  },
+  "remote_metadata": {
+    "owner_repo": "hamidong/kdrg-v47-relation-search",
+    "remote_byte_exact": true,
+    "remote_sha256": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06",
+    "workflow": {
+      "id": 321767547,
+      "name": "Build Electron Windows portable and publish Release",
+      "path": ".github/workflows/build-electron-windows.yml",
+      "state": "active"
+    }
+  },
+  "dispatch": {
+    "action": "DISPATCHED_NEW_RC",
+    "run": {
+      "conclusion": "",
+      "createdAt": "2026-09-23T02:41:11Z",
+      "databaseId": 35811340221,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+      "status": "queued",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35811340221"
+    },
+    "dispatch_attempts": 1
+  },
+  "rc": {
+    "run": {
+      "conclusion": "success",
+      "databaseId": 35811340221,
+      "event": "workflow_dispatch",
+      "headBranch": "main",
+      "headSha": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+      "jobs": [
+        {
+          "completedAt": "2026-09-23T02:45:18Z",
+          "conclusion": "success",
+          "databaseId": 107023394084,
+          "name": "windows-electron-package",
+          "startedAt": "2026-09-23T02:41:17Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-09-23T02:41:21Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-09-23T02:41:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:41:34Z",
+              "conclusion": "success",
+              "name": "체크아웃",
+              "number": 2,
+              "startedAt": "2026-09-23T02:41:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:41:42Z",
+              "conclusion": "success",
+              "name": "Node.js 22.23.1 설치",
+              "number": 3,
+              "startedAt": "2026-09-23T02:41:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:41:43Z",
+              "conclusion": "success",
+              "name": "Python 3.11 설치",
+              "number": 4,
+              "startedAt": "2026-09-23T02:41:42Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:41:46Z",
+              "conclusion": "success",
+              "name": "checkout 바이트 무결성 검증",
+              "number": 5,
+              "startedAt": "2026-09-23T02:41:43Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:41:46Z",
+              "conclusion": "success",
+              "name": "Actions 런타임 임시경로 초기화",
+              "number": 6,
+              "startedAt": "2026-09-23T02:41:46Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:41:47Z",
+              "conclusion": "success",
+              "name": "package-lock 공식 registry 사전검증",
+              "number": 7,
+              "startedAt": "2026-09-23T02:41:46Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:41:49Z",
+              "conclusion": "success",
+              "name": "npm CLI 11.17.0 무결성 검증 준비",
+              "number": 8,
+              "startedAt": "2026-09-23T02:41:47Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:42:01Z",
+              "conclusion": "success",
+              "name": "npm 잠금 의존성 설치",
+              "number": 9,
+              "startedAt": "2026-09-23T02:41:49Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:42:13Z",
+              "conclusion": "success",
+              "name": "Electron source·검색·UI·packaging 검증",
+              "number": 10,
+              "startedAt": "2026-09-23T02:42:01Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:42:55Z",
+              "conclusion": "success",
+              "name": "Stage 50D Python 독립검증",
+              "number": 11,
+              "startedAt": "2026-09-23T02:42:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:44:55Z",
+              "conclusion": "success",
+              "name": "Windows x64 portable exe 빌드",
+              "number": 12,
+              "startedAt": "2026-09-23T02:42:55Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:44:55Z",
+              "conclusion": "success",
+              "name": "portable exe 경로 확인",
+              "number": 13,
+              "startedAt": "2026-09-23T02:44:55Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:12Z",
+              "conclusion": "success",
+              "name": "packaged exe 데이터·검색·renderer 기동검증",
+              "number": 14,
+              "startedAt": "2026-09-23T02:44:55Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:12Z",
+              "conclusion": "success",
+              "name": "packaged 핵심검증 판정",
+              "number": 15,
+              "startedAt": "2026-09-23T02:45:12Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:13Z",
+              "conclusion": "success",
+              "name": "SHA256 생성",
+              "number": 16,
+              "startedAt": "2026-09-23T02:45:12Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:13Z",
+              "conclusion": "success",
+              "name": "Electron 버전 정보 추출",
+              "number": 17,
+              "startedAt": "2026-09-23T02:45:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:13Z",
+              "conclusion": "skipped",
+              "name": "Electron 태그와 package 버전 일치 확인",
+              "number": 18,
+              "startedAt": "2026-09-23T02:45:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:13Z",
+              "conclusion": "success",
+              "name": "회귀검증 요약",
+              "number": 19,
+              "startedAt": "2026-09-23T02:45:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:13Z",
+              "conclusion": "skipped",
+              "name": "GitHub Release 생성 및 필수 Assets 업로드",
+              "number": 20,
+              "startedAt": "2026-09-23T02:45:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:13Z",
+              "conclusion": "skipped",
+              "name": "UI smoke evidence 선택 업로드",
+              "number": 21,
+              "startedAt": "2026-09-23T02:45:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:14Z",
+              "conclusion": "success",
+              "name": "Post Python 3.11 설치",
+              "number": 40,
+              "startedAt": "2026-09-23T02:45:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:14Z",
+              "conclusion": "success",
+              "name": "Post Node.js 22.23.1 설치",
+              "number": 41,
+              "startedAt": "2026-09-23T02:45:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:16Z",
+              "conclusion": "success",
+              "name": "Post 체크아웃",
+              "number": 42,
+              "startedAt": "2026-09-23T02:45:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-09-23T02:45:16Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 43,
+              "startedAt": "2026-09-23T02:45:16Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35811340221/job/107023394084"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35811340221"
+    },
+    "success": true,
+    "failed_steps": [],
+    "error_focus": []
+  },
+  "final_guard": {
+    "head": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+    "origin_main": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+    "worktree_clean": true,
+    "staging_empty": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "rollback": {
+    "performed": false
+  },
+  "error": null,
+  "finished_at": "2026-09-23 02:45:27"
+}

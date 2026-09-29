@@ -1,0 +1,3754 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_CLEANUP_COMMIT_AND_PUSH",
+  "started_at": "2026-09-17 07:10:15",
+  "preflight": {
+    "head": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "origin_main": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "branch": "main",
+    "tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "version": "0.5.11",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "already_deleted_tracked": [
+      "44_build_kdrg_windows_runtime_regression.py",
+      "44_fix_kdrg_windows_bundle_diagnostics.py",
+      "44_fix_kdrg_windows_source_smoke.py",
+      "45_validate_kdrg_windows_ci_utf8_output.py",
+      "46_validate_kdrg_release_version_v021.py",
+      "49_validate_kdrg_pyside_ui_semantics.py",
+      "50A_validate_kdrg_electron_skeleton.py",
+      "51D_validate_kdrg_windows_packaged_ui.py"
+    ],
+    "release_exe": "/home/runner/workspace/releases/electron-v0.5.11/KDRG_V47_Relation_Search_Electron_0.5.11_Portable.exe",
+    "release_exe_sha256": "2971aafac5aeafd29b0aa7f60b8e2b00ac8454d01c647a565a6bcd766ff306b4"
+  },
+  "reference_audit": {
+    "reference_count_by_file": {
+      "37_build_kdrg_search_integrated_json.py": 0,
+      "38_validate_kdrg_search_integrated_json.py": 0,
+      "39_build_kdrg_runtime_search_service.py": 0,
+      "40_validate_kdrg_runtime_search_service.py": 0,
+      "41_build_kdrg_pyside_runtime_ui_bridge.py": 0,
+      "42_validate_kdrg_runtime_ui_bridge.py": 0,
+      "43_build_kdrg_runtime_ui_preview.py": 0,
+      "44_build_kdrg_windows_runtime_regression.py": 0,
+      "44_fix_kdrg_windows_bundle_diagnostics.py": 0,
+      "44_fix_kdrg_windows_source_smoke.py": 0,
+      "45_validate_kdrg_windows_ci_utf8_output.py": 0,
+      "46_validate_kdrg_release_version_v021.py": 0,
+      "47A_build_kdrg_ui_semantic_audit.py": 0,
+      "47B_validate_kdrg_ui_semantic_audit.py": 0,
+      "48A_build_kdrg_ui_display_contract.py": 0,
+      "48B_validate_kdrg_ui_display_contract.py": 0,
+      "49_validate_kdrg_pyside_ui_semantics.py": 0,
+      "50A_validate_kdrg_electron_skeleton.py": 0,
+      "51D_validate_kdrg_windows_packaged_ui.py": 0
+    },
+    "blockers": {}
+  },
+  "plan": {
+    "tracked_existing": [
+      "37_build_kdrg_search_integrated_json.py",
+      "38_validate_kdrg_search_integrated_json.py",
+      "39_build_kdrg_runtime_search_service.py",
+      "40_validate_kdrg_runtime_search_service.py",
+      "41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "42_validate_kdrg_runtime_ui_bridge.py",
+      "43_build_kdrg_runtime_ui_preview.py",
+      "47A_build_kdrg_ui_semantic_audit.py",
+      "47B_validate_kdrg_ui_semantic_audit.py",
+      "48A_build_kdrg_ui_display_contract.py",
+      "48B_validate_kdrg_ui_display_contract.py"
+    ],
+    "tracked_missing": [
+      "44_build_kdrg_windows_runtime_regression.py",
+      "44_fix_kdrg_windows_bundle_diagnostics.py",
+      "44_fix_kdrg_windows_source_smoke.py",
+      "45_validate_kdrg_windows_ci_utf8_output.py",
+      "46_validate_kdrg_release_version_v021.py",
+      "49_validate_kdrg_pyside_ui_semantics.py",
+      "50A_validate_kdrg_electron_skeleton.py",
+      "51D_validate_kdrg_windows_packaged_ui.py"
+    ],
+    "untracked_root_stage_scripts": [
+      "59A_AUDIT_KDRG_AADRG_CENTERED_UI_MIGRATION_V8_R3.py",
+      "59A_AUDIT_KDRG_BOUNDARY_NAMESPACE_FINAL_V6.py",
+      "59A_AUDIT_KDRG_FINAL_PRECISION_V5.py",
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py",
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R1.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R2.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R3.py",
+      "59C_APPLY_KDRG_0510_INTEGRATED_ACTUAL_R1.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R10.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R8.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R9.py",
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R1.py",
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R2.py",
+      "59E_REPAIR_KDRG_0510_SOURCE_OF_TRUTH_R1.py",
+      "60A_AUDIT_KDRG_0510_RELEASE_VERSION_IMPACT_R1.py",
+      "60B_APPLY_KDRG_0510_VERSION_PREP_R1.py",
+      "60B_REPAIR_KDRG_0510_VERSION_PREP_R2.py",
+      "60C_APPLY_KDRG_0510_RC2_RELATION_CONTRACT_ACTUAL_R1.py",
+      "60C_APPLY_KDRG_0510_RC3_UI_FIXTURE_AADRG_ACTUAL_R1.py",
+      "60C_APPLY_KDRG_0510_WINDOWS_RC_REPAIR_ACTUAL_R1.py",
+      "60C_BUILD_KDRG_0510_RC2_RELATION_CONTRACT_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_AADRG_SMOKE_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R11.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R12.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R13.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R3.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R3.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R4.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R5.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R6.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R7.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R8.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R9.py",
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R2.py",
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R3.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_B013_AADRG_FIXTURE_R6.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_SEARCH_API_FIXTURE_R7.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R2.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R3.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R4.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_FIXTURE_CHILD_AADRG_R10.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SELECTOR_DETAIL_R5.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R8.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R9.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC2_FAILURE_R1.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC3_FAILURE_R1.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC_FAILURE_R1.py",
+      "61A_BUILD_KDRG_0511_UI_REQUIREMENT_REPAIR_SHADOW_R1.py",
+      "61A_UI_REPAIR_SHADOW_R2.py",
+      "61A_UI_REPAIR_SHADOW_R3.py",
+      "61A_UI_REPAIR_SHADOW_R4.py",
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R1.py",
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R2.py",
+      "61C_PREP_KDRG_0511_RELEASE_R1.py",
+      "62A_VALIDATE_KDRG_LEGACY_CLEANUP_R1.py",
+      "62B_AUDIT_KDRG_WORKSPACE_FULL_CLEANUP_R2.py"
+    ],
+    "root_stage_reports": [
+      "stage59a_v8_r3_integrated_impact_audit.json",
+      "stage59a_v8_r3_integrated_impact_audit.txt",
+      "stage59b_0510_integrated_shadow_r1.json",
+      "stage59b_0510_integrated_shadow_r1.txt",
+      "stage59b_0510_integrated_shadow_r2.json",
+      "stage59b_0510_integrated_shadow_r2.txt",
+      "stage59b_0510_integrated_shadow_r3.json",
+      "stage59b_0510_integrated_shadow_r3.txt",
+      "stage59c_0510_integrated_actual_r1.json",
+      "stage59c_0510_integrated_actual_r1.txt",
+      "stage59c_0510_validator_migration_r10.json",
+      "stage59c_0510_validator_migration_r10.txt",
+      "stage59c_0510_validator_migration_r8.json",
+      "stage59c_0510_validator_migration_r8.txt",
+      "stage59c_0510_validator_migration_r9.json",
+      "stage59c_0510_validator_migration_r9.txt",
+      "stage59d_0510_final_integration_r1.json",
+      "stage59d_0510_final_integration_r1.txt",
+      "stage59d_0510_final_integration_r2.json",
+      "stage59d_0510_final_integration_r2.txt",
+      "stage59e_0510_source_of_truth_repair_r1.json",
+      "stage59e_0510_source_of_truth_repair_r1.txt",
+      "stage60a_0510_release_version_impact_r1.json",
+      "stage60a_0510_release_version_impact_r1.txt",
+      "stage60b_0510_version_prep_r1.json",
+      "stage60b_0510_version_prep_r1.txt",
+      "stage60b_0510_version_prep_r2.json",
+      "stage60b_0510_version_prep_r2.txt",
+      "stage60c_0510_rc2_relation_contract_actual_r1.json",
+      "stage60c_0510_rc2_relation_contract_actual_r1.txt",
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.json",
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.txt",
+      "stage60c_0510_rc2_relation_contract_shadow_r1.json",
+      "stage60c_0510_rc2_relation_contract_shadow_r1.txt",
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.json",
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.txt",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.json",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.txt",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.json",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.txt",
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.json",
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.txt",
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.json",
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.txt",
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.json",
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.txt",
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.json",
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.txt",
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.json",
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.txt",
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.json",
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.txt",
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.json",
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.txt",
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc_repair_actual_r1.json",
+      "stage60c_0510_windows_rc_repair_actual_r1.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r1.json",
+      "stage60c_0510_windows_rc_repair_shadow_r1.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r2.json",
+      "stage60c_0510_windows_rc_repair_shadow_r2.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r3.json",
+      "stage60c_0510_windows_rc_repair_shadow_r3.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r4.json",
+      "stage60c_0510_windows_rc_repair_shadow_r4.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r5.json",
+      "stage60c_0510_windows_rc_repair_shadow_r5.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r6.json",
+      "stage60c_0510_windows_rc_repair_shadow_r6.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r7.json",
+      "stage60c_0510_windows_rc_repair_shadow_r7.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r8.json",
+      "stage60c_0510_windows_rc_repair_shadow_r8.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r9.json",
+      "stage60c_0510_windows_rc_repair_shadow_r9.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r2.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r2.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r3.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r3.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r4.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r4.txt",
+      "stage61b_0511_ui_requirement_repair_actual_r1.json",
+      "stage61b_0511_ui_requirement_repair_actual_r1.txt",
+      "stage61b_0511_ui_requirement_repair_actual_r2.json",
+      "stage61b_0511_ui_requirement_repair_actual_r2.txt",
+      "stage61c_0511_release_prep_r1.json",
+      "stage61c_0511_release_prep_r1.txt",
+      "stage62a_legacy_cleanup_validation_r1.json",
+      "stage62a_legacy_cleanup_validation_r1.txt",
+      "stage62b_workspace_full_cleanup_audit_r2.json",
+      "stage62b_workspace_full_cleanup_audit_r2.txt"
+    ],
+    "reports_entries": [
+      "reports/abc_classification_base_build_report.json",
+      "reports/abc_classification_base_build_report.txt",
+      "reports/abc_classification_base_validation_report.json",
+      "reports/abc_classification_base_validation_report.txt",
+      "reports/adrg_user_condition_audit_report.json",
+      "reports/adrg_user_condition_audit_report.txt",
+      "reports/adrg_user_condition_audit_report_v2.json",
+      "reports/adrg_user_condition_audit_report_v2.txt",
+      "reports/adrg_user_condition_projection_build_report.json",
+      "reports/adrg_user_condition_projection_build_report.txt",
+      "reports/adrg_user_condition_projection_build_report_v2.json",
+      "reports/adrg_user_condition_projection_build_report_v2.txt",
+      "reports/adrg_user_condition_projection_build_report_v3.json",
+      "reports/adrg_user_condition_projection_build_report_v3.txt",
+      "reports/adrg_user_condition_projection_build_report_v4.json",
+      "reports/adrg_user_condition_projection_build_report_v4.txt",
+      "reports/adrg_user_condition_projection_unresolved_queue.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v2.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v3.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v4.json",
+      "reports/adrg_user_condition_v3_promotion_report.json",
+      "reports/adrg_user_condition_v3_promotion_report.txt",
+      "reports/appendix_code_index_build_report.json",
+      "reports/appendix_code_index_build_report.txt",
+      "reports/appendix_code_index_validation_report.json",
+      "reports/appendix_code_index_validation_report.txt",
+      "reports/appendix_main_cross_validation_report.json",
+      "reports/appendix_main_cross_validation_report.txt",
+      "reports/appendix_main_semantic_audit_report.json",
+      "reports/appendix_main_semantic_audit_report.txt",
+      "reports/condition_ast_build_report.json",
+      "reports/condition_ast_build_report.txt",
+      "reports/condition_ast_validation_report.json",
+      "reports/condition_ast_validation_report.txt",
+      "reports/condition_source_block_build_report.json",
+      "reports/condition_source_block_build_report.txt",
+      "reports/condition_source_block_validation_report.json",
+      "reports/condition_source_block_validation_report.txt",
+      "reports/correction_apply_report.json",
+      "reports/correction_apply_report.txt",
+      "reports/correction_current_validation_report.json",
+      "reports/correction_current_validation_report.txt",
+      "reports/correction_patch_log_build_report.json",
+      "reports/correction_patch_log_build_report.txt",
+      "reports/correction_patch_log_validation_report.json",
+      "reports/correction_patch_log_validation_report.txt",
+      "reports/electron_0_5_10_release_verify",
+      "reports/electron_node_v22_cache",
+      "reports/electron_release_0.3.0_verify",
+      "reports/electron_release_0.4.0_verify",
+      "reports/electron_release_0.5.0_verify",
+      "reports/electron_release_0.5.1_verify",
+      "reports/electron_release_0.5.2_verify",
+      "reports/electron_release_0.5.3_verify",
+      "reports/electron_release_0.5.4_verify",
+      "reports/electron_release_0.5.9_verify",
+      "reports/electron_stage50a_backups",
+      "reports/electron_stage50a_build_report.json",
+      "reports/electron_stage50a_build_report.txt",
+      "reports/electron_stage50a_validation_report.json",
+      "reports/electron_stage50a_validation_report.txt",
+      "reports/electron_stage50b_backups",
+      "reports/electron_stage50b_build_report.json",
+      "reports/electron_stage50b_build_report.txt",
+      "reports/electron_stage50c_backups",
+      "reports/electron_stage50c_build_report.json",
+      "reports/electron_stage50c_build_report.txt",
+      "reports/electron_stage50d_actions_failure_30314871074.txt",
+      "reports/electron_stage50d_actions_failure_30321532198.txt",
+      "reports/electron_stage50d_actions_failure_30329079532.txt",
+      "reports/electron_stage50d_actions_failure_30338825549.txt",
+      "reports/electron_stage50d_actions_failure_30507501525.txt",
+      "reports/electron_stage50d_backups",
+      "reports/electron_stage50d_build_report.json",
+      "reports/electron_stage50d_build_report.txt",
+      "reports/electron_stage50d_line_endings_fix_backups",
+      "reports/electron_stage50d_line_endings_fix_report.json",
+      "reports/electron_stage50d_line_endings_fix_report.txt",
+      "reports/electron_stage50d_npm_ci_fix_backups",
+      "reports/electron_stage50d_npm_ci_fix_report.json",
+      "reports/electron_stage50d_npm_ci_fix_report.txt",
+      "reports/electron_stage50d_registry_fix_backups",
+      "reports/electron_stage50d_registry_fix_report.json",
+      "reports/electron_stage50d_registry_fix_report.txt",
+      "reports/electron_stage50d_runner_context_fix_backups",
+      "reports/electron_stage50d_runner_context_fix_report.json",
+      "reports/electron_stage50d_runner_context_fix_report.txt",
+      "reports/electron_stage50d_validator_report_fix.json",
+      "reports/electron_stage50d_validator_report_fix.txt",
+      "reports/electron_stage50d_validator_report_fix_backups",
+      "reports/electron_stage51c_backups",
+      "reports/electron_stage51c_residual_contracts_backups",
+      "reports/electron_stage51c_residual_contracts_fix_report.json",
+      "reports/electron_stage51c_residual_contracts_fix_report.txt",
+      "reports/electron_stage51c_user_condition_ui_report.json",
+      "reports/electron_stage51c_user_condition_ui_report.txt",
+      "reports/electron_stage51d_actions_failure_30966970926.txt",
+      "reports/electron_stage51f_windows_ui_failure_diagnostics",
+      "reports/electron_stage52_runtime_ui_preview_nix_click_v1",
+      "reports/electron_stage52_runtime_ui_preview_nix_detail_sync_v1",
+      "reports/electron_stage52_runtime_ui_preview_v1",
+      "reports/electron_stage52j_runtime_ui_preview_nix_generic_direct_v1",
+      "reports/electron_stage52k_runtime_ui_all_direct_candidates_v1",
+      "reports/full_corpus_integrity_audit_report.json",
+      "reports/full_corpus_integrity_audit_report.txt",
+      "reports/full_corpus_integrity_audit_validation_report.json",
+      "reports/full_corpus_integrity_audit_validation_report.txt",
+      "reports/kdrg_code_name_candidates.csv",
+      "reports/kdrg_code_name_candidates.json",
+      "reports/kdrg_code_name_mapping_high_confidence_v1.json",
+      "reports/kdrg_code_name_mapping_hira_validated_v2.json",
+      "reports/kdrg_code_name_mapping_resolved_v1.json",
+      "reports/kdrg_code_name_residual_resolution_v1.json",
+      "reports/kdrg_code_name_residual_resolution_v1.txt",
+      "reports/kdrg_code_name_resolution_additions_v1.csv",
+      "reports/kdrg_code_name_source_scan.txt",
+      "reports/kdrg_code_name_still_missing_v1.csv",
+      "reports/kdrg_code_name_unresolved_conflicts_v1.csv",
+      "reports/kdrg_hira_disease_master_merge_v2.json",
+      "reports/kdrg_hira_disease_master_merge_v2.txt",
+      "reports/kdrg_hira_master_unused_codes_v2.csv",
+      "reports/kdrg_hira_name_overrides_v2.csv",
+      "reports/kdrg_hira_unmatched_operating_codes_v2.csv",
+      "reports/kdrg_pdf_code_name_conflicts_v1.csv",
+      "reports/kdrg_pdf_code_name_extraction_v1.json",
+      "reports/kdrg_pdf_code_name_extraction_v1.txt",
+      "reports/kdrg_pdf_code_name_high_confidence_v1.csv",
+      "reports/kdrg_pdf_code_name_missing_v1.csv",
+      "reports/kdrg_structured_code_name_build_v1.json",
+      "reports/kdrg_structured_code_name_build_v1.txt",
+      "reports/kdrg_structured_code_name_conflicts_v1.csv",
+      "reports/kdrg_structured_code_name_mapping_v1.json",
+      "reports/kdrg_structured_code_name_missing_v1.csv",
+      "reports/logical_table_build_report.json",
+      "reports/logical_table_build_report.txt",
+      "reports/logical_table_validation_report.json",
+      "reports/logical_table_validation_report.txt",
+      "reports/main_page_block_build_report.json",
+      "reports/main_page_block_build_report.txt",
+      "reports/main_page_block_validation_report.json",
+      "reports/main_page_block_validation_report.txt",
+      "reports/parser_repair_apply_report.json",
+      "reports/parser_repair_apply_report.txt",
+      "reports/parser_repair_patch_log_build_report.json",
+      "reports/parser_repair_patch_log_build_report.txt",
+      "reports/parser_repair_patch_log_validation_report.json",
+      "reports/parser_repair_patch_log_validation_report.txt",
+      "reports/parser_repaired_current_validation_report.json",
+      "reports/parser_repaired_current_validation_report.txt",
+      "reports/pyside_ui_semantics_backups",
+      "reports/pyside_ui_semantics_fix_report.json",
+      "reports/pyside_ui_semantics_fix_report.txt",
+      "reports/pyside_ui_semantics_validation_report.json",
+      "reports/pyside_ui_semantics_validation_report.txt",
+      "reports/reference_base_build_report.txt",
+      "reports/reference_base_validation_report.json",
+      "reports/reference_base_validation_report.txt",
+      "reports/release_version_v021_backups",
+      "reports/release_version_v021_bump_report.json",
+      "reports/release_version_v021_bump_report.txt",
+      "reports/release_version_v021_validation_report.json",
+      "reports/release_version_v021_validation_report.txt",
+      "reports/remaining_technical_review_pattern_analysis_report.json",
+      "reports/remaining_technical_review_pattern_analysis_report.txt",
+      "reports/remaining_technical_review_pattern_validation_report.json",
+      "reports/remaining_technical_review_pattern_validation_report.txt",
+      "reports/repaired_appendix_main_cross_validation_report.json",
+      "reports/repaired_appendix_main_cross_validation_report.txt",
+      "reports/repaired_appendix_main_cross_validation_validation_report.json",
+      "reports/repaired_appendix_main_cross_validation_validation_report.txt",
+      "reports/repaired_appendix_main_semantic_audit_report.json",
+      "reports/repaired_appendix_main_semantic_audit_report.txt",
+      "reports/runtime_search_service_build_report.json",
+      "reports/runtime_search_service_build_report.txt",
+      "reports/runtime_search_service_validation_report.json",
+      "reports/runtime_search_service_validation_report.txt",
+      "reports/runtime_ui_bridge_build_report.json",
+      "reports/runtime_ui_bridge_build_report.txt",
+      "reports/runtime_ui_bridge_validation_report.json",
+      "reports/runtime_ui_bridge_validation_report.txt",
+      "reports/runtime_ui_preview_build_report.json",
+      "reports/runtime_ui_preview_build_report.txt",
+      "reports/search_integrated_build_report.json",
+      "reports/search_integrated_build_report.txt",
+      "reports/search_integrated_validation_report.json",
+      "reports/search_integrated_validation_report.txt",
+      "reports/source_validation_report.txt",
+      "reports/stage50d_smoke_v11_backup_20260730_044618",
+      "reports/stage51b_v2_unresolved_diagnostic_report.json",
+      "reports/stage51b_v2_unresolved_diagnostic_report.txt",
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.json",
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.txt",
+      "reports/stage52g_direct_code_condition_audit_v1",
+      "reports/stage52h_direct_code_condition_structure_audit_v1",
+      "reports/stage52i_generic_direct_code_condition_apply_v1",
+      "reports/stage53a_missing_adrg_name_audit_v1",
+      "reports/stage53a_missing_adrg_name_audit_v2",
+      "reports/stage53b_adrg_name_recovery_candidate_v2",
+      "reports/stage53c_adrg_name_recovery_apply_v2",
+      "reports/stage53c_adrg_name_recovery_apply_v3",
+      "reports/stage53c_adrg_name_recovery_apply_v4",
+      "reports/stage53c_adrg_name_recovery_apply_v5",
+      "reports/stage53c_adrg_name_recovery_apply_v6",
+      "reports/stage53c_full_change_impact_shadow_audit_v1",
+      "reports/stage53d_adrg_name_recovery_runtime_nix_v1",
+      "reports/stage53e_electron_0_5_4_release_candidate_v1",
+      "reports/stage53e_electron_0_5_4_release_candidate_v2",
+      "reports/stage54a_code_name_candidate_v1",
+      "reports/stage54a_code_name_candidate_v2",
+      "reports/stage54a_code_name_candidate_v3",
+      "reports/stage54a_code_name_candidate_v4",
+      "reports/stage54a_official_hira_source_v1",
+      "reports/stage54a_official_hira_source_v2",
+      "reports/stage54b_code_name_operating_promotion_v1",
+      "reports/stage54b_code_name_operating_promotion_v2",
+      "reports/stage54b_code_name_operating_promotion_v3",
+      "reports/stage54b_code_name_operating_promotion_v5",
+      "reports/stage54b_code_name_operating_promotion_v6",
+      "reports/stage54b_code_name_operating_promotion_v7",
+      "reports/stage55a_condition_summary_ui_v1",
+      "reports/stage55b_condition_summary_runtime_audit_v2",
+      "reports/stage55b_condition_summary_runtime_audit_v3",
+      "reports/stage55c_condition_operator_tokenization_v2",
+      "reports/stage55c_condition_table_label_collisions_v1",
+      "reports/stage55d_condition_summary_ui_runtime_v1",
+      "reports/stage56a_classification_badges_hide_dev_meta_v2",
+      "reports/stage56a_classification_badges_hide_dev_meta_v3",
+      "reports/stage56a_classification_badges_hide_dev_meta_v4",
+      "reports/stage56a_classification_badges_hide_dev_meta_v5",
+      "reports/stage56a_classification_badges_hide_dev_meta_v6",
+      "reports/stage56b_classification_badges_dev_meta_ui_runtime_v3",
+      "reports/stage57a_classification_badge_position_ui_v1",
+      "reports/stage57a_classification_badge_position_ui_v2",
+      "reports/stage57b_classification_badge_position_ui_runtime_v1",
+      "reports/stage57b_classification_badge_position_ui_runtime_v2",
+      "reports/stage59a_v8_r2_integrated_impact_audit.json",
+      "reports/stage59a_v8_r2_integrated_impact_audit.txt",
+      "reports/stage59b_0510_integrated_shadow_r1",
+      "reports/stage59b_0510_integrated_shadow_r2",
+      "reports/stage59b_0510_integrated_shadow_r3",
+      "reports/stage59c_0510_integrated_actual_r1",
+      "reports/stage59c_0510_validator_migration_r10",
+      "reports/stage59c_0510_validator_migration_r8",
+      "reports/stage59c_0510_validator_migration_r9",
+      "reports/stage59d_0510_final_integration_r1",
+      "reports/stage59d_0510_final_integration_r2",
+      "reports/stage59e_0510_source_of_truth_repair_r1",
+      "reports/stage60a_0510_release_version_impact_r1",
+      "reports/stage60b_0510_version_prep_r1",
+      "reports/stage60b_0510_version_prep_r2",
+      "reports/stage60c_0510_rc2_relation_contract_actual_r1",
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r2",
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r3",
+      "reports/stage60c_0510_rc2_relation_contract_shadow_r1",
+      "reports/stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6",
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1",
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2",
+      "reports/stage60c_0510_rc3_search_api_fixture_diagnosis_r7",
+      "reports/stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4",
+      "reports/stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13",
+      "reports/stage60c_0510_rc3_ui_fixture_child_aadrg_r10",
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r2",
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r3",
+      "reports/stage60c_0510_rc3_ui_selector_detail_diagnosis_r5",
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r8",
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r9",
+      "reports/stage60c_0510_windows_rc2_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc3_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc_repair_actual_r1",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r1",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r2",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r3",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r4",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r5",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r6",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r7",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r8",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r9",
+      "reports/stage61b_0511_ui_requirement_repair_actual_r1",
+      "reports/stage61b_0511_ui_requirement_repair_actual_r2",
+      "reports/stage61c_0511_release_prep_r1",
+      "reports/table_pattern_analysis_report.json",
+      "reports/table_pattern_analysis_report.txt",
+      "reports/table_section_candidate_build_report.json",
+      "reports/table_section_candidate_build_report.txt",
+      "reports/table_section_candidate_validation_report.json",
+      "reports/table_section_candidate_validation_report.txt",
+      "reports/ui_display_contract_build_report.json",
+      "reports/ui_display_contract_build_report.txt",
+      "reports/ui_display_contract_validation_report.json",
+      "reports/ui_display_contract_validation_report.txt",
+      "reports/ui_runtime_bridge_backups",
+      "reports/ui_semantic_audit_report.json",
+      "reports/ui_semantic_audit_report.txt",
+      "reports/ui_semantic_audit_validation_report.json",
+      "reports/ui_semantic_audit_validation_report.txt",
+      "reports/windows_bundle_diagnostics_backups",
+      "reports/windows_bundle_diagnostics_fix_report.json",
+      "reports/windows_bundle_diagnostics_fix_report.txt",
+      "reports/windows_ci_utf8_fix_backups",
+      "reports/windows_ci_utf8_fix_report.json",
+      "reports/windows_ci_utf8_fix_report.txt",
+      "reports/windows_ci_utf8_fix_validation_report.json",
+      "reports/windows_ci_utf8_fix_validation_report.txt",
+      "reports/windows_runtime_regression_backups",
+      "reports/windows_runtime_regression_config_report.json",
+      "reports/windows_runtime_regression_config_report.txt",
+      "reports/windows_runtime_source_smoke_report.json",
+      "reports/windows_runtime_source_smoke_report.txt",
+      "reports/windows_source_smoke_fix_backups",
+      "reports/windows_source_smoke_fix_report.json",
+      "reports/windows_source_smoke_fix_report.txt"
+    ],
+    "misc_untracked_cache": [
+      "scripts/tsconfig.tsbuildinfo"
+    ],
+    "move_paths": [
+      "37_build_kdrg_search_integrated_json.py",
+      "38_validate_kdrg_search_integrated_json.py",
+      "39_build_kdrg_runtime_search_service.py",
+      "40_validate_kdrg_runtime_search_service.py",
+      "41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "42_validate_kdrg_runtime_ui_bridge.py",
+      "43_build_kdrg_runtime_ui_preview.py",
+      "47A_build_kdrg_ui_semantic_audit.py",
+      "47B_validate_kdrg_ui_semantic_audit.py",
+      "48A_build_kdrg_ui_display_contract.py",
+      "48B_validate_kdrg_ui_display_contract.py",
+      "59A_AUDIT_KDRG_AADRG_CENTERED_UI_MIGRATION_V8_R3.py",
+      "59A_AUDIT_KDRG_BOUNDARY_NAMESPACE_FINAL_V6.py",
+      "59A_AUDIT_KDRG_FINAL_PRECISION_V5.py",
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py",
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R1.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R2.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R3.py",
+      "59C_APPLY_KDRG_0510_INTEGRATED_ACTUAL_R1.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R10.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R8.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R9.py",
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R1.py",
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R2.py",
+      "59E_REPAIR_KDRG_0510_SOURCE_OF_TRUTH_R1.py",
+      "60A_AUDIT_KDRG_0510_RELEASE_VERSION_IMPACT_R1.py",
+      "60B_APPLY_KDRG_0510_VERSION_PREP_R1.py",
+      "60B_REPAIR_KDRG_0510_VERSION_PREP_R2.py",
+      "60C_APPLY_KDRG_0510_RC2_RELATION_CONTRACT_ACTUAL_R1.py",
+      "60C_APPLY_KDRG_0510_RC3_UI_FIXTURE_AADRG_ACTUAL_R1.py",
+      "60C_APPLY_KDRG_0510_WINDOWS_RC_REPAIR_ACTUAL_R1.py",
+      "60C_BUILD_KDRG_0510_RC2_RELATION_CONTRACT_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_AADRG_SMOKE_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R11.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R12.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R13.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R3.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R3.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R4.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R5.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R6.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R7.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R8.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R9.py",
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R2.py",
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R3.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_B013_AADRG_FIXTURE_R6.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_SEARCH_API_FIXTURE_R7.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R2.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R3.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R4.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_FIXTURE_CHILD_AADRG_R10.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SELECTOR_DETAIL_R5.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R8.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R9.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC2_FAILURE_R1.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC3_FAILURE_R1.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC_FAILURE_R1.py",
+      "61A_BUILD_KDRG_0511_UI_REQUIREMENT_REPAIR_SHADOW_R1.py",
+      "61A_UI_REPAIR_SHADOW_R2.py",
+      "61A_UI_REPAIR_SHADOW_R3.py",
+      "61A_UI_REPAIR_SHADOW_R4.py",
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R1.py",
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R2.py",
+      "61C_PREP_KDRG_0511_RELEASE_R1.py",
+      "62A_VALIDATE_KDRG_LEGACY_CLEANUP_R1.py",
+      "62B_AUDIT_KDRG_WORKSPACE_FULL_CLEANUP_R2.py",
+      "stage59a_v8_r3_integrated_impact_audit.json",
+      "stage59a_v8_r3_integrated_impact_audit.txt",
+      "stage59b_0510_integrated_shadow_r1.json",
+      "stage59b_0510_integrated_shadow_r1.txt",
+      "stage59b_0510_integrated_shadow_r2.json",
+      "stage59b_0510_integrated_shadow_r2.txt",
+      "stage59b_0510_integrated_shadow_r3.json",
+      "stage59b_0510_integrated_shadow_r3.txt",
+      "stage59c_0510_integrated_actual_r1.json",
+      "stage59c_0510_integrated_actual_r1.txt",
+      "stage59c_0510_validator_migration_r10.json",
+      "stage59c_0510_validator_migration_r10.txt",
+      "stage59c_0510_validator_migration_r8.json",
+      "stage59c_0510_validator_migration_r8.txt",
+      "stage59c_0510_validator_migration_r9.json",
+      "stage59c_0510_validator_migration_r9.txt",
+      "stage59d_0510_final_integration_r1.json",
+      "stage59d_0510_final_integration_r1.txt",
+      "stage59d_0510_final_integration_r2.json",
+      "stage59d_0510_final_integration_r2.txt",
+      "stage59e_0510_source_of_truth_repair_r1.json",
+      "stage59e_0510_source_of_truth_repair_r1.txt",
+      "stage60a_0510_release_version_impact_r1.json",
+      "stage60a_0510_release_version_impact_r1.txt",
+      "stage60b_0510_version_prep_r1.json",
+      "stage60b_0510_version_prep_r1.txt",
+      "stage60b_0510_version_prep_r2.json",
+      "stage60b_0510_version_prep_r2.txt",
+      "stage60c_0510_rc2_relation_contract_actual_r1.json",
+      "stage60c_0510_rc2_relation_contract_actual_r1.txt",
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.json",
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.txt",
+      "stage60c_0510_rc2_relation_contract_shadow_r1.json",
+      "stage60c_0510_rc2_relation_contract_shadow_r1.txt",
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.json",
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.txt",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.json",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.txt",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.json",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.txt",
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.json",
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.txt",
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.json",
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.txt",
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.json",
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.txt",
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.json",
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.txt",
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.json",
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.txt",
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.json",
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.txt",
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.json",
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.txt",
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc_repair_actual_r1.json",
+      "stage60c_0510_windows_rc_repair_actual_r1.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r1.json",
+      "stage60c_0510_windows_rc_repair_shadow_r1.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r2.json",
+      "stage60c_0510_windows_rc_repair_shadow_r2.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r3.json",
+      "stage60c_0510_windows_rc_repair_shadow_r3.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r4.json",
+      "stage60c_0510_windows_rc_repair_shadow_r4.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r5.json",
+      "stage60c_0510_windows_rc_repair_shadow_r5.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r6.json",
+      "stage60c_0510_windows_rc_repair_shadow_r6.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r7.json",
+      "stage60c_0510_windows_rc_repair_shadow_r7.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r8.json",
+      "stage60c_0510_windows_rc_repair_shadow_r8.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r9.json",
+      "stage60c_0510_windows_rc_repair_shadow_r9.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r2.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r2.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r3.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r3.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r4.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r4.txt",
+      "stage61b_0511_ui_requirement_repair_actual_r1.json",
+      "stage61b_0511_ui_requirement_repair_actual_r1.txt",
+      "stage61b_0511_ui_requirement_repair_actual_r2.json",
+      "stage61b_0511_ui_requirement_repair_actual_r2.txt",
+      "stage61c_0511_release_prep_r1.json",
+      "stage61c_0511_release_prep_r1.txt",
+      "stage62a_legacy_cleanup_validation_r1.json",
+      "stage62a_legacy_cleanup_validation_r1.txt",
+      "stage62b_workspace_full_cleanup_audit_r2.json",
+      "stage62b_workspace_full_cleanup_audit_r2.txt",
+      "reports/abc_classification_base_build_report.json",
+      "reports/abc_classification_base_build_report.txt",
+      "reports/abc_classification_base_validation_report.json",
+      "reports/abc_classification_base_validation_report.txt",
+      "reports/adrg_user_condition_audit_report.json",
+      "reports/adrg_user_condition_audit_report.txt",
+      "reports/adrg_user_condition_audit_report_v2.json",
+      "reports/adrg_user_condition_audit_report_v2.txt",
+      "reports/adrg_user_condition_projection_build_report.json",
+      "reports/adrg_user_condition_projection_build_report.txt",
+      "reports/adrg_user_condition_projection_build_report_v2.json",
+      "reports/adrg_user_condition_projection_build_report_v2.txt",
+      "reports/adrg_user_condition_projection_build_report_v3.json",
+      "reports/adrg_user_condition_projection_build_report_v3.txt",
+      "reports/adrg_user_condition_projection_build_report_v4.json",
+      "reports/adrg_user_condition_projection_build_report_v4.txt",
+      "reports/adrg_user_condition_projection_unresolved_queue.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v2.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v3.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v4.json",
+      "reports/adrg_user_condition_v3_promotion_report.json",
+      "reports/adrg_user_condition_v3_promotion_report.txt",
+      "reports/appendix_code_index_build_report.json",
+      "reports/appendix_code_index_build_report.txt",
+      "reports/appendix_code_index_validation_report.json",
+      "reports/appendix_code_index_validation_report.txt",
+      "reports/appendix_main_cross_validation_report.json",
+      "reports/appendix_main_cross_validation_report.txt",
+      "reports/appendix_main_semantic_audit_report.json",
+      "reports/appendix_main_semantic_audit_report.txt",
+      "reports/condition_ast_build_report.json",
+      "reports/condition_ast_build_report.txt",
+      "reports/condition_ast_validation_report.json",
+      "reports/condition_ast_validation_report.txt",
+      "reports/condition_source_block_build_report.json",
+      "reports/condition_source_block_build_report.txt",
+      "reports/condition_source_block_validation_report.json",
+      "reports/condition_source_block_validation_report.txt",
+      "reports/correction_apply_report.json",
+      "reports/correction_apply_report.txt",
+      "reports/correction_current_validation_report.json",
+      "reports/correction_current_validation_report.txt",
+      "reports/correction_patch_log_build_report.json",
+      "reports/correction_patch_log_build_report.txt",
+      "reports/correction_patch_log_validation_report.json",
+      "reports/correction_patch_log_validation_report.txt",
+      "reports/electron_0_5_10_release_verify",
+      "reports/electron_node_v22_cache",
+      "reports/electron_release_0.3.0_verify",
+      "reports/electron_release_0.4.0_verify",
+      "reports/electron_release_0.5.0_verify",
+      "reports/electron_release_0.5.1_verify",
+      "reports/electron_release_0.5.2_verify",
+      "reports/electron_release_0.5.3_verify",
+      "reports/electron_release_0.5.4_verify",
+      "reports/electron_release_0.5.9_verify",
+      "reports/electron_stage50a_backups",
+      "reports/electron_stage50a_build_report.json",
+      "reports/electron_stage50a_build_report.txt",
+      "reports/electron_stage50a_validation_report.json",
+      "reports/electron_stage50a_validation_report.txt",
+      "reports/electron_stage50b_backups",
+      "reports/electron_stage50b_build_report.json",
+      "reports/electron_stage50b_build_report.txt",
+      "reports/electron_stage50c_backups",
+      "reports/electron_stage50c_build_report.json",
+      "reports/electron_stage50c_build_report.txt",
+      "reports/electron_stage50d_actions_failure_30314871074.txt",
+      "reports/electron_stage50d_actions_failure_30321532198.txt",
+      "reports/electron_stage50d_actions_failure_30329079532.txt",
+      "reports/electron_stage50d_actions_failure_30338825549.txt",
+      "reports/electron_stage50d_actions_failure_30507501525.txt",
+      "reports/electron_stage50d_backups",
+      "reports/electron_stage50d_build_report.json",
+      "reports/electron_stage50d_build_report.txt",
+      "reports/electron_stage50d_line_endings_fix_backups",
+      "reports/electron_stage50d_line_endings_fix_report.json",
+      "reports/electron_stage50d_line_endings_fix_report.txt",
+      "reports/electron_stage50d_npm_ci_fix_backups",
+      "reports/electron_stage50d_npm_ci_fix_report.json",
+      "reports/electron_stage50d_npm_ci_fix_report.txt",
+      "reports/electron_stage50d_registry_fix_backups",
+      "reports/electron_stage50d_registry_fix_report.json",
+      "reports/electron_stage50d_registry_fix_report.txt",
+      "reports/electron_stage50d_runner_context_fix_backups",
+      "reports/electron_stage50d_runner_context_fix_report.json",
+      "reports/electron_stage50d_runner_context_fix_report.txt",
+      "reports/electron_stage50d_validator_report_fix.json",
+      "reports/electron_stage50d_validator_report_fix.txt",
+      "reports/electron_stage50d_validator_report_fix_backups",
+      "reports/electron_stage51c_backups",
+      "reports/electron_stage51c_residual_contracts_backups",
+      "reports/electron_stage51c_residual_contracts_fix_report.json",
+      "reports/electron_stage51c_residual_contracts_fix_report.txt",
+      "reports/electron_stage51c_user_condition_ui_report.json",
+      "reports/electron_stage51c_user_condition_ui_report.txt",
+      "reports/electron_stage51d_actions_failure_30966970926.txt",
+      "reports/electron_stage51f_windows_ui_failure_diagnostics",
+      "reports/electron_stage52_runtime_ui_preview_nix_click_v1",
+      "reports/electron_stage52_runtime_ui_preview_nix_detail_sync_v1",
+      "reports/electron_stage52_runtime_ui_preview_v1",
+      "reports/electron_stage52j_runtime_ui_preview_nix_generic_direct_v1",
+      "reports/electron_stage52k_runtime_ui_all_direct_candidates_v1",
+      "reports/full_corpus_integrity_audit_report.json",
+      "reports/full_corpus_integrity_audit_report.txt",
+      "reports/full_corpus_integrity_audit_validation_report.json",
+      "reports/full_corpus_integrity_audit_validation_report.txt",
+      "reports/kdrg_code_name_candidates.csv",
+      "reports/kdrg_code_name_candidates.json",
+      "reports/kdrg_code_name_mapping_high_confidence_v1.json",
+      "reports/kdrg_code_name_mapping_hira_validated_v2.json",
+      "reports/kdrg_code_name_mapping_resolved_v1.json",
+      "reports/kdrg_code_name_residual_resolution_v1.json",
+      "reports/kdrg_code_name_residual_resolution_v1.txt",
+      "reports/kdrg_code_name_resolution_additions_v1.csv",
+      "reports/kdrg_code_name_source_scan.txt",
+      "reports/kdrg_code_name_still_missing_v1.csv",
+      "reports/kdrg_code_name_unresolved_conflicts_v1.csv",
+      "reports/kdrg_hira_disease_master_merge_v2.json",
+      "reports/kdrg_hira_disease_master_merge_v2.txt",
+      "reports/kdrg_hira_master_unused_codes_v2.csv",
+      "reports/kdrg_hira_name_overrides_v2.csv",
+      "reports/kdrg_hira_unmatched_operating_codes_v2.csv",
+      "reports/kdrg_pdf_code_name_conflicts_v1.csv",
+      "reports/kdrg_pdf_code_name_extraction_v1.json",
+      "reports/kdrg_pdf_code_name_extraction_v1.txt",
+      "reports/kdrg_pdf_code_name_high_confidence_v1.csv",
+      "reports/kdrg_pdf_code_name_missing_v1.csv",
+      "reports/kdrg_structured_code_name_build_v1.json",
+      "reports/kdrg_structured_code_name_build_v1.txt",
+      "reports/kdrg_structured_code_name_conflicts_v1.csv",
+      "reports/kdrg_structured_code_name_mapping_v1.json",
+      "reports/kdrg_structured_code_name_missing_v1.csv",
+      "reports/logical_table_build_report.json",
+      "reports/logical_table_build_report.txt",
+      "reports/logical_table_validation_report.json",
+      "reports/logical_table_validation_report.txt",
+      "reports/main_page_block_build_report.json",
+      "reports/main_page_block_build_report.txt",
+      "reports/main_page_block_validation_report.json",
+      "reports/main_page_block_validation_report.txt",
+      "reports/parser_repair_apply_report.json",
+      "reports/parser_repair_apply_report.txt",
+      "reports/parser_repair_patch_log_build_report.json",
+      "reports/parser_repair_patch_log_build_report.txt",
+      "reports/parser_repair_patch_log_validation_report.json",
+      "reports/parser_repair_patch_log_validation_report.txt",
+      "reports/parser_repaired_current_validation_report.json",
+      "reports/parser_repaired_current_validation_report.txt",
+      "reports/pyside_ui_semantics_backups",
+      "reports/pyside_ui_semantics_fix_report.json",
+      "reports/pyside_ui_semantics_fix_report.txt",
+      "reports/pyside_ui_semantics_validation_report.json",
+      "reports/pyside_ui_semantics_validation_report.txt",
+      "reports/reference_base_build_report.txt",
+      "reports/reference_base_validation_report.json",
+      "reports/reference_base_validation_report.txt",
+      "reports/release_version_v021_backups",
+      "reports/release_version_v021_bump_report.json",
+      "reports/release_version_v021_bump_report.txt",
+      "reports/release_version_v021_validation_report.json",
+      "reports/release_version_v021_validation_report.txt",
+      "reports/remaining_technical_review_pattern_analysis_report.json",
+      "reports/remaining_technical_review_pattern_analysis_report.txt",
+      "reports/remaining_technical_review_pattern_validation_report.json",
+      "reports/remaining_technical_review_pattern_validation_report.txt",
+      "reports/repaired_appendix_main_cross_validation_report.json",
+      "reports/repaired_appendix_main_cross_validation_report.txt",
+      "reports/repaired_appendix_main_cross_validation_validation_report.json",
+      "reports/repaired_appendix_main_cross_validation_validation_report.txt",
+      "reports/repaired_appendix_main_semantic_audit_report.json",
+      "reports/repaired_appendix_main_semantic_audit_report.txt",
+      "reports/runtime_search_service_build_report.json",
+      "reports/runtime_search_service_build_report.txt",
+      "reports/runtime_search_service_validation_report.json",
+      "reports/runtime_search_service_validation_report.txt",
+      "reports/runtime_ui_bridge_build_report.json",
+      "reports/runtime_ui_bridge_build_report.txt",
+      "reports/runtime_ui_bridge_validation_report.json",
+      "reports/runtime_ui_bridge_validation_report.txt",
+      "reports/runtime_ui_preview_build_report.json",
+      "reports/runtime_ui_preview_build_report.txt",
+      "reports/search_integrated_build_report.json",
+      "reports/search_integrated_build_report.txt",
+      "reports/search_integrated_validation_report.json",
+      "reports/search_integrated_validation_report.txt",
+      "reports/source_validation_report.txt",
+      "reports/stage50d_smoke_v11_backup_20260730_044618",
+      "reports/stage51b_v2_unresolved_diagnostic_report.json",
+      "reports/stage51b_v2_unresolved_diagnostic_report.txt",
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.json",
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.txt",
+      "reports/stage52g_direct_code_condition_audit_v1",
+      "reports/stage52h_direct_code_condition_structure_audit_v1",
+      "reports/stage52i_generic_direct_code_condition_apply_v1",
+      "reports/stage53a_missing_adrg_name_audit_v1",
+      "reports/stage53a_missing_adrg_name_audit_v2",
+      "reports/stage53b_adrg_name_recovery_candidate_v2",
+      "reports/stage53c_adrg_name_recovery_apply_v2",
+      "reports/stage53c_adrg_name_recovery_apply_v3",
+      "reports/stage53c_adrg_name_recovery_apply_v4",
+      "reports/stage53c_adrg_name_recovery_apply_v5",
+      "reports/stage53c_adrg_name_recovery_apply_v6",
+      "reports/stage53c_full_change_impact_shadow_audit_v1",
+      "reports/stage53d_adrg_name_recovery_runtime_nix_v1",
+      "reports/stage53e_electron_0_5_4_release_candidate_v1",
+      "reports/stage53e_electron_0_5_4_release_candidate_v2",
+      "reports/stage54a_code_name_candidate_v1",
+      "reports/stage54a_code_name_candidate_v2",
+      "reports/stage54a_code_name_candidate_v3",
+      "reports/stage54a_code_name_candidate_v4",
+      "reports/stage54a_official_hira_source_v1",
+      "reports/stage54a_official_hira_source_v2",
+      "reports/stage54b_code_name_operating_promotion_v1",
+      "reports/stage54b_code_name_operating_promotion_v2",
+      "reports/stage54b_code_name_operating_promotion_v3",
+      "reports/stage54b_code_name_operating_promotion_v5",
+      "reports/stage54b_code_name_operating_promotion_v6",
+      "reports/stage54b_code_name_operating_promotion_v7",
+      "reports/stage55a_condition_summary_ui_v1",
+      "reports/stage55b_condition_summary_runtime_audit_v2",
+      "reports/stage55b_condition_summary_runtime_audit_v3",
+      "reports/stage55c_condition_operator_tokenization_v2",
+      "reports/stage55c_condition_table_label_collisions_v1",
+      "reports/stage55d_condition_summary_ui_runtime_v1",
+      "reports/stage56a_classification_badges_hide_dev_meta_v2",
+      "reports/stage56a_classification_badges_hide_dev_meta_v3",
+      "reports/stage56a_classification_badges_hide_dev_meta_v4",
+      "reports/stage56a_classification_badges_hide_dev_meta_v5",
+      "reports/stage56a_classification_badges_hide_dev_meta_v6",
+      "reports/stage56b_classification_badges_dev_meta_ui_runtime_v3",
+      "reports/stage57a_classification_badge_position_ui_v1",
+      "reports/stage57a_classification_badge_position_ui_v2",
+      "reports/stage57b_classification_badge_position_ui_runtime_v1",
+      "reports/stage57b_classification_badge_position_ui_runtime_v2",
+      "reports/stage59a_v8_r2_integrated_impact_audit.json",
+      "reports/stage59a_v8_r2_integrated_impact_audit.txt",
+      "reports/stage59b_0510_integrated_shadow_r1",
+      "reports/stage59b_0510_integrated_shadow_r2",
+      "reports/stage59b_0510_integrated_shadow_r3",
+      "reports/stage59c_0510_integrated_actual_r1",
+      "reports/stage59c_0510_validator_migration_r10",
+      "reports/stage59c_0510_validator_migration_r8",
+      "reports/stage59c_0510_validator_migration_r9",
+      "reports/stage59d_0510_final_integration_r1",
+      "reports/stage59d_0510_final_integration_r2",
+      "reports/stage59e_0510_source_of_truth_repair_r1",
+      "reports/stage60a_0510_release_version_impact_r1",
+      "reports/stage60b_0510_version_prep_r1",
+      "reports/stage60b_0510_version_prep_r2",
+      "reports/stage60c_0510_rc2_relation_contract_actual_r1",
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r2",
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r3",
+      "reports/stage60c_0510_rc2_relation_contract_shadow_r1",
+      "reports/stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6",
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1",
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2",
+      "reports/stage60c_0510_rc3_search_api_fixture_diagnosis_r7",
+      "reports/stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4",
+      "reports/stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13",
+      "reports/stage60c_0510_rc3_ui_fixture_child_aadrg_r10",
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r2",
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r3",
+      "reports/stage60c_0510_rc3_ui_selector_detail_diagnosis_r5",
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r8",
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r9",
+      "reports/stage60c_0510_windows_rc2_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc3_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc_repair_actual_r1",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r1",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r2",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r3",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r4",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r5",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r6",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r7",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r8",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r9",
+      "reports/stage61b_0511_ui_requirement_repair_actual_r1",
+      "reports/stage61b_0511_ui_requirement_repair_actual_r2",
+      "reports/stage61c_0511_release_prep_r1",
+      "reports/table_pattern_analysis_report.json",
+      "reports/table_pattern_analysis_report.txt",
+      "reports/table_section_candidate_build_report.json",
+      "reports/table_section_candidate_build_report.txt",
+      "reports/table_section_candidate_validation_report.json",
+      "reports/table_section_candidate_validation_report.txt",
+      "reports/ui_display_contract_build_report.json",
+      "reports/ui_display_contract_build_report.txt",
+      "reports/ui_display_contract_validation_report.json",
+      "reports/ui_display_contract_validation_report.txt",
+      "reports/ui_runtime_bridge_backups",
+      "reports/ui_semantic_audit_report.json",
+      "reports/ui_semantic_audit_report.txt",
+      "reports/ui_semantic_audit_validation_report.json",
+      "reports/ui_semantic_audit_validation_report.txt",
+      "reports/windows_bundle_diagnostics_backups",
+      "reports/windows_bundle_diagnostics_fix_report.json",
+      "reports/windows_bundle_diagnostics_fix_report.txt",
+      "reports/windows_ci_utf8_fix_backups",
+      "reports/windows_ci_utf8_fix_report.json",
+      "reports/windows_ci_utf8_fix_report.txt",
+      "reports/windows_ci_utf8_fix_validation_report.json",
+      "reports/windows_ci_utf8_fix_validation_report.txt",
+      "reports/windows_runtime_regression_backups",
+      "reports/windows_runtime_regression_config_report.json",
+      "reports/windows_runtime_regression_config_report.txt",
+      "reports/windows_runtime_source_smoke_report.json",
+      "reports/windows_runtime_source_smoke_report.txt",
+      "reports/windows_source_smoke_fix_backups",
+      "reports/windows_source_smoke_fix_report.json",
+      "reports/windows_source_smoke_fix_report.txt",
+      "scripts/tsconfig.tsbuildinfo"
+    ],
+    "move_path_count": 500,
+    "estimated_file_count": 7929,
+    "estimated_bytes": 2398918171,
+    "per_path": {
+      "37_build_kdrg_search_integrated_json.py": {
+        "files": 1,
+        "bytes": 31428
+      },
+      "38_validate_kdrg_search_integrated_json.py": {
+        "files": 1,
+        "bytes": 41993
+      },
+      "39_build_kdrg_runtime_search_service.py": {
+        "files": 1,
+        "bytes": 59220
+      },
+      "40_validate_kdrg_runtime_search_service.py": {
+        "files": 1,
+        "bytes": 63207
+      },
+      "41_build_kdrg_pyside_runtime_ui_bridge.py": {
+        "files": 1,
+        "bytes": 88021
+      },
+      "42_validate_kdrg_runtime_ui_bridge.py": {
+        "files": 1,
+        "bytes": 45921
+      },
+      "43_build_kdrg_runtime_ui_preview.py": {
+        "files": 1,
+        "bytes": 28586
+      },
+      "47A_build_kdrg_ui_semantic_audit.py": {
+        "files": 1,
+        "bytes": 31964
+      },
+      "47B_validate_kdrg_ui_semantic_audit.py": {
+        "files": 1,
+        "bytes": 19191
+      },
+      "48A_build_kdrg_ui_display_contract.py": {
+        "files": 1,
+        "bytes": 33912
+      },
+      "48B_validate_kdrg_ui_display_contract.py": {
+        "files": 1,
+        "bytes": 15783
+      },
+      "59A_AUDIT_KDRG_AADRG_CENTERED_UI_MIGRATION_V8_R3.py": {
+        "files": 1,
+        "bytes": 87435
+      },
+      "59A_AUDIT_KDRG_BOUNDARY_NAMESPACE_FINAL_V6.py": {
+        "files": 1,
+        "bytes": 34481
+      },
+      "59A_AUDIT_KDRG_FINAL_PRECISION_V5.py": {
+        "files": 1,
+        "bytes": 36557
+      },
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py": {
+        "files": 1,
+        "bytes": 44649
+      },
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py": {
+        "files": 1,
+        "bytes": 45347
+      },
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R1.py": {
+        "files": 1,
+        "bytes": 49786
+      },
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R2.py": {
+        "files": 1,
+        "bytes": 75765
+      },
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R3.py": {
+        "files": 1,
+        "bytes": 78717
+      },
+      "59C_APPLY_KDRG_0510_INTEGRATED_ACTUAL_R1.py": {
+        "files": 1,
+        "bytes": 17212
+      },
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R10.py": {
+        "files": 1,
+        "bytes": 38065
+      },
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R8.py": {
+        "files": 1,
+        "bytes": 33966
+      },
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R9.py": {
+        "files": 1,
+        "bytes": 37132
+      },
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R1.py": {
+        "files": 1,
+        "bytes": 29721
+      },
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R2.py": {
+        "files": 1,
+        "bytes": 18471
+      },
+      "59E_REPAIR_KDRG_0510_SOURCE_OF_TRUTH_R1.py": {
+        "files": 1,
+        "bytes": 28680
+      },
+      "60A_AUDIT_KDRG_0510_RELEASE_VERSION_IMPACT_R1.py": {
+        "files": 1,
+        "bytes": 13891
+      },
+      "60B_APPLY_KDRG_0510_VERSION_PREP_R1.py": {
+        "files": 1,
+        "bytes": 16908
+      },
+      "60B_REPAIR_KDRG_0510_VERSION_PREP_R2.py": {
+        "files": 1,
+        "bytes": 17551
+      },
+      "60C_APPLY_KDRG_0510_RC2_RELATION_CONTRACT_ACTUAL_R1.py": {
+        "files": 1,
+        "bytes": 14727
+      },
+      "60C_APPLY_KDRG_0510_RC3_UI_FIXTURE_AADRG_ACTUAL_R1.py": {
+        "files": 1,
+        "bytes": 18090
+      },
+      "60C_APPLY_KDRG_0510_WINDOWS_RC_REPAIR_ACTUAL_R1.py": {
+        "files": 1,
+        "bytes": 17077
+      },
+      "60C_BUILD_KDRG_0510_RC2_RELATION_CONTRACT_SHADOW_R1.py": {
+        "files": 1,
+        "bytes": 21367
+      },
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R1.py": {
+        "files": 1,
+        "bytes": 36210
+      },
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R2.py": {
+        "files": 1,
+        "bytes": 44784
+      },
+      "60C_BUILD_KDRG_0510_RC3_UI_AADRG_SMOKE_SHADOW_R1.py": {
+        "files": 1,
+        "bytes": 21352
+      },
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R11.py": {
+        "files": 1,
+        "bytes": 28297
+      },
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R12.py": {
+        "files": 1,
+        "bytes": 29569
+      },
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R13.py": {
+        "files": 1,
+        "bytes": 33879
+      },
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R2.py": {
+        "files": 1,
+        "bytes": 32052
+      },
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R3.py": {
+        "files": 1,
+        "bytes": 34711
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R1.py": {
+        "files": 1,
+        "bytes": 29814
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R2.py": {
+        "files": 1,
+        "bytes": 29829
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R3.py": {
+        "files": 1,
+        "bytes": 31958
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R4.py": {
+        "files": 1,
+        "bytes": 33196
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R5.py": {
+        "files": 1,
+        "bytes": 36954
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R6.py": {
+        "files": 1,
+        "bytes": 37738
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R7.py": {
+        "files": 1,
+        "bytes": 38822
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R8.py": {
+        "files": 1,
+        "bytes": 39562
+      },
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R9.py": {
+        "files": 1,
+        "bytes": 40975
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R2.py": {
+        "files": 1,
+        "bytes": 18958
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R3.py": {
+        "files": 1,
+        "bytes": 18973
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_B013_AADRG_FIXTURE_R6.py": {
+        "files": 1,
+        "bytes": 14731
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_SEARCH_API_FIXTURE_R7.py": {
+        "files": 1,
+        "bytes": 15931
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R2.py": {
+        "files": 1,
+        "bytes": 16492
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R3.py": {
+        "files": 1,
+        "bytes": 19542
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R4.py": {
+        "files": 1,
+        "bytes": 20507
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_FIXTURE_CHILD_AADRG_R10.py": {
+        "files": 1,
+        "bytes": 25940
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SELECTOR_DETAIL_R5.py": {
+        "files": 1,
+        "bytes": 13323
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R8.py": {
+        "files": 1,
+        "bytes": 21963
+      },
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R9.py": {
+        "files": 1,
+        "bytes": 22165
+      },
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC2_FAILURE_R1.py": {
+        "files": 1,
+        "bytes": 11671
+      },
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC3_FAILURE_R1.py": {
+        "files": 1,
+        "bytes": 11370
+      },
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC_FAILURE_R1.py": {
+        "files": 1,
+        "bytes": 12155
+      },
+      "61A_BUILD_KDRG_0511_UI_REQUIREMENT_REPAIR_SHADOW_R1.py": {
+        "files": 1,
+        "bytes": 39013
+      },
+      "61A_UI_REPAIR_SHADOW_R2.py": {
+        "files": 1,
+        "bytes": 39013
+      },
+      "61A_UI_REPAIR_SHADOW_R3.py": {
+        "files": 1,
+        "bytes": 42181
+      },
+      "61A_UI_REPAIR_SHADOW_R4.py": {
+        "files": 1,
+        "bytes": 42691
+      },
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R1.py": {
+        "files": 1,
+        "bytes": 18969
+      },
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R2.py": {
+        "files": 1,
+        "bytes": 21655
+      },
+      "61C_PREP_KDRG_0511_RELEASE_R1.py": {
+        "files": 1,
+        "bytes": 24186
+      },
+      "62A_VALIDATE_KDRG_LEGACY_CLEANUP_R1.py": {
+        "files": 1,
+        "bytes": 13984
+      },
+      "62B_AUDIT_KDRG_WORKSPACE_FULL_CLEANUP_R2.py": {
+        "files": 1,
+        "bytes": 17785
+      },
+      "stage59a_v8_r3_integrated_impact_audit.json": {
+        "files": 1,
+        "bytes": 116726
+      },
+      "stage59a_v8_r3_integrated_impact_audit.txt": {
+        "files": 1,
+        "bytes": 11435
+      },
+      "stage59b_0510_integrated_shadow_r1.json": {
+        "files": 1,
+        "bytes": 4497
+      },
+      "stage59b_0510_integrated_shadow_r1.txt": {
+        "files": 1,
+        "bytes": 2340
+      },
+      "stage59b_0510_integrated_shadow_r2.json": {
+        "files": 1,
+        "bytes": 6997
+      },
+      "stage59b_0510_integrated_shadow_r2.txt": {
+        "files": 1,
+        "bytes": 4100
+      },
+      "stage59b_0510_integrated_shadow_r3.json": {
+        "files": 1,
+        "bytes": 7263
+      },
+      "stage59b_0510_integrated_shadow_r3.txt": {
+        "files": 1,
+        "bytes": 2418
+      },
+      "stage59c_0510_integrated_actual_r1.json": {
+        "files": 1,
+        "bytes": 69221
+      },
+      "stage59c_0510_integrated_actual_r1.txt": {
+        "files": 1,
+        "bytes": 52833
+      },
+      "stage59c_0510_validator_migration_r10.json": {
+        "files": 1,
+        "bytes": 12920
+      },
+      "stage59c_0510_validator_migration_r10.txt": {
+        "files": 1,
+        "bytes": 2901
+      },
+      "stage59c_0510_validator_migration_r8.json": {
+        "files": 1,
+        "bytes": 630
+      },
+      "stage59c_0510_validator_migration_r8.txt": {
+        "files": 1,
+        "bytes": 841
+      },
+      "stage59c_0510_validator_migration_r9.json": {
+        "files": 1,
+        "bytes": 1079
+      },
+      "stage59c_0510_validator_migration_r9.txt": {
+        "files": 1,
+        "bytes": 1519
+      },
+      "stage59d_0510_final_integration_r1.json": {
+        "files": 1,
+        "bytes": 128812
+      },
+      "stage59d_0510_final_integration_r1.txt": {
+        "files": 1,
+        "bytes": 14043
+      },
+      "stage59d_0510_final_integration_r2.json": {
+        "files": 1,
+        "bytes": 16073
+      },
+      "stage59d_0510_final_integration_r2.txt": {
+        "files": 1,
+        "bytes": 7305
+      },
+      "stage59e_0510_source_of_truth_repair_r1.json": {
+        "files": 1,
+        "bytes": 2408
+      },
+      "stage59e_0510_source_of_truth_repair_r1.txt": {
+        "files": 1,
+        "bytes": 2027
+      },
+      "stage60a_0510_release_version_impact_r1.json": {
+        "files": 1,
+        "bytes": 10591
+      },
+      "stage60a_0510_release_version_impact_r1.txt": {
+        "files": 1,
+        "bytes": 1819
+      },
+      "stage60b_0510_version_prep_r1.json": {
+        "files": 1,
+        "bytes": 6501
+      },
+      "stage60b_0510_version_prep_r1.txt": {
+        "files": 1,
+        "bytes": 3348
+      },
+      "stage60b_0510_version_prep_r2.json": {
+        "files": 1,
+        "bytes": 8695
+      },
+      "stage60b_0510_version_prep_r2.txt": {
+        "files": 1,
+        "bytes": 1813
+      },
+      "stage60c_0510_rc2_relation_contract_actual_r1.json": {
+        "files": 1,
+        "bytes": 8007
+      },
+      "stage60c_0510_rc2_relation_contract_actual_r1.txt": {
+        "files": 1,
+        "bytes": 1764
+      },
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.json": {
+        "files": 1,
+        "bytes": 10141
+      },
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.txt": {
+        "files": 1,
+        "bytes": 6749
+      },
+      "stage60c_0510_rc2_relation_contract_shadow_r1.json": {
+        "files": 1,
+        "bytes": 8130
+      },
+      "stage60c_0510_rc2_relation_contract_shadow_r1.txt": {
+        "files": 1,
+        "bytes": 2717
+      },
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.json": {
+        "files": 1,
+        "bytes": 4162
+      },
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.txt": {
+        "files": 1,
+        "bytes": 2368
+      },
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.json": {
+        "files": 1,
+        "bytes": 934
+      },
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.txt": {
+        "files": 1,
+        "bytes": 1586
+      },
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.json": {
+        "files": 1,
+        "bytes": 20646
+      },
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.txt": {
+        "files": 1,
+        "bytes": 15754
+      },
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.json": {
+        "files": 1,
+        "bytes": 305622
+      },
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.txt": {
+        "files": 1,
+        "bytes": 4917
+      },
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.json": {
+        "files": 1,
+        "bytes": 1647
+      },
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.txt": {
+        "files": 1,
+        "bytes": 1836
+      },
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.json": {
+        "files": 1,
+        "bytes": 857
+      },
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.txt": {
+        "files": 1,
+        "bytes": 1342
+      },
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.json": {
+        "files": 1,
+        "bytes": 849
+      },
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.txt": {
+        "files": 1,
+        "bytes": 1598
+      },
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.json": {
+        "files": 1,
+        "bytes": 82736
+      },
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.txt": {
+        "files": 1,
+        "bytes": 16109
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.json": {
+        "files": 1,
+        "bytes": 9426
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.txt": {
+        "files": 1,
+        "bytes": 3978
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.json": {
+        "files": 1,
+        "bytes": 3265
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.txt": {
+        "files": 1,
+        "bytes": 2871
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.json": {
+        "files": 1,
+        "bytes": 3371
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.txt": {
+        "files": 1,
+        "bytes": 2975
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.json": {
+        "files": 1,
+        "bytes": 10632
+      },
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.txt": {
+        "files": 1,
+        "bytes": 3898
+      },
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.json": {
+        "files": 1,
+        "bytes": 26508
+      },
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.txt": {
+        "files": 1,
+        "bytes": 4774
+      },
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.json": {
+        "files": 1,
+        "bytes": 1903
+      },
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.txt": {
+        "files": 1,
+        "bytes": 2396
+      },
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.json": {
+        "files": 1,
+        "bytes": 1371
+      },
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.txt": {
+        "files": 1,
+        "bytes": 2417
+      },
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.json": {
+        "files": 1,
+        "bytes": 12364
+      },
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.txt": {
+        "files": 1,
+        "bytes": 8908
+      },
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.json": {
+        "files": 1,
+        "bytes": 9001
+      },
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.txt": {
+        "files": 1,
+        "bytes": 7714
+      },
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.json": {
+        "files": 1,
+        "bytes": 9279
+      },
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.txt": {
+        "files": 1,
+        "bytes": 2424
+      },
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.json": {
+        "files": 1,
+        "bytes": 9716
+      },
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.txt": {
+        "files": 1,
+        "bytes": 1561
+      },
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.json": {
+        "files": 1,
+        "bytes": 440901
+      },
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.txt": {
+        "files": 1,
+        "bytes": 177785
+      },
+      "stage60c_0510_windows_rc_repair_actual_r1.json": {
+        "files": 1,
+        "bytes": 9268
+      },
+      "stage60c_0510_windows_rc_repair_actual_r1.txt": {
+        "files": 1,
+        "bytes": 2471
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r1.json": {
+        "files": 1,
+        "bytes": 283
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r1.txt": {
+        "files": 1,
+        "bytes": 1289
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r2.json": {
+        "files": 1,
+        "bytes": 1156
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r2.txt": {
+        "files": 1,
+        "bytes": 1441
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r3.json": {
+        "files": 1,
+        "bytes": 1149
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r3.txt": {
+        "files": 1,
+        "bytes": 1434
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r4.json": {
+        "files": 1,
+        "bytes": 1140
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r4.txt": {
+        "files": 1,
+        "bytes": 1725
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r5.json": {
+        "files": 1,
+        "bytes": 1186
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r5.txt": {
+        "files": 1,
+        "bytes": 1904
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r6.json": {
+        "files": 1,
+        "bytes": 12240
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r6.txt": {
+        "files": 1,
+        "bytes": 7805
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r7.json": {
+        "files": 1,
+        "bytes": 10837
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r7.txt": {
+        "files": 1,
+        "bytes": 7628
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r8.json": {
+        "files": 1,
+        "bytes": 1139
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r8.txt": {
+        "files": 1,
+        "bytes": 2467
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r9.json": {
+        "files": 1,
+        "bytes": 10341
+      },
+      "stage60c_0510_windows_rc_repair_shadow_r9.txt": {
+        "files": 1,
+        "bytes": 5391
+      },
+      "stage61a_0511_ui_requirement_repair_shadow_r2.json": {
+        "files": 1,
+        "bytes": 3059
+      },
+      "stage61a_0511_ui_requirement_repair_shadow_r2.txt": {
+        "files": 1,
+        "bytes": 3248
+      },
+      "stage61a_0511_ui_requirement_repair_shadow_r3.json": {
+        "files": 1,
+        "bytes": 2945
+      },
+      "stage61a_0511_ui_requirement_repair_shadow_r3.txt": {
+        "files": 1,
+        "bytes": 3140
+      },
+      "stage61a_0511_ui_requirement_repair_shadow_r4.json": {
+        "files": 1,
+        "bytes": 2758
+      },
+      "stage61a_0511_ui_requirement_repair_shadow_r4.txt": {
+        "files": 1,
+        "bytes": 2960
+      },
+      "stage61b_0511_ui_requirement_repair_actual_r1.json": {
+        "files": 1,
+        "bytes": 1600
+      },
+      "stage61b_0511_ui_requirement_repair_actual_r1.txt": {
+        "files": 1,
+        "bytes": 1892
+      },
+      "stage61b_0511_ui_requirement_repair_actual_r2.json": {
+        "files": 1,
+        "bytes": 1600
+      },
+      "stage61b_0511_ui_requirement_repair_actual_r2.txt": {
+        "files": 1,
+        "bytes": 1892
+      },
+      "stage61c_0511_release_prep_r1.json": {
+        "files": 1,
+        "bytes": 1046
+      },
+      "stage61c_0511_release_prep_r1.txt": {
+        "files": 1,
+        "bytes": 1360
+      },
+      "stage62a_legacy_cleanup_validation_r1.json": {
+        "files": 1,
+        "bytes": 10311
+      },
+      "stage62a_legacy_cleanup_validation_r1.txt": {
+        "files": 1,
+        "bytes": 4169
+      },
+      "stage62b_workspace_full_cleanup_audit_r2.json": {
+        "files": 1,
+        "bytes": 220569
+      },
+      "stage62b_workspace_full_cleanup_audit_r2.txt": {
+        "files": 1,
+        "bytes": 109874
+      },
+      "reports/abc_classification_base_build_report.json": {
+        "files": 1,
+        "bytes": 7666
+      },
+      "reports/abc_classification_base_build_report.txt": {
+        "files": 1,
+        "bytes": 2843
+      },
+      "reports/abc_classification_base_validation_report.json": {
+        "files": 1,
+        "bytes": 30163
+      },
+      "reports/abc_classification_base_validation_report.txt": {
+        "files": 1,
+        "bytes": 2378
+      },
+      "reports/adrg_user_condition_audit_report.json": {
+        "files": 1,
+        "bytes": 3821311
+      },
+      "reports/adrg_user_condition_audit_report.txt": {
+        "files": 1,
+        "bytes": 18892
+      },
+      "reports/adrg_user_condition_audit_report_v2.json": {
+        "files": 1,
+        "bytes": 4275794
+      },
+      "reports/adrg_user_condition_audit_report_v2.txt": {
+        "files": 1,
+        "bytes": 5733
+      },
+      "reports/adrg_user_condition_projection_build_report.json": {
+        "files": 1,
+        "bytes": 12245
+      },
+      "reports/adrg_user_condition_projection_build_report.txt": {
+        "files": 1,
+        "bytes": 5742
+      },
+      "reports/adrg_user_condition_projection_build_report_v2.json": {
+        "files": 1,
+        "bytes": 35017
+      },
+      "reports/adrg_user_condition_projection_build_report_v2.txt": {
+        "files": 1,
+        "bytes": 7162
+      },
+      "reports/adrg_user_condition_projection_build_report_v3.json": {
+        "files": 1,
+        "bytes": 26021
+      },
+      "reports/adrg_user_condition_projection_build_report_v3.txt": {
+        "files": 1,
+        "bytes": 7423
+      },
+      "reports/adrg_user_condition_projection_build_report_v4.json": {
+        "files": 1,
+        "bytes": 51999
+      },
+      "reports/adrg_user_condition_projection_build_report_v4.txt": {
+        "files": 1,
+        "bytes": 8041
+      },
+      "reports/adrg_user_condition_projection_unresolved_queue.json": {
+        "files": 1,
+        "bytes": 60605
+      },
+      "reports/adrg_user_condition_projection_unresolved_queue_v2.json": {
+        "files": 1,
+        "bytes": 634309
+      },
+      "reports/adrg_user_condition_projection_unresolved_queue_v3.json": {
+        "files": 1,
+        "bytes": 22432
+      },
+      "reports/adrg_user_condition_projection_unresolved_queue_v4.json": {
+        "files": 1,
+        "bytes": 22432
+      },
+      "reports/adrg_user_condition_v3_promotion_report.json": {
+        "files": 1,
+        "bytes": 8013
+      },
+      "reports/adrg_user_condition_v3_promotion_report.txt": {
+        "files": 1,
+        "bytes": 4967
+      },
+      "reports/appendix_code_index_build_report.json": {
+        "files": 1,
+        "bytes": 10342
+      },
+      "reports/appendix_code_index_build_report.txt": {
+        "files": 1,
+        "bytes": 2818
+      },
+      "reports/appendix_code_index_validation_report.json": {
+        "files": 1,
+        "bytes": 12934
+      },
+      "reports/appendix_code_index_validation_report.txt": {
+        "files": 1,
+        "bytes": 2590
+      },
+      "reports/appendix_main_cross_validation_report.json": {
+        "files": 1,
+        "bytes": 31378
+      },
+      "reports/appendix_main_cross_validation_report.txt": {
+        "files": 1,
+        "bytes": 5649
+      },
+      "reports/appendix_main_semantic_audit_report.json": {
+        "files": 1,
+        "bytes": 24156
+      },
+      "reports/appendix_main_semantic_audit_report.txt": {
+        "files": 1,
+        "bytes": 6132
+      },
+      "reports/condition_ast_build_report.json": {
+        "files": 1,
+        "bytes": 82282
+      },
+      "reports/condition_ast_build_report.txt": {
+        "files": 1,
+        "bytes": 3180
+      },
+      "reports/condition_ast_validation_report.json": {
+        "files": 1,
+        "bytes": 26785
+      },
+      "reports/condition_ast_validation_report.txt": {
+        "files": 1,
+        "bytes": 5401
+      },
+      "reports/condition_source_block_build_report.json": {
+        "files": 1,
+        "bytes": 62850
+      },
+      "reports/condition_source_block_build_report.txt": {
+        "files": 1,
+        "bytes": 4886
+      },
+      "reports/condition_source_block_validation_report.json": {
+        "files": 1,
+        "bytes": 14689
+      },
+      "reports/condition_source_block_validation_report.txt": {
+        "files": 1,
+        "bytes": 3219
+      },
+      "reports/correction_apply_report.json": {
+        "files": 1,
+        "bytes": 17722
+      },
+      "reports/correction_apply_report.txt": {
+        "files": 1,
+        "bytes": 2524
+      },
+      "reports/correction_current_validation_report.json": {
+        "files": 1,
+        "bytes": 20671
+      },
+      "reports/correction_current_validation_report.txt": {
+        "files": 1,
+        "bytes": 2732
+      },
+      "reports/correction_patch_log_build_report.json": {
+        "files": 1,
+        "bytes": 12798
+      },
+      "reports/correction_patch_log_build_report.txt": {
+        "files": 1,
+        "bytes": 3085
+      },
+      "reports/correction_patch_log_validation_report.json": {
+        "files": 1,
+        "bytes": 16202
+      },
+      "reports/correction_patch_log_validation_report.txt": {
+        "files": 1,
+        "bytes": 2952
+      },
+      "reports/electron_0_5_10_release_verify": {
+        "files": 2,
+        "bytes": 90740747
+      },
+      "reports/electron_node_v22_cache": {
+        "files": 4755,
+        "bytes": 227845417
+      },
+      "reports/electron_release_0.3.0_verify": {
+        "files": 2,
+        "bytes": 90228404
+      },
+      "reports/electron_release_0.4.0_verify": {
+        "files": 2,
+        "bytes": 90235166
+      },
+      "reports/electron_release_0.5.0_verify": {
+        "files": 2,
+        "bytes": 90240275
+      },
+      "reports/electron_release_0.5.1_verify": {
+        "files": 2,
+        "bytes": 90237791
+      },
+      "reports/electron_release_0.5.2_verify": {
+        "files": 0,
+        "bytes": 0
+      },
+      "reports/electron_release_0.5.3_verify": {
+        "files": 2,
+        "bytes": 90304417
+      },
+      "reports/electron_release_0.5.4_verify": {
+        "files": 2,
+        "bytes": 90309344
+      },
+      "reports/electron_release_0.5.9_verify": {
+        "files": 2,
+        "bytes": 90774668
+      },
+      "reports/electron_stage50a_backups": {
+        "files": 11,
+        "bytes": 26326
+      },
+      "reports/electron_stage50a_build_report.json": {
+        "files": 1,
+        "bytes": 13326
+      },
+      "reports/electron_stage50a_build_report.txt": {
+        "files": 1,
+        "bytes": 9217
+      },
+      "reports/electron_stage50a_validation_report.json": {
+        "files": 1,
+        "bytes": 11749
+      },
+      "reports/electron_stage50a_validation_report.txt": {
+        "files": 1,
+        "bytes": 8103
+      },
+      "reports/electron_stage50b_backups": {
+        "files": 29,
+        "bytes": 186767
+      },
+      "reports/electron_stage50b_build_report.json": {
+        "files": 1,
+        "bytes": 25144
+      },
+      "reports/electron_stage50b_build_report.txt": {
+        "files": 1,
+        "bytes": 19420
+      },
+      "reports/electron_stage50c_backups": {
+        "files": 8,
+        "bytes": 58458
+      },
+      "reports/electron_stage50c_build_report.json": {
+        "files": 1,
+        "bytes": 27349
+      },
+      "reports/electron_stage50c_build_report.txt": {
+        "files": 1,
+        "bytes": 21378
+      },
+      "reports/electron_stage50d_actions_failure_30314871074.txt": {
+        "files": 1,
+        "bytes": 2369
+      },
+      "reports/electron_stage50d_actions_failure_30321532198.txt": {
+        "files": 1,
+        "bytes": 602088
+      },
+      "reports/electron_stage50d_actions_failure_30329079532.txt": {
+        "files": 1,
+        "bytes": 8168
+      },
+      "reports/electron_stage50d_actions_failure_30338825549.txt": {
+        "files": 1,
+        "bytes": 53276
+      },
+      "reports/electron_stage50d_actions_failure_30507501525.txt": {
+        "files": 1,
+        "bytes": 227791
+      },
+      "reports/electron_stage50d_backups": {
+        "files": 7,
+        "bytes": 69990
+      },
+      "reports/electron_stage50d_build_report.json": {
+        "files": 1,
+        "bytes": 37101
+      },
+      "reports/electron_stage50d_build_report.txt": {
+        "files": 1,
+        "bytes": 28059
+      },
+      "reports/electron_stage50d_line_endings_fix_backups": {
+        "files": 2,
+        "bytes": 39343
+      },
+      "reports/electron_stage50d_line_endings_fix_report.json": {
+        "files": 1,
+        "bytes": 44253
+      },
+      "reports/electron_stage50d_line_endings_fix_report.txt": {
+        "files": 1,
+        "bytes": 39933
+      },
+      "reports/electron_stage50d_npm_ci_fix_backups": {
+        "files": 8,
+        "bytes": 69686
+      },
+      "reports/electron_stage50d_npm_ci_fix_report.json": {
+        "files": 1,
+        "bytes": 21035
+      },
+      "reports/electron_stage50d_npm_ci_fix_report.txt": {
+        "files": 1,
+        "bytes": 16146
+      },
+      "reports/electron_stage50d_registry_fix_backups": {
+        "files": 5,
+        "bytes": 181208
+      },
+      "reports/electron_stage50d_registry_fix_report.json": {
+        "files": 1,
+        "bytes": 266985
+      },
+      "reports/electron_stage50d_registry_fix_report.txt": {
+        "files": 1,
+        "bytes": 179597
+      },
+      "reports/electron_stage50d_runner_context_fix_backups": {
+        "files": 4,
+        "bytes": 45912
+      },
+      "reports/electron_stage50d_runner_context_fix_report.json": {
+        "files": 1,
+        "bytes": 22926
+      },
+      "reports/electron_stage50d_runner_context_fix_report.txt": {
+        "files": 1,
+        "bytes": 17717
+      },
+      "reports/electron_stage50d_validator_report_fix.json": {
+        "files": 1,
+        "bytes": 19503
+      },
+      "reports/electron_stage50d_validator_report_fix.txt": {
+        "files": 1,
+        "bytes": 15023
+      },
+      "reports/electron_stage50d_validator_report_fix_backups": {
+        "files": 1,
+        "bytes": 21750
+      },
+      "reports/electron_stage51c_backups": {
+        "files": 70,
+        "bytes": 1226610
+      },
+      "reports/electron_stage51c_residual_contracts_backups": {
+        "files": 2,
+        "bytes": 12029
+      },
+      "reports/electron_stage51c_residual_contracts_fix_report.json": {
+        "files": 1,
+        "bytes": 6389
+      },
+      "reports/electron_stage51c_residual_contracts_fix_report.txt": {
+        "files": 1,
+        "bytes": 6438
+      },
+      "reports/electron_stage51c_user_condition_ui_report.json": {
+        "files": 1,
+        "bytes": 4143
+      },
+      "reports/electron_stage51c_user_condition_ui_report.txt": {
+        "files": 1,
+        "bytes": 3697
+      },
+      "reports/electron_stage51d_actions_failure_30966970926.txt": {
+        "files": 1,
+        "bytes": 13043
+      },
+      "reports/electron_stage51f_windows_ui_failure_diagnostics": {
+        "files": 2,
+        "bytes": 2108
+      },
+      "reports/electron_stage52_runtime_ui_preview_nix_click_v1": {
+        "files": 6,
+        "bytes": 239518
+      },
+      "reports/electron_stage52_runtime_ui_preview_nix_detail_sync_v1": {
+        "files": 6,
+        "bytes": 269058
+      },
+      "reports/electron_stage52_runtime_ui_preview_v1": {
+        "files": 3,
+        "bytes": 1686
+      },
+      "reports/electron_stage52j_runtime_ui_preview_nix_generic_direct_v1": {
+        "files": 7,
+        "bytes": 374863
+      },
+      "reports/electron_stage52k_runtime_ui_all_direct_candidates_v1": {
+        "files": 5,
+        "bytes": 2037591
+      },
+      "reports/full_corpus_integrity_audit_report.json": {
+        "files": 1,
+        "bytes": 16936
+      },
+      "reports/full_corpus_integrity_audit_report.txt": {
+        "files": 1,
+        "bytes": 6824
+      },
+      "reports/full_corpus_integrity_audit_validation_report.json": {
+        "files": 1,
+        "bytes": 147640
+      },
+      "reports/full_corpus_integrity_audit_validation_report.txt": {
+        "files": 1,
+        "bytes": 1949
+      },
+      "reports/kdrg_code_name_candidates.csv": {
+        "files": 1,
+        "bytes": 135249
+      },
+      "reports/kdrg_code_name_candidates.json": {
+        "files": 1,
+        "bytes": 344996
+      },
+      "reports/kdrg_code_name_mapping_high_confidence_v1.json": {
+        "files": 1,
+        "bytes": 2981
+      },
+      "reports/kdrg_code_name_mapping_hira_validated_v2.json": {
+        "files": 1,
+        "bytes": 17676515
+      },
+      "reports/kdrg_code_name_mapping_resolved_v1.json": {
+        "files": 1,
+        "bytes": 5477841
+      },
+      "reports/kdrg_code_name_residual_resolution_v1.json": {
+        "files": 1,
+        "bytes": 6413662
+      },
+      "reports/kdrg_code_name_residual_resolution_v1.txt": {
+        "files": 1,
+        "bytes": 819
+      },
+      "reports/kdrg_code_name_resolution_additions_v1.csv": {
+        "files": 1,
+        "bytes": 456
+      },
+      "reports/kdrg_code_name_source_scan.txt": {
+        "files": 1,
+        "bytes": 4325
+      },
+      "reports/kdrg_code_name_still_missing_v1.csv": {
+        "files": 1,
+        "bytes": 14683
+      },
+      "reports/kdrg_code_name_unresolved_conflicts_v1.csv": {
+        "files": 1,
+        "bytes": 86102
+      },
+      "reports/kdrg_hira_disease_master_merge_v2.json": {
+        "files": 1,
+        "bytes": 20323351
+      },
+      "reports/kdrg_hira_disease_master_merge_v2.txt": {
+        "files": 1,
+        "bytes": 1086
+      },
+      "reports/kdrg_hira_master_unused_codes_v2.csv": {
+        "files": 1,
+        "bytes": 6799697
+      },
+      "reports/kdrg_hira_name_overrides_v2.csv": {
+        "files": 1,
+        "bytes": 1247964
+      },
+      "reports/kdrg_hira_unmatched_operating_codes_v2.csv": {
+        "files": 1,
+        "bytes": 76
+      },
+      "reports/kdrg_pdf_code_name_conflicts_v1.csv": {
+        "files": 1,
+        "bytes": 316876
+      },
+      "reports/kdrg_pdf_code_name_extraction_v1.json": {
+        "files": 1,
+        "bytes": 9045356
+      },
+      "reports/kdrg_pdf_code_name_extraction_v1.txt": {
+        "files": 1,
+        "bytes": 981
+      },
+      "reports/kdrg_pdf_code_name_high_confidence_v1.csv": {
+        "files": 1,
+        "bytes": 5760
+      },
+      "reports/kdrg_pdf_code_name_missing_v1.csv": {
+        "files": 1,
+        "bytes": 108091
+      },
+      "reports/kdrg_structured_code_name_build_v1.json": {
+        "files": 1,
+        "bytes": 6882543
+      },
+      "reports/kdrg_structured_code_name_build_v1.txt": {
+        "files": 1,
+        "bytes": 861
+      },
+      "reports/kdrg_structured_code_name_conflicts_v1.csv": {
+        "files": 1,
+        "bytes": 165966
+      },
+      "reports/kdrg_structured_code_name_mapping_v1.json": {
+        "files": 1,
+        "bytes": 5476280
+      },
+      "reports/kdrg_structured_code_name_missing_v1.csv": {
+        "files": 1,
+        "bytes": 3305
+      },
+      "reports/logical_table_build_report.json": {
+        "files": 1,
+        "bytes": 31700
+      },
+      "reports/logical_table_build_report.txt": {
+        "files": 1,
+        "bytes": 3830
+      },
+      "reports/logical_table_validation_report.json": {
+        "files": 1,
+        "bytes": 14647
+      },
+      "reports/logical_table_validation_report.txt": {
+        "files": 1,
+        "bytes": 2507
+      },
+      "reports/main_page_block_build_report.json": {
+        "files": 1,
+        "bytes": 5060
+      },
+      "reports/main_page_block_build_report.txt": {
+        "files": 1,
+        "bytes": 2936
+      },
+      "reports/main_page_block_validation_report.json": {
+        "files": 1,
+        "bytes": 11327
+      },
+      "reports/main_page_block_validation_report.txt": {
+        "files": 1,
+        "bytes": 1886
+      },
+      "reports/parser_repair_apply_report.json": {
+        "files": 1,
+        "bytes": 30354
+      },
+      "reports/parser_repair_apply_report.txt": {
+        "files": 1,
+        "bytes": 2987
+      },
+      "reports/parser_repair_patch_log_build_report.json": {
+        "files": 1,
+        "bytes": 25196
+      },
+      "reports/parser_repair_patch_log_build_report.txt": {
+        "files": 1,
+        "bytes": 4054
+      },
+      "reports/parser_repair_patch_log_validation_report.json": {
+        "files": 1,
+        "bytes": 26880
+      },
+      "reports/parser_repair_patch_log_validation_report.txt": {
+        "files": 1,
+        "bytes": 2946
+      },
+      "reports/parser_repaired_current_validation_report.json": {
+        "files": 1,
+        "bytes": 26513
+      },
+      "reports/parser_repaired_current_validation_report.txt": {
+        "files": 1,
+        "bytes": 3541
+      },
+      "reports/pyside_ui_semantics_backups": {
+        "files": 4,
+        "bytes": 145889
+      },
+      "reports/pyside_ui_semantics_fix_report.json": {
+        "files": 1,
+        "bytes": 10982
+      },
+      "reports/pyside_ui_semantics_fix_report.txt": {
+        "files": 1,
+        "bytes": 8077
+      },
+      "reports/pyside_ui_semantics_validation_report.json": {
+        "files": 1,
+        "bytes": 12262
+      },
+      "reports/pyside_ui_semantics_validation_report.txt": {
+        "files": 1,
+        "bytes": 7556
+      },
+      "reports/reference_base_build_report.txt": {
+        "files": 1,
+        "bytes": 1657
+      },
+      "reports/reference_base_validation_report.json": {
+        "files": 1,
+        "bytes": 15102
+      },
+      "reports/reference_base_validation_report.txt": {
+        "files": 1,
+        "bytes": 1442
+      },
+      "reports/release_version_v021_backups": {
+        "files": 2,
+        "bytes": 11452
+      },
+      "reports/release_version_v021_bump_report.json": {
+        "files": 1,
+        "bytes": 9487
+      },
+      "reports/release_version_v021_bump_report.txt": {
+        "files": 1,
+        "bytes": 7295
+      },
+      "reports/release_version_v021_validation_report.json": {
+        "files": 1,
+        "bytes": 7709
+      },
+      "reports/release_version_v021_validation_report.txt": {
+        "files": 1,
+        "bytes": 5448
+      },
+      "reports/remaining_technical_review_pattern_analysis_report.json": {
+        "files": 1,
+        "bytes": 9135
+      },
+      "reports/remaining_technical_review_pattern_analysis_report.txt": {
+        "files": 1,
+        "bytes": 6193
+      },
+      "reports/remaining_technical_review_pattern_validation_report.json": {
+        "files": 1,
+        "bytes": 19810
+      },
+      "reports/remaining_technical_review_pattern_validation_report.txt": {
+        "files": 1,
+        "bytes": 1986
+      },
+      "reports/repaired_appendix_main_cross_validation_report.json": {
+        "files": 1,
+        "bytes": 32123
+      },
+      "reports/repaired_appendix_main_cross_validation_report.txt": {
+        "files": 1,
+        "bytes": 6096
+      },
+      "reports/repaired_appendix_main_cross_validation_validation_report.json": {
+        "files": 1,
+        "bytes": 16715
+      },
+      "reports/repaired_appendix_main_cross_validation_validation_report.txt": {
+        "files": 1,
+        "bytes": 1738
+      },
+      "reports/repaired_appendix_main_semantic_audit_report.json": {
+        "files": 1,
+        "bytes": 24036
+      },
+      "reports/repaired_appendix_main_semantic_audit_report.txt": {
+        "files": 1,
+        "bytes": 5910
+      },
+      "reports/runtime_search_service_build_report.json": {
+        "files": 1,
+        "bytes": 19767
+      },
+      "reports/runtime_search_service_build_report.txt": {
+        "files": 1,
+        "bytes": 2875
+      },
+      "reports/runtime_search_service_validation_report.json": {
+        "files": 1,
+        "bytes": 25796
+      },
+      "reports/runtime_search_service_validation_report.txt": {
+        "files": 1,
+        "bytes": 2461
+      },
+      "reports/runtime_ui_bridge_build_report.json": {
+        "files": 1,
+        "bytes": 64911
+      },
+      "reports/runtime_ui_bridge_build_report.txt": {
+        "files": 1,
+        "bytes": 30929
+      },
+      "reports/runtime_ui_bridge_validation_report.json": {
+        "files": 1,
+        "bytes": 21956
+      },
+      "reports/runtime_ui_bridge_validation_report.txt": {
+        "files": 1,
+        "bytes": 2262
+      },
+      "reports/runtime_ui_preview_build_report.json": {
+        "files": 1,
+        "bytes": 20900
+      },
+      "reports/runtime_ui_preview_build_report.txt": {
+        "files": 1,
+        "bytes": 13776
+      },
+      "reports/search_integrated_build_report.json": {
+        "files": 1,
+        "bytes": 16651
+      },
+      "reports/search_integrated_build_report.txt": {
+        "files": 1,
+        "bytes": 1977
+      },
+      "reports/search_integrated_validation_report.json": {
+        "files": 1,
+        "bytes": 33987
+      },
+      "reports/search_integrated_validation_report.txt": {
+        "files": 1,
+        "bytes": 2120
+      },
+      "reports/source_validation_report.txt": {
+        "files": 1,
+        "bytes": 2039
+      },
+      "reports/stage50d_smoke_v11_backup_20260730_044618": {
+        "files": 5,
+        "bytes": 68711
+      },
+      "reports/stage51b_v2_unresolved_diagnostic_report.json": {
+        "files": 1,
+        "bytes": 68862
+      },
+      "reports/stage51b_v2_unresolved_diagnostic_report.txt": {
+        "files": 1,
+        "bytes": 63360
+      },
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.json": {
+        "files": 1,
+        "bytes": 1687481
+      },
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.txt": {
+        "files": 1,
+        "bytes": 38210
+      },
+      "reports/stage52g_direct_code_condition_audit_v1": {
+        "files": 2,
+        "bytes": 741103
+      },
+      "reports/stage52h_direct_code_condition_structure_audit_v1": {
+        "files": 2,
+        "bytes": 409151
+      },
+      "reports/stage52i_generic_direct_code_condition_apply_v1": {
+        "files": 1,
+        "bytes": 3815
+      },
+      "reports/stage53a_missing_adrg_name_audit_v1": {
+        "files": 2,
+        "bytes": 591599
+      },
+      "reports/stage53a_missing_adrg_name_audit_v2": {
+        "files": 2,
+        "bytes": 138814
+      },
+      "reports/stage53b_adrg_name_recovery_candidate_v2": {
+        "files": 4,
+        "bytes": 26547973
+      },
+      "reports/stage53c_adrg_name_recovery_apply_v2": {
+        "files": 0,
+        "bytes": 0
+      },
+      "reports/stage53c_adrg_name_recovery_apply_v3": {
+        "files": 0,
+        "bytes": 0
+      },
+      "reports/stage53c_adrg_name_recovery_apply_v4": {
+        "files": 1,
+        "bytes": 1744
+      },
+      "reports/stage53c_adrg_name_recovery_apply_v5": {
+        "files": 1,
+        "bytes": 2699
+      },
+      "reports/stage53c_adrg_name_recovery_apply_v6": {
+        "files": 2,
+        "bytes": 22135
+      },
+      "reports/stage53c_full_change_impact_shadow_audit_v1": {
+        "files": 2,
+        "bytes": 37429
+      },
+      "reports/stage53d_adrg_name_recovery_runtime_nix_v1": {
+        "files": 6,
+        "bytes": 1362178
+      },
+      "reports/stage53e_electron_0_5_4_release_candidate_v1": {
+        "files": 1,
+        "bytes": 1240
+      },
+      "reports/stage53e_electron_0_5_4_release_candidate_v2": {
+        "files": 2,
+        "bytes": 26488
+      },
+      "reports/stage54a_code_name_candidate_v1": {
+        "files": 5,
+        "bytes": 29962615
+      },
+      "reports/stage54a_code_name_candidate_v2": {
+        "files": 6,
+        "bytes": 48748859
+      },
+      "reports/stage54a_code_name_candidate_v3": {
+        "files": 1,
+        "bytes": 586
+      },
+      "reports/stage54a_code_name_candidate_v4": {
+        "files": 5,
+        "bytes": 34647267
+      },
+      "reports/stage54a_official_hira_source_v1": {
+        "files": 2,
+        "bytes": 7696227
+      },
+      "reports/stage54a_official_hira_source_v2": {
+        "files": 2,
+        "bytes": 11568
+      },
+      "reports/stage54b_code_name_operating_promotion_v1": {
+        "files": 1,
+        "bytes": 526
+      },
+      "reports/stage54b_code_name_operating_promotion_v2": {
+        "files": 1,
+        "bytes": 530
+      },
+      "reports/stage54b_code_name_operating_promotion_v3": {
+        "files": 1,
+        "bytes": 528
+      },
+      "reports/stage54b_code_name_operating_promotion_v5": {
+        "files": 1,
+        "bytes": 26424
+      },
+      "reports/stage54b_code_name_operating_promotion_v6": {
+        "files": 1,
+        "bytes": 8456
+      },
+      "reports/stage54b_code_name_operating_promotion_v7": {
+        "files": 4,
+        "bytes": 238997
+      },
+      "reports/stage55a_condition_summary_ui_v1": {
+        "files": 2,
+        "bytes": 147276
+      },
+      "reports/stage55b_condition_summary_runtime_audit_v2": {
+        "files": 2,
+        "bytes": 104518
+      },
+      "reports/stage55b_condition_summary_runtime_audit_v3": {
+        "files": 2,
+        "bytes": 161970
+      },
+      "reports/stage55c_condition_operator_tokenization_v2": {
+        "files": 2,
+        "bytes": 8757
+      },
+      "reports/stage55c_condition_table_label_collisions_v1": {
+        "files": 2,
+        "bytes": 15121
+      },
+      "reports/stage55d_condition_summary_ui_runtime_v1": {
+        "files": 10,
+        "bytes": 545736
+      },
+      "reports/stage56a_classification_badges_hide_dev_meta_v2": {
+        "files": 2,
+        "bytes": 3061
+      },
+      "reports/stage56a_classification_badges_hide_dev_meta_v3": {
+        "files": 2,
+        "bytes": 3009
+      },
+      "reports/stage56a_classification_badges_hide_dev_meta_v4": {
+        "files": 2,
+        "bytes": 2275
+      },
+      "reports/stage56a_classification_badges_hide_dev_meta_v5": {
+        "files": 2,
+        "bytes": 66377
+      },
+      "reports/stage56a_classification_badges_hide_dev_meta_v6": {
+        "files": 2,
+        "bytes": 9326
+      },
+      "reports/stage56b_classification_badges_dev_meta_ui_runtime_v3": {
+        "files": 6,
+        "bytes": 222200
+      },
+      "reports/stage57a_classification_badge_position_ui_v1": {
+        "files": 1,
+        "bytes": 16591
+      },
+      "reports/stage57a_classification_badge_position_ui_v2": {
+        "files": 1,
+        "bytes": 1242
+      },
+      "reports/stage57b_classification_badge_position_ui_runtime_v1": {
+        "files": 1,
+        "bytes": 952
+      },
+      "reports/stage57b_classification_badge_position_ui_runtime_v2": {
+        "files": 3,
+        "bytes": 62385
+      },
+      "reports/stage59a_v8_r2_integrated_impact_audit.json": {
+        "files": 1,
+        "bytes": 114749
+      },
+      "reports/stage59a_v8_r2_integrated_impact_audit.txt": {
+        "files": 1,
+        "bytes": 11478
+      },
+      "reports/stage59b_0510_integrated_shadow_r1": {
+        "files": 123,
+        "bytes": 64082298
+      },
+      "reports/stage59b_0510_integrated_shadow_r2": {
+        "files": 127,
+        "bytes": 64088008
+      },
+      "reports/stage59b_0510_integrated_shadow_r3": {
+        "files": 127,
+        "bytes": 64087116
+      },
+      "reports/stage59c_0510_integrated_actual_r1": {
+        "files": 20,
+        "bytes": 32197755
+      },
+      "reports/stage59c_0510_validator_migration_r10": {
+        "files": 10,
+        "bytes": 44812
+      },
+      "reports/stage59c_0510_validator_migration_r8": {
+        "files": 10,
+        "bytes": 162523
+      },
+      "reports/stage59c_0510_validator_migration_r9": {
+        "files": 2,
+        "bytes": 2598
+      },
+      "reports/stage59d_0510_final_integration_r1": {
+        "files": 2,
+        "bytes": 142855
+      },
+      "reports/stage59d_0510_final_integration_r2": {
+        "files": 2,
+        "bytes": 23378
+      },
+      "reports/stage59e_0510_source_of_truth_repair_r1": {
+        "files": 10,
+        "bytes": 63830086
+      },
+      "reports/stage60a_0510_release_version_impact_r1": {
+        "files": 2,
+        "bytes": 12410
+      },
+      "reports/stage60b_0510_version_prep_r1": {
+        "files": 5,
+        "bytes": 146415
+      },
+      "reports/stage60b_0510_version_prep_r2": {
+        "files": 6,
+        "bytes": 147969
+      },
+      "reports/stage60c_0510_rc2_relation_contract_actual_r1": {
+        "files": 4,
+        "bytes": 49323
+      },
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r2": {
+        "files": 0,
+        "bytes": 0
+      },
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r3": {
+        "files": 14,
+        "bytes": 173235
+      },
+      "reports/stage60c_0510_rc2_relation_contract_shadow_r1": {
+        "files": 139,
+        "bytes": 64099182
+      },
+      "reports/stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6": {
+        "files": 9,
+        "bytes": 25722
+      },
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1": {
+        "files": 132,
+        "bytes": 64056042
+      },
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2": {
+        "files": 132,
+        "bytes": 64090567
+      },
+      "reports/stage60c_0510_rc3_search_api_fixture_diagnosis_r7": {
+        "files": 9,
+        "bytes": 492988
+      },
+      "reports/stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1": {
+        "files": 134,
+        "bytes": 64066185
+      },
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2": {
+        "files": 5,
+        "bytes": 4934
+      },
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3": {
+        "files": 9,
+        "bytes": 44948
+      },
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4": {
+        "files": 55,
+        "bytes": 913995
+      },
+      "reports/stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13": {
+        "files": 2,
+        "bytes": 57926
+      },
+      "reports/stage60c_0510_rc3_ui_fixture_child_aadrg_r10": {
+        "files": 3,
+        "bytes": 39485
+      },
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r2": {
+        "files": 132,
+        "bytes": 64057233
+      },
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r3": {
+        "files": 132,
+        "bytes": 64057364
+      },
+      "reports/stage60c_0510_rc3_ui_selector_detail_diagnosis_r5": {
+        "files": 11,
+        "bytes": 39733
+      },
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r8": {
+        "files": 8,
+        "bytes": 19599
+      },
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r9": {
+        "files": 10,
+        "bytes": 36314
+      },
+      "reports/stage60c_0510_windows_rc2_failure_diagnosis_r1": {
+        "files": 6,
+        "bytes": 393816
+      },
+      "reports/stage60c_0510_windows_rc3_failure_diagnosis_r1": {
+        "files": 7,
+        "bytes": 397394
+      },
+      "reports/stage60c_0510_windows_rc_failure_diagnosis_r1": {
+        "files": 3,
+        "bytes": 853535
+      },
+      "reports/stage60c_0510_windows_rc_repair_actual_r1": {
+        "files": 7,
+        "bytes": 74434
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r1": {
+        "files": 2,
+        "bytes": 1572
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r2": {
+        "files": 131,
+        "bytes": 64043952
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r3": {
+        "files": 131,
+        "bytes": 64043938
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r4": {
+        "files": 132,
+        "bytes": 64046696
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r5": {
+        "files": 132,
+        "bytes": 64046921
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r6": {
+        "files": 139,
+        "bytes": 64103520
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r7": {
+        "files": 138,
+        "bytes": 64096676
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r8": {
+        "files": 131,
+        "bytes": 64048648
+      },
+      "reports/stage60c_0510_windows_rc_repair_shadow_r9": {
+        "files": 138,
+        "bytes": 64095828
+      },
+      "reports/stage61b_0511_ui_requirement_repair_actual_r1": {
+        "files": 0,
+        "bytes": 0
+      },
+      "reports/stage61b_0511_ui_requirement_repair_actual_r2": {
+        "files": 0,
+        "bytes": 0
+      },
+      "reports/stage61c_0511_release_prep_r1": {
+        "files": 0,
+        "bytes": 0
+      },
+      "reports/table_pattern_analysis_report.json": {
+        "files": 1,
+        "bytes": 8140
+      },
+      "reports/table_pattern_analysis_report.txt": {
+        "files": 1,
+        "bytes": 4218
+      },
+      "reports/table_section_candidate_build_report.json": {
+        "files": 1,
+        "bytes": 8511
+      },
+      "reports/table_section_candidate_build_report.txt": {
+        "files": 1,
+        "bytes": 3037
+      },
+      "reports/table_section_candidate_validation_report.json": {
+        "files": 1,
+        "bytes": 12816
+      },
+      "reports/table_section_candidate_validation_report.txt": {
+        "files": 1,
+        "bytes": 5175
+      },
+      "reports/ui_display_contract_build_report.json": {
+        "files": 1,
+        "bytes": 9955
+      },
+      "reports/ui_display_contract_build_report.txt": {
+        "files": 1,
+        "bytes": 1999
+      },
+      "reports/ui_display_contract_validation_report.json": {
+        "files": 1,
+        "bytes": 285354
+      },
+      "reports/ui_display_contract_validation_report.txt": {
+        "files": 1,
+        "bytes": 70774
+      },
+      "reports/ui_runtime_bridge_backups": {
+        "files": 2,
+        "bytes": 72516
+      },
+      "reports/ui_semantic_audit_report.json": {
+        "files": 1,
+        "bytes": 981155
+      },
+      "reports/ui_semantic_audit_report.txt": {
+        "files": 1,
+        "bytes": 1966
+      },
+      "reports/ui_semantic_audit_validation_report.json": {
+        "files": 1,
+        "bytes": 9984
+      },
+      "reports/ui_semantic_audit_validation_report.txt": {
+        "files": 1,
+        "bytes": 5475
+      },
+      "reports/windows_bundle_diagnostics_backups": {
+        "files": 2,
+        "bytes": 11439
+      },
+      "reports/windows_bundle_diagnostics_fix_report.json": {
+        "files": 1,
+        "bytes": 5102
+      },
+      "reports/windows_bundle_diagnostics_fix_report.txt": {
+        "files": 1,
+        "bytes": 3568
+      },
+      "reports/windows_ci_utf8_fix_backups": {
+        "files": 3,
+        "bytes": 25576
+      },
+      "reports/windows_ci_utf8_fix_report.json": {
+        "files": 1,
+        "bytes": 6261
+      },
+      "reports/windows_ci_utf8_fix_report.txt": {
+        "files": 1,
+        "bytes": 4840
+      },
+      "reports/windows_ci_utf8_fix_validation_report.json": {
+        "files": 1,
+        "bytes": 7288
+      },
+      "reports/windows_ci_utf8_fix_validation_report.txt": {
+        "files": 1,
+        "bytes": 5257
+      },
+      "reports/windows_runtime_regression_backups": {
+        "files": 5,
+        "bytes": 13097
+      },
+      "reports/windows_runtime_regression_config_report.json": {
+        "files": 1,
+        "bytes": 13891
+      },
+      "reports/windows_runtime_regression_config_report.txt": {
+        "files": 1,
+        "bytes": 8030
+      },
+      "reports/windows_runtime_source_smoke_report.json": {
+        "files": 1,
+        "bytes": 4934
+      },
+      "reports/windows_runtime_source_smoke_report.txt": {
+        "files": 1,
+        "bytes": 733
+      },
+      "reports/windows_source_smoke_fix_backups": {
+        "files": 2,
+        "bytes": 12855
+      },
+      "reports/windows_source_smoke_fix_report.json": {
+        "files": 1,
+        "bytes": 5444
+      },
+      "reports/windows_source_smoke_fix_report.txt": {
+        "files": 1,
+        "bytes": 3940
+      },
+      "scripts/tsconfig.tsbuildinfo": {
+        "files": 1,
+        "bytes": 43108
+      }
+    }
+  },
+  "quarantine": {
+    "quarantine": "/home/runner/workspace/.stage62c_cleanup_quarantine_r1",
+    "moved": [
+      "37_build_kdrg_search_integrated_json.py",
+      "38_validate_kdrg_search_integrated_json.py",
+      "39_build_kdrg_runtime_search_service.py",
+      "40_validate_kdrg_runtime_search_service.py",
+      "41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "42_validate_kdrg_runtime_ui_bridge.py",
+      "43_build_kdrg_runtime_ui_preview.py",
+      "47A_build_kdrg_ui_semantic_audit.py",
+      "47B_validate_kdrg_ui_semantic_audit.py",
+      "48A_build_kdrg_ui_display_contract.py",
+      "48B_validate_kdrg_ui_display_contract.py",
+      "59A_AUDIT_KDRG_AADRG_CENTERED_UI_MIGRATION_V8_R3.py",
+      "59A_AUDIT_KDRG_BOUNDARY_NAMESPACE_FINAL_V6.py",
+      "59A_AUDIT_KDRG_FINAL_PRECISION_V5.py",
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_FULL_IMPACT_V3.py",
+      "59A_AUDIT_KDRG_OFFICIAL_20260731_PRECISION_V4.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R1.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R2.py",
+      "59B_BUILD_KDRG_0510_INTEGRATED_SHADOW_R3.py",
+      "59C_APPLY_KDRG_0510_INTEGRATED_ACTUAL_R1.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R10.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R8.py",
+      "59C_REPAIR_KDRG_0510_VALIDATOR_MIGRATION_R9.py",
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R1.py",
+      "59D_VALIDATE_KDRG_0510_FINAL_INTEGRATION_R2.py",
+      "59E_REPAIR_KDRG_0510_SOURCE_OF_TRUTH_R1.py",
+      "60A_AUDIT_KDRG_0510_RELEASE_VERSION_IMPACT_R1.py",
+      "60B_APPLY_KDRG_0510_VERSION_PREP_R1.py",
+      "60B_REPAIR_KDRG_0510_VERSION_PREP_R2.py",
+      "60C_APPLY_KDRG_0510_RC2_RELATION_CONTRACT_ACTUAL_R1.py",
+      "60C_APPLY_KDRG_0510_RC3_UI_FIXTURE_AADRG_ACTUAL_R1.py",
+      "60C_APPLY_KDRG_0510_WINDOWS_RC_REPAIR_ACTUAL_R1.py",
+      "60C_BUILD_KDRG_0510_RC2_RELATION_CONTRACT_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_COMPREHENSIVE_UI_SMOKE_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_AADRG_SMOKE_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R11.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R12.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_AADRG_SHADOW_R13.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_RC3_UI_FIXTURE_SHADOW_R3.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R1.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R2.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R3.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R4.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R5.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R6.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R7.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R8.py",
+      "60C_BUILD_KDRG_0510_WINDOWS_RC_REPAIR_SHADOW_R9.py",
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R2.py",
+      "60C_DIAGNOSE_KDRG_0510_RC2_RELATION_CONTRACT_R3.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_B013_AADRG_FIXTURE_R6.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_SEARCH_API_FIXTURE_R7.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R2.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R3.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_DETAIL_TIMEOUT_R4.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_FIXTURE_CHILD_AADRG_R10.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SELECTOR_DETAIL_R5.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R8.py",
+      "60C_DIAGNOSE_KDRG_0510_RC3_UI_SMOKE_FULL_CONTRACT_R9.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC2_FAILURE_R1.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC3_FAILURE_R1.py",
+      "60C_DIAGNOSE_KDRG_0510_WINDOWS_RC_FAILURE_R1.py",
+      "61A_BUILD_KDRG_0511_UI_REQUIREMENT_REPAIR_SHADOW_R1.py",
+      "61A_UI_REPAIR_SHADOW_R2.py",
+      "61A_UI_REPAIR_SHADOW_R3.py",
+      "61A_UI_REPAIR_SHADOW_R4.py",
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R1.py",
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R2.py",
+      "61C_PREP_KDRG_0511_RELEASE_R1.py",
+      "62A_VALIDATE_KDRG_LEGACY_CLEANUP_R1.py",
+      "62B_AUDIT_KDRG_WORKSPACE_FULL_CLEANUP_R2.py",
+      "stage59a_v8_r3_integrated_impact_audit.json",
+      "stage59a_v8_r3_integrated_impact_audit.txt",
+      "stage59b_0510_integrated_shadow_r1.json",
+      "stage59b_0510_integrated_shadow_r1.txt",
+      "stage59b_0510_integrated_shadow_r2.json",
+      "stage59b_0510_integrated_shadow_r2.txt",
+      "stage59b_0510_integrated_shadow_r3.json",
+      "stage59b_0510_integrated_shadow_r3.txt",
+      "stage59c_0510_integrated_actual_r1.json",
+      "stage59c_0510_integrated_actual_r1.txt",
+      "stage59c_0510_validator_migration_r10.json",
+      "stage59c_0510_validator_migration_r10.txt",
+      "stage59c_0510_validator_migration_r8.json",
+      "stage59c_0510_validator_migration_r8.txt",
+      "stage59c_0510_validator_migration_r9.json",
+      "stage59c_0510_validator_migration_r9.txt",
+      "stage59d_0510_final_integration_r1.json",
+      "stage59d_0510_final_integration_r1.txt",
+      "stage59d_0510_final_integration_r2.json",
+      "stage59d_0510_final_integration_r2.txt",
+      "stage59e_0510_source_of_truth_repair_r1.json",
+      "stage59e_0510_source_of_truth_repair_r1.txt",
+      "stage60a_0510_release_version_impact_r1.json",
+      "stage60a_0510_release_version_impact_r1.txt",
+      "stage60b_0510_version_prep_r1.json",
+      "stage60b_0510_version_prep_r1.txt",
+      "stage60b_0510_version_prep_r2.json",
+      "stage60b_0510_version_prep_r2.txt",
+      "stage60c_0510_rc2_relation_contract_actual_r1.json",
+      "stage60c_0510_rc2_relation_contract_actual_r1.txt",
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.json",
+      "stage60c_0510_rc2_relation_contract_diagnosis_r3.txt",
+      "stage60c_0510_rc2_relation_contract_shadow_r1.json",
+      "stage60c_0510_rc2_relation_contract_shadow_r1.txt",
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.json",
+      "stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6.txt",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.json",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1.txt",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.json",
+      "stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2.txt",
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.json",
+      "stage60c_0510_rc3_search_api_fixture_diagnosis_r7.txt",
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.json",
+      "stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3.txt",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.json",
+      "stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_actual_r1.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r11.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r12.txt",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.json",
+      "stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13.txt",
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.json",
+      "stage60c_0510_rc3_ui_fixture_child_aadrg_r10.txt",
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.json",
+      "stage60c_0510_rc3_ui_fixture_shadow_r2.txt",
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.json",
+      "stage60c_0510_rc3_ui_fixture_shadow_r3.txt",
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.json",
+      "stage60c_0510_rc3_ui_selector_detail_diagnosis_r5.txt",
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.json",
+      "stage60c_0510_rc3_ui_smoke_full_contract_r9.txt",
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc2_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc3_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.json",
+      "stage60c_0510_windows_rc_failure_diagnosis_r1.txt",
+      "stage60c_0510_windows_rc_repair_actual_r1.json",
+      "stage60c_0510_windows_rc_repair_actual_r1.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r1.json",
+      "stage60c_0510_windows_rc_repair_shadow_r1.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r2.json",
+      "stage60c_0510_windows_rc_repair_shadow_r2.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r3.json",
+      "stage60c_0510_windows_rc_repair_shadow_r3.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r4.json",
+      "stage60c_0510_windows_rc_repair_shadow_r4.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r5.json",
+      "stage60c_0510_windows_rc_repair_shadow_r5.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r6.json",
+      "stage60c_0510_windows_rc_repair_shadow_r6.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r7.json",
+      "stage60c_0510_windows_rc_repair_shadow_r7.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r8.json",
+      "stage60c_0510_windows_rc_repair_shadow_r8.txt",
+      "stage60c_0510_windows_rc_repair_shadow_r9.json",
+      "stage60c_0510_windows_rc_repair_shadow_r9.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r2.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r2.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r3.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r3.txt",
+      "stage61a_0511_ui_requirement_repair_shadow_r4.json",
+      "stage61a_0511_ui_requirement_repair_shadow_r4.txt",
+      "stage61b_0511_ui_requirement_repair_actual_r1.json",
+      "stage61b_0511_ui_requirement_repair_actual_r1.txt",
+      "stage61b_0511_ui_requirement_repair_actual_r2.json",
+      "stage61b_0511_ui_requirement_repair_actual_r2.txt",
+      "stage61c_0511_release_prep_r1.json",
+      "stage61c_0511_release_prep_r1.txt",
+      "stage62a_legacy_cleanup_validation_r1.json",
+      "stage62a_legacy_cleanup_validation_r1.txt",
+      "stage62b_workspace_full_cleanup_audit_r2.json",
+      "stage62b_workspace_full_cleanup_audit_r2.txt",
+      "reports/abc_classification_base_build_report.json",
+      "reports/abc_classification_base_build_report.txt",
+      "reports/abc_classification_base_validation_report.json",
+      "reports/abc_classification_base_validation_report.txt",
+      "reports/adrg_user_condition_audit_report.json",
+      "reports/adrg_user_condition_audit_report.txt",
+      "reports/adrg_user_condition_audit_report_v2.json",
+      "reports/adrg_user_condition_audit_report_v2.txt",
+      "reports/adrg_user_condition_projection_build_report.json",
+      "reports/adrg_user_condition_projection_build_report.txt",
+      "reports/adrg_user_condition_projection_build_report_v2.json",
+      "reports/adrg_user_condition_projection_build_report_v2.txt",
+      "reports/adrg_user_condition_projection_build_report_v3.json",
+      "reports/adrg_user_condition_projection_build_report_v3.txt",
+      "reports/adrg_user_condition_projection_build_report_v4.json",
+      "reports/adrg_user_condition_projection_build_report_v4.txt",
+      "reports/adrg_user_condition_projection_unresolved_queue.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v2.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v3.json",
+      "reports/adrg_user_condition_projection_unresolved_queue_v4.json",
+      "reports/adrg_user_condition_v3_promotion_report.json",
+      "reports/adrg_user_condition_v3_promotion_report.txt",
+      "reports/appendix_code_index_build_report.json",
+      "reports/appendix_code_index_build_report.txt",
+      "reports/appendix_code_index_validation_report.json",
+      "reports/appendix_code_index_validation_report.txt",
+      "reports/appendix_main_cross_validation_report.json",
+      "reports/appendix_main_cross_validation_report.txt",
+      "reports/appendix_main_semantic_audit_report.json",
+      "reports/appendix_main_semantic_audit_report.txt",
+      "reports/condition_ast_build_report.json",
+      "reports/condition_ast_build_report.txt",
+      "reports/condition_ast_validation_report.json",
+      "reports/condition_ast_validation_report.txt",
+      "reports/condition_source_block_build_report.json",
+      "reports/condition_source_block_build_report.txt",
+      "reports/condition_source_block_validation_report.json",
+      "reports/condition_source_block_validation_report.txt",
+      "reports/correction_apply_report.json",
+      "reports/correction_apply_report.txt",
+      "reports/correction_current_validation_report.json",
+      "reports/correction_current_validation_report.txt",
+      "reports/correction_patch_log_build_report.json",
+      "reports/correction_patch_log_build_report.txt",
+      "reports/correction_patch_log_validation_report.json",
+      "reports/correction_patch_log_validation_report.txt",
+      "reports/electron_0_5_10_release_verify",
+      "reports/electron_node_v22_cache",
+      "reports/electron_release_0.3.0_verify",
+      "reports/electron_release_0.4.0_verify",
+      "reports/electron_release_0.5.0_verify",
+      "reports/electron_release_0.5.1_verify",
+      "reports/electron_release_0.5.2_verify",
+      "reports/electron_release_0.5.3_verify",
+      "reports/electron_release_0.5.4_verify",
+      "reports/electron_release_0.5.9_verify",
+      "reports/electron_stage50a_backups",
+      "reports/electron_stage50a_build_report.json",
+      "reports/electron_stage50a_build_report.txt",
+      "reports/electron_stage50a_validation_report.json",
+      "reports/electron_stage50a_validation_report.txt",
+      "reports/electron_stage50b_backups",
+      "reports/electron_stage50b_build_report.json",
+      "reports/electron_stage50b_build_report.txt",
+      "reports/electron_stage50c_backups",
+      "reports/electron_stage50c_build_report.json",
+      "reports/electron_stage50c_build_report.txt",
+      "reports/electron_stage50d_actions_failure_30314871074.txt",
+      "reports/electron_stage50d_actions_failure_30321532198.txt",
+      "reports/electron_stage50d_actions_failure_30329079532.txt",
+      "reports/electron_stage50d_actions_failure_30338825549.txt",
+      "reports/electron_stage50d_actions_failure_30507501525.txt",
+      "reports/electron_stage50d_backups",
+      "reports/electron_stage50d_build_report.json",
+      "reports/electron_stage50d_build_report.txt",
+      "reports/electron_stage50d_line_endings_fix_backups",
+      "reports/electron_stage50d_line_endings_fix_report.json",
+      "reports/electron_stage50d_line_endings_fix_report.txt",
+      "reports/electron_stage50d_npm_ci_fix_backups",
+      "reports/electron_stage50d_npm_ci_fix_report.json",
+      "reports/electron_stage50d_npm_ci_fix_report.txt",
+      "reports/electron_stage50d_registry_fix_backups",
+      "reports/electron_stage50d_registry_fix_report.json",
+      "reports/electron_stage50d_registry_fix_report.txt",
+      "reports/electron_stage50d_runner_context_fix_backups",
+      "reports/electron_stage50d_runner_context_fix_report.json",
+      "reports/electron_stage50d_runner_context_fix_report.txt",
+      "reports/electron_stage50d_validator_report_fix.json",
+      "reports/electron_stage50d_validator_report_fix.txt",
+      "reports/electron_stage50d_validator_report_fix_backups",
+      "reports/electron_stage51c_backups",
+      "reports/electron_stage51c_residual_contracts_backups",
+      "reports/electron_stage51c_residual_contracts_fix_report.json",
+      "reports/electron_stage51c_residual_contracts_fix_report.txt",
+      "reports/electron_stage51c_user_condition_ui_report.json",
+      "reports/electron_stage51c_user_condition_ui_report.txt",
+      "reports/electron_stage51d_actions_failure_30966970926.txt",
+      "reports/electron_stage51f_windows_ui_failure_diagnostics",
+      "reports/electron_stage52_runtime_ui_preview_nix_click_v1",
+      "reports/electron_stage52_runtime_ui_preview_nix_detail_sync_v1",
+      "reports/electron_stage52_runtime_ui_preview_v1",
+      "reports/electron_stage52j_runtime_ui_preview_nix_generic_direct_v1",
+      "reports/electron_stage52k_runtime_ui_all_direct_candidates_v1",
+      "reports/full_corpus_integrity_audit_report.json",
+      "reports/full_corpus_integrity_audit_report.txt",
+      "reports/full_corpus_integrity_audit_validation_report.json",
+      "reports/full_corpus_integrity_audit_validation_report.txt",
+      "reports/kdrg_code_name_candidates.csv",
+      "reports/kdrg_code_name_candidates.json",
+      "reports/kdrg_code_name_mapping_high_confidence_v1.json",
+      "reports/kdrg_code_name_mapping_hira_validated_v2.json",
+      "reports/kdrg_code_name_mapping_resolved_v1.json",
+      "reports/kdrg_code_name_residual_resolution_v1.json",
+      "reports/kdrg_code_name_residual_resolution_v1.txt",
+      "reports/kdrg_code_name_resolution_additions_v1.csv",
+      "reports/kdrg_code_name_source_scan.txt",
+      "reports/kdrg_code_name_still_missing_v1.csv",
+      "reports/kdrg_code_name_unresolved_conflicts_v1.csv",
+      "reports/kdrg_hira_disease_master_merge_v2.json",
+      "reports/kdrg_hira_disease_master_merge_v2.txt",
+      "reports/kdrg_hira_master_unused_codes_v2.csv",
+      "reports/kdrg_hira_name_overrides_v2.csv",
+      "reports/kdrg_hira_unmatched_operating_codes_v2.csv",
+      "reports/kdrg_pdf_code_name_conflicts_v1.csv",
+      "reports/kdrg_pdf_code_name_extraction_v1.json",
+      "reports/kdrg_pdf_code_name_extraction_v1.txt",
+      "reports/kdrg_pdf_code_name_high_confidence_v1.csv",
+      "reports/kdrg_pdf_code_name_missing_v1.csv",
+      "reports/kdrg_structured_code_name_build_v1.json",
+      "reports/kdrg_structured_code_name_build_v1.txt",
+      "reports/kdrg_structured_code_name_conflicts_v1.csv",
+      "reports/kdrg_structured_code_name_mapping_v1.json",
+      "reports/kdrg_structured_code_name_missing_v1.csv",
+      "reports/logical_table_build_report.json",
+      "reports/logical_table_build_report.txt",
+      "reports/logical_table_validation_report.json",
+      "reports/logical_table_validation_report.txt",
+      "reports/main_page_block_build_report.json",
+      "reports/main_page_block_build_report.txt",
+      "reports/main_page_block_validation_report.json",
+      "reports/main_page_block_validation_report.txt",
+      "reports/parser_repair_apply_report.json",
+      "reports/parser_repair_apply_report.txt",
+      "reports/parser_repair_patch_log_build_report.json",
+      "reports/parser_repair_patch_log_build_report.txt",
+      "reports/parser_repair_patch_log_validation_report.json",
+      "reports/parser_repair_patch_log_validation_report.txt",
+      "reports/parser_repaired_current_validation_report.json",
+      "reports/parser_repaired_current_validation_report.txt",
+      "reports/pyside_ui_semantics_backups",
+      "reports/pyside_ui_semantics_fix_report.json",
+      "reports/pyside_ui_semantics_fix_report.txt",
+      "reports/pyside_ui_semantics_validation_report.json",
+      "reports/pyside_ui_semantics_validation_report.txt",
+      "reports/reference_base_build_report.txt",
+      "reports/reference_base_validation_report.json",
+      "reports/reference_base_validation_report.txt",
+      "reports/release_version_v021_backups",
+      "reports/release_version_v021_bump_report.json",
+      "reports/release_version_v021_bump_report.txt",
+      "reports/release_version_v021_validation_report.json",
+      "reports/release_version_v021_validation_report.txt",
+      "reports/remaining_technical_review_pattern_analysis_report.json",
+      "reports/remaining_technical_review_pattern_analysis_report.txt",
+      "reports/remaining_technical_review_pattern_validation_report.json",
+      "reports/remaining_technical_review_pattern_validation_report.txt",
+      "reports/repaired_appendix_main_cross_validation_report.json",
+      "reports/repaired_appendix_main_cross_validation_report.txt",
+      "reports/repaired_appendix_main_cross_validation_validation_report.json",
+      "reports/repaired_appendix_main_cross_validation_validation_report.txt",
+      "reports/repaired_appendix_main_semantic_audit_report.json",
+      "reports/repaired_appendix_main_semantic_audit_report.txt",
+      "reports/runtime_search_service_build_report.json",
+      "reports/runtime_search_service_build_report.txt",
+      "reports/runtime_search_service_validation_report.json",
+      "reports/runtime_search_service_validation_report.txt",
+      "reports/runtime_ui_bridge_build_report.json",
+      "reports/runtime_ui_bridge_build_report.txt",
+      "reports/runtime_ui_bridge_validation_report.json",
+      "reports/runtime_ui_bridge_validation_report.txt",
+      "reports/runtime_ui_preview_build_report.json",
+      "reports/runtime_ui_preview_build_report.txt",
+      "reports/search_integrated_build_report.json",
+      "reports/search_integrated_build_report.txt",
+      "reports/search_integrated_validation_report.json",
+      "reports/search_integrated_validation_report.txt",
+      "reports/source_validation_report.txt",
+      "reports/stage50d_smoke_v11_backup_20260730_044618",
+      "reports/stage51b_v2_unresolved_diagnostic_report.json",
+      "reports/stage51b_v2_unresolved_diagnostic_report.txt",
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.json",
+      "reports/stage51b_v2_unresolved_diagnostic_report_v2.txt",
+      "reports/stage52g_direct_code_condition_audit_v1",
+      "reports/stage52h_direct_code_condition_structure_audit_v1",
+      "reports/stage52i_generic_direct_code_condition_apply_v1",
+      "reports/stage53a_missing_adrg_name_audit_v1",
+      "reports/stage53a_missing_adrg_name_audit_v2",
+      "reports/stage53b_adrg_name_recovery_candidate_v2",
+      "reports/stage53c_adrg_name_recovery_apply_v2",
+      "reports/stage53c_adrg_name_recovery_apply_v3",
+      "reports/stage53c_adrg_name_recovery_apply_v4",
+      "reports/stage53c_adrg_name_recovery_apply_v5",
+      "reports/stage53c_adrg_name_recovery_apply_v6",
+      "reports/stage53c_full_change_impact_shadow_audit_v1",
+      "reports/stage53d_adrg_name_recovery_runtime_nix_v1",
+      "reports/stage53e_electron_0_5_4_release_candidate_v1",
+      "reports/stage53e_electron_0_5_4_release_candidate_v2",
+      "reports/stage54a_code_name_candidate_v1",
+      "reports/stage54a_code_name_candidate_v2",
+      "reports/stage54a_code_name_candidate_v3",
+      "reports/stage54a_code_name_candidate_v4",
+      "reports/stage54a_official_hira_source_v1",
+      "reports/stage54a_official_hira_source_v2",
+      "reports/stage54b_code_name_operating_promotion_v1",
+      "reports/stage54b_code_name_operating_promotion_v2",
+      "reports/stage54b_code_name_operating_promotion_v3",
+      "reports/stage54b_code_name_operating_promotion_v5",
+      "reports/stage54b_code_name_operating_promotion_v6",
+      "reports/stage54b_code_name_operating_promotion_v7",
+      "reports/stage55a_condition_summary_ui_v1",
+      "reports/stage55b_condition_summary_runtime_audit_v2",
+      "reports/stage55b_condition_summary_runtime_audit_v3",
+      "reports/stage55c_condition_operator_tokenization_v2",
+      "reports/stage55c_condition_table_label_collisions_v1",
+      "reports/stage55d_condition_summary_ui_runtime_v1",
+      "reports/stage56a_classification_badges_hide_dev_meta_v2",
+      "reports/stage56a_classification_badges_hide_dev_meta_v3",
+      "reports/stage56a_classification_badges_hide_dev_meta_v4",
+      "reports/stage56a_classification_badges_hide_dev_meta_v5",
+      "reports/stage56a_classification_badges_hide_dev_meta_v6",
+      "reports/stage56b_classification_badges_dev_meta_ui_runtime_v3",
+      "reports/stage57a_classification_badge_position_ui_v1",
+      "reports/stage57a_classification_badge_position_ui_v2",
+      "reports/stage57b_classification_badge_position_ui_runtime_v1",
+      "reports/stage57b_classification_badge_position_ui_runtime_v2",
+      "reports/stage59a_v8_r2_integrated_impact_audit.json",
+      "reports/stage59a_v8_r2_integrated_impact_audit.txt",
+      "reports/stage59b_0510_integrated_shadow_r1",
+      "reports/stage59b_0510_integrated_shadow_r2",
+      "reports/stage59b_0510_integrated_shadow_r3",
+      "reports/stage59c_0510_integrated_actual_r1",
+      "reports/stage59c_0510_validator_migration_r10",
+      "reports/stage59c_0510_validator_migration_r8",
+      "reports/stage59c_0510_validator_migration_r9",
+      "reports/stage59d_0510_final_integration_r1",
+      "reports/stage59d_0510_final_integration_r2",
+      "reports/stage59e_0510_source_of_truth_repair_r1",
+      "reports/stage60a_0510_release_version_impact_r1",
+      "reports/stage60b_0510_version_prep_r1",
+      "reports/stage60b_0510_version_prep_r2",
+      "reports/stage60c_0510_rc2_relation_contract_actual_r1",
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r2",
+      "reports/stage60c_0510_rc2_relation_contract_diagnosis_r3",
+      "reports/stage60c_0510_rc2_relation_contract_shadow_r1",
+      "reports/stage60c_0510_rc3_b013_aadrg_fixture_diagnosis_r6",
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r1",
+      "reports/stage60c_0510_rc3_comprehensive_ui_smoke_shadow_r2",
+      "reports/stage60c_0510_rc3_search_api_fixture_diagnosis_r7",
+      "reports/stage60c_0510_rc3_ui_aadrg_smoke_shadow_r1",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r2",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r3",
+      "reports/stage60c_0510_rc3_ui_detail_timeout_diagnosis_r4",
+      "reports/stage60c_0510_rc3_ui_fixture_aadrg_shadow_r13",
+      "reports/stage60c_0510_rc3_ui_fixture_child_aadrg_r10",
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r2",
+      "reports/stage60c_0510_rc3_ui_fixture_shadow_r3",
+      "reports/stage60c_0510_rc3_ui_selector_detail_diagnosis_r5",
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r8",
+      "reports/stage60c_0510_rc3_ui_smoke_full_contract_r9",
+      "reports/stage60c_0510_windows_rc2_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc3_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc_failure_diagnosis_r1",
+      "reports/stage60c_0510_windows_rc_repair_actual_r1",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r1",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r2",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r3",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r4",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r5",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r6",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r7",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r8",
+      "reports/stage60c_0510_windows_rc_repair_shadow_r9",
+      "reports/stage61b_0511_ui_requirement_repair_actual_r1",
+      "reports/stage61b_0511_ui_requirement_repair_actual_r2",
+      "reports/stage61c_0511_release_prep_r1",
+      "reports/table_pattern_analysis_report.json",
+      "reports/table_pattern_analysis_report.txt",
+      "reports/table_section_candidate_build_report.json",
+      "reports/table_section_candidate_build_report.txt",
+      "reports/table_section_candidate_validation_report.json",
+      "reports/table_section_candidate_validation_report.txt",
+      "reports/ui_display_contract_build_report.json",
+      "reports/ui_display_contract_build_report.txt",
+      "reports/ui_display_contract_validation_report.json",
+      "reports/ui_display_contract_validation_report.txt",
+      "reports/ui_runtime_bridge_backups",
+      "reports/ui_semantic_audit_report.json",
+      "reports/ui_semantic_audit_report.txt",
+      "reports/ui_semantic_audit_validation_report.json",
+      "reports/ui_semantic_audit_validation_report.txt",
+      "reports/windows_bundle_diagnostics_backups",
+      "reports/windows_bundle_diagnostics_fix_report.json",
+      "reports/windows_bundle_diagnostics_fix_report.txt",
+      "reports/windows_ci_utf8_fix_backups",
+      "reports/windows_ci_utf8_fix_report.json",
+      "reports/windows_ci_utf8_fix_report.txt",
+      "reports/windows_ci_utf8_fix_validation_report.json",
+      "reports/windows_ci_utf8_fix_validation_report.txt",
+      "reports/windows_runtime_regression_backups",
+      "reports/windows_runtime_regression_config_report.json",
+      "reports/windows_runtime_regression_config_report.txt",
+      "reports/windows_runtime_source_smoke_report.json",
+      "reports/windows_runtime_source_smoke_report.txt",
+      "reports/windows_source_smoke_fix_backups",
+      "reports/windows_source_smoke_fix_report.json",
+      "reports/windows_source_smoke_fix_report.txt",
+      "scripts/tsconfig.tsbuildinfo"
+    ],
+    "moved_count": 500
+  },
+  "validation": {
+    "commands": [
+      {
+        "cmd": [
+          "node",
+          "tests/validate-release-version.js",
+          "0.5.11"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "[PASS] expected version argument | actual=\"0.5.11\" | expected=\"stable semver\"\n[PASS] package.json exists | actual=true | expected=true\n[PASS] package-lock.json exists | actual=true | expected=true\n[PASS] package name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] package version | actual=\"0.5.11\" | expected=\"0.5.11\"\n[PASS] lock top version | actual=\"0.5.11\" | expected=\"0.5.11\"\n[PASS] lock root version | actual=\"0.5.11\" | expected=\"0.5.11\"\n[PASS] lock top name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lock root name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lockfileVersion | actual=3 | expected=3\n[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.11_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.11_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.11\" | expected=\"electron-v0.5.11\"\n[PASS] version has no prerelease | actual=\"0.5.11\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage59b-ui.js"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "stage59_ui: 15 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage59b-search.js"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "stage59_search: 29 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage59b-smoke.js"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "stage59_smoke: PASS\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-packaged-runtime-smoke.js"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage60c-packaged-relation-smoke.js"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "[PASS] Stage60C runtime relation fixture: 9620 -> 96200 | O6010,O6011\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-packaging-config.js"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "npm",
+          "run",
+          "check"
+        ],
+        "cwd": "/home/runner/workspace/electron",
+        "returncode": 0,
+        "output": "\n> kdrg-v47-relation-search-electron@0.5.11 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime relation fixture: 9620 -> 96200 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.11 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.11 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.11\n\n> kdrg-v47-relation-search-electron@0.5.11 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.11 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 15 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.11 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.11 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.11 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "/home/runner/workspace/.pythonlibs/bin/python",
+          "50B_validate_kdrg_electron_search_service.py"
+        ],
+        "cwd": "/home/runner/workspace",
+        "returncode": 0,
+        "output": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt\n"
+      },
+      {
+        "cmd": [
+          "/home/runner/workspace/.pythonlibs/bin/python",
+          "50C_validate_kdrg_electron_renderer_ui.py"
+        ],
+        "cwd": "/home/runner/workspace",
+        "returncode": 0,
+        "output": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt\n"
+      },
+      {
+        "cmd": [
+          "/home/runner/workspace/.pythonlibs/bin/python",
+          "50D_validate_kdrg_electron_windows_packaging.py"
+        ],
+        "cwd": "/home/runner/workspace",
+        "returncode": 0,
+        "output": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50d_validation_report.txt\n"
+      }
+    ]
+  },
+  "finalize": {
+    "staged_tracked_deletions": [
+      "37_build_kdrg_search_integrated_json.py",
+      "38_validate_kdrg_search_integrated_json.py",
+      "39_build_kdrg_runtime_search_service.py",
+      "40_validate_kdrg_runtime_search_service.py",
+      "41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "42_validate_kdrg_runtime_ui_bridge.py",
+      "43_build_kdrg_runtime_ui_preview.py",
+      "44_build_kdrg_windows_runtime_regression.py",
+      "44_fix_kdrg_windows_bundle_diagnostics.py",
+      "44_fix_kdrg_windows_source_smoke.py",
+      "45_validate_kdrg_windows_ci_utf8_output.py",
+      "46_validate_kdrg_release_version_v021.py",
+      "47A_build_kdrg_ui_semantic_audit.py",
+      "47B_validate_kdrg_ui_semantic_audit.py",
+      "48A_build_kdrg_ui_display_contract.py",
+      "48B_validate_kdrg_ui_display_contract.py",
+      "49_validate_kdrg_pyside_ui_semantics.py",
+      "50A_validate_kdrg_electron_skeleton.py",
+      "51D_validate_kdrg_windows_packaged_ui.py"
+    ],
+    "recreated_cache_removed": [],
+    "root_stage_py_remaining": [
+      "61A_UI_REPAIR_SHADOW_R5.py",
+      "61B_APPLY_KDRG_0511_UI_REQUIREMENT_REPAIR_ACTUAL_R3.py",
+      "61C_PREP_KDRG_0511_RELEASE_R2.py",
+      "62C_APPLY_KDRG_WORKSPACE_FULL_CLEANUP_R1.py"
+    ],
+    "reports_file_count_after": 39,
+    "reports_bytes_after": 2863450,
+    "cached_name_status": "D\t37_build_kdrg_search_integrated_json.py\nD\t38_validate_kdrg_search_integrated_json.py\nD\t39_build_kdrg_runtime_search_service.py\nD\t40_validate_kdrg_runtime_search_service.py\nD\t41_build_kdrg_pyside_runtime_ui_bridge.py\nD\t42_validate_kdrg_runtime_ui_bridge.py\nD\t43_build_kdrg_runtime_ui_preview.py\nD\t44_build_kdrg_windows_runtime_regression.py\nD\t44_fix_kdrg_windows_bundle_diagnostics.py\nD\t44_fix_kdrg_windows_source_smoke.py\nD\t45_validate_kdrg_windows_ci_utf8_output.py\nD\t46_validate_kdrg_release_version_v021.py\nD\t47A_build_kdrg_ui_semantic_audit.py\nD\t47B_validate_kdrg_ui_semantic_audit.py\nD\t48A_build_kdrg_ui_display_contract.py\nD\t48B_validate_kdrg_ui_display_contract.py\nD\t49_validate_kdrg_pyside_ui_semantics.py\nD\t50A_validate_kdrg_electron_skeleton.py\nD\t51D_validate_kdrg_windows_packaged_ui.py"
+  },
+  "final_guard": {
+    "head": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "origin_main": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "staged_tracked_deletions": [
+      "37_build_kdrg_search_integrated_json.py",
+      "38_validate_kdrg_search_integrated_json.py",
+      "39_build_kdrg_runtime_search_service.py",
+      "40_validate_kdrg_runtime_search_service.py",
+      "41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "42_validate_kdrg_runtime_ui_bridge.py",
+      "43_build_kdrg_runtime_ui_preview.py",
+      "44_build_kdrg_windows_runtime_regression.py",
+      "44_fix_kdrg_windows_bundle_diagnostics.py",
+      "44_fix_kdrg_windows_source_smoke.py",
+      "45_validate_kdrg_windows_ci_utf8_output.py",
+      "46_validate_kdrg_release_version_v021.py",
+      "47A_build_kdrg_ui_semantic_audit.py",
+      "47B_validate_kdrg_ui_semantic_audit.py",
+      "48A_build_kdrg_ui_display_contract.py",
+      "48B_validate_kdrg_ui_display_contract.py",
+      "49_validate_kdrg_pyside_ui_semantics.py",
+      "50A_validate_kdrg_electron_skeleton.py",
+      "51D_validate_kdrg_windows_packaged_ui.py"
+    ],
+    "release_folder_preserved": true
+  },
+  "rollback": {
+    "attempted": false
+  },
+  "error": null,
+  "finished_at": "2026-09-17 07:10:59"
+}

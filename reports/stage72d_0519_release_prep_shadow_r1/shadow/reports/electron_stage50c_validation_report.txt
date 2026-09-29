@@ -1,0 +1,102 @@
+KDRG V4.7 Stage 50C Electron renderer UI 독립검증 - 0.5.10
+==========================================================================================
+스크립트 버전: 2026-09-08_KDRG_V47_ELECTRON_STAGE50C_VALIDATOR_V9_AADRG_PUBLIC_UI
+
+- [PASS] 운영 JSON SHA | actual=1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58 | expected=1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58
+- [PASS] 공개 ADRG 검색옵션 | actual=True | expected=True
+- [PASS] 공개 AADRG 검색옵션 숨김 | actual=True | expected=True
+- [PASS] MDC 24/25 제거 | actual=True | expected=True
+- [PASS] 동적 MDC filter | actual=True | expected=True
+- [PASS] 뒤로가기 | actual=True | expected=True
+- [PASS] PDF형 multiline 조건 | actual=True | expected=True
+- [PASS] CODE 상세 ADRG 중심 | actual=True | expected=True
+- [PASS] TABLE 기술정보 제거 | actual=True | expected=True
+- [PASS] 자동 첫상세 제거 | actual=True | expected=True
+- [PASS] AADRG 상세 조건상속 | actual=True | expected=True
+- [PASS] formatter public type | actual=True | expected=True
+- [PASS] relation ADRG 중심 | actual=True | expected=True
+- [PASS] 관련 AADRG 강조 | actual=True | expected=True
+- [PASS] Node runtime | actual=True | expected=True
+- [PASS] tests/validate-stage59b-ui.js | actual=0 | expected=0
+- [PASS] tests/validate-stage59b-skeleton.js | actual=0 | expected=0
+- [PASS] tests/validate-renderer-ui.js | actual=0 | expected=0
+- [PASS] tests/validate-stage51c-user-condition-ui.js | actual=0 | expected=0
+- [PASS] npm run check | actual=0 | expected=0
+
+[tests/validate-stage59b-ui.js stdout]
+stage59_ui: 21 PASS / 0 FAIL
+
+[tests/validate-stage59b-ui.js stderr]
+
+
+[tests/validate-stage59b-skeleton.js stdout]
+stage59_skeleton: PASS version=0.5.19
+
+[tests/validate-stage59b-skeleton.js stderr]
+
+
+[tests/validate-renderer-ui.js stdout]
+stage59_ui: 21 PASS / 0 FAIL
+[PASS] Electron Stage 50C renderer UI 검증: Stage59B/0.5.10 사용자 계약
+
+[tests/validate-renderer-ui.js stderr]
+
+
+[tests/validate-stage51c-user-condition-ui.js stdout]
+stage59_ui: 21 PASS / 0 FAIL
+[PASS] Stage51C compatibility: current Stage59B condition UI contract
+
+[tests/validate-stage51c-user-condition-ui.js stderr]
+
+
+[npm run check stdout]
+
+> kdrg-v47-relation-search-electron@0.5.19 check
+> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate
+
+[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011
+
+> kdrg-v47-relation-search-electron@0.5.19 validate
+> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging
+
+
+> kdrg-v47-relation-search-electron@0.5.19 validate:skeleton
+> node tests/validate-stage59b-skeleton.js
+
+stage59_skeleton: PASS version=0.5.19
+
+> kdrg-v47-relation-search-electron@0.5.19 validate:search
+> node tests/validate-stage59b-search.js
+
+stage59_search: 29 PASS / 0 FAIL
+[PASS] Stage67I4B normalized request bridge
+
+> kdrg-v47-relation-search-electron@0.5.19 validate:ui
+> node tests/validate-stage59b-ui.js
+
+stage59_ui: 21 PASS / 0 FAIL
+
+> kdrg-v47-relation-search-electron@0.5.19 validate:stage59b-smoke
+> node tests/validate-stage59b-smoke.js
+
+stage59_smoke: PASS
+
+> kdrg-v47-relation-search-electron@0.5.19 validate:smoke-contract
+> node tests/validate-packaged-runtime-smoke.js
+
+[PASS] Stage67I4B packaged normalized request bridge
+validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2
+[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL
+
+> kdrg-v47-relation-search-electron@0.5.19 validate:packaging
+> node tests/validate-packaging-config.js
+
+validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI
+electron_root=/home/runner/workspace/reports/stage72d_0519_release_prep_shadow_r1/shadow/electron
+node=v20.20.0
+[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL
+
+[npm run check stderr]
+
+
+전체 결과: PASS

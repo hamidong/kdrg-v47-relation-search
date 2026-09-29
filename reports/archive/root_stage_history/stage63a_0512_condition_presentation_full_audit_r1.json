@@ -1,0 +1,64 @@
+{
+  "status": "FAIL",
+  "started_at": "2026-09-17 07:42:40",
+  "preflight": {
+    "head": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "origin_main": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "branch": "main",
+    "tag_commit": "18ca3e48e7199ca97448a0e84d8ce14e63ade1c4",
+    "version": "0.5.11",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "product_sha256": {
+      "electron/renderer/app.js": "08f1b4dac93f7cb8f2bc1b07b611af09f1dfe695a56d50d7c95593be1edc30a1",
+      "electron/renderer/ui-formatters.js": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02",
+      "electron/renderer/styles.css": "f89331c45b46fd02c967b4282892ca9e94962a50f8789ddc6e4c82a012a8227c",
+      "electron/tests/validate-stage59b-ui.js": "ac449291ba73d06f51446ef8990da94315b387035540f32e83e2ecf61e390bc7"
+    },
+    "staged_files": [
+      "37_build_kdrg_search_integrated_json.py",
+      "38_validate_kdrg_search_integrated_json.py",
+      "39_build_kdrg_runtime_search_service.py",
+      "40_validate_kdrg_runtime_search_service.py",
+      "41_build_kdrg_pyside_runtime_ui_bridge.py",
+      "42_validate_kdrg_runtime_ui_bridge.py",
+      "43_build_kdrg_runtime_ui_preview.py",
+      "44_build_kdrg_windows_runtime_regression.py",
+      "44_fix_kdrg_windows_bundle_diagnostics.py",
+      "44_fix_kdrg_windows_source_smoke.py",
+      "45_validate_kdrg_windows_ci_utf8_output.py",
+      "46_validate_kdrg_release_version_v021.py",
+      "47A_build_kdrg_ui_semantic_audit.py",
+      "47B_validate_kdrg_ui_semantic_audit.py",
+      "48A_build_kdrg_ui_display_contract.py",
+      "48B_validate_kdrg_ui_display_contract.py",
+      "49_validate_kdrg_pyside_ui_semantics.py",
+      "50A_validate_kdrg_electron_skeleton.py",
+      "51D_validate_kdrg_windows_packaged_ui.py"
+    ],
+    "dirty_files": []
+  },
+  "renderer_source_audit": {
+    "markers": {
+      "direct_function_present": true,
+      "direct_requires_no_explicit": true,
+      "direct_requires_positive_code_count": true,
+      "direct_role_pattern_gate": false,
+      "direct_local_table_pattern": true,
+      "direct_neutral_label": true,
+      "presentation_has_direct_status": true,
+      "summary_uses_pretty_renderer": true,
+      "detail_supports_direct_tables": true,
+      "pretty_group_per_compound_node": true,
+      "pretty_independent_open_close_rows": true,
+      "formatter_exports_pretty_tree": true
+    },
+    "directConditionTables": "function directConditionTables(detail) {\n  const coverage = Ui.userConditionCoverage(detail);\n  if (\n    coverage.status !== 'NO_EXPLICIT_CONDITION'\n    || detail?.condition_ast\n    || coverage.table_count\n  ) {\n    return [];\n  }\n\n  const adrg = String(detail?.adrg ?? '').trim();\n  const sourceIds = Ui.uniqueStrings(detail?.source_logical_table_ids ?? []);\n  if (!adrg || sourceIds.length !== 1) return [];\n\n  const tableId = sourceIds[0];\n  if (!directConditionLocalTablePattern(adrg).test(tableId)) return [];\n\n  const summaryMap = Ui.tableSummaryMap(detail);\n  const summary = summaryMap.get(tableId);\n  if (!summary) return [];\n\n  const summaryData = summary?.summary ?? summary ?? {};\n  const codeCount = Number(summaryData.code_count ?? 0);\n  if (codeCount <= 0) return [];\n\n  const sourceLabel = tableUserLabel(summary);\n  const hasOfficialRoleLabel = DIRECT_CONDITION_ROLE_PATTERN.test(sourceLabel);\n  const label = hasOfficialRoleLabel\n    ? sourceLabel\n    : DIRECT_CONDITION_NEUTRAL_LABEL;\n\n  return [{\n    tableId,\n    summary,\n    label,\n    codeCount,\n    hasOfficialRoleLabel,\n  }];\n}",
+    "conditionPresentation": "function conditionPresentation(detail) {\n  const coverage = Ui.userConditionCoverage(detail);\n  const directTables = directConditionTables(detail);\n  const groups = Ui.buildConditionGroups(detail?.condition_ast);\n  if (directTables.length) {\n    const text = directTables.every((item) => item.hasOfficialRoleLabel)\n      ? directTables\n          .map((item) => `${item.label} 코드가 아래 목록에 포함`)\n          .join(' 그리고 ')\n      : '아래 코드 목록 자체가 이 ADRG의 분류 조건입니다.';\n    return {\n      ...coverage,\n      status: 'DIRECT_CODE_CONDITION',\n      summary: `TABLE 번호 없는 직접 코드조건 ${Ui.formatNumber(directTables.length)}개`,\n      text,\n      has_text: true,\n      direct_tables: directTables,\n      groups: [],\n    };\n  }\n  const structuralText = conditionGroupsExpression(groups, detail);\n  const text = structuralText || coverage.text;\n  return {\n    ...coverage,\n    text,\n    has_text: Boolean(text),\n    structural_text: Boolean(structuralText),\n    direct_tables: [],\n    groups,\n  };\n}"
+  },
+  "probe": {},
+  "renderer_risk": {},
+  "code_search_contract": {},
+  "summary": {},
+  "error": "AuditError: command failed (1): node /tmp/kdrg_stage63a_686i51g1/probe.js\nnode:internal/modules/cjs/loader:1210\n  throw err;\n  ^\n\nError: Cannot find module './src/kdrg-search-service'\nRequire stack:\n- /tmp/kdrg_stage63a_686i51g1/probe.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)\n    at Module._load (node:internal/modules/cjs/loader:1038:27)\n    at Module.require (node:internal/modules/cjs/loader:1289:19)\n    at require (node:internal/modules/helpers:182:18)\n    at Object.<anonymous> (/tmp/kdrg_stage63a_686i51g1/probe.js:6:31)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [ '/tmp/kdrg_stage63a_686i51g1/probe.js' ]\n}\n\nNode.js v20.20.0\n\nTraceback (most recent call last):\n  File \"/home/runner/workspace/63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py\", line 881, in main\n    payload[\"probe\"] = run_node_probe()\n                       ^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py\", line 618, in run_node_probe\n    result = run(\n             ^^^^\n  File \"/home/runner/workspace/63A_AUDIT_KDRG_0512_CONDITION_PRESENTATION_FULL_R1.py\", line 86, in run\n    raise AuditError(\nAuditError: command failed (1): node /tmp/kdrg_stage63a_686i51g1/probe.js\nnode:internal/modules/cjs/loader:1210\n  throw err;\n  ^\n\nError: Cannot find module './src/kdrg-search-service'\nRequire stack:\n- /tmp/kdrg_stage63a_686i51g1/probe.js\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)\n    at Module._load (node:internal/modules/cjs/loader:1038:27)\n    at Module.require (node:internal/modules/cjs/loader:1289:19)\n    at require (node:internal/modules/helpers:182:18)\n    at Object.<anonymous> (/tmp/kdrg_stage63a_686i51g1/probe.js:6:31)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12) {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: [ '/tmp/kdrg_stage63a_686i51g1/probe.js' ]\n}\n\nNode.js v20.20.0\n\n",
+  "finished_at": "2026-09-17 07:42:41"
+}

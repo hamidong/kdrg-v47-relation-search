@@ -1,0 +1,122 @@
+KDRG V4.7 Electron Stage59A V3 — 20260731 공식 보정자료 전체 영향감사
+========================================================================================================
+status=FAIL
+head=73c40c164bd7eb103fea30ac22f5bd0c34a9d3bc
+package_version=0.5.9
+operating_json_sha256=75b298956ea44f9364dbd755b197d4c3815b6fb3a465f25bf83b5d223d4e96b0
+
+[신규 공식 원천]
+교정표=KDRG 일반용(V4.7)_교정표_20260731.hwpx
+교정표_SHA256=5199c2cd75a11da722557b08e2d8a59cf147af08507b85ccf4044ed0361718b3
+시술목록=KDRG 일반용(V4.7)_시술 등 목록_20260731.xlsx
+시술목록_SHA256=fde6dd9020eb0abf5f4f374fdd5f978054d1bd56f2b7c3567333c45f00064ab4
+
+[20260731 시술 등 목록]
+data_rows=2791
+unique_codes=2791
+unique_classification_numbers=2714
+duplicate_rows=0
+vs_20260501_added=M6536
+vs_20260501_removed=-
+vs_20260501_changed=0
+M6536=자653-1 | 클립을 사용한 경피적 경도관 승모판 재건술 | Excel row 325
+
+[20260731 교정표]
+누적_적용일={'2. 1': True, '3. 1': True, '4. 1': True, '5. 1': True, '7. 31': True}
+기존_2~5월_누적확인=True
+7월31일_F022_P020_M6536=True
+
+[7월31일 실제 수정 대상]
+F022_table6_candidates=[]
+P020_candidates=[]
+현재_M6536_포함_TABLE=[]
+
+[중요: 코드 문자열 진단/시술 충돌 전수감사]
+collision_count=47
+M6536_collision=YES
+M6536_existing_domains=['DIAGNOSIS']
+M6536_existing_names=['Nodular tendinous disease, lower leg', '결절성 힘줄병, 아래다리']
+M6536_new_procedure_name=클립을 사용한 경피적 경도관 승모판 재건술
+- 판정: M6536을 단순 '코드명 덮어쓰기' 방식으로 적용하면 안 됨
+- 동일 코드문자열의 진단/시술 양쪽 의미를 보존하는 구조/표시 검토가 필요
+collision_examples=
+- M6511 | domains=['DIAGNOSIS'] | 기존명=['경피적 좌심방이폐색술'] | 시술명=경피적 좌심방이폐색술
+- M6513 | domains=['DIAGNOSIS'] | 기존명=['경피적 근성부 심실중격결손 폐쇄술'] | 시술명=경피적 근성부 심실중격결손 폐쇄술
+- M6521 | domains=['DIAGNOSIS'] | 기존명=['경피적심방중격절개술-풍선심방중격절개술'] | 시술명=경피적심방중격절개술-풍선심방중격절개술
+- M6522 | domains=['DIAGNOSIS'] | 기존명=['경피적심방중격절개술-칼날심방중격절개술'] | 시술명=경피적심방중격절개술-칼날심방중격절개술
+- M6531 | domains=['DIAGNOSIS'] | 기존명=['경피적심장판막성형술-승모판막'] | 시술명=경피적심장판막성형술-승모판막
+- M6532 | domains=['DIAGNOSIS'] | 기존명=['경피적심장판막성형술-대동맥판막'] | 시술명=경피적심장판막성형술-대동맥판막
+- M6533 | domains=['DIAGNOSIS'] | 기존명=['경피적심장판막성형술-폐동맥판막'] | 시술명=경피적심장판막성형술-폐동맥판막
+- M6536 | domains=['DIAGNOSIS'] | 기존명=['Nodular tendinous disease, lower leg', '결절성 힘줄병, 아래다리'] | 시술명=클립을 사용한 경피적 경도관 승모판 재건술
+- M6581 | domains=['DIAGNOSIS'] | 기존명=['경피적대동맥판삽입-상행대동맥 접근'] | 시술명=경피적대동맥판삽입-상행대동맥 접근
+- M6582 | domains=['DIAGNOSIS'] | 기존명=['경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근'] | 시술명=경피적대동맥판삽입-대퇴동맥, 쇄골하동맥 접근
+- M6585 | domains=['DIAGNOSIS'] | 기존명=['경피적 폐동맥판 삽입술'] | 시술명=경피적 폐동맥판 삽입술
+- M6586 | domains=['DIAGNOSIS', 'PROCEDURE'] | 기존명=['경피적 승모판막 재치환술[심방중격 접근'] | 시술명=경피적 승모판막 재치환술[심방중격 접근]
+- M6593 | domains=['DIAGNOSIS'] | 기존명=['경피적풍선혈관성형술-뇌혈관'] | 시술명=경피적풍선혈관성형술-뇌혈관
+- M6594 | domains=['DIAGNOSIS'] | 기존명=['경피적풍선혈관성형술-경동맥[추골동맥포함'] | 시술명=경피적풍선혈관성형술-경동맥[추골동맥포함]
+- M6595 | domains=['DIAGNOSIS'] | 기존명=['경피적풍선혈관성형술-대동맥'] | 시술명=경피적풍선혈관성형술-대동맥
+- M6596 | domains=['DIAGNOSIS'] | 기존명=['경피적풍선혈관성형술-폐동맥'] | 시술명=경피적풍선혈관성형술-폐동맥
+- M6597 | domains=['DIAGNOSIS'] | 기존명=['경피적풍선혈관성형술-기타혈관'] | 시술명=경피적풍선혈관성형술-기타혈관
+- M6611 | domains=['DIAGNOSIS'] | 기존명=['경피적혈관내스텐트-이식설치술[대동맥'] | 시술명=경피적혈관내스텐트-이식설치술[대동맥]
+- M6612 | domains=['DIAGNOSIS'] | 기존명=['경피적혈관내스텐트-이식설치술[대동맥및장골동맥'] | 시술명=경피적혈관내스텐트-이식설치술[대동맥및장골동맥]
+- M6613 | domains=['DIAGNOSIS'] | 기존명=['경피적혈관내스텐트-이식설치술[기타혈관'] | 시술명=경피적혈관내스텐트-이식설치술[기타혈관]
+- M6632 | domains=['DIAGNOSIS'] | 기존명=['경피적혈전제거술-혈전용해술[기타혈관'] | 시술명=경피적혈전제거술-혈전용해술[기타혈관]
+- M6634 | domains=['DIAGNOSIS'] | 기존명=['경피적혈전제거술-혈전용해술[관상동맥'] | 시술명=경피적혈전제거술-혈전용해술[관상동맥]
+- M6635 | domains=['DIAGNOSIS'] | 기존명=['경피적혈전제거술-혈전용해술-두개강외 경부혈관'] | 시술명=경피적혈전제거술-혈전용해술-두개강외 경부혈관
+- M6636 | domains=['DIAGNOSIS'] | 기존명=['경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관'] | 시술명=경피적혈전제거술-기계적혈전제거술[카테터법]-두개강내 혈관
+- M6637 | domains=['DIAGNOSIS'] | 기존명=['경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관'] | 시술명=경피적혈전제거술-기계적혈전제거술[카테터법]-두개강외 경부혈관
+- M6644 | domains=['DIAGNOSIS'] | 기존명=['혈관색전술-기타혈관'] | 시술명=혈관색전술-기타혈관
+- M6652 | domains=['DIAGNOSIS'] | 기존명=['대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정'] | 시술명=대동맥 혈관내 이식편 고정술-경피적 혈관내 스텐트-이식 설치술 후 그래프트 고정
+- M6721 | domains=['DIAGNOSIS'] | 기존명=['방사선하상부소화관협착확장술-풍선카테터에의한것'] | 시술명=방사선하상부소화관협착확장술-풍선카테터에의한것
+- M6722 | domains=['DIAGNOSIS'] | 기존명=['방사선하상부소화관협착확장술-스텐트에의한것'] | 시술명=방사선하상부소화관협착확장술-스텐트에의한것
+- M6723 | domains=['DIAGNOSIS'] | 기존명=['방사선하결장,직장협착확장술-풍선카테터에의한것'] | 시술명=방사선하결장,직장협착확장술-풍선카테터에의한것
+
+[현재 교정 파이프라인]
+current_patch_operation_count=0
+current_patch_contains_M6536=False
+current_patch_contains_2026_07_31=False
+
+[J600형 잔존 분류조건 오염]
+residual_count=141
+page_marker_ADRG=9630,B082,B130,B201,B530,B662,B670,B780,B800,D031,D090,D150,D161,D162,D180,D610,D640,D700,D720,D730,D740,D750,D760,D800,E020,E550,E600,E630,E640,E650,E660,E730,E742,E743,E760,F033,F240,F610,F620,F630,F640,F662,F680,F770,G190,G230,G300,G650,G660,G672,H520,I050,I240,I600,I610,J100,J600,J670,K080,K670,K720,L010,L120,L520,L530,M610,N110,N130,N142,O120,O630,R640,T610,T632,T633,U010,U602,U610,U660,U680,V600,W600,W610,Y600,Z010,Z650
+J600_detected=YES
+Stage58_ambiguous_still_residual=0
+- Stage58 보류 중 잔존=없음
+
+[MDCxx 전체 주진단 조건]
+case_count=1
+- 9630 | MDC=15
+
+[TABLE 사용자 UI 노출]
+- search_result_TABLE_count=True
+- code_detail_linked_TABLE=True
+- code_detail_included_TABLE=True
+- TABLE_technical_detail_button=True
+- standalone_TABLE_detail_renderer=True
+
+[20260501 고정계약 영향 파일]
+- old_procedure_filename=0
+- old_correction_filename=0
+- old_procedure_sha=0
+- old_correction_sha=0
+- expected_2790=2
+  · data/kdrg_v47_search_integrated.json | occurrences=9
+  · data/kdrg_v47_search_integrated_v3.json | occurrences=26
+- expected_2713=2
+  · data/kdrg_v47_search_integrated.json | occurrences=15
+  · data/kdrg_v47_search_integrated_v3.json | occurrences=18
+- expected_patch_24=0
+- expected_source_change_18=0
+- old_expected_current_only_set=0
+
+[판정]
+- FAIL: 현재 F022 table6(M6586 보유) 대상 TABLE 식별 실패
+- FAIL: 현재 P020(M6586 보유) 대상 TABLE 식별 실패
+- Stage59B 수정 진행 금지
+
+[안전 확인]
+HEAD 변경 없음=True
+운영 JSON 변경 없음=True
+tracked 변경 없음=True
+staged 변경 없음=True
+JSON 보고서=reports/stage59a_official_20260731_full_impact_audit_v3/audit.json

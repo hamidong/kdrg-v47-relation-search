@@ -1,0 +1,38 @@
+KDRG V4.7 Electron Stage66D0 / 0.5.14 Actions Storage Audit R1
+====================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0514_COMMIT_AND_RC
+
+[PREFLIGHT]
+{}
+
+[WORKFLOW SUMMARY]
+{"workflow": null, "sha256": null, "line_count": null, "storage_assessment": null, "counts": null}
+
+[MATCHES]
+{}
+
+[CONTEXT EXCERPTS]
+[FINAL GUARD]
+{}
+
+[BLOCKER]
+AuditError: HEAD mismatch
+Traceback (most recent call last):
+  File "/home/runner/workspace/66D0_AUDIT_KDRG_0514_ACTIONS_STORAGE_R1.py", line 441, in main
+    payload["preflight"] = preflight()
+                           ^^^^^^^^^^^
+  File "/home/runner/workspace/66D0_AUDIT_KDRG_0514_ACTIONS_STORAGE_R1.py", line 185, in preflight
+    require(git_text("rev-parse", "HEAD") == BASE_HEAD, "HEAD mismatch")
+  File "/home/runner/workspace/66D0_AUDIT_KDRG_0514_ACTIONS_STORAGE_R1.py", line 86, in require
+    raise AuditError(message)
+AuditError: HEAD mismatch
+
+
+[NEXT]
+- upload-artifact가 있으면 해당 step의 조건/용도를 기준으로 artifact-free Shadow 수정안을 생성.
+- Release Asset 직접 업로드(softprops/action-gh-release 또는 gh release)는 Actions artifact storage와 분리하여 유지 가능.
+- Stage66D commit/push/RC는 workflow storage 경로 검토 전까지 실행하지 않음.
+
+report_txt=/home/runner/workspace/stage66d0_0514_actions_storage_audit_r1.txt
+report_json=/home/runner/workspace/stage66d0_0514_actions_storage_audit_r1.json

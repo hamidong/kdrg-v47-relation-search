@@ -1,0 +1,69 @@
+KDRG V4.7 Electron Stage61A / 0.5.11 UI Requirement Repair Shadow R5
+================================================================================================
+status=PASS
+readiness=READY_FOR_ACTUAL_0511_APPLY_ONLY
+
+[PREFLIGHT]
+{"head": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "remote_main": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "branch": "main", "version": "0.5.10", "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58", "tag_commit": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "actual_target_sha256_before": {"electron/renderer/app.js": "4f6a5634da3115a497b9c854d40b9650298b642dd9181791851c285efd0af21a", "electron/renderer/ui-formatters.js": "bca68aa8fd7d82d9d4cfa0f9a37c8900e9c2638e04aa279b0ba2c052c6b1baab", "electron/renderer/styles.css": "54a16cfecac8a0e1841ca8ee71efddbe53ff3c4abf2ab2f68df355cc803e6933", "electron/tests/validate-stage59b-ui.js": "a374a6c6d53eb8846a116bfd1c39de2da3e17580d4737ccfb1263f2bf954a044"}, "unrelated_tracked_changes": []}
+
+[RELEASED SOURCE AUDIT]
+{"renderMetrics": 1, "metric_aadrg_correct": 1, "metric_aadrg_old_bug": 0, "derived_aadrg_article": 1, "derived_aadrg_click_dataset": 0, "detail_summary_old_table": 1, "detail_summary_old_adrg": 2, "legacy_pretty_function": 1, "condition_summary": 1, "formatter_build_groups": 1, "formatter_build_groups_export": 1, "formatter_table_summary_export": 1, "aadrg_name_ellipsis_rule": 1, "ui_validator_pretty_presence_only": 1}
+
+[CONFIRMED GAPS]
+- 관련 AADRG row가 article이며 entity dataset이 없어 상세 링크가 동작하지 않음
+- P651형 nested 조건이 top-level operator만 줄바꿈되어 PDF형 구조표현이 불완전
+- CODE detail hero에 연결 TABLE / 관련 ADRG 구문이 잔존
+- 긴 관련 AADRG 명칭이 nowrap/ellipsis로 잘림
+- Stage59B UI validator가 위 동작을 실제로 검증하지 않는 blind spot
+
+[SHADOW DIFF]
+{"changed_files": ["electron/renderer/app.js", "electron/renderer/styles.css", "electron/renderer/ui-formatters.js", "electron/tests/validate-stage59b-ui.js"], "sha256": {"electron/renderer/app.js": "08f1b4dac93f7cb8f2bc1b07b611af09f1dfe695a56d50d7c95593be1edc30a1", "electron/renderer/ui-formatters.js": "b8fea3c04d2c6a31a70c6e2f5bca000d618e1bcbde6952aad7a8b95b689f4d02", "electron/renderer/styles.css": "f89331c45b46fd02c967b4282892ca9e94962a50f8789ddc6e4c82a012a8227c", "electron/tests/validate-stage59b-ui.js": "ac449291ba73d06f51446ef8990da94315b387035540f32e83e2ecf61e390bc7"}, "diff_check": ""}
+
+[VALIDATION]
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node --check renderer/app.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node --check renderer/ui-formatters.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node --check tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node tests/validate-stage59b-ui.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node tests/validate-stage59b-search.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node tests/validate-stage59b-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node tests/validate-packaged-runtime-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node tests/validate-stage60c-packaged-relation-smoke.js
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node -e 
+const path=require('node:path');
+const {KdrgSearchService}=require('./src/kdrg-search-service');
+const Ui=require('./renderer/ui-formatters');
+const service=new KdrgSearchService(path.resolve('..','data','kdrg_v47_search_integrated_v3.json'));
+const d=service.getDetail('AADRG','P6510').detail;
+if(d.adrg!=='P651') throw new Error('P6510 parent mismatch');
+if(!d.condition_ast) throw new Error('P6510 inherited condition_ast missing');
+const tree=Ui.buildPrettyConditionTree(d.condition_ast);
+if(!tree) throw new Error('P651 pretty tree missing');
+function count(n){
+  if(!n)return 0;
+  if(n.kind==='group') return 1+(n.children||[]).reduce((a,c)=>a+count(c),0);
+  if(n.kind==='not') return 1+count(n.child);
+  if(n.kind==='without') return 1+count(n.left)+count(n.right);
+  return 1;
+}
+if(count(tree)<3) throw new Error('P651 pretty tree unexpectedly shallow');
+console.log('[PASS] P6510 inherited AST -> pretty tree', JSON.stringify({kind:tree.kind,nodes:count(tree)}));
+
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=npm run check
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50B_validate_kdrg_electron_search_service.py
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50C_validate_kdrg_electron_renderer_ui.py
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace cmd=/home/runner/workspace/.pythonlibs/bin/python 50D_validate_kdrg_electron_windows_packaging.py
+- PASS rc=0 cwd=/tmp/kdrg_stage61a_0511_shadow_r5_ctjg8wum/workspace/electron cmd=node tests/validate-release-version.js 0.5.10
+
+[SHADOW ARTIFACTS]
+{"electron/renderer/app.js": "/home/runner/workspace/reports/stage61a_0511_ui_requirement_repair_shadow_r5/app.js", "electron/renderer/ui-formatters.js": "/home/runner/workspace/reports/stage61a_0511_ui_requirement_repair_shadow_r5/ui-formatters.js", "electron/renderer/styles.css": "/home/runner/workspace/reports/stage61a_0511_ui_requirement_repair_shadow_r5/styles.css", "electron/tests/validate-stage59b-ui.js": "/home/runner/workspace/reports/stage61a_0511_ui_requirement_repair_shadow_r5/validate-stage59b-ui.js"}
+
+[ACTUAL UNCHANGED]
+{"target_sha256_after": {"electron/renderer/app.js": "4f6a5634da3115a497b9c854d40b9650298b642dd9181791851c285efd0af21a", "electron/renderer/ui-formatters.js": "bca68aa8fd7d82d9d4cfa0f9a37c8900e9c2638e04aa279b0ba2c052c6b1baab", "electron/renderer/styles.css": "54a16cfecac8a0e1841ca8ee71efddbe53ff3c4abf2ab2f68df355cc803e6933", "electron/tests/validate-stage59b-ui.js": "a374a6c6d53eb8846a116bfd1c39de2da3e17580d4737ccfb1263f2bf954a044"}, "head": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "remote_main": "de8919a052bc4195d6c634fc80b6fecfd233f00b", "tag_commit": "de8919a052bc4195d6c634fc80b6fecfd233f00b"}
+
+[NEXT]
+- Shadow PASS. 0.5.10 tag/release는 그대로 고정한다.
+- 다음 단계는 검증된 4개 파일을 Actual에 적용하고 동일 전체검증한다.
+- Actual PASS 후 package/package-lock을 0.5.11로 올려 새 release lineage로 간다.
+
+report_txt=/home/runner/workspace/stage61a_0511_ui_requirement_repair_shadow_r5.txt
+report_json=/home/runner/workspace/stage61a_0511_ui_requirement_repair_shadow_r5.json

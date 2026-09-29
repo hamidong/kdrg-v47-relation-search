@@ -1,0 +1,48 @@
+KDRG V4.7 Electron Stage64B / 0.5.13 Official Condition Source Shadow R1
+============================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0513_ACTUAL
+
+[PREFLIGHT]
+{}
+
+[SHADOW DIFF]
+{}
+
+[SOURCE FIDELITY]
+{}
+
+[VALIDATION]
+
+[ARTIFACTS]
+{}
+
+[ACTUAL UNCHANGED]
+{}
+
+[BLOCKER]
+ShadowError: not all official candidates are verified ROOT_SOURCE_FRAGMENT; count=38 sample=['C061', 'C062', 'C063', 'C064', 'C071', 'C073', 'F022', 'F061', 'F112', 'F122', 'F135', 'F136', 'F194', 'I141', 'I142', 'I160', 'I187', 'I194', 'I200', 'I251', 'I252', 'I283', 'I284', 'I285', 'I286', 'I287', 'N011', 'N041', 'N042', 'N071']
+Traceback (most recent call last):
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py", line 1483, in main
+    pre, audit_rows, pdf_indexes = preflight()
+                                   ^^^^^^^^^^^
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py", line 489, in preflight
+    audit_report, audit_rows = load_audit_contract()
+                               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py", line 442, in load_audit_contract
+    require(
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R1.py", line 111, in require
+    raise ShadowError(message)
+ShadowError: not all official candidates are verified ROOT_SOURCE_FRAGMENT; count=38 sample=['C061', 'C062', 'C063', 'C064', 'C071', 'C073', 'F022', 'F061', 'F112', 'F122', 'F135', 'F136', 'F194', 'I141', 'I142', 'I160', 'I187', 'I194', 'I200', 'I251', 'I252', 'I283', 'I284', 'I285', 'I286', 'I287', 'N011', 'N041', 'N042', 'N071']
+
+
+[NEXT]
+- PASS이면 PDF 검증된 390개 AST ADRG를 원문 우선 표시하는 Shadow가 확정됨.
+- 기존 121개 재표현 사례는 모두 official-source 경로로 전환되어야 함.
+- P651은 '시술명 table2을 제외한 OR procedure' 표현을 유지해야 함.
+- AST는 검색/TABLE 연결/논리검증 및 source 부재 fallback으로 그대로 유지.
+- Actual 적용 후 다시 390건 PDF 원문 대 최종 UI 계약을 재검증한 뒤 0.5.13 Release Prep 진행.
+- Shadow PASS 전 Actual/version/commit/push/tag/Release 금지.
+
+report_txt=/home/runner/workspace/stage64b_0513_official_source_shadow_r1.txt
+report_json=/home/runner/workspace/stage64b_0513_official_source_shadow_r1.json

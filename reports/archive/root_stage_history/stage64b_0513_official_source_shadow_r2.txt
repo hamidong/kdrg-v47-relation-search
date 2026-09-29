@@ -1,0 +1,48 @@
+KDRG V4.7 Electron Stage64B / 0.5.13 Official Condition Source Shadow R2
+============================================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0513_ACTUAL
+
+[PREFLIGHT]
+{}
+
+[SHADOW DIFF]
+{}
+
+[SOURCE FIDELITY]
+{}
+
+[VALIDATION]
+
+[ARTIFACTS]
+{}
+
+[ACTUAL UNCHANGED]
+{}
+
+[BLOCKER]
+ShadowError: unsafe SOURCE_BLOCK_TEXT candidates: count=1 sample=['F022']
+Traceback (most recent call last):
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py", line 1755, in main
+    pre, audit_rows, reworded_rows, matching_rows, pdf_indexes = preflight()
+                                                                 ^^^^^^^^^^^
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py", line 708, in preflight
+    source_block_checks = validate_source_block_candidates(audit_rows)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py", line 661, in validate_source_block_candidates
+    require(
+  File "/home/runner/workspace/64B_BUILD_KDRG_0513_OFFICIAL_SOURCE_SHADOW_R2.py", line 111, in require
+    raise ShadowError(message)
+ShadowError: unsafe SOURCE_BLOCK_TEXT candidates: count=1 sample=['F022']
+
+
+[NEXT]
+- PASS이면 PDF와 다른 121개만 원문 override하고, 이미 같은 269개는 AST 표시를 유지하는 Shadow가 확정됨.
+- 기존 121개 재표현 사례만 official-source 경로로 전환되어야 함.
+- P651은 '시술명 table2을 제외한 OR procedure' 표현을 유지해야 함.
+- AST는 검색/TABLE 연결/논리검증 및 source 부재 fallback으로 그대로 유지.
+- Actual 적용 후 다시 390건 PDF 원문 대 최종 UI 계약을 재검증한 뒤 0.5.13 Release Prep 진행.
+- Shadow PASS 전 Actual/version/commit/push/tag/Release 금지.
+
+report_txt=/home/runner/workspace/stage64b_0513_official_source_shadow_r2.txt
+report_json=/home/runner/workspace/stage64b_0513_official_source_shadow_r2.json

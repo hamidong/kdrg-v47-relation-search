@@ -1,0 +1,71 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_FIX_COMMIT_PUSH_RC",
+  "started_at": "2026-09-23 00:26:01",
+  "preflight": {
+    "gate": {
+      "report_status": "PASS",
+      "report_readiness": "READY_FOR_0515_ADRG_NAMESPACE_UI_ACTUAL_APPLY",
+      "manifest_schema": "kdrg-0515-adrg-namespace-ui-repair-v4",
+      "repair_contract": {
+        "explicit_adrg_exact_id_precedes_code_collision": true,
+        "all_1132_adrg_exact_ids_pass": true,
+        "all_code_behavior_unchanged": true,
+        "ui_fixture_search_query_uses_public_adrg_identity": true,
+        "product_hardcoding_B018_B022": false
+      }
+    },
+    "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "package_version": "0.5.15",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "base_tag_immutable": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "candidate": {
+    "candidate_root": "/home/runner/workspace/reports/stage67i2_0515_adrg_namespace_ui_candidate_r2",
+    "cleanup": {
+      "electron/src/kdrg-search-service.js": {
+        "trailing_whitespace_lines_fixed": 0,
+        "space_before_tab_indent_lines_fixed": 0,
+        "eof_blank_lines_removed": 0,
+        "newline_style": "LF"
+      },
+      "electron/src/packaged-runtime-smoke.js": {
+        "trailing_whitespace_lines_fixed": 0,
+        "space_before_tab_indent_lines_fixed": 0,
+        "eof_blank_lines_removed": 0,
+        "newline_style": "LF"
+      },
+      "electron/tests/validate-packaged-runtime-smoke.js": {
+        "trailing_whitespace_lines_fixed": 0,
+        "space_before_tab_indent_lines_fixed": 0,
+        "eof_blank_lines_removed": 0,
+        "newline_style": "LF"
+      },
+      "electron/tests/validate-stage59b-search.js": {
+        "trailing_whitespace_lines_fixed": 0,
+        "space_before_tab_indent_lines_fixed": 0,
+        "eof_blank_lines_removed": 1,
+        "newline_style": "LF"
+      }
+    },
+    "candidate_sha256": {
+      "electron/src/kdrg-search-service.js": "017f6b2a3cdaaede0f14e77be5e06fc20b113f5d258c3271802beb07641b9d2c",
+      "electron/src/packaged-runtime-smoke.js": "ec3d8a53f136884e61bb2383e6f22c149c708501c00c02fb2703416f7504b7de",
+      "electron/tests/validate-packaged-runtime-smoke.js": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+      "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+    }
+  },
+  "shadow_validation": {},
+  "backup": {},
+  "apply": {},
+  "validation": {},
+  "rollback": {
+    "performed": false
+  },
+  "final_guard": {},
+  "error": "TypeError: git_lines() got an unexpected keyword argument 'cwd'\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R2.py\", line 833, in main\n    payload[\"shadow_validation\"] = validate_candidate_shadow(payload[\"candidate\"])\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I2_APPLY_KDRG_0515_ADRG_NAMESPACE_UI_ACTUAL_R2.py\", line 389, in validate_candidate_shadow\n    changed = sorted(git_lines(\"diff\", \"--name-only\", cwd=shadow_root))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nTypeError: git_lines() got an unexpected keyword argument 'cwd'\n",
+  "finished_at": "2026-09-23 00:26:06"
+}

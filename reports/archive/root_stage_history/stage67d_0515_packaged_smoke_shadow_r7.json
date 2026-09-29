@@ -1,0 +1,36 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_FINAL_SHADOW_AUDIT",
+  "started_at": "2026-09-22 04:52:44",
+  "preflight": {
+    "head": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "origin_main": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+    "branch": "main",
+    "base_tag": "electron-v0.5.14",
+    "package_version": "0.5.14",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "stage67c": {
+      "status": "PASS",
+      "readiness": "READY_FOR_0515_PACKAGED_SMOKE_MIGRATION",
+      "full_npm_run_check": "DEFERRED_TO_STAGE67D"
+    }
+  },
+  "shadow": {
+    "source_shadow": "/home/runner/workspace/reports/stage67c_0515_adrg_ui_validators_shadow_r4",
+    "shadow_root": "/home/runner/workspace/reports/stage67d_0515_packaged_smoke_shadow_r7",
+    "required_files": [
+      "electron/src/packaged-runtime-smoke.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage60c-packaged-relation-smoke.js",
+      "electron/package.json",
+      "50B_validate_kdrg_electron_search_service.py",
+      "50C_validate_kdrg_electron_renderer_ui.py",
+      "50D_validate_kdrg_electron_windows_packaging.py"
+    ]
+  },
+  "migration": {},
+  "sha_contract": {},
+  "validation": {},
+  "error": "StageError: Stage60C expected legacy ...args source assertion not found\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py\", line 1464, in main\n    payload[\"migration\"] = migrate()\n                           ^^^^^^^^^\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py\", line 1260, in migrate\n    stage60c_summary = patch_stage60c_validator()\n                       ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py\", line 962, in patch_stage60c_validator\n    text, source_audit = replace_relation_source_assertion_cluster(text)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py\", line 287, in replace_relation_source_assertion_cluster\n    require(\n  File \"/home/runner/workspace/67D_MIGRATE_KDRG_0515_PACKAGED_SMOKE_SHADOW_R7.py\", line 87, in require\n    raise StageError(message)\nStageError: Stage60C expected legacy ...args source assertion not found\n",
+  "finished_at": "2026-09-22 04:52:46"
+}

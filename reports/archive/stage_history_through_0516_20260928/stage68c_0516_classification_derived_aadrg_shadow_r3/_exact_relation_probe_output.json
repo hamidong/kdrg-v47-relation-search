@@ -1,0 +1,1348 @@
+{
+  "ok": true,
+  "constructor": "KdrgSearchService",
+  "constructor_tries": [
+    {
+      "constructor": "KdrgSearchService",
+      "args": [
+        "object"
+      ],
+      "error": "통합 검색 데이터가 없습니다: /home/runner/workspace/[object Object]"
+    }
+  ],
+  "direct": {
+    "args": [
+      "F111",
+      "ADRG"
+    ],
+    "result": {
+      "total_count": 1,
+      "results": [
+        {
+          "entity_type": "ADRG",
+          "entity_id": "F111",
+          "title": "F111 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+          "subtitle": "MDC 05 · 세부 질병군 1개",
+          "matched_fields": [
+            "entity_id"
+          ],
+          "summary": {
+            "mdc": "05",
+            "aadrg_count": 1,
+            "abc_status": "SINGLE",
+            "abc_display_labels": [
+              "질병군 분류(전문)"
+            ],
+            "source_table_count": 0,
+            "condition_table_count": 3,
+            "condition_ast_id": "AST_F111",
+            "user_condition_status": "RESOLVED_AST",
+            "user_condition_table_count": 3
+          }
+        }
+      ]
+    },
+    "f111": [
+      {
+        "path": "$.results[0]",
+        "classification": {},
+        "value": {
+          "entity_type": "ADRG",
+          "entity_id": "F111",
+          "title": "F111 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+          "subtitle": "MDC 05 · 세부 질병군 1개",
+          "score": 1000,
+          "match_type": "EXACT_ID",
+          "matched_fields": [
+            "entity_id"
+          ],
+          "summary": {
+            "mdc": "05",
+            "aadrg_count": 1,
+            "abc_status": "SINGLE",
+            "abc_display_labels": [
+              "질병군 분류(전문)"
+            ],
+            "source_table_count": 0,
+            "condition_table_count": 3,
+            "related_table_count": 3,
+            "condition_ast_id": "AST_F111",
+            "user_condition_status": "RESOLVED_AST",
+            "user_condition_table_count": 3
+          }
+        }
+      }
+    ]
+  },
+  "detail": {
+    "args": [
+      "ADRG",
+      "F111"
+    ],
+    "result": {
+      "entity_type": "ADRG",
+      "entity_id": "F111"
+    },
+    "f111": [
+      {
+        "path": "$",
+        "classification": {},
+        "value": {
+          "schema_version": "kdrg-runtime-search-response-v1",
+          "entity_type": "ADRG",
+          "entity_id": "F111",
+          "detail": {
+            "aadrg_codes": [
+              "F1110"
+            ],
+            "aadrg_count": 1,
+            "abc_classification_codes": [
+              "A"
+            ],
+            "abc_display_labels": [
+              "질병군 분류(전문)"
+            ],
+            "abc_status": "SINGLE",
+            "adrg": "F111",
+            "adrg_name": "급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+            "condition_ast_id": "AST_F111",
+            "condition_logical_table_ids": [
+              "LT_F112_001",
+              "LT_F112_002",
+              "LT_F112_003"
+            ],
+            "logical_table_ids": [
+              "LT_F112_001",
+              "LT_F112_002",
+              "LT_F112_003"
+            ],
+            "mdc": "05",
+            "source_block": {
+              "pdf_page_end": null,
+              "pdf_page_start": null,
+              "printed_page_end": null,
+              "printed_page_start": null
+            },
+            "source_logical_table_ids": [],
+            "user_condition_page": null,
+            "user_condition_resolution": {
+              "condition_ast_id": "AST_F111",
+              "condition_table_ids_preserved": [
+                "LT_F112_001",
+                "LT_F112_002",
+                "LT_F112_003"
+              ],
+              "resolution_details": [
+                {
+                  "ast_label_mapping": {
+                    "exact_count": 3,
+                    "label_count": 3,
+                    "labels": [
+                      "주진단명 table1",
+                      "시술명 table2",
+                      "시술명 table3"
+                    ],
+                    "mapped_count": 3,
+                    "order_source": "condition_ast_leaf_order",
+                    "ordered_ids": [
+                      "LT_F112_001",
+                      "LT_F112_002",
+                      "LT_F112_003"
+                    ],
+                    "positional_conflict": false,
+                    "positional_used": false,
+                    "table_id_count": 3
+                  },
+                  "label_to_id": {
+                    "시술명 table2": "LT_F112_002",
+                    "시술명 table3": "LT_F112_003",
+                    "주진단명 table1": "LT_F112_001"
+                  }
+                }
+              ],
+              "source_table_ids_preserved": [],
+              "source_table_labels": [
+                "주진단명 table1",
+                "시술명 table2",
+                "시술명 table3"
+              ]
+            },
+            "user_condition_source": "main_page_blocks:raw_text",
+            "user_condition_status": "RESOLVED_AST",
+            "user_condition_table_ids": [
+              "LT_F112_001",
+              "LT_F112_002",
+              "LT_F112_003"
+            ],
+            "user_condition_table_refs": [
+              {
+                "display_label": "주진단명 table1",
+                "display_label_source": "source_condition_text",
+                "logical_table_id": "LT_F112_001",
+                "resolution": "condition_ast_source_label_order",
+                "role": "principal_diagnosis",
+                "role_korean": "주진단명",
+                "table_number": 1
+              },
+              {
+                "display_label": "시술명 table2",
+                "display_label_source": "source_condition_text",
+                "logical_table_id": "LT_F112_002",
+                "resolution": "condition_ast_source_label_order",
+                "role": "procedure",
+                "role_korean": "시술명/Procedure",
+                "table_number": 2
+              },
+              {
+                "display_label": "시술명 table3",
+                "display_label_source": "source_condition_text",
+                "logical_table_id": "LT_F112_003",
+                "resolution": "condition_ast_source_label_order",
+                "role": "procedure",
+                "role_korean": "시술명/Procedure",
+                "table_number": 3
+              }
+            ],
+            "user_condition_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+            "aadrg_records": [
+              {
+                "entity_type": "AADRG",
+                "entity_id": "F1110",
+                "title": "F1110 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+                "subtitle": "ADRG F111 · 질병군 분류(전문)",
+                "summary": {
+                  "adrg": "F111",
+                  "mdc": "05",
+                  "classification_code": "A",
+                  "classification_display_label": "질병군 분류(전문)",
+                  "abc_status": "EXACT_OFFICIAL",
+                  "rdrg_count": 2,
+                  "mdc_name": "Diseases and Disorders of the Circulatory System"
+                }
+              }
+            ],
+            "logical_tables": [
+              {
+                "entity_type": "TABLE",
+                "entity_id": "LT_F112_001",
+                "title": "LT_F112_001",
+                "subtitle": "코드 10개 · 관련 ADRG 2개",
+                "summary": {
+                  "logical_table_type": "physical_section_definition",
+                  "logical_table_scope": null,
+                  "code_count": 10,
+                  "source_adrgs": [
+                    "F112"
+                  ],
+                  "condition_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "related_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "source_adrg_families": [],
+                  "condition_ast_count": 2
+                }
+              },
+              {
+                "entity_type": "TABLE",
+                "entity_id": "LT_F112_002",
+                "title": "LT_F112_002",
+                "subtitle": "코드 20개 · 관련 ADRG 2개",
+                "summary": {
+                  "logical_table_type": "physical_section_definition",
+                  "logical_table_scope": null,
+                  "code_count": 20,
+                  "source_adrgs": [
+                    "F112"
+                  ],
+                  "condition_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "related_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "source_adrg_families": [],
+                  "condition_ast_count": 2
+                }
+              },
+              {
+                "entity_type": "TABLE",
+                "entity_id": "LT_F112_003",
+                "title": "LT_F112_003",
+                "subtitle": "코드 9개 · 관련 ADRG 2개",
+                "summary": {
+                  "logical_table_type": "physical_section_definition",
+                  "logical_table_scope": null,
+                  "code_count": 9,
+                  "source_adrgs": [
+                    "F112"
+                  ],
+                  "condition_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "related_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "source_adrg_families": [],
+                  "condition_ast_count": 2
+                }
+              }
+            ],
+            "user_condition_tables": [
+              {
+                "entity_type": "TABLE",
+                "entity_id": "LT_F112_001",
+                "title": "LT_F112_001",
+                "subtitle": "코드 10개 · 관련 ADRG 2개",
+                "summary": {
+                  "logical_table_type": "physical_section_definition",
+                  "logical_table_scope": null,
+                  "code_count": 10,
+                  "source_adrgs": [
+                    "F112"
+                  ],
+                  "condition_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "related_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "source_adrg_families": [],
+                  "condition_ast_count": 2
+                },
+                "user_condition_ref": {
+                  "display_label": "주진단명 table1",
+                  "display_label_source": "source_condition_text",
+                  "logical_table_id": "LT_F112_001",
+                  "resolution": "condition_ast_source_label_order",
+                  "role": "principal_diagnosis",
+                  "role_korean": "주진단명",
+                  "table_number": 1
+                }
+              },
+              {
+                "entity_type": "TABLE",
+                "entity_id": "LT_F112_002",
+                "title": "LT_F112_002",
+                "subtitle": "코드 20개 · 관련 ADRG 2개",
+                "summary": {
+                  "logical_table_type": "physical_section_definition",
+                  "logical_table_scope": null,
+                  "code_count": 20,
+                  "source_adrgs": [
+                    "F112"
+                  ],
+                  "condition_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "related_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "source_adrg_families": [],
+                  "condition_ast_count": 2
+                },
+                "user_condition_ref": {
+                  "display_label": "시술명 table2",
+                  "display_label_source": "source_condition_text",
+                  "logical_table_id": "LT_F112_002",
+                  "resolution": "condition_ast_source_label_order",
+                  "role": "procedure",
+                  "role_korean": "시술명/Procedure",
+                  "table_number": 2
+                }
+              },
+              {
+                "entity_type": "TABLE",
+                "entity_id": "LT_F112_003",
+                "title": "LT_F112_003",
+                "subtitle": "코드 9개 · 관련 ADRG 2개",
+                "summary": {
+                  "logical_table_type": "physical_section_definition",
+                  "logical_table_scope": null,
+                  "code_count": 9,
+                  "source_adrgs": [
+                    "F112"
+                  ],
+                  "condition_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "related_adrgs": [
+                    "F111",
+                    "F112"
+                  ],
+                  "source_adrg_families": [],
+                  "condition_ast_count": 2
+                },
+                "user_condition_ref": {
+                  "display_label": "시술명 table3",
+                  "display_label_source": "source_condition_text",
+                  "logical_table_id": "LT_F112_003",
+                  "resolution": "condition_ast_source_label_order",
+                  "role": "procedure",
+                  "role_korean": "시술명/Procedure",
+                  "table_number": 3
+                }
+              }
+            ],
+            "condition_ast": {
+              "adrg": "F111",
+              "adrg_family": "F11",
+              "ast_logical_table_ids": [
+                "LT_F112_001",
+                "LT_F112_002",
+                "LT_F112_003"
+              ],
+              "ast_status": "built_base_before_corrections",
+              "canonical_expression": "(TABLE_REF[LT_F112_001] AND TABLE_REF[LT_F112_002] AND TABLE_REF[LT_F112_003])",
+              "canonical_expression_sha256": "b5b99fb4261c1f03befc9e013505e6c4dbeadc6ed47741b0560ee8ecc130f424",
+              "condition_ast_id": "AST_F111",
+              "condition_block_id": "CB_F111",
+              "description": "급성심근경색증의경피적관상동맥수술(심각한합병증동반,단일혈관)",
+              "mdc": "05",
+              "nodes": [
+                {
+                  "child_node_ids": [
+                    "AST_F111_N002",
+                    "AST_F111_N003",
+                    "AST_F111_N004"
+                  ],
+                  "depth": 0,
+                  "display_label": "모든 조건 충족",
+                  "node_id": "AST_F111_N001",
+                  "node_type": "AND",
+                  "parent_node_id": null,
+                  "source_fragment": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+                  "source_parenthesized": false,
+                  "surface_operator": "and"
+                },
+                {
+                  "child_node_ids": [],
+                  "depth": 1,
+                  "descriptor": null,
+                  "display_text": "주진단명 table1",
+                  "evaluation_mode": "logical_table_membership",
+                  "logical_table_ids": [
+                    "LT_F112_001"
+                  ],
+                  "node_id": "AST_F111_N002",
+                  "node_type": "TABLE_REF",
+                  "parent_node_id": "AST_F111_N001",
+                  "reference_context_text": "",
+                  "reference_occurrences": [
+                    {
+                      "atom_type": "family_numbered_table_reference",
+                      "descriptor": null,
+                      "final_status": "resolved_logical_table",
+                      "logical_table_ids": [
+                        "LT_F112_001"
+                      ],
+                      "placeholder_index": 0,
+                      "queue_id": null,
+                      "raw_atom_text": "주진단명 table1",
+                      "resolution_method": "existing_section_resolution",
+                      "role": "principal_diagnosis",
+                      "source_atom_index": 1,
+                      "source_condition_id": "COND_F111_0006",
+                      "source_occurrence_no": 1,
+                      "source_raw_line_no": 6,
+                      "table_number": 1,
+                      "variant": null
+                    }
+                  ],
+                  "source_fragment": "주진단명 table1",
+                  "source_parenthesized": false,
+                  "table_number": 1,
+                  "table_role": "principal_diagnosis",
+                  "variant": null
+                },
+                {
+                  "child_node_ids": [],
+                  "depth": 1,
+                  "descriptor": null,
+                  "display_text": "시술명 table2",
+                  "evaluation_mode": "logical_table_membership",
+                  "logical_table_ids": [
+                    "LT_F112_002"
+                  ],
+                  "node_id": "AST_F111_N003",
+                  "node_type": "TABLE_REF",
+                  "parent_node_id": "AST_F111_N001",
+                  "reference_context_text": "",
+                  "reference_occurrences": [
+                    {
+                      "atom_type": "family_numbered_table_reference",
+                      "descriptor": null,
+                      "final_status": "resolved_logical_table",
+                      "logical_table_ids": [
+                        "LT_F112_002"
+                      ],
+                      "placeholder_index": 1,
+                      "queue_id": null,
+                      "raw_atom_text": "시술명 table2",
+                      "resolution_method": "existing_section_resolution",
+                      "role": "procedure",
+                      "source_atom_index": 2,
+                      "source_condition_id": "COND_F111_0006",
+                      "source_occurrence_no": 2,
+                      "source_raw_line_no": 6,
+                      "table_number": 2,
+                      "variant": null
+                    }
+                  ],
+                  "source_fragment": "시술명 table2",
+                  "source_parenthesized": false,
+                  "table_number": 2,
+                  "table_role": "procedure",
+                  "variant": null
+                },
+                {
+                  "child_node_ids": [],
+                  "depth": 1,
+                  "descriptor": null,
+                  "display_text": "시술명 table3",
+                  "evaluation_mode": "logical_table_membership",
+                  "logical_table_ids": [
+                    "LT_F112_003"
+                  ],
+                  "node_id": "AST_F111_N004",
+                  "node_type": "TABLE_REF",
+                  "parent_node_id": "AST_F111_N001",
+                  "reference_context_text": "",
+                  "reference_occurrences": [
+                    {
+                      "atom_type": "family_numbered_table_reference",
+                      "descriptor": null,
+                      "final_status": "resolved_logical_table",
+                      "logical_table_ids": [
+                        "LT_F112_003"
+                      ],
+                      "placeholder_index": 2,
+                      "queue_id": null,
+                      "raw_atom_text": "시술명 table3",
+                      "resolution_method": "existing_section_resolution",
+                      "role": "procedure",
+                      "source_atom_index": 3,
+                      "source_condition_id": "COND_F111_0006",
+                      "source_occurrence_no": 3,
+                      "source_raw_line_no": 6,
+                      "table_number": 3,
+                      "variant": null
+                    }
+                  ],
+                  "source_fragment": "시술명 table3",
+                  "source_parenthesized": false,
+                  "table_number": 3,
+                  "table_role": "procedure",
+                  "variant": null
+                }
+              ],
+              "page_range": {
+                "end_pdf_page": 352,
+                "end_printed_page": 326,
+                "start_pdf_page": 352,
+                "start_printed_page": 326
+              },
+              "partition": "S",
+              "root_node_id": "AST_F111_N001",
+              "source_line_range": {
+                "end_raw_line_no": 6,
+                "first_physical_section_raw_line_no": 7,
+                "formula_anchor_raw_line_no": 6,
+                "start_raw_line_no": 6
+              },
+              "source_logical_table_ids": [
+                "LT_F112_001",
+                "LT_F112_002",
+                "LT_F112_003"
+              ],
+              "source_normalized_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+              "source_raw_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+              "source_raw_text_sha256": "2985e49eaa7f51aa3e905e10e441b997ff7dcb5d91901ed8a1a072dfe99e215e",
+              "source_reference_atom_count": 3,
+              "stats": {
+                "logical_table_reference_occurrences": 3,
+                "max_depth": 1,
+                "node_count": 4,
+                "node_type_counts": {
+                  "AND": 1,
+                  "TABLE_REF": 3
+                },
+                "text_semantic_type_counts": {},
+                "unique_logical_table_count": 3
+              }
+            }
+          }
+        }
+      },
+      {
+        "path": "$.detail",
+        "classification": {
+          "abc_classification_codes": [
+            "A"
+          ],
+          "abc_display_labels": [
+            "질병군 분류(전문)"
+          ],
+          "abc_status": "SINGLE"
+        },
+        "value": {
+          "aadrg_codes": [
+            "F1110"
+          ],
+          "aadrg_count": 1,
+          "abc_classification_codes": [
+            "A"
+          ],
+          "abc_display_labels": [
+            "질병군 분류(전문)"
+          ],
+          "abc_status": "SINGLE",
+          "adrg": "F111",
+          "adrg_name": "급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+          "condition_ast_id": "AST_F111",
+          "condition_logical_table_ids": [
+            "LT_F112_001",
+            "LT_F112_002",
+            "LT_F112_003"
+          ],
+          "logical_table_ids": [
+            "LT_F112_001",
+            "LT_F112_002",
+            "LT_F112_003"
+          ],
+          "mdc": "05",
+          "source_block": {
+            "pdf_page_end": null,
+            "pdf_page_start": null,
+            "printed_page_end": null,
+            "printed_page_start": null
+          },
+          "source_logical_table_ids": [],
+          "user_condition_page": null,
+          "user_condition_resolution": {
+            "condition_ast_id": "AST_F111",
+            "condition_table_ids_preserved": [
+              "LT_F112_001",
+              "LT_F112_002",
+              "LT_F112_003"
+            ],
+            "resolution_details": [
+              {
+                "ast_label_mapping": {
+                  "exact_count": 3,
+                  "label_count": 3,
+                  "labels": [
+                    "주진단명 table1",
+                    "시술명 table2",
+                    "시술명 table3"
+                  ],
+                  "mapped_count": 3,
+                  "order_source": "condition_ast_leaf_order",
+                  "ordered_ids": [
+                    "LT_F112_001",
+                    "LT_F112_002",
+                    "LT_F112_003"
+                  ],
+                  "positional_conflict": false,
+                  "positional_used": false,
+                  "table_id_count": 3
+                },
+                "label_to_id": {
+                  "시술명 table2": "LT_F112_002",
+                  "시술명 table3": "LT_F112_003",
+                  "주진단명 table1": "LT_F112_001"
+                }
+              }
+            ],
+            "source_table_ids_preserved": [],
+            "source_table_labels": [
+              "주진단명 table1",
+              "시술명 table2",
+              "시술명 table3"
+            ]
+          },
+          "user_condition_source": "main_page_blocks:raw_text",
+          "user_condition_status": "RESOLVED_AST",
+          "user_condition_table_ids": [
+            "LT_F112_001",
+            "LT_F112_002",
+            "LT_F112_003"
+          ],
+          "user_condition_table_refs": [
+            {
+              "display_label": "주진단명 table1",
+              "display_label_source": "source_condition_text",
+              "logical_table_id": "LT_F112_001",
+              "resolution": "condition_ast_source_label_order",
+              "role": "principal_diagnosis",
+              "role_korean": "주진단명",
+              "table_number": 1
+            },
+            {
+              "display_label": "시술명 table2",
+              "display_label_source": "source_condition_text",
+              "logical_table_id": "LT_F112_002",
+              "resolution": "condition_ast_source_label_order",
+              "role": "procedure",
+              "role_korean": "시술명/Procedure",
+              "table_number": 2
+            },
+            {
+              "display_label": "시술명 table3",
+              "display_label_source": "source_condition_text",
+              "logical_table_id": "LT_F112_003",
+              "resolution": "condition_ast_source_label_order",
+              "role": "procedure",
+              "role_korean": "시술명/Procedure",
+              "table_number": 3
+            }
+          ],
+          "user_condition_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+          "aadrg_records": [
+            {
+              "entity_type": "AADRG",
+              "entity_id": "F1110",
+              "title": "F1110 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+              "subtitle": "ADRG F111 · 질병군 분류(전문)",
+              "summary": {
+                "adrg": "F111",
+                "mdc": "05",
+                "classification_code": "A",
+                "classification_display_label": "질병군 분류(전문)",
+                "abc_status": "EXACT_OFFICIAL",
+                "rdrg_count": 2,
+                "mdc_name": "Diseases and Disorders of the Circulatory System"
+              }
+            }
+          ],
+          "logical_tables": [
+            {
+              "entity_type": "TABLE",
+              "entity_id": "LT_F112_001",
+              "title": "LT_F112_001",
+              "subtitle": "코드 10개 · 관련 ADRG 2개",
+              "summary": {
+                "logical_table_type": "physical_section_definition",
+                "logical_table_scope": null,
+                "code_count": 10,
+                "source_adrgs": [
+                  "F112"
+                ],
+                "condition_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "related_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "source_adrg_families": [],
+                "condition_ast_count": 2
+              }
+            },
+            {
+              "entity_type": "TABLE",
+              "entity_id": "LT_F112_002",
+              "title": "LT_F112_002",
+              "subtitle": "코드 20개 · 관련 ADRG 2개",
+              "summary": {
+                "logical_table_type": "physical_section_definition",
+                "logical_table_scope": null,
+                "code_count": 20,
+                "source_adrgs": [
+                  "F112"
+                ],
+                "condition_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "related_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "source_adrg_families": [],
+                "condition_ast_count": 2
+              }
+            },
+            {
+              "entity_type": "TABLE",
+              "entity_id": "LT_F112_003",
+              "title": "LT_F112_003",
+              "subtitle": "코드 9개 · 관련 ADRG 2개",
+              "summary": {
+                "logical_table_type": "physical_section_definition",
+                "logical_table_scope": null,
+                "code_count": 9,
+                "source_adrgs": [
+                  "F112"
+                ],
+                "condition_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "related_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "source_adrg_families": [],
+                "condition_ast_count": 2
+              }
+            }
+          ],
+          "user_condition_tables": [
+            {
+              "entity_type": "TABLE",
+              "entity_id": "LT_F112_001",
+              "title": "LT_F112_001",
+              "subtitle": "코드 10개 · 관련 ADRG 2개",
+              "summary": {
+                "logical_table_type": "physical_section_definition",
+                "logical_table_scope": null,
+                "code_count": 10,
+                "source_adrgs": [
+                  "F112"
+                ],
+                "condition_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "related_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "source_adrg_families": [],
+                "condition_ast_count": 2
+              },
+              "user_condition_ref": {
+                "display_label": "주진단명 table1",
+                "display_label_source": "source_condition_text",
+                "logical_table_id": "LT_F112_001",
+                "resolution": "condition_ast_source_label_order",
+                "role": "principal_diagnosis",
+                "role_korean": "주진단명",
+                "table_number": 1
+              }
+            },
+            {
+              "entity_type": "TABLE",
+              "entity_id": "LT_F112_002",
+              "title": "LT_F112_002",
+              "subtitle": "코드 20개 · 관련 ADRG 2개",
+              "summary": {
+                "logical_table_type": "physical_section_definition",
+                "logical_table_scope": null,
+                "code_count": 20,
+                "source_adrgs": [
+                  "F112"
+                ],
+                "condition_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "related_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "source_adrg_families": [],
+                "condition_ast_count": 2
+              },
+              "user_condition_ref": {
+                "display_label": "시술명 table2",
+                "display_label_source": "source_condition_text",
+                "logical_table_id": "LT_F112_002",
+                "resolution": "condition_ast_source_label_order",
+                "role": "procedure",
+                "role_korean": "시술명/Procedure",
+                "table_number": 2
+              }
+            },
+            {
+              "entity_type": "TABLE",
+              "entity_id": "LT_F112_003",
+              "title": "LT_F112_003",
+              "subtitle": "코드 9개 · 관련 ADRG 2개",
+              "summary": {
+                "logical_table_type": "physical_section_definition",
+                "logical_table_scope": null,
+                "code_count": 9,
+                "source_adrgs": [
+                  "F112"
+                ],
+                "condition_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "related_adrgs": [
+                  "F111",
+                  "F112"
+                ],
+                "source_adrg_families": [],
+                "condition_ast_count": 2
+              },
+              "user_condition_ref": {
+                "display_label": "시술명 table3",
+                "display_label_source": "source_condition_text",
+                "logical_table_id": "LT_F112_003",
+                "resolution": "condition_ast_source_label_order",
+                "role": "procedure",
+                "role_korean": "시술명/Procedure",
+                "table_number": 3
+              }
+            }
+          ],
+          "condition_ast": {
+            "adrg": "F111",
+            "adrg_family": "F11",
+            "ast_logical_table_ids": [
+              "LT_F112_001",
+              "LT_F112_002",
+              "LT_F112_003"
+            ],
+            "ast_status": "built_base_before_corrections",
+            "canonical_expression": "(TABLE_REF[LT_F112_001] AND TABLE_REF[LT_F112_002] AND TABLE_REF[LT_F112_003])",
+            "canonical_expression_sha256": "b5b99fb4261c1f03befc9e013505e6c4dbeadc6ed47741b0560ee8ecc130f424",
+            "condition_ast_id": "AST_F111",
+            "condition_block_id": "CB_F111",
+            "description": "급성심근경색증의경피적관상동맥수술(심각한합병증동반,단일혈관)",
+            "mdc": "05",
+            "nodes": [
+              {
+                "child_node_ids": [
+                  "AST_F111_N002",
+                  "AST_F111_N003",
+                  "AST_F111_N004"
+                ],
+                "depth": 0,
+                "display_label": "모든 조건 충족",
+                "node_id": "AST_F111_N001",
+                "node_type": "AND",
+                "parent_node_id": null,
+                "source_fragment": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+                "source_parenthesized": false,
+                "surface_operator": "and"
+              },
+              {
+                "child_node_ids": [],
+                "depth": 1,
+                "descriptor": null,
+                "display_text": "주진단명 table1",
+                "evaluation_mode": "logical_table_membership",
+                "logical_table_ids": [
+                  "LT_F112_001"
+                ],
+                "node_id": "AST_F111_N002",
+                "node_type": "TABLE_REF",
+                "parent_node_id": "AST_F111_N001",
+                "reference_context_text": "",
+                "reference_occurrences": [
+                  {
+                    "atom_type": "family_numbered_table_reference",
+                    "descriptor": null,
+                    "final_status": "resolved_logical_table",
+                    "logical_table_ids": [
+                      "LT_F112_001"
+                    ],
+                    "placeholder_index": 0,
+                    "queue_id": null,
+                    "raw_atom_text": "주진단명 table1",
+                    "resolution_method": "existing_section_resolution",
+                    "role": "principal_diagnosis",
+                    "source_atom_index": 1,
+                    "source_condition_id": "COND_F111_0006",
+                    "source_occurrence_no": 1,
+                    "source_raw_line_no": 6,
+                    "table_number": 1,
+                    "variant": null
+                  }
+                ],
+                "source_fragment": "주진단명 table1",
+                "source_parenthesized": false,
+                "table_number": 1,
+                "table_role": "principal_diagnosis",
+                "variant": null
+              },
+              {
+                "child_node_ids": [],
+                "depth": 1,
+                "descriptor": null,
+                "display_text": "시술명 table2",
+                "evaluation_mode": "logical_table_membership",
+                "logical_table_ids": [
+                  "LT_F112_002"
+                ],
+                "node_id": "AST_F111_N003",
+                "node_type": "TABLE_REF",
+                "parent_node_id": "AST_F111_N001",
+                "reference_context_text": "",
+                "reference_occurrences": [
+                  {
+                    "atom_type": "family_numbered_table_reference",
+                    "descriptor": null,
+                    "final_status": "resolved_logical_table",
+                    "logical_table_ids": [
+                      "LT_F112_002"
+                    ],
+                    "placeholder_index": 1,
+                    "queue_id": null,
+                    "raw_atom_text": "시술명 table2",
+                    "resolution_method": "existing_section_resolution",
+                    "role": "procedure",
+                    "source_atom_index": 2,
+                    "source_condition_id": "COND_F111_0006",
+                    "source_occurrence_no": 2,
+                    "source_raw_line_no": 6,
+                    "table_number": 2,
+                    "variant": null
+                  }
+                ],
+                "source_fragment": "시술명 table2",
+                "source_parenthesized": false,
+                "table_number": 2,
+                "table_role": "procedure",
+                "variant": null
+              },
+              {
+                "child_node_ids": [],
+                "depth": 1,
+                "descriptor": null,
+                "display_text": "시술명 table3",
+                "evaluation_mode": "logical_table_membership",
+                "logical_table_ids": [
+                  "LT_F112_003"
+                ],
+                "node_id": "AST_F111_N004",
+                "node_type": "TABLE_REF",
+                "parent_node_id": "AST_F111_N001",
+                "reference_context_text": "",
+                "reference_occurrences": [
+                  {
+                    "atom_type": "family_numbered_table_reference",
+                    "descriptor": null,
+                    "final_status": "resolved_logical_table",
+                    "logical_table_ids": [
+                      "LT_F112_003"
+                    ],
+                    "placeholder_index": 2,
+                    "queue_id": null,
+                    "raw_atom_text": "시술명 table3",
+                    "resolution_method": "existing_section_resolution",
+                    "role": "procedure",
+                    "source_atom_index": 3,
+                    "source_condition_id": "COND_F111_0006",
+                    "source_occurrence_no": 3,
+                    "source_raw_line_no": 6,
+                    "table_number": 3,
+                    "variant": null
+                  }
+                ],
+                "source_fragment": "시술명 table3",
+                "source_parenthesized": false,
+                "table_number": 3,
+                "table_role": "procedure",
+                "variant": null
+              }
+            ],
+            "page_range": {
+              "end_pdf_page": 352,
+              "end_printed_page": 326,
+              "start_pdf_page": 352,
+              "start_printed_page": 326
+            },
+            "partition": "S",
+            "root_node_id": "AST_F111_N001",
+            "source_line_range": {
+              "end_raw_line_no": 6,
+              "first_physical_section_raw_line_no": 7,
+              "formula_anchor_raw_line_no": 6,
+              "start_raw_line_no": 6
+            },
+            "source_logical_table_ids": [
+              "LT_F112_001",
+              "LT_F112_002",
+              "LT_F112_003"
+            ],
+            "source_normalized_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+            "source_raw_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+            "source_raw_text_sha256": "2985e49eaa7f51aa3e905e10e441b997ff7dcb5d91901ed8a1a072dfe99e215e",
+            "source_reference_atom_count": 3,
+            "stats": {
+              "logical_table_reference_occurrences": 3,
+              "max_depth": 1,
+              "node_count": 4,
+              "node_type_counts": {
+                "AND": 1,
+                "TABLE_REF": 3
+              },
+              "text_semantic_type_counts": {},
+              "unique_logical_table_count": 3
+            }
+          }
+        }
+      },
+      {
+        "path": "$.detail.aadrg_records[0].summary",
+        "classification": {
+          "classification_code": "A",
+          "classification_display_label": "질병군 분류(전문)",
+          "abc_status": "EXACT_OFFICIAL"
+        },
+        "value": {
+          "adrg": "F111",
+          "mdc": "05",
+          "classification_code": "A",
+          "classification_display_label": "질병군 분류(전문)",
+          "abc_status": "EXACT_OFFICIAL",
+          "rdrg_count": 2,
+          "mdc_name": "Diseases and Disorders of the Circulatory System"
+        }
+      },
+      {
+        "path": "$.detail.condition_ast",
+        "classification": {},
+        "value": {
+          "adrg": "F111",
+          "adrg_family": "F11",
+          "ast_logical_table_ids": [
+            "LT_F112_001",
+            "LT_F112_002",
+            "LT_F112_003"
+          ],
+          "ast_status": "built_base_before_corrections",
+          "canonical_expression": "(TABLE_REF[LT_F112_001] AND TABLE_REF[LT_F112_002] AND TABLE_REF[LT_F112_003])",
+          "canonical_expression_sha256": "b5b99fb4261c1f03befc9e013505e6c4dbeadc6ed47741b0560ee8ecc130f424",
+          "condition_ast_id": "AST_F111",
+          "condition_block_id": "CB_F111",
+          "description": "급성심근경색증의경피적관상동맥수술(심각한합병증동반,단일혈관)",
+          "mdc": "05",
+          "nodes": [
+            {
+              "child_node_ids": [
+                "AST_F111_N002",
+                "AST_F111_N003",
+                "AST_F111_N004"
+              ],
+              "depth": 0,
+              "display_label": "모든 조건 충족",
+              "node_id": "AST_F111_N001",
+              "node_type": "AND",
+              "parent_node_id": null,
+              "source_fragment": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+              "source_parenthesized": false,
+              "surface_operator": "and"
+            },
+            {
+              "child_node_ids": [],
+              "depth": 1,
+              "descriptor": null,
+              "display_text": "주진단명 table1",
+              "evaluation_mode": "logical_table_membership",
+              "logical_table_ids": [
+                "LT_F112_001"
+              ],
+              "node_id": "AST_F111_N002",
+              "node_type": "TABLE_REF",
+              "parent_node_id": "AST_F111_N001",
+              "reference_context_text": "",
+              "reference_occurrences": [
+                {
+                  "atom_type": "family_numbered_table_reference",
+                  "descriptor": null,
+                  "final_status": "resolved_logical_table",
+                  "logical_table_ids": [
+                    "LT_F112_001"
+                  ],
+                  "placeholder_index": 0,
+                  "queue_id": null,
+                  "raw_atom_text": "주진단명 table1",
+                  "resolution_method": "existing_section_resolution",
+                  "role": "principal_diagnosis",
+                  "source_atom_index": 1,
+                  "source_condition_id": "COND_F111_0006",
+                  "source_occurrence_no": 1,
+                  "source_raw_line_no": 6,
+                  "table_number": 1,
+                  "variant": null
+                }
+              ],
+              "source_fragment": "주진단명 table1",
+              "source_parenthesized": false,
+              "table_number": 1,
+              "table_role": "principal_diagnosis",
+              "variant": null
+            },
+            {
+              "child_node_ids": [],
+              "depth": 1,
+              "descriptor": null,
+              "display_text": "시술명 table2",
+              "evaluation_mode": "logical_table_membership",
+              "logical_table_ids": [
+                "LT_F112_002"
+              ],
+              "node_id": "AST_F111_N003",
+              "node_type": "TABLE_REF",
+              "parent_node_id": "AST_F111_N001",
+              "reference_context_text": "",
+              "reference_occurrences": [
+                {
+                  "atom_type": "family_numbered_table_reference",
+                  "descriptor": null,
+                  "final_status": "resolved_logical_table",
+                  "logical_table_ids": [
+                    "LT_F112_002"
+                  ],
+                  "placeholder_index": 1,
+                  "queue_id": null,
+                  "raw_atom_text": "시술명 table2",
+                  "resolution_method": "existing_section_resolution",
+                  "role": "procedure",
+                  "source_atom_index": 2,
+                  "source_condition_id": "COND_F111_0006",
+                  "source_occurrence_no": 2,
+                  "source_raw_line_no": 6,
+                  "table_number": 2,
+                  "variant": null
+                }
+              ],
+              "source_fragment": "시술명 table2",
+              "source_parenthesized": false,
+              "table_number": 2,
+              "table_role": "procedure",
+              "variant": null
+            },
+            {
+              "child_node_ids": [],
+              "depth": 1,
+              "descriptor": null,
+              "display_text": "시술명 table3",
+              "evaluation_mode": "logical_table_membership",
+              "logical_table_ids": [
+                "LT_F112_003"
+              ],
+              "node_id": "AST_F111_N004",
+              "node_type": "TABLE_REF",
+              "parent_node_id": "AST_F111_N001",
+              "reference_context_text": "",
+              "reference_occurrences": [
+                {
+                  "atom_type": "family_numbered_table_reference",
+                  "descriptor": null,
+                  "final_status": "resolved_logical_table",
+                  "logical_table_ids": [
+                    "LT_F112_003"
+                  ],
+                  "placeholder_index": 2,
+                  "queue_id": null,
+                  "raw_atom_text": "시술명 table3",
+                  "resolution_method": "existing_section_resolution",
+                  "role": "procedure",
+                  "source_atom_index": 3,
+                  "source_condition_id": "COND_F111_0006",
+                  "source_occurrence_no": 3,
+                  "source_raw_line_no": 6,
+                  "table_number": 3,
+                  "variant": null
+                }
+              ],
+              "source_fragment": "시술명 table3",
+              "source_parenthesized": false,
+              "table_number": 3,
+              "table_role": "procedure",
+              "variant": null
+            }
+          ],
+          "page_range": {
+            "end_pdf_page": 352,
+            "end_printed_page": 326,
+            "start_pdf_page": 352,
+            "start_printed_page": 326
+          },
+          "partition": "S",
+          "root_node_id": "AST_F111_N001",
+          "source_line_range": {
+            "end_raw_line_no": 6,
+            "first_physical_section_raw_line_no": 7,
+            "formula_anchor_raw_line_no": 6,
+            "start_raw_line_no": 6
+          },
+          "source_logical_table_ids": [
+            "LT_F112_001",
+            "LT_F112_002",
+            "LT_F112_003"
+          ],
+          "source_normalized_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+          "source_raw_text": "주진단명 table1 and 시술명 table2 and 시술명 table3",
+          "source_raw_text_sha256": "2985e49eaa7f51aa3e905e10e441b997ff7dcb5d91901ed8a1a072dfe99e215e",
+          "source_reference_atom_count": 3,
+          "stats": {
+            "logical_table_reference_occurrences": 3,
+            "max_depth": 1,
+            "node_count": 4,
+            "node_type_counts": {
+              "AND": 1,
+              "TABLE_REF": 3
+            },
+            "text_semantic_type_counts": {},
+            "unique_logical_table_count": 3
+          }
+        }
+      }
+    ]
+  },
+  "relation": {
+    "errors": [
+      {
+        "args": [
+          {
+            "conditions": [
+              {
+                "codeType": "AUTO",
+                "code": "i214"
+              },
+              {
+                "codeType": "AUTO",
+                "code": "m6569"
+              }
+            ],
+            "operator": "AND",
+            "mdc": "",
+            "classification": ""
+          }
+        ],
+        "error": "복수 코드 관계검색은 2~6개 코드가 필요합니다"
+      },
+      {
+        "args": [
+          {
+            "conditions": [
+              {
+                "codeType": "AUTO",
+                "code": "I214"
+              },
+              {
+                "codeType": "AUTO",
+                "code": "M6569"
+              }
+            ],
+            "operator": "AND",
+            "mdc": "",
+            "classification": ""
+          }
+        ],
+        "error": "복수 코드 관계검색은 2~6개 코드가 필요합니다"
+      }
+    ]
+  }
+}

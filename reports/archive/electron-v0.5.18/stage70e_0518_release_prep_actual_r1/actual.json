@@ -1,0 +1,106 @@
+{
+  "stage": "70E_RELEASE_PREP_ACTUAL_R1",
+  "status": "PASS",
+  "actual_performed": true,
+  "rollback_performed": false,
+  "readiness": "READY_FOR_70F_0518_COMMIT_PUSH_RC",
+  "head": "08b51f4fa487a3ae05c1e279aa1c533f9f3aed52",
+  "origin_main": "08b51f4fa487a3ae05c1e279aa1c533f9f3aed52",
+  "package_version": "0.5.18",
+  "runtime_json": "UNCHANGED",
+  "release_prep_files": [
+    "50D_validate_kdrg_electron_windows_packaging.py",
+    "electron/package.json",
+    "electron/package-lock.json"
+  ],
+  "final_release_files": [
+    "electron/renderer/app.js",
+    "electron/renderer/styles.css",
+    "electron/tests/validate-stage70b-0518-phase1-ui.js",
+    "50D_validate_kdrg_electron_windows_packaging.py",
+    "electron/package.json",
+    "electron/package-lock.json"
+  ],
+  "final_modified_tracked": [
+    "50D_validate_kdrg_electron_windows_packaging.py",
+    "electron/package-lock.json",
+    "electron/package.json",
+    "electron/renderer/app.js",
+    "electron/renderer/styles.css"
+  ],
+  "final_untracked": [
+    "electron/tests/validate-stage70b-0518-phase1-ui.js"
+  ],
+  "final_candidate_sha256": {
+    "electron/renderer/app.js": "3f51970de2393c15409f6c00050fe53c9512f36a1813235048f7366cccef75c5",
+    "electron/renderer/styles.css": "6fbab5f0284239993af86fc9f550d330766b2b779cd13228f3eb8ab976db02f0",
+    "electron/tests/validate-stage70b-0518-phase1-ui.js": "316d29ba5d379688acaa82a943931970ad58fead215be06c7111e9b1aacf7c90",
+    "50D_validate_kdrg_electron_windows_packaging.py": "415aba8c4dff5fdd4fc606b9d570dd4b39bfd9b6b05ea2856ed83712764d73c3",
+    "electron/package.json": "46e4946897559c9814db792823f213eda59767eaafd8cbf3b4e0667f85fce0c2",
+    "electron/package-lock.json": "2149493a578a83c5727f91d1e292b91cf2f8ba4192fd5a341c54b1c5fd731a9a"
+  },
+  "backup_manifest": {
+    "50D_validate_kdrg_electron_windows_packaging.py": {
+      "existed": true,
+      "sha256": "71b8ebfde81eaa59c18941fac4f44d77c970032ce9144df5d9eb9cdaa2539b2f"
+    },
+    "electron/package.json": {
+      "existed": true,
+      "sha256": "cb196d3bb0c2109c21d1f19f611a7380ef7ffacdcfb6cf54e41d22d3fab1b8e3"
+    },
+    "electron/package-lock.json": {
+      "existed": true,
+      "sha256": "22bd1ee4c67a8b630422bcbb7237025c9c72d98b50f1a47f769270ad8a853b47"
+    }
+  },
+  "checks": [
+    {
+      "name": "stage70b_validator",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] Stage70B / 0.5.18 phase1 UI validator: 12 PASS / 0 FAIL\nclassification_runtime=1117 label-present / 15 no-label-data\n"
+    },
+    {
+      "name": "stage69b_validator",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] Stage69B R11 0.5.17 exact-public-ID/relation UX validator: 14 PASS / 0 FAIL\npublic_ids=17232 code_only=16100 adrg_only=661 shared=471\n"
+    },
+    {
+      "name": "stage68d_validator",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "stage68d_0516_r6: 12 PASS / 0 FAIL\nF111_relation_fixture=I210 + I211 / AND\n"
+    },
+    {
+      "name": "npm_check",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "\n> kdrg-v47-relation-search-electron@0.5.18 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.18 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.18\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\n[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.18 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/home/runner/workspace/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+    },
+    {
+      "name": "50B",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50b_validation_report.txt\n"
+    },
+    {
+      "name": "50C",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50c_validation_report.txt\n"
+    },
+    {
+      "name": "50D",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/home/runner/workspace/reports/electron_stage50d_validation_report.txt\n"
+    },
+    {
+      "name": "release_version_0518",
+      "rc": 0,
+      "status": "PASS",
+      "tail": "[PASS] expected version argument | actual=\"0.5.18\" | expected=\"stable semver\"\n[PASS] package.json exists | actual=true | expected=true\n[PASS] package-lock.json exists | actual=true | expected=true\n[PASS] package name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] package version | actual=\"0.5.18\" | expected=\"0.5.18\"\n[PASS] lock top version | actual=\"0.5.18\" | expected=\"0.5.18\"\n[PASS] lock root version | actual=\"0.5.18\" | expected=\"0.5.18\"\n[PASS] lock top name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lock root name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lockfileVersion | actual=3 | expected=3\n[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.18_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.18_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.18\" | expected=\"electron-v0.5.18\"\n[PASS] version has no prerelease | actual=\"0.5.18\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL\n"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+KDRG V4.7 Electron Stage67J / 0.5.15 Final Tag + Release Verification R1
+==========================================================================================================
+status=PASS
+readiness=RELEASE_0515_FINAL
+
+[PREFLIGHT]
+{
+  "head": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "origin_main": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "worktree_clean": true,
+  "staging_empty": true,
+  "package": {
+    "package_version": "0.5.15",
+    "lock_version": "0.5.15",
+    "lock_root_version": "0.5.15"
+  },
+  "runtime_unchanged": true,
+  "official_condition_unchanged": true,
+  "icons_unchanged": true,
+  "rc": {
+    "conclusion": "success",
+    "databaseId": 35811340221,
+    "event": "workflow_dispatch",
+    "headBranch": "main",
+    "headSha": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+    "status": "completed",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35811340221"
+  },
+  "immutable_tags": {
+    "electron-v0.5.12": {
+      "expected_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+      "remote_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+      "local_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c"
+    },
+    "electron-v0.5.13": {
+      "expected_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+      "remote_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+      "local_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc"
+    },
+    "electron-v0.5.14": {
+      "expected_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "remote_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "local_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c"
+    }
+  }
+}
+
+[TAG]
+{
+  "tag": "electron-v0.5.15",
+  "commit": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "object_type": "commit",
+  "created_local": true,
+  "pushed_remote": true
+}
+
+[TAG WORKFLOW]
+{
+  "databaseId": 35815947170,
+  "headSha": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "headBranch": "electron-v0.5.15",
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "url": "https://github.com/hamidong/kdrg-v47-relation-search/actions/runs/35815947170",
+  "failed_steps": [],
+  "error_focus": []
+}
+
+[RELEASE]
+{
+  "tagName": "electron-v0.5.15",
+  "name": "KDRG V4.7 Electron 0.5.15",
+  "isDraft": false,
+  "isPrerelease": false,
+  "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/tag/electron-v0.5.15",
+  "targetCommitish": "main",
+  "asset": {
+    "apiUrl": "https://api.github.com/repos/hamidong/kdrg-v47-relation-search/releases/assets/582903100",
+    "contentType": "application/x-msdos-program",
+    "createdAt": "2026-09-23T03:54:43Z",
+    "downloadCount": 0,
+    "id": "RA_kwDOTY_ow84ivmU8",
+    "label": "",
+    "name": "KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe",
+    "size": 91244856,
+    "state": "uploaded",
+    "updatedAt": "2026-09-23T03:54:45Z",
+    "url": "https://github.com/hamidong/kdrg-v47-relation-search/releases/download/electron-v0.5.15/KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe"
+  }
+}
+
+[PORTABLE EXE]
+{
+  "asset_name": "KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe",
+  "size_bytes": 91244856,
+  "sha256": "e78611b24520601f9f4539e002a819e332cce7902848c08351b77544bfb7c4a6"
+}
+
+[FINAL GUARD]
+{
+  "head": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "origin_main": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "tag": "electron-v0.5.15",
+  "tag_commit": "6e0bc2857ebf6abb482428b90f452d5e07c486ac",
+  "worktree_clean": true,
+  "staging_empty": true,
+  "tag_workflow_success": true,
+  "release_present": true,
+  "asset_present": true,
+  "immutable_previous_tags": {
+    "electron-v0.5.12": {
+      "expected_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+      "remote_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c",
+      "local_commit": "1ab52cf1bbfe158d6ab88247a47074e79db9ad9c"
+    },
+    "electron-v0.5.13": {
+      "expected_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+      "remote_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc",
+      "local_commit": "2f00202a2fa9589bb5f05cf615b962537ad58fbc"
+    },
+    "electron-v0.5.14": {
+      "expected_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "remote_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c",
+      "local_commit": "4b79e02e8a45a8cabc88b63bc373d95cc21b6d9c"
+    }
+  }
+}
+
+[FINAL]
+- PASS이면 electron-v0.5.15 tag / GitHub Release / Portable EXE 검증 완료.
+- 기존 0.5.12 / 0.5.13 / 0.5.14 tag는 변경하지 않음.
+report_json=/home/runner/workspace/stage67j_0515_tag_release_final_r1.json

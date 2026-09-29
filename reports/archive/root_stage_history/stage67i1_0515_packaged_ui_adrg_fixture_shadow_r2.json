@@ -1,0 +1,36 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_PACKAGED_UI_FIXTURE_ACTUAL_APPLY",
+  "started_at": "2026-09-22 07:25:02",
+  "preflight": {
+    "diagnosis": {
+      "run_id": 35695541913,
+      "head_sha": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+      "failure": "packaged_ui_validation",
+      "message": "B018 result ready timeout: 30000ms",
+      "core_runtime_steps_completed": true,
+      "diagnostic_gate": "SEMANTIC_MULTI_SOURCE",
+      "live_log_used": false
+    },
+    "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+    "branch": "main",
+    "package_version": "0.5.15",
+    "runtime_sha256": "1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58",
+    "source_before_sha256": "31a9646521b5da9fd513a8fa0f2d346e678ad0fb354c48912d1854947f40a1ca",
+    "validator_before_sha256": "e5d88423ed5f71033da9819118e1f3b63e7e2adcb87871fd33212e4fda155cd9",
+    "base_tag_immutable": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "search_contract": {},
+  "shadow_build": {},
+  "source_repair": {},
+  "validator_repair": {},
+  "delta": {},
+  "validation": {},
+  "final_actual_guard": {},
+  "manifest": {},
+  "error": "StageError: public ADRG query diagnostic failed:\n[eval]:28\n    throw new Error(`public ADRG exact query failed: ${item.adrg}`);\n    ^\n\nError: public ADRG exact query failed: B018\n    at [eval]:28:11\n    at runScriptInThisContext (node:internal/vm:209:10)\n    at node:internal/process/execution:118:14\n    at [eval]-wrapper:6:24\n    at runScript (node:internal/process/execution:101:62)\n    at evalScript (node:internal/process/execution:133:3)\n    at node:internal/main/eval_string:51:3\n\nNode.js v20.20.0\n\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R2.py\", line 873, in main\n    payload[\"search_contract\"] = confirm_search_contract()\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R2.py\", line 377, in confirm_search_contract\n    require(result[\"returncode\"] == 0,\n  File \"/home/runner/workspace/67I1_REPAIR_KDRG_0515_PACKAGED_UI_ADRG_FIXTURE_SHADOW_R2.py\", line 119, in require\n    raise StageError(message)\nStageError: public ADRG query diagnostic failed:\n[eval]:28\n    throw new Error(`public ADRG exact query failed: ${item.adrg}`);\n    ^\n\nError: public ADRG exact query failed: B018\n    at [eval]:28:11\n    at runScriptInThisContext (node:internal/vm:209:10)\n    at node:internal/process/execution:118:14\n    at [eval]-wrapper:6:24\n    at runScript (node:internal/process/execution:101:62)\n    at evalScript (node:internal/process/execution:133:3)\n    at node:internal/main/eval_string:51:3\n\nNode.js v20.20.0\n\n",
+  "finished_at": "2026-09-22 07:25:09"
+}

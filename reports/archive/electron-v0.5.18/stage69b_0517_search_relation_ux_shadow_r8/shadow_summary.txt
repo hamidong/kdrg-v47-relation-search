@@ -1,0 +1,12 @@
+[FAIL] Stage69B R8 / 0.5.17 Search + Relation UX Shadow
+Stop: 검증 실패를 전체 실행 후 수집함
+
+50B FAIL
+[FAIL] KDRG Stage 50B Electron 검색 service 검증: 13 PASS / 1 FAIL
+- 0.5.17 exact shared-ID runtime probe | actual=1 | expected=0
+
+
+50D FAIL
+[FAIL] KDRG Stage 50D Windows packaging 검증: 25 PASS / 1 FAIL
+- 50B independent | actual=1 | expected=0
+

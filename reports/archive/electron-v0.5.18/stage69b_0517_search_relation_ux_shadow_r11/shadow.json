@@ -1,0 +1,6 @@
+{
+  "stage": "69B_R11",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: node --check FAIL: electron/tests/validate-stage59b-search.js\n/home/runner/workspace/reports/stage69b_0517_search_relation_ux_shadow_r11/shadow/electron/tests/validate-stage59b-search.js:13\n  const expected = new Set([\\n    ...(service.recordMaps.CODE.has(code) ? [`CODE:${code}`] : []),\\n    ...(service.recordMaps.ADRG.has(code) ? [`ADRG:${code}`] : []),\\n  ]);\n                            ^\n\nSyntaxError: Invalid or unexpected token\n    at wrapSafe (node:internal/modules/cjs/loader:1464:18)\n    at checkSyntax (node:internal/main/check_syntax:78:3)\n\nNode.js v20.20.0\n"
+}

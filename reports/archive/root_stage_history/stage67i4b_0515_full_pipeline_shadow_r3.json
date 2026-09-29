@@ -1,0 +1,187 @@
+{
+  "status": "FAIL",
+  "readiness": "NOT_READY_FOR_0515_FULL_PIPELINE_ACTUAL_APPLY",
+  "started_at": "2026-09-23 02:09:33",
+  "gate": {
+    "commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "audit_readiness": "NEEDS_MULTI_LAYER_REPAIR_DESIGN",
+    "baseline_pass_count": 10,
+    "direct_service": {
+      "b018_exact_count": 1,
+      "adrg_count": 1132,
+      "collision_count": 471,
+      "failure_count": 0
+    }
+  },
+  "preflight": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "before_sha256": {
+      "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154",
+      "electron/tests/validate-packaged-runtime-smoke.js": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+      ".github/workflows/build-electron-windows.yml": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06"
+    },
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "contract_before": {
+    "exports": [
+      "ENTITY_TYPES",
+      "RELATION_CODE_TYPES",
+      "RELATION_OPERATORS",
+      "SEARCH_ENTITY_TYPES",
+      "SearchContractError",
+      "normalizeDetailRequest",
+      "normalizeRelationRequest",
+      "normalizeSearchRequest"
+    ],
+    "public_types": [
+      "CODE",
+      "ADRG"
+    ],
+    "fn_type": "function",
+    "fn_length": 1,
+    "fn_source": "function normalizeSearchRequest(payload) {\n  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {\n    throw new SearchContractError('검색 요청 형식이 올바르지 않습니다.');\n  }\n  const query = normalizeSpace(payload.query);\n  if (!query) {\n    throw new SearchContractError('검색어를 입력해야 합니다.');\n  }\n  if (query.length > 200) {\n    throw new SearchContractError('검색어는 200자 이하여야 합니다.');\n  }\n  const filters = normalizeSharedFilters(payload);\n  return Object.freeze({\n    query,\n    entityType: normalizeEntityTypes(payload.entityType),\n    limit: boundedInteger(payload.limit, 'limit', 50, 1, 500),\n    offset: boundedInteger(payload.offset, 'offset', 0, 0, 1000000),\n    ...filters,\n  });\n}",
+    "CODE": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "CODE"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "CODE"
+      ],
+      "entityTypeType": "array"
+    },
+    "ADRG": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "ADRG"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "ADRG"
+      ],
+      "entityTypeType": "array"
+    },
+    "ALL": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "CODE",
+          "ADRG"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "CODE",
+        "ADRG"
+      ],
+      "entityTypeType": "array"
+    },
+    "AADRG": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: AADRG"
+    },
+    "RDRG": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: RDRG"
+    },
+    "TABLE": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: TABLE"
+    },
+    "INVALID": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: INVALID"
+    }
+  },
+  "repair": {
+    "contract": {
+      "definition_kind": "function_declaration",
+      "strategy": "legacy-first normalizer; scalarize CODE/ADRG/ALL only; preserve hidden/invalid rejection",
+      "supported_before": {
+        "CODE": [
+          "CODE"
+        ],
+        "ADRG": [
+          "ADRG"
+        ],
+        "ALL": [
+          "CODE",
+          "ADRG"
+        ]
+      },
+      "rejected_before": {
+        "AADRG": "사용자 검색에서 지원하지 않는 유형입니다: AADRG",
+        "RDRG": "사용자 검색에서 지원하지 않는 유형입니다: RDRG",
+        "TABLE": "사용자 검색에서 지원하지 않는 유형입니다: TABLE",
+        "INVALID": "사용자 검색에서 지원하지 않는 유형입니다: INVALID"
+      }
+    },
+    "stage59b_search_validator": {
+      "marker": "Stage67I4B normalized request bridge",
+      "supported_scalar_types": [
+        "CODE",
+        "ADRG",
+        "ALL"
+      ],
+      "hidden_invalid_rejection_preserved": [
+        "AADRG",
+        "RDRG",
+        "TABLE",
+        "INVALID"
+      ],
+      "normalized_B018_bridge": true
+    },
+    "packaged_validator": {
+      "marker": "Stage67I4B packaged normalized request bridge",
+      "supported_scalar_types": [
+        "CODE",
+        "ADRG",
+        "ALL"
+      ],
+      "hidden_invalid_rejection_preserved": [
+        "AADRG",
+        "RDRG",
+        "TABLE",
+        "INVALID"
+      ],
+      "normalized_B018_bridge": true
+    },
+    "workflow_observability": {
+      "strategy": "move only local hard-failure status/failed_step/missing/message before Write-Error; preserve UI-warning branch",
+      "warning_branch_preserved": true,
+      "global_failed_step_occurrences": 2,
+      "hard_failure_diagnostics_before_error": true,
+      "failure_semantics_preserved": true
+    },
+    "target_files": [
+      "electron/src/search-result-contract.js",
+      "electron/tests/validate-stage59b-search.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      ".github/workflows/build-electron-windows.yml"
+    ]
+  },
+  "validation": {},
+  "actual_guard": {},
+  "error": "StageError: static wiring audit failed: [\"main_has_any_search_method_call\"]\nTraceback (most recent call last):\n  File \"/home/runner/workspace/67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R3.py\", line 1259, in main\n    payload[\"validation\"] = validate_shadow(shadow)\n                            ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R3.py\", line 1022, in validate_shadow\n    wiring = static_wiring_audit(shadow)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/workspace/67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R3.py\", line 901, in static_wiring_audit\n    require(\n  File \"/home/runner/workspace/67I4B_REPAIR_KDRG_0515_FULL_PIPELINE_SHADOW_R3.py\", line 128, in require\n    raise StageError(message)\nStageError: static wiring audit failed: [\"main_has_any_search_method_call\"]\n",
+  "finished_at": "2026-09-23 02:09:42"
+}

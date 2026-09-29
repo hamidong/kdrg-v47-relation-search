@@ -1,0 +1,22 @@
+[PASS] Stage70E R1 / 0.5.18 Release Prep Actual
+stage70c_actual_binding=PASS
+stage70d_shadow_binding=PASS
+release_prep_actual_files=3
+final_release_candidate_files=6
+package_version=0.5.18
+package_lock_version=0.5.18
+phase1_ui=PRESERVED
+general_adrg_classification=RIGHT
+relation_classification=RIGHT
+stage70b_validator=PASS
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.18=PASS
+runtime_json=UNCHANGED
+staging=EMPTY
+rollback=NOT_NEEDED
+readiness=READY_FOR_70F_0518_COMMIT_PUSH_RC
+report=reports/stage70e_0518_release_prep_actual_r1/actual_summary.txt
+json=reports/stage70e_0518_release_prep_actual_r1/actual.json

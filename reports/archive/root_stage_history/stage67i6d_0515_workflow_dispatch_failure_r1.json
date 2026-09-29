@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "started_at": "2026-09-23 02:25:53",
+  "commit": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+  "repo_guard": {
+    "head": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "origin_main": "f1025ca771a5efb36f843566ab6609f8f02c37d1",
+    "worktree_clean": true,
+    "staging_empty": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "gh_error_compact": [
+    "StageError: command failed (1): gh workflow run build-electron-windows.yml --ref main",
+    "could not create workflow dispatch event: HTTP 422: Workflow does not have 'workflow_dispatch' trigger (https://api.github.com/repos/hamidong/kdrg-v47-relation-search/actions/workflows/321767547/dispatches)",
+    "Traceback (most recent call last):",
+    "File \"/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py\", line 566, in main",
+    "payload[\"dispatch\"] = dispatch_or_reuse(commit)",
+    "^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "File \"/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py\", line 349, in dispatch_or_reuse",
+    "run([\"gh\", \"workflow\", \"run\", WORKFLOW, \"--ref\", \"main\"])",
+    "File \"/home/runner/workspace/67I6_COMMIT_PUSH_RC_KDRG_0515_FULL_PIPELINE_R1.py\", line 81, in run",
+    "raise StageError(",
+    "StageError: command failed (1): gh workflow run build-electron-windows.yml --ref main",
+    "could not create workflow dispatch event: HTTP 422: Workflow does not have 'workflow_dispatch' trigger (https://api.github.com/repos/hamidong/kdrg-v47-relation-search/actions/workflows/321767547/dispatches)"
+  ],
+  "registration": {
+    "owner_repo": "hamidong/kdrg-v47-relation-search",
+    "api_returncode": 0,
+    "registered": true,
+    "workflow": {
+      "id": 321767547,
+      "name": ".github/workflows/build-electron-windows.yml",
+      "path": ".github/workflows/build-electron-windows.yml",
+      "state": "active"
+    },
+    "api_error": null
+  },
+  "source_audit": {
+    "parent_commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "local_workflow_dispatch_present": true,
+    "parent_workflow_dispatch_present": true,
+    "marker_line": 336,
+    "marker_indent": 8,
+    "write_error_line": 341,
+    "write_error_indent": 10,
+    "marker_indent_unsafe": true,
+    "tab_indentation_lines": [],
+    "diff_added_count": 2,
+    "diff_removed_count": 1,
+    "diff_added_sample": [
+      "        # Stage67I4B: emit diagnostics before terminating the failed step.",
+      "          Write-Error \"packaged 핵심검증 실패\""
+    ],
+    "diff_removed_sample": [
+      "          Write-Error \"packaged 핵심검증 실패\""
+    ]
+  },
+  "runs": {
+    "returncode": 0,
+    "error": null,
+    "matching": []
+  },
+  "classification": {
+    "root_classification": "LIKELY_INVALID_WORKFLOW_YAML_FROM_DIAGNOSTIC_MARKER_INDENTATION",
+    "signals": [
+      "WORKFLOW_MARKER_INDENTATION_UNSAFE",
+      "GH_HTTP_422",
+      "GITHUB_SAYS_WORKFLOW_DISPATCH_UNAVAILABLE",
+      "NO_RC_RUN_CREATED"
+    ],
+    "automatic_rerun_allowed": false,
+    "repair_before_next_rc": true
+  },
+  "error": null,
+  "finished_at": "2026-09-23 02:25:57"
+}

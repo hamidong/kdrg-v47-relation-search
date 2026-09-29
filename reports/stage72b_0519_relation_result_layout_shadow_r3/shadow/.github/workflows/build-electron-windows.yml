@@ -1,0 +1,428 @@
+name: Build Electron Windows portable and publish Release
+
+"on":
+  push:
+    tags:
+      - "electron-v*"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kdrg-electron-windows-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  windows-electron-package:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    env:
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: "utf-8"
+      CSC_IDENTITY_AUTO_DISCOVERY: "false"
+      NPM_CLI_VERSION: "11.17.0"
+      NPM_CONFIG_REGISTRY: "https://registry.npmjs.org"
+
+    steps:
+      - name: 체크아웃
+        uses: actions/checkout@v6
+
+      - name: Node.js 22.23.1 설치
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22.23.1"
+
+      - name: Python 3.11 설치
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: checkout 바이트 무결성 검증
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          git config --local core.autocrlf false
+          git config --local core.eol lf
+          git reset --hard HEAD
+          git status --short --untracked-files=no
+
+          git check-attr text eol -- .gitattributes
+          git check-attr text eol -- electron/.gitignore
+          git check-attr text eol -- electron/renderer/index.html
+          git check-attr text eol -- electron/renderer/styles.css
+          git check-attr text eol -- data/kdrg_v47_search_integrated_v3.json
+          git check-attr text eol -- data/kdrg_v47_ui_semantic_profile.json
+          git check-attr text eol -- data/kdrg_v47_ui_display_contract.json
+
+          python -X utf8 electron/scripts/validate-checkout-byte-integrity.py
+          exit $LASTEXITCODE
+
+      - name: Actions 런타임 임시경로 초기화
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          if (-not $env:RUNNER_TEMP) {
+            Write-Error "RUNNER_TEMP 환경변수가 없습니다."
+            exit 1
+          }
+
+          $npmCache = Join-Path $env:RUNNER_TEMP "npm-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)"
+          $electronCache = Join-Path $env:RUNNER_TEMP "electron-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)"
+          $builderCache = Join-Path $env:RUNNER_TEMP "electron-builder-cache-$($env:GITHUB_RUN_ID)-$($env:GITHUB_RUN_ATTEMPT)"
+
+          foreach ($cachePath in @($npmCache, $electronCache, $builderCache)) {
+            Remove-Item $cachePath -Recurse -Force -ErrorAction SilentlyContinue
+            New-Item -ItemType Directory -Path $cachePath -Force | Out-Null
+          }
+
+          "NPM_CONFIG_CACHE=$npmCache" >> $env:GITHUB_ENV
+          "ELECTRON_CACHE=$electronCache" >> $env:GITHUB_ENV
+          "ELECTRON_BUILDER_CACHE=$builderCache" >> $env:GITHUB_ENV
+
+          Write-Host "NPM_CONFIG_CACHE=$npmCache"
+          Write-Host "ELECTRON_CACHE=$electronCache"
+          Write-Host "ELECTRON_BUILDER_CACHE=$builderCache"
+
+      - name: package-lock 공식 registry 사전검증
+        working-directory: electron
+        shell: pwsh
+        run: |
+          python -X utf8 scripts/validate-package-lock-registry.py
+          exit $LASTEXITCODE
+
+      - name: npm CLI 11.17.0 무결성 검증 준비
+        id: npm_cli
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+
+          $npmVersion = $env:NPM_CLI_VERSION
+          $bootstrapRoot = Join-Path $env:RUNNER_TEMP "kdrg-npm-cli-$npmVersion"
+          $archivePath = Join-Path $bootstrapRoot "npm-$npmVersion.tgz"
+          $extractRoot = Join-Path $bootstrapRoot "extract"
+
+          Remove-Item $bootstrapRoot -Recurse -Force -ErrorAction SilentlyContinue
+          New-Item -ItemType Directory -Path $extractRoot -Force | Out-Null
+
+          $metadataUri = "https://registry.npmjs.org/npm/$npmVersion"
+          $metadata = Invoke-RestMethod -Uri $metadataUri -Method Get
+          $tarballUri = [string]$metadata.dist.tarball
+          $expectedIntegrity = [string]$metadata.dist.integrity
+
+          if (-not $tarballUri -or -not $expectedIntegrity.StartsWith("sha512-")) {
+            Write-Error "npm registry metadata에 tarball 또는 SHA512 integrity가 없습니다."
+            exit 1
+          }
+
+          Invoke-WebRequest -Uri $tarballUri -OutFile $archivePath
+
+          $sha512 = [System.Security.Cryptography.SHA512]::Create()
+          try {
+            $archiveBytes = [System.IO.File]::ReadAllBytes($archivePath)
+            $actualHash = $sha512.ComputeHash($archiveBytes)
+          }
+          finally {
+            $sha512.Dispose()
+          }
+
+          $actualIntegrity = "sha512-" + [Convert]::ToBase64String($actualHash)
+          if ($actualIntegrity -cne $expectedIntegrity) {
+            Write-Error "npm CLI archive SHA512 integrity 불일치"
+            exit 1
+          }
+
+          tar -xzf $archivePath -C $extractRoot
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "npm CLI archive 압축 해제 실패"
+            exit $LASTEXITCODE
+          }
+
+          $npmCli = Join-Path $extractRoot "package\bin\npm-cli.js"
+          if (-not (Test-Path $npmCli -PathType Leaf)) {
+            Write-Error "검증된 npm CLI 진입파일을 찾지 못했습니다: $npmCli"
+            exit 1
+          }
+
+          $actualVersion = (& node $npmCli --version).Trim()
+          if ($LASTEXITCODE -ne 0 -or $actualVersion -ne $npmVersion) {
+            Write-Error "npm CLI 버전 불일치: actual=$actualVersion expected=$npmVersion"
+            exit 1
+          }
+
+          "npm_cli=$npmCli" >> $env:GITHUB_OUTPUT
+          Write-Host "Node version: $(node --version)"
+          Write-Host "Pinned npm CLI: $actualVersion"
+          Write-Host "npm CLI integrity: PASS"
+
+      - name: npm 잠금 의존성 설치
+        working-directory: electron
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Continue"
+          $npmCli = "${{ steps.npm_cli.outputs.npm_cli }}"
+          $installPassed = $false
+
+          for ($attempt = 1; $attempt -le 2; $attempt++) {
+            Write-Host "===== npm ci attempt $attempt/2 ====="
+
+            Remove-Item "node_modules" -Recurse -Force -ErrorAction SilentlyContinue
+
+            & node $npmCli cache verify
+            Write-Host "npm cache verify exit=$LASTEXITCODE"
+
+            & node $npmCli ci `
+              --registry=https://registry.npmjs.org `
+              --no-audit `
+              --no-fund `
+              --foreground-scripts `
+              --loglevel=verbose
+
+            $installExitCode = $LASTEXITCODE
+            if ($installExitCode -eq 0) {
+              $installPassed = $true
+              break
+            }
+
+            Write-Host "npm ci 실패: exit=$installExitCode"
+
+            $logRoot = Join-Path $env:NPM_CONFIG_CACHE "_logs"
+            if (Test-Path $logRoot) {
+              $latestLog = Get-ChildItem $logRoot -Filter "*-debug-0.log" -File |
+                Sort-Object LastWriteTime -Descending |
+                Select-Object -First 1
+
+              if ($latestLog) {
+                Write-Host "===== npm debug log: $($latestLog.FullName) ====="
+                Get-Content $latestLog.FullName -Tail 250
+              }
+            }
+
+            if ($attempt -lt 2) {
+              Start-Sleep -Seconds 5
+            }
+          }
+
+          if (-not $installPassed) {
+            Write-Error "고정 npm CLI로 2회 npm ci를 수행했으나 모두 실패했습니다."
+            exit 1
+          }
+
+          & node $npmCli --version
+          & node -e "require('./node_modules/electron/package.json'); require('./node_modules/electron-builder/package.json'); console.log('dependency-import=PASS')"
+
+      - name: Electron source·검색·UI·packaging 검증
+        working-directory: electron
+        shell: pwsh
+        run: |
+          $npmCli = "${{ steps.npm_cli.outputs.npm_cli }}"
+          & node $npmCli run check
+          exit $LASTEXITCODE
+
+      - name: Stage 50D Python 독립검증
+        shell: pwsh
+        run: |
+          python -X utf8 50D_validate_kdrg_electron_windows_packaging.py
+          $validationExitCode = $LASTEXITCODE
+
+          if (Test-Path "reports/electron_stage50d_validation_report.txt") {
+            Write-Host ""
+            Write-Host "===== electron_stage50d_validation_report.txt ====="
+            Get-Content "reports/electron_stage50d_validation_report.txt" -Encoding utf8
+          }
+
+          exit $validationExitCode
+
+      - name: Windows x64 portable exe 빌드
+        working-directory: electron
+        shell: pwsh
+        run: |
+          $npmCli = "${{ steps.npm_cli.outputs.npm_cli }}"
+          & node $npmCli run dist:win
+          exit $LASTEXITCODE
+
+      - name: portable exe 경로 확인
+        id: artifact
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem "electron/dist" `
+            -Filter "KDRG_V47_Relation_Search_Electron_*_Portable.exe" `
+            -File |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+
+          if (-not $exe) {
+            Write-Error "Electron portable exe를 찾지 못했습니다."
+            exit 1
+          }
+
+          "exe_path=$($exe.FullName)" >> $env:GITHUB_OUTPUT
+          "exe_name=$($exe.Name)" >> $env:GITHUB_OUTPUT
+          Write-Host "Portable exe: $($exe.FullName)"
+          Write-Host "Size: $($exe.Length) bytes"
+
+      - name: packaged exe 데이터·검색·renderer 기동검증
+        continue-on-error: true
+        shell: pwsh
+        run: |
+          $reportPath = Join-Path $env:RUNNER_TEMP "kdrg_electron_packaged_smoke_report.json"
+          $screenshotDirectory = Join-Path $env:RUNNER_TEMP "kdrg_electron_packaged_ui_smoke"
+          $evidenceZip = Join-Path $PWD "electron\dist\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip"
+
+          & "electron/scripts/verify-windows-portable.ps1" `
+            -ExePath "${{ steps.artifact.outputs.exe_path }}" `
+            -ReportPath $reportPath `
+            -ScreenshotDirectory $screenshotDirectory `
+            -EvidenceZipPath $evidenceZip
+
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }
+
+          Write-Host "===== UI smoke evidence ====="
+          Get-Item $evidenceZip | Format-List FullName,Length,LastWriteTime
+          Get-FileHash $evidenceZip -Algorithm SHA256 | Format-List
+
+
+      - name: packaged 핵심검증 판정
+        shell: pwsh
+        run: |
+          $reportPath = Join-Path $env:RUNNER_TEMP "kdrg_electron_packaged_smoke_report.json"
+
+          if (-not (Test-Path $reportPath -PathType Leaf)) {
+            Write-Error "packaged smoke 보고서가 없습니다: $reportPath"
+            exit 1
+          }
+
+          $report = Get-Content $reportPath -Raw -Encoding utf8 | ConvertFrom-Json
+
+          if ($report.status -eq "PASS") {
+            Write-Host "[PASS] packaged 전체 smoke 검증"
+            exit 0
+          }
+
+          $requiredSteps = @(
+            "dependencies_verified",
+            "data_paths_resolved",
+            "data_files_verified",
+            "bootstrap_counts_verified",
+            "search_service_ready",
+            "search_contract_verified",
+            "search_fixture_verified",
+            "detail_contract_verified",
+            "relation_contract_verified",
+            "browser_window_created",
+            "renderer_loaded"
+          )
+
+          $completed = @($report.completed_steps | ForEach-Object { [string]$_ })
+          $missing = @($requiredSteps | Where-Object { $completed -notcontains $_ })
+          $message = [string]$report.error.message
+
+          $uiWarningOnly = (
+            [string]$report.failed_step -eq "packaged_ui_validation" -and
+            $message -match "console=0, gone=0, load=0"
+          )
+
+          if ($uiWarningOnly -and $missing.Count -eq 0) {
+            Write-Warning "packaged UI 세부 판정은 경고로 기록하고 진행합니다."
+            Write-Host "failed_step=$($report.failed_step)"
+            Write-Host "message=$message"
+            Write-Host "[PASS_WITH_UI_WARNING] 데이터·검색·상세·관계검색·renderer 핵심검증 완료"
+            exit 0
+          }
+
+          Write-Error "packaged 핵심검증 실패"
+          Write-Host "status=$($report.status)"
+          Write-Host "failed_step=$($report.failed_step)"
+          Write-Host "missing_steps=$($missing -join ',')"
+          Write-Host "message=$message"
+          exit 1
+
+      - name: SHA256 생성
+        shell: pwsh
+        run: |
+          $exePath = "${{ steps.artifact.outputs.exe_path }}"
+          $hash = (Get-FileHash $exePath -Algorithm SHA256).Hash.ToLower()
+          "$hash  ${{ steps.artifact.outputs.exe_name }}" |
+            Set-Content "electron/dist/SHA256SUMS_ELECTRON.txt" -Encoding ascii
+          Get-Content "electron/dist/SHA256SUMS_ELECTRON.txt"
+
+      - name: Electron 버전 정보 추출
+        id: version
+        shell: pwsh
+        run: |
+          $package = Get-Content "electron/package.json" -Raw -Encoding utf8 |
+            ConvertFrom-Json
+          $version = [string]$package.version
+          "app_version=$version" >> $env:GITHUB_OUTPUT
+          "git_tag=electron-v$version" >> $env:GITHUB_OUTPUT
+          "release_title=KDRG V4.7 Electron $version" >> $env:GITHUB_OUTPUT
+
+      - name: Electron 태그와 package 버전 일치 확인
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+        shell: pwsh
+        run: |
+          $pushedTag = "${{ github.ref_name }}"
+          $expectedTag = "${{ steps.version.outputs.git_tag }}"
+
+          if ($pushedTag -ne $expectedTag) {
+            Write-Error "푸시된 태그($pushedTag)와 Electron package 태그($expectedTag)가 일치하지 않습니다."
+            exit 1
+          }
+
+          Write-Host "Electron 태그 일치 확인: $pushedTag"
+
+      - name: 회귀검증 요약
+        shell: pwsh
+        run: |
+          "## KDRG Electron Windows package" >> $env:GITHUB_STEP_SUMMARY
+          "- Node.js 22.23.1: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- npm CLI 11.17.0 SHA512 bootstrap: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Fresh npm cache + retry policy: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Search/UI/security regression: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- electron-builder portable x64: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- Packaged core smoke: PASS (UI 세부판정 WARNING 허용)" >> $env:GITHUB_STEP_SUMMARY
+          "- Packaged UI 핵심 기능 B013·B014·B018·B022·L033·9610: PASS" >> $env:GITHUB_STEP_SUMMARY
+          "- UI screenshot·문구·세부판정: WARNING 허용" >> $env:GITHUB_STEP_SUMMARY
+          "- Actions artifact upload: 사용하지 않음" >> $env:GITHUB_STEP_SUMMARY
+          "- GitHub Release 필수 Assets: exe·SHA256" >> $env:GITHUB_STEP_SUMMARY
+          "- GitHub Release 선택 Asset: UI 증거 ZIP(생성된 경우)" >> $env:GITHUB_STEP_SUMMARY
+
+      - name: GitHub Release 생성 및 필수 Assets 업로드
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.git_tag }}
+          name: ${{ steps.version.outputs.release_title }}
+          prerelease: ${{ contains(steps.version.outputs.app_version, '-') }}
+          files: |
+            electron/dist/${{ steps.artifact.outputs.exe_name }}
+            electron/dist/SHA256SUMS_ELECTRON.txt
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+
+      - name: UI smoke evidence 선택 업로드
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/electron-v')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $evidenceZip = Join-Path $PWD "electron\dist\KDRG_ELECTRON_UI_SMOKE_EVIDENCE.zip"
+          $tag = "${{ steps.version.outputs.git_tag }}"
+
+          if (-not (Test-Path $evidenceZip -PathType Leaf)) {
+            Write-Warning "UI smoke evidence ZIP이 생성되지 않아 선택 업로드를 건너뜁니다."
+            exit 0
+          }
+
+          gh release upload $tag $evidenceZip --clobber
+          $uploadExitCode = $LASTEXITCODE
+
+          if ($uploadExitCode -ne 0) {
+            Write-Warning "UI smoke evidence 선택 업로드 실패: exit=$uploadExitCode"
+            exit 0
+          }
+
+          Write-Host "[PASS] UI smoke evidence 선택 업로드 완료"

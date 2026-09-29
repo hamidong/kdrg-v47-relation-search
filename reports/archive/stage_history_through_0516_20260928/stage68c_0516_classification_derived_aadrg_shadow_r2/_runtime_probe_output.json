@@ -1,0 +1,246 @@
+{
+  "ok": true,
+  "export_keys": [
+    "KdrgSearchError",
+    "KdrgSearchService",
+    "SERVICE_SCHEMA_VERSION",
+    "RESPONSE_SCHEMA_VERSION",
+    "RELATION_RESPONSE_SCHEMA_VERSION",
+    "SUPPORTED_DATA_SCHEMA",
+    "ENTITY_TYPES",
+    "normalizeEntityId",
+    "normalizeQuery",
+    "queryTokens",
+    "canonicalJson",
+    "sha256Canonical"
+  ],
+  "constructor": "KdrgSearchService",
+  "attempts": [
+    {
+      "ctor": "KdrgSearchService",
+      "args": [
+        "object"
+      ],
+      "ok": false,
+      "error": "통합 검색 데이터가 없습니다: /home/runner/workspace/[object Object]"
+    },
+    {
+      "ctor": "KdrgSearchService",
+      "args": [
+        "string"
+      ],
+      "ok": true
+    }
+  ],
+  "direct": {
+    "available": true,
+    "args": [
+      "F111",
+      "ADRG"
+    ],
+    "raw": {
+      "results": [
+        {
+          "entity_type": "ADRG",
+          "entity_id": "F111",
+          "title": "F111 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+          "subtitle": "MDC 05 · 세부 질병군 1개",
+          "match_type": "EXACT_ID",
+          "matched_fields": [
+            "entity_id"
+          ],
+          "summary": {
+            "aadrg_count": 1,
+            "abc_status": "SINGLE",
+            "abc_display_labels": [
+              "질병군 분류(전문)"
+            ]
+          }
+        }
+      ]
+    },
+    "f111": [
+      {
+        "path": "$.results[0]",
+        "classification": {},
+        "record": {
+          "entity_type": "ADRG",
+          "entity_id": "F111",
+          "title": "F111 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+          "subtitle": "MDC 05 · 세부 질병군 1개",
+          "match_type": "EXACT_ID",
+          "matched_fields": [
+            "entity_id"
+          ],
+          "summary": {
+            "aadrg_count": 1,
+            "abc_status": "SINGLE",
+            "abc_display_labels": [
+              "질병군 분류(전문)"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "detail": {
+    "available": true,
+    "args": [
+      "ADRG",
+      "F111"
+    ],
+    "raw": {
+      "entity_type": "ADRG",
+      "entity_id": "F111",
+      "detail": {
+        "aadrg_codes": [
+          "F1110"
+        ],
+        "aadrg_count": 1,
+        "abc_classification_codes": [
+          "A"
+        ],
+        "abc_display_labels": [
+          "질병군 분류(전문)"
+        ],
+        "abc_status": "SINGLE",
+        "adrg": "F111",
+        "adrg_name": "급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+        "aadrg_records": [
+          {
+            "entity_type": "AADRG",
+            "entity_id": "F1110",
+            "title": "F1110 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+            "subtitle": "ADRG F111 · 질병군 분류(전문)",
+            "summary": {
+              "adrg": "F111",
+              "classification_code": "A",
+              "classification_display_label": "질병군 분류(전문)",
+              "abc_status": "EXACT_OFFICIAL",
+              "mdc_name": "Diseases and Disorders of the Circulatory System"
+            }
+          }
+        ]
+      }
+    },
+    "f111": [
+      {
+        "path": "$",
+        "classification": {},
+        "record": {
+          "entity_type": "ADRG",
+          "entity_id": "F111",
+          "detail": {
+            "aadrg_codes": [
+              "F1110"
+            ],
+            "aadrg_count": 1,
+            "abc_classification_codes": [
+              "A"
+            ],
+            "abc_display_labels": [
+              "질병군 분류(전문)"
+            ],
+            "abc_status": "SINGLE",
+            "adrg": "F111",
+            "adrg_name": "급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+            "aadrg_records": [
+              {
+                "entity_type": "AADRG",
+                "entity_id": "F1110",
+                "title": "F1110 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+                "subtitle": "ADRG F111 · 질병군 분류(전문)",
+                "summary": {
+                  "adrg": "F111",
+                  "classification_code": "A",
+                  "classification_display_label": "질병군 분류(전문)",
+                  "abc_status": "EXACT_OFFICIAL",
+                  "mdc_name": "Diseases and Disorders of the Circulatory System"
+                }
+              }
+            ]
+          }
+        }
+      },
+      {
+        "path": "$.detail",
+        "classification": {
+          "abc_classification_codes": [
+            "A"
+          ],
+          "abc_display_labels": [
+            "질병군 분류(전문)"
+          ],
+          "abc_status": "SINGLE"
+        },
+        "record": {
+          "aadrg_codes": [
+            "F1110"
+          ],
+          "aadrg_count": 1,
+          "abc_classification_codes": [
+            "A"
+          ],
+          "abc_display_labels": [
+            "질병군 분류(전문)"
+          ],
+          "abc_status": "SINGLE",
+          "adrg": "F111",
+          "adrg_name": "급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+          "aadrg_records": [
+            {
+              "entity_type": "AADRG",
+              "entity_id": "F1110",
+              "title": "F1110 · 급성 심근경색증의 경피적 관상동맥 수술(심각한 합병증 동반, 단일혈관)",
+              "subtitle": "ADRG F111 · 질병군 분류(전문)",
+              "summary": {
+                "adrg": "F111",
+                "classification_code": "A",
+                "classification_display_label": "질병군 분류(전문)",
+                "abc_status": "EXACT_OFFICIAL",
+                "mdc_name": "Diseases and Disorders of the Circulatory System"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "path": "$.detail.aadrg_records[0].summary",
+        "classification": {
+          "classification_code": "A",
+          "classification_display_label": "질병군 분류(전문)",
+          "abc_status": "EXACT_OFFICIAL"
+        },
+        "record": {
+          "adrg": "F111",
+          "classification_code": "A",
+          "classification_display_label": "질병군 분류(전문)",
+          "abc_status": "EXACT_OFFICIAL",
+          "mdc_name": "Diseases and Disorders of the Circulatory System"
+        }
+      },
+      {
+        "path": "$.detail.condition_ast",
+        "classification": {},
+        "record": {
+          "adrg": "F111",
+          "adrg_family": "F11"
+        }
+      }
+    ]
+  },
+  "relation": {
+    "available": true,
+    "args": [
+      [
+        "i214",
+        "m6569"
+      ],
+      "AND"
+    ],
+    "raw": {
+      "results": []
+    },
+    "f111": []
+  }
+}

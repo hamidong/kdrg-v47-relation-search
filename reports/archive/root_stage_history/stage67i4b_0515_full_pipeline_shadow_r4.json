@@ -1,0 +1,397 @@
+{
+  "status": "PASS",
+  "readiness": "READY_FOR_0515_FULL_PIPELINE_ACTUAL_APPLY",
+  "started_at": "2026-09-23 02:12:30",
+  "gate": {
+    "commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "audit_readiness": "NEEDS_MULTI_LAYER_REPAIR_DESIGN",
+    "baseline_pass_count": 10,
+    "direct_service": {
+      "b018_exact_count": 1,
+      "adrg_count": 1132,
+      "collision_count": 471,
+      "failure_count": 0
+    }
+  },
+  "preflight": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "before_sha256": {
+      "electron/src/search-result-contract.js": "b941964ce4470dc71b4582c7b36f75bda73cb9ba308649ca626669bf36e82309",
+      "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154",
+      "electron/tests/validate-packaged-runtime-smoke.js": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+      ".github/workflows/build-electron-windows.yml": "77161ef601ba1777f7651ed88860dbc58d4a685cd028dd5fcebe9df609101c06"
+    },
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "contract_before": {
+    "exports": [
+      "ENTITY_TYPES",
+      "RELATION_CODE_TYPES",
+      "RELATION_OPERATORS",
+      "SEARCH_ENTITY_TYPES",
+      "SearchContractError",
+      "normalizeDetailRequest",
+      "normalizeRelationRequest",
+      "normalizeSearchRequest"
+    ],
+    "public_types": [
+      "CODE",
+      "ADRG"
+    ],
+    "fn_type": "function",
+    "fn_length": 1,
+    "fn_source": "function normalizeSearchRequest(payload) {\n  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {\n    throw new SearchContractError('검색 요청 형식이 올바르지 않습니다.');\n  }\n  const query = normalizeSpace(payload.query);\n  if (!query) {\n    throw new SearchContractError('검색어를 입력해야 합니다.');\n  }\n  if (query.length > 200) {\n    throw new SearchContractError('검색어는 200자 이하여야 합니다.');\n  }\n  const filters = normalizeSharedFilters(payload);\n  return Object.freeze({\n    query,\n    entityType: normalizeEntityTypes(payload.entityType),\n    limit: boundedInteger(payload.limit, 'limit', 50, 1, 500),\n    offset: boundedInteger(payload.offset, 'offset', 0, 0, 1000000),\n    ...filters,\n  });\n}",
+    "CODE": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "CODE"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "CODE"
+      ],
+      "entityTypeType": "array"
+    },
+    "ADRG": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "ADRG"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "ADRG"
+      ],
+      "entityTypeType": "array"
+    },
+    "ALL": {
+      "ok": true,
+      "value": {
+        "query": "B018",
+        "entityType": [
+          "CODE",
+          "ADRG"
+        ],
+        "limit": 100,
+        "offset": 0,
+        "mdc": null,
+        "classification": null
+      },
+      "entityType": [
+        "CODE",
+        "ADRG"
+      ],
+      "entityTypeType": "array"
+    },
+    "AADRG": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: AADRG"
+    },
+    "RDRG": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: RDRG"
+    },
+    "TABLE": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: TABLE"
+    },
+    "INVALID": {
+      "ok": false,
+      "error": "사용자 검색에서 지원하지 않는 유형입니다: INVALID"
+    }
+  },
+  "repair": {
+    "contract": {
+      "definition_kind": "function_declaration",
+      "strategy": "legacy-first normalizer; scalarize CODE/ADRG/ALL only; preserve hidden/invalid rejection",
+      "supported_before": {
+        "CODE": [
+          "CODE"
+        ],
+        "ADRG": [
+          "ADRG"
+        ],
+        "ALL": [
+          "CODE",
+          "ADRG"
+        ]
+      },
+      "rejected_before": {
+        "AADRG": "사용자 검색에서 지원하지 않는 유형입니다: AADRG",
+        "RDRG": "사용자 검색에서 지원하지 않는 유형입니다: RDRG",
+        "TABLE": "사용자 검색에서 지원하지 않는 유형입니다: TABLE",
+        "INVALID": "사용자 검색에서 지원하지 않는 유형입니다: INVALID"
+      }
+    },
+    "stage59b_search_validator": {
+      "marker": "Stage67I4B normalized request bridge",
+      "supported_scalar_types": [
+        "CODE",
+        "ADRG",
+        "ALL"
+      ],
+      "hidden_invalid_rejection_preserved": [
+        "AADRG",
+        "RDRG",
+        "TABLE",
+        "INVALID"
+      ],
+      "normalized_B018_bridge": true
+    },
+    "packaged_validator": {
+      "marker": "Stage67I4B packaged normalized request bridge",
+      "supported_scalar_types": [
+        "CODE",
+        "ADRG",
+        "ALL"
+      ],
+      "hidden_invalid_rejection_preserved": [
+        "AADRG",
+        "RDRG",
+        "TABLE",
+        "INVALID"
+      ],
+      "normalized_B018_bridge": true
+    },
+    "workflow_observability": {
+      "strategy": "move only local hard-failure status/failed_step/missing/message before Write-Error; preserve UI-warning branch",
+      "warning_branch_preserved": true,
+      "global_failed_step_occurrences": 2,
+      "hard_failure_diagnostics_before_error": true,
+      "failure_semantics_preserved": true
+    },
+    "target_files": [
+      "electron/src/search-result-contract.js",
+      "electron/tests/validate-stage59b-search.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      ".github/workflows/build-electron-windows.yml"
+    ]
+  },
+  "validation": {
+    "contract": {
+      "supported_expected": {
+        "CODE": "CODE",
+        "ADRG": "ADRG",
+        "ALL": "ALL"
+      },
+      "supported_actual": {
+        "CODE": "CODE",
+        "ADRG": "ADRG",
+        "ALL": "ALL"
+      },
+      "supported_all_scalar_string": true,
+      "hidden_invalid_rejection_preserved": {
+        "AADRG": "사용자 검색에서 지원하지 않는 유형입니다: AADRG",
+        "RDRG": "사용자 검색에서 지원하지 않는 유형입니다: RDRG",
+        "TABLE": "사용자 검색에서 지원하지 않는 유형입니다: TABLE",
+        "INVALID": "사용자 검색에서 지원하지 않는 유형입니다: INVALID"
+      }
+    },
+    "normalized_full_audit": {
+      "adrg_count": 1132,
+      "collision_count": 471,
+      "normalized_adrg_failure_count": 0,
+      "normalized_adrg_failure_sample": [],
+      "collision_behavior_change_count": 0,
+      "collision_behavior_change_sample": [],
+      "fixture_failure_count": 0,
+      "fixture_failures": []
+    },
+    "static_wiring": {
+      "blocking_checks": {
+        "renderer_calls_window_search": true,
+        "renderer_carries_entity_type": true,
+        "preload_invokes_kdrg_search": true,
+        "main_handles_kdrg_search": true,
+        "main_uses_normalizeSearchRequest": true,
+        "packaged_filter_adrg": true,
+        "packaged_uses_fixture_query": true,
+        "packaged_selector_adrg": true
+      },
+      "observations": {
+        "dot_search_receivers": [],
+        "contains_request_query": true,
+        "contains_request_entity_type": true,
+        "contains_search_word": true
+      },
+      "receiver_shape_informational_only": true,
+      "main_path": "electron/main.js",
+      "preload_path": "electron/preload.js"
+    },
+    "workflow": {
+      "diagnostics_before_error": true,
+      "warning_branch_preserved": true,
+      "packaged_ui_gate_present": true,
+      "global_failed_step_occurrences": 2,
+      "local_positions": {
+        "status": 11847,
+        "failed_step": 11895,
+        "missing_steps": 11953,
+        "message": 12012
+      }
+    },
+    "npm_run_check": "PASS",
+    "stage59b_stage60c_packaged": "PASS",
+    "root_50b_50c_50d": "PASS",
+    "release_version": "PASS",
+    "official_regression": "PASS",
+    "tracked_diff_files": [
+      ".github/workflows/build-electron-windows.yml",
+      "electron/src/search-result-contract.js",
+      "electron/tests/validate-packaged-runtime-smoke.js",
+      "electron/tests/validate-stage59b-search.js"
+    ],
+    "git_diff_check": "PASS",
+    "commands": [
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "src/search-result-contract.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "tests/validate-stage59b-search.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "--check",
+          "tests/validate-packaged-runtime-smoke.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": ""
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage59b-search.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": "stage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-packaged-runtime-smoke.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": "[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage60c-packaged-relation-smoke.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": "[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage59b-ui.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": "stage59_ui: 21 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-stage59b-smoke.js"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": "stage59_smoke: PASS\n"
+      },
+      {
+        "cmd": [
+          "npm",
+          "run",
+          "check"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": "\n> kdrg-v47-relation-search-electron@0.5.15 check\n> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate\n\n[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011\n\n> kdrg-v47-relation-search-electron@0.5.15 validate\n> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging\n\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:skeleton\n> node tests/validate-stage59b-skeleton.js\n\nstage59_skeleton: PASS version=0.5.15\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:search\n> node tests/validate-stage59b-search.js\n\nstage59_search: 29 PASS / 0 FAIL\n[PASS] Stage67I4B normalized request bridge\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:ui\n> node tests/validate-stage59b-ui.js\n\nstage59_ui: 21 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:stage59b-smoke\n> node tests/validate-stage59b-smoke.js\n\nstage59_smoke: PASS\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:smoke-contract\n> node tests/validate-packaged-runtime-smoke.js\n\n[PASS] Stage67I4B packaged normalized request bridge\nvalidator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2\n[PASS] Electron packaged runtime smoke 계약검증: 106 PASS / 0 FAIL\n\n> kdrg-v47-relation-search-electron@0.5.15 validate:packaging\n> node tests/validate-packaging-config.js\n\nvalidator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI\nelectron_root=/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron\nnode=v20.20.0\n[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL\n"
+      },
+      {
+        "cmd": [
+          "python",
+          "50B_validate_kdrg_electron_search_service.py"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi",
+        "returncode": 0,
+        "output": "[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL\nreport=/tmp/kdrg_stage67i4b_shadow_9yxizmdi/reports/electron_stage50b_validation_report.txt\n"
+      },
+      {
+        "cmd": [
+          "python",
+          "50C_validate_kdrg_electron_renderer_ui.py"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi",
+        "returncode": 0,
+        "output": "[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL\nreport=/tmp/kdrg_stage67i4b_shadow_9yxizmdi/reports/electron_stage50c_validation_report.txt\n"
+      },
+      {
+        "cmd": [
+          "python",
+          "50D_validate_kdrg_electron_windows_packaging.py"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi",
+        "returncode": 0,
+        "output": "[PASS] KDRG Stage 50D Windows packaging 검증: 26 PASS / 0 FAIL\nreport=/tmp/kdrg_stage67i4b_shadow_9yxizmdi/reports/electron_stage50d_validation_report.txt\n"
+      },
+      {
+        "cmd": [
+          "node",
+          "tests/validate-release-version.js",
+          "0.5.15"
+        ],
+        "cwd": "/tmp/kdrg_stage67i4b_shadow_9yxizmdi/electron",
+        "returncode": 0,
+        "output": "[PASS] expected version argument | actual=\"0.5.15\" | expected=\"stable semver\"\n[PASS] package.json exists | actual=true | expected=true\n[PASS] package-lock.json exists | actual=true | expected=true\n[PASS] package name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] package version | actual=\"0.5.15\" | expected=\"0.5.15\"\n[PASS] lock top version | actual=\"0.5.15\" | expected=\"0.5.15\"\n[PASS] lock root version | actual=\"0.5.15\" | expected=\"0.5.15\"\n[PASS] lock top name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lock root name | actual=\"kdrg-v47-relation-search-electron\" | expected=\"kdrg-v47-relation-search-electron\"\n[PASS] lockfileVersion | actual=3 | expected=3\n[PASS] artifact template uses version | actual=true | expected=true\n[PASS] portable artifact name | actual=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\" | expected=\"KDRG_V47_Relation_Search_Electron_0.5.15_Portable.exe\"\n[PASS] release tag | actual=\"electron-v0.5.15\" | expected=\"electron-v0.5.15\"\n[PASS] version has no prerelease | actual=\"0.5.15\" | expected=\"stable semver\"\n[PASS] Electron release version 검증: 14 PASS / 0 FAIL\n"
+      }
+    ]
+  },
+  "actual_guard": {
+    "head": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+    "worktree_clean": true,
+    "staging_empty": true,
+    "targets_unchanged": true,
+    "runtime_unchanged": true,
+    "official_condition_unchanged": true,
+    "icon_unchanged": true,
+    "release_tag_absent": true,
+    "release_absent": true
+  },
+  "error": null,
+  "finished_at": "2026-09-23 02:13:42"
+}

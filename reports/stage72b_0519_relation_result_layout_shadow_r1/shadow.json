@@ -1,0 +1,6 @@
+{
+  "stage": "72B_0519_RELATION_RESULT_LAYOUT_SHADOW_R1",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 관계카드 relation-level chip anchor 불일치: 0"
+}

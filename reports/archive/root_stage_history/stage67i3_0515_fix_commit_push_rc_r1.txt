@@ -1,0 +1,79 @@
+KDRG V4.7 Electron Stage67I3 / 0.5.15 Fix Commit + Push + RC R1
+============================================================================================
+status=FAIL
+readiness=NOT_READY_FOR_0515_TAG_RELEASE
+
+[PREFLIGHT]
+{
+  "stage67i2_gate": {
+    "validation": {
+      "adrg_count": 1132,
+      "collision_count": 471,
+      "failure_count": 0,
+      "npm_run_check": "PASS",
+      "root_50b": "PASS",
+      "root_50c": "PASS",
+      "root_50d": "PASS",
+      "release_version": "PASS",
+      "adrg_contract": "PASS"
+    },
+    "candidate_sha256": {
+      "electron/src/kdrg-search-service.js": "017f6b2a3cdaaede0f14e77be5e06fc20b113f5d258c3271802beb07641b9d2c",
+      "electron/src/packaged-runtime-smoke.js": "ec3d8a53f136884e61bb2383e6f22c149c708501c00c02fb2703416f7504b7de",
+      "electron/tests/validate-packaged-runtime-smoke.js": "d7d0e8c3375f2dee88ff1e159b2bfb2a1444b6b4de8b946c3929f9e6b685fd29",
+      "electron/tests/validate-stage59b-search.js": "9b8d555e0d64560237147c9edb5a583b0e0e27d7835176544c80d6ddb0c21154"
+    }
+  },
+  "classification": "PRE_FIX_COMMIT",
+  "head": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "origin_main": "b248da4cb290f00e84e40efa40e58f8df3d519de",
+  "changed_files": [
+    "electron/src/kdrg-search-service.js",
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage59b-search.js"
+  ],
+  "staged_files": [],
+  "base_tag": "electron-v0.5.14",
+  "release_tag": "electron-v0.5.15",
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[COMMIT]
+{
+  "commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "message": "fix: resolve ADRG exact-id namespace collisions",
+  "changed_files": [
+    "electron/src/kdrg-search-service.js",
+    "electron/src/packaged-runtime-smoke.js",
+    "electron/tests/validate-packaged-runtime-smoke.js",
+    "electron/tests/validate-stage59b-search.js"
+  ]
+}
+
+[PUSH]
+{
+  "commit": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "origin_main": "6ac11ec595258f8a24e68621f3520335e03ebff6",
+  "base_tag_immutable": true,
+  "release_tag_absent": true,
+  "release_absent": true
+}
+
+[RC]
+{}
+
+[FINAL GUARD]
+{}
+
+[BLOCKER]
+StageError: RC conclusion is not success
+
+[NEXT]
+- PASS이면 새 fix commit이 main에 push되고 workflow_dispatch RC가 success인 상태.
+- 다음 Stage67J에서 RC/commit을 재확인한 뒤 electron-v0.5.15 tag 생성/push.
+- tag workflow 성공 후 Release asset/EXE SHA/packaged 검증까지 최종 확인.
+
+report_txt=/home/runner/workspace/stage67i3_0515_fix_commit_push_rc_r1.txt
+report_json=/home/runner/workspace/stage67i3_0515_fix_commit_push_rc_r1.json

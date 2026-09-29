@@ -1,0 +1,6 @@
+{
+  "stage": "72B_0519_RELATION_RESULT_LAYOUT_SHADOW_R3",
+  "status": "FAIL",
+  "actual_performed": false,
+  "error": "Stop: 하단 classification call anchor 불일치: 0"
+}

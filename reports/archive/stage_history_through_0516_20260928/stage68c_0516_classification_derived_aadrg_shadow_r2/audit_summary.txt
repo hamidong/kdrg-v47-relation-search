@@ -1,0 +1,60 @@
+Stage68C R2 — KDRG 0.5.16 Shadow Audit
+==========================================================
+audit_integrity=PASS
+operating_json_sha256=PASS
+ADRG unique=8382 / expected=1132
+AADRG unique=7647
+ADRG with derived children=0
+derived children total=0
+
+[classification]
+ADRG missing code=7269
+ADRG missing label=7269
+ADRG partial(code/label mismatch)=0
+AADRG missing code=7647
+AADRG missing label=7647
+AADRG partial(code/label mismatch)=0
+derived missing id=0
+derived missing code=0
+derived missing label=0
+
+[F111/F112/F121/F122 static]
+F111: {'codes': ['A'], 'labels': ['질병군 분류(전문)'], 'raw': {'abc_source_ref': {'aadrg_bbox': [157.32, 494.88, 189.12, 509.28], 'bbox': [52.32, 494.88, 551.208, 509.28], 'file': '[별표 1] 입원환자의 질병군별 질병의 종류(제3조제1항 관련)(상급종합병원의 지정 및 평가 규정) (2).pdf', 'name_bbox': [207.36, 494.88, 551.208, 509.28], 'pdf_page': 5, 'row_number_bbox': [52.32, 494.88, 70.32, 509.28]}, 'abc_status': 'EXACT_OFFICIAL', 'abc_unclassified_provenance': None, 'classification_code': 'A', 'classification_display_label': '질병군 분류(전문)', 'classification_name': '전문'}}
+F112: {'codes': ['A'], 'labels': ['질병군 분류(전문)'], 'raw': {'abc_source_ref': {'aadrg_bbox': [157.32, 513.12, 189.12, 527.52], 'bbox': [52.32, 513.12, 551.208, 527.52], 'file': '[별표 1] 입원환자의 질병군별 질병의 종류(제3조제1항 관련)(상급종합병원의 지정 및 평가 규정) (2).pdf', 'name_bbox': [207.36, 513.12, 551.208, 527.52], 'pdf_page': 5, 'row_number_bbox': [52.32, 513.12, 70.32, 527.52]}, 'abc_status': 'EXACT_OFFICIAL', 'abc_unclassified_provenance': None, 'classification_code': 'A', 'classification_display_label': '질병군 분류(전문)', 'classification_name': '전문'}}
+F121: {'codes': ['A'], 'labels': ['질병군 분류(전문)'], 'raw': {'abc_source_ref': {'aadrg_bbox': [157.32, 531.36, 189.12, 545.76], 'bbox': [52.32, 531.36, 551.328, 545.76], 'file': '[별표 1] 입원환자의 질병군별 질병의 종류(제3조제1항 관련)(상급종합병원의 지정 및 평가 규정) (2).pdf', 'name_bbox': [207.36, 531.36, 551.328, 545.76], 'pdf_page': 5, 'row_number_bbox': [52.32, 531.36, 70.32, 545.76]}, 'abc_status': 'EXACT_OFFICIAL', 'abc_unclassified_provenance': None, 'classification_code': 'A', 'classification_display_label': '질병군 분류(전문)', 'classification_name': '전문'}}
+F122: {'codes': ['A'], 'labels': ['질병군 분류(전문)'], 'raw': {'abc_source_ref': {'aadrg_bbox': [157.32, 549.6, 189.12, 564.0], 'bbox': [52.32, 549.6, 551.328, 564.0], 'file': '[별표 1] 입원환자의 질병군별 질병의 종류(제3조제1항 관련)(상급종합병원의 지정 및 평가 규정) (2).pdf', 'name_bbox': [207.36, 549.6, 551.328, 564.0], 'pdf_page': 5, 'row_number_bbox': [52.32, 549.6, 70.32, 564.0]}, 'abc_status': 'EXACT_OFFICIAL', 'abc_unclassified_provenance': None, 'classification_code': 'A', 'classification_display_label': '질병군 분류(전문)', 'classification_name': '전문'}}
+
+[runtime 4-way probe]
+runtime_probe=PASS
+direct: available=True F111_hits=1
+detail: available=True F111_hits=4
+relation: available=True F111_hits=0
+
+[renderer]
+renderAdrgDetail_exists=True
+renderDerivedAadrgList_exists=True
+detail_calls_derived_renderer=False
+derived_has_classification_reference=True
+derived_has_aadrg_reference=True
+derived_section_label_present=True
+derived_details_default_closed=None
+
+[public search]
+expected=CODE,ADRG
+AADRG public leak patterns=0
+
+[validator coverage missing]
+electron/tests/validate-stage59b-search.js: F111, i214, m6569, renderDerivedAadrgList, aadrg_records, classification_code, classification_display_label
+electron/tests/validate-stage59b-ui.js: F111, i214, m6569, aadrg_records, classification_code, classification_display_label, SEARCH_ENTITY_TYPES
+electron/tests/validate-stage59b-smoke.js: F111, i214, m6569, renderDerivedAadrgList, aadrg_records, classification_code, classification_display_label, SEARCH_ENTITY_TYPES
+electron/tests/validate-packaged-runtime-smoke.js: F111, i214, m6569, renderDerivedAadrgList, aadrg_records, classification_code, classification_display_label, SEARCH_ENTITY_TYPES
+electron/tests/validate-stage60c-packaged-relation-smoke.js: F111, i214, m6569, renderDerivedAadrgList, aadrg_records, classification_code, classification_display_label, SEARCH_ENTITY_TYPES
+50B_validate_kdrg_electron_search_service.py: F111, i214, m6569, renderDerivedAadrgList, classification_code, classification_display_label, SEARCH_ENTITY_TYPES
+50C_validate_kdrg_electron_renderer_ui.py: F111, i214, m6569, renderDerivedAadrgList, aadrg_records, classification_code, classification_display_label, SEARCH_ENTITY_TYPES
+50D_validate_kdrg_electron_windows_packaging.py: F111, i214, m6569, renderDerivedAadrgList, aadrg_records, classification_code, classification_display_label, SEARCH_ENTITY_TYPES
+
+[REVIEW]
+- ADRG unique 탐지=8382 (인계 기준 1,132와 다름: JSON shape 확인 필요)
+- 현재 renderAdrgDetail에서 renderDerivedAadrgList 호출이 탐지되지 않음
+
+상세 전체 목록은 audit.json 확인. 제품/운영 데이터 수정 없음.

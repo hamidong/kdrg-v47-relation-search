@@ -1,0 +1,20 @@
+[PASS] Stage69E R1 / 0.5.17 Release Prep Actual
+stage69c_actual_binding=PASS
+stage69d_shadow_binding=PASS
+release_prep_actual_files=3
+final_release_candidate_files=8
+package_version=0.5.17
+package_lock_version=0.5.17
+public_exact_ids_17232=PRESERVED
+relation_ux=PRESERVED
+stage69b_validator=PASS
+stage68d_validator=PASS
+npm_check=PASS
+50B_50C_50D=PASS
+release_version_0.5.17=PASS
+runtime_json=UNCHANGED
+staging=EMPTY
+rollback=NOT_NEEDED
+readiness=READY_FOR_69F_0517_COMMIT_PUSH_RC
+report=reports/stage69e_0517_release_prep_actual_r1/actual_summary.txt
+json=reports/stage69e_0517_release_prep_actual_r1/actual.json

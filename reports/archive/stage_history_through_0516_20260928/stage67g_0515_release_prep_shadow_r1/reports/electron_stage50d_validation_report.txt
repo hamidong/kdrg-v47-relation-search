@@ -1,0 +1,134 @@
+KDRG V4.7 Stage 50D Electron Windows packaging 독립검증 - 0.5.15
+============================================================================================
+스크립트 버전: 2026-09-21_KDRG_V47_ELECTRON_STAGE50D_VALIDATOR_V14_0515
+
+- [PASS] 운영 JSON SHA | actual=1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58 | expected=1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58
+- [PASS] package version | actual=0.5.15 | expected=0.5.15
+- [PASS] lock version | actual=0.5.15 | expected=0.5.15
+- [PASS] validate skeleton current | actual=node tests/validate-stage59b-skeleton.js | expected=node tests/validate-stage59b-skeleton.js
+- [PASS] validate search current | actual=node tests/validate-stage59b-search.js | expected=node tests/validate-stage59b-search.js
+- [PASS] validate UI current | actual=node tests/validate-stage59b-ui.js | expected=node tests/validate-stage59b-ui.js
+- [PASS] Stage59B smoke | actual=node tests/validate-stage59b-smoke.js | expected=node tests/validate-stage59b-smoke.js
+- [PASS] packaged smoke preserved | actual=node tests/validate-packaged-runtime-smoke.js | expected=node tests/validate-packaged-runtime-smoke.js
+- [PASS] packaging preserved | actual=node tests/validate-packaging-config.js | expected=node tests/validate-packaging-config.js
+- [PASS] check packaging syntax | actual=True | expected=True
+- [PASS] check packaged smoke syntax | actual=True | expected=True
+- [PASS] Node runtime | actual=True | expected=True
+- [PASS] tests/validate-packaging-config.js | actual=0 | expected=0
+- [PASS] tests/validate-packaged-runtime-smoke.js | actual=0 | expected=0
+- [PASS] tests/validate-stage59b-skeleton.js | actual=0 | expected=0
+- [PASS] tests/validate-stage59b-search.js | actual=0 | expected=0
+- [PASS] tests/validate-stage59b-ui.js | actual=0 | expected=0
+- [PASS] tests/validate-stage59b-smoke.js | actual=0 | expected=0
+- [PASS] npm run check | actual=0 | expected=0
+- [PASS] 50B independent | actual=0 | expected=0
+- [PASS] 50C independent | actual=0 | expected=0
+- [PASS] 사용자 검색 유형 CODE·ADRG | actual=True | expected=True
+- [PASS] TABLE 기술상세 비노출 | actual=True | expected=True
+- [PASS] ADRG 사용자 결과 | actual=True | expected=True
+- [PASS] CODE 상세 관련 ADRG | actual=True | expected=True
+- [PASS] history back | actual=True | expected=True
+
+[tests/validate-packaging-config.js stdout]
+validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI
+electron_root=/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1/electron
+node=v20.20.0
+[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL
+
+[tests/validate-packaging-config.js stderr]
+
+
+[tests/validate-packaged-runtime-smoke.js stdout]
+validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2
+[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL
+
+[tests/validate-packaged-runtime-smoke.js stderr]
+
+
+[tests/validate-stage59b-skeleton.js stdout]
+stage59_skeleton: PASS version=0.5.15
+
+[tests/validate-stage59b-skeleton.js stderr]
+
+
+[tests/validate-stage59b-search.js stdout]
+stage59_search: 29 PASS / 0 FAIL
+
+[tests/validate-stage59b-search.js stderr]
+
+
+[tests/validate-stage59b-ui.js stdout]
+stage59_ui: 21 PASS / 0 FAIL
+
+[tests/validate-stage59b-ui.js stderr]
+
+
+[tests/validate-stage59b-smoke.js stdout]
+stage59_smoke: PASS
+
+[tests/validate-stage59b-smoke.js stderr]
+
+
+[npm run check stdout]
+
+> kdrg-v47-relation-search-electron@0.5.15 check
+> node --check main.js && node --check preload.js && node --check src/data-paths.js && node --check src/bootstrap-data.js && node --check src/search-normalizer.js && node --check src/search-result-contract.js && node --check src/kdrg-search-service.js && node --check src/packaged-runtime-smoke.js && node --check renderer/ui-formatters.js && node --check renderer/app.js && node --check tests/validate-electron-skeleton.js && node --check tests/validate-search-service.js && node --check tests/run-search-parity.js && node --check tests/validate-renderer-ui.js && node --check tests/validate-packaged-runtime-smoke.js && node --check tests/validate-packaging-config.js && node --check tests/validate-stage51c-user-condition-ui.js && node --check tests/validate-release-version.js && node --check tests/validate-stage59b-skeleton.js && node --check tests/validate-stage59b-search.js && node --check tests/validate-stage59b-ui.js && node --check tests/validate-stage59b-smoke.js && node --check tests/validate-stage60c-packaged-relation-smoke.js && node tests/validate-stage60c-packaged-relation-smoke.js && npm run validate
+
+[PASS] Stage60C runtime ADRG relation fixture: 9620 | O6010,O6011
+
+> kdrg-v47-relation-search-electron@0.5.15 validate
+> npm run validate:skeleton && npm run validate:search && npm run validate:ui && npm run validate:stage59b-smoke && npm run validate:smoke-contract && npm run validate:packaging
+
+
+> kdrg-v47-relation-search-electron@0.5.15 validate:skeleton
+> node tests/validate-stage59b-skeleton.js
+
+stage59_skeleton: PASS version=0.5.15
+
+> kdrg-v47-relation-search-electron@0.5.15 validate:search
+> node tests/validate-stage59b-search.js
+
+stage59_search: 29 PASS / 0 FAIL
+
+> kdrg-v47-relation-search-electron@0.5.15 validate:ui
+> node tests/validate-stage59b-ui.js
+
+stage59_ui: 21 PASS / 0 FAIL
+
+> kdrg-v47-relation-search-electron@0.5.15 validate:stage59b-smoke
+> node tests/validate-stage59b-smoke.js
+
+stage59_smoke: PASS
+
+> kdrg-v47-relation-search-electron@0.5.15 validate:smoke-contract
+> node tests/validate-packaged-runtime-smoke.js
+
+validator=2026-08-04_KDRG_V47_STAGE51D_WINDOWS_PACKAGED_UI_SMOKE_CONTRACT_V2
+[PASS] Electron packaged runtime smoke 계약검증: 100 PASS / 0 FAIL
+
+> kdrg-v47-relation-search-electron@0.5.15 validate:packaging
+> node tests/validate-packaging-config.js
+
+validator=2026-07-30_KDRG_V47_ELECTRON_STAGE50D_PACKAGING_VALIDATOR_V5_RELATION_UI
+electron_root=/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1/electron
+node=v20.20.0
+[PASS] Electron Stage 50D Windows packaging 검증: 144 PASS / 0 FAIL
+
+[npm run check stderr]
+
+
+[50B stdout]
+[PASS] KDRG Stage 50B Electron 검색 service 검증: 14 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1/reports/electron_stage50b_validation_report.txt
+
+[50B stderr]
+
+
+[50C stdout]
+[PASS] KDRG Stage 50C Electron renderer UI 검증: 20 PASS / 0 FAIL
+report=/home/runner/workspace/reports/stage67g_0515_release_prep_shadow_r1/reports/electron_stage50c_validation_report.txt
+
+[50C stderr]
+
+
+전체 결과: PASS
