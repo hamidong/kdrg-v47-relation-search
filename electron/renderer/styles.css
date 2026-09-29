@@ -859,10 +859,18 @@ body[data-state="error"] .compact-status .status-dot { box-shadow: 0 0 0 3px #fd
   font-size: 8px;
 }
 .result-card-classification {
-  justify-self: end;
-  flex-wrap: nowrap;
-  margin-left: 4px;
+  /* STAGE70B_CLASSIFICATION_RIGHT_ALIGN */
+  margin-left: auto;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+
 }
+.classification-unavailable-chip {
+  white-space: nowrap;
+  opacity: 0.78;
+}
+
 .result-card-classification .classification-badge {
   min-height: 26px;
   gap: 4px;
