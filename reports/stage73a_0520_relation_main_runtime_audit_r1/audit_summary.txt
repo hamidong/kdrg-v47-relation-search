@@ -1,0 +1,3 @@
+[FAIL] Stage73A relation main runtime audit — 제품 수정 없음
+Stop: HEAD 불일치: f2855ad9632fdd4754d3a656080b939436cbbdc1
+report=reports/stage73a_0520_relation_main_runtime_audit_r1/audit_summary.txt

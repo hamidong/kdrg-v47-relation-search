@@ -1,0 +1,6 @@
+{
+  "stage": "73A_0520_RELATION_MAIN_RUNTIME_AUDIT_R1",
+  "status": "FAIL",
+  "mutated": false,
+  "error": "Stop: HEAD 불일치: f2855ad9632fdd4754d3a656080b939436cbbdc1"
+}
