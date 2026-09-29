@@ -351,10 +351,29 @@ function relationLevelDescription(level) {
 function renderRelationCounts(response) {
   const container = byId('type-counts');
   container.replaceChildren();
-  const labels = { strict: '같은 선택지', split: '다른 선택지', partial: '일부 연결' };
+
+  /* STAGE72B_RELATION_SUMMARY_R4 */
+  const labels = {
+    strict: '같은 선택지',
+    split: '다른 선택지',
+    partial: '일부 연결',
+  };
+  const scopes = {
+    strict: '공통 관련 ADRG',
+    split: '공통 관련 ADRG',
+    partial: '부분 관련 ADRG',
+  };
+
   for (const level of ['strict', 'split', 'partial']) {
     const count = Number(response?.level_counts?.[level] ?? 0);
-    if (count) container.append(makeChip(`${labels[level]} ${Ui.formatNumber(count)}`, `relation-${level}-chip`));
+    if (!count) continue;
+
+    const chip = makeChip(
+      `${scopes[level]} ${Ui.formatNumber(count)} · ${labels[level]}`,
+      `relation-summary-chip relation-${level}-chip`,
+    );
+    chip.dataset.relationLevel = level;
+    container.append(chip);
   }
 }
 
@@ -366,7 +385,7 @@ function renderRelationResults(response) {
   if (!response.results.length) { const empty = create('div', 'empty-state compact'); empty.append(create('strong', '', '공통 관계를 찾지 못했습니다.'), create('p', '', '코드 유형·MDC·질병군 분류를 확인하거나 OR 관계로 범위를 넓혀 보세요.')); list.append(empty); }
   response.results.forEach((result, index) => {
     const key = `RELATION:${result.entity_id}:${index}`; const button = create('button', `result-card relation-result-card relation-${result.relation_level}`); button.type = 'button'; button.dataset.relationIndex = String(index); button.dataset.resultKey = key; button.setAttribute('aria-label', `관계검색 ADRG ${result.entity_id} ${result.relation_level_label}`); button.setAttribute('aria-pressed', String(state.selectedKey === key));
-    const main = create('div', 'result-card-main'); main.append(makeBadge('ADRG'), create('strong', 'result-title', result.title), makeChip(result.relation_level_label, `relation-${result.relation_level}-chip result-match-chip`));
+    /* STAGE72B_RELATION_CLASSIFICATION_TOP_RIGHT_R4: relation-level chip moved to header summary; existing classification becomes top-right */
     const chips = create('div', 'chip-row result-meta-row'); chips.append(makeChip(`${result.matched_count}/${result.total_count} 코드 연결`)); if (result.parent_adrg) chips.append(makeChip(`상위 ADRG ${result.parent_adrg}`)); if (result.summary?.mdc) chips.append(makeChip(mdcDisplayText(result.summary.mdc, result.summary?.mdc_name))); /* STAGE69B_RELATION_RESULT_CLASSIFICATION_TITLE_ROW */ const relationClassificationValues = (result.summary?.abc_display_labels ?? []).length ? result.summary.abc_display_labels : [result.summary?.classification_code || result.summary?.classification_display_label]; const relationClassification = create('span', 'classification-badge-group result-card-classification'); const relationClassificationCount = appendClassificationBadges(relationClassification, relationClassificationValues); if (!relationClassificationCount) relationClassification.append(makeChip('분류정보 없음', 'classification-unavailable-chip')); main.append(relationClassification); button.append(main); if (result.subtitle) button.append(create('p', 'result-subtitle', result.subtitle)); button.append(chips); list.append(button);
   });
   byId('page-previous').disabled = true; byId('page-next').disabled = true; setText('page-label', response.total_count ? `1–${Ui.formatNumber(response.total_count)} / ${Ui.formatNumber(response.total_count)}` : '0–0 / 0');

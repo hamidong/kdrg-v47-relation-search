@@ -543,6 +543,17 @@ footer { padding: 14px 4px 0; color: #738196; font-size: 10px; line-height: 1.5;
 .relation-strict-chip { color: #216a4c; background: #dcf2e7; }
 .relation-split-chip { color: #8b5c17; background: #f8ecd5; }
 .relation-partial-chip { color: #5f6d7e; background: #edf1f5; }
+
+/* STAGE72B_RELATION_SUMMARY_EMPHASIS_R4 */
+.relation-summary-chip {
+  min-height: 23px;
+  padding: 4px 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
 .relation-detail-primary { align-items: center; }
 .relation-detail-primary > div { flex: 1; }
 .relation-open-adrg { min-height: 34px; white-space: nowrap; }

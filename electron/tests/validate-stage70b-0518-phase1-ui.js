@@ -92,9 +92,9 @@ check('relation result classification preserved and shares right class', () => {
   assert.match(relation, /분류정보 없음/);
 });
 
-check('relation level chip preserved', () => {
+check('relation context preserved after card-chip relocation', () => {
   assert.match(relation, /relation_level_label/);
-  assert.match(relation, /result-match-chip/);
+  assert.doesNotMatch(relation, /result-match-chip/);
 });
 
 check('relation result MDC helper when MDC is rendered', () => {
