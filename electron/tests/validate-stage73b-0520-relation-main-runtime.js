@@ -231,4 +231,3 @@ try {
   console.log(`${error.name}: ${error.message}`);
   process.exitCode = 1;
 }
-
