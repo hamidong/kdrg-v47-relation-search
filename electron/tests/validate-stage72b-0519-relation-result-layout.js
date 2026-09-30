@@ -57,6 +57,27 @@ check('relation card removes individual relation-level chip', () => {
   );
 });
 
+check('Stage73B relation main scope regression', () => {
+  assert.match(relation, /STAGE73B_RELATION_MAIN_SCOPE_HOTFIX_R1/);
+  assert.match(
+    relation,
+    /const main\s*=\s*create\('div',\s*'result-card-main'\)/,
+  );
+  assert.match(relation, /main\.append\(makeBadge\('ADRG'\)\)/);
+  assert.match(
+    relation,
+    /main\.append\(create\('strong',\s*'result-title',\s*result\.title\)\)/,
+  );
+  assert.match(relation, /main\.append\(relationClassification\)/);
+  assert.match(relation, /button\.append\(main\)/);
+  assert.doesNotMatch(relation, /result-match-chip/);
+
+  const decl = relation.indexOf("const main = create('div', 'result-card-main')");
+  const classification = relation.indexOf('main.append(relationClassification)');
+  const append = relation.indexOf('button.append(main)');
+  assert.ok(decl >= 0 && decl < classification && classification < append);
+});
+
 check('existing relation classification remains in main', () => {
   assert.match(relation, /STAGE69B_RELATION_RESULT_CLASSIFICATION_TITLE_ROW/);
   assert.match(relation, /result-card-classification/);
