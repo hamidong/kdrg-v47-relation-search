@@ -34,15 +34,15 @@ const adrgOnly = adrgIds.filter((id) => !service.recordMaps.CODE.has(id));
 const publicIds = [...new Set([...codeIds, ...adrgIds])].sort();
 
 check('public namespace counts', () => {
-  assert.equal(codeIds.length, 16571);
+  assert.equal(codeIds.length, 16574);
   assert.equal(adrgIds.length, 1132);
   assert.equal(shared.length, 471);
-  assert.equal(codeOnly.length, 16100);
+  assert.equal(codeOnly.length, 16103);
   assert.equal(adrgOnly.length, 661);
-  assert.equal(publicIds.length, 17232);
+  assert.equal(publicIds.length, 17235);
 });
 
-check('all 17232 public exact IDs return exact public entities only', () => {
+check('all 17235 public exact IDs return exact public entities only', () => {
   let mismatchCount = 0;
   const examples = [];
 

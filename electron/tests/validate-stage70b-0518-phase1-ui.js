@@ -164,7 +164,7 @@ check('0.5.17 exact public-ID contract preserved', () => {
 });
 
 check('runtime JSON count contract preserved', () => {
-  assert.equal(service.recordMaps.CODE.size, 16571);
+  assert.equal(service.recordMaps.CODE.size, 16574);
   assert.equal(service.recordMaps.ADRG.size, 1132);
 });
 

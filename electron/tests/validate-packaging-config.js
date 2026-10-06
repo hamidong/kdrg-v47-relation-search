@@ -11,7 +11,7 @@ const ROOT = path.resolve(ELECTRON_ROOT, '..');
 
 const EXPECTED_DATA = Object.freeze({
   'kdrg_v47_search_integrated_v3.json':
-    '1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58',
+    'e32e361b27e0f321df11ca101f30f40576f4c587cccf2a695db2bbc711f13852',
   'kdrg_v47_ui_semantic_profile.json':
     'c9401fd9d6dcc1253fa2134b22048fe4a73c4c04aeea4d1d86c7fe1504d5456e',
   'kdrg_v47_ui_display_contract.json':

@@ -8,7 +8,7 @@ ELECTRON=ROOT/"electron"
 DATA=ROOT/"data/kdrg_v47_search_integrated_v3.json"
 REPORT_TXT=ROOT/"reports/electron_stage50c_validation_report.txt"
 REPORT_JSON=ROOT/"reports/electron_stage50c_validation_report.json"
-EXPECTED_JSON_SHA="1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58"
+EXPECTED_JSON_SHA="e32e361b27e0f321df11ca101f30f40576f4c587cccf2a695db2bbc711f13852"
 
 def sha256(path):
     h=hashlib.sha256()
