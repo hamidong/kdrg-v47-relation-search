@@ -111,7 +111,7 @@ Assert-Equal "ADRG count" $report.counts.adrg 1132
 Assert-Equal "AADRG count" $report.counts.aadrg 1233
 Assert-Equal "RDRG count" $report.counts.rdrg 2699
 Assert-Equal "TABLE count" $report.counts.tables 1308
-Assert-Equal "CODE count" $report.counts.codes 16571
+Assert-Equal "CODE count" $report.counts.codes 16574
 Assert-Equal "condition AST count" $report.counts.conditionAst 390
 Assert-Equal "condition TABLE occurrence count" $report.counts.conditionTableOccurrences 939
 Assert-Equal "E011 검색 fixture" $report.search_fixture.found $true

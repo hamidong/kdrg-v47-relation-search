@@ -6,7 +6,7 @@ const fs = require('node:fs');
 const EXPECTED = Object.freeze({
   integrated: Object.freeze({
     schema: 'kdrg-v47-search-integrated-v3',
-    sha256: '1a3d50400567ecaad9695b7be8e7c0382131f8652f398e010cf01f4d8dda6c58',
+    sha256: 'e32e361b27e0f321df11ca101f30f40576f4c587cccf2a695db2bbc711f13852',
   }),
   semanticProfile: Object.freeze({
     schema: 'kdrg-v47-ui-semantic-profile-v1',

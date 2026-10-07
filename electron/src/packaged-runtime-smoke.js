@@ -13,7 +13,7 @@ const EXPECTED_COUNTS = Object.freeze({
   aadrg: 1233,
   rdrg: 2699,
   tables: 1308,
-  codes: 16571,
+  codes: 16574,
   conditionAst: 390,
   conditionTableOccurrences: 939,
 });

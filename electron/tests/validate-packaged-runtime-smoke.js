@@ -66,7 +66,7 @@ check('L033 no TABLE', UI_FIXTURES[4].expected_table_ids.length, 0);
 check('9610 no TABLE', UI_FIXTURES[5].expected_table_ids.length, 0);
 check('ADRG count', EXPECTED_COUNTS.adrg, 1132);
 check('TABLE count', EXPECTED_COUNTS.tables, 1308);
-check('CODE count', EXPECTED_COUNTS.codes, 16571);
+check('CODE count', EXPECTED_COUNTS.codes, 16574);
 
 check('smoke env', shouldRunPackagedSmoke([], { KDRG_ELECTRON_SMOKE_TEST: '1' }), true);
 check('smoke arg', shouldRunPackagedSmoke(['--kdrg-smoke-test'], {}), true);
