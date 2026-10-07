@@ -898,7 +898,7 @@ function conditionGroupsExpression(groups, detail) {
 
 function directConditionTables(detail) {
   const coverage = Ui.userConditionCoverage(detail);
-  if (coverage.status !== 'NO_EXPLICIT_CONDITION' || detail?.condition_ast || coverage.table_count) return [];
+  if (!['NO_EXPLICIT_CONDITION', 'TEXT_ONLY'].includes(coverage.status) || detail?.condition_ast || coverage.table_count) return [];
 
   let sourceDetail = detail;
   let sourceIds = Ui.uniqueStrings(sourceDetail?.source_logical_table_ids ?? []);
